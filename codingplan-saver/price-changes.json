@@ -1,0 +1,70 @@
+{
+  "lastUpdated": "2026-07-19",
+  "weekRange": "7.13 - 7.19",
+  "changes": [
+    {
+      "date": "2026-07-19",
+      "vendor": "字节·方舟",
+      "type": "新增模型",
+      "detail": "Coding Plan / Token Plan 全档位追加支持 Kimi-K3 模型",
+      "impact": "positive",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-07-19",
+      "vendor": "Kimi",
+      "type": "新增模型",
+      "detail": "Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）追加支持 Kimi-K3",
+      "impact": "positive",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-07-19",
+      "vendor": "Codex (ChatGPT)",
+      "type": "新增模型",
+      "detail": "Token Plan（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型",
+      "impact": "positive",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-07-15",
+      "vendor": "DeepSeek 官方",
+      "type": "计费调整",
+      "detail": "7 月中旬起高峰时段价格翻倍，缓存和输出价不变",
+      "impact": "negative",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-07-06",
+      "vendor": "全站",
+      "type": "页面改版",
+      "detail": "首页新增 DeepSeek 涨价应对推荐分组",
+      "impact": "neutral",
+      "impactLevel": "low"
+    },
+    {
+      "date": "2026-07-01",
+      "vendor": "TaoToken",
+      "type": "新增平台",
+      "detail": "GLM-5.2 Coding Plan 三档套餐上线（已售罄）",
+      "impact": "positive",
+      "impactLevel": "medium"
+    },
+    {
+      "date": "2026-06-29",
+      "vendor": "讯飞·星火",
+      "type": "新增模型",
+      "detail": "高效版追加支持 GLM-5.2 模型",
+      "impact": "positive",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-06-26",
+      "vendor": "优云智算",
+      "type": "新增模型",
+      "detail": "Coding Plan 全档位追加支持 GLM-5.2（限时倍率 x2）",
+      "impact": "positive",
+      "impactLevel": "high"
+    }
+  ]
+}

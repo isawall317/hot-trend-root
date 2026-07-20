@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodingPlan 省钱攻略 · AI Coding Plan 选型指南与对比</title>
+  <meta name="description" content="每月花 200-1000 元买 AI Coding Plan？我帮你选最划算的。覆盖智谱、字节方舟、MiniMax、Kimi、阿里百炼、讯飞、百度千帆等主流平台，附真实测评和选型建议。">
+  <link rel="stylesheet" href="styles/shared.css">
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <!-- Hero, Quick Entries, Recommendations, Price Changes, Table, Community 由 JS 动态渲染 -->
+  <div id="pageBody">
+    <!-- 加载占位 -->
+    <div style="padding:120px 0;text-align:center;color:var(--text-tertiary);">
+      <div style="font-size:32px;margin-bottom:12px;">📐</div>
+      <div>正在加载套餐数据...</div>
+    </div>
+  </div>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    async function initHome() {
+      // 并行加载所有数据
+      await Promise.all([
+        loadConfig(),
+        loadPlans(),
+        loadArticles(),
+        loadPriceChanges()
+      ]);
+
+      // 渲染导航和页脚
+      mountNav('home');
+      mountFooter();
+
+      // 组装主页结构
+      const body = $('#pageBody');
+      body.innerHTML = [
+        renderHomeHero(),
+        renderQuickEntries(),
+        renderRecommendations(),
+        renderPriceChangesInline(),
+        renderTableSection(),
+        renderArticlesPreview(),
+        renderCommunitySection()
+      ].join('');
+
+      // 渲染筛选栏 + 表格
+      const filterMount = $('#filterBarMount');
+      if (filterMount) {
+        filterMount.innerHTML = renderFilterBar();
+        bindFilterBar();
+        syncFilterUI();
+      }
+      renderTable();
+
+      // 绑定快速入口
+      bindQuickEntries();
+    }
+
+    function renderArticlesPreview() {
+      const featured = CPS.articles.filter(a => a.featured).slice(0, 2);
+      const recent = CPS.articles.filter(a => !a.featured).slice(0, 2);
+      const all = [...featured, ...recent].slice(0, 3);
+      if (!all.length) return '';
+      const cards = all.map(renderArticleCard).join('');
+      return `
+        <section class="section">
+          <div class="container">
+            <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+              <div>
+                <span class="section-eyebrow">LATEST REVIEWS</span>
+                <h2 class="section-title">最新测评 & 速报</h2>
+                <p class="section-subtitle">基于真实使用的测评和价格变动速报，每周更新。</p>
+              </div>
+              <a href="blog.html" class="btn btn-secondary">查看全部 →</a>
+            </div>
+            <div class="grid grid-3">${cards}</div>
+          </div>
+        </section>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', initHome);
+  </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加入社群 · CodingPlan 省钱攻略</title>
+  <meta name="description" content="加入 CodingPlan 省钱攻略社群：免费微信群获取价格变动推送，付费知识星球获得深度实测报告和 1v1 答疑。">
+  <link rel="stylesheet" href="styles/shared.css">
+  <style>
+    .join-hero {
+      text-align: center;
+      padding: var(--space-16) 0 var(--space-10);
+    }
+    .join-card {
+      position: relative;
+      padding: var(--space-10);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      margin-bottom: var(--space-6);
+    }
+    .join-card-paid {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08));
+      border-color: var(--border-accent);
+    }
+    .join-card-free {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
+    }
+    .join-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .qr-placeholder {
+      width: 240px;
+      height: 240px;
+      background: var(--bg-elevated);
+      border: 2px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      color: var(--text-muted);
+      margin: 0 auto;
+    }
+    .qr-placeholder-icon { font-size: 48px; }
+    .join-card-price-big {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent-primary);
+      font-family: var(--font-mono);
+    }
+    .join-card-price-old {
+      font-size: 18px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-left: var(--space-2);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-6);
+      font-size: 14px;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .comparison-table th {
+      color: var(--text-tertiary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+    .comparison-table td:not(:first-child) {
+      text-align: center;
+    }
+    .comparison-table .check { color: var(--accent-primary); font-size: 18px; }
+    .comparison-table .cross { color: var(--text-muted); }
+    .blogger-cred {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+    .blogger-cred-item {
+      text-align: center;
+      padding: var(--space-5);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+    .blogger-cred-value {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .blogger-cred-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) {
+      .join-card-grid { grid-template-columns: 1fr; }
+      .blogger-cred { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <main>
+    <section class="join-hero">
+      <div class="container">
+        <span class="hero-eyebrow">● COMMUNITY</span>
+        <h1 class="hero-title" style="margin:16px auto;">不止是看表，<br><span class="hero-title-accent">来一起省钱</span></h1>
+        <p class="hero-subtitle" style="margin:0 auto;">两个层级的社群，按你的需求选。免费群门槛低、付费群信息密度高。</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div id="communityContent"></div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container container-narrow">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">WHY TRUST ME</span>
+          <h2 class="section-title">为什么相信我？</h2>
+        </div>
+        <div class="blogger-cred" id="bloggerCred"></div>
+        <div class="card" style="padding:var(--space-6);">
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="font-size:40px;">🧑‍💻</span>
+            <div>
+              <div style="font-size:17px;font-weight:700;margin-bottom:4px;" id="bloggerName"></div>
+              <div style="font-size:13px;color:var(--accent-primary);margin-bottom:8px;" id="bloggerTitle"></div>
+              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;" id="bloggerBio"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container container-narrow">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">COMPARISON</span>
+          <h2 class="section-title">免费群 vs 知识星球</h2>
+        </div>
+        <div class="card" style="padding:var(--space-6);">
+          <table class="comparison-table" id="comparisonTable"></table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    async function initJoin() {
+      await loadConfig();
+      mountNav('join');
+      mountFooter();
+
+      const c = CPS.config.community;
+      const b = CPS.config.blogger;
+
+      // Community cards
+      $('#communityContent').innerHTML = `
+        <div class="join-card join-card-free">
+          <div class="join-card-grid">
+            <div>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <h2 style="font-size:26px;font-weight:700;">${escapeHtml(c.free.title)}</h2>
+                <span class="badge badge-accent">FREE</span>
+              </div>
+              <p style="font-size:14px;color:var(--accent-primary);font-weight:600;margin-bottom:16px;">${escapeHtml(c.free.subtitle)}</p>
+              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:20px;">${escapeHtml(c.free.description)}</p>
+              <ul class="community-highlights" style="margin-bottom:24px;">
+                ${(c.free.highlights || []).map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+              </ul>
+              <a href="#" class="btn btn-secondary btn-lg">${escapeHtml(c.free.ctaText)} →</a>
+            </div>
+            <div>
+              <div class="qr-placeholder">
+                <span class="qr-placeholder-icon">📱</span>
+                <span style="font-size:13px;text-align:center;">微信群二维码<br>待上传</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="join-card join-card-paid">
+          <div class="join-card-grid">
+            <div>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <h2 style="font-size:26px;font-weight:700;">${escapeHtml(c.paid.title)}</h2>
+                <span class="badge badge-premium">PRO</span>
+              </div>
+              <div style="margin-bottom:16px;">
+                <span class="join-card-price-big">¥99</span>
+                <span class="join-card-price-old">¥199</span>
+                <span style="font-size:14px;color:var(--text-tertiary);margin-left:8px;">/年（早鸟价）</span>
+              </div>
+              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:20px;">${escapeHtml(c.paid.description)}</p>
+              <ul class="community-highlights" style="margin-bottom:24px;">
+                ${(c.paid.highlights || []).map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+              </ul>
+              <a href="${c.paid.url || '#'}" class="btn btn-primary btn-lg">${escapeHtml(c.paid.ctaText)} →</a>
+            </div>
+            <div>
+              <div class="qr-placeholder">
+                <span class="qr-placeholder-icon">⭐</span>
+                <span style="font-size:13px;text-align:center;">知识星球<br>二维码待上传</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Blogger credibility
+      $('#bloggerCred').innerHTML = (b.credibility || []).map(c => `
+        <div class="blogger-cred-item">
+          <div class="blogger-cred-value">${escapeHtml(c.value)}</div>
+          <div class="blogger-cred-label">${escapeHtml(c.label)}</div>
+        </div>
+      `).join('');
+      $('#bloggerName').textContent = b.name;
+      $('#bloggerTitle').textContent = b.title;
+      $('#bloggerBio').textContent = b.bio;
+
+      // Comparison table
+      const rows = [
+        { feature: '价格', free: '免费', paid: '¥99/年（早鸟）' },
+        { feature: '每周价格变动推送', free: '✓', paid: '✓ 早 24h' },
+        { feature: '抢购开放时间提醒', free: '✓', paid: '✓' },
+        { feature: '群友选型讨论', free: '✓', paid: '✓' },
+        { feature: '每月实测报告', free: '—', paid: '✓ 含 Token 数据' },
+        { feature: '1v1 选型答疑', free: '—', paid: '✓ 每月 1 次' },
+        { feature: '独家优惠链接', free: '—', paid: '✓ + 返佣返还' },
+        { feature: '决策树高级模式', free: '—', paid: '✓' },
+        { feature: '历史文章库', free: '部分', paid: '✓ 全部' }
+      ];
+      $('#comparisonTable').innerHTML = `
+        <thead>
+          <tr>
+            <th>权益</th>
+            <th>免费群</th>
+            <th>知识星球</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(r => `
+            <tr>
+              <td>${escapeHtml(r.feature)}</td>
+              <td>${r.free === '✓' ? '<span class="check">✓</span>' : r.free === '—' ? '<span class="cross">—</span>' : escapeHtml(r.free)}</td>
+              <td>${r.paid === '✓' || r.paid.startsWith('✓') ? `<span class="check">${escapeHtml(r.paid)}</span>` : r.paid === '—' ? '<span class="cross">—</span>' : `<strong style="color:var(--accent-primary);">${escapeHtml(r.paid)}</strong>`}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', initJoin);
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章 · CodingPlan 省钱攻略</title>
+  <link rel="stylesheet" href="styles/shared.css">
+  <style>
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space-12) 0;
+    }
+    .article-hero {
+      margin-bottom: var(--space-8);
+    }
+    .article-cover {
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: var(--space-5);
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .article-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-4);
+    }
+    .article-excerpt {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: var(--space-5);
+      border-left: 3px solid var(--accent-primary);
+      margin-bottom: var(--space-8);
+    }
+    .article-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+    .article-body h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: var(--space-8) 0 var(--space-4);
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: var(--space-6) 0 var(--space-3);
+    }
+    .article-body p {
+      margin-bottom: var(--space-4);
+    }
+    .article-body strong { color: var(--text-primary); font-weight: 600; }
+    .article-body a { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 2px; }
+    .article-body ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+    .article-body li { margin-bottom: var(--space-2); list-style: disc; }
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-6);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin: var(--space-12) 0 var(--space-6);
+    }
+    .article-author-avatar {
+      font-size: 40px;
+      line-height: 1;
+    }
+    .article-tags {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: var(--space-6);
+    }
+    .article-cta {
+      padding: var(--space-6);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.08));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      margin-top: var(--space-8);
+      text-align: center;
+    }
+    .compare-block {
+      margin: var(--space-6) 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1.5fr;
+      gap: 1px;
+      background: var(--border-subtle);
+    }
+    .compare-row > div {
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-elevated);
+      font-size: 14px;
+    }
+    .compare-header { background: transparent; }
+    .compare-header > div { background: var(--bg-card); font-weight: 700; color: var(--text-primary); }
+    .compare-label { color: var(--text-tertiary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .compare-cell { color: var(--text-secondary); }
+    .compare-cell-title { color: var(--accent-primary); font-size: 14px; }
+    @media (max-width: 600px) {
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-label { background: var(--bg-card); font-weight: 600; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <main class="container">
+    <article class="article-wrap" id="articleBody">
+      <div style="padding:80px 0;text-align:center;color:var(--text-tertiary);">加载中...</div>
+    </article>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    async function initArticle() {
+      await loadConfig();
+      await loadArticles();
+      mountNav('blog');
+      mountFooter();
+
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const article = CPS.articles.find(a => a.id === id) || CPS.articles[0];
+
+      if (!article) {
+        $('#articleBody').innerHTML = `<div style="padding:80px 0;text-align:center;">文章不存在</div>`;
+        return;
+      }
+
+      document.title = `${article.title} · CodingPlan 省钱攻略`;
+
+      const body = article.content.map(block => {
+        if (block.type === 'h2') return `<h2>${escapeHtml(block.text)}</h2>`;
+        if (block.type === 'h3') return `<h3>${escapeHtml(block.text)}</h3>`;
+        if (block.type === 'p') return `<p>${renderMarkdownLite(block.text)}</p>`;
+        if (block.type === 'compare') {
+          const rows = (block.rows || []).map(r => `
+            <div class="compare-row">
+              <div class="compare-label">${escapeHtml(r.label)}</div>
+              <div class="compare-cell">${escapeHtml(r.left)}</div>
+              <div class="compare-cell">${escapeHtml(r.right)}</div>
+            </div>
+          `).join('');
+          return `
+            <div class="compare-block">
+              <div class="compare-row compare-header">
+                <div class="compare-label"></div>
+                <div class="compare-cell-title">${block.left.emoji} ${escapeHtml(block.left.title)}</div>
+                <div class="compare-cell-title">${block.right.emoji} ${escapeHtml(block.right.title)}</div>
+              </div>
+              ${rows}
+            </div>
+          `;
+        }
+        return '';
+      }).join('');
+
+      const tagsHtml = (article.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+
+      $('#articleBody').innerHTML = `
+        <div class="article-hero">
+          <div class="article-cover">${article.cover || '📄'}</div>
+          <div class="article-meta">
+            <span class="badge badge-accent">${escapeHtml(article.category)}</span>
+            <span>📅 ${escapeHtml(article.date)}</span>
+            <span>⏱ ${escapeHtml(article.readTime)}</span>
+            <span>✍️ ${escapeHtml(article.author || '老麦')}</span>
+          </div>
+          <h1 class="article-title">${escapeHtml(article.title)}</h1>
+          <p class="article-excerpt">${escapeHtml(article.excerpt)}</p>
+        </div>
+        <div class="article-body">${body}</div>
+        <div class="article-tags">${tagsHtml}</div>
+        <div class="article-author">
+          <span class="article-author-avatar">${CPS.config.blogger.avatar}</span>
+          <div>
+            <div style="font-weight:700;margin-bottom:2px;">${escapeHtml(CPS.config.blogger.name)}</div>
+            <div style="font-size:13px;color:var(--text-tertiary);">${escapeHtml(CPS.config.blogger.title)}</div>
+          </div>
+        </div>
+        <div class="article-cta">
+          <h3 style="margin-bottom:8px;">觉得有用？来群里聊聊</h3>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">加微信群获取每周价格变动推送，或进知识星球获得深度实测报告。</p>
+          <a href="join.html" class="btn btn-primary">加入社群 →</a>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', initArticle);
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测评文章 · CodingPlan 省钱攻略</title>
+  <meta name="description" content="AI Coding Plan 真实测评、价格变动速报、选型指南、踩坑日记。基于真实使用的博主原创内容。">
+  <link rel="stylesheet" href="styles/shared.css">
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <main>
+    <section class="hero" style="padding-bottom:var(--space-8);">
+      <div class="container">
+        <span class="hero-eyebrow">● BLOG</span>
+        <h1 class="hero-title">测评 & <span class="hero-title-accent">省钱攻略</span></h1>
+        <p class="hero-subtitle">基于真实使用的原创内容：深度测评、价格速报、选型指南、踩坑日记。每周更新。</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="filter-bar" style="margin-bottom:var(--space-6);">
+          <button class="filter-chip active" data-category="">全部</button>
+          <button class="filter-chip" data-category="深度测评">深度测评</button>
+          <button class="filter-chip" data-category="价格速报">价格速报</button>
+          <button class="filter-chip" data-category="选型指南">选型指南</button>
+          <span class="filter-stats"><strong id="articleCount">0</strong> 篇文章</span>
+        </div>
+        <div class="grid grid-3" id="articleGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    let currentCategory = '';
+
+    async function initBlog() {
+      await loadConfig();
+      await loadArticles();
+      mountNav('blog');
+      mountFooter();
+      renderArticles();
+
+      $$('.filter-chip[data-category]').forEach(chip => {
+        chip.addEventListener('click', () => {
+          $$('.filter-chip[data-category]').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          currentCategory = chip.dataset.category;
+          renderArticles();
+        });
+      });
+    }
+
+    function renderArticles() {
+      const grid = $('#articleGrid');
+      const count = $('#articleCount');
+      const filtered = currentCategory
+        ? CPS.articles.filter(a => a.category === currentCategory)
+        : CPS.articles;
+      count.textContent = filtered.length;
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--text-muted);">该分类暂无文章</div>`;
+        return;
+      }
+      grid.innerHTML = filtered.map(renderArticleCard).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', initBlog);
+  </script>
+</body>
+</html>
