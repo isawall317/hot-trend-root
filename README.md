@@ -21,6 +21,7 @@
 | 项目 | 状态 | 来源 | 说明 |
 |------|------|------|------|
 | [codingplan-saver](./codingplan-saver/) | 🟢 MVP 完成 | AI Coding Plan 热文 | AI Coding Plan 选型对比网站，覆盖 15+ 平台 29+ 套餐 |
+| [hot-trend](./tools/hot-trend/) | 🟢 P1 完成 | — | CLI 工具：从 GitHub/HN/V2EX 扫描热点 → LLM 洞察分析 → 6 维评分 → 机会卡输出 |
 
 ## 目录结构
 
@@ -29,6 +30,9 @@ hot-trend-root/
 ├── README.md                 # 本文件
 ├── ref/                      # 竞品参考 / 灵感素材
 │   └── (github 相似项目的 clone 或链接记录)
+├── tools/                    # 工具链
+│   └── hot-trend/            # 热点扫描 + 机会评分 CLI
+├── opportunities/cards/      # 机会卡产物（git 跟踪）
 └── {project-name}/           # 各孵化项目
     └── ...
 ```

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hot-trend"
+version = "0.1.0"
+description = "从全网热榜中发现可孵化的 AI GitHub 项目机会 — 采集 → 洞察 → 评分 → 机会卡"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "isawall317" }]
+dependencies = [
+    "click>=8.1",
+    "rich>=13.7",
+    "httpx>=0.27",
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "openai>=1.30",
+    "anthropic>=0.30",
+    "trafilatura>=1.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+hot-trend = "hot_trend.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hot_trend*"]
+
+[tool.setuptools.package-data]
+hot_trend = ["prompts/*.md"]
