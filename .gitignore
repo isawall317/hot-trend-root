@@ -3,10 +3,11 @@
 node_modules/
 dist/
 .next/
+build/
 __pycache__/
 *.pyc
 *.egg-info/
 .env
 .env.local
 .venv/
-tools/hot-trend/config.yaml
+config.yaml
