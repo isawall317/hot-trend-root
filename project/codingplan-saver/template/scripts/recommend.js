@@ -138,7 +138,7 @@ const KIND_LABEL = {
 
 function renderRecentChanges() {
   const now = new Date();
-  const cutoff = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const cutoff = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   const recent = changes
     .filter(c => new Date(c.date) >= cutoff)
     .sort((a, b) => b.date.localeCompare(a.date));

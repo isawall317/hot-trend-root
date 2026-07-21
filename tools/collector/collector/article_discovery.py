@@ -103,7 +103,8 @@ def discover_articles() -> list[dict]:
     items = data.get("items", [])
     articles = []
     seen_urls = set()
-    today = datetime.now().strftime("%Y-%m-%d")
+    # 用采集日期目录名作为文章日期，而非 pipeline 运行时间
+    collection_date = date_dirs[0].name  # e.g., "2026-07-21"
 
     for item in items:
         title = str(item.get("title", "")).strip()
@@ -121,7 +122,7 @@ def discover_articles() -> list[dict]:
 
         articles.append({
             "id": _make_id(url),
-            "date": today,
+            "date": collection_date,
             "kind": "article",
             "vendor": "通用",
             "title": title,
