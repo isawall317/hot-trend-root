@@ -23,7 +23,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 TEMPLATE_DIR = ROOT / "project" / "codingplan-saver" / "template"
 DATA_DIR = ROOT / "project" / "codingplan-saver" / "data"
-DIST = ROOT / "dist" / "codingplan-saver.html"
+
+# 带时间戳的文件名，同时保留 latest 副本
+BUILD_TIME = datetime.now()
+TIMESTAMP = BUILD_TIME.strftime("%Y-%m-%d-%H%M")
+DIST_TIMESTAMPED = ROOT / "dist" / f"codingplan-saver-{TIMESTAMP}.html"
+DIST_LATEST = ROOT / "dist" / "codingplan-saver.html"
 
 # 脚本加载顺序（init.js 必须最后）
 SCRIPT_FILES = ["utils.js", "router.js", "recommend.js", "compare.js", "community.js", "init.js"]
@@ -84,14 +89,17 @@ def main():
 
     html = assemble()
 
-    DIST.parent.mkdir(parents=True, exist_ok=True)
-    DIST.write_text(html, encoding="utf-8")
+    DIST_TIMESTAMPED.parent.mkdir(parents=True, exist_ok=True)
+    DIST_TIMESTAMPED.write_text(html, encoding="utf-8")
+    # 同时保存一份 latest 副本，方便直接打开
+    DIST_LATEST.write_text(html, encoding="utf-8")
 
     size_kb = len(html.encode("utf-8")) / 1024
-    print(f"✅ 生成: {DIST}")
+    print(f"✅ 生成: {DIST_TIMESTAMPED}")
+    print(f"   副本: {DIST_LATEST}")
     print(f"   大小: {size_kb:.1f} KB")
     print(f"   模板: {len(SCRIPT_FILES)} 个脚本片段 + style.css + base.html")
-    print(f"   打开: open {DIST}")
+    print(f"   打开: open {DIST_LATEST}")
 
 
 if __name__ == "__main__":
