@@ -92,6 +92,36 @@
     "updatedAt": "2026-07-20"
   },
   {
+    "id": "zhipu-intl-pro",
+    "vendor": "智谱国际版",
+    "vendorId": "zhipu-intl",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "tier": "lite",
+    "monthlyPrice": 72,
+    "currency": "$",
+    "firstMonthPrice": 64.8,
+    "rating": 4,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "monthlyRequests": 120000,
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": 6000,
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "智谱抢不到时的备选，价格约国内版 2 倍。",
+    "action": "https://open.bigmodel.cn/",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
     "id": "minimax-新plus",
     "vendor": "MiniMax",
     "vendorId": "minimax",
@@ -308,6 +338,132 @@
     "updatedAt": "2026-07-20"
   },
   {
+    "id": "xunfei-专业版",
+    "vendor": "讯飞·星火",
+    "vendorId": "xunfei",
+    "plan": "专业版",
+    "type": "Coding Plan",
+    "tier": "lite",
+    "monthlyPrice": 39,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 5,
+    "models": [
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2"
+    ],
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": 900,
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "¥39 起步门槛最低，适合预算紧的学生党。",
+    "action": "https://xinghuo.xfyun.cn/",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "id": "xunfei-高效版",
+    "vendor": "讯飞·星火",
+    "vendorId": "xunfei",
+    "plan": "高效版",
+    "type": "Coding Plan",
+    "tier": "pro",
+    "monthlyPrice": 199,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 5,
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B"
+    ],
+    "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": 4500,
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "智谱抢不到时的最佳平替，¥199 就有 GLM-5.2。",
+    "action": "https://xinghuo.xfyun.cn/",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "id": "youyun-mini",
+    "vendor": "优云智算",
+    "vendorId": "youyun",
+    "plan": "Mini",
+    "type": "Coding Plan",
+    "tier": "lite",
+    "monthlyPrice": 49,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 4,
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "MiniMax-M2.7",
+      "DeepSeek-V4-Flash"
+    ],
+    "monthlyRequests": 1900,
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": 95,
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "¥49 起步体验 GLM-5.2，费率透明无套路。",
+    "action": "https://www.youyun.com/",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "id": "youyun-pro",
+    "vendor": "优云智算",
+    "vendorId": "youyun",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "tier": "max",
+    "monthlyPrice": 499,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 4,
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "MiniMax-M2.7",
+      "DeepSeek-V4-Flash"
+    ],
+    "monthlyRequests": 19000,
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": 950,
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "优云中档，10 并发，适合多任务场景。",
+    "action": "https://www.youyun.com/",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
     "id": "bailian-pro",
     "vendor": "阿里·百炼",
     "vendorId": "bailian",
@@ -477,6 +633,36 @@
     ],
     "bloggerVerdict": "原生 DeepSeek 重度档，527M Token。",
     "action": "https://api-docs.deepseek.com/quick_start/pricing",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "id": "gongji-按量-8-折",
+    "vendor": "共继算力",
+    "vendorId": "gongji",
+    "plan": "按量 8 折",
+    "type": "Token Plan",
+    "tier": "pro",
+    "monthlyPrice": "按量",
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 4,
+    "models": [
+      "DeepSeek-V4-Pro",
+      "GLM-5.2",
+      "Kimi-K2.6",
+      "Qwen-3.7-Max"
+    ],
+    "monthlyRequests": "无限制",
+    "tokenLimit": "无限制",
+    "measuredMonthlyToken": null,
+    "tags": [
+      "性价比高",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "DeepSeek 官方 8 折中转，7 月涨价后优势放大。需邀请链接。",
+    "action": "https://gongji.ai/",
     "status": "active",
     "source": "manual",
     "updatedAt": "2026-07-20"
