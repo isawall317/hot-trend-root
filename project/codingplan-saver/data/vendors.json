@@ -15,21 +15,6 @@
     "notes": "定价页 SPA，待 M3 探测静态文档/API 源"
   },
   {
-    "id": "zhipu-intl",
-    "name": "智谱国际版",
-    "logo": "智",
-    "color": "#10b981",
-    "urls": {
-      "pricing": "https://open.bigmodel.cn/",
-      "docs": "",
-      "api": "",
-      "home": "https://open.bigmodel.cn"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "与国内版定价不同"
-  },
-  {
     "id": "bytedance",
     "name": "字节·方舟",
     "logo": "字",
@@ -55,8 +40,8 @@
       "api": "",
       "home": "https://api-docs.deepseek.com"
     },
-    "extractStrategy": "manual",
-    "lastVerified": null,
+    "extractStrategy": "docs",
+    "lastVerified": "2026-07-21",
     "notes": "API 文档页公开，httpx 大概率可行（M3 优先验证）"
   },
   {
@@ -95,10 +80,10 @@
     "logo": "阿",
     "color": "#22c55e",
     "urls": {
-      "pricing": "https://bailian.console.aliyun.com/cn-beijing?tab=doc#/doc/?type=model&url=3028856",
+      "pricing": "https://www.aliyun.com/benefit/scene/tokenplan",
       "docs": "",
       "api": "",
-      "home": "https://bailian.aliyun.com"
+      "home": "https://www.aliyun.com/benefit/scene/tokenplan"
     },
     "extractStrategy": "manual",
     "lastVerified": null,
@@ -110,8 +95,8 @@
     "logo": "腾",
     "color": "#eab308",
     "urls": {
-      "pricing": "https://cloud.tencent.com/product/tokenhub?Is=home",
-      "docs": "",
+      "pricing": "https://cloud.tencent.com/document/product/1823/130092",
+      "docs": "https://cloud.tencent.com/document/product/1823/130092",
       "api": "",
       "home": "https://cloud.tencent.com/product/tokenhub"
     },
@@ -230,29 +215,14 @@
     "logo": "米",
     "color": "#2563eb",
     "urls": {
-      "pricing": "https://mimo.xiaomi.com/",
+      "pricing": "https://platform.xiaomimimo.com/",
       "docs": "",
       "api": "",
-      "home": "https://mimo.xiaomi.com"
+      "home": "https://platform.xiaomimimo.com"
     },
     "extractStrategy": "manual",
     "lastVerified": null,
     "notes": "需小米账号登录"
-  },
-  {
-    "id": "youyun",
-    "name": "优云智算",
-    "logo": "优",
-    "color": "#3b82f6",
-    "urls": {
-      "pricing": "https://www.youyun.com/",
-      "docs": "",
-      "api": "",
-      "home": "https://www.youyun.com"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "需登录查看套餐"
   },
   {
     "id": "opencode",
@@ -268,21 +238,6 @@
     "extractStrategy": "manual",
     "lastVerified": null,
     "notes": "海外平台，多模型聚合"
-  },
-  {
-    "id": "gongji",
-    "name": "共继算力",
-    "logo": "共",
-    "color": "#a855f7",
-    "urls": {
-      "pricing": "https://gongji.ai/",
-      "docs": "",
-      "api": "",
-      "home": "https://gongji.ai"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "需邀请链接，DeepSeek 8折中转"
   },
   {
     "id": "ollama",
