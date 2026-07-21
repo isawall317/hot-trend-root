@@ -1,1 +1,218 @@
-{}
+{
+  "name": "CodingPlan 省钱攻略",
+  "tagline": "每月在 AI Coding Plan 上花 200-1000 块？饭庐者说帮你选最划算的",
+  "domain": "codingplan-saver",
+  "logo": "CP",
+  "primaryColor": "#10b981",
+  "accentColor": "#06b6d4",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "每月在 AI Coding Plan 上花 500-1000 块的真金白银，把踩过的坑和试过的套餐都记在这里。不收厂商钱，只说真话。",
+    "platforms": [
+      { "name": "公众号", "handle": "饭庐者说", "url": "#" },
+      { "name": "小红书", "handle": "饭庐者说", "url": "#" },
+      { "name": "知乎", "handle": "饭庐者说", "url": "#" }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.7.20",
+    "highlights": "本周关注：Kimi K3 发布后各平台价格变动 · 字节方舟 2.5 折最后 18 天 · DeepSeek V4 即将发布",
+    "stats": [
+      { "label": "覆盖平台", "value": "20", "unit": "家" },
+      { "label": "套餐数据", "value": "31", "unit": "个" },
+      { "label": "本周更新", "value": "12", "unit": "条" }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "budget-under-50",
+      "icon": "¥",
+      "title": "预算 50 元以内",
+      "desc": "学生党 / 体验党 / 试试水",
+      "filter": { "monthlyPriceMax": 50 }
+    },
+    {
+      "id": "kimi-k3",
+      "icon": "K3",
+      "title": "新出的 Kimi K3",
+      "desc": "最新模型 / 暂停新用户",
+      "filter": { "model": "Kimi-K3" }
+    },
+    {
+      "id": "glm-52",
+      "icon": "G5",
+      "title": "要用 GLM-5.2",
+      "desc": "T0 模型党 / Opus 平替",
+      "filter": { "model": "GLM-5.2" }
+    },
+    {
+      "id": "no-rush",
+      "icon": "OK",
+      "title": "不想抢购",
+      "desc": "随时可下单 / 不拼手速",
+      "filter": { "tag": "无需抢购" }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "best-overall",
+      "title": "综合推荐",
+      "subtitle": "我自己在用 / 真心推荐的几家",
+      "items": [
+        {
+          "vendor": "智谱AI",
+          "plan": "Pro",
+          "rating": 5,
+          "verdict": "我的主力套餐",
+          "reasons": [
+            "GLM-5.2 模型 T0 级别，Opus 平替甚至更强",
+            "代码场景体验最稳，Claude Code / Cursor 都顺畅",
+            "**需要抢购**，加群交流抢购经验"
+          ]
+        },
+        {
+          "vendor": "Kimi",
+          "plan": "Allegretto",
+          "rating": 5,
+          "verdict": "K3 发布后最强新选手",
+          "reasons": [
+            "Kimi-K3 模型能力惊艳，全球榜单登顶",
+            "Coding Plan 价格有竞争力",
+            "**⚠️ 目前已暂停新用户订阅**，需关注恢复时间"
+          ]
+        },
+        {
+          "vendor": "字节·方舟",
+          "plan": "Pro",
+          "rating": 5,
+          "verdict": "全家桶用户首选",
+          "reasons": [
+            "唯一同时支持 GLM-5.2 / DeepSeek-V4 / MiniMax-M3 / Kimi-K3 的平台",
+            "**当前 2.5 折 + 用量 2.5 倍活动**，性价比拉满",
+            "模型多到挑花眼，适合不确定用哪个的人"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-rush",
+      "title": "不用抢，随时可买",
+      "subtitle": "不想蹲点拼手速的看这里",
+      "items": [
+        {
+          "vendor": "MiniMax",
+          "plan": "新Plus",
+          "rating": 5,
+          "verdict": "额度高 + 不抢购",
+          "reasons": [
+            "额度最高档之一，模型能力够用",
+            "支持多模态",
+            "随时下单，不用蹲点"
+          ]
+        },
+        {
+          "vendor": "讯飞·星火",
+          "plan": "高效版",
+          "rating": 4,
+          "verdict": "智谱抢不到的平替",
+          "reasons": [
+            "¥199 已支持 GLM-5.2",
+            "模型覆盖广，DeepSeek-V4 / Kimi-K3 也有",
+            "无需抢购，随时可下单"
+          ]
+        },
+        {
+          "vendor": "优云智算",
+          "plan": "Mini",
+          "rating": 4,
+          "verdict": "¥49 体验 GLM-5.2",
+          "reasons": [
+            "¥49 起步就支持 GLM-5.2",
+            "档位丰富，从 Mini 到 Ultra",
+            "费率明确，无隐藏倍率"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-group",
+      "title": "支持 Kimi-K3 模型",
+      "subtitle": "最新 T0 模型，全球榜单登顶",
+      "items": [
+        {
+          "vendor": "Kimi",
+          "plan": "Moderato",
+          "rating": 5,
+          "verdict": "K3 官方平台，但暂停新用户",
+          "reasons": [
+            "Kimi-K3 原生平台，体验最佳",
+            "**已暂停 C 端新用户订阅**，已订阅用户不受影响",
+            "恢复时间待官方公告"
+          ]
+        },
+        {
+          "vendor": "字节·方舟",
+          "plan": "Pro",
+          "rating": 5,
+          "verdict": "不用抢的 K3 全家桶",
+          "reasons": [
+            "7.19 起全档位支持 Kimi-K3",
+            "全家桶平台，同时用 GLM-5.2 / DeepSeek-V4",
+            "2.5 折活动进行中（至 8.8）"
+          ]
+        },
+        {
+          "vendor": "共继算力",
+          "plan": "基础版",
+          "rating": 4,
+          "verdict": "DeepSeek-V4 官方 8 折中转",
+          "reasons": [
+            "DeepSeek-V4-Pro 官方 8 折",
+            "输入 2.4 元/M Token，输出 4.8 元/M",
+            "需邀请链接，无抢购"
+          ]
+        }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "免费微信群",
+      "subtitle": "每周价格变动推送",
+      "description": "加群第一时间获取价格变动 / 限购提醒，群里也有选型讨论和实测反馈。免费进，门槛低。",
+      "qrImage": "",
+      "highlights": [
+        "每周价格变动速报",
+        "抢购开放时间提醒",
+        "群友选型讨论",
+        "免费进群"
+      ],
+      "ctaText": "扫码进免费群"
+    },
+    "paid": {
+      "title": "知识星球",
+      "subtitle": "¥199/年（早鸟价 ¥99）",
+      "description": "比免费群多 5 倍信息密度。每周实测报告、每月 1 次 1v1 选型答疑、独家优惠链接、决策树高级模式。",
+      "highlights": [
+        "每周价格变动推送（比公开早 24h）",
+        "每月实测报告（含 Token 消耗数据）",
+        "每月 1v1 选型答疑",
+        "独家优惠链接 + 返佣返还",
+        "决策树高级模式"
+      ],
+      "ctaText": "加入知识星球",
+      "url": "#"
+    }
+  },
+  "disclosure": "本站部分链接为联盟推广链接，通过这些链接注册我可能获得返佣，但不影响你的价格。所有推荐均基于真实使用体验，不接受厂商付费推广。",
+  "footer": {
+    "about": "CodingPlan 省钱攻略 · 饭庐者说的 AI Coding Plan 选型指南",
+    "links": [
+      { "label": "完整对比", "url": "#compare" },
+      { "label": "最新动态", "url": "#updates" },
+      { "label": "加入社群", "url": "#community" }
+    ]
+  }
+}
