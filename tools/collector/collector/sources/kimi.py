@@ -53,10 +53,24 @@ class KimiParser(BasePlaywrightParser):
                 source_url=url, error="页面内容为空",
             )
 
-        # 解析价格行: model-id  1M tokens  ¥input  ¥output  ¥cache  context
+        # 解析价格行: model-id  1M tokens  ¥input  ¥output  [¥cache]  context
         models = []
         for line in text.split("\n"):
             line = line.strip()
+            # 2-price format: moonshot-v1-8k  1M tokens  ¥2.00  ¥10.00  8,192 tokens
+            m = re.match(
+                r"([\w.-]+)\s+1M\s+tokens\s+¥([\d.]+)\s+¥([\d.]+)\s+([\d,]+)\s+tokens",
+                line,
+            )
+            if m:
+                models.append({
+                    "name": m.group(1),
+                    "input_price_per_1m": float(m.group(2)),
+                    "output_price_per_1m": float(m.group(3)),
+                    "context": int(m.group(4).replace(",", "")),
+                })
+                continue
+            # 3-price format: kimi-k3  1M tokens  ¥1.50  ¥8.00  ¥30.00  1,048,576 tokens
             m = re.match(
                 r"([\w.-]+)\s+1M\s+tokens\s+¥([\d.]+)\s+¥([\d.]+)\s+¥([\d.]+)\s+([\d,]+)\s+tokens",
                 line,

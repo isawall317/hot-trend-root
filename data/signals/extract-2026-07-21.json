@@ -246,7 +246,7 @@
       "monthlyPrice"
     ],
     "sourceUrl": "https://open.bigmodel.cn/pricing",
-    "fetchedAt": "2026-07-21T14:20:27Z",
+    "fetchedAt": "2026-07-21T16:55:09Z",
     "error": null
   },
   {
@@ -278,7 +278,64 @@
     ],
     "missingFields": [],
     "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "fetchedAt": "2026-07-21T14:20:19Z",
+    "fetchedAt": "2026-07-21T16:55:02Z",
+    "error": null
+  },
+  {
+    "vendorId": "kimi",
+    "vendor": "Kimi",
+    "plans": [
+      {
+        "models": [
+          {
+            "name": "moonshot-v1-8k",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 10.0,
+            "context": 8192
+          },
+          {
+            "name": "moonshot-v1-32k",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 20.0,
+            "context": 32768
+          },
+          {
+            "name": "moonshot-v1-128k",
+            "input_price_per_1m": 10.0,
+            "output_price_per_1m": 30.0,
+            "context": 131072
+          },
+          {
+            "name": "moonshot-v1-8k-vision-preview",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 10.0,
+            "context": 8192
+          },
+          {
+            "name": "moonshot-v1-32k-vision-preview",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 20.0,
+            "context": 32768
+          },
+          {
+            "name": "moonshot-v1-128k-vision-preview",
+            "input_price_per_1m": 10.0,
+            "output_price_per_1m": 30.0,
+            "context": 131072
+          }
+        ],
+        "count": 6,
+        "note": "API 按量计费，Coding Plan 需登录控制台"
+      }
+    ],
+    "extractedFields": [
+      "models"
+    ],
+    "missingFields": [
+      "monthlyPrice"
+    ],
+    "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+    "fetchedAt": "2026-07-21T16:55:17Z",
     "error": null
   },
   {
@@ -314,7 +371,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-    "fetchedAt": "2026-07-21T14:20:20Z",
+    "fetchedAt": "2026-07-21T16:55:04Z",
     "error": null
   },
   {
@@ -342,7 +399,79 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
-    "fetchedAt": "2026-07-21T14:20:20Z",
+    "fetchedAt": "2026-07-21T16:55:02Z",
+    "error": null
+  },
+  {
+    "vendorId": "claude",
+    "vendor": "Claude",
+    "plans": [
+      {
+        "plan": "Pro",
+        "type": "Coding Plan",
+        "tier": "pro",
+        "monthlyPrice": 20,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      },
+      {
+        "plan": "Max",
+        "type": "Coding Plan",
+        "tier": "max",
+        "monthlyPrice": 100,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice"
+    ],
+    "missingFields": [
+      "monthlyRequests",
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://claude.com/pricing",
+    "fetchedAt": "2026-07-21T16:55:12Z",
+    "error": null
+  },
+  {
+    "vendorId": "github",
+    "vendor": "GitHub",
+    "plans": [
+      {
+        "plan": "Pro",
+        "type": "Coding Plan",
+        "tier": "pro",
+        "monthlyPrice": 10,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      },
+      {
+        "plan": "Pro+",
+        "type": "Coding Plan",
+        "tier": "pro",
+        "monthlyPrice": 39,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      },
+      {
+        "plan": "Max",
+        "type": "Coding Plan",
+        "tier": "max",
+        "monthlyPrice": 100,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice"
+    ],
+    "missingFields": [
+      "monthlyRequests",
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://github.com/features/copilot/plans",
+    "fetchedAt": "2026-07-21T16:55:10Z",
     "error": null
   }
 ]

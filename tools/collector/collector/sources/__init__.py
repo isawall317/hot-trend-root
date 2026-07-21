@@ -24,4 +24,4 @@ def get_parser(vendor_id: str) -> type[BaseParser] | None:
 
 def load_all():
     """触发所有 parser 模块导入（填充注册表）"""
-    from . import deepseek, zhipu, bytedance, kimi, minimax, tencent  # noqa: F401
+    from . import deepseek, zhipu, bytedance, kimi, minimax, tencent, claude, github  # noqa: F401

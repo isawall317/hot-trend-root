@@ -7,8 +7,10 @@
   1. engine.py            → 采集热点数据到 data/raw/
   2. article_discovery.py → 关键词召回候选文章到 data/pending/{date}/articles.json
   3. price_monitor.py     → 检测价格变动信号到 data/signals/{date}.json
-  4. token_estimator.py   → 推算 Token 用量, 更新 plans.json（纯计算，直接写入）
-  5. 生成统一待审阅报告 → data/pending/{date}/report.md
+  4. sources/runner.py    → Playwright/BS4 自动提取 7 家厂商定价
+  5. sources/merge.py     → 合并提取结果到 plans.json
+  6. token_estimator.py   → 推算 Token 用量, 更新 plans.json（纯计算）
+  7. 生成统一待审阅报告 → data/pending/{date}/report.md
 
 注意: article_discovery 不再直接写入 changes.json。
       编辑决策（哪些文章收录、哪些价格变动记录）由 Claude Code 通过
@@ -129,16 +131,29 @@ def main():
     results = {}
 
     # Step 1: 采集热点数据
-    results["热点采集"] = run_step("Step 1/4: 采集热点数据", "engine")
+    results["热点采集"] = run_step("Step 1/5: 采集热点数据", "engine")
 
     # Step 2: 文章发现 → data/pending/{date}/articles.json
-    results["文章发现"] = run_step("Step 2/4: 关键词召回候选文章", "article_discovery")
+    results["文章发现"] = run_step("Step 2/5: 关键词召回候选文章", "article_discovery")
 
     # Step 3: 价格监控 → data/signals/{date}.json
-    results["价格监控"] = run_step("Step 3/4: 价格变动检测", "price_monitor")
+    results["价格监控"] = run_step("Step 3/5: 价格变动检测", "price_monitor")
 
-    # Step 4: Token 推算 → plans.json（纯计算，直接写入）
-    results["Token推算"] = run_step("Step 4/4: Token 用量推算", "token_estimator")
+    # Step 4: 厂商定价提取 → data/signals/extract-{date}.json
+    results["定价提取"] = run_step("Step 4/5: 厂商定价自动提取", "sources.runner")
+
+    # Step 4b: 合并提取结果到 plans.json
+    try:
+        from .sources.merge import merge_from_extract
+        merge_stats = merge_from_extract(date_str)
+        results["定价合并"] = merge_stats["updated"] > 0
+        print(f"  📊 plans.json: {merge_stats['updated']} vendors updated")
+    except Exception as e:
+        results["定价合并"] = False
+        print(f"  ⚠️  合并失败: {e}")
+
+    # Step 5: Token 推算 → plans.json（纯计算，直接写入）
+    results["Token推算"] = run_step("Step 5/5: Token 用量推算", "token_estimator")
 
     # 生成待审阅报告
     print(f"\n{'='*60}")

@@ -6,6 +6,7 @@
     "color": "#F5F527",
     "urls": {
       "pricing": "https://open.bigmodel.cn/pricing",
+      "affiliate": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D",
       "docs": "",
       "api": "",
       "home": "https://open.bigmodel.cn"
@@ -21,13 +22,14 @@
     "color": "#FF3B3B",
     "urls": {
       "pricing": "https://www.volcengine.com/ark",
+      "affiliate": "",
       "docs": "https://www.volcengine.com/docs/82379/1099320",
       "api": "",
       "home": "https://www.volcengine.com/ark"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-21",
-    "notes": "SPA 控制台，定价页结构复杂（多模型多计费模式），暂不自动提取"
+    "notes": "火山方舟检测到 bot 返回 404，无法自动提取"
   },
   {
     "id": "deepseek",
@@ -36,6 +38,7 @@
     "color": "#71717B",
     "urls": {
       "pricing": "https://api-docs.deepseek.com/quick_start/pricing",
+      "affiliate": "",
       "docs": "https://api-docs.deepseek.com/quick_start/pricing",
       "api": "",
       "home": "https://api-docs.deepseek.com"
@@ -51,6 +54,7 @@
     "color": "#10C2B0",
     "urls": {
       "pricing": "https://www.kimi.com/membership/pricing",
+      "affiliate": "",
       "docs": "https://platform.kimi.com/docs/pricing/chat",
       "api": "",
       "home": "https://www.kimi.com"
@@ -66,6 +70,7 @@
     "color": "#f97316",
     "urls": {
       "pricing": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
+      "affiliate": "https://platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link",
       "docs": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
       "api": "",
       "home": "https://platform.minimaxi.com"
@@ -81,13 +86,14 @@
     "color": "#22c55e",
     "urls": {
       "pricing": "https://bailian.console.aliyun.com/cn-beijing?tab=doc#/doc/?type=model&url=3028856",
+      "affiliate": "",
       "docs": "",
       "api": "",
       "home": "https://bailian.aliyun.com"
     },
     "extractStrategy": "manual",
     "lastVerified": null,
-    "notes": "console SPA（hash 路由），httpx 不行"
+    "notes": "阿里云百炼需登录控制台，定价页不可公开访问"
   },
   {
     "id": "tencent",
@@ -96,6 +102,7 @@
     "color": "#eab308",
     "urls": {
       "pricing": "https://cloud.tencent.com/product/tokenhub?Is=home",
+      "affiliate": "",
       "docs": "",
       "api": "",
       "home": "https://cloud.tencent.com/product/tokenhub"
@@ -111,13 +118,14 @@
     "color": "#ec4899",
     "urls": {
       "pricing": "https://claude.com/pricing",
+      "affiliate": "",
       "docs": "",
       "api": "",
       "home": "https://claude.com"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": null,
-    "notes": "Anthropic 定价页，半静态可能可行"
+    "notes": "Playwright 渲染 claude.com/pricing → 提取套餐价格"
   },
   {
     "id": "codex",
@@ -126,13 +134,14 @@
     "color": "#A15CF6",
     "urls": {
       "pricing": "https://openai.com/chatgpt/pricing/",
+      "affiliate": "",
       "docs": "",
       "api": "",
       "home": "https://openai.com"
     },
     "extractStrategy": "manual",
     "lastVerified": null,
-    "notes": "SPA + 反爬（实测 403）"
+    "notes": "OpenAI 页面被 Cloudflare 拦截，无法自动提取"
   },
   {
     "id": "github",
@@ -141,12 +150,13 @@
     "color": "#71717B",
     "urls": {
       "pricing": "https://github.com/features/copilot/plans",
+      "affiliate": "",
       "docs": "",
       "api": "",
       "home": "https://github.com"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": null,
-    "notes": "大概率静态可抓"
+    "notes": "Playwright 渲染 github.com/features/copilot/plans → 提取套餐价格"
   }
 ]
