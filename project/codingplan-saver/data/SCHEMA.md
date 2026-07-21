@@ -336,8 +336,8 @@ VENDOR_ID_MAP = {
     "Claude": "claude", "Codex (ChatGPT)": "codex", "GitHub": "github",
     "百度·千帆": "baidu", "讯飞·星火": "xunfei",
     "华为云": "huawei", "京东云": "jd",
-    "小米·MiMo": "mimo", "优云智算": "youyun",
-    "OpenCode": "opencode", "共继算力": "gongji",
+    "小米·MiMo": "mimo",
+    "OpenCode": "opencode",
     "Ollama": "ollama", "TaoToken": "taotoken",
 }
 ```

@@ -11,18 +11,42 @@
     "title": "AI 工具重度用户 / 独立博主",
     "bio": "每月在 AI Coding Plan 上花 500-1000 块的真金白银，把踩过的坑和试过的套餐都记在这里。不收厂商钱，只说真话。",
     "platforms": [
-      { "name": "公众号", "handle": "饭庐者说", "url": "#" },
-      { "name": "小红书", "handle": "饭庐者说", "url": "#" },
-      { "name": "知乎", "handle": "饭庐者说", "url": "#" }
+      {
+        "name": "公众号",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "小红书",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "知乎",
+        "handle": "饭庐者说",
+        "url": "#"
+      }
     ]
   },
   "header": {
     "updateDate": "更新于 2026.7.20",
     "highlights": "本周关注：Kimi K3 发布后各平台价格变动 · 字节方舟 2.5 折最后 18 天 · DeepSeek V4 即将发布",
     "stats": [
-      { "label": "覆盖平台", "value": "20", "unit": "家" },
-      { "label": "套餐数据", "value": "31", "unit": "个" },
-      { "label": "本周更新", "value": "12", "unit": "条" }
+      {
+        "label": "覆盖平台",
+        "value": "18",
+        "unit": "家"
+      },
+      {
+        "label": "套餐数据",
+        "value": "27",
+        "unit": "个"
+      },
+      {
+        "label": "本周更新",
+        "value": "12",
+        "unit": "条"
+      }
     ]
   },
   "quickEntries": [
@@ -31,28 +55,36 @@
       "icon": "¥",
       "title": "预算 50 元以内",
       "desc": "学生党 / 体验党 / 试试水",
-      "filter": { "monthlyPriceMax": 50 }
+      "filter": {
+        "monthlyPriceMax": 50
+      }
     },
     {
       "id": "kimi-k3",
       "icon": "K3",
       "title": "新出的 Kimi K3",
       "desc": "最新模型 / 暂停新用户",
-      "filter": { "model": "Kimi-K3" }
+      "filter": {
+        "model": "Kimi-K3"
+      }
     },
     {
       "id": "glm-52",
       "icon": "G5",
       "title": "要用 GLM-5.2",
       "desc": "T0 模型党 / Opus 平替",
-      "filter": { "model": "GLM-5.2" }
+      "filter": {
+        "model": "GLM-5.2"
+      }
     },
     {
       "id": "no-rush",
       "icon": "OK",
       "title": "不想抢购",
       "desc": "随时可下单 / 不拼手速",
-      "filter": { "tag": "无需抢购" }
+      "filter": {
+        "tag": "无需抢购"
+      }
     }
   ],
   "recommendationGroups": [
@@ -122,17 +154,6 @@
             "模型覆盖广，DeepSeek-V4 / Kimi-K3 也有",
             "无需抢购，随时可下单"
           ]
-        },
-        {
-          "vendor": "优云智算",
-          "plan": "Mini",
-          "rating": 4,
-          "verdict": "¥49 体验 GLM-5.2",
-          "reasons": [
-            "¥49 起步就支持 GLM-5.2",
-            "档位丰富，从 Mini 到 Ultra",
-            "费率明确，无隐藏倍率"
-          ]
         }
       ]
     },
@@ -161,17 +182,6 @@
             "7.19 起全档位支持 Kimi-K3",
             "全家桶平台，同时用 GLM-5.2 / DeepSeek-V4",
             "2.5 折活动进行中（至 8.8）"
-          ]
-        },
-        {
-          "vendor": "共继算力",
-          "plan": "基础版",
-          "rating": 4,
-          "verdict": "DeepSeek-V4 官方 8 折中转",
-          "reasons": [
-            "DeepSeek-V4-Pro 官方 8 折",
-            "输入 2.4 元/M Token，输出 4.8 元/M",
-            "需邀请链接，无抢购"
           ]
         }
       ]
@@ -210,9 +220,18 @@
   "footer": {
     "about": "CodingPlan 省钱攻略 · 饭庐者说的 AI Coding Plan 选型指南",
     "links": [
-      { "label": "完整对比", "url": "#compare" },
-      { "label": "最新动态", "url": "#updates" },
-      { "label": "加入社群", "url": "#community" }
+      {
+        "label": "完整对比",
+        "url": "#compare"
+      },
+      {
+        "label": "最新动态",
+        "url": "#updates"
+      },
+      {
+        "label": "加入社群",
+        "url": "#community"
+      }
     ]
   }
 }
