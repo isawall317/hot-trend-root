@@ -32,3 +32,40 @@ class BaseParser:
 
     async def extract(self, client) -> ExtractResult:
         raise NotImplementedError
+
+
+class BasePlaywrightParser(BaseParser):
+    """需要 JS 渲染的厂商继承此类
+
+    使用 Playwright headless Chromium 获取渲染后的页面 HTML，
+    然后子类用 BeautifulSoup 解析。
+    """
+    playwright = None  # 类级别共享的 Playwright 实例
+
+    async def fetch_rendered_html(self, url: str) -> str | None:
+        """用 Playwright 获取渲染后的 HTML"""
+        from playwright.async_api import async_playwright
+        try:
+            if BasePlaywrightParser.playwright is None:
+                BasePlaywrightParser.playwright = await async_playwright().start()
+            browser = await BasePlaywrightParser.playwright.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-setuid-sandbox"],
+            )
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+            )
+            page = await context.new_page()
+            await page.goto(url, wait_until="load", timeout=30000)
+            await page.wait_for_timeout(5000)  # 等 JS 渲染完成
+            html = await page.content()
+            await browser.close()
+            return html
+        except Exception:
+            return None
+
+    @classmethod
+    async def shutdown(cls):
+        if cls.playwright:
+            await cls.playwright.stop()
+            cls.playwright = None

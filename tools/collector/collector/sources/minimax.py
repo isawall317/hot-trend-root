@@ -17,7 +17,7 @@ MINIMAX_URL = "https://platform.minimaxi.com/docs/guides/pricing-token-plan"
 @register("minimax")
 class MinimaxParser(BaseParser):
     async def extract(self, client) -> ExtractResult:
-        url = self.config.get("urls", {}).get("docs") or MINIMAX_URL
+        url = self.config.get("urls", {}).get("pricing") or self.config.get("urls", {}).get("docs") or MINIMAX_URL
         try:
             resp = await client.get(url, timeout=20, follow_redirects=True,
                                     headers={"User-Agent": "Mozilla/5.0"})

@@ -10,9 +10,9 @@
       "api": "",
       "home": "https://open.bigmodel.cn"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "SPA 控制台，定价需 JS 渲染"
+    "notes": "Playwright headless 渲染，提取 API 定价"
   },
   {
     "id": "zhipu-intl",
@@ -42,7 +42,7 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-21",
-    "notes": "SPA 控制台，文档页 JS 渲染"
+    "notes": "SPA 控制台，待 Playwright"
   },
   {
     "id": "deepseek",
@@ -57,7 +57,7 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "API 文档页公开，httpx 大概率可行（M3 优先验证）"
+    "notes": "httpx + BS4 解析 API 定价"
   },
   {
     "id": "kimi",
@@ -72,7 +72,7 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-21",
-    "notes": "Next.js SPA，定价需 JS 渲染"
+    "notes": "Next.js SPA，待 Playwright"
   },
   {
     "id": "minimax",
@@ -81,13 +81,13 @@
     "color": "#f97316",
     "urls": {
       "pricing": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-      "docs": "https://platform.minimaxi.com/docs/pricing/overview",
+      "docs": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
       "api": "",
       "home": "https://platform.minimaxi.com"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "Next.js docs，定价需 JS 渲染"
+    "notes": "httpx + BS4 解析 Token Plan 表格"
   },
   {
     "id": "bailian",
@@ -115,9 +115,9 @@
       "api": "",
       "home": "https://cloud.tencent.com/product/tokenhub"
     },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "TokenHub 按量+订阅，待验证"
+    "extractStrategy": "docs",
+    "lastVerified": "2026-07-21",
+    "notes": "httpx + BS4 解析 Coding Plan 文档"
   },
   {
     "id": "claude",

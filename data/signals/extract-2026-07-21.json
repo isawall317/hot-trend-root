@@ -1,5 +1,255 @@
 [
   {
+    "vendorId": "zhipu",
+    "vendor": "智谱AI",
+    "plans": [
+      {
+        "models": [
+          {
+            "name": "GLM-5.2",
+            "input_price_per_1m": 8.0,
+            "output_price_per_1m": 28.0
+          },
+          {
+            "name": "GLM-5.1",
+            "input_price_per_1m": 6.0,
+            "output_price_per_1m": 24.0
+          },
+          {
+            "name": "GLM-5-Turbo",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 22.0
+          },
+          {
+            "name": "GLM-5",
+            "input_price_per_1m": 4.0,
+            "output_price_per_1m": 18.0
+          },
+          {
+            "name": "GLM-4.7",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 8.0
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 0.8,
+            "output_price_per_1m": 2.0
+          },
+          {
+            "name": "GLM-4.7-FlashX",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 3.0
+          },
+          {
+            "name": "GLM-5V-Turbo",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 22.0
+          },
+          {
+            "name": "GLM-4.6V",
+            "input_price_per_1m": 1.0,
+            "output_price_per_1m": 3.0
+          },
+          {
+            "name": "GLM-4.6V-FlashX",
+            "input_price_per_1m": 0.15,
+            "output_price_per_1m": 1.5
+          },
+          {
+            "name": "GLM-4.5V",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 6.0
+          },
+          {
+            "name": "GLM-4-Voice",
+            "input_price_per_1m": 80.0
+          },
+          {
+            "name": "GLM-ASR",
+            "input_price_per_1m": 0.06
+          },
+          {
+            "name": "GLM-4-0520",
+            "input_price_per_1m": 100.0,
+            "output_price_per_1m": 50.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 4.0
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 50.0,
+            "output_price_per_1m": 25.0
+          },
+          {
+            "name": "GLM-4",
+            "input_price_per_1m": 100.0,
+            "output_price_per_1m": 50.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 0.25
+          },
+          {
+            "name": "GLM-4.5",
+            "input_price_per_1m": 0.1
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 0.035,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 0.025,
+            "output_price_per_1m": 0.04
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 0.025,
+            "output_price_per_1m": 0.04
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 0.03
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.003,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 0.002,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 0.002,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-0520",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4.6",
+            "input_price_per_1m": 175.0
+          },
+          {
+            "name": "GLM-4.5",
+            "input_price_per_1m": 175.0
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Plus",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air-250414",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash-250414",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4.5V",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4.1V-Thinking-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4V-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus-0111",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus-0111",
+            "input_price_per_1m": 200.0
+          }
+        ],
+        "count": 51,
+        "note": "API 按量计费，Coding Plan 需登录控制台"
+      }
+    ],
+    "extractedFields": [
+      "models"
+    ],
+    "missingFields": [
+      "monthlyPrice"
+    ],
+    "sourceUrl": "https://open.bigmodel.cn/pricing",
+    "fetchedAt": "2026-07-21T14:20:27Z",
+    "error": null
+  },
+  {
     "vendorId": "deepseek",
     "vendor": "DeepSeek 官方",
     "plans": [
@@ -28,7 +278,7 @@
     ],
     "missingFields": [],
     "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "fetchedAt": "2026-07-21T10:22:07Z",
+    "fetchedAt": "2026-07-21T14:20:19Z",
     "error": null
   },
   {
@@ -64,7 +314,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-    "fetchedAt": "2026-07-21T10:22:08Z",
+    "fetchedAt": "2026-07-21T14:20:20Z",
     "error": null
   },
   {
@@ -92,7 +342,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
-    "fetchedAt": "2026-07-21T10:22:07Z",
+    "fetchedAt": "2026-07-21T14:20:20Z",
     "error": null
   }
 ]

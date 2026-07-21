@@ -36,7 +36,11 @@ async def run_all() -> list[ExtractResult]:
 
 async def _safe_extract(parser: BaseParser, client) -> ExtractResult | None:
     try:
-        result = await parser.extract(client)
+        # Playwright 解析器不需要 client
+        if hasattr(parser, "fetch_rendered_html"):
+            result = await parser.extract(None)
+        else:
+            result = await parser.extract(client)
         result.fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         print(f"  ✅ {parser.vendor_name}: {len(result.plans)} plans, fields={result.extracted_fields}")
         return result
