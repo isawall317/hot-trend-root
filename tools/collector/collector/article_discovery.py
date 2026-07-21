@@ -176,7 +176,7 @@ def main():
     medium = sum(1 for a in articles if a.get("level") == "medium")
     print(f"📰 文章发现: {len(articles)} 篇候选 (high={high}, medium={medium})")
     print(f"   输出: {out_path}")
-    print(f"   ⚠️  候选文章尚未收录 — 请用 /build-site update 审阅后写入 changes.json")
+    print(f"   ⚠️  候选文章尚未收录 — 请用 /codingplan-page update 审阅后写入 changes.json")
 
 
 if __name__ == "__main__":

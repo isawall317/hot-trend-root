@@ -12,7 +12,7 @@
 
 注意: article_discovery 不再直接写入 changes.json。
       编辑决策（哪些文章收录、哪些价格变动记录）由 Claude Code 通过
-      /build-site update 完成——读 data/pending/ → 去噪 → 用户确认 → 写入。
+      /codingplan-page update 完成——读 data/pending/ → 去噪 → 用户确认 → 写入。
 """
 
 import json
@@ -108,10 +108,10 @@ def generate_pending_report(date_str: str) -> Path:
         "",
         "## 下一步",
         "",
-        "在 Claude Code 中运行 `/build-site update`，读取本报告并：",
+        "在 Claude Code 中运行 `/codingplan-page update`，读取本报告并：",
         "1. 审阅候选文章 → 去噪收录到 changes.json",
         "2. 审阅价格信号 → 更新 plans.json + changes.json",
-        "3. 运行 `/build-site build` 重新生成 HTML",
+        "3. 运行 `/codingplan-page build` 重新生成 HTML",
     ])
 
     report_path.write_text("\n".join(lines), encoding="utf-8")
@@ -167,7 +167,7 @@ def main():
 
     print(f"\n管道报告: {report_path}")
     print(f"待审阅: data/pending/{date_str}/report.md")
-    print(f"\n💡 下一步: 在 Claude Code 中运行 /build-site update 审阅候选")
+    print(f"\n💡 下一步: 在 Claude Code 中运行 /codingplan-page update 审阅候选")
 
 
 if __name__ == "__main__":

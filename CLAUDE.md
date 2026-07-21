@@ -22,7 +22,7 @@ data/raw/YYYY-MM-DD/*.json
 
 ## 技能
 
-### /build-site — 生成 CodingPlan 省钱攻略 HTML
+### /codingplan-page — 生成 CodingPlan 省钱攻略 HTML
 
 数据管道 + Claude Code 审阅 + 生成最终交付物。
 
@@ -31,8 +31,8 @@ data/raw/YYYY-MM-DD/*.json
 cd tools/collector && source .venv/bin/activate && python -m collector.pipeline
 # 输出: data/pending/{date}/report.md（待审阅候选）
 
-# 2. Claude Code 审阅: /build-site update（去噪 + 写入 changes.json）
-# 3. 生成 HTML: /build-site build
+# 2. Claude Code 审阅: /codingplan-page update（去噪 + 写入 changes.json）
+# 3. 生成 HTML: /codingplan-page build
 cd tools/builder && python3 build.py
 # 输出: dist/codingplan-saver.html
 ```
@@ -49,7 +49,7 @@ hot-trend-root/
 │   │   ├── scan/SKILL.md      # 热点扫描 + 初筛
 │   │   ├── analyze/SKILL.md   # 利基深度分析 + 6维评分
 │   │   ├── validate/SKILL.md  # 快速验证 + Go/No-Go
-│   │   └── build-site/SKILL.md  # CodingPlan 省钱攻略生成
+│   │   └── codingplan-page/SKILL.md  # CodingPlan 省钱攻略生成
 │   └── workflows/
 ├── tools/
 │   ├── collector/             # Python 数据采集聚合器

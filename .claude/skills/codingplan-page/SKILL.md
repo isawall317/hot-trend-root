@@ -1,17 +1,17 @@
 ---
-name: build-site
+name: codingplan-page
 description: CodingPlan 省钱攻略 — 数据更新 + HTML 生成
 metadata:
   type: skill
 ---
 
-# /build-site — CodingPlan 省钱攻略 数据更新 + HTML 生成
+# /codingplan-page — CodingPlan 省钱攻略 数据更新 + HTML 生成
 
 ## 触发
 
-- `/build-site` 或 `/build-site build` — 读数据生成 HTML（最快，M1 可用）
-- `/build-site update [自然语言]` — 更新数据（M2 实现后补全）
-- `/build-site scan` — 扫描信号（M2 实现后补全）
+- `/codingplan-page` 或 `/codingplan-page build` — 读数据生成 HTML
+- `/codingplan-page update [自然语言]` — 审阅候选文章，更新 changes.json
+- `/codingplan-page scan` — 扫描信号（只读报告）
 
 ---
 
@@ -84,7 +84,7 @@ metadata:
 
 ```
 hot-trend-root/
-├── .claude/skills/build-site/           ← 本文件
+├── .claude/skills/codingplan-page/      ← 本文件
 │   └── SKILL.md
 ├── project/codingplan-saver/
 │   ├── data/                           ← 数据源
@@ -114,7 +114,7 @@ hot-trend-root/
 
 ### 触发
 
-`/build-site update [自然语言]`
+`/codingplan-page update [自然语言]`
 
 ### 步骤
 
@@ -162,9 +162,9 @@ hot-trend-root/
 2. 写入 changes.json 和 plans.json
 3. 跑 `python3 -m collector.token_estimator` 补 measuredMonthlyToken
 4. 更新所有变动条目的 updatedAt
-5. 提示用户「说 /build-site build 生成 HTML」
+5. 提示用户「说 /codingplan-page build 生成 HTML」
 
-**Step 6: 不自动 build**，用户确认后手动 `/build-site build`
+**Step 6: 不自动 build**，用户确认后手动 `/codingplan-page build`
 
 ### 错误处理
 
@@ -178,7 +178,7 @@ hot-trend-root/
 
 ### 触发
 
-`/build-site scan`
+`/codingplan-page scan`
 
 ### 步骤
 
@@ -193,7 +193,7 @@ hot-trend-root/
 [定价] DeepSeek API 价格已更新 — 来源: extracted-deepseek
 ```
 
-4. 提示用户「值得跟进的，说 /build-site update ...」
+4. 提示用户「值得跟进的，说 /codingplan-page update ...」
 
 ### 错误处理
 
