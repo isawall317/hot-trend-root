@@ -33,7 +33,7 @@ cd tools/builder && python3 build.py
 # 输出: dist/codingplan-saver.html
 ```
 
-详见 `.claude/skills/build-site.md`
+详见 `.claude/skills/build-site/SKILL.md`
 
 ## 目录结构
 
@@ -45,7 +45,7 @@ hot-trend-root/
 │   │   ├── scan/SKILL.md      # 热点扫描 + 初筛
 │   │   ├── analyze/SKILL.md   # 利基深度分析 + 6维评分
 │   │   ├── validate/SKILL.md  # 快速验证 + Go/No-Go
-│   │   └── build-site.md      # CodingPlan 省钱攻略生成
+│   │   └── build-site/SKILL.md  # CodingPlan 省钱攻略生成
 │   └── workflows/
 ├── tools/
 │   ├── collector/             # Python 数据采集聚合器

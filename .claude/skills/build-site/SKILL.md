@@ -1,3 +1,10 @@
+---
+name: build-site
+description: CodingPlan 省钱攻略 — 数据更新 + HTML 生成
+metadata:
+  type: skill
+---
+
 # /build-site — CodingPlan 省钱攻略 数据更新 + HTML 生成
 
 ## 触发
@@ -77,7 +84,8 @@
 
 ```
 hot-trend-root/
-├── .claude/skills/build-site.md        ← 本文件
+├── .claude/skills/build-site/           ← 本文件
+│   └── SKILL.md
 ├── project/codingplan-saver/
 │   ├── data/                           ← 数据源
 │   │   ├── SCHEMA.md                   ← 宪法
