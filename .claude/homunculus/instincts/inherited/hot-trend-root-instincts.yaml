@@ -1,0 +1,534 @@
+# Instincts generated from https://github.com/isawall317/hot-trend-root
+# Generated: 2026-07-21T15:18:32.518Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: hot-trend-root-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, docs, fix, refactor, chore
+
+## Evidence
+
+- 28 commits analyzed
+- Detected conventional commit pattern
+- Examples: docs(spec): build-site skill 设计文档, chore: V1 最终态基线（多页面架构 + 数据）
+
+---
+id: hot-trend-root-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Commit Length
+
+## Action
+
+Keep commit messages concise (~48 characters)
+
+## Evidence
+
+- Average commit message length: 48 chars
+- Based on 28 commits
+
+---
+id: hot-trend-root-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: hot-trend-root-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: hot-trend-root-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Export Style
+
+## Action
+
+Prefer default exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: default
+
+---
+id: hot-trend-root-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: hot-trend-root-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~13x per month
+- Files: 
+
+---
+id: hot-trend-root-workflow-refactoring
+trigger: "when refactoring code"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Refactoring
+
+## Action
+
+Follow the refactoring workflow:
+1. Ensure tests pass before refactor
+2. Refactor code structure
+3. Verify tests still pass
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: src/**/*
+
+---
+id: hot-trend-root-workflow-data-schema-migration-and-update
+trigger: "when doing data schema migration and update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Data Schema Migration And Update
+
+## Action
+
+Follow the data-schema-migration-and-update workflow:
+1. Edit or create project/codingplan-saver/data/SCHEMA.md to define schema changes.
+2. Update or migrate JSON data files: site.json, vendors.json, plans.json, changes.json.
+3. If needed, write migration scripts or perform manual data transformation.
+4. Clean up or remove deprecated data fields and files.
+5. Update documentation (e.g., reference/data-map.md) to reflect new schema.
+6. Regenerate or update dist/codingplan-saver.html to reflect data changes.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: project/codingplan-saver/data/SCHEMA.md, project/codingplan-saver/data/site.json, project/codingplan-saver/data/vendors.json
+
+---
+id: hot-trend-root-workflow-parser-implementation-and-integration
+trigger: "when doing parser implementation and integration"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Parser Implementation And Integration
+
+## Action
+
+Follow the parser-implementation-and-integration workflow:
+1. Create or update parser file in tools/collector/collector/sources/ (e.g., deepseek.py, tencent.py, minimax.py, zhipu.py).
+2. Register the parser in sources/__init__.py or runner.py.
+3. Update project/codingplan-saver/data/vendors.json to set extractStrategy for the vendor.
+4. Test extraction and generate data/signals/extract-{date}.json.
+5. Update docs/pricing-urls.md or similar documentation with extraction status.
+6. Regenerate or update dist/codingplan-saver.html if needed.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: tools/collector/collector/sources/*.py, tools/collector/collector/sources/__init__.py, tools/collector/collector/sources/runner.py
+
+---
+id: hot-trend-root-workflow-skill-and-workflow-documentation-update
+trigger: "when doing skill and workflow documentation update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Skill And Workflow Documentation Update
+
+## Action
+
+Follow the skill-and-workflow-documentation-update workflow:
+1. Edit or create .claude/skills/*.md to document the workflow, skill usage, or implementation details.
+2. Update or create docs/superpowers/specs/*.md and docs/superpowers/plans/*.md for design specs and implementation plans.
+3. Update project-level documentation files (e.g., CLAUDE.md, reference/data-map.md) as needed.
+4. Reference or link to updated schema, workflows, or data files.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: .claude/skills/*.md, docs/superpowers/specs/*.md, docs/superpowers/plans/*.md
+
+---
+id: hot-trend-root-workflow-single-file-html-build-and-release
+trigger: "when doing single file html build and release"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/isawall317/hot-trend-root
+---
+
+# Hot Trend Root Workflow Single File Html Build And Release
+
+## Action
+
+Follow the single-file-html-build-and-release workflow:
+1. Run or update build script (tools/builder/build.py).
+2. Read data from project/codingplan-saver/data/*.json and template from template/index.html.
+3. Generate dist/codingplan-saver.html.
+4. Commit dist/codingplan-saver.html (ensure .gitignore allows it).
+5. Optionally, clean up or fix .gitignore for dist/.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: tools/builder/build.py, project/codingplan-saver/data/*.json, project/codingplan-saver/template/index.html
+
+---
+id: hot-trend-root-instinct-naming-files
+trigger: "When creating or renaming a file in the codebase"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Naming Files
+
+## Action
+
+Use camelCase for file names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+- Observed in tools/collector/collector/sources/runner.py
+
+---
+id: hot-trend-root-instinct-naming-functions
+trigger: "When defining a function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Naming Functions
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+
+---
+id: hot-trend-root-instinct-naming-classes
+trigger: "When defining a class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Naming Classes
+
+## Action
+
+Use PascalCase for class names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: hot-trend-root-instinct-naming-constants
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Naming Constants
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: hot-trend-root-instinct-import-style
+trigger: "When importing modules in Python files"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+- Seen in tools/collector/collector/sources/*.py
+
+---
+id: hot-trend-root-instinct-export-style
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Export Style
+
+## Action
+
+Use default export style
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: hot-trend-root-instinct-error-handling
+trigger: "When handling errors in Python code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Error Handling
+
+## Action
+
+Use try-catch blocks for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style
+
+---
+id: hot-trend-root-instinct-git-commit-format
+trigger: "When writing a git commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Git Commit Format
+
+## Action
+
+Use Conventional Commits format with prefixes: feat, docs, fix, refactor, chore, cleanup
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Seen in commit: feat(data): 创建 codingplan-saver/data/ 新数据目录骨架 (M1-T2)
+
+---
+id: hot-trend-root-instinct-git-commit-length
+trigger: "When writing a git commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Git Commit Length
+
+## Action
+
+Keep commit message length around 48 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+
+---
+id: hot-trend-root-instinct-data-schema-migration
+trigger: "When the data model or schema changes, or when migrating data to a new structure"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Data Schema Migration
+
+## Action
+
+Follow the data-schema-migration-and-update workflow: update SCHEMA.md, migrate JSON files, update docs, and regenerate dist/codingplan-saver.html
+
+## Evidence
+
+- Workflow: data-schema-migration-and-update
+- Seen in commit sequence for schema changes
+
+---
+id: hot-trend-root-instinct-parser-integration
+trigger: "When adding support for a new vendor or extraction method"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Parser Integration
+
+## Action
+
+Follow the parser-implementation-and-integration workflow: add parser, register it, update vendors.json, test extraction, update docs, regenerate dist/codingplan-saver.html
+
+## Evidence
+
+- Workflow: parser-implementation-and-integration
+- Seen in commit sequence for parser addition
+
+---
+id: hot-trend-root-instinct-skill-doc-update
+trigger: "When a new workflow is defined, or an existing one is updated, or after major architectural changes"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Skill Doc Update
+
+## Action
+
+Update or create documentation in .claude/skills/*.md, docs/superpowers/specs/*.md, docs/superpowers/plans/*.md, CLAUDE.md, and reference/data-map.md
+
+## Evidence
+
+- Workflow: skill-and-workflow-documentation-update
+- Seen in commit sequence for documentation updates
+
+---
+id: hot-trend-root-instinct-html-build-release
+trigger: "When data or templates change, or after a major feature or data update"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: isawall317/hot-trend-root
+---
+
+# Hot Trend Root Instinct Html Build Release
+
+## Action
+
+Run build script to generate and commit dist/codingplan-saver.html, ensuring .gitignore allows it
+
+## Evidence
+
+- Workflow: single-file-html-build-and-release
+- Seen in commit: fix: .gitignore 移除重复的 dist/ 行，dist/ 交付物进 git
+
