@@ -9,25 +9,59 @@ metadata:
 
 ## 触发
 
-- `/codingplan-page` 或 `/codingplan-page build` — 读数据生成 HTML
-- `/codingplan-page update [自然语言]` — 审阅候选文章，更新 changes.json
+- `/codingplan-page` 或 `/codingplan-page build` — **全量更新**：采集 → 审阅 → 生成 HTML（每次都是最新数据）
+- `/codingplan-page update [自然语言]` — 单独审阅候选文章，更新 changes.json（不采集）
 - `/codingplan-page scan` — 扫描信号（只读报告）
 
 ---
 
-## build 模式工作流
+## build 模式工作流（默认）
 
-### 何时用
+### 核心原则
 
-- 数据已更新（手动改了 JSON），想重新生成 HTML
-- 模板有改动，想验证新输出
+**每次生成 HTML 前，必须拉取最新数据。** 不依赖缓存，不依赖上次运行结果。
 
 ### 步骤
 
-1. 读 `project/codingplan-saver/data/` 下 4 个 JSON
-2. 运行 `python3 tools/builder/build.py`
-3. 输出到 `dist/codingplan-saver.html`
-4. 报告文件大小，提示 `open` 命令
+**Step 1: 运行数据管道**
+
+```bash
+cd tools/collector && uv run python -m collector.pipeline
+```
+
+产出：
+- `data/raw/{date}/` — 最新热点数据
+- `data/pending/{date}/articles.json` — 候选文章
+- `data/signals/{date}.json` — 价格信号
+- `plans.json` — token_estimator 更新
+
+**Step 2: 审阅候选文章**
+
+读取 `data/pending/{date}/articles.json`，去噪：
+- 纯技术教程（无商业价值）→ 跳过
+- 泛泛行业新闻 → 跳过
+- 与 AI Coding Plan 定价/模型/订阅直接相关 → 收录
+- 关键事件（Kimi、Claude、DeepSeek 等）→ 同时生成结构化变动（new_model/price_change/subscription_pause）
+
+**Step 3: 写入 changes.json**
+
+将审阅后的文章和结构化变动写入 `changes.json`。
+
+**Step 4: 更新 site.json**
+
+更新 `updateDate` 和 `highlights` 为当前日期和本周关注点。
+
+**Step 5: 生成 HTML**
+
+```bash
+python3 tools/builder/build.py
+```
+
+输出到 `dist/codingplan-saver-{YYYY-MM-DD-HHMM}.html` + `dist/codingplan-saver.html`（latest 副本）。
+
+**Step 6: 汇报**
+
+告知用户：采集条数、候选文章数、收录数、结构化变动数、文件大小。提示 `open` 命令。
 
 ### 数据校验
 

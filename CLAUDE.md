@@ -24,20 +24,15 @@ data/raw/YYYY-MM-DD/*.json
 
 ### /codingplan-page — 生成 CodingPlan 省钱攻略 HTML
 
-数据管道 + Claude Code 审阅 + 生成最终交付物。
+每次生成自动拉取最新数据，确保信息新鲜。
 
 ```bash
-# 1. 数据管道: 召回候选 + 产出待审阅报告
-cd tools/collector && source .venv/bin/activate && python -m collector.pipeline
-# 输出: data/pending/{date}/report.md（待审阅候选）
-
-# 2. Claude Code 审阅: /codingplan-page update（去噪 + 写入 changes.json）
-# 3. 生成 HTML: /codingplan-page build
-cd tools/builder && python3 build.py
-# 输出: dist/codingplan-saver.html
+# 一键全量更新: 采集 → 审阅 → 生成 HTML
+/codingplan-page
+# 输出: dist/codingplan-saver-{YYYY-MM-DD-HHMM}.html
 ```
 
-> Python pipeline 只做机械召回，不做编辑决策。文章收录、价格变动记录由 Claude Code 审阅后写入。
+详见 `.claude/skills/codingplan-page/SKILL.md`
 
 ## 目录结构
 
@@ -62,6 +57,7 @@ hot-trend-root/
 │       └── build.py
 ├── data/
 │   ├── raw/                   # 原始采集数据（.gitignore）
+│   ├── pending/               # 候选变更（待 Claude Code 审阅）
 │   ├── cards/                 # 机会卡（git 跟踪）
 │   ├── signals/               # 价格/文章信号
 │   └── archive/               # 历史归档
@@ -78,7 +74,7 @@ DailyHotApi 和 RSSHub 已手动部署在本地。采集引擎会自动检测本
 
 ### 2. 采集数据（每天 2-3 次，或 CronCreate 定时）
 ```bash
-cd tools/collector && python -m collector.engine
+cd tools/collector && uv run python -m collector.engine
 ```
 
 ### 3. 使用 Claude Code 分析
