@@ -22,5 +22,5 @@ tools/DailyHotApi/
 tools/RSSHub/
 tools/collector/tools/
 
-# 构建产物
-dist/
+# 构建产物（dist/ 现在跟踪，因为是最终交付物）
+# dist/
