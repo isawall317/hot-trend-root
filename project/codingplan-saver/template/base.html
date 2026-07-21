@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodingPlan 省钱攻略 - AI Coding Plan 选型指南</title>
+<meta name="description" content="16个平台、25+套餐全方位对比。每月花200-1000元买AI Coding Plan？饭庐者说帮你选最划算的。">
+<style>
+/* === Inlined from template/style.css === */
+{{STYLE}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">CP</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#compare" class="nav-tab" data-tab="compare">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-compare" class="tab-panel"><div class="container" id="compare-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script id="cp-data" type="application/json">{{DATA}}</script>
+<script>
+// ============================================================
+// CodingPlan 省钱攻略 - 单文件版（3 Tab + hash 路由）
+// 模板拆分: template/scripts/*.js → build.py 组装
+// ============================================================
+const DATA = JSON.parse(document.getElementById('cp-data').textContent);
+const { site, vendors, plans, changes } = DATA;
+
+{{SCRIPTS}}
+</script>
+</body>
+</html>
