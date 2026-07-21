@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodingPlan 省钱攻略 - AI Coding Plan 选型指南</title>
+<meta name="description" content="20个平台、30+套餐全方位对比。每月花200-1000元买AI Coding Plan？饭庐者说帮你选最划算的。">
+<style>
+/* === Design Tokens（继承自 V1 shared.css）=== */
+:root {
+  --bg-base: #090d14;
+  --bg-elevated: #111827;
+  --bg-card: rgba(20, 28, 46, 0.7);
+  --bg-card-hover: rgba(30, 41, 64, 0.85);
+  --bg-input: rgba(15, 23, 42, 0.8);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-default: rgba(148, 163, 184, 0.18);
+  --border-strong: rgba(148, 163, 184, 0.3);
+
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.12);
+  --accent-glow: rgba(16, 185, 129, 0.25);
+  --accent-secondary: #06b6d4;
+
+  --color-positive: #10b981;
+  --color-negative: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+  --color-premium: #fbbf24;
+
+  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --container-max: 1280px;
+  --nav-height: 56px;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(16, 185, 129, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(6, 182, 212, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul, ol { list-style: none; }
+input, select { font: inherit; }
+
+/* === Layout === */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); position: relative; z-index: 1; }
+.section { padding: var(--space-10) 0; position: relative; z-index: 1; }
+.section + .section { border-top: 1px solid var(--border-subtle); }
+.section-sm { padding: var(--space-6) 0; }
+.section-sm + .section-sm { border-top: 1px solid var(--border-subtle); }
+
+/* === Navigation === */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-height);
+  background: rgba(9, 13, 20, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.nav-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; flex-shrink: 0; }
+.nav-brand-name { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-tabs { display: flex; align-items: center; gap: var(--space-1); }
+.nav-tab { padding: var(--space-1) var(--space-3); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; color: var(--text-tertiary); transition: all 0.15s ease; white-space: nowrap; }
+.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-tab.active { color: var(--accent); background: var(--accent-soft); }
+.nav-cta { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--accent); color: #090d14; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 2px 8px var(--accent-glow); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+/* === Tab Panels === */
+.tab-panel { display: none; padding: var(--space-6) 0; min-height: 60vh; }
+.tab-panel.active { display: block; }
+
+/* === Buttons === */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-5); border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; border: 1px solid transparent; }
+.btn-primary { background: var(--accent); color: #090d14; box-shadow: 0 2px 8px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-default); }
+.btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--border-strong); }
+.btn-ghost { color: var(--text-secondary); }
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
+.btn-lg { padding: var(--space-3) var(--space-6); font-size: 14px; }
+.btn-sm { padding: var(--space-1) var(--space-3); font-size: 12px; }
+
+/* === Badges & Tags === */
+.badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+.badge-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(16, 185, 129, 0.3); }
+.badge-premium { background: rgba(251, 191, 36, 0.12); color: var(--color-premium); border-color: rgba(251, 191, 36, 0.25); }
+.badge-positive { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
+.badge-negative { background: rgba(239, 68, 68, 0.12); color: var(--color-negative); }
+.badge-warning { background: rgba(245, 158, 11, 0.12); color: var(--color-warning); }
+.tag { display: inline-flex; align-items: center; padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--bg-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
+
+/* === Stars === */
+.stars { display: inline-flex; gap: 1px; font-size: 12px; letter-spacing: 1px; color: var(--color-premium); }
+.stars-dim { color: var(--text-muted); }
+
+/* === Cards === */
+.card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.15s ease; }
+.card-hover:hover { border-color: var(--border-strong); background: var(--bg-card-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+/* === Hero === */
+.hero { padding: var(--space-10) 0 var(--space-8); position: relative; z-index: 1; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.hero-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: var(--space-3); }
+.hero-title-accent { background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-5); max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.hero-stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.hero-stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* === Section Header === */
+.section-header { margin-bottom: var(--space-6); }
+.section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
+.section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--space-2); }
+.section-subtitle { font-size: 14px; color: var(--text-tertiary); max-width: 60ch; }
+.text-center { text-align: center; }
+
+/* === Quick Entries === */
+.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.quick-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: left; transition: all 0.15s ease; cursor: pointer; }
+.quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.quick-card-icon { font-size: 22px; line-height: 1; }
+.quick-card-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.quick-card-desc { font-size: 12px; color: var(--text-tertiary); }
+
+/* === Top Picks (推荐页 Top3) === */
+.top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.top-pick-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden; }
+.top-pick-card.pick-best { border-color: rgba(16, 185, 129, 0.3); background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), var(--bg-card)); }
+.top-pick-card.pick-best::before { content: 'BEST'; position: absolute; top: 12px; right: -28px; background: var(--accent); color: #090d14; font-size: 10px; font-weight: 800; padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em; }
+.top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
+.top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
+.top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
+.top-pick-price { font-size: 28px; font-weight: 800; font-family: var(--font-mono); color: var(--accent); }
+.top-pick-price-unit { font-size: 13px; font-weight: 500; color: var(--text-tertiary); }
+.top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+.top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+.top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.top-pick-action { margin-top: var(--space-3); text-align: right; }
+
+/* === Recommendation Cards === */
+.reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
+.reco-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; }
+.reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.reco-item-vendor { font-size: 17px; font-weight: 700; }
+.reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
+.reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+.reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.reco-item-reasons strong { color: var(--text-primary); font-weight: 600; }
+.reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+
+/* === Filter Bar === */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
+.filter-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-full); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 0.12s ease; }
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.filter-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.filter-select { padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; cursor: pointer; }
+.filter-stats { margin-left: auto; font-size: 12px; color: var(--text-tertiary); }
+.filter-stats strong { color: var(--accent); font-weight: 700; }
+
+/* === Data Table === */
+.table-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: auto; max-height: 640px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+.table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
+.table-wrap::-webkit-scrollbar-track { background: transparent; }
+.table-wrap::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--radius-full); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1000px; }
+.data-table thead { position: sticky; top: 0; background: var(--bg-elevated); z-index: 2; }
+.data-table th { padding: var(--space-2) var(--space-3); text-align: left; font-size: 10px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border-default); white-space: nowrap; }
+.data-table td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap; }
+.data-table tbody tr { transition: background 0.1s ease; }
+.data-table tbody tr:hover { background: var(--bg-card-hover); }
+.data-table .col-vendor { font-weight: 600; color: var(--text-primary); }
+.data-table .col-price { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--text-primary); font-weight: 600; }
+.data-table .col-action a { color: var(--accent); font-weight: 600; }
+.data-table .col-action a:hover { text-decoration: underline; }
+th.col-extra { display: table-cell; }
+td.col-extra.col-hidden { display: none; }
+td.col-extra { display: table-cell; }
+.table-toggle-btn { font-size: 11px; padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); background: var(--bg-elevated); border: 1px solid var(--border-default); color: var(--text-tertiary); cursor: pointer; transition: all 0.12s ease; white-space: nowrap; }
+.table-toggle-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.table-toggle-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+/* === Chart === */
+.chart-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); }
+.chart-container { width: 100%; height: 520px; }
+
+/* === Recent Changes (推荐页底部紧凑时间线) === */
+.rc-list { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+.rc-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px; line-height: 1.4;
+  transition: background 0.12s ease;
+  position: relative;
+}
+.rc-item:last-child { border-bottom: none; }
+.rc-item:hover { background: var(--bg-card-hover); }
+.rc-item.rc-featured { border-left: 3px solid var(--accent); padding-left: calc(var(--space-4) - 3px); }
+.rc-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-shrink: 0; width: 42px; }
+.rc-title { color: var(--text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-title a { color: var(--text-secondary); }
+.rc-title a:hover { color: var(--accent); }
+.rc-vendor { color: var(--text-primary); font-weight: 600; }
+.rc-item:hover .rc-title { white-space: normal; overflow: visible; }
+/* tooltip 显示 detail */
+.rc-item[data-detail]:hover::after {
+  content: attr(data-detail);
+  position: absolute; bottom: calc(100% + 6px); left: var(--space-4);
+  background: var(--bg-elevated); color: var(--text-primary);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  font-size: 12px; line-height: 1.5; white-space: normal; width: min(400px, 80vw);
+  z-index: 10; box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .rc-item { flex-wrap: wrap; }
+  .rc-title { white-space: normal; overflow: visible; width: 100%; flex: none; }
+  .rc-item:hover .rc-title { white-space: normal; }
+}
+
+/* === Community === */
+.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.community-card { position: relative; padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); overflow: hidden; }
+.community-card-free { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6)); }
+.community-card-paid { background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05)); border-color: rgba(16, 185, 129, 0.25); }
+.community-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.community-card-title { font-size: 18px; font-weight: 700; }
+.community-card-subtitle { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: var(--space-3); }
+.community-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-4); }
+.community-highlights { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+.community-highlights li { font-size: 12px; color: var(--text-secondary); padding-left: var(--space-4); position: relative; }
+.community-highlights li::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+/* === Mobile Plan Cards === */
+.plan-cards-view { display: none; }
+.plan-card-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-4); margin-bottom: var(--space-3); }
+.plan-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2); }
+.plan-card-vendor { font-size: 15px; font-weight: 700; }
+.plan-card-plan { font-size: 12px; color: var(--text-tertiary); }
+.plan-card-price { font-size: 18px; font-weight: 800; color: var(--accent); font-family: var(--font-mono); }
+
+/* === Footer === */
+.footer { padding: var(--space-8) 0 var(--space-6); border-top: 1px solid var(--border-subtle); position: relative; z-index: 1; }
+.footer-disclosure { font-size: 11px; color: var(--text-muted); line-height: 1.55; padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius-md); margin-bottom: var(--space-4); border-left: 2px solid var(--color-warning); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+.footer-brand { font-size: 12px; color: var(--text-tertiary); }
+.footer-links { display: flex; gap: var(--space-4); font-size: 12px; }
+.footer-links a { color: var(--text-tertiary); transition: color 0.12s ease; }
+.footer-links a:hover { color: var(--text-primary); }
+
+/* === Utility === */
+.text-accent { color: var(--accent); }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .top-pick-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --space-10: 32px; --space-16: 48px; }
+  .container { padding: 0 var(--space-4); }
+  .nav-tabs { gap: 0; }
+  .nav-tab { padding: var(--space-1) var(--space-2); font-size: 12px; }
+  .nav-cta { display: none; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .hero-stat-value { font-size: 18px; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .reco-list { grid-template-columns: 1fr; }
+  .filter-bar { padding: var(--space-2); }
+  .filter-stats { width: 100%; margin-left: 0; }
+  .community-card { padding: var(--space-5); }
+  .table-wrap { display: none; }
+  .plan-cards-view { display: block; }
+  .chart-container { height: 360px; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  .section-title { font-size: 20px; }
+  .quick-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">CP</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#compare" class="nav-tab" data-tab="compare">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-compare" class="tab-panel"><div class="container" id="compare-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script id="cp-data" type="application/json">{{DATA}}</script>
+<script>
+// ============================================================
+// CodingPlan 省钱攻略 - 单文件版（4 Tab + hash 路由）
+// ============================================================
+const DATA = JSON.parse(document.getElementById('cp-data').textContent);
+const { site, vendors, plans, changes } = DATA;
+
+// === Utils（移植自 V1 shared.js）===
+function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
+}
+function formatPrice(value, currency) {
+  if (value === null || value === undefined || value === '-' || value === '') return '—';
+  if (typeof value === 'string') return value;
+  const prefix = currency === '$' ? '$' : '¥';
+  return prefix + value;
+}
+function formatNumber(value) {
+  if (value === null || value === undefined || value === '-') return '—';
+  if (typeof value === 'string') return value;
+  if (value >= 1000) return value.toLocaleString();
+  return value;
+}
+function renderStars(rating) {
+  const full = '★'.repeat(rating);
+  const empty = '☆'.repeat(5 - rating);
+  return '<span class="stars">' + full + '</span><span class="stars stars-dim">' + empty + '</span>';
+}
+function renderTagsInline(tags) {
+  if (!tags || !tags.length) return '';
+  return tags.map(t => '<span class="tag">' + escapeHtml(t) + '</span>').join(' ');
+}
+function renderMarkdownLite(text) {
+  if (!text) return '';
+  let html = escapeHtml(text);
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return html;
+}
+
+// === Vendor 配色查找 ===
+function vendorColor(name) {
+  const v = vendors.find(x => x.name === name);
+  return v && v.color ? v.color : '#71717B';
+}
+
+// === Tab 路由 ===
+function switchTab(hash) {
+  const tab = (hash || '#recommend').replace(/^#/, '').split('?')[0];
+  const validTabs = ['recommend', 'compare', 'community'];
+  const target = validTabs.includes(tab) ? tab : 'recommend';
+
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + target).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 对比 tab：首次进入渲染散点图，后续进入 resize
+  if (target === 'compare') {
+    setTimeout(() => {
+      if (window._chart) {
+        window._chart.resize();
+      } else if (typeof echarts !== 'undefined') {
+        renderChart();
+      }
+    }, 100);
+  }
+}
+window.addEventListener('hashchange', () => switchTab(location.hash));
+
+// ============================================================
+// Tab 1: 推荐
+// ============================================================
+function renderRecommend() {
+  const body = document.getElementById('recommend-body');
+  body.innerHTML = renderHero() + renderTopPicks() + renderQuickEntries() + renderRecommendations() + renderRecentChanges();
+  bindQuickEntries();
+}
+
+function renderHero() {
+  const h = site.header || {};
+  const stats = (h.stats || []).map(s =>
+    '<div><div class="hero-stat-value">' + escapeHtml(s.value) +
+    '<span style="font-size:13px;color:var(--text-tertiary);font-weight:500;margin-left:2px;">' + escapeHtml(s.unit || '') + '</span></div>' +
+    '<div class="hero-stat-label">' + escapeHtml(s.label) + '</div></div>'
+  ).join('');
+  return '<section class="hero"><div class="container"><div class="hero-inner"><div>' +
+    '<span class="section-eyebrow">' + escapeHtml(h.updateDate || '') + '</span>' +
+    '<h1 class="hero-title">AI Coding Plan<br><span class="hero-title-accent">买哪个最划算？</span></h1>' +
+    '<p class="hero-subtitle">' + escapeHtml(site.tagline || '') + '</p>' +
+    '<p style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-5);margin-top:-12px;">' + escapeHtml(h.highlights || '') + '</p>' +
+    '<div class="hero-actions">' +
+      '<a href="#compare" class="btn btn-primary btn-lg">查看完整对比表</a>' +
+      '<a href="#community" class="btn btn-secondary btn-lg">加入社群</a>' +
+    '</div>' +
+    '<div class="hero-stats">' + stats + '</div>' +
+  '</div></div></section>';
+}
+
+function renderTopPicks() {
+  const scored = plans
+    .filter(p => p.status === 'active' && typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number')
+    .map(p => ({ plan: p, tpu: p.measuredMonthlyToken / p.monthlyPrice, score: p.rating * 10 + (p.measuredMonthlyToken / p.monthlyPrice) }))
+    .sort((a, b) => b.score - a.score);
+  const top3 = scored.slice(0, 3);
+  if (!top3.length) return '';
+
+  const labels = ['综合最佳', '高性价比', '入门首选'];
+  const reasons = [
+    '综合评分最高，模型能力和性价比都很出色。',
+    '每元能拿到更多 Token，花同样的钱可用更多。',
+    '月费最低，适合预算有限或想先试试水的用户。'
+  ];
+  const picks = top3.map((item, i) => {
+    const p = item.plan;
+    const isBest = i === 0;
+    return '<div class="top-pick-card' + (isBest ? ' pick-best' : '') + '">' +
+      '<div class="top-pick-label">' + labels[i] + '</div>' +
+      '<div class="top-pick-vendor">' + escapeHtml(p.vendor) + '</div>' +
+      '<div class="top-pick-plan">' + escapeHtml(p.plan) + ' ' + escapeHtml(p.type) + '</div>' +
+      '<div class="top-pick-price">' + formatPrice(p.monthlyPrice, p.currency || '¥') + '<span class="top-pick-price-unit">/月</span></div>' +
+      '<div class="top-pick-metrics">' +
+        '<div><div class="top-pick-metric-value">' + p.measuredMonthlyToken + 'M</div><div class="top-pick-metric-label">月Token</div></div>' +
+        '<div><div class="top-pick-metric-value">' + item.tpu.toFixed(1) + '</div><div class="top-pick-metric-label">每元Token</div></div>' +
+      '</div>' +
+      '<div class="top-pick-reason">' + reasons[i] + '</div>' +
+      '<div class="top-pick-action">' +
+        '<a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">优惠购买 →</a>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+  return '<section class="section-sm"><div class="container">' +
+    '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+      '<span class="section-eyebrow">TOP PICKS</span>' +
+      '<h2 class="section-title">不知道买哪个？看这三个就够了</h2>' +
+      '<p class="section-subtitle">基于评分、性价比和真实体验的综合推荐。点击场景卡片筛选或查看完整对比表。</p>' +
+    '</div>' +
+    '<div class="top-pick-grid">' + picks + '</div>' +
+  '</div></section>';
+}
+
+function renderQuickEntries() {
+  const entries = site.quickEntries || [];
+  if (!entries.length) return '';
+  const cards = entries.map(q =>
+    '<button class="quick-card" data-entry-id="' + escapeHtml(q.id) + '">' +
+      '<span class="quick-card-icon">' + escapeHtml(q.icon) + '</span>' +
+      '<span class="quick-card-title">' + escapeHtml(q.title) + '</span>' +
+      '<span class="quick-card-desc">' + escapeHtml(q.desc) + '</span>' +
+    '</button>'
+  ).join('');
+  return '<section class="section-sm"><div class="container">' +
+    '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+      '<span class="section-eyebrow">SCENARIOS</span>' +
+      '<h2 class="section-title">按你的场景来选</h2>' +
+    '</div>' +
+    '<div class="quick-grid">' + cards + '</div>' +
+  '</div></section>';
+}
+
+function bindQuickEntries() {
+  document.querySelectorAll('.quick-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.entryId;
+      const entry = (site.quickEntries || []).find(q => q.id === id);
+      if (!entry || !entry.filter) return;
+      // 把 filter 编码到 hash，对比页解析
+      const query = Object.entries(entry.filter).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+      location.hash = '#compare' + (query ? '?' + query : '');
+    });
+  });
+}
+
+function renderRecommendations() {
+  const groups = site.recommendationGroups || [];
+  if (!groups.length) return '';
+  const html = groups.map((group, gi) => {
+    const items = (group.items || []).map(item => {
+      const plan = plans.find(p => p.vendor === item.vendor && p.plan === item.plan);
+      const priceStr = plan ? '<strong>' + formatPrice(plan.monthlyPrice, plan.currency || '¥') + '</strong>/月' : '';
+      const reasons = (item.reasons || []).map(r => '<li>' + renderMarkdownLite(r) + '</li>').join('');
+      const action = item.action || (plan ? plan.action : '#');
+      return '<div class="reco-item">' +
+        '<div class="reco-item-header"><div><div class="reco-item-vendor">' + escapeHtml(item.vendor) + '</div><div class="reco-item-plan">' + escapeHtml(item.plan) + ' ' + (plan ? escapeHtml(plan.type) : '') + '</div></div>' + renderStars(item.rating) + '</div>' +
+        (item.verdict ? '<span class="reco-item-verdict">' + escapeHtml(item.verdict) + '</span>' : '') +
+        '<ul class="reco-item-reasons">' + reasons + '</ul>' +
+        '<div class="reco-item-footer">' +
+          '<span style="font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);">' + priceStr + '</span>' +
+          '<a href="' + action + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary">优惠购买 →</a>' +
+        '</div></div>';
+    }).join('');
+    const header = groups.length > 1
+      ? '<div style="margin-bottom:var(--space-4);"><h3 style="font-size:16px;font-weight:700;">' + escapeHtml(group.title) + '</h3>' + (group.subtitle ? '<p style="font-size:13px;color:var(--text-tertiary);">' + escapeHtml(group.subtitle) + '</p>' : '') + '</div>'
+      : '';
+    return '<div style="' + (gi > 0 ? 'margin-top:var(--space-8);' : '') + '">' + header + '<div class="reco-list">' + items + '</div></div>';
+  }).join('');
+  return '<section class="section-sm"><div class="container">' +
+    '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+      '<span class="section-eyebrow">ALL RECOMMENDATIONS</span>' +
+      '<h2 class="section-title">饭庐者说的完整推荐</h2>' +
+    '</div>' + html + '</div></section>';
+}
+
+// ============================================================
+// Tab 2: 对比（散点图 + 筛选条 + 表格 + 移动端卡片）
+// ============================================================
+const compareState = {
+  filters: { types: new Set(), tags: new Set(), models: new Set(), monthlyPriceMax: null, search: '' },
+  sort: { key: null, dir: 'asc' },
+  columnsExpanded: false
+};
+
+function renderCompare() {
+  const body = document.getElementById('compare-body');
+  body.innerHTML = renderChartSection() + renderTableSection();
+  bindCompareFilters();
+  renderCompareTable();
+  setTimeout(renderChart, 200);
+}
+
+function renderChartSection() {
+  return '<section class="section-sm">' +
+    '<div class="container">' +
+      '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+        '<span class="section-eyebrow">CHART</span>' +
+        '<h2 class="section-title">价格 vs Token 上限</h2>' +
+        '<p class="section-subtitle">横轴月费，纵轴月Token。绿色区域为高性价比区。</p>' +
+      '</div>' +
+      '<div class="chart-card"><div class="chart-container" id="priceVsTokenChart"></div></div>' +
+    '</div></section>';
+}
+
+function renderTableSection() {
+  return '<section class="section-sm">' +
+    '<div class="container">' +
+      '<div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:var(--space-3);">' +
+        '<div>' +
+          '<span class="section-eyebrow">FULL COMPARISON</span>' +
+          '<h2 class="section-title">完整套餐对比表</h2>' +
+          '<p class="section-subtitle">点击标签筛选，点击展开看额外列。</p>' +
+        '</div>' +
+        '<button class="table-toggle-btn" id="toggleColumnsBtn">展开全部列</button>' +
+      '</div>' +
+      '<div id="compareFilterBar"></div>' +
+      '<div class="table-wrap"><table class="data-table"><thead><tr>' +
+        '<th>平台</th><th>套餐</th><th>类型</th><th>评分</th><th>月费</th>' +
+        '<th class="col-extra">首月</th><th class="col-extra">月请求</th>' +
+        '<th>实测月Token</th><th>每元Token</th>' +
+        '<th class="col-extra">1M价</th><th>支持模型</th><th>标签</th><th>优惠购买</th>' +
+      '</tr></thead><tbody id="plansTableBody"></tbody></table></div>' +
+      '<div class="plan-cards-view" id="plansCardsView"></div>' +
+    '</div></section>';
+}
+
+function renderCompareFilterBar() {
+  const filterable = plans.filter(p => p.status !== 'deprecated');
+  const types = [...new Set(filterable.map(p => p.type))].sort();
+  const allTags = new Set();
+  filterable.forEach(p => (p.tags || []).forEach(t => allTags.add(t)));
+  const tags = [...allTags].sort();
+
+  const typeChips = types.map(t => '<button class="filter-chip" data-filter-type="types" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
+  const tagChips = tags.map(t => '<button class="filter-chip" data-filter-type="tags" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
+
+  return '<div class="filter-bar">' +
+    '<select class="filter-select" id="sortSelect">' +
+      '<option value="">默认排序</option>' +
+      '<option value="monthlyPrice-asc">月费 低-高</option>' +
+      '<option value="monthlyPrice-desc">月费 高-低</option>' +
+      '<option value="rating-desc">评分 高-低</option>' +
+      '<option value="measuredMonthlyToken-desc">月Token 多-少</option>' +
+      '<option value="tokensPerYuan-desc">性价比 高-低</option>' +
+    '</select>' +
+    '<input type="text" class="filter-select" id="searchInput" placeholder="搜索平台/套餐..." style="min-width:160px;">' +
+    '<button class="filter-chip" id="resetBtn">重置</button>' +
+    '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / ' + filterable.length + ' 个套餐</span>' +
+  '</div>' +
+  (typeChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>' + typeChips + '</div>' : '') +
+  (tagChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>' + tagChips + '</div>' : '');
+}
+
+function parseHashFilter() {
+  // 从 #compare?model=GLM-5.2&tag=... 解析筛选
+  const hash = location.hash;
+  const qIdx = hash.indexOf('?');
+  if (qIdx < 0) return null;
+  const params = new URLSearchParams(hash.slice(qIdx + 1));
+  const f = {};
+  for (const [k, v] of params) f[k] = v;
+  return f;
+}
+
+function bindCompareFilters() {
+  const fm = document.getElementById('compareFilterBar');
+  if (!fm) return;
+  fm.innerHTML = renderCompareFilterBar();
+
+  // 检查 hash 里是否带筛选（来自推荐页场景卡片）
+  const hashFilter = parseHashFilter();
+  if (hashFilter) {
+    if (hashFilter.monthlyPriceMax) compareState.filters.monthlyPriceMax = Number(hashFilter.monthlyPriceMax);
+    if (hashFilter.model) compareState.filters.models.add(hashFilter.model);
+    if (hashFilter.tag) compareState.filters.tags.add(hashFilter.tag);
+    if (hashFilter.vendor) {
+      // vendor 筛选用 search 实现
+      compareState.filters.search = hashFilter.vendor.toLowerCase();
+      const si = document.getElementById('searchInput');
+      if (si) si.value = hashFilter.vendor;
+    }
+  }
+  syncCompareFilterUI();
+
+  // chip toggle
+  fm.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const type = chip.dataset.filterType;
+      const value = chip.dataset.filterValue;
+      const set = compareState.filters[type];
+      if (set.has(value)) set.delete(value); else set.add(value);
+      syncCompareFilterUI();
+      renderCompareTable();
+    });
+  });
+
+  const reset = document.getElementById('resetBtn');
+  if (reset) reset.addEventListener('click', () => {
+    compareState.filters.types.clear();
+    compareState.filters.tags.clear();
+    compareState.filters.models.clear();
+    compareState.filters.monthlyPriceMax = null;
+    compareState.filters.search = '';
+    compareState.sort = { key: null, dir: 'asc' };
+    const ss = document.getElementById('sortSelect'); if (ss) ss.value = '';
+    const si = document.getElementById('searchInput'); if (si) si.value = '';
+    syncCompareFilterUI();
+    renderCompareTable();
+  });
+
+  const ss = document.getElementById('sortSelect');
+  if (ss) ss.addEventListener('change', () => {
+    const val = ss.value;
+    if (!val) compareState.sort = { key: null, dir: 'asc' };
+    else { const [k, d] = val.split('-'); compareState.sort = { key: k, dir: d }; }
+    renderCompareTable();
+  });
+
+  const si = document.getElementById('searchInput');
+  if (si) si.addEventListener('input', () => {
+    compareState.filters.search = si.value.trim().toLowerCase();
+    renderCompareTable();
+  });
+
+  const toggle = document.getElementById('toggleColumnsBtn');
+  if (toggle) toggle.addEventListener('click', () => {
+    compareState.columnsExpanded = !compareState.columnsExpanded;
+    document.querySelectorAll('td.col-extra').forEach(c => c.classList.toggle('col-hidden', !compareState.columnsExpanded));
+    toggle.textContent = compareState.columnsExpanded ? '收起额外列' : '展开全部列';
+    toggle.classList.toggle('active', compareState.columnsExpanded);
+  });
+}
+
+function syncCompareFilterUI() {
+  document.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip => {
+    const type = chip.dataset.filterType;
+    const value = chip.dataset.filterValue;
+    const active = compareState.filters[type] && compareState.filters[type].has(value);
+    chip.classList.toggle('active', !!active);
+  });
+}
+
+function filterPlans() {
+  const f = compareState.filters;
+  let result = plans.filter(p => {
+    if (p.status === 'deprecated') return false;
+    if (f.types.size && !f.types.has(p.type)) return false;
+    if (f.tags.size && !(p.tags || []).some(t => f.tags.has(t))) return false;
+    if (f.models.size && !(p.models || []).some(m => f.models.has(m))) return false;
+    if (f.monthlyPriceMax && typeof p.monthlyPrice === 'number' && p.monthlyPrice > f.monthlyPriceMax) return false;
+    if (f.search) {
+      const hay = (p.vendor + ' ' + p.plan + ' ' + (p.models || []).join(' ') + ' ' + (p.tags || []).join(' ')).toLowerCase();
+      if (!hay.includes(f.search)) return false;
+    }
+    return true;
+  });
+  const { key, dir } = compareState.sort;
+  if (key) {
+    result.sort((a, b) => {
+      if (key === 'tokensPerYuan') {
+        const aVal = (typeof a.monthlyPrice === 'number' && typeof a.measuredMonthlyToken === 'number' && a.monthlyPrice > 0) ? a.measuredMonthlyToken / a.monthlyPrice : -1;
+        const bVal = (typeof b.monthlyPrice === 'number' && typeof b.measuredMonthlyToken === 'number' && b.monthlyPrice > 0) ? b.measuredMonthlyToken / b.monthlyPrice : -1;
+        return dir === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      const av = a[key], bv = b[key];
+      const aNum = typeof av === 'number' ? av : (av === '无限制' ? Infinity : -1);
+      const bNum = typeof bv === 'number' ? bv : (bv === '无限制' ? Infinity : -1);
+      return dir === 'asc' ? aNum - bNum : bNum - aNum;
+    });
+  }
+  return result;
+}
+
+function renderCompareTable() {
+  const filtered = filterPlans();
+  const countEl = document.getElementById('filterCount');
+  if (countEl) countEl.textContent = filtered.length;
+  const tbody = document.getElementById('plansTableBody');
+  const cardsView = document.getElementById('plansCardsView');
+
+  if (!filtered.length) {
+    const empty = '<div style="text-align:center;padding:48px;color:var(--text-muted);">没有匹配的套餐，试试重置筛选</div>';
+    if (tbody) tbody.innerHTML = '<tr><td colspan="99">' + empty + '</td></tr>';
+    if (cardsView) cardsView.innerHTML = empty;
+    return;
+  }
+
+  if (tbody) {
+    tbody.innerHTML = filtered.map(p => {
+      const price = formatPrice(p.monthlyPrice, p.currency || '¥');
+      const firstPrice = p.firstMonthPrice ? formatPrice(p.firstMonthPrice, p.currency || '¥') : '—';
+      const measured = p.measuredMonthlyToken ? p.measuredMonthlyToken + 'M' : '—';
+      const tpu = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
+        ? (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2) : '—';
+      const pricePerM = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.measuredMonthlyToken > 0)
+        ? '¥' + (p.monthlyPrice / p.measuredMonthlyToken).toFixed(2) : '—';
+      const models = (p.models || []).slice(0, 4).join(', ') + ((p.models || []).length > 4 ? '...' : '');
+      const statusBadge = p.status === 'paused' ? '<span class="badge badge-warning">暂停</span>' :
+                          p.status === 'sold_out' ? '<span class="badge">售罄</span>' : '';
+      return '<tr>' +
+        '<td class="col-vendor">' + escapeHtml(p.vendor) + (statusBadge ? ' ' + statusBadge : '') + '</td>' +
+        '<td>' + escapeHtml(p.plan) + '</td>' +
+        '<td><span class="badge">' + escapeHtml(p.type) + '</span></td>' +
+        '<td>' + renderStars(p.rating) + '</td>' +
+        '<td class="col-price">' + price + '</td>' +
+        '<td class="col-price col-extra col-hidden" style="color:var(--color-warning);">' + firstPrice + '</td>' +
+        '<td class="col-extra col-hidden">' + formatNumber(p.monthlyRequests) + '</td>' +
+        '<td class="col-price">' + measured + '</td>' +
+        '<td class="col-price" style="color:var(--accent);">' + tpu + '</td>' +
+        '<td class="col-extra col-hidden" style="font-size:12px;color:var(--text-tertiary);">' + pricePerM + '</td>' +
+        '<td><span style="font-size:12px;">' + escapeHtml(models) + '</span></td>' +
+        '<td>' + renderTagsInline(p.tags) + '</td>' +
+        '<td class="col-action"><a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">优惠购买</a></td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  if (cardsView) {
+    cardsView.innerHTML = filtered.map(p => {
+      const price = formatPrice(p.monthlyPrice, p.currency || '¥');
+      const measured = p.measuredMonthlyToken ? p.measuredMonthlyToken + 'M' : '—';
+      const tpu = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
+        ? (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2) : '—';
+      const models = (p.models || []).join(', ');
+      return '<div class="plan-card-item">' +
+        '<div class="plan-card-header"><div><div class="plan-card-vendor">' + escapeHtml(p.vendor) + '</div><div class="plan-card-plan">' + escapeHtml(p.plan) + ' · ' + escapeHtml(p.type) + '</div></div><div class="plan-card-price">' + price + '</div></div>' +
+        renderStars(p.rating) +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2) var(--space-4);font-size:12px;padding:var(--space-2) 0;border-top:1px solid var(--border-subtle);margin-top:var(--space-2);">' +
+          '<div><span style="color:var(--text-muted);font-size:10px;">月Token</span><br><b>' + measured + '</b></div>' +
+          '<div><span style="color:var(--text-muted);font-size:10px;">每元Token</span><br><b>' + tpu + ' M</b></div>' +
+          '<div><span style="color:var(--text-muted);font-size:10px;">模型</span><br>' + escapeHtml(models) + '</div>' +
+          '<div><span style="color:var(--text-muted);font-size:10px;">标签</span><br>' + renderTagsInline(p.tags) + '</div>' +
+        '</div>' +
+        '<div style="margin-top:var(--space-3);text-align:right;"><a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">优惠购买 →</a></div>' +
+      '</div>';
+    }).join('');
+  }
+}
+
+function renderChart() {
+  if (typeof echarts === 'undefined') return;
+  const dom = document.getElementById('priceVsTokenChart');
+  if (!dom || dom.offsetParent === null) return;
+  const existing = echarts.getInstanceByDom(dom);
+  if (existing) existing.dispose();
+
+  const items = plans.filter(p => p.status === 'active' && typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number');
+  if (!items.length) return;
+  const chart = echarts.init(dom);
+  window._chart = chart;
+
+  const vendorsInData = [...new Set(items.map(p => p.vendor))];
+  const allP = items.map(p => p.monthlyPrice), allT = items.map(p => p.measuredMonthlyToken);
+  const minP = Math.min(...allP), maxP = Math.max(...allP);
+  const minT = Math.min(...allT), maxT = Math.max(...allT);
+  const sP = [...allP].sort((a, b) => a - b), sT = [...allT].sort((a, b) => a - b);
+  const medP = sP[Math.floor(sP.length / 2)], medT = sT[Math.floor(sT.length / 2)];
+  const tpuVals = items.map(p => p.measuredMonthlyToken / p.monthlyPrice).sort((a, b) => a - b);
+  const medTPU = tpuVals[Math.floor(tpuVals.length / 2)];
+
+  const series = vendorsInData.map(v => {
+    const data = items.filter(p => p.vendor === v).sort((a, b) => a.monthlyPrice - b.monthlyPrice).map(p => ({
+      value: [p.monthlyPrice, p.measuredMonthlyToken],
+      plan: p.plan, vendor: p.vendor, type: p.type, price: p.monthlyPrice, token: p.measuredMonthlyToken,
+      tpu: (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2)
+    }));
+    return {
+      name: v, type: 'line', color: vendorColor(v), symbol: 'circle', symbolSize: 14, showSymbol: true,
+      lineStyle: { width: data.length > 1 ? 1.5 : 0, opacity: data.length > 1 ? 0.3 : 0 },
+      label: { show: true, position: 'right', distance: 6, color: '#94a3b8', fontSize: 10, fontWeight: 600, formatter: p => p.data.plan || '', labelLayout: { hideOverlap: true } },
+      itemStyle: { color: vendorColor(v), borderColor: 'rgba(255,255,255,0.95)', borderWidth: 1.5, shadowBlur: 12, shadowColor: 'rgba(0,0,0,0.12)' },
+      data, emphasis: { scale: 1.15 }
+    };
+  });
+
+  const helper = {
+    type: 'scatter', silent: true, animation: false, data: [], symbolSize: 0, tooltip: { show: false }, itemStyle: { opacity: 0 },
+    markArea: { silent: true, label: { show: false }, data: [
+      [{ itemStyle: { color: 'rgba(16,185,129,0.12)' }, xAxis: minP * 0.7, yAxis: minP * 0.7 * medTPU }, { xAxis: medP, yAxis: maxT * 1.2 }],
+      [{ itemStyle: { color: 'rgba(16,185,129,0.06)' }, xAxis: medP, yAxis: medP * medTPU }, { xAxis: maxP * 1.3, yAxis: maxT * 1.2 }],
+      [{ itemStyle: { color: 'rgba(148,163,184,0.04)' }, xAxis: minP * 0.7, yAxis: minT * 0.4 }, { xAxis: medP, yAxis: medP * medTPU }],
+      [{ itemStyle: { color: 'rgba(239,68,68,0.08)' }, xAxis: medP, yAxis: minT * 0.4 }, { xAxis: maxP * 1.3, yAxis: medP * medTPU }]
+    ]},
+    markLine: { silent: true, symbol: 'none', label: { show: false }, data: [
+      { xAxis: medP, lineStyle: { color: 'rgba(148,163,184,0.25)', type: 'dashed' } },
+      { yAxis: medT, lineStyle: { color: 'rgba(148,163,184,0.25)', type: 'dashed' } }
+    ]}
+  };
+
+  chart.setOption({
+    animationDuration: 400,
+    grid: { left: 90, right: 40, top: 60, bottom: 60 },
+    tooltip: { trigger: 'item', backgroundColor: 'rgba(15,23,42,0.96)', borderColor: 'rgba(148,163,184,0.2)', textStyle: { color: '#f1f5f9', fontSize: 13 },
+      formatter: p => { const d = p.data; return '<div style="min-width:180px"><div style="font-size:14px;font-weight:800;margin-bottom:4px;">' + d.vendor + ' ' + d.plan + '</div><div style="font-size:12px;line-height:1.7;color:#cbd5e1;"><div>类型: ' + d.type + '</div><div>月费: <b>' + d.price + '</b> | 月Token: <b>' + d.token + 'M</b></div><div>每元Token: <b>' + d.tpu + ' M</b></div></div></div>'; } },
+    legend: { top: 0, left: 0, itemWidth: 10, itemHeight: 10, icon: 'circle', textStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 600 } },
+    graphic: [
+      { type: 'text', left: 100, top: 40, silent: true, style: { text: '高性价比', fill: '#10b981', fontSize: 12, fontWeight: 700 } },
+      { type: 'text', right: 40, bottom: 24, silent: true, style: { text: '低性价比', fill: '#ef4444', fontSize: 11, fontWeight: 700 } }
+    ],
+    xAxis: { type: 'log', logBase: 2, min: minP * 0.75, max: maxP * 1.12, name: '月费', nameTextStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 700 }, axisLabel: { color: '#94a3b8', fontSize: 11, fontWeight: 700, formatter: v => '¥' + (Number.isInteger(v) ? v : v.toFixed(0)) }, splitLine: { show: true, lineStyle: { color: 'rgba(148,163,184,0.1)', type: 'dashed' } } },
+    yAxis: { type: 'log', logBase: 10, min: minT * 0.65, max: maxT * 1.18, name: '月Token上限', nameTextStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 700 }, axisLabel: { color: '#94a3b8', formatter: v => v >= 1000 ? (v / 1000).toFixed(1) + 'B' : v + 'M' }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.1)', type: 'dashed' } } },
+    series: [helper].concat(series)
+  });
+  window.addEventListener('resize', () => chart.resize());
+}
+
+// ============================================================
+// 推荐页底部：最近变动（紧凑单行时间线）
+// 定位：作为"最新推荐方案的依据"，不是独立资讯流
+// 只显示最近 30 天、跟套餐/价格/模型强相关的变动
+// ============================================================
+const KIND_LABEL = {
+  price_change: '价格', promotion: '活动', new_model: '新模型', new_plan: '新套餐',
+  subscription_pause: '暂停', outage: '故障', article: '文章'
+};
+
+function renderRecentChanges() {
+  // 过滤最近 30 天 + 按 date 倒序
+  const now = new Date();
+  const cutoff = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const recent = changes
+    .filter(c => new Date(c.date) >= cutoff)
+    .sort((a, b) => b.date.localeCompare(a.date));
+  if (!recent.length) return '';
+
+  const items = recent.map(c => {
+    const impactBadge = c.impact === 'positive' ? '<span class="badge badge-positive">利好</span>'
+      : c.impact === 'negative' ? '<span class="badge badge-negative">利空</span>'
+      : '<span class="badge">中性</span>';
+    const kindLabel = '<span class="tag">' + (KIND_LABEL[c.kind] || c.kind) + '</span>';
+    const vendorPrefix = c.vendor && c.vendor !== '通用' ? '<span class="rc-vendor">' + escapeHtml(c.vendor) + '</span> · ' : '';
+    const isArticle = c.kind === 'article';
+    const titleHtml = isArticle && c.sourceUrl
+      ? '<a href="' + escapeHtml(c.sourceUrl) + '" target="_blank" rel="noopener">' + escapeHtml(c.title) + '</a>'
+      : escapeHtml(c.title);
+    // detail 放 data 属性，悬停时由 CSS tooltip 显示； featured 的高亮左边框
+    const detailAttr = c.detail && c.detail !== c.title ? ' data-detail="' + escapeHtml(c.detail).replace(/"/g, '&quot;') + '"' : '';
+    return '<div class="rc-item' + (c.featured ? ' rc-featured' : '') + '"' + detailAttr + '>' +
+      '<span class="rc-date">' + escapeHtml(c.date.slice(5)) + '</span>' +
+      impactBadge +
+      '<span class="rc-title">' + vendorPrefix + titleHtml + '</span>' +
+      kindLabel +
+    '</div>';
+  }).join('');
+
+  return '<section class="section-sm">' +
+    '<div class="container">' +
+      '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+        '<span class="section-eyebrow">RECENT CHANGES</span>' +
+        '<h2 class="section-title">最近变动 · 为什么这样推荐</h2>' +
+        '<p class="section-subtitle">最近 30 天影响套餐选择的关键变动。悬停查看详情。</p>' +
+      '</div>' +
+      '<div class="rc-list">' + items + '</div>' +
+    '</div>' +
+  '</section>';
+}
+
+// ============================================================
+// Tab 4: 社群
+// ============================================================
+function renderCommunity() {
+  const body = document.getElementById('community-body');
+  const c = site.community;
+  if (!c) { body.innerHTML = ''; return; }
+  body.innerHTML = '<section class="section-sm"><div class="container">' +
+    '<div class="section-header text-center">' +
+      '<span class="section-eyebrow">COMMUNITY</span>' +
+      '<h2 class="section-title">不止看数据，来群里聊</h2>' +
+      '<p class="section-subtitle" style="margin:0 auto;">价格变动、抢购提醒、实测反馈，第一时间发在社群里。</p>' +
+    '</div>' +
+    '<div class="community-grid">' +
+      renderCommunityCard(c.free, 'free', 'FREE', 'badge-accent', 'join.html') +
+      renderCommunityCard(c.paid, 'paid', 'PRO', 'badge-premium', c.paid && c.paid.url ? c.paid.url : '#') +
+    '</div>' +
+  '</div></section>';
+}
+
+function renderCommunityCard(card, type, badgeText, badgeClass, actionUrl) {
+  if (!card) return '';
+  const highlights = (card.highlights || []).map(h => '<li>' + escapeHtml(h) + '</li>').join('');
+  return '<div class="community-card community-card-' + type + '">' +
+    '<div class="community-card-header"><h3 class="community-card-title">' + escapeHtml(card.title) + '</h3><span class="badge ' + badgeClass + '">' + badgeText + '</span></div>' +
+    '<div class="community-card-subtitle">' + escapeHtml(card.subtitle) + '</div>' +
+    '<p class="community-card-desc">' + escapeHtml(card.description) + '</p>' +
+    '<ul class="community-highlights">' + highlights + '</ul>' +
+    '<a href="' + escapeHtml(actionUrl) + '" class="btn ' + (type === 'paid' ? 'btn-primary' : 'btn-secondary') + ' btn-lg">' + escapeHtml(card.ctaText) + '</a>' +
+  '</div>';
+}
+
+// ============================================================
+// Footer
+// ============================================================
+function renderFooter() {
+  const fb = document.getElementById('footer-body');
+  if (!fb) return;
+  const links = (site.footer && site.footer.links || []).map(l => '<a href="' + escapeHtml(l.url) + '">' + escapeHtml(l.label) + '</a>').join('');
+  fb.innerHTML =
+    '<div class="footer-disclosure">' + escapeHtml(site.disclosure || '') + '</div>' +
+    '<div class="footer-inner">' +
+      '<div class="footer-brand">' + escapeHtml((site.footer && site.footer.about) || '') + '</div>' +
+      '<div class="footer-links">' + links + '</div>' +
+    '</div>';
+}
+
+// ============================================================
+// Init
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('navBrand').textContent = site.name || 'CodingPlan 省钱攻略';
+  renderRecommend();
+  renderCompare();
+  renderCommunity();
+  renderFooter();
+  switchTab(location.hash || '#recommend');
+});
+</script>
+</body>
+</html>
