@@ -11,8 +11,8 @@
       "home": "https://open.bigmodel.cn"
     },
     "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "定价页 SPA，待 M3 探测静态文档/API 源"
+    "lastVerified": "2026-07-21",
+    "notes": "SPA 控制台，定价需 JS 渲染"
   },
   {
     "id": "zhipu-intl",
@@ -41,8 +41,8 @@
       "home": "https://www.volcengine.com/ark"
     },
     "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "控制台 SPA，docs 页可能静态（待 M3 验证）"
+    "lastVerified": "2026-07-21",
+    "notes": "SPA 控制台，文档页 JS 渲染"
   },
   {
     "id": "deepseek",
@@ -71,8 +71,8 @@
       "home": "https://www.kimi.com"
     },
     "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "C端 SPA + API docs 待验证"
+    "lastVerified": "2026-07-21",
+    "notes": "Next.js SPA，定价需 JS 渲染"
   },
   {
     "id": "minimax",
@@ -86,8 +86,8 @@
       "home": "https://platform.minimaxi.com"
     },
     "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "Token Plan 定价页，docs 站可能可行"
+    "lastVerified": "2026-07-21",
+    "notes": "Next.js docs，定价需 JS 渲染"
   },
   {
     "id": "bailian",

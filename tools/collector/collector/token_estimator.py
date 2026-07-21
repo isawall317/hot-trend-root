@@ -22,7 +22,7 @@ import json
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-PLANS_PATH = PROJECT_ROOT / "project" / "codingplan-saver" / "plans.json"
+PLANS_PATH = PROJECT_ROOT / "project" / "codingplan-saver" / "data" / "plans.json"
 
 # 基准参数
 AVG_TOKENS_PER_REQUEST_M = 0.05  # 每次请求平均 50K tokens (0.05M)

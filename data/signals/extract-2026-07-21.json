@@ -1,0 +1,34 @@
+[
+  {
+    "vendorId": "deepseek",
+    "vendor": "DeepSeek 官方",
+    "plans": [
+      {
+        "models": [
+          "deepseek-v4-pro",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V4-Pro"
+        ],
+        "pricing": {
+          "output_per_1m": [
+            0.28,
+            0.87
+          ],
+          "input_per_1m": [
+            0.14,
+            0.435
+          ]
+        },
+        "note": "API 按量计费，非 Coding Plan"
+      }
+    ],
+    "extractedFields": [
+      "models",
+      "pricing"
+    ],
+    "missingFields": [],
+    "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "fetchedAt": "2026-07-21T10:03:54Z",
+    "error": null
+  }
+]
