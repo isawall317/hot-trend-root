@@ -27,7 +27,6 @@
 | 千问AI | 待添加 | 待确认 | 待确认 | — | 阿里通义千问 Token Plan 平台 |
 | 腾讯云 TokenHub | 待添加 | 待确认 | 待确认 | — | |
 | 百度·千帆 | 待添加 | 待确认 | 待确认 | — | |
-| 讯飞·星火 | 待添加 | 待确认 | 待确认 | — | |
 | 华为云 CodeArts | 待添加 | 待确认 | 待确认 | — | |
 | 小米·MiMo | https://platform.xiaomimimo.com?ref=NB2PJ5 | 邀请返利 | 双方各得 ¥10 体验金 + 首单 9 折 | `assets/posters/mimo.png` | 注册自动填入，体验金 40 天有效 |
 | 硅基流动 | https://cloud.siliconflow.cn/i/dScpIlvS | 邀请返利 | 双方各得额度 | `assets/posters/siliconflow.png` | 邀请链接注册，双方各得 API 额度 |

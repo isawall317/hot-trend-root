@@ -2,7 +2,7 @@
 
 > 最后更新: 2026-07-21
 >
-> 覆盖 24 个主流 AI Coding Plan / Token Plan 供应商的定价信息来源
+> 覆盖 23 个主流 AI Coding Plan / Token Plan 供应商的定价信息来源
 
 ---
 
@@ -11,11 +11,12 @@
 | 厂商 | extractStrategy | 状态 |
 |------|----------------|------|
 | DeepSeek | docs | ✅ httpx + BS4 可提取 API 定价 |
+| 腾讯云 | docs | ✅ 提取 Coding Plan Lite ¥40 / Pro ¥200 |
+| MiniMax | docs | ✅ 提取 Token Plan Plus ¥49 / Max ¥119 / Ultra ¥469 |
 | 智谱AI | manual | ❌ SPA，需 JS 渲染 |
 | 字节·方舟 | manual | ❌ SPA，需 JS 渲染 |
 | Kimi | manual | ❌ Next.js SPA |
-| MiniMax | manual | ❌ Next.js docs SPA |
-| 其余 16 家 | manual | 待探测（未注册 parser） |
+| 其余 14 家 | manual | 待探测（未注册 parser） |
 
 ---
 
@@ -42,7 +43,6 @@
 | 平台 | 入口 URL | 类型 | 备注 |
 |------|---------|------|------|
 | 字节·方舟 | https://www.volcengine.com/ark | Token Plan | 方舟平台首页，Token Plan 定价在控制台内；当前 2.5 折活动 |
-| 讯飞·星火 | https://xinghuo.xfyun.cn/ | Coding Plan | 星火首页，套餐定价需登录后查看 |
 | 京东云 | https://www.jdcloud.com/ | Coding Plan | 京东云首页，搜索"AI Coding"找到对应产品 |
 | 小米·MiMo | https://platform.xiaomimimo.com | Coding Plan | MiMo 开放平台，需小米账号登录 |
 

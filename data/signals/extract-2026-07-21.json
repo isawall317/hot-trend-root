@@ -28,7 +28,71 @@
     ],
     "missingFields": [],
     "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "fetchedAt": "2026-07-21T10:03:54Z",
+    "fetchedAt": "2026-07-21T10:22:07Z",
+    "error": null
+  },
+  {
+    "vendorId": "minimax",
+    "vendor": "MiniMax",
+    "plans": [
+      {
+        "monthlyPrice": 49.0,
+        "currency": "¥",
+        "description": "轻量个人开发与日常试用",
+        "plan": "获得积分",
+        "type": "Token Plan"
+      },
+      {
+        "monthlyPrice": 119.0,
+        "currency": "¥",
+        "description": "高频编程 Agent 与多模态调用",
+        "plan": "Max",
+        "type": "Token Plan"
+      },
+      {
+        "monthlyPrice": 469.0,
+        "currency": "¥",
+        "description": "重度 Agent 工作流与更长时间使用",
+        "plan": "Ultra",
+        "type": "Token Plan"
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice"
+    ],
+    "missingFields": [
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
+    "fetchedAt": "2026-07-21T10:22:08Z",
+    "error": null
+  },
+  {
+    "vendorId": "tencent",
+    "vendor": "腾讯云",
+    "plans": [
+      {
+        "plan": "Lite",
+        "type": "Coding Plan",
+        "monthlyPrice": 40.0,
+        "monthlyRequests": 18000
+      },
+      {
+        "plan": "Pro",
+        "type": "Coding Plan",
+        "monthlyPrice": 200.0,
+        "monthlyRequests": 90000
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice",
+      "monthlyRequests"
+    ],
+    "missingFields": [
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
+    "fetchedAt": "2026-07-21T10:22:07Z",
     "error": null
   }
 ]

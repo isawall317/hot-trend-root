@@ -15,21 +15,6 @@
     "notes": "SPA 控制台，定价需 JS 渲染"
   },
   {
-    "id": "zhipu-intl",
-    "name": "智谱国际版",
-    "logo": "智",
-    "color": "#10b981",
-    "urls": {
-      "pricing": "https://open.bigmodel.cn/",
-      "docs": "",
-      "api": "",
-      "home": "https://open.bigmodel.cn"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "与国内版定价不同"
-  },
-  {
     "id": "bytedance",
     "name": "字节·方舟",
     "logo": "字",
@@ -81,11 +66,11 @@
     "color": "#f97316",
     "urls": {
       "pricing": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-      "docs": "https://platform.minimaxi.com/docs/pricing/overview",
+      "docs": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
       "api": "",
       "home": "https://platform.minimaxi.com"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
     "notes": "Next.js docs，定价需 JS 渲染"
   },
@@ -115,8 +100,8 @@
       "api": "",
       "home": "https://cloud.tencent.com/product/tokenhub"
     },
-    "extractStrategy": "manual",
-    "lastVerified": null,
+    "extractStrategy": "docs",
+    "lastVerified": "2026-07-21",
     "notes": "TokenHub 按量+订阅，待验证"
   },
   {
@@ -180,21 +165,6 @@
     "notes": "需百度云登录控制台"
   },
   {
-    "id": "xunfei",
-    "name": "讯飞·星火",
-    "logo": "讯",
-    "color": "#ec4899",
-    "urls": {
-      "pricing": "https://xinghuo.xfyun.cn/",
-      "docs": "",
-      "api": "",
-      "home": "https://xinghuo.xfyun.cn"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "需登录查看 Coding Plan"
-  },
-  {
     "id": "huawei",
     "name": "华为云",
     "logo": "华",
@@ -240,21 +210,6 @@
     "notes": "需小米账号登录"
   },
   {
-    "id": "youyun",
-    "name": "优云智算",
-    "logo": "优",
-    "color": "#3b82f6",
-    "urls": {
-      "pricing": "https://www.youyun.com/",
-      "docs": "",
-      "api": "",
-      "home": "https://www.youyun.com"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "需登录查看套餐"
-  },
-  {
     "id": "opencode",
     "name": "OpenCode",
     "logo": "OC",
@@ -270,21 +225,6 @@
     "notes": "海外平台，多模型聚合"
   },
   {
-    "id": "gongji",
-    "name": "共继算力",
-    "logo": "共",
-    "color": "#a855f7",
-    "urls": {
-      "pricing": "https://gongji.ai/",
-      "docs": "",
-      "api": "",
-      "home": "https://gongji.ai"
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "需邀请链接，DeepSeek 8折中转"
-  },
-  {
     "id": "ollama",
     "name": "Ollama",
     "logo": "Ol",
@@ -298,20 +238,5 @@
     "extractStrategy": "manual",
     "lastVerified": null,
     "notes": "海外平台，需登录"
-  },
-  {
-    "id": "taotoken",
-    "name": "TaoToken",
-    "logo": "TT",
-    "color": "#14b8a6",
-    "urls": {
-      "pricing": "",
-      "docs": "",
-      "api": "",
-      "home": ""
-    },
-    "extractStrategy": "manual",
-    "lastVerified": null,
-    "notes": "出现在 plans.json 但无 URL 配置，待用户补充"
   }
 ]
