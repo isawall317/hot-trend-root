@@ -9,7 +9,7 @@
 ## 架构
 
 ```
-Docker 采集层              Claude Code 分析层              执行层
+采集层                    Claude Code 分析层              执行层
 DailyHotApi (40+平台)  →   /scan 热点扫描     →   机会卡
 RSSHub (500+源)        →   /analyze 利基分析  →   /validate 验证
      ↓                      ↓                      ↓
@@ -17,6 +17,8 @@ Python collector 归一化     Claude Code 直接读取     Claude Code 开发�
      ↓
 data/raw/YYYY-MM-DD/*.json
 ```
+
+> 采集源 DailyHotApi 和 RSSHub 已手动部署在本地（或使用 Vercel 公共 API 降级），无需 Docker。
 
 ## 技能
 
@@ -27,7 +29,7 @@ data/raw/YYYY-MM-DD/*.json
 ```bash
 # 更新数据 + 生成页面
 cd tools/collector && source .venv/bin/activate && python -m collector.pipeline
-cd tools/builder && python3 build_html.py
+cd tools/builder && python3 build.py
 # 输出: dist/codingplan-saver.html
 ```
 
@@ -38,33 +40,37 @@ cd tools/builder && python3 build_html.py
 ```
 hot-trend-root/
 ├── CLAUDE.md                  # 本文件
-├── docker-compose.yml         # 数据采集服务
 ├── .claude/
 │   ├── skills/                # Claude Code skills
-│   │   ├── scan.md            # 热点扫描 + 初筛
-│   │   ├── analyze.md         # 利基深度分析 + 6维评分
-│   │   └── validate.md        # 快速验证 + Go/No-Go
+│   │   ├── scan/SKILL.md      # 热点扫描 + 初筛
+│   │   ├── analyze/SKILL.md   # 利基深度分析 + 6维评分
+│   │   ├── validate/SKILL.md  # 快速验证 + Go/No-Go
+│   │   └── build-site.md      # CodingPlan 省钱攻略生成
 │   └── workflows/
 ├── tools/
-│   └── collector/             # Python 数据采集聚合器
-│       ├── collector/
-│       │   ├── engine.py      # 采集引擎
-│       │   └── storage.py     # 存储/读取
-│       └── pyproject.toml
+│   ├── collector/             # Python 数据采集聚合器
+│   │   ├── collector/
+│   │   │   ├── engine.py      # 采集引擎
+│   │   │   ├── storage.py     # 存储/读取
+│   │   │   └── pipeline.py    # 数据管道
+│   │   └── pyproject.toml
+│   └── builder/               # HTML 构建器
+│       └── build.py
 ├── data/
 │   ├── raw/                   # 原始采集数据（.gitignore）
 │   ├── cards/                 # 机会卡（git 跟踪）
+│   ├── signals/               # 价格/文章信号
 │   └── archive/               # 历史归档
 ├── reference/                 # 用户画像/参考资料
 └── project/                   # 已孵化项目
+    └── codingplan-saver/      # CodingPlan 省钱攻略
 ```
 
 ## 日常使用流程
 
-### 1. 启动采集服务（一次性）
-```bash
-docker compose up -d
-```
+### 1. 采集服务（已部署，无需操作）
+
+DailyHotApi 和 RSSHub 已手动部署在本地。采集引擎会自动检测本地服务，不可达时降级到 Vercel 公共 API。
 
 ### 2. 采集数据（每天 2-3 次，或 CronCreate 定时）
 ```bash

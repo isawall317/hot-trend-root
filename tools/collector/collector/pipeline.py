@@ -5,7 +5,7 @@
 
 流程:
   1. engine.py          → 采集热点数据到 data/raw/
-  2. article_discovery.py → 从热点中提取文章, 更新 articles.json
+  2. article_discovery.py → 从热点中提取文章, 更新 changes.json
   3. price_monitor.py   → 检测价格变动信号, 生成报告
   4. token_estimator.py → 推算 Token 用量, 更新 plans.json
   5. 输出汇总报告

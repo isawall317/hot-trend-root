@@ -1,6 +1,6 @@
 # Hot Trend 数据地图
 
-> 最后更新: 2026-07-20
+> 最后更新: 2026-07-21
 > 维护者: 饭庐者说
 
 ---
@@ -9,12 +9,15 @@
 
 | 文件 | 格式 | 来源 | 更新方式 | 更新频率 | 消费方 |
 |------|------|------|----------|----------|--------|
-| `config.json` | JSON | 手动编辑 | 手动 | 按需 | 所有页面导航/标题 |
-| `plans.json` | JSON array | 手动 + token_estimator | 手动 + 自动推算 | 每周 | compare.html, index.html, wizard.html |
-| `articles.json` | JSON array | article_discovery | 自动提取 | 每次采集后 | blog.html, index.html |
-| `price-changes.json` | JSON | 手动编辑 | 手动 | 每周 | index.html |
+| `site.json` | JSON | 手动编辑 | 手动 | 按需 | codingplan-saver.html (Nav/Footer/推荐) |
+| `vendors.json` | JSON array | 手动 + sources/ 提取 | 半自动 | 按需 | codingplan-saver.html (散点图配色/详情链接) |
+| `plans.json` | JSON array | 手动 + token_estimator | 手动 + 自动推算 | 每周 | codingplan-saver.html (Top3/对比表/散点图) |
+| `changes.json` | JSON array | article_discovery + 手动 | 自动提取 + 手动 | 每次采集后 | codingplan-saver.html (动态 Tab 时间线) |
 | `data/raw/YYYY-MM-DD/*.json` | JSON | engine.py | 自动采集 | 每日 | article_discovery, price_monitor |
+| `data/signals/*.json` | JSON | price_monitor.py + sources/runner.py | 自动扫描 | 每日 | Claude Code 审阅 |
 | `data/price-reports/*.md` | Markdown | price_monitor.py | 自动生成 | 每日 | Claude Code 审阅 |
+
+> V2 架构变更：`articles.json` + `price-changes.json` 已合并为 `changes.json`（统一 kind 字段区分类型），`config.json` 已重命名为 `site.json`。旧文件归档在 `project/codingplan-saver/archive/`。
 
 ## plans.json 字段说明
 
@@ -31,23 +34,25 @@
 | `status` | string | 手动（新闻/社区） | 高 |
 | `action` | string | 手动 | 低（30/31 缺失） |
 
+详细 Schema 定义见 `project/codingplan-saver/data/SCHEMA.md`。
+
 ## 更新流程
 
-### 日常更新（每日）
+### 自动管道（每日）
 ```
 python -m collector.pipeline
   ├── engine.py → data/raw/
-  ├── article_discovery.py → articles.json
-  ├── price_monitor.py → data/price-reports/
+  ├── article_discovery.py → changes.json (kind: "article")
+  ├── price_monitor.py → data/signals/ + data/price-reports/
   └── token_estimator.py → plans.json
 ```
 
-### 手动更新（每周）
-1. 检查 `data/price-reports/` 最新报告
+### 手动更新（按需）
+1. 检查 `data/signals/` 最新信号
 2. 逐一核实"待确认"平台的定价页 URL
 3. 更新 `plans.json` 中变动项
-4. 更新 `price-changes.json` 记录变动
-5. 更新 `config.json` 的 updateDate 和 stats
+4. 更新 `changes.json` 记录价格/模型变动
+5. 更新 `site.json` 的 updateDate 和 stats
 
 ### 定价页 URL 参考
 见 `reference/pricing-urls.md`
@@ -56,8 +61,8 @@ python -m collector.pipeline
 
 | 问题 | 严重程度 | 计划 |
 |------|----------|------|
-| plans.json 30/31 缺 action 链接 | 中 | 补充各平台详情页 URL |
-| plans.json 1 个缺价格 | 低 | 手动补充 |
-| articles.json 分类偏斜 | 低 | 已改进分类算法 |
-| price-changes.json 仅手动更新 | 中 | 后续自动从 price_monitor 信号生成 |
+| plans.json 部分缺 action 链接 | 中 | 补充各平台详情页 URL |
+| plans.json 部分缺价格 | 低 | 手动补充 |
+| 价格变动检测仅关键词匹配 | 中 | 后续从 sources/ parser 自动提取 |
 | 数据验证缺失 | 中 | 后续添加 data_validator.py |
+| 机会卡未自动生成 | 高 | 后续在 /scan 流程中产出 |
