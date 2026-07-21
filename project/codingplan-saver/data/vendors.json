@@ -42,7 +42,7 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-21",
-    "notes": "SPA 控制台，待 Playwright"
+    "notes": "SPA 控制台，定价页结构复杂（多模型多计费模式），暂不自动提取"
   },
   {
     "id": "deepseek",
@@ -70,9 +70,9 @@
       "api": "",
       "home": "https://www.kimi.com"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "Next.js SPA，待 Playwright"
+    "notes": "Playwright 渲染 docs 页 → 点击展开模型卡片 → 提取 API 价格"
   },
   {
     "id": "minimax",
