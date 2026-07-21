@@ -24,16 +24,20 @@ data/raw/YYYY-MM-DD/*.json
 
 ### /build-site — 生成 CodingPlan 省钱攻略 HTML
 
-一键运行数据管道 + 生成最终交付物。
+数据管道 + Claude Code 审阅 + 生成最终交付物。
 
 ```bash
-# 更新数据 + 生成页面
+# 1. 数据管道: 召回候选 + 产出待审阅报告
 cd tools/collector && source .venv/bin/activate && python -m collector.pipeline
+# 输出: data/pending/{date}/report.md（待审阅候选）
+
+# 2. Claude Code 审阅: /build-site update（去噪 + 写入 changes.json）
+# 3. 生成 HTML: /build-site build
 cd tools/builder && python3 build.py
 # 输出: dist/codingplan-saver.html
 ```
 
-详见 `.claude/skills/build-site/SKILL.md`
+> Python pipeline 只做机械召回，不做编辑决策。文章收录、价格变动记录由 Claude Code 审阅后写入。
 
 ## 目录结构
 

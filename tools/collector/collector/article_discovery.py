@@ -1,7 +1,8 @@
 """
-文章发现器 — 从采集数据中提取 AI Coding Plan 相关文章，更新 changes.json
+文章发现器 — 从采集数据中提取 AI Coding Plan 相关文章，产出候选列表
 
-每次采集后运行，自动发现和保存新文章到 changes.json（kind: "article"）。
+每次采集后运行，生成 data/pending/{date}/articles.json（候选文章，待 Claude Code 审阅）。
+不再直接写入 changes.json——编辑决策由 Claude Code 完成。
 """
 
 import hashlib
@@ -10,10 +11,10 @@ from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-CHANGES_PATH = PROJECT_ROOT / "project" / "codingplan-saver" / "data" / "changes.json"
+PENDING_DIR = PROJECT_ROOT / "data" / "pending"
 DATA_DIR = PROJECT_ROOT / "data" / "raw"
 
-# 相关关键词
+# 相关关键词（召回用，宁可多召回，由 Claude Code 去噪）
 KEYWORDS = [
     "Coding Plan", "Token Plan", "Claude Code", "Cursor", "AI编程",
     "Vibe Coding", "套餐", "定价", "额度", "订阅", "抢购",
@@ -72,7 +73,7 @@ def _pick_cover(title: str) -> str:
 
 
 def _determine_level(title: str) -> str:
-    """根据标题判断文章重要性"""
+    """根据标题判断文章重要性（机器预判，Claude Code 可覆盖）"""
     high_signals = ["暂停", "售罄", "K3", "Kimi-K3", "DeepSeek V4", "发布"]
     if any(s in title for s in high_signals):
         return "high"
@@ -80,7 +81,7 @@ def _determine_level(title: str) -> str:
 
 
 def discover_articles() -> list[dict]:
-    """从最新采集数据中发现相关文章，返回 changes.json 格式的条目"""
+    """从最新采集数据中发现相关文章，返回 changes.json 格式的候选条目"""
     if not DATA_DIR.exists():
         return []
 
@@ -135,44 +136,47 @@ def discover_articles() -> list[dict]:
             "author": _extract_source(item.get("source", "")),
             "readTime": _estimate_read_time(title),
             "cover": _pick_cover(title),
+            # 候选标记 — Claude Code 审阅后移除
+            "_candidate": True,
+            "_reason": f"关键词匹配: {', '.join(kw for kw in KEYWORDS if kw in title)[:100]}",
         })
 
     return articles
 
 
-def update_changes_json():
-    """更新 changes.json，合并新发现的文章"""
-    # 加载现有 changes
-    existing = []
-    if CHANGES_PATH.exists():
-        with open(CHANGES_PATH, "r", encoding="utf-8") as f:
-            existing = json.load(f)
+def save_candidates(articles: list[dict], date_str: str = None) -> Path:
+    """保存候选文章到 data/pending/{date}/articles.json"""
+    if date_str is None:
+        date_str = datetime.now().strftime("%Y-%m-%d")
 
-    existing_urls = {c.get("sourceUrl", "") for c in existing if c.get("sourceUrl")}
-    existing_ids = {c.get("id", "") for c in existing}
+    out_dir = PENDING_DIR / date_str
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "articles.json"
 
-    # 发现新文章
-    new_articles = discover_articles()
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "generated_at": datetime.now().isoformat(),
+            "count": len(articles),
+            "candidates": articles,
+        }, f, ensure_ascii=False, indent=2)
 
-    # 合并：新文章在前，去重
-    added = 0
-    for article in new_articles:
-        if article["sourceUrl"] not in existing_urls and article["id"] not in existing_ids:
-            existing.insert(0, article)
-            existing_urls.add(article["sourceUrl"])
-            existing_ids.add(article["id"])
-            added += 1
-
-    # 保存
-    with open(CHANGES_PATH, "w", encoding="utf-8") as f:
-        json.dump(existing, f, ensure_ascii=False, indent=2)
-
-    print(f"📰 文章发现: 新增 {added} 篇, changes 总计 {len(existing)} 条")
-    return CHANGES_PATH
+    return out_path
 
 
 def main():
-    update_changes_json()
+    articles = discover_articles()
+
+    if not articles:
+        print("📰 文章发现: 无候选文章")
+        return
+
+    out_path = save_candidates(articles)
+    # 统计
+    high = sum(1 for a in articles if a.get("level") == "high")
+    medium = sum(1 for a in articles if a.get("level") == "medium")
+    print(f"📰 文章发现: {len(articles)} 篇候选 (high={high}, medium={medium})")
+    print(f"   输出: {out_path}")
+    print(f"   ⚠️  候选文章尚未收录 — 请用 /build-site update 审阅后写入 changes.json")
 
 
 if __name__ == "__main__":

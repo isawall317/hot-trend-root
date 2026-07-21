@@ -108,34 +108,32 @@ hot-trend-root/
 
 ## update 模式工作流
 
+### 前置条件
+
+`python -m collector.pipeline` 已运行，产出了 `data/pending/{date}/` 下的候选文件。
+
 ### 触发
 
 `/build-site update [自然语言]`
 
 ### 步骤
 
-**Step 1: 并行采集信号（dispatch 3 个 sub-agent）**
+**Step 1: 读取待审阅候选**
 
-用 Agent 工具同时发起 3 个并行任务：
+读取 `data/pending/{date}/report.md`（如果 pipeline 刚跑完）或直接读以下文件：
+- `data/pending/{date}/articles.json` — 候选文章（关键词召回）
+- `data/signals/{date}.json` — 价格信号（price_monitor）
+- `data/signals/extract-{date}.json` — 提取信号（sources/runner）
 
-```
-Agent-Scan:  python -m collector.price_monitor
-             → 读 data/signals/{date}.json
+**Step 2: 去噪 + 分类**
 
-Agent-RSS:   httpx 拉 RSSHub feeds (http://localhost:1200):
-             /deepseek/news /qwen/blog /qbitai/category/AI /aibase/news
-             → 提取标题含关键词的条目
+主 agent 审阅候选文章，去噪规则：
+- 泛泛而谈的产品介绍 → 跳过
+- 纯技术教程（无 AI Coding Plan 关联）→ 跳过
+- 与 AI Coding Plan 定价/模型/订阅变动直接相关 → 收录
+- 行业趋势分析有深度 → 收录
 
-Agent-Httpx: python -m collector.sources.runner
-             → 读 data/signals/extract-{date}.json
-```
-
-**Step 2: 合并信号**
-
-主 agent 把三路结果合并：
-- 自动信号（Step 1） ∪ 解析用户的自然语言输入
-- 去重（同一 vendor + 同一 kind 视为同一条）
-- 分类：哪些需要改 `plans.json`，哪些只需加 `changes.json`
+同时解析用户的自然语言输入（如有），合并到变更中。
 
 **Step 3: 按 schema 草拟变更**
 
