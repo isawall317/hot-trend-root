@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程工具对比 · 饭庐者说</title>
+  <meta name="description" content="Claude Code、Cursor、GitHub Copilot、Trae、Windsurf 等 11 款 AI 编程工具全方位对比：价格、模型、功能、评分。">
+  <link rel="stylesheet" href="styles/shared.css">
+  <style>
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: var(--space-5);
+    }
+    .agent-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      backdrop-filter: blur(12px);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .agent-card:hover::before { opacity: 1; }
+    .agent-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-3);
+    }
+    .agent-card-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .agent-card-provider {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+    .agent-card-type {
+      display: inline-block;
+      padding: 2px var(--space-2);
+      background: var(--accent-primary-soft);
+      color: var(--accent-primary);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .agent-card-price {
+      margin-top: var(--space-4);
+      padding: var(--space-3);
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+    .agent-card-price-detail {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .agent-card-section {
+      margin-top: var(--space-4);
+    }
+    .agent-card-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .agent-card-models {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+    }
+    .agent-model-chip {
+      padding: 2px var(--space-2);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+    .agent-card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+    }
+    .agent-feature-chip {
+      padding: 2px var(--space-2);
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      color: var(--accent-secondary);
+    }
+    .agent-card-footer {
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .agent-card-highlights {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: var(--space-2);
+    }
+    .agent-card-caveats {
+      font-size: 12px;
+      color: var(--color-warning);
+      line-height: 1.4;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    .filter-tab {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--bg-card);
+      border: 1px solid var(--border-default);
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+    }
+    .filter-tab:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .filter-tab.active {
+      background: var(--accent-primary-soft);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    /* Comparison table */
+    .agents-table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: auto;
+      max-height: 800px;
+      backdrop-filter: blur(12px);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-strong) transparent;
+    }
+    .agents-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      min-width: 1200px;
+    }
+    .agents-table thead {
+      position: sticky;
+      top: 0;
+      background: var(--bg-elevated);
+      z-index: 2;
+    }
+    .agents-table th {
+      padding: var(--space-3) var(--space-3);
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-default);
+      white-space: nowrap;
+    }
+    .agents-table th:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--bg-elevated);
+      z-index: 3;
+      min-width: 130px;
+    }
+    .agents-table td {
+      padding: var(--space-3) var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .agents-table td:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--bg-card);
+      font-weight: 600;
+      color: var(--text-primary);
+      z-index: 1;
+    }
+    .agents-table tbody tr:hover td {
+      background: var(--bg-card-hover);
+    }
+    .agents-table tbody tr:hover td:first-child {
+      background: var(--bg-card-hover);
+    }
+    .col-price { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
+    .col-check { text-align: center; color: var(--accent-primary); font-weight: 700; }
+    .col-cross { text-align: center; color: var(--text-muted); }
+
+    /* Charts */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .chart-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: var(--space-5);
+    }
+    .bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .bar-label {
+      width: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .bar-track {
+      flex: 1;
+      height: 22px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transition: width 0.8s ease;
+      display: flex;
+      align-items: center;
+      padding-left: var(--space-2);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-on-accent);
+      min-width: fit-content;
+    }
+    .bar-fill.warn { background: linear-gradient(90deg, var(--color-warning), #fbbf24); }
+    .bar-fill.dim { background: linear-gradient(90deg, var(--text-muted), var(--text-tertiary)); }
+    .bar-value {
+      width: 60px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .agents-grid { grid-template-columns: 1fr; }
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <!-- Hero -->
+  <section class="hero" style="padding-bottom:var(--space-8);">
+    <div class="container">
+      <span class="hero-eyebrow">AI CODING TOOLS</span>
+      <h1 class="hero-title" style="font-size:clamp(28px,4vw,44px);">AI 编程工具<br>怎么选？</h1>
+      <p class="hero-subtitle">Claude Code、Cursor、Copilot、Trae、Windsurf……11 款主流 AI 编程工具全方位对比。选对工具，事半功倍。</p>
+    </div>
+  </section>
+
+  <!-- Charts -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">DATA INSIGHT</span>
+        <h2 class="section-title">数据对比一览</h2>
+        <p class="section-subtitle">从价格、评分、功能数量三个维度横向对比主流 AI 编程工具。</p>
+      </div>
+      <div class="chart-grid" id="chartsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FULL COMPARISON</span>
+        <h2 class="section-title">详细指标对比表</h2>
+        <p class="section-subtitle">所有指标横向对比，一目了然。左右滑动查看更多列。</p>
+      </div>
+      <div class="agents-table-wrap">
+        <table class="agents-table">
+          <thead>
+            <tr>
+              <th>工具</th>
+              <th>类型</th>
+              <th>评分</th>
+              <th>价格</th>
+              <th>免费版</th>
+              <th>模型数</th>
+              <th>功能数</th>
+              <th>多文件编辑</th>
+              <th>终端命令</th>
+              <th>Agent 自主</th>
+              <th>Git 操作</th>
+              <th>中文支持</th>
+              <th>平台</th>
+            </tr>
+          </thead>
+          <tbody id="agentsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">ALL TOOLS</span>
+        <h2 class="section-title">全部工具详情</h2>
+      </div>
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" data-filter="all">全部</button>
+        <button class="filter-tab" data-filter="CLI">💻 CLI</button>
+        <button class="filter-tab" data-filter="IDE">🖥️ IDE</button>
+        <button class="filter-tab" data-filter="IDE 插件">🔌 插件</button>
+        <button class="filter-tab" data-filter="Agent">🤖 Agent</button>
+        <button class="filter-tab" data-filter="免费">🆓 免费</button>
+        <button class="filter-tab" data-filter="国产">🇨🇳 国产</button>
+      </div>
+      <div class="agents-grid" id="agentsGrid"></div>
+    </div>
+  </section>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    let agents = [];
+
+    async function init() {
+      await Promise.all([loadConfig(), loadAgents()]);
+      mountNav('agents');
+      mountFooter();
+      renderCharts();
+      renderTable();
+      renderAgents(agents);
+      bindFilters();
+    }
+
+    async function loadAgents() {
+      agents = await loadJSON('coding-agents.json') || [];
+      return agents;
+    }
+
+    /* ---- Charts ---- */
+    function renderCharts() {
+      const grid = $('#chartsGrid');
+      if (!grid) return;
+
+      // Price bar chart (sorted)
+      const sorted = [...agents].sort((a, b) => {
+        const pa = parsePrice(a.pricing);
+        const pb = parsePrice(b.pricing);
+        return pa - pb;
+      });
+      const maxPrice = Math.max(...sorted.map(a => parsePrice(a.pricing)), 1);
+
+      const priceBars = sorted.map(a => {
+        const p = parsePrice(a.pricing);
+        const pct = Math.round((p / maxPrice) * 100);
+        const label = p === 0 ? '免费' : (a.pricing.length > 15 ? a.pricing.substring(0,15)+'...' : a.pricing);
+        return `
+          <div class="bar-row">
+            <div class="bar-label">${escapeHtml(a.name)}</div>
+            <div class="bar-track">
+              <div class="bar-fill${p > 50 ? ' warn' : ''}" style="width:${Math.max(pct, 8)}%">${label}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Feature count bar chart
+      const featSorted = [...agents].sort((a, b) => (b.features || []).length - (a.features || []).length);
+      const maxFeat = Math.max(...featSorted.map(a => (a.features || []).length), 1);
+
+      const featBars = featSorted.map(a => {
+        const n = (a.features || []).length;
+        const pct = Math.round((n / maxFeat) * 100);
+        return `
+          <div class="bar-row">
+            <div class="bar-label">${escapeHtml(a.name)}</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${Math.max(pct, 10)}%">${n} 项功能</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Rating bar chart
+      const ratingSorted = [...agents].sort((a, b) => b.rating - a.rating);
+      const ratingBars = ratingSorted.map(a => {
+        const pct = (a.rating / 5) * 100;
+        return `
+          <div class="bar-row">
+            <div class="bar-label">${escapeHtml(a.name)}</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${pct}%">${'★'.repeat(a.rating)}${'☆'.repeat(5-a.rating)}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      grid.innerHTML = `
+        <div class="chart-card">
+          <div class="chart-title">💰 月费对比（低→高）</div>
+          <div class="bar-chart">${priceBars}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:var(--space-3);">* Devin $500/月未在图中完整显示</div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">🔧 功能数量对比</div>
+          <div class="bar-chart">${featBars}</div>
+        </div>
+        <div class="chart-card" style="grid-column:1/-1;">
+          <div class="chart-title">⭐ 综合评分</div>
+          <div class="bar-chart">${ratingBars}</div>
+        </div>
+      `;
+    }
+
+    function parsePrice(pricing) {
+      if (!pricing || pricing === '免费') return 0;
+      const m = pricing.match(/\$?(\d+)/);
+      if (!m) return 0;
+      let val = parseInt(m[1]);
+      if (pricing.startsWith('$')) val = val * 7; // rough CNY conversion
+      return val;
+    }
+
+    /* ---- Table ---- */
+    function renderTable() {
+      const tbody = $('#agentsTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = agents.map(a => {
+        const features = a.features || [];
+        const hasFeature = (name) => features.some(f => f.includes(name));
+        return `
+          <tr>
+            <td>${escapeHtml(a.name)}<br><span style="font-size:11px;color:var(--text-muted);">${escapeHtml(a.provider)}</span></td>
+            <td><span class="badge">${escapeHtml(a.type)}</span></td>
+            <td>${renderStars(a.rating)}</td>
+            <td class="col-price">${escapeHtml(a.pricing)}</td>
+            <td>${a.freeTier === '是 (完全免费)' ? '<span class="col-check">✅</span>' : '<span class="col-cross">—</span>'}</td>
+            <td>${(a.models || []).length}</td>
+            <td>${features.length}</td>
+            <td>${hasFeature('多文件编辑') ? '<span class="col-check">✅</span>' : '<span class="col-cross">—</span>'}</td>
+            <td>${hasFeature('终端') ? '<span class="col-check">✅</span>' : '<span class="col-cross">—</span>'}</td>
+            <td>${hasFeature('Agent') ? '<span class="col-check">✅</span>' : '<span class="col-cross">—</span>'}</td>
+            <td>${hasFeature('Git') ? '<span class="col-check">✅</span>' : '<span class="col-cross">—</span>'}</td>
+            <td>${escapeHtml(a.chineseSupport)}</td>
+            <td style="font-size:11px;">${(a.platforms || []).join('<br>')}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    /* ---- Cards ---- */
+    function renderAgents(list) {
+      const grid = $('#agentsGrid');
+      if (!list.length) {
+        grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:48px;">暂无数据</p>';
+        return;
+      }
+      grid.innerHTML = list.map(renderAgentCard).join('');
+    }
+
+    function renderAgentCard(a) {
+      const models = (a.models || []).map(m => `<span class="agent-model-chip">${escapeHtml(m)}</span>`).join('');
+      const features = (a.features || []).map(f => `<span class="agent-feature-chip">${escapeHtml(f)}</span>`).join('');
+      const tags = (a.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join(' ');
+      const platforms = (a.platforms || []).join(' / ');
+      const ideText = (a.ideIntegration || []).join(', ');
+
+      return `
+        <div class="agent-card" data-type="${escapeHtml(a.type)}" data-tags="${(a.tags || []).join(',')}" data-free="${a.freeTier === '是 (完全免费)' ? '免费' : ''}">
+          <div class="agent-card-header">
+            <div>
+              <div class="agent-card-name">${escapeHtml(a.name)}</div>
+              <div class="agent-card-provider">${escapeHtml(a.provider)} · ${escapeHtml(a.type)}</div>
+            </div>
+            <div style="text-align:right;">
+              ${renderStars(a.rating)}
+              <div style="margin-top:4px;">${tags}</div>
+            </div>
+          </div>
+          <div class="agent-card-price">
+            ${escapeHtml(a.pricing)}
+            <div class="agent-card-price-detail">${escapeHtml(a.priceDetail)}</div>
+          </div>
+          <div class="agent-card-section">
+            <div class="agent-card-section-title">支持模型</div>
+            <div class="agent-card-models">${models}</div>
+          </div>
+          <div class="agent-card-section">
+            <div class="agent-card-section-title">核心功能</div>
+            <div class="agent-card-features">${features}</div>
+          </div>
+          <div class="agent-card-section">
+            <div style="font-size:12px;color:var(--text-tertiary);">
+              <div>🖥️ 平台: ${escapeHtml(platforms)}</div>
+              <div>🔌 IDE: ${escapeHtml(ideText)}</div>
+              <div>🇨🇳 中文: ${escapeHtml(a.chineseSupport)}</div>
+            </div>
+          </div>
+          <div class="agent-card-footer">
+            <div>
+              <div class="agent-card-highlights">💡 ${escapeHtml(a.highlights)}</div>
+              <div class="agent-card-caveats">⚠️ ${escapeHtml(a.caveats)}</div>
+            </div>
+            <a href="${a.url}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="flex-shrink:0;margin-left:var(--space-4);">了解 →</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function bindFilters() {
+      $$('#filterTabs .filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          $$('#filterTabs .filter-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+          if (filter === 'all') {
+            renderAgents(agents);
+          } else if (filter === '免费') {
+            renderAgents(agents.filter(a => a.freeTier === '是 (完全免费)'));
+          } else if (filter === '国产') {
+            renderAgents(agents.filter(a => (a.tags || []).includes('国产')));
+          } else {
+            renderAgents(agents.filter(a => a.type === filter));
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,7 +1,23 @@
 {
-  "lastUpdated": "2026-07-19",
-  "weekRange": "7.13 - 7.19",
+  "lastUpdated": "2026-07-20",
+  "weekRange": "7.14 - 7.20",
   "changes": [
+    {
+      "date": "2026-07-20",
+      "vendor": "Kimi",
+      "type": "暂停订阅",
+      "detail": "Kimi K3 发布后算力告急，暂停 C 端新用户订阅，已订阅用户不受影响。恢复时间待官方公告。",
+      "impact": "negative",
+      "impactLevel": "high"
+    },
+    {
+      "date": "2026-07-20",
+      "vendor": "DeepSeek",
+      "type": "新模型即将发布",
+      "detail": "DeepSeek V4「满血版」曝光，最快 7.21 发布。预计将影响各平台定价和模型配置。",
+      "impact": "neutral",
+      "impactLevel": "high"
+    },
     {
       "date": "2026-07-19",
       "vendor": "字节·方舟",
@@ -27,20 +43,20 @@
       "impactLevel": "high"
     },
     {
+      "date": "2026-07-18",
+      "vendor": "Anthropic",
+      "type": "订阅调整",
+      "detail": "Kimi K3 发布后 Anthropic 连夜修改订阅方案，Claude 额度重置。奥特曼罕见认错。",
+      "impact": "neutral",
+      "impactLevel": "high"
+    },
+    {
       "date": "2026-07-15",
       "vendor": "DeepSeek 官方",
       "type": "计费调整",
       "detail": "7 月中旬起高峰时段价格翻倍，缓存和输出价不变",
       "impact": "negative",
       "impactLevel": "high"
-    },
-    {
-      "date": "2026-07-06",
-      "vendor": "全站",
-      "type": "页面改版",
-      "detail": "首页新增 DeepSeek 涨价应对推荐分组",
-      "impact": "neutral",
-      "impactLevel": "low"
     },
     {
       "date": "2026-07-01",

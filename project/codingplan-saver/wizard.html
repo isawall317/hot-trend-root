@@ -3,431 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>选型助手 · CodingPlan 省钱攻略</title>
-  <meta name="description" content="回答 4 个问题，30 秒找到最适合你的 AI Coding Plan。基于真实使用数据的智能推荐。">
+  <title>选型助手 · 饭庐者说</title>
+  <meta name="description" content="回答 4 个问题，30 秒找到最适合你的 AI Coding Plan。">
   <link rel="stylesheet" href="styles/shared.css">
   <style>
-    .wizard-wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: var(--space-12) 0;
-    }
+    .wizard-wrap { max-width: 680px; margin: 0 auto; padding: var(--space-8) 0; }
     .wizard-progress {
-      display: flex;
-      gap: var(--space-2);
-      margin-bottom: var(--space-8);
+      display: flex; gap: var(--space-2); margin-bottom: var(--space-6);
     }
-    .wizard-progress-step {
-      flex: 1;
-      height: 4px;
-      background: var(--bg-card);
-      border-radius: var(--radius-full);
-      transition: background 0.3s ease;
+    .wizard-step-dot {
+      flex: 1; height: 3px; background: var(--bg-card); border-radius: var(--radius-full); transition: background 0.3s;
     }
-    .wizard-progress-step.active {
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    .wizard-step-dot.active { background: var(--accent); }
+    .wizard-step-dot.done { background: var(--accent); opacity: 0.5; }
+
+    .wizard-q { animation: wFade 0.3s ease; }
+    @keyframes wFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .wizard-q-label { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
+    .wizard-q-title { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: var(--space-1); }
+    .wizard-q-hint { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-5); }
+
+    .wizard-opts { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
+    .wizard-opt {
+      display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4);
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      cursor: pointer; transition: all 0.15s ease; text-align: left; width: 100%;
     }
-    .wizard-progress-step.done {
-      background: var(--accent-primary);
-    }
-    .wizard-question {
-      display: none;
-      animation: wizardFade 0.3s ease;
-    }
-    .wizard-question.active { display: block; }
-    @keyframes wizardFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .wizard-q-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent-primary);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: var(--space-3);
-    }
-    .wizard-q-title {
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-2);
-    }
-    .wizard-q-hint {
-      font-size: 14px;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-6);
-    }
-    .wizard-options {
-      display: grid;
-      gap: var(--space-3);
-      margin-bottom: var(--space-8);
-    }
-    .wizard-option {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      padding: var(--space-5);
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      cursor: pointer;
-      transition: all 0.18s ease;
-      text-align: left;
-      width: 100%;
-    }
-    .wizard-option:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent-primary);
-      transform: translateX(4px);
-    }
-    .wizard-option.selected {
-      background: var(--accent-primary-soft);
-      border-color: var(--accent-primary);
-    }
-    .wizard-option-icon {
-      font-size: 28px;
-      flex-shrink: 0;
-    }
-    .wizard-option-body { flex: 1; }
-    .wizard-option-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 2px;
-    }
-    .wizard-option-desc {
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }
-    .wizard-nav {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-3);
-    }
-    .wizard-result {
-      display: none;
-    }
-    .wizard-result.show { display: block; animation: wizardFade 0.4s ease; }
+    .wizard-opt:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateX(3px); }
+    .wizard-opt.selected { background: var(--accent-soft); border-color: var(--accent); }
+    .wizard-opt-label { font-size: 11px; font-weight: 700; color: var(--text-muted); width: 36px; flex-shrink: 0; }
+    .wizard-opt-body { flex: 1; }
+    .wizard-opt-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+    .wizard-opt-desc { font-size: 12px; color: var(--text-tertiary); }
+
+    .wizard-nav { display: flex; justify-content: space-between; gap: var(--space-3); }
+
+    /* Result */
     .result-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-accent);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      margin-bottom: var(--space-4);
-      position: relative;
-      overflow: hidden;
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: var(--space-5); margin-bottom: var(--space-4); position: relative; overflow: hidden;
     }
-    .result-card-best {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08));
-      border-color: var(--accent-primary);
-    }
+    .result-card.best { border-color: var(--accent); background: linear-gradient(135deg, rgba(16,185,129,0.08), var(--bg-card)); }
     .result-rank {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: var(--space-2) var(--space-3);
-      font-size: 11px;
-      font-weight: 700;
-      background: var(--accent-primary);
-      color: var(--text-on-accent);
+      position: absolute; top: 0; right: 0; padding: var(--space-1) var(--space-3);
+      font-size: 10px; font-weight: 700; background: var(--accent); color: #090d14;
       border-bottom-left-radius: var(--radius-md);
+    }
+    @media (max-width: 640px) {
+      .wizard-wrap { padding: var(--space-4); }
+      .wizard-q-title { font-size: 20px; }
     }
   </style>
 </head>
 <body>
   <div id="navMount"></div>
-
   <main class="container">
     <div class="wizard-wrap">
-      <div style="margin-bottom:var(--space-8);text-align:center;">
-        <span class="hero-eyebrow" style="margin-bottom:16px;">● 选型助手</span>
-        <h1 class="hero-title" style="font-size:32px;margin:0 auto 12px;">30 秒找到你的<br><span class="hero-title-accent">最佳 Coding Plan</span></h1>
-        <p class="hero-subtitle" style="margin:0 auto;">回答 4 个简单问题，我基于真实使用数据给你 Top 3 推荐。</p>
+      <div style="text-align:center;margin-bottom:var(--space-6);">
+        <span class="section-eyebrow">WIZARD</span>
+        <h1 class="hero-title" style="font-size:28px;margin:0 auto 8px;">30 秒找到你的<br><span class="hero-title-accent">最佳 Coding Plan</span></h1>
+        <p style="font-size:14px;color:var(--text-tertiary);">回答 4 个问题，基于真实数据给你 Top 3 推荐。</p>
       </div>
 
-      <div class="wizard-progress" id="progress">
-        <div class="wizard-progress-step active"></div>
-        <div class="wizard-progress-step"></div>
-        <div class="wizard-progress-step"></div>
-        <div class="wizard-progress-step"></div>
-      </div>
-
+      <div class="wizard-progress" id="progress"></div>
       <div id="wizardContainer"></div>
-
-      <div id="resultContainer" class="wizard-result"></div>
+      <div id="resultContainer" style="display:none;"></div>
     </div>
   </main>
-
   <div id="footerMount"></div>
 
   <script src="scripts/shared.js"></script>
   <script>
-    const QUESTIONS = [
-      {
-        key: 'budget',
-        label: '问题 1 / 4',
-        title: '你每月想花多少钱？',
-        hint: '按真实预算选，别高估自己。',
+    var QUESTIONS = [
+      { key: 'budget', label: '问题 1/4', title: '你每月想花多少钱？', hint: '按真实预算选，别高估自己。',
         options: [
-          { icon: '💰', value: { max: 50 }, title: '50 元以内', desc: '学生党 / 体验党' },
-          { icon: '💵', value: { max: 200 }, title: '50 - 200 元', desc: '日常开发者主流预算' },
-          { icon: '💎', value: { max: 500 }, title: '200 - 500 元', desc: '重度用户 / 多平台持有' },
-          { icon: '🔥', value: { max: null }, title: '500 以上', desc: '团队 / 极客 / agentic 重度' }
-        ]
-      },
-      {
-        key: 'model',
-        label: '问题 2 / 4',
-        title: '你最在意哪个模型？',
-        hint: '选你最常用的，或选「都要」让全家桶平台胜出。',
+          { label: '50', value: {max:50}, title: '50 元以内', desc: '学生党 / 体验党' },
+          { label: '200', value: {max:200}, title: '50-200 元', desc: '日常开发者主流预算' },
+          { label: '500', value: {max:500}, title: '200-500 元', desc: '重度用户 / 多平台持有' },
+          { label: 'MAX', value: {max:null}, title: '500 以上', desc: '团队 / 极客 / Agent 重度' }
+        ]},
+      { key: 'model', label: '问题 2/4', title: '你最在意哪个模型？', hint: '选你最常用的，或选「都要」让全家桶平台胜出。',
         options: [
-          { icon: '🧠', value: 'GLM-5.2', title: 'GLM-5.2', desc: '智谱 T0 模型，Opus 平替' },
-          { icon: '🌊', value: 'DeepSeek-V4', title: 'DeepSeek V4', desc: '原生性价比之王' },
-          { icon: '🎯', value: 'Kimi', title: 'Kimi', desc: '长上下文 + 推理强' },
-          { icon: '⚡', value: null, title: '都要 / 不限', desc: '让模型最全的平台胜出' }
-        ]
-      },
-      {
-        key: 'rush',
-        label: '问题 3 / 4',
-        title: '你能接受抢购吗？',
-        hint: '抢购更便宜但要拼手速，不抢省心但选择少。',
+          { label: 'GLM', value: 'GLM-5.2', title: 'GLM-5.2', desc: '智谱 T0 模型，Opus 平替' },
+          { label: 'DS', value: 'DeepSeek-V4', title: 'DeepSeek V4', desc: '原生性价比之王' },
+          { label: 'K3', value: 'Kimi', title: 'Kimi K3', desc: '长上下文 + 推理强' },
+          { label: 'ALL', value: null, title: '都要 / 不限', desc: '让模型最全的平台胜出' }
+        ]},
+      { key: 'rush', label: '问题 3/4', title: '你能接受抢购吗？', hint: '抢购更便宜但要拼手速，不抢省心但选择少。',
         options: [
-          { icon: '🏃', value: true, title: '能抢，越划算越好', desc: '想要最高性价比，愿意蹲点' },
-          { icon: '🛋️', value: false, title: '不抢，要稳', desc: '随时下单，不想折腾' },
-          { icon: '🤷', value: null, title: '都行', desc: '看性价比决定' }
-        ]
-      },
-      {
-        key: 'scene',
-        label: '问题 4 / 4',
-        title: '你的主要使用场景？',
-        hint: '决定我们推荐哪种类型的套餐。',
+          { label: 'YES', value: true, title: '能抢，越划算越好', desc: '想要最高性价比，愿意蹲点' },
+          { label: 'NO', value: false, title: '不抢，要稳', desc: '随时下单，不想折腾' },
+          { label: 'ANY', value: null, title: '都行', desc: '看性价比决定' }
+        ]},
+      { key: 'scene', label: '问题 4/4', title: '你的主要使用场景？', hint: '决定我们推荐哪种类型的套餐。',
         options: [
-          { icon: '👨‍💻', value: 'coding', title: '日常写代码', desc: '高频使用 / Cursor / Claude Code' },
-          { icon: '📚', value: 'general', title: '日常助手', desc: '问答 / 文档处理 / 通用任务' },
-          { icon: '🎨', value: 'multimodal', title: '多模态需求', desc: '图像识别 / 视觉理解' },
-          { icon: '🤖', value: 'agentic', title: 'Agent / 自动化', desc: 'agentic 任务 / 长任务运行' }
-        ]
-      }
+          { label: 'DEV', value: 'coding', title: '日常写代码', desc: '高频使用 / Cursor / Claude Code' },
+          { label: 'CHAT', value: 'general', title: '日常助手', desc: '问答 / 文档处理 / 通用任务' },
+          { label: 'IMG', value: 'multimodal', title: '多模态需求', desc: '图像识别 / 视觉理解' },
+          { label: 'BOT', value: 'agentic', title: 'Agent / 自动化', desc: 'Agent 任务 / 长任务运行' }
+        ]}
     ];
 
-    const answers = {};
-    let currentStep = 0;
+    var answers = {};
+    var currentStep = 0;
 
-    async function initWizard() {
-      await loadConfig();
-      await loadPlans();
-      mountNav('wizard');
-      mountFooter();
-      renderQuestion();
+    function initWizard() {
+      loadConfig().then(function() {
+        return loadPlans();
+      }).then(function() {
+        mountNav('wizard');
+        mountFooter();
+        renderQuestion();
+      });
     }
 
     function renderQuestion() {
-      const q = QUESTIONS[currentStep];
-      const container = $('#wizardContainer');
+      var q = QUESTIONS[currentStep];
+      var container = document.getElementById('wizardContainer');
+      var progress = document.getElementById('progress');
 
-      // Update progress
-      $$('.wizard-progress-step').forEach((step, i) => {
-        step.classList.toggle('active', i === currentStep);
-        step.classList.toggle('done', i < currentStep);
-      });
+      progress.innerHTML = QUESTIONS.map(function(_, i) {
+        var cls = i === currentStep ? 'active' : (i < currentStep ? 'done' : '');
+        return '<div class="wizard-step-dot ' + cls + '"></div>';
+      }).join('');
 
-      const optionsHtml = q.options.map((opt, i) => `
-        <button class="wizard-option" data-value='${JSON.stringify(opt.value)}'>
-          <span class="wizard-option-icon">${opt.icon}</span>
-          <div class="wizard-option-body">
-            <div class="wizard-option-title">${escapeHtml(opt.title)}</div>
-            <div class="wizard-option-desc">${escapeHtml(opt.desc)}</div>
-          </div>
-        </button>
-      `).join('');
+      container.innerHTML = '<div class="wizard-q">' +
+        '<div class="wizard-q-label">' + escapeHtml(q.label) + '</div>' +
+        '<h2 class="wizard-q-title">' + escapeHtml(q.title) + '</h2>' +
+        '<p class="wizard-q-hint">' + escapeHtml(q.hint) + '</p>' +
+        '<div class="wizard-opts">' + q.options.map(function(opt) {
+          return '<button class="wizard-opt" data-value="' + opt.label + '">' +
+            '<span class="wizard-opt-label">' + escapeHtml(opt.label) + '</span>' +
+            '<div class="wizard-opt-body">' +
+              '<div class="wizard-opt-title">' + escapeHtml(opt.title) + '</div>' +
+              '<div class="wizard-opt-desc">' + escapeHtml(opt.desc) + '</div>' +
+            '</div>' +
+          '</button>';
+        }).join('') + '</div>' +
+        '<div class="wizard-nav">' +
+          '<button class="btn btn-ghost" id="prevBtn"' + (currentStep === 0 ? ' style="visibility:hidden;"' : '') + '>上一题</button>' +
+          '<span style="font-size:13px;color:var(--text-tertiary);align-self:center;">第 ' + (currentStep + 1) + '/' + QUESTIONS.length + ' 题</span>' +
+        '</div>' +
+      '</div>';
 
-      container.innerHTML = `
-        <div class="wizard-question active">
-          <div class="wizard-q-label">${escapeHtml(q.label)}</div>
-          <h2 class="wizard-q-title">${escapeHtml(q.title)}</h2>
-          <p class="wizard-q-hint">${escapeHtml(q.hint)}</p>
-          <div class="wizard-options">${optionsHtml}</div>
-          <div class="wizard-nav">
-            <button class="btn btn-ghost" id="prevBtn" ${currentStep === 0 ? 'style="visibility:hidden;"' : ''}>← 上一题</button>
-            <span class="text-tertiary" style="font-size:13px;align-self:center;">第 ${currentStep + 1} / ${QUESTIONS.length} 题</span>
-          </div>
-        </div>
-      `;
-
-      $$('.wizard-option').forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-          $$('.wizard-option').forEach(b => b.classList.remove('selected'));
+      var opts = container.querySelectorAll('.wizard-opt');
+      opts.forEach(function(btn, i) {
+        btn.addEventListener('click', function() {
+          opts.forEach(function(b) { b.classList.remove('selected'); });
           btn.classList.add('selected');
           answers[q.key] = q.options[i].value;
-          setTimeout(() => {
+          setTimeout(function() {
             if (currentStep < QUESTIONS.length - 1) {
               currentStep++;
               renderQuestion();
             } else {
               showResults();
             }
-          }, 250);
+          }, 200);
         });
       });
 
-      const prevBtn = $('#prevBtn');
+      var prevBtn = document.getElementById('prevBtn');
       if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          if (currentStep > 0) {
-            currentStep--;
-            renderQuestion();
-          }
+        prevBtn.addEventListener('click', function() {
+          if (currentStep > 0) { currentStep--; renderQuestion(); }
         });
       }
     }
 
     function scorePlan(plan) {
-      let score = plan.rating * 10; // 基础分：评分
-      let reasons = [];
+      var score = plan.rating * 10;
+      var reasons = [];
 
-      // 预算匹配
-      const budget = answers.budget;
-      const price = typeof plan.monthlyPrice === 'number' ? plan.monthlyPrice : 0;
+      var budget = answers.budget;
+      var price = typeof plan.monthlyPrice === 'number' ? plan.monthlyPrice : 0;
       if (budget && budget.max !== null) {
-        if (price <= budget.max) {
-          score += 20;
-          reasons.push(`¥${price}/月 在你的预算内`);
-        } else {
-          score -= 30;
-        }
+        if (price <= budget.max) { score += 20; reasons.push('¥' + price + '/月 在你的预算内'); }
+        else { score -= 30; }
       } else if (budget && budget.max === null) {
-        // 不限预算，给重度档加分
         if (price >= 200) score += 10;
       }
 
-      // 模型匹配
-      const model = answers.model;
+      var model = answers.model;
       if (model) {
-        const hasModel = (plan.models || []).some(m => m.includes(model));
-        if (hasModel) {
-          score += 30;
-          reasons.push(`支持你想要的 ${model}`);
-        } else {
-          score -= 15;
-        }
+        var hasModel = (plan.models || []).some(function(m) { return m.indexOf(model) !== -1; });
+        if (hasModel) { score += 30; reasons.push('支持你想要的模型'); }
+        else { score -= 15; }
       } else {
-        // 全家桶加分
-        const modelCount = (plan.models || []).length;
-        if (modelCount >= 5) {
-          score += 15;
-          reasons.push(`全家桶（${modelCount} 个模型）`);
-        }
+        var modelCount = (plan.models || []).length;
+        if (modelCount >= 5) { score += 15; reasons.push('全家桶（' + modelCount + ' 个模型）'); }
       }
 
-      // 抢购偏好
-      const rush = answers.rush;
-      const needRush = (plan.tags || []).includes('需抢购');
-      if (rush === false && needRush) {
-        score -= 25;
-      } else if (rush === true && !needRush) {
-        score -= 5;
-      } else if (rush === false && !needRush) {
-        score += 15;
-        reasons.push('无需抢购');
-      }
+      var rush = answers.rush;
+      var needRush = (plan.tags || []).indexOf('需抢购') !== -1;
+      if (rush === false && needRush) { score -= 25; }
+      else if (rush === false && !needRush) { score += 15; reasons.push('无需抢购'); }
 
-      // 场景匹配
-      const scene = answers.scene;
-      if (scene === 'coding' && plan.type === 'Coding Plan') {
-        score += 10;
-        reasons.push('Coding Plan 适合高频写代码');
-      } else if (scene === 'general' && plan.measuredMonthlyToken && plan.measuredMonthlyToken >= 500) {
-        score += 8;
-        reasons.push('月 Token 额度高');
-      } else if (scene === 'multimodal' && (plan.tags || []).includes('多模态')) {
-        score += 20;
-        reasons.push('支持多模态');
-      } else if (scene === 'agentic' && plan.measuredMonthlyToken && plan.measuredMonthlyToken >= 1000) {
-        score += 15;
-        reasons.push('Token 充足适合 Agent 长任务');
-      }
+      var scene = answers.scene;
+      if (scene === 'coding' && plan.type === 'Coding Plan') { score += 10; reasons.push('Coding Plan 适合高频写代码'); }
+      else if (scene === 'general' && plan.measuredMonthlyToken && plan.measuredMonthlyToken >= 500) { score += 8; reasons.push('月 Token 额度高'); }
+      else if (scene === 'multimodal' && (plan.tags || []).indexOf('多模态') !== -1) { score += 20; reasons.push('支持多模态'); }
+      else if (scene === 'agentic' && plan.measuredMonthlyToken && plan.measuredMonthlyToken >= 1000) { score += 15; reasons.push('Token 充足适合 Agent 长任务'); }
 
-      return { score, reasons: reasons.slice(0, 3) };
+      return { score: score, reasons: reasons.slice(0, 3) };
     }
 
     function showResults() {
-      $('#wizardContainer').style.display = 'none';
-      $('#progress').style.display = 'none';
+      document.getElementById('wizardContainer').style.display = 'none';
+      document.getElementById('progress').style.display = 'none';
 
-      const scored = CPS.plans.map(p => ({ plan: p, ...scorePlan(p) }))
-        .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score)
+      var scored = CPS.plans.map(function(p) { var s = scorePlan(p); return { plan: p, score: s.score, reasons: s.reasons }; })
+        .filter(function(item) { return item.score > 0; })
+        .sort(function(a, b) { return b.score - a.score; })
         .slice(0, 3);
 
-      const resultEl = $('#resultContainer');
-      resultEl.classList.add('show');
+      var resultEl = document.getElementById('resultContainer');
+      resultEl.style.display = 'block';
 
       if (!scored.length) {
-        resultEl.innerHTML = `
-          <div class="card text-center" style="padding:48px;">
-            <div style="font-size:48px;margin-bottom:16px;">🤔</div>
-            <h2 style="margin-bottom:8px;">没有完美匹配</h2>
-            <p class="text-tertiary" style="margin-bottom:24px;">你的条件比较严格，建议放宽一两个选项重试。</p>
-            <button class="btn btn-primary" onclick="resetWizard()">重新选择</button>
-          </div>
-        `;
+        resultEl.innerHTML = '<div class="card" style="text-align:center;padding:48px;">' +
+          '<h2 style="margin-bottom:8px;">没有完美匹配</h2>' +
+          '<p style="color:var(--text-tertiary);margin-bottom:24px;">你的条件比较严格，建议放宽一两个选项重试。</p>' +
+          '<button class="btn btn-primary" onclick="resetWizard()">重新选择</button></div>';
         return;
       }
 
-      const rankLabels = ['🏆 最佳推荐', '🥈 备选方案', '🥉 第三选择'];
-      const cards = scored.map((item, i) => {
-        const p = item.plan;
-        const rank = rankLabels[i] || `第 ${i + 1} 选择`;
-        const reasons = item.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('');
-        const verdict = p.bloggerVerdict ? `<p style="font-size:13px;color:var(--accent-primary);margin-bottom:12px;font-style:italic;">💬 "${escapeHtml(p.bloggerVerdict)}"</p>` : '';
-        return `
-          <div class="result-card ${i === 0 ? 'result-card-best' : ''}">
-            <div class="result-rank">${rank.split(' ')[0]}</div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:16px;">
-              <div>
-                <h3 style="font-size:20px;font-weight:700;">${escapeHtml(p.vendor)} <span class="text-tertiary" style="font-size:14px;font-weight:400;">${escapeHtml(p.plan)}</span></h3>
-                <div style="font-size:13px;color:var(--text-tertiary);margin-top:2px;">${escapeHtml(p.type)} · ${formatPrice(p.monthlyPrice, p.currency || '¥')}/月</div>
-              </div>
-              ${renderStars(p.rating)}
-            </div>
-            ${verdict}
-            ${reasons ? `<ul class="reco-card-reasons" style="margin-bottom:16px;">${reasons}</ul>` : ''}
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-              ${(p.models || []).slice(0, 5).map(m => `<span class="tag">${escapeHtml(m)}</span>`).join(' ')}
-            </div>
-            <div style="display:flex;gap:12px;align-items:center;">
-              <a href="${p.action || '#'}" class="btn btn-primary" target="_blank" rel="noopener">查看详情 →</a>
-              <span style="font-size:11px;color:var(--text-muted);">匹配度 ${Math.round(item.score)}%</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      resultEl.innerHTML = `
-        <div style="text-align:center;margin-bottom:32px;">
-          <span class="hero-eyebrow" style="background:var(--accent-primary-soft);">● 推荐结果</span>
-          <h2 style="font-size:28px;margin-top:16px;">基于你的回答，这是 Top 3 推荐</h2>
-          <p class="text-tertiary" style="margin-top:8px;">想看更多？滚动到下面的完整对比表。</p>
-        </div>
-        ${cards}
-        <div style="display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
-          <button class="btn btn-secondary" onclick="resetWizard()">↺ 重新选</button>
-          <a href="index.html#tableSection" class="btn btn-ghost">看完整对比表 →</a>
-          <a href="join.html" class="btn btn-primary">加入社群提问 →</a>
-        </div>
-      `;
+      var rankLabels = ['最佳推荐', '备选方案', '第三选择'];
+      resultEl.innerHTML = '<div style="text-align:center;margin-bottom:28px;">' +
+        '<span class="section-eyebrow">RESULT</span>' +
+        '<h2 style="font-size:24px;margin-top:12px;">基于你的回答，Top 3 推荐</h2>' +
+        '<p style="color:var(--text-tertiary);margin-top:6px;">想看更多？切换到套餐对比页查看完整表格。</p>' +
+      '</div>' +
+      scored.map(function(item, i) {
+        var p = item.plan;
+        var reasonsHtml = item.reasons.map(function(r) { return '<li>' + escapeHtml(r) + '</li>'; }).join('');
+        return '<div class="result-card' + (i === 0 ? ' best' : '') + '">' +
+          '<div class="result-rank">' + rankLabels[i] + '</div>' +
+          '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:16px;">' +
+            '<div>' +
+              '<h3 style="font-size:18px;font-weight:700;">' + escapeHtml(p.vendor) + ' <span style="font-size:14px;color:var(--text-tertiary);font-weight:400;">' + escapeHtml(p.plan) + '</span></h3>' +
+              '<div style="font-size:13px;color:var(--text-tertiary);margin-top:2px;">' + escapeHtml(p.type) + ' ' + formatPrice(p.monthlyPrice, p.currency || '¥') + '/月</div>' +
+            '</div>' +
+            renderStars(p.rating) +
+          '</div>' +
+          (p.bloggerVerdict ? '<p style="font-size:13px;color:var(--accent);margin-bottom:12px;">"' + escapeHtml(p.bloggerVerdict) + '"</p>' : '') +
+          (reasonsHtml ? '<ul class="reco-card-reasons" style="margin-bottom:16px;">' + reasonsHtml + '</ul>' : '') +
+          '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">' +
+            (p.models || []).slice(0, 5).map(function(m) { return '<span class="tag">' + escapeHtml(m) + '</span>'; }).join('') +
+          '</div>' +
+          '<div style="display:flex;gap:12px;align-items:center;">' +
+            '<a href="' + (p.action || '#') + '" class="btn btn-primary" target="_blank" rel="noopener">查看详情</a>' +
+            '<span style="font-size:11px;color:var(--text-muted);">匹配度 ' + Math.round(item.score) + '%</span>' +
+          '</div>' +
+        '</div>';
+      }).join('') +
+      '<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">' +
+        '<button class="btn btn-secondary" onclick="resetWizard()">重新选择</button>' +
+        '<a href="index.html#compare" class="btn btn-ghost">看完整对比表</a>' +
+        '<a href="join.html" class="btn btn-primary">加入社群</a>' +
+      '</div>';
     }
 
     function resetWizard() {
       currentStep = 0;
-      Object.keys(answers).forEach(k => delete answers[k]);
-      $('#wizardContainer').style.display = 'block';
-      $('#progress').style.display = 'flex';
-      $('#resultContainer').classList.remove('show');
-      $('#resultContainer').innerHTML = '';
+      answers = {};
+      document.getElementById('wizardContainer').style.display = 'block';
+      document.getElementById('progress').style.display = 'flex';
+      document.getElementById('resultContainer').style.display = 'none';
+      document.getElementById('resultContainer').innerHTML = '';
       renderQuestion();
     }
     window.resetWizard = resetWizard;

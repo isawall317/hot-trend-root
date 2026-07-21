@@ -3,85 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodingPlan 省钱攻略 · AI Coding Plan 选型指南与对比</title>
-  <meta name="description" content="每月花 200-1000 元买 AI Coding Plan？我帮你选最划算的。覆盖智谱、字节方舟、MiniMax、Kimi、阿里百炼、讯飞、百度千帆等主流平台，附真实测评和选型建议。">
+  <title>CodingPlan 省钱攻略 - AI Coding Plan 选型指南</title>
+  <meta name="description" content="20个平台、30+套餐全方位对比。每月花200-1000元买AI Coding Plan？饭庐者说帮你选最划算的。">
   <link rel="stylesheet" href="styles/shared.css">
+  <style>
+    .top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .top-pick-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden;
+    }
+    .top-pick-card.pick-best {
+      border-color: rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), var(--bg-card));
+    }
+    .top-pick-card.pick-best::before {
+      content: 'BEST'; position: absolute; top: 12px; right: -28px;
+      background: var(--accent); color: #090d14; font-size: 10px; font-weight: 800;
+      padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em;
+    }
+    .top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
+    .top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
+    .top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
+    .top-pick-price { font-size: 28px; font-weight: 800; font-family: var(--font-mono); color: var(--accent); }
+    .top-pick-price-unit { font-size: 13px; font-weight: 500; color: var(--text-tertiary); }
+    .top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+    .top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+    .top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+
+    .scenario-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+    .scenario-card {
+      padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); cursor: pointer; transition: all 0.15s ease;
+    }
+    .scenario-card:hover { border-color: var(--accent); background: var(--bg-card-hover); transform: translateY(-1px); }
+    .scenario-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-1); }
+    .scenario-card-title { font-size: 14px; font-weight: 700; margin-bottom: var(--space-1); }
+    .scenario-card-desc { font-size: 12px; color: var(--text-tertiary); }
+
+    .reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
+    .reco-item {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease;
+    }
+    .reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2); }
+    .reco-item-vendor { font-size: 17px; font-weight: 700; }
+    .reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
+    .reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+    .reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+    .reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+    .reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+
+    @media (max-width: 768px) {
+      .top-pick-grid { grid-template-columns: 1fr; }
+      .scenario-grid { grid-template-columns: repeat(2, 1fr); }
+      .reco-list { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <div id="navMount"></div>
-
-  <!-- Hero, Quick Entries, Recommendations, Price Changes, Table, Community 由 JS 动态渲染 -->
   <div id="pageBody">
-    <!-- 加载占位 -->
-    <div style="padding:120px 0;text-align:center;color:var(--text-tertiary);">
-      <div style="font-size:32px;margin-bottom:12px;">📐</div>
-      <div>正在加载套餐数据...</div>
+    <div style="padding:80px 0;text-align:center;color:var(--text-tertiary);">
+      <div style="font-size:28px;margin-bottom:8px;">CP</div>
+      <div style="font-size:14px;">加载中...</div>
     </div>
   </div>
-
   <div id="footerMount"></div>
 
   <script src="scripts/shared.js"></script>
   <script>
     async function initHome() {
-      // 并行加载所有数据
-      await Promise.all([
-        loadConfig(),
-        loadPlans(),
-        loadArticles(),
-        loadPriceChanges()
-      ]);
-
-      // 渲染导航和页脚
+      await Promise.all([loadConfig(), loadPlans(), loadArticles(), loadPriceChanges()]);
       mountNav('home');
       mountFooter();
 
-      // 组装主页结构
-      const body = $('#pageBody');
-      body.innerHTML = [
-        renderHomeHero(),
-        renderQuickEntries(),
-        renderRecommendations(),
-        renderPriceChangesInline(),
-        renderTableSection(),
-        renderArticlesPreview(),
-        renderCommunitySection()
-      ].join('');
+      var body = document.getElementById('pageBody');
+      body.innerHTML = renderHero() + renderTopPicks() + renderScenarios() + renderAllRecommendations() + renderPriceChangesSection() + renderArticlesPreview() + renderCommunitySection();
+      bindScenarioCards();
+    }
 
-      // 渲染筛选栏 + 表格
-      const filterMount = $('#filterBarMount');
-      if (filterMount) {
-        filterMount.innerHTML = renderFilterBar();
-        bindFilterBar();
-        syncFilterUI();
-      }
-      renderTable();
+    function renderHero() {
+      var config = CPS.config;
+      if (!config) return '';
+      var h = config.header;
+      return '<section class="hero" style="padding-bottom:var(--space-6);">' +
+        '<div class="container"><div class="hero-inner"><div>' +
+          '<span class="section-eyebrow">' + escapeHtml(h.updateDate) + '</span>' +
+          '<h1 class="hero-title">AI Coding Plan<br><span class="hero-title-accent">买哪个最划算？</span></h1>' +
+          '<p class="hero-subtitle">' + escapeHtml(config.site.tagline) + '</p>' +
+          '<p style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-5);margin-top:-12px;">' + escapeHtml(h.highlights) + '</p>' +
+          '<div class="hero-actions">' +
+            '<a href="compare.html" class="btn btn-primary btn-lg">查看完整对比表</a>' +
+            '<a href="wizard.html" class="btn btn-secondary btn-lg">选型助手</a>' +
+          '</div>' +
+        '</div>' +
+        '<div class="hero-stats">' +
+          (h.stats || []).map(function(s) {
+            return '<div><div class="hero-stat-value">' + escapeHtml(s.value) + '<span style="font-size:13px;color:var(--text-tertiary);font-weight:500;margin-left:2px;">' + escapeHtml(s.unit) + '</span></div><div class="hero-stat-label">' + escapeHtml(s.label) + '</div></div>';
+          }).join('') +
+        '</div></div></div></section>';
+    }
 
-      // 绑定快速入口
-      bindQuickEntries();
+    function renderTopPicks() {
+      var plans = CPS.plans;
+      if (!plans.length) return '';
+      var scored = plans
+        .filter(function(p) { return typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number'; })
+        .map(function(p) { return { plan: p, tpu: p.measuredMonthlyToken / p.monthlyPrice, score: p.rating * 10 + (p.measuredMonthlyToken / p.monthlyPrice) }; })
+        .sort(function(a, b) { return b.score - a.score; });
+      var top3 = scored.slice(0, 3);
+      var labels = ['综合最佳', '高性价比', '入门首选'];
+      var reasons = [
+        '综合评分最高，模型能力和性价比都很出色。',
+        '每元能拿到更多 Token，花同样的钱可用更多。',
+        '月费最低，适合预算有限或想先试试水的用户。'
+      ];
+      var picks = top3.map(function(item, i) {
+        var p = item.plan;
+        var isBest = i === 0;
+        return '<div class="top-pick-card' + (isBest ? ' pick-best' : '') + '">' +
+          '<div class="top-pick-label">' + labels[i] + '</div>' +
+          '<div class="top-pick-vendor">' + escapeHtml(p.vendor) + '</div>' +
+          '<div class="top-pick-plan">' + escapeHtml(p.plan) + ' ' + escapeHtml(p.type) + '</div>' +
+          '<div class="top-pick-price">' + formatPrice(p.monthlyPrice, p.currency || '¥') + '<span class="top-pick-price-unit">/月</span></div>' +
+          '<div class="top-pick-metrics">' +
+            '<div><div class="top-pick-metric-value">' + p.measuredMonthlyToken + 'M</div><div class="top-pick-metric-label">月Token</div></div>' +
+            '<div><div class="top-pick-metric-value">' + item.tpu.toFixed(1) + '</div><div class="top-pick-metric-label">每元Token</div></div>' +
+          '</div>' +
+          '<div class="top-pick-reason">' + reasons[i] + '</div>' +
+        '</div>';
+      }).join('');
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+          '<span class="section-eyebrow">TOP PICKS</span>' +
+          '<h2 class="section-title">不知道买哪个？看这三个就够了</h2>' +
+          '<p class="section-subtitle">基于评分、性价比和真实体验的综合推荐。点击场景卡片筛选或查看完整对比表。</p>' +
+        '</div>' +
+        '<div class="top-pick-grid">' + picks + '</div>' +
+      '</div></section>';
+    }
+
+    function renderScenarios() {
+      var config = CPS.config;
+      if (!config || !config.quickEntries) return '';
+      var cards = config.quickEntries.map(function(q) {
+        return '<div class="scenario-card" data-entry-id="' + q.id + '">' +
+          '<div class="scenario-card-label">' + escapeHtml(q.icon) + '</div>' +
+          '<div class="scenario-card-title">' + escapeHtml(q.title) + '</div>' +
+          '<div class="scenario-card-desc">' + escapeHtml(q.desc) + '</div>' +
+        '</div>';
+      }).join('');
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+          '<span class="section-eyebrow">SCENARIOS</span>' +
+          '<h2 class="section-title">按你的场景来选</h2>' +
+        '</div>' +
+        '<div class="scenario-grid">' + cards + '</div>' +
+      '</div></section>';
+    }
+
+    function bindScenarioCards() {
+      var cards = document.querySelectorAll('.scenario-card');
+      cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          var id = card.dataset.entryId;
+          var entry = (CPS.config.quickEntries || []).find(function(q) { return q.id === id; });
+          if (!entry) return;
+          // Store filter in sessionStorage for compare.html
+          var f = entry.filter || {};
+          sessionStorage.setItem('compareFilter', JSON.stringify(f));
+          window.location.href = 'compare.html';
+        });
+      });
+    }
+
+    function renderAllRecommendations() {
+      var config = CPS.config;
+      if (!config || !config.recommendationGroups) return '';
+      var groups = config.recommendationGroups.map(function(group, gi) {
+        var items = (group.items || []).map(function(item) {
+          var plan = CPS.plans.find(function(p) { return p.vendor === item.vendor && p.plan === item.plan; });
+          var priceStr = plan ? '<strong>' + formatPrice(plan.monthlyPrice, plan.currency || '¥') + '</strong>/月' : '';
+          var reasons = (item.reasons || []).map(function(r) { return '<li>' + renderMarkdownLite(r) + '</li>'; }).join('');
+          return '<div class="reco-item">' +
+            '<div class="reco-item-header"><div><div class="reco-item-vendor">' + escapeHtml(item.vendor) + '</div><div class="reco-item-plan">' + escapeHtml(item.plan) + ' ' + (plan ? escapeHtml(plan.type) : '') + '</div></div>' + renderStars(item.rating) + '</div>' +
+            (item.verdict ? '<span class="reco-item-verdict">' + escapeHtml(item.verdict) + '</span>' : '') +
+            '<ul class="reco-item-reasons">' + reasons + '</ul>' +
+            '<div class="reco-item-footer">' +
+              '<span style="font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);">' + priceStr + '</span>' +
+              '<a href="' + (item.action || (plan ? plan.action : '#')) + '" class="btn btn-sm btn-primary" target="_blank" rel="noopener">查看</a>' +
+            '</div></div>';
+        }).join('');
+        var header = config.recommendationGroups.length > 1 ? '<div style="margin-bottom:var(--space-4);"><h3 style="font-size:16px;font-weight:700;">' + escapeHtml(group.title) + '</h3>' + (group.subtitle ? '<p style="font-size:13px;color:var(--text-tertiary);">' + escapeHtml(group.subtitle) + '</p>' : '') + '</div>' : '';
+        return '<div style="' + (gi > 0 ? 'margin-top:var(--space-8);' : '') + '">' + header + '<div class="reco-list">' + items + '</div></div>';
+      }).join('');
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+          '<span class="section-eyebrow">ALL RECOMMENDATIONS</span>' +
+          '<h2 class="section-title">饭庐者说的完整推荐</h2>' +
+        '</div>' + groups + '</div></section>';
+    }
+
+    function renderPriceChangesSection() {
+      var data = CPS.priceChanges;
+      if (!data || !data.changes || !data.changes.length) return '';
+      var items = data.changes.map(function(c) {
+        var impactBadge = c.impact === 'positive' ? '<span class="badge badge-positive">利好</span>' : c.impact === 'negative' ? '<span class="badge badge-negative">利空</span>' : '<span class="badge">中性</span>';
+        return '<div class="price-change-item"><div>' + impactBadge + '</div><div><div class="price-change-vendor">' + escapeHtml(c.vendor) + ' ' + escapeHtml(c.type) + '</div><div class="price-change-detail">' + escapeHtml(c.detail) + '</div></div><span class="price-change-date">' + escapeHtml(c.date) + '</span></div>';
+      }).join('');
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header" style="margin-bottom:var(--space-4);">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-3);">' +
+            '<div><span class="section-eyebrow">PRICE ALERT</span><h2 class="section-title">价格变动记录</h2></div>' +
+            '<span style="font-size:12px;color:var(--text-tertiary);">' + escapeHtml(data.weekRange) + '</span>' +
+          '</div></div><div class="card">' + items + '</div></div></section>';
     }
 
     function renderArticlesPreview() {
-      const featured = CPS.articles.filter(a => a.featured).slice(0, 2);
-      const recent = CPS.articles.filter(a => !a.featured).slice(0, 2);
-      const all = [...featured, ...recent].slice(0, 3);
+      var articles = CPS.articles || [];
+      if (!articles.length) return '';
+      var featured = articles.filter(function(a) { return a.featured; }).slice(0, 2);
+      var recent = articles.filter(function(a) { return !a.featured; }).slice(0, 2);
+      var all = featured.concat(recent).slice(0, 3);
       if (!all.length) return '';
-      const cards = all.map(renderArticleCard).join('');
-      return `
-        <section class="section">
-          <div class="container">
-            <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
-              <div>
-                <span class="section-eyebrow">LATEST REVIEWS</span>
-                <h2 class="section-title">最新测评 & 速报</h2>
-                <p class="section-subtitle">基于真实使用的测评和价格变动速报，每周更新。</p>
-              </div>
-              <a href="blog.html" class="btn btn-secondary">查看全部 →</a>
-            </div>
-            <div class="grid grid-3">${cards}</div>
-          </div>
-        </section>
-      `;
+      var cards = all.map(function(a) {
+        var href = a.url || ('article.html?id=' + encodeURIComponent(a.id));
+        var isExternal = !!a.url;
+        return '<a href="' + href + '" class="card card-hover" style="display:block;text-decoration:none;"' + (isExternal ? ' target="_blank" rel="noopener"' : '') + '>' +
+          '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-3);">' +
+            '<span style="font-size:24px;font-weight:800;color:var(--accent);">' + escapeHtml(a.cover || '') + '</span>' +
+            '<span class="badge badge-accent">' + escapeHtml(a.category) + '</span>' +
+          '</div>' +
+          '<h3 style="font-size:16px;font-weight:700;line-height:1.35;margin-bottom:var(--space-2);color:var(--text-primary);">' + escapeHtml(a.title) + '</h3>' +
+          '<p style="font-size:13px;color:var(--text-tertiary);line-height:1.5;margin-bottom:var(--space-3);">' + escapeHtml(a.excerpt) + '</p>' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted);">' +
+            '<span>' + escapeHtml(a.date) + ' ' + escapeHtml(a.readTime) + '</span>' +
+            '<span class="text-accent" style="font-weight:600;">阅读</span>' +
+          '</div></a>';
+      }).join('');
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:var(--space-4);">' +
+          '<div><span class="section-eyebrow">LATEST</span><h2 class="section-title">最新测评</h2></div>' +
+          '<a href="blog.html" class="btn btn-secondary btn-sm">查看全部</a>' +
+        '</div><div class="grid grid-3">' + cards + '</div></div></section>';
+    }
+
+    function renderCommunitySection() {
+      var config = CPS.config;
+      if (!config || !config.community) return '';
+      var c = config.community;
+      return '<section class="section-sm"><div class="container">' +
+        '<div class="section-header text-center">' +
+          '<span class="section-eyebrow">COMMUNITY</span>' +
+          '<h2 class="section-title">不止看数据，来群里聊</h2>' +
+          '<p class="section-subtitle" style="margin:0 auto;">价格变动、抢购提醒、实测反馈，第一时间发在社群里。</p>' +
+        '</div>' +
+        '<div class="community-grid">' +
+          '<div class="community-card community-card-free">' +
+            '<div class="community-card-header"><h3 class="community-card-title">' + escapeHtml(c.free.title) + '</h3><span class="badge badge-accent">FREE</span></div>' +
+            '<div class="community-card-subtitle">' + escapeHtml(c.free.subtitle) + '</div>' +
+            '<p class="community-card-desc">' + escapeHtml(c.free.description) + '</p>' +
+            '<ul class="community-highlights">' + (c.free.highlights || []).map(function(h) { return '<li>' + escapeHtml(h) + '</li>'; }).join('') + '</ul>' +
+            '<a href="join.html" class="btn btn-secondary btn-lg">' + escapeHtml(c.free.ctaText) + '</a>' +
+          '</div>' +
+          '<div class="community-card community-card-paid">' +
+            '<div class="community-card-header"><h3 class="community-card-title">' + escapeHtml(c.paid.title) + '</h3><span class="badge badge-premium">PRO</span></div>' +
+            '<div class="community-card-subtitle">' + escapeHtml(c.paid.subtitle) + '</div>' +
+            '<p class="community-card-desc">' + escapeHtml(c.paid.description) + '</p>' +
+            '<ul class="community-highlights">' + (c.paid.highlights || []).map(function(h) { return '<li>' + escapeHtml(h) + '</li>'; }).join('') + '</ul>' +
+            '<a href="' + (c.paid.url || 'join.html') + '" class="btn btn-primary btn-lg">' + escapeHtml(c.paid.ctaText) + '</a>' +
+          '</div>' +
+        '</div></div></section>';
     }
 
     document.addEventListener('DOMContentLoaded', initHome);

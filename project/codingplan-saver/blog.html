@@ -3,32 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>测评文章 · CodingPlan 省钱攻略</title>
-  <meta name="description" content="AI Coding Plan 真实测评、价格变动速报、选型指南、踩坑日记。基于真实使用的博主原创内容。">
+  <title>热点文章 · 饭庐者说</title>
+  <meta name="description" content="AI Coding Plan 相关热点文章聚合: 价格变动、深度测评、行业动态。">
   <link rel="stylesheet" href="styles/shared.css">
+  <style>
+    .blog-layout { max-width: 900px; margin: 0 auto; }
+
+    /* Search */
+    .search-bar {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .search-input {
+      flex: 1;
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-card);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-input::placeholder { color: var(--text-muted); }
+
+    /* Filter rows */
+    .filter-section { margin-bottom: var(--space-3); }
+    .filter-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* Sort */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .sort-btn {
+      font-size: 12px;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+    .sort-btn:hover { color: var(--text-primary); }
+    .sort-btn.active { color: var(--accent); font-weight: 700; }
+
+    /* Article list */
+    .article-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.12s ease;
+    }
+    .article-item:hover { background: var(--bg-card); }
+    .article-item:first-child { border-top: 1px solid var(--border-subtle); }
+    .article-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .article-item-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    .article-item-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.12s ease;
+    }
+    .article-item-title a:hover { color: var(--accent); }
+    .article-item-badge {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .article-item-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      font-size: 12px;
+      color: var(--text-muted);
+      align-items: center;
+    }
+    .article-item-excerpt {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-item.featured {
+      border-left: 2px solid var(--accent);
+      padding-left: calc(var(--space-4) - 2px);
+    }
+    .no-results {
+      text-align: center;
+      padding: 64px var(--space-4);
+      color: var(--text-muted);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-6);
+    }
+    .page-btn {
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--bg-card);
+      border: 1px solid var(--border-default);
+      color: var(--text-secondary);
+      transition: all 0.12s ease;
+      min-width: 36px;
+      text-align: center;
+    }
+    .page-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .page-btn.active { background: var(--accent); color: #090d14; border-color: var(--accent); }
+    .page-btn:disabled { opacity: 0.3; cursor: default; }
+    .page-info { font-size: 12px; color: var(--text-muted); padding: 0 var(--space-2); }
+
+    @media (max-width: 640px) {
+      .article-item-top { flex-direction: column; }
+      .article-item-meta { gap: var(--space-2); }
+    }
+  </style>
 </head>
 <body>
   <div id="navMount"></div>
 
   <main>
-    <section class="hero" style="padding-bottom:var(--space-8);">
+    <section class="hero" style="padding-bottom:var(--space-4);">
       <div class="container">
-        <span class="hero-eyebrow">● BLOG</span>
-        <h1 class="hero-title">测评 & <span class="hero-title-accent">省钱攻略</span></h1>
-        <p class="hero-subtitle">基于真实使用的原创内容：深度测评、价格速报、选型指南、踩坑日记。每周更新。</p>
+        <div class="blog-layout">
+          <span class="section-eyebrow">LATEST</span>
+          <h1 class="hero-title" style="font-size:clamp(24px,3vw,32px);">热点文章</h1>
+          <p class="hero-subtitle">AI Coding Plan 相关最新文章，点击标题跳转原文阅读。</p>
+        </div>
       </div>
     </section>
 
-    <section class="section-sm">
+    <section class="section-sm" style="padding-top:0;">
       <div class="container">
-        <div class="filter-bar" style="margin-bottom:var(--space-6);">
-          <button class="filter-chip active" data-category="">全部</button>
-          <button class="filter-chip" data-category="深度测评">深度测评</button>
-          <button class="filter-chip" data-category="价格速报">价格速报</button>
-          <button class="filter-chip" data-category="选型指南">选型指南</button>
-          <span class="filter-stats"><strong id="articleCount">0</strong> 篇文章</span>
+        <div class="blog-layout">
+
+          <!-- Search -->
+          <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索文章标题或关键词...">
+          </div>
+
+          <!-- Category filter -->
+          <div class="filter-section">
+            <div class="filter-label">分类</div>
+            <div class="filter-row" id="categoryFilters"></div>
+          </div>
+
+          <!-- Source filter -->
+          <div class="filter-section">
+            <div class="filter-label">来源</div>
+            <div class="filter-row" id="sourceFilters"></div>
+          </div>
+
+          <!-- Topic filter -->
+          <div class="filter-section">
+            <div class="filter-label">话题</div>
+            <div class="filter-row" id="topicFilters"></div>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar">
+            <span class="article-count" id="articleCount"></span>
+            <div>
+              <button class="sort-btn active" data-sort="newest">最新</button>
+              <button class="sort-btn" data-sort="featured">推荐</button>
+            </div>
+          </div>
+
+          <!-- Article list -->
+          <div id="articleList"></div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="pagination"></div>
+
         </div>
-        <div class="grid grid-3" id="articleGrid"></div>
       </div>
     </section>
   </main>
@@ -37,38 +225,155 @@
 
   <script src="scripts/shared.js"></script>
   <script>
-    let currentCategory = '';
+    var state = {
+      category: '', source: '', topic: '', search: '', sort: 'newest',
+      page: 1, pageSize: 10
+    };
+
+    var TOPICS = [
+      { key: 'Kimi', label: 'Kimi / K3' },
+      { key: 'DeepSeek', label: 'DeepSeek' },
+      { key: 'Claude', label: 'Claude Code' },
+      { key: 'Coding Plan', label: 'Coding Plan' },
+      { key: 'Vibe Coding', label: 'Vibe Coding' },
+      { key: 'Anthropic', label: 'Anthropic' },
+      { key: '定价', label: '价格变动' },
+    ];
 
     async function initBlog() {
       await loadConfig();
       await loadArticles();
       mountNav('blog');
       mountFooter();
+      renderFilters();
       renderArticles();
+      bindEvents();
+    }
 
-      $$('.filter-chip[data-category]').forEach(chip => {
-        chip.addEventListener('click', () => {
-          $$('.filter-chip[data-category]').forEach(c => c.classList.remove('active'));
-          chip.classList.add('active');
-          currentCategory = chip.dataset.category;
+    function renderFilters() {
+      // Category chips
+      var cats = ['', ...new Set(CPS.articles.map(function(a) { return a.category; }))];
+      $('#categoryFilters').innerHTML = cats.map(function(c) {
+        return '<button class="filter-chip' + (c === '' ? ' active' : '') + '" data-type="category" data-value="' + (c || '') + '">' + (c || '全部') + '</button>';
+      }).join('');
+
+      // Source chips
+      var sources = ['', ...new Set(CPS.articles.map(function(a) { return a.author; }))].sort();
+      $('#sourceFilters').innerHTML = sources.map(function(s) {
+        return '<button class="filter-chip' + (s === '' ? ' active' : '') + '" data-type="source" data-value="' + (s || '') + '">' + (s || '全部') + '</button>';
+      }).join('');
+
+      // Topic chips
+      $('#topicFilters').innerHTML = '<button class="filter-chip active" data-type="topic" data-value="">全部</button>' +
+        TOPICS.map(function(t) {
+          return '<button class="filter-chip" data-type="topic" data-value="' + t.key + '">' + t.label + '</button>';
+        }).join('');
+    }
+
+    function bindEvents() {
+      // Search
+      $('#searchInput').addEventListener('input', function() {
+        state.search = this.value.trim().toLowerCase();
+        state.page = 1;
+        renderArticles();
+      });
+
+      // Filter chips
+      document.querySelectorAll('.filter-chip[data-type]').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          var type = this.dataset.type;
+          var value = this.dataset.value;
+          document.querySelectorAll('.filter-chip[data-type="' + type + '"]').forEach(function(c) { c.classList.remove('active'); });
+          this.classList.add('active');
+          state[type] = value;
+          state.page = 1;
+          renderArticles();
+        });
+      });
+
+      // Sort
+      document.querySelectorAll('.sort-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.sort-btn').forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          state.sort = this.dataset.sort;
+          state.page = 1;
           renderArticles();
         });
       });
     }
 
     function renderArticles() {
-      const grid = $('#articleGrid');
-      const count = $('#articleCount');
-      const filtered = currentCategory
-        ? CPS.articles.filter(a => a.category === currentCategory)
-        : CPS.articles;
-      count.textContent = filtered.length;
+      var list = document.getElementById('articleList');
+      var count = document.getElementById('articleCount');
+      var pagination = document.getElementById('pagination');
 
-      if (!filtered.length) {
-        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--text-muted);">该分类暂无文章</div>`;
+      var filtered = CPS.articles.filter(function(a) {
+        if (state.category && a.category !== state.category) return false;
+        if (state.source && a.author !== state.source) return false;
+        if (state.topic && a.title.indexOf(state.topic) === -1) return false;
+        if (state.search) {
+          var hay = (a.title + ' ' + (a.excerpt || '') + ' ' + (a.author || '')).toLowerCase();
+          if (hay.indexOf(state.search) === -1) return false;
+        }
+        return true;
+      });
+
+      // Sort
+      if (state.sort === 'featured') {
+        filtered.sort(function(a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
+      }
+
+      // Pagination
+      var totalPages = Math.ceil(filtered.length / state.pageSize);
+      if (state.page > totalPages) state.page = Math.max(1, totalPages);
+      var start = (state.page - 1) * state.pageSize;
+      var paged = filtered.slice(start, start + state.pageSize);
+
+      count.textContent = '共 ' + filtered.length + ' 篇';
+
+      if (!paged.length) {
+        list.innerHTML = '<div class="no-results">没有匹配的文章，试试调整筛选条件</div>';
+        pagination.innerHTML = '';
         return;
       }
-      grid.innerHTML = filtered.map(renderArticleCard).join('');
+
+      list.innerHTML = paged.map(function(a) {
+        var href = a.url || ('article.html?id=' + encodeURIComponent(a.id));
+        var isExternal = !!a.url;
+        return '<div class="article-item' + (a.featured ? ' featured' : '') + '">' +
+          '<div class="article-item-top">' +
+            '<div class="article-item-title">' +
+              '<a href="' + href + '"' + (isExternal ? ' target="_blank" rel="noopener"' : '') + '>' + escapeHtml(a.title) + '</a>' +
+            '</div>' +
+            '<div class="article-item-badge">' +
+              '<span class="badge badge-accent">' + escapeHtml(a.category) + '</span>' +
+            '</div>' +
+          '</div>' +
+          (a.excerpt ? '<div class="article-item-excerpt">' + escapeHtml(a.excerpt) + '</div>' : '') +
+          '<div class="article-item-meta">' +
+            '<span>' + (a.author ? escapeHtml(a.author) : '') + '</span>' +
+            '<span>' + escapeHtml(a.date) + '</span>' +
+            '<span>' + escapeHtml(a.readTime) + '</span>' +
+            (a.featured ? '<span class="badge badge-warning">推荐</span>' : '') +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      // Render pagination
+      if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+      var html = '<button class="page-btn" ' + (state.page === 1 ? 'disabled' : '') + ' data-page="' + (state.page - 1) + '">上一页</button>';
+      html += '<span class="page-info">' + state.page + ' / ' + totalPages + '</span>';
+      html += '<button class="page-btn" ' + (state.page === totalPages ? 'disabled' : '') + ' data-page="' + (state.page + 1) + '">下一页</button>';
+      pagination.innerHTML = html;
+
+      pagination.querySelectorAll('.page-btn:not([disabled])').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          state.page = parseInt(this.dataset.page);
+          renderArticles();
+          document.querySelector('.blog-layout').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
     }
 
     document.addEventListener('DOMContentLoaded', initBlog);

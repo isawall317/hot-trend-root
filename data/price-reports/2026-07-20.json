@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-07-20T15:50:37Z",
+  "signals_count": 0,
+  "signals": [],
+  "scrape_results": [
+    {
+      "vendor": "智谱AI",
+      "status": "scraped",
+      "strategy": "direct",
+      "prices_found": [],
+      "models_found": [],
+      "url": "https://open.bigmodel.cn/pricing"
+    },
+    {
+      "vendor": "字节·方舟",
+      "status": "scraped",
+      "strategy": "direct",
+      "prices_found": [
+        "45",
+        "150",
+        "160",
+        "1000",
+        "80",
+        "144",
+        "72",
+        "2",
+        "500",
+        "0007"
+      ],
+      "models_found": [
+        "Claude Code",
+        "Doubao-embedding",
+        "Doubao-embedding-vision-text",
+        "Doubao-embedding-large",
+        "Doubao-embedding-vision-image"
+      ],
+      "url": "https://www.volcengine.com/docs/82379/1099320"
+    },
+    {
+      "vendor": "DeepSeek 官方",
+      "status": "scraped",
+      "strategy": "direct",
+      "prices_found": [],
+      "models_found": [
+        "DeepSeek-V4-Flash",
+        "DeepSeek-V4-Pro"
+      ],
+      "url": "https://api-docs.deepseek.com/quick_start/pricing"
+    },
+    {
+      "vendor": "Claude",
+      "status": "scraped",
+      "strategy": "direct",
+      "prices_found": [],
+      "models_found": [
+        "Claude Code all draws from the same pool. How much you can do depends on the length and complexity of your conversations",
+        "Claude Security",
+        "Claude on web",
+        "Claude\n      if ",
+        "Claude write and run code to build files like spreadsheets",
+        "Claude for Microsoft 365. You can choose a monthly or annual subscription.",
+        "Claude\n        menu.addEventListener",
+        "Claude plan that fits how you solve problems. Free",
+        "Claude for Microsoft 365",
+        "Claude apps built for"
+      ],
+      "url": "https://claude.com/pricing"
+    },
+    {
+      "vendor": "Codex (ChatGPT)",
+      "status": "failed",
+      "error": "HTTP 403",
+      "strategy": "direct"
+    }
+  ],
+  "existing_plans_count": 31
+}

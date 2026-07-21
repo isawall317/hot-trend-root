@@ -1,0 +1,16 @@
+[project]
+name = "hot-trend-collector"
+version = "0.1.0"
+description = "Hot Trend 数据采集聚合器 — 从 DailyHotApi + RSSHub 拉取数据，归一化存储"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "feedparser>=6.0",
+]
+
+[project.scripts]
+collect = "collector.engine:main"
+price-monitor = "collector.price_monitor:main"
+token-estimate = "collector.token_estimator:main"
+article-discover = "collector.article_discovery:main"
+pipeline = "collector.pipeline:main"

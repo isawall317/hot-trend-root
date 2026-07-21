@@ -5,7 +5,11 @@
     "plan": "Lite",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 49,
     "firstMonthPrice": 46.55,
     "quarterlyPrice": 132.3,
@@ -16,10 +20,16 @@
     "monthlyRequests": 24000,
     "measuredMonthlyToken": 120,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "GLM-5-Turbo"],
-    "benefits": ["免费 MCP 次数"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo"
+    ],
+    "benefits": [
+      "免费 MCP 次数"
+    ],
     "bloggerVerdict": "我自己的入门套餐。3 倍 Claude Pro 用量，写代码完全够用。",
-    "action": "#",
+    "action": "https://open.bigmodel.cn/pricing",
     "status": "在售"
   },
   {
@@ -28,7 +38,11 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 149,
     "firstMonthPrice": 141.55,
     "quarterlyPrice": 402,
@@ -39,10 +53,17 @@
     "monthlyRequests": 120000,
     "measuredMonthlyToken": 600,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "GLM-5-Turbo", "GLM-5"],
-    "benefits": ["免费 MCP 次数"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "benefits": [
+      "免费 MCP 次数"
+    ],
     "bloggerVerdict": "我的主力套餐，5 倍 Lite 用量。重度开发必备。",
-    "action": "#",
+    "action": "https://open.bigmodel.cn/pricing",
     "status": "在售"
   },
   {
@@ -51,7 +72,11 @@
     "plan": "Max",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 469,
     "firstMonthPrice": 445.55,
     "quarterlyPrice": 1266,
@@ -62,10 +87,17 @@
     "monthlyRequests": 480000,
     "measuredMonthlyToken": 2400,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "GLM-5-Turbo", "GLM-5"],
-    "benefits": ["免费 MCP 次数"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "benefits": [
+      "免费 MCP 次数"
+    ],
     "bloggerVerdict": "20 倍 Lite 用量。适合团队或重度 agentic 使用。",
-    "action": "#",
+    "action": "https://open.bigmodel.cn/pricing",
     "status": "在售"
   },
   {
@@ -74,7 +106,10 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 4,
-    "tags": ["模型强", "无需抢购"],
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
     "monthlyPrice": 72,
     "firstMonthPrice": 64.8,
     "quarterlyPrice": 194,
@@ -84,11 +119,19 @@
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "GLM-5-Turbo", "GLM-5"],
-    "benefits": ["免费 MCP 次数"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "benefits": [
+      "免费 MCP 次数"
+    ],
     "bloggerVerdict": "智谱抢不到时的备选，价格约国内版 2 倍。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://open.bigmodel.cn/",
+    "status": "在售",
+    "measuredMonthlyToken": 6000
   },
   {
     "id": "minimax-plus",
@@ -96,7 +139,12 @@
     "plan": "新Plus",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购", "多模态"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购",
+      "多模态"
+    ],
     "monthlyPrice": 49,
     "firstMonthPrice": 44.1,
     "yearlyPrice": 490,
@@ -106,10 +154,14 @@
     "monthlyRequests": 60000,
     "measuredMonthlyToken": 600,
     "tokenLimit": "600M Tokens",
-    "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"],
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
     "benefits": [],
     "bloggerVerdict": "额度最高 + 不抢购，养龙虾 / 长任务首选。",
-    "action": "#",
+    "action": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
     "status": "在售"
   },
   {
@@ -118,7 +170,12 @@
     "plan": "新Max",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购", "多模态"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购",
+      "多模态"
+    ],
     "monthlyPrice": 119,
     "firstMonthPrice": 107.1,
     "yearlyPrice": 1190,
@@ -128,10 +185,14 @@
     "monthlyRequests": 180000,
     "measuredMonthlyToken": 1800,
     "tokenLimit": "1800M Tokens",
-    "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"],
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
     "benefits": [],
     "bloggerVerdict": "MiniMax 中档主力，重度使用者的甜点档位。",
-    "action": "#",
+    "action": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
     "status": "在售"
   },
   {
@@ -140,7 +201,12 @@
     "plan": "新Ultra",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购", "多模态"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购",
+      "多模态"
+    ],
     "monthlyPrice": 469,
     "firstMonthPrice": 422.1,
     "yearlyPrice": 4690,
@@ -150,10 +216,14 @@
     "monthlyRequests": 600000,
     "measuredMonthlyToken": 7100,
     "tokenLimit": "7100M Tokens",
-    "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"],
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
     "benefits": [],
     "bloggerVerdict": "团队 / 多人共享场景的最高档。",
-    "action": "#",
+    "action": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
     "status": "在售"
   },
   {
@@ -162,7 +232,11 @@
     "plan": "Lite",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 40,
     "firstMonthPrice": 9.4,
     "currency": "¥",
@@ -171,10 +245,17 @@
     "monthlyRequests": 18000,
     "measuredMonthlyToken": 250,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "MiniMax-M3", "Kimi-K3", "DeepSeek-V4-Pro", "Doubao-Seed-2.0"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M3",
+      "Kimi-K3",
+      "DeepSeek-V4-Pro",
+      "Doubao-Seed-2.0"
+    ],
     "benefits": [],
     "bloggerVerdict": "全家桶入门档，首月 9.4 元试水很划算。",
-    "action": "#",
+    "action": "https://www.volcengine.com/ark",
     "status": "在售"
   },
   {
@@ -183,7 +264,11 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 200,
     "firstMonthPrice": 47.4,
     "currency": "¥",
@@ -192,10 +277,17 @@
     "monthlyRequests": 90000,
     "measuredMonthlyToken": 1249,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "GLM-5.2", "MiniMax-M3", "Kimi-K3", "DeepSeek-V4-Pro", "Doubao-Seed-2.0"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M3",
+      "Kimi-K3",
+      "DeepSeek-V4-Pro",
+      "Doubao-Seed-2.0"
+    ],
     "benefits": [],
     "bloggerVerdict": "全家桶主力档，2.5 折活动进行中，性价比拉满。",
-    "action": "#",
+    "action": "https://www.volcengine.com/ark",
     "status": "在售"
   },
   {
@@ -204,7 +296,10 @@
     "plan": "Allegretto",
     "type": "Coding Plan",
     "rating": 4,
-    "tags": ["模型强", "性价比高"],
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
     "monthlyPrice": 199,
     "yearlyPrice": 1908,
     "currency": "¥",
@@ -213,11 +308,17 @@
     "monthlyRequests": "未公开",
     "measuredMonthlyToken": 1428,
     "tokenLimit": "无限制",
-    "models": ["Kimi-K3", "Kimi-K2.7-Code", "Kimi-K2.6"],
-    "benefits": ["免费 Kimi-Claw"],
-    "bloggerVerdict": "20 倍额度档，长上下文场景无可替代。",
-    "action": "#",
-    "status": "在售"
+    "models": [
+      "Kimi-K3",
+      "Kimi-K2.7-Code",
+      "Kimi-K2.6"
+    ],
+    "benefits": [
+      "免费 Kimi-Claw"
+    ],
+    "bloggerVerdict": "20 倍额度档，长上下文场景无可替代。⚠️ 7.20 起暂停新用户订阅。",
+    "action": "https://www.kimi.com/membership/pricing",
+    "status": "暂停新用户"
   },
   {
     "id": "kimi-andante",
@@ -225,7 +326,9 @@
     "plan": "Andante",
     "type": "Coding Plan",
     "rating": 4,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 49,
     "yearlyPrice": 468,
     "currency": "¥",
@@ -234,11 +337,15 @@
     "monthlyRequests": "未公开",
     "measuredMonthlyToken": 84,
     "tokenLimit": "无限制",
-    "models": ["Kimi-K3", "Kimi-K2.7-Code", "Kimi-K2.6"],
+    "models": [
+      "Kimi-K3",
+      "Kimi-K2.7-Code",
+      "Kimi-K2.6"
+    ],
     "benefits": [],
-    "bloggerVerdict": "Kimi 入门档，Agent 4 倍速，体验原生 Kimi-K3。",
-    "action": "#",
-    "status": "在售"
+    "bloggerVerdict": "Kimi 入门档，Agent 4 倍速，体验原生 Kimi-K3。⚠️ 7.20 起暂停新用户订阅。",
+    "action": "https://www.kimi.com/membership/pricing",
+    "status": "暂停新用户"
   },
   {
     "id": "xunfei-pro",
@@ -246,18 +353,29 @@
     "plan": "专业版",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": 39,
     "currency": "¥",
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.1", "Kimi-K2.6", "Qwen3.6-35B-A3B", "MiniMax-M2.5", "DeepSeek-V3.2"],
+    "models": [
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2"
+    ],
     "benefits": [],
     "bloggerVerdict": "¥39 起步门槛最低，适合预算紧的学生党。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://xinghuo.xfyun.cn/",
+    "status": "在售",
+    "measuredMonthlyToken": 900
   },
   {
     "id": "xunfei-high",
@@ -265,18 +383,29 @@
     "plan": "高效版",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": 199,
     "currency": "¥",
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.2", "GLM-5.1", "DeepSeek-V4-Pro", "Kimi-K2.6", "Qwen3.6-35B-A3B"],
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B"
+    ],
     "benefits": [],
     "bloggerVerdict": "智谱抢不到时的最佳平替，¥199 就有 GLM-5.2。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://xinghuo.xfyun.cn/",
+    "status": "在售",
+    "measuredMonthlyToken": 4500
   },
   {
     "id": "yyun-mini",
@@ -284,18 +413,28 @@
     "plan": "Mini",
     "type": "Coding Plan",
     "rating": 4,
-    "tags": ["模型强", "无需抢购"],
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
     "monthlyPrice": 49,
     "currency": "¥",
     "fiveHoursRequests": 300,
     "weeklyRequests": 750,
     "monthlyRequests": 1900,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.2", "GLM-5.1", "Kimi-K2.6", "MiniMax-M2.7", "DeepSeek-V4-Flash"],
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "MiniMax-M2.7",
+      "DeepSeek-V4-Flash"
+    ],
     "benefits": [],
     "bloggerVerdict": "¥49 起步体验 GLM-5.2，费率透明无套路。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://www.youyun.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 95
   },
   {
     "id": "yyun-pro",
@@ -303,18 +442,28 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 4,
-    "tags": ["模型强", "无需抢购"],
+    "tags": [
+      "模型强",
+      "无需抢购"
+    ],
     "monthlyPrice": 499,
     "currency": "¥",
     "fiveHoursRequests": 3000,
     "weeklyRequests": 7500,
     "monthlyRequests": 19000,
     "tokenLimit": "无限制",
-    "models": ["GLM-5.2", "GLM-5.1", "Kimi-K2.6", "MiniMax-M2.7", "DeepSeek-V4-Flash"],
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "MiniMax-M2.7",
+      "DeepSeek-V4-Flash"
+    ],
     "benefits": [],
     "bloggerVerdict": "优云中档，10 并发，适合多任务场景。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://www.youyun.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 950
   },
   {
     "id": "bailian-pro",
@@ -322,7 +471,11 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "需抢购"
+    ],
     "monthlyPrice": 200,
     "currency": "¥",
     "fiveHoursRequests": 6000,
@@ -330,10 +483,16 @@
     "monthlyRequests": 90000,
     "measuredMonthlyToken": 3000,
     "tokenLimit": "无限制",
-    "models": ["Qwen-3.7-Plus", "Qwen-3.6-Plus", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "models": [
+      "Qwen-3.7-Plus",
+      "Qwen-3.6-Plus",
+      "GLM-5",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
+    ],
     "benefits": [],
     "bloggerVerdict": "3000M Token 月额度，写代码 + 通用任务兼顾。",
-    "action": "#",
+    "action": "https://bailian.console.aliyun.com/",
     "status": "在售"
   },
   {
@@ -342,7 +501,11 @@
     "plan": "Go",
     "type": "Token Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高", "无需抢购"],
+    "tags": [
+      "模型强",
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": 10,
     "firstMonthPrice": 5,
     "currency": "$",
@@ -350,11 +513,21 @@
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
-    "models": ["GLM-5.2", "Kimi-K2.7-Code", "MiniMax-M3", "Qwen-3.7-Max", "DeepSeek-V4-Pro"],
-    "benefits": ["首月半价", "可支付宝"],
+    "models": [
+      "GLM-5.2",
+      "Kimi-K2.7-Code",
+      "MiniMax-M3",
+      "Qwen-3.7-Max",
+      "DeepSeek-V4-Pro"
+    ],
+    "benefits": [
+      "首月半价",
+      "可支付宝"
+    ],
     "bloggerVerdict": "$10/月多模型聚合，首月 $5 试水，可支付宝。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://opencode.ai/",
+    "status": "在售",
+    "measuredMonthlyToken": 30
   },
   {
     "id": "mimo-lite",
@@ -362,7 +535,9 @@
     "plan": "Lite",
     "type": "Token Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 39,
     "firstMonthPrice": 34.32,
     "yearlyPrice": 412,
@@ -372,10 +547,16 @@
     "monthlyRequests": "无限制",
     "measuredMonthlyToken": 108,
     "tokenLimit": "108M Tokens",
-    "models": ["MiMo-V2.5-Pro", "MiMo-V2.5", "MiMo-V2-Pro"],
-    "benefits": ["TTS 限时免费"],
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2-Pro"
+    ],
+    "benefits": [
+      "TTS 限时免费"
+    ],
     "bloggerVerdict": "DeepSeek 平替，价格一致，无 5 小时限额。",
-    "action": "#",
+    "action": "https://mimo.xiaomi.com/",
     "status": "在售"
   },
   {
@@ -384,7 +565,9 @@
     "plan": "Pro",
     "type": "Token Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 329,
     "firstMonthPrice": 289.52,
     "yearlyPrice": 3474,
@@ -394,10 +577,16 @@
     "monthlyRequests": "无限制",
     "measuredMonthlyToken": 1002,
     "tokenLimit": "1002M Tokens",
-    "models": ["MiMo-V2.5-Pro", "MiMo-V2.5", "MiMo-V2-Pro"],
-    "benefits": ["TTS 限时免费"],
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2-Pro"
+    ],
+    "benefits": [
+      "TTS 限时免费"
+    ],
     "bloggerVerdict": "MiMo 主力档，1B Token 月额度。",
-    "action": "#",
+    "action": "https://mimo.xiaomi.com/",
     "status": "在售"
   },
   {
@@ -406,7 +595,10 @@
     "plan": "虚拟套餐 40",
     "type": "Token Plan",
     "rating": 4,
-    "tags": ["性价比高", "无需抢购"],
+    "tags": [
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": 40,
     "currency": "¥",
     "fiveHoursRequests": "无限制",
@@ -414,10 +606,12 @@
     "monthlyRequests": "无限制",
     "measuredMonthlyToken": 105,
     "tokenLimit": "105M Tokens",
-    "models": ["DeepSeek-V4-Pro"],
+    "models": [
+      "DeepSeek-V4-Pro"
+    ],
     "benefits": [],
     "bloggerVerdict": "原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。",
-    "action": "#",
+    "action": "https://api-docs.deepseek.com/quick_start/pricing",
     "status": "在售"
   },
   {
@@ -426,7 +620,10 @@
     "plan": "虚拟套餐 200",
     "type": "Token Plan",
     "rating": 4,
-    "tags": ["性价比高", "无需抢购"],
+    "tags": [
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": 200,
     "currency": "¥",
     "fiveHoursRequests": "无限制",
@@ -434,10 +631,12 @@
     "monthlyRequests": "无限制",
     "measuredMonthlyToken": 527,
     "tokenLimit": "527M Tokens",
-    "models": ["DeepSeek-V4-Pro"],
+    "models": [
+      "DeepSeek-V4-Pro"
+    ],
     "benefits": [],
     "bloggerVerdict": "原生 DeepSeek 重度档，527M Token。",
-    "action": "#",
+    "action": "https://api-docs.deepseek.com/quick_start/pricing",
     "status": "在售"
   },
   {
@@ -446,17 +645,28 @@
     "plan": "按量 8 折",
     "type": "Token Plan",
     "rating": 4,
-    "tags": ["性价比高", "无需抢购"],
+    "tags": [
+      "性价比高",
+      "无需抢购"
+    ],
     "monthlyPrice": "按量",
     "currency": "¥",
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
     "tokenLimit": "无限制",
-    "models": ["DeepSeek-V4-Pro", "GLM-5.2", "Kimi-K2.6", "Qwen-3.7-Max"],
-    "benefits": ["官方 8 折", "20 元额度"],
+    "models": [
+      "DeepSeek-V4-Pro",
+      "GLM-5.2",
+      "Kimi-K2.6",
+      "Qwen-3.7-Max"
+    ],
+    "benefits": [
+      "官方 8 折",
+      "20 元额度"
+    ],
     "bloggerVerdict": "DeepSeek 官方 8 折中转，7 月涨价后优势放大。需邀请链接。",
-    "action": "#",
+    "action": "https://gongji.ai/",
     "status": "在售"
   },
   {
@@ -464,19 +674,30 @@
     "vendor": "腾讯云",
     "plan": "Standard",
     "type": "Token Plan",
-    "rating": 2,
-    "tags": ["模型强"],
+    "rating": 3,
+    "tags": [
+      "模型强",
+      "兼容 Claude Code"
+    ],
     "monthlyPrice": 99,
     "currency": "¥",
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
     "tokenLimit": "100M Tokens",
-    "models": ["HY-2.0", "GLM-5.1", "MiniMax-M2.7", "Kimi-K2.5"],
-    "benefits": [],
-    "bloggerVerdict": "100M Token 仅 200 轮问答，性价比偏低，谨慎入手。",
-    "action": "#",
-    "status": "在售"
+    "models": [
+      "GLM-5.1",
+      "Kimi-K2.5",
+      "MiniMax-M2.7"
+    ],
+    "benefits": [
+      "兼容 Claude Code",
+      "兼容 Cursor"
+    ],
+    "bloggerVerdict": "TokenHub Token Plan，比 API 按量便宜 50-80%。100M Token 仅 200 轮问答，性价比偏低。",
+    "action": "https://cloud.tencent.com/product/tokenhub?Is=home",
+    "status": "在售",
+    "measuredMonthlyToken": 100.0
   },
   {
     "id": "huawei-standard",
@@ -484,18 +705,26 @@
     "plan": "Standard",
     "type": "Token Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 149,
     "currency": "¥",
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
     "tokenLimit": "130M Tokens",
-    "models": ["GLM-5.1", "GLM-5", "Kimi-K2.6", "DeepSeek-V4-Flash"],
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
     "benefits": [],
     "bloggerVerdict": "限个人用户限购 1 套，仅 AI Coding/Agent 用途。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://www.huaweicloud.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 130.0
   },
   {
     "id": "baidu-pro",
@@ -503,18 +732,29 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 200,
     "currency": "¥",
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
-    "models": ["GLM-5", "GLM-5.1", "DeepSeek-V4-Pro", "Kimi-K2.5", "MiniMax-M2.5"],
-    "benefits": ["百度搜索额度"],
+    "models": [
+      "GLM-5",
+      "GLM-5.1",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
+    ],
+    "benefits": [
+      "百度搜索额度"
+    ],
     "bloggerVerdict": "模型覆盖广，附百度搜索 Skill，可做 Agent 联网。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://qianfan.baidubce.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 4500
   },
   {
     "id": "jd-pro",
@@ -530,11 +770,18 @@
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
-    "models": ["Kimi-K2.5", "GLM-5", "MiniMax-M2.5", "DeepSeek-V3.2", "Qwen-3-Coder"],
+    "models": [
+      "Kimi-K2.5",
+      "GLM-5",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2",
+      "Qwen-3-Coder"
+    ],
     "benefits": [],
     "bloggerVerdict": "首月 99.9 试水友好，长期性价比一般。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://www.jdcloud.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 4500
   },
   {
     "id": "claude-pro",
@@ -542,7 +789,9 @@
     "plan": "Pro",
     "type": "Token Plan",
     "rating": 4,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 20,
     "currency": "$",
     "fiveHoursRequests": "Pro 基准",
@@ -550,10 +799,17 @@
     "monthlyRequests": "未公开",
     "measuredMonthlyToken": 416,
     "tokenLimit": "未公开",
-    "models": ["Claude Sonnet 4.6", "Claude Opus 4.7", "Claude Opus 4.6", "Claude Haiku 4.5"],
-    "benefits": ["原生 Claude 体验"],
+    "models": [
+      "Claude Sonnet 4.6",
+      "Claude Opus 4.7",
+      "Claude Opus 4.6",
+      "Claude Haiku 4.5"
+    ],
+    "benefits": [
+      "原生 Claude 体验"
+    ],
     "bloggerVerdict": "原生 Claude 党的底线选项，第三方 Agent 不可用。",
-    "action": "#",
+    "action": "https://claude.com/pricing",
     "status": "在售"
   },
   {
@@ -562,7 +818,10 @@
     "plan": "Plus",
     "type": "Token Plan",
     "rating": 5,
-    "tags": ["模型强", "性价比高"],
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
     "monthlyPrice": 20,
     "currency": "$",
     "fiveHoursRequests": "Plus 基准",
@@ -570,10 +829,18 @@
     "monthlyRequests": "未公开",
     "measuredMonthlyToken": 480,
     "tokenLimit": "未公开",
-    "models": ["GPT-5.6", "GPT-5.5", "GPT-5.4", "GPT-5.3-Codex", "GPT-5.2"],
-    "benefits": ["可购买额外积分"],
+    "models": [
+      "GPT-5.6",
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2"
+    ],
+    "benefits": [
+      "可购买额外积分"
+    ],
     "bloggerVerdict": "GPT-5.6 原生体验，海外党首选。",
-    "action": "#",
+    "action": "https://openai.com/chatgpt/pricing/",
     "status": "在售"
   },
   {
@@ -582,17 +849,28 @@
     "plan": "学生",
     "type": "Token Plan",
     "rating": 5,
-    "tags": ["性价比高", "学生认证"],
+    "tags": [
+      "性价比高",
+      "学生认证"
+    ],
     "monthlyPrice": 0,
     "currency": "$",
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
-    "models": ["GPT-5.2-Codex", "GPT-4.1", "GPT-5-mini", "Gemini 3.1 Pro", "Claude Haiku 4.5"],
-    "benefits": ["学生认证免费"],
+    "models": [
+      "GPT-5.2-Codex",
+      "GPT-4.1",
+      "GPT-5-mini",
+      "Gemini 3.1 Pro",
+      "Claude Haiku 4.5"
+    ],
+    "benefits": [
+      "学生认证免费"
+    ],
     "bloggerVerdict": "学生党白嫖神器，认证后高级模型 300 次。",
-    "action": "#",
+    "action": "https://github.com/features/copilot/plans",
     "status": "在售"
   },
   {
@@ -601,18 +879,28 @@
     "plan": "Copilot Pro",
     "type": "Token Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 10,
     "currency": "$",
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
-    "models": ["GPT-5.3-Codex", "GPT-5.4", "Claude Sonnet 4.6", "Gemini 3.1 Pro"],
-    "benefits": ["1000 积分"],
+    "models": [
+      "GPT-5.3-Codex",
+      "GPT-5.4",
+      "Claude Sonnet 4.6",
+      "Gemini 3.1 Pro"
+    ],
+    "benefits": [
+      "1000 积分"
+    ],
     "bloggerVerdict": "$10 拿到主流模型全家桶，海外账号党推荐。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://github.com/features/copilot/plans",
+    "status": "在售",
+    "measuredMonthlyToken": 30
   },
   {
     "id": "ollama-pro",
@@ -620,7 +908,9 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "monthlyPrice": 20,
     "yearlyPrice": 200,
     "currency": "$",
@@ -628,10 +918,19 @@
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
-    "models": ["Kimi-K2.6", "GLM-5.1", "DeepSeek-V4-Pro", "MiniMax-M2.7", "Qwen-3-Coder"],
-    "benefits": ["3 个并发任务"],
+    "models": [
+      "Kimi-K2.6",
+      "GLM-5.1",
+      "DeepSeek-V4-Pro",
+      "MiniMax-M2.7",
+      "Qwen-3-Coder"
+    ],
+    "benefits": [
+      "3 个并发任务"
+    ],
     "bloggerVerdict": "海外 Coding Plan 选择，模型池大，3 并发任务。",
-    "action": "#",
-    "status": "在售"
+    "action": "https://ollama.com/",
+    "status": "在售",
+    "measuredMonthlyToken": 125
   }
 ]

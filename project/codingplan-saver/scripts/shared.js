@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CodingPlan 省钱攻略 · 共享工具与渲染逻辑
+   饭庐者说 · 共享工具与渲染逻辑
    ========================================================================== */
 
 const CPS = {
@@ -98,36 +98,43 @@ async function loadPriceChanges() {
 
 /* ---------- Navigation ---------- */
 function renderNav(activeKey = '') {
-  const config = CPS.config;
+  var config = CPS.config;
   if (!config) return '';
-  const links = config.nav.map(item => `
-    <a href="${item.url}" class="nav-link ${item.key === activeKey ? 'active' : ''}">${escapeHtml(item.label)}</a>
-  `).join('');
-  return `
-    <nav class="nav">
-      <div class="nav-inner">
-        <a href="index.html" class="nav-brand">
-          <span class="nav-brand-logo">${config.site.logo}</span>
-          <span class="nav-brand-name">${escapeHtml(config.site.name)}</span>
-        </a>
-        <div class="nav-links" id="navLinks">
-          ${links}
-          <a href="join.html" class="nav-cta">加入社群 →</a>
-        </div>
-        <button class="nav-mobile-toggle" id="navToggle" aria-label="菜单">☰</button>
-      </div>
-    </nav>
-  `;
+  var links = config.nav.map(function(item) {
+    return '<a href="' + item.url + '" class="nav-link' + (item.key === activeKey ? ' active' : '') + '">' + escapeHtml(item.label) + '</a>';
+  }).join('');
+
+  // Determine if we're on the home page
+  var path = window.location.pathname;
+  var isHome = path.endsWith('index.html') || path === '/' || path.endsWith('/') || (path.indexOf('codingplan-saver') !== -1 && (path.endsWith('index.html') || path.endsWith('/')));
+
+  // Tab links: always link to separate pages
+  var tabs = '<a href="index.html" class="nav-link nav-tab' + (isHome ? ' active' : '') + '">推荐 & 动态</a>' +
+             '<a href="compare.html" class="nav-link nav-tab' + (activeKey === 'compare' ? ' active' : '') + '">套餐对比</a>';
+
+  return '<nav class="nav">' +
+    '<div class="nav-inner">' +
+      '<a href="index.html" class="nav-brand">' +
+        '<span class="nav-brand-name">' + escapeHtml(config.site.name) + '</span>' +
+      '</a>' +
+      '<div class="nav-links" id="navLinks">' +
+        tabs +
+        links +
+        '<a href="join.html" class="nav-cta">加入社群</a>' +
+      '</div>' +
+      '<button class="nav-mobile-toggle" id="navToggle" aria-label="菜单">☰</button>' +
+    '</div>' +
+  '</nav>';
 }
 
-function mountNav(activeKey = '') {
-  const mount = $('#navMount');
+function mountNav(activeKey) {
+  var mount = $('#navMount');
   if (mount) {
     mount.innerHTML = renderNav(activeKey);
-    const toggle = $('#navToggle');
-    const links = $('#navLinks');
+    var toggle = $('#navToggle');
+    var links = $('#navLinks');
     if (toggle && links) {
-      toggle.addEventListener('click', () => links.classList.toggle('open'));
+      toggle.addEventListener('click', function() { links.classList.toggle('open'); });
     }
   }
 }
@@ -171,7 +178,7 @@ function renderHomeHero() {
   return `
     <section class="hero">
       <div class="container">
-        <span class="hero-eyebrow">● ${escapeHtml(h.updateDate || '')}</span>
+        <span class="hero-eyebrow">${escapeHtml(h.updateDate || '')}</span>
         <h1 class="hero-title">
           买 <span class="hero-title-accent">AI Coding Plan</span><br>
           之前先看这里
@@ -180,8 +187,8 @@ function renderHomeHero() {
         <p class="hero-subtitle" style="margin-top:-16px;font-size:14px;">${escapeHtml(h.highlights || '')}</p>
         <div class="hero-actions">
           <a href="#quickEntry" class="btn btn-primary btn-lg">开始选型 ↓</a>
-          <a href="wizard.html" class="btn btn-secondary btn-lg">🎯 选型助手</a>
-          <a href="blog.html" class="btn btn-ghost btn-lg">看测评 →</a>
+          <a href="wizard.html" class="btn btn-secondary btn-lg">选型助手</a>
+          <a href="blog.html" class="btn btn-ghost btn-lg">看测评</a>
         </div>
         <div class="hero-stats">${stats}</div>
       </div>
@@ -247,59 +254,52 @@ function bindQuickEntries() {
 
 /* ---------- Recommendation Cards ---------- */
 function renderRecommendations() {
-  const config = CPS.config;
+  var config = CPS.config;
   if (!config || !config.recommendationGroups) return '';
-  const groups = config.recommendationGroups.map(group => {
-    const items = (group.items || []).map(item => {
-      // Find plan in data to get price
-      const plan = CPS.plans.find(p => p.vendor === item.vendor && p.plan === item.plan);
-      const priceStr = plan
-        ? `<strong>${formatPrice(plan.monthlyPrice, plan.currency || '¥')}</strong>/月`
+  var groups = config.recommendationGroups.map(function(group) {
+    var items = (group.items || []).map(function(item) {
+      var plan = CPS.plans.find(function(p) { return p.vendor === item.vendor && p.plan === item.plan; });
+      var priceStr = plan
+        ? '<strong>' + formatPrice(plan.monthlyPrice, plan.currency || '¥') + '</strong>/月'
         : '';
-      const reasons = (item.reasons || []).map(r =>
-        `<li>${renderMarkdownLite(r)}</li>`
-      ).join('');
-      const action = item.action || (plan ? plan.action : '#');
-      return `
-        <article class="reco-card">
-          <div class="reco-card-header">
-            <div>
-              <div class="reco-card-vendor">${escapeHtml(item.vendor)}</div>
-              <div class="reco-card-plan">${escapeHtml(item.plan)} · ${plan ? escapeHtml(plan.type) : ''}</div>
-            </div>
-            ${renderStars(item.rating)}
-          </div>
-          ${item.verdict ? `<span class="reco-card-verdict">💬 ${escapeHtml(item.verdict)}</span>` : ''}
-          <ul class="reco-card-reasons">${reasons}</ul>
-          <div class="reco-card-footer">
-            <span class="reco-card-price">${priceStr}</span>
-            <a href="${action}" class="reco-card-link" target="_blank" rel="noopener">查看详情 →</a>
-          </div>
-        </article>
-      `;
+      var reasons = (item.reasons || []).map(function(r) {
+        return '<li>' + renderMarkdownLite(r) + '</li>';
+      }).join('');
+      var action = item.action || (plan ? plan.action : '#');
+      return '<article class="reco-card">' +
+        '<div class="reco-card-header">' +
+          '<div>' +
+            '<div class="reco-card-vendor">' + escapeHtml(item.vendor) + '</div>' +
+            '<div class="reco-card-plan">' + escapeHtml(item.plan) + ' ' + (plan ? escapeHtml(plan.type) : '') + '</div>' +
+          '</div>' +
+          renderStars(item.rating) +
+        '</div>' +
+        (item.verdict ? '<span class="reco-card-verdict">' + escapeHtml(item.verdict) + '</span>' : '') +
+        '<ul class="reco-card-reasons">' + reasons + '</ul>' +
+        '<div class="reco-card-footer">' +
+          '<span class="reco-card-price">' + priceStr + '</span>' +
+          '<a href="' + action + '" class="reco-card-link" target="_blank" rel="noopener">查看详情</a>' +
+        '</div>' +
+      '</article>';
     }).join('');
-    return `
-      <div class="reco-group">
-        <div class="reco-group-header">
-          <h3 class="reco-group-title">${escapeHtml(group.title)}</h3>
-          ${group.subtitle ? `<p class="reco-group-subtitle">${escapeHtml(group.subtitle)}</p>` : ''}
-        </div>
-        <div class="reco-grid">${items}</div>
-      </div>
-    `;
+    return '<div class="reco-group">' +
+      '<div class="reco-group-header">' +
+        '<h3 class="reco-group-title">' + escapeHtml(group.title) + '</h3>' +
+        (group.subtitle ? '<p class="reco-group-subtitle">' + escapeHtml(group.subtitle) + '</p>' : '') +
+      '</div>' +
+      '<div class="reco-grid">' + items + '</div>' +
+    '</div>';
   }).join('');
-  return `
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">BLOGGER PICKS</span>
-          <h2 class="section-title">博主的真实推荐</h2>
-          <p class="section-subtitle">不是单纯列数据，是我自己用过的、真心推荐的几家。每张卡片都带我的真实评价。</p>
-        </div>
-        ${groups}
-      </div>
-    </section>
-  `;
+  return '<section class="section-sm">' +
+    '<div class="container">' +
+      '<div class="section-header">' +
+        '<span class="section-eyebrow">BLOGGER PICKS</span>' +
+        '<h2 class="section-title">博主真实推荐</h2>' +
+        '<p class="section-subtitle">基于真实使用体验的推荐，每张卡片都带我的评价。</p>' +
+      '</div>' +
+      groups +
+    '</div>' +
+  '</section>';
 }
 
 /* ---------- Filter UI ---------- */
@@ -329,28 +329,27 @@ function renderFilterBar() {
     `<button class="filter-chip" data-filter-type="tags" data-filter-value="${escapeHtml(t)}">${escapeHtml(t)}</button>`
   ).join('');
 
-  return `
-    <div class="filter-bar">
-      <select class="filter-select" id="sortSelect">
-        <option value="">默认排序</option>
-        <option value="monthlyPrice-asc">月费 低 → 高</option>
-        <option value="monthlyPrice-desc">月费 高 → 低</option>
-        <option value="rating-desc">评分 高 → 低</option>
-        <option value="measuredMonthlyToken-desc">月 Token 多 → 少</option>
-      </select>
-      <input type="text" class="filter-select" id="searchInput" placeholder="搜索平台 / 套餐..." style="min-width:200px;">
-      <button class="filter-chip" id="resetBtn">↺ 重置</button>
-      <span class="filter-stats">显示 <strong id="filterCount">0</strong> / ${plans.length} 个套餐</span>
-    </div>
-    <div class="filter-bar" style="margin-top:-12px;">
-      <span class="text-tertiary" style="font-size:12px;font-weight:600;">类型:</span>
-      ${typeChips}
-    </div>
-    <div class="filter-bar" style="margin-top:-12px;">
-      <span class="text-tertiary" style="font-size:12px;font-weight:600;">标签:</span>
-      ${tagChips}
-    </div>
-  `;
+  return '<div class="filter-bar">' +
+      '<select class="filter-select" id="sortSelect">' +
+        '<option value="">默认排序</option>' +
+        '<option value="monthlyPrice-asc">月费 低-高</option>' +
+        '<option value="monthlyPrice-desc">月费 高-低</option>' +
+        '<option value="rating-desc">评分 高-低</option>' +
+        '<option value="measuredMonthlyToken-desc">月Token 多-少</option>' +
+        '<option value="tokensPerYuan-desc">性价比 高-低</option>' +
+      '</select>' +
+      '<input type="text" class="filter-select" id="searchInput" placeholder="搜索平台/套餐..." style="min-width:180px;">' +
+      '<button class="filter-chip" id="resetBtn">重置</button>' +
+      '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / ' + plans.length + ' 个套餐</span>' +
+    '</div>' +
+    '<div class="filter-bar">' +
+      '<span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>' +
+      typeChips +
+    '</div>' +
+    '<div class="filter-bar">' +
+      '<span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>' +
+      tagChips +
+    '</div>';
 }
 
 function syncFilterUI() {
@@ -441,6 +440,14 @@ function filterPlans() {
   const { key, dir } = CPS.state.sort;
   if (key) {
     result.sort((a, b) => {
+      // Special computed sort keys
+      if (key === 'tokensPerYuan') {
+        const aVal = (typeof a.monthlyPrice === 'number' && typeof a.measuredMonthlyToken === 'number' && a.monthlyPrice > 0)
+          ? a.measuredMonthlyToken / a.monthlyPrice : -1;
+        const bVal = (typeof b.monthlyPrice === 'number' && typeof b.measuredMonthlyToken === 'number' && b.monthlyPrice > 0)
+          ? b.measuredMonthlyToken / b.monthlyPrice : -1;
+        return dir === 'asc' ? aVal - bVal : bVal - aVal;
+      }
       const av = a[key];
       const bv = b[key];
       const aNum = typeof av === 'number' ? av : (av === '无限制' ? Infinity : -1);
@@ -453,48 +460,96 @@ function filterPlans() {
 
 function renderTable() {
   const tbody = $('#plansTableBody');
-  if (!tbody) return;
+  const cardsView = $('#plansCardsView');
   const filtered = filterPlans();
   const countEl = $('#filterCount');
   if (countEl) countEl.textContent = filtered.length;
 
   if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="99" style="text-align:center;padding:48px;color:var(--text-muted);">没有匹配的套餐，试试重置筛选</td></tr>`;
+    const empty = `<div style="text-align:center;padding:48px;color:var(--text-muted);">没有匹配的套餐，试试重置筛选</div>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan="99">${empty}</td></tr>`;
+    if (cardsView) cardsView.innerHTML = empty;
     return;
   }
 
-  tbody.innerHTML = filtered.map(p => {
-    const price = formatPrice(p.monthlyPrice, p.currency || '¥');
-    const firstPrice = p.firstMonthPrice ? formatPrice(p.firstMonthPrice, p.currency || '¥') : '—';
-    const measured = p.measuredMonthlyToken ? `${p.measuredMonthlyToken}M` : '—';
-    const models = (p.models || []).slice(0, 4).join(', ') + ((p.models || []).length > 4 ? '...' : '');
-    const tagsHtml = renderTagsInline(p.tags);
-    return `
-      <tr>
-        <td class="col-vendor">${escapeHtml(p.vendor)}</td>
-        <td>${escapeHtml(p.plan)}</td>
-        <td><span class="badge">${escapeHtml(p.type)}</span></td>
-        <td>${renderStars(p.rating)}</td>
-        <td class="col-price">${price}</td>
-        <td class="col-price" style="color:var(--color-warning);">${firstPrice}</td>
-        <td>${formatNumber(p.monthlyRequests)}</td>
-        <td class="col-price">${measured}</td>
-        <td><span style="font-size:12px;">${escapeHtml(models)}</span></td>
-        <td>${tagsHtml}</td>
-        <td class="col-action"><a href="${p.action || '#'}" target="_blank" rel="noopener">查看 →</a></td>
-      </tr>
-    `;
-  }).join('');
+  // Desktop table
+  if (tbody) {
+    tbody.innerHTML = filtered.map(p => {
+      const price = formatPrice(p.monthlyPrice, p.currency || '¥');
+      const firstPrice = p.firstMonthPrice ? formatPrice(p.firstMonthPrice, p.currency || '¥') : '—';
+      const measured = p.measuredMonthlyToken ? `${p.measuredMonthlyToken}M` : '—';
+      const tokensPerYuan = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
+        ? (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2)
+        : '—';
+      const pricePerM = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.measuredMonthlyToken > 0)
+        ? `¥${(p.monthlyPrice / p.measuredMonthlyToken).toFixed(2)}`
+        : '—';
+      const models = (p.models || []).slice(0, 4).join(', ') + ((p.models || []).length > 4 ? '...' : '');
+      const tagsHtml = renderTagsInline(p.tags);
+      return `
+        <tr>
+          <td class="col-vendor">${escapeHtml(p.vendor)}</td>
+          <td>${escapeHtml(p.plan)}</td>
+          <td><span class="badge">${escapeHtml(p.type)}</span></td>
+          <td>${renderStars(p.rating)}</td>
+          <td class="col-price">${price}</td>
+          <td class="col-price col-extra col-hidden" style="color:var(--color-warning);">${firstPrice}</td>
+          <td class="col-extra col-hidden">${formatNumber(p.monthlyRequests)}</td>
+          <td class="col-price">${measured}</td>
+          <td class="col-price" style="color:var(--accent-primary);">${tokensPerYuan}</td>
+          <td class="col-extra col-hidden" style="font-size:12px;color:var(--text-tertiary);">${pricePerM}</td>
+          <td><span style="font-size:12px;">${escapeHtml(models)}</span></td>
+          <td>${tagsHtml}</td>
+          <td class="col-action"><a href="${p.action || '#'}" target="_blank" rel="noopener">查看</a></td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Mobile cards
+  if (cardsView) {
+    cardsView.innerHTML = filtered.map(p => {
+      const price = formatPrice(p.monthlyPrice, p.currency || '¥');
+      const measured = p.measuredMonthlyToken ? `${p.measuredMonthlyToken}M` : '—';
+      const tokensPerYuan = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
+        ? (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2) : '—';
+      const models = (p.models || []).join(', ');
+      return `
+        <div class="plan-card-item">
+          <div class="plan-card-header">
+            <div>
+              <div class="plan-card-vendor">${escapeHtml(p.vendor)}</div>
+              <div class="plan-card-plan">${escapeHtml(p.plan)} · ${escapeHtml(p.type)}</div>
+            </div>
+            <div class="plan-card-price">${price}</div>
+          </div>
+          ${renderStars(p.rating)}
+          <div class="plan-card-row">
+            <div><span class="plan-card-label">月Token</span><br><span class="plan-card-value">${measured}</span></div>
+            <div><span class="plan-card-label">每元Token</span><br><span class="plan-card-value">${tokensPerYuan} M</span></div>
+            <div><span class="plan-card-label">模型</span><br><span class="plan-card-value">${escapeHtml(models)}</span></div>
+            <div><span class="plan-card-label">标签</span><br>${renderTagsInline(p.tags)}</div>
+          </div>
+          <div style="margin-top:var(--space-3);text-align:right;">
+            <a href="${p.action || '#'}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">查看</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
 }
 
 function renderTableSection() {
   return `
     <section class="section" id="tableSection">
       <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">FULL COMPARISON</span>
-          <h2 class="section-title">完整套餐对比表</h2>
-          <p class="section-subtitle">所有数据基于官方公开信息整理，更新日期 2026.7.19。点击表头排序，按标签筛选。</p>
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+          <div>
+            <span class="section-eyebrow">FULL COMPARISON</span>
+            <h2 class="section-title">完整套餐对比表</h2>
+            <p class="section-subtitle">所有数据基于官方公开信息整理。点击标签筛选，悬停查看详情。</p>
+          </div>
+          <button class="table-toggle-btn" id="toggleColumnsBtn" onclick="toggleExtraColumns()">展开全部列</button>
         </div>
         <div id="filterBarMount"></div>
         <div class="table-wrap">
@@ -506,9 +561,11 @@ function renderTableSection() {
                 <th>类型</th>
                 <th>评分</th>
                 <th>月费</th>
-                <th>首月</th>
-                <th>月请求</th>
+                <th class="col-extra">首月</th>
+                <th class="col-extra">月请求</th>
                 <th>实测月Token</th>
+                <th>每元Token</th>
+                <th class="col-extra">1M Token价</th>
                 <th>支持模型</th>
                 <th>标签</th>
                 <th>详情</th>
@@ -517,9 +574,22 @@ function renderTableSection() {
             <tbody id="plansTableBody"></tbody>
           </table>
         </div>
+        <div class="plan-cards-view" id="plansCardsView"></div>
       </div>
     </section>
   `;
+}
+
+window._columnsExpanded = false;
+function toggleExtraColumns() {
+  window._columnsExpanded = !window._columnsExpanded;
+  const btn = document.getElementById('toggleColumnsBtn');
+  const cols = document.querySelectorAll('td.col-extra');
+  cols.forEach(c => c.classList.toggle('col-hidden', !window._columnsExpanded));
+  if (btn) {
+    btn.textContent = window._columnsExpanded ? '收起额外列' : '展开全部列';
+    btn.classList.toggle('active', window._columnsExpanded);
+  }
 }
 
 /* ---------- Community Section ---------- */
@@ -528,7 +598,7 @@ function renderCommunitySection() {
   if (!config || !config.community) return '';
   const c = config.community;
   return `
-    <section class="section">
+    <section class="section-sm">
       <div class="container">
         <div class="section-header text-center">
           <span class="section-eyebrow">JOIN COMMUNITY</span>
@@ -546,7 +616,7 @@ function renderCommunitySection() {
             <ul class="community-highlights">
               ${(c.free.highlights || []).map(h => `<li>${escapeHtml(h)}</li>`).join('')}
             </ul>
-            <a href="join.html" class="btn btn-secondary btn-lg">${escapeHtml(c.free.ctaText)} →</a>
+            <a href="join.html" class="btn btn-secondary btn-lg">' + escapeHtml(c.free.ctaText) + '</a>
           </div>
           <div class="community-card community-card-paid">
             <div class="community-card-header">
@@ -558,7 +628,7 @@ function renderCommunitySection() {
             <ul class="community-highlights">
               ${(c.paid.highlights || []).map(h => `<li>${escapeHtml(h)}</li>`).join('')}
             </ul>
-            <a href="${c.paid.url || 'join.html'}" class="btn btn-primary btn-lg">${escapeHtml(c.paid.ctaText)} →</a>
+            <a href="${c.paid.url || 'join.html'}" class="btn btn-primary btn-lg">' + escapeHtml(c.paid.ctaText) + '</a>
           </div>
         </div>
       </div>
@@ -566,62 +636,58 @@ function renderCommunitySection() {
   `;
 }
 
-/* ---------- Price Changes Marquee / Section ---------- */
+/* ---------- Price Changes Inline ---------- */
 function renderPriceChangesInline() {
-  const data = CPS.priceChanges;
+  var data = CPS.priceChanges;
   if (!data || !data.changes || !data.changes.length) return '';
-  const recent = data.changes.slice(0, 5);
-  const items = recent.map(c => {
-    const impactBadge = c.impact === 'positive'
-      ? '<span class="badge badge-positive">+</span>'
+  var recent = data.changes.slice(0, 5);
+  var items = recent.map(function(c) {
+    var impactBadge = c.impact === 'positive'
+      ? '<span class="badge badge-positive">利好</span>'
       : c.impact === 'negative'
-      ? '<span class="badge badge-negative">-</span>'
-      : '<span class="badge">·</span>';
-    return `
-      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border-subtle);">
-        ${impactBadge}
-        <div style="flex:1;">
-          <div style="font-size:13px;color:var(--text-primary);font-weight:600;margin-bottom:2px;">${escapeHtml(c.vendor)} · ${escapeHtml(c.type)}</div>
-          <div style="font-size:12px;color:var(--text-tertiary);">${escapeHtml(c.detail)}</div>
-        </div>
-        <span style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);">${escapeHtml(c.date)}</span>
-      </div>
-    `;
+      ? '<span class="badge badge-negative">利空</span>'
+      : '<span class="badge">中性</span>';
+    return '<div class="price-change-item">' +
+      '<div>' + impactBadge + '</div>' +
+      '<div>' +
+        '<div class="price-change-vendor">' + escapeHtml(c.vendor) + ' ' + escapeHtml(c.type) + '</div>' +
+        '<div class="price-change-detail">' + escapeHtml(c.detail) + '</div>' +
+      '</div>' +
+      '<span class="price-change-date">' + escapeHtml(c.date) + '</span>' +
+    '</div>';
   }).join('');
-  return `
-    <section class="section-sm">
-      <div class="container">
-        <div class="card" style="padding:var(--space-6);">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
-            <div>
-              <span class="section-eyebrow">PRICE ALERT</span>
-              <h3 style="font-size:18px;font-weight:700;">本周价格变动速报</h3>
-            </div>
-            <span class="text-tertiary" style="font-size:12px;">${escapeHtml(data.weekRange || '')}</span>
-          </div>
-          ${items}
-        </div>
-      </div>
-    </section>
-  `;
+  return '<section class="section-sm">' +
+    '<div class="container">' +
+      '<div class="card" style="padding:var(--space-5);">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">' +
+          '<div>' +
+            '<span class="section-eyebrow">PRICE ALERT</span>' +
+            '<h3 style="font-size:18px;font-weight:700;">近期价格变动</h3>' +
+          '</div>' +
+          '<span style="font-size:12px;color:var(--text-tertiary);">' + escapeHtml(data.weekRange || '') + '</span>' +
+        '</div>' +
+        items +
+      '</div>' +
+    '</div>' +
+  '</section>';
 }
 
 /* ---------- Article Card ---------- */
 function renderArticleCard(article) {
-  return `
-    <a href="article.html?id=${encodeURIComponent(article.id)}" class="card card-hover" style="display:block;text-decoration:none;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-3);">
-        <span style="font-size:36px;">${article.cover || '📄'}</span>
-        <span class="badge badge-accent">${escapeHtml(article.category)}</span>
-      </div>
-      <h3 style="font-size:17px;font-weight:700;line-height:1.35;margin-bottom:var(--space-2);color:var(--text-primary);">${escapeHtml(article.title)}</h3>
-      <p style="font-size:13px;color:var(--text-tertiary);line-height:1.55;margin-bottom:var(--space-4);">${escapeHtml(article.excerpt)}</p>
-      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted);">
-        <span>${escapeHtml(article.date)} · ${escapeHtml(article.readTime)}</span>
-        <span class="text-accent" style="font-weight:600;">阅读 →</span>
-      </div>
-    </a>
-  `;
+  var href = article.url || ('article.html?id=' + encodeURIComponent(article.id));
+  var isExternal = !!article.url;
+  return '<a href="' + href + '" class="card card-hover" style="display:block;text-decoration:none;"' + (isExternal ? ' target="_blank" rel="noopener"' : '') + '>' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-3);">' +
+      '<span style="font-size:28px;font-weight:800;color:var(--accent);">' + escapeHtml(article.cover || '') + '</span>' +
+      '<span class="badge badge-accent">' + escapeHtml(article.category) + '</span>' +
+    '</div>' +
+    '<h3 style="font-size:16px;font-weight:700;line-height:1.35;margin-bottom:var(--space-2);color:var(--text-primary);">' + escapeHtml(article.title) + '</h3>' +
+    '<p style="font-size:13px;color:var(--text-tertiary);line-height:1.5;margin-bottom:var(--space-3);">' + escapeHtml(article.excerpt) + '</p>' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted);">' +
+      '<span>' + escapeHtml(article.date) + ' ' + escapeHtml(article.readTime) + (article.author ? ' ' + escapeHtml(article.author) : '') + '</span>' +
+      '<span class="text-accent" style="font-weight:600;">' + (isExternal ? '阅读' : '阅读') + '</span>' +
+    '</div>' +
+  '</a>';
 }
 
 /* ---------- Page Bootstrap Helper ---------- */
@@ -655,6 +721,7 @@ window.bindFilterBar = bindFilterBar;
 window.syncFilterUI = syncFilterUI;
 window.renderTable = renderTable;
 window.renderTableSection = renderTableSection;
+window.toggleExtraColumns = toggleExtraColumns;
 window.renderCommunitySection = renderCommunitySection;
 window.renderPriceChangesInline = renderPriceChangesInline;
 window.renderArticleCard = renderArticleCard;

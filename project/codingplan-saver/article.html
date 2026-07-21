@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文章 · CodingPlan 省钱攻略</title>
+  <title>文章 · 饭庐者说</title>
   <link rel="stylesheet" href="styles/shared.css">
   <style>
     .article-wrap {
@@ -153,7 +153,7 @@
         return;
       }
 
-      document.title = `${article.title} · CodingPlan 省钱攻略`;
+      document.title = `${article.title} · 饭庐者说`;
 
       const body = article.content.map(block => {
         if (block.type === 'h2') return `<h2>${escapeHtml(block.text)}</h2>`;
@@ -190,7 +190,7 @@
             <span class="badge badge-accent">${escapeHtml(article.category)}</span>
             <span>📅 ${escapeHtml(article.date)}</span>
             <span>⏱ ${escapeHtml(article.readTime)}</span>
-            <span>✍️ ${escapeHtml(article.author || '老麦')}</span>
+            <span>✍️ ${escapeHtml(article.author || '饭庐者')}</span>
           </div>
           <h1 class="article-title">${escapeHtml(article.title)}</h1>
           <p class="article-excerpt">${escapeHtml(article.excerpt)}</p>

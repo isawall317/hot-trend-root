@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>套餐对比 · CodingPlan 省钱攻略</title>
+  <meta name="description" content="20个平台、30+套餐全方位对比表。按价格、Token、模型筛选，找到性价比最高的 AI Coding Plan。">
+  <link rel="stylesheet" href="styles/shared.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <style>
+    .chart-container { width: 100%; height: 500px; }
+    @media (max-width: 768px) { .chart-container { height: 360px; } }
+  </style>
+</head>
+<body>
+  <div id="navMount"></div>
+
+  <main>
+    <!-- Chart -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="section-header" style="margin-bottom:var(--space-4);">
+          <span class="section-eyebrow">CHART</span>
+          <h2 class="section-title">价格 vs Token 上限</h2>
+          <p class="section-subtitle">横轴月费，纵轴月Token上限。绿色区域为高性价比区。</p>
+        </div>
+        <div class="chart-card">
+          <div class="chart-container" id="priceVsTokenChart"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="section" id="tableSection">
+      <div class="container">
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+          <div>
+            <span class="section-eyebrow">FULL COMPARISON</span>
+            <h2 class="section-title">完整套餐对比表</h2>
+            <p class="section-subtitle">所有数据基于官方公开信息整理。点击标签筛选。</p>
+          </div>
+          <button class="table-toggle-btn" id="toggleColumnsBtn" onclick="toggleExtraColumns()">展开全部列</button>
+        </div>
+        <div id="filterBarMount"></div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>平台</th><th>套餐</th><th>类型</th><th>评分</th><th>月费</th>
+                <th class="col-extra">首月</th><th class="col-extra">月请求</th>
+                <th>实测月Token</th><th>每元Token</th>
+                <th class="col-extra">1M Token价</th>
+                <th>支持模型</th><th>标签</th><th>详情</th>
+              </tr>
+            </thead>
+            <tbody id="plansTableBody"></tbody>
+          </table>
+        </div>
+        <div class="plan-cards-view" id="plansCardsView"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <script src="scripts/shared.js"></script>
+  <script>
+    async function init() {
+      await Promise.all([loadConfig(), loadPlans()]);
+      mountNav('compare');
+      mountFooter();
+
+      // Filter bar
+      var fm = document.getElementById('filterBarMount');
+      if (fm) { fm.innerHTML = renderFilterBar(); bindFilterBar(); syncFilterUI(); }
+      renderTable();
+
+      // Chart
+      if (typeof echarts !== 'undefined') { setTimeout(renderChart, 300); }
+    }
+
+    function renderChart() {
+      var plans = CPS.plans.filter(function(p) {
+        return typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number';
+      });
+      if (!plans.length) return;
+      var dom = document.getElementById('priceVsTokenChart');
+      if (!dom || dom.offsetParent === null) return;
+      var existing = echarts.getInstanceByDom(dom);
+      if (existing) existing.dispose();
+      var chart = echarts.init(dom);
+
+      var seen = {}, items = [];
+      plans.forEach(function(p) {
+        var k = p.vendor + '|' + p.plan;
+        if (!seen[k]) { seen[k] = true; items.push(p); }
+      });
+
+      var vColors = {
+        '智谱AI':'#F5F527','字节·方舟':'#FF3B3B','MiniMax':'#f97316','Kimi':'#10C2B0',
+        '阿里·百炼':'#22c55e','讯飞·星火':'#ec4899','DeepSeek 官方':'#71717B',
+        '小米·MiMo':'#2563eb','优云智算':'#3b82f6','共继算力':'#a855f7',
+        'OpenCode':'#84cc16','百度·千帆':'#06b6d4','腾讯云':'#eab308',
+        '华为云':'#ef4444','京东云':'#d946ef','Claude':'#ec4899',
+        'Codex (ChatGPT)':'#A15CF6','GitHub':'#71717B','Ollama':'#f43f5e','智谱国际版':'#10b981'
+      };
+      var pal = ['#22c55e','#eab308','#f43f5e','#a855f7','#ef4444'], pi = 0;
+      var colorMap = {}, vendors = [], vSet = {};
+      items.forEach(function(i) { if(!vSet[i.vendor]){vSet[i.vendor]=true;vendors.push(i.vendor);} });
+      vendors.forEach(function(v) { colorMap[v] = vColors[v] || pal[pi++ % pal.length]; });
+
+      var vData = {};
+      vendors.forEach(function(v) {
+        vData[v] = items.filter(function(i){return i.vendor===v;}).sort(function(a,b){return a.monthlyPrice-b.monthlyPrice;});
+      });
+
+      var allP = items.map(function(i){return i.monthlyPrice;});
+      var allT = items.map(function(i){return i.measuredMonthlyToken;});
+      var minP = Math.min.apply(null,allP), maxP = Math.max.apply(null,allP);
+      var minT = Math.min.apply(null,allT), maxT = Math.max.apply(null,allT);
+      var sP = allP.slice().sort(function(a,b){return a-b;});
+      var sT = allT.slice().sort(function(a,b){return a-b;});
+      var medP = sP[Math.floor(sP.length/2)], medT = sT[Math.floor(sT.length/2)];
+      var tpuVals = items.map(function(i){return i.measuredMonthlyToken/i.monthlyPrice;}).sort(function(a,b){return a-b;});
+      var medTPU = tpuVals[Math.floor(tpuVals.length/2)];
+
+      var series = vendors.map(function(v) {
+        var data = vData[v].map(function(i) {
+          return {value:[i.monthlyPrice,i.measuredMonthlyToken],plan:i.plan,vendor:i.vendor,type:i.type,price:i.monthlyPrice,token:i.measuredMonthlyToken,tokensPerYuan:(i.measuredMonthlyToken/i.monthlyPrice).toFixed(2)};
+        });
+        return {name:v,type:'line',color:colorMap[v],symbol:'circle',symbolSize:14,showSymbol:true,lineStyle:{width:data.length>1?1.5:0,opacity:data.length>1?0.3:0},label:{show:true,position:'right',distance:6,color:'#94a3b8',fontSize:10,fontWeight:600,formatter:function(p){return p.data.plan||'';}},labelLayout:{hideOverlap:true},itemStyle:{color:colorMap[v],borderColor:'rgba(255,255,255,0.95)',borderWidth:1.5,shadowBlur:12,shadowColor:'rgba(0,0,0,0.12)'},data:data,emphasis:{scale:1.15}};
+      });
+
+      var helper = {type:'scatter',silent:true,animation:false,data:[],symbolSize:0,tooltip:{show:false},itemStyle:{opacity:0},
+        markArea:{silent:true,label:{show:false},data:[
+          [{itemStyle:{color:'rgba(16,185,129,0.12)'},xAxis:minP*0.7,yAxis:minP*0.7*medTPU},{xAxis:medP,yAxis:maxT*1.2}],
+          [{itemStyle:{color:'rgba(16,185,129,0.06)'},xAxis:medP,yAxis:medP*medTPU},{xAxis:maxP*1.3,yAxis:maxT*1.2}],
+          [{itemStyle:{color:'rgba(148,163,184,0.04)'},xAxis:minP*0.7,yAxis:minT*0.4},{xAxis:medP,yAxis:medP*medTPU}],
+          [{itemStyle:{color:'rgba(239,68,68,0.08)'},xAxis:medP,yAxis:minT*0.4},{xAxis:maxP*1.3,yAxis:medP*medTPU}]
+        ]},
+        markLine:{silent:true,symbol:'none',label:{show:false},data:[
+          {xAxis:medP,lineStyle:{color:'rgba(148,163,184,0.25)',type:'dashed'}},
+          {yAxis:medT,lineStyle:{color:'rgba(148,163,184,0.25)',type:'dashed'}}
+        ]}
+      };
+
+      chart.setOption({
+        animationDuration:400,
+        color:vendors.map(function(v){return colorMap[v];}),
+        grid:{left:90,right:40,top:60,bottom:60},
+        tooltip:{trigger:'item',backgroundColor:'rgba(15,23,42,0.96)',borderColor:'rgba(148,163,184,0.2)',textStyle:{color:'#f1f5f9',fontSize:13},
+          formatter:function(p){var d=p.data;return'<div style="min-width:180px"><div style="font-size:14px;font-weight:800;margin-bottom:4px;">'+d.vendor+' '+d.plan+'</div><div style="font-size:12px;line-height:1.7;color:#cbd5e1;"><div>类型: '+d.type+'</div><div>月费: <b>'+d.price+'</b> | 月Token: <b>'+d.token+'M</b></div><div>每元Token: <b>'+d.tokensPerYuan+' M</b></div></div></div>';}},
+        legend:{top:0,left:0,itemWidth:10,itemHeight:10,icon:'circle',textStyle:{color:'#94a3b8',fontSize:11,fontWeight:600}},
+        graphic:[{type:'text',left:100,top:40,silent:true,style:{text:'高性价比',fill:'#10b981',fontSize:12,fontWeight:700}},{type:'text',right:40,bottom:24,silent:true,style:{text:'低性价比',fill:'#ef4444',fontSize:11,fontWeight:700}}],
+        xAxis:{type:'log',logBase:2,min:minP*0.75,max:maxP*1.12,name:'月费',nameTextStyle:{color:'#94a3b8',fontSize:11,fontWeight:700},axisLabel:{color:'#94a3b8',fontSize:11,fontWeight:700,formatter:function(v){return'¥'+(Number.isInteger(v)?v:v.toFixed(0));}},splitLine:{show:true,lineStyle:{color:'rgba(148,163,184,0.1)',type:'dashed'}}},
+        yAxis:{type:'log',logBase:10,min:minT*0.65,max:maxT*1.18,name:'月Token上限',nameTextStyle:{color:'#94a3b8',fontSize:11,fontWeight:700},axisLabel:{color:'#94a3b8',formatter:function(v){return v>=1000?(v/1000).toFixed(1)+'B':v+'M';}},splitLine:{lineStyle:{color:'rgba(148,163,184,0.1)',type:'dashed'}}},
+        series:[helper].concat(series)
+      });
+      window.addEventListener('resize',function(){chart.resize();});
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

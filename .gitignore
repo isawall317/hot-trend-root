@@ -11,3 +11,16 @@ __pycache__/
 .env.local
 .venv/
 config.yaml
+
+# Hot Trend — 采集数据（不跟踪，数据量大且频繁变化）
+data/raw/
+data/archive/
+
+# 外部工具源码（独立 clone 的仓库，不进主仓库）
+reference/codingplan/
+tools/DailyHotApi/
+tools/RSSHub/
+tools/collector/tools/
+
+# 构建产物
+dist/
