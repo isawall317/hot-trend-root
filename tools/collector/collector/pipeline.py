@@ -54,11 +54,14 @@ def generate_pending_report(date_str: str) -> Path:
             data = json.load(f)
             articles = data.get("candidates", [])
 
-    # 读取价格信号
+    # 读取价格信号（跳过 extract- 文件，它们是 sources/runner 的提取结果）
     signals = []
     for sig_file in sorted(SIGNALS_DIR.glob("*.json"), reverse=True):
+        if sig_file.name.startswith("extract-"):
+            continue
         with open(sig_file, "r", encoding="utf-8") as f:
             data = json.load(f)
+        if isinstance(data, dict):
             sigs = data.get("signals", [])
             if sigs:
                 signals.extend(sigs)
