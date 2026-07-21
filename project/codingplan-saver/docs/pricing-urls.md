@@ -8,15 +8,15 @@
 
 ## 提取状态总览（2026-07-21 实测）
 
-| 厂商 | extractStrategy | 状态 |
-|------|----------------|------|
-| DeepSeek | docs | ✅ httpx + BS4 可提取 API 定价 |
-| 腾讯云 | docs | ✅ 提取 Coding Plan Lite ¥40 / Pro ¥200 |
-| MiniMax | docs | ✅ 提取 Token Plan Plus ¥49 / Max ¥119 / Ultra ¥469 |
-| 智谱AI | manual | ❌ SPA，需 JS 渲染 |
-| 字节·方舟 | manual | ❌ SPA，需 JS 渲染 |
-| Kimi | manual | ❌ Next.js SPA |
-| 其余 14 家 | manual | 待探测（未注册 parser） |
+| 厂商 | 策略 | 提取方法 | 状态 |
+|------|------|---------|------|
+| DeepSeek | docs | httpx+BS4 | ✅ API 定价 (2 models) |
+| 腾讯云 | docs | httpx+BS4 | ✅ Coding Plan Lite ¥40 / Pro ¥200 |
+| MiniMax | docs | httpx+BS4 | ✅ Token Plan Plus ¥49 / Max ¥119 / Ultra ¥469 |
+| **智谱AI** | docs | **Playwright+BS4** | ✅ **51 个模型 API 定价** |
+| 字节·方舟 | manual | Playwright | ❌ 需登录控制台 |
+| Kimi | manual | Playwright | ⚠️ 渲染成功，非表格结构待适配 |
+| 其余 14 家 | manual | — | 待探测 | |
 
 ---
 
