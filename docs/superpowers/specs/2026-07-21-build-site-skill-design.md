@@ -1,7 +1,7 @@
 # build-site Skill 设计文档
 
 > **日期**: 2026-07-21
-> **状态**: Draft（待用户 review）
+> **状态**: Approved（用户 2026-07-21 确认，进入 writing-plans）
 > **作者**: brainstorming 协作产出
 > **相关**: 替换现有 `.claude/skills/build-site.md`
 
@@ -639,7 +639,7 @@ class BaseParser:
 | 8 | 旧代码 | 归档不删 | 保留参考、可回滚 |
 | 9 | URL 维护 | pricing-urls.md 文档化 | 用户 review + AI 实测反馈 |
 | 10 | schema 演进 | 按页面需求 × 数据源能力迭代 | 避免假数据 |
-| 11 | dist/ 是否进 git | 待用户确认（推荐进 git） | 符合"最终交付"语义，便于分享和版本追溯 |
+| 11 | dist/ 是否进 git | 进 git（已确认） | 符合"最终交付"语义，便于分享和版本追溯 |
 | 12 | 并行点 | Layer 1 三路信号 | 用户要求"充分考虑并联任务" |
 | 13 | update 后自动 build | 不自动 | 避免未确认就覆盖交付物 |
 
@@ -657,12 +657,12 @@ class BaseParser:
 | changes.json 合并后条目膨胀 | 时间线过长 | 默认只展示最近 30 天，分页 |
 | 自然语言解析歧义 | 写错 JSON | diff 确认环节兜底 |
 
-### 12.2 未决项（需用户后续决策）
+### 12.2 已确认决策（用户 2026-07-21 确认）
 
-1. **dist/ 是否进 git**（§8.2 推荐进 git，待确认）
-2. **Top 5 优先实现哪些厂商的 sources/ parser**（建议：DeepSeek、智谱、字节方舟、Kimi、MiniMax）
-3. **changes.json 历史数据迁移**：旧 price-changes.json (10 条) + articles.json (30 条) 怎么合并进新 schema？保留全部还是只迁最近 30 天？旧 articles 的 hash id（如 `4ad193bdc013`）迁移时统一改为 `{date}-{slug}` 还是保留原 id？
-4. **站点配色**：沿用现有 emerald (#10b981) 主色，还是借这次重做换一套？
+1. **dist/ 进 git**：从 .gitignore 移除 `dist/`，交付物纳入版本控制
+2. **Top 5 优先厂商 parser**：DeepSeek、智谱、字节方舟、Kimi、MiniMax
+3. **changes.json 历史迁移**：price-changes 生成新 id（`{date}-{vendor-slug}-{kind}`）；articles 保留原 hash id；全部历史数据都迁移（不只最近 30 天）
+4. **站点配色**：沿用现有 emerald (#10b981) 主色
 
 ### 12.3 迁移时的 id 处理规则（默认方案）
 
@@ -690,8 +690,8 @@ class BaseParser:
 - 验证：`/build-site scan` 能出信号，`/build-site update "..."` 能改 JSON 并 diff
 
 **M3 - 厂商覆盖扩展**（迭代）
-- 按 priority 逐家实现 sources/{vendor}.py
-- 重构 pricing-urls.md
+- 按 Top 5 优先级实现 sources/{vendor}.py：**DeepSeek、智谱、字节方舟、Kimi、MiniMax**
+- 重构 pricing-urls.md（按 §6.2 新结构）
 - 完善 token_estimator 与新 plans.json schema 的适配
 - 验证：Top 5 厂商都能自动提取
 
