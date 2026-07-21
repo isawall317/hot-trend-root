@@ -98,13 +98,101 @@ hot-trend-root/
 
 ---
 
-## update 模式（M2 实现后补全）
+## update 模式工作流
 
-> TODO: 信号采集（Layer 1 并行 dispatch）→ 归一化合并 → 用户确认 diff → 写入 JSON → 跑 token_estimator
+### 触发
 
-## scan 模式（M2 实现后补全）
+`/build-site update [自然语言]`
 
-> TODO: 只跑 Layer 1，输出本周信号报告，不动任何 JSON
+### 步骤
+
+**Step 1: 并行采集信号（dispatch 3 个 sub-agent）**
+
+用 Agent 工具同时发起 3 个并行任务：
+
+```
+Agent-Scan:  python -m collector.price_monitor
+             → 读 data/signals/{date}.json
+
+Agent-RSS:   httpx 拉 RSSHub feeds (http://localhost:1200):
+             /deepseek/news /qwen/blog /qbitai/category/AI /aibase/news
+             → 提取标题含关键词的条目
+
+Agent-Httpx: python -m collector.sources.runner
+             → 读 data/signals/extract-{date}.json
+```
+
+**Step 2: 合并信号**
+
+主 agent 把三路结果合并：
+- 自动信号（Step 1） ∪ 解析用户的自然语言输入
+- 去重（同一 vendor + 同一 kind 视为同一条）
+- 分类：哪些需要改 `plans.json`，哪些只需加 `changes.json`
+
+**Step 3: 按 schema 草拟变更**
+
+对照 `project/codingplan-saver/data/SCHEMA.md`，生成 unified diff：
+- `changes.json` 新增条目（kind / date / vendor / title / detail / impact / level）
+- `plans.json` 字段修改（如 monthlyPrice / status / models）
+
+**Step 4: 输出 diff，请用户确认**
+
+```
+变更预览：
+[changes.json] +3 条
+  + 2026-07-21-kimi-resume | subscription_pause | Kimi 恢复订阅 | positive
+  + ...
+
+[plans.json] 修改 2 条
+  ~ kimi-moderato: status paused → active
+  ~ ...
+
+确认应用？(y/n/改某条)
+```
+
+**Step 5: 应用变更（用户 y 之后）**
+
+1. 快照当前 plans.json → `data/history/plans-{date}.json`
+2. 写入 changes.json 和 plans.json
+3. 跑 `python3 -m collector.token_estimator` 补 measuredMonthlyToken
+4. 更新所有变动条目的 updatedAt
+5. 提示用户「说 /build-site build 生成 HTML」
+
+**Step 6: 不自动 build**，用户确认后手动 `/build-site build`
+
+### 错误处理
+
+- collector 跑失败 → 降级为纯人工（只用用户的自然语言输入）
+- diff 输出后用户说"改 X 条" → 单独修改那条，重新输出 diff
+- 用户说 n → 不动任何文件
+
+---
+
+## scan 模式工作流
+
+### 触发
+
+`/build-site scan`
+
+### 步骤
+
+1. 并行跑 Layer 1 三路信号采集（同 update 的 Step 1）
+2. 合并去重
+3. 输出 markdown 报告到终端（**不动任何 JSON 文件**）：
+
+```
+本周信号 (共 N 条):
+[价格] Kimi 涨价到 ¥99 — 来源: dailyhot:36kr [link]
+[模型] 字节方舟新增 Kimi-K3 — 来源: rsshub:deepseek/news [link]
+[定价] DeepSeek API 价格已更新 — 来源: extracted-deepseek
+```
+
+4. 提示用户「值得跟进的，说 /build-site update ...」
+
+### 错误处理
+
+- 三路信号全部失败 → 输出"本周无信号，建议手动检查各平台定价页"
+- 单路失败 → 标注失败原因，继续输出其他路结果
 
 ---
 
