@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 模型选型助手 - 饭庐者说的模型对比与推荐</title>
+<meta name="description" content="Kimi K3、DeepSeek V4、Qwen 3.8、Claude Mythos... 模型太多不知道怎么选？饭庐者说帮你比了 22 个主流模型，覆盖编程/写作/多模态全场景。">
+<style>{{STYLE}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">MP</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+<script id="cp-data" type="application/json">{{DATA}}</script>
+<script>const DATA=JSON.parse(document.getElementById('cp-data').textContent);const{site,models,changes}=DATA;{{SCRIPTS}}</script>
+</body>
+</html>

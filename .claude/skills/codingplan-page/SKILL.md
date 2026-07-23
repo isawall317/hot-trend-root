@@ -88,7 +88,9 @@ python3 tools/builder/build.py
 
 ### 联盟变现
 
-所有套餐链接（`plans[].action`）指向各厂商的注册/购买页。HTML 模板中所有 CTA 按钮统一为"优惠购买"，`rel="nofollow sponsored"`（SEO 合规）。Footer 保留联盟推广披露。
+所有套餐链接（`plans[].action`）优先使用 `vendors[].urls.affiliate`（联盟推广链接），为空时 fallback 到 `vendors[].urls.pricing`（定价页）。HTML 模板中所有 CTA 按钮统一为"优惠购买"，`rel="nofollow sponsored"`（SEO 合规）。Footer 保留联盟推广披露。
+
+> **厂商参考手册**：`project/codingplan-saver/docs/vendors-reference.md` — 统一管理定价页 URL（数据采集用）+ 联盟推广链接（"优惠购买"按钮用）+ 返佣信息。新增联盟链接时先在手册登记，再更新 `vendors.json` 和 `plans.json`。
 
 ---
 
@@ -126,6 +128,8 @@ hot-trend-root/
 │   │   ├── site.json / vendors.json
 │   │   ├── plans.json / changes.json
 │   │   └── history/
+│   ├── docs/
+│   │   └── vendors-reference.md        ← 厂商参考手册（定价页 + 联盟链接）
 │   ├── template/index.html             ← HTML 标准件
 │   └── archive/                        ← V1 归档
 ├── tools/
@@ -134,7 +138,6 @@ hot-trend-root/
 ├── dist/
 │   └── codingplan-saver.html           ← 最终交付物
 └── reference/
-    ├── pricing-urls.md                 ← 供应商 URL 维护
     └── data-map.md                     ← 数据地图
 ```
 

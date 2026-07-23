@@ -1,0 +1,184 @@
+{
+  "name": "AI Agent 模式库",
+  "tagline": "从 ReAct 到 Swarm——7种核心 Agent 设计模式，每种都给你可运行的代码模板。不再从零手搓 Agent。",
+  "domain": "agent-patterns",
+  "logo": "AP",
+  "primaryColor": "#f43f5e",
+  "accentColor": "#fb7185",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "研究了上百个 Agent 项目的设计模式，把最核心的7种模式提炼成可复用的模板。每个模式都有代码、有场景、有对比。",
+    "platforms": [
+      {
+        "name": "公众号",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "小红书",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "知乎",
+        "handle": "饭庐者说",
+        "url": "#"
+      }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.07.22",
+    "highlights": "本周关注：Agent Primitives 模块化复用（ICML 2026）、AgentScope Java 2.0 GA、Dify 1.16 原生Agent沙箱",
+    "stats": [
+      {
+        "label": "设计模式",
+        "value": "12",
+        "unit": "种"
+      },
+      {
+        "label": "代码模板",
+        "value": "12",
+        "unit": "个"
+      },
+      {
+        "label": "本周新增",
+        "value": "2",
+        "unit": "种"
+      }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "basic",
+      "icon": "🧩",
+      "title": "基础模式",
+      "desc": "ReAct / Chain-of-Thought",
+      "filter": {
+        "level": "basic"
+      }
+    },
+    {
+      "id": "advanced",
+      "icon": "⚡",
+      "title": "进阶模式",
+      "desc": "Swarm / Plan-Execute",
+      "filter": {
+        "level": "advanced"
+      }
+    },
+    {
+      "id": "multi",
+      "icon": "🤖",
+      "title": "多Agent",
+      "desc": "协作 / 层级 / 市场",
+      "filter": {
+        "level": "multi"
+      }
+    },
+    {
+      "id": "production",
+      "icon": "🏭",
+      "title": "生产级",
+      "desc": "错误处理 / 监控 / 评估",
+      "filter": {
+        "level": "production"
+      }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "must-know",
+      "title": "🎯 必学模式",
+      "subtitle": "每个Agent开发者都应该掌握的",
+      "items": [
+        {
+          "patternId": "react",
+          "rating": 5,
+          "verdict": "一切Agent模式的基础"
+        },
+        {
+          "patternId": "chain-of-thought",
+          "rating": 5,
+          "verdict": "推理能力翻倍的关键"
+        },
+        {
+          "patternId": "plan-execute",
+          "rating": 5,
+          "verdict": "复杂任务分解的核心"
+        }
+      ]
+    },
+    {
+      "id": "advanced-group",
+      "title": "🚀 进阶模式",
+      "subtitle": "解决更复杂的问题",
+      "items": [
+        {
+          "patternId": "swarm",
+          "rating": 5,
+          "verdict": "多Agent协作的最优解"
+        },
+        {
+          "patternId": "reflection",
+          "rating": 4,
+          "verdict": "让Agent自我改进"
+        },
+        {
+          "patternId": "tool-use",
+          "rating": 4,
+          "verdict": "给Agent装上手脚"
+        }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "开源免费 · MIT 协议",
+      "subtitle": "12 种模式全部开源，npm 一键安装",
+      "description": "所有基础模式代码模板在 GitHub 开源（MIT 协议），可以直接复制使用。也提供 npm 包 `agent-patterns` 一键安装到你的项目。",
+      "qrImage": "",
+      "highlights": [
+        "12 种模式全部 MIT 开源",
+        "npm install agent-patterns",
+        "每个模式都有可运行代码",
+        "GitHub Star ⭐ 支持一下",
+        "社区贡献欢迎 PR"
+      ],
+      "ctaText": "GitHub 查看源码"
+    },
+    "paid": {
+      "title": "Pro 模板包 · 生产级脚手架",
+      "subtitle": "¥199 一次性买断（含 12 个完整项目）",
+      "description": "每个模式不只是代码片段，而是包含完整测试、CI/CD 配置、Docker、监控的生产级脚手架。直接 clone 就能跑，省 100+ 小时搭建时间。",
+      "highlights": [
+        "12 个完整项目模板（非代码片段）",
+        "每个含测试/CI/CD/Docker/Monitoring",
+        "¥199 一次性买断，永久更新",
+        "附带架构决策文档（ADR）",
+        "企业商用授权（MIT 不覆盖的场景）"
+      ],
+      "ctaText": "¥199 购买 Pro 包",
+      "url": "#"
+    }
+  },
+  "disclosure": "基础模式 MIT 开源免费。Pro 模板包为商业产品 ¥199 一次性买断，含永久更新和商用授权。GitHub 仓库欢迎 Star 和 PR。",
+  "footer": {
+    "about": "AI Agent 模式库 · 饭庐者说的 Agent 设计模式与模板",
+    "links": [
+      {
+        "label": "浏览全部",
+        "url": "#browse"
+      },
+      {
+        "label": "GitHub 开源",
+        "url": "#community"
+      },
+      {
+        "label": "Pro 模板",
+        "url": "#community"
+      }
+    ]
+  }
+}

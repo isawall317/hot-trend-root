@@ -158,5 +158,19 @@
     "extractStrategy": "docs",
     "lastVerified": null,
     "notes": "Playwright 渲染 github.com/features/copilot/plans → 提取套餐价格"
+  },
+  {
+    "id": "mimo",
+    "name": "小米·MiMo",
+    "logo": "米",
+    "color": "#FF6900",
+    "urls": {
+      "pricing": "https://platform.xiaomimimo.com/token-plan",
+      "docs": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+      "home": "https://mimo.xiaomi.com/zh/mimocode"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-07-23",
+    "notes": "Token Plan 页为 SPA + 按量计费 API 文档页可提取模型价格。V2→V2.5 已迁移。"
   }
 ]

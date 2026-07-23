@@ -1,0 +1,120 @@
+{
+  "name": "AI Coding 工具对比",
+  "tagline": "Claude Code、Cursor、Copilot、Trae... 20+ 款 AI 编程工具，到底该用哪个？饭庐者说从 12 个维度帮你比清楚",
+  "domain": "coding-tools",
+  "logo": "CT",
+  "primaryColor": "#6366f1",
+  "accentColor": "#818cf8",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "装了卸载、卸载了再装，试了 20+ 款 AI 编程工具，每个都深度使用过至少一周。这里只说实话，不吹不黑。",
+    "platforms": [
+      { "name": "公众号", "handle": "饭庐者说", "url": "#" },
+      { "name": "小红书", "handle": "饭庐者说", "url": "#" },
+      { "name": "知乎", "handle": "饭庐者说", "url": "#" }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.07.22",
+    "highlights": "本周关注：Kimi K3 冲击 AI 编程工具格局，OpenCode 1.0 正式版发布，字节 Trae 出海，Claude Work 桌面版公测",
+    "stats": [
+      { "label": "收录工具", "value": "22", "unit": "款" },
+      { "label": "覆盖维度", "value": "12", "unit": "个" },
+      { "label": "本周更新", "value": "4", "unit": "条" }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "cli",
+      "icon": "⌨️",
+      "title": "CLI 工具",
+      "desc": "终端原生 / 极客首选",
+      "filter": { "type": "CLI" }
+    },
+    {
+      "id": "desktop",
+      "icon": "🖥️",
+      "title": "桌面版 / IDE",
+      "desc": "GUI 操作 / 开箱即用",
+      "filter": { "type": "Desktop" }
+    },
+    {
+      "id": "free",
+      "icon": "🆓",
+      "title": "免费方案",
+      "desc": "不花钱也能用好",
+      "filter": { "pricing": "free" }
+    },
+    {
+      "id": "domestic",
+      "icon": "🇨🇳",
+      "title": "国内友好",
+      "desc": "无需翻墙 / 国内模型",
+      "filter": { "tag": "国内友好" }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "best-overall",
+      "title": "🏆 综合最佳",
+      "subtitle": "2026年7月，我心中最值得用的 5 款",
+      "items": [
+        { "toolId": "claude-code", "rating": 5, "verdict": "编程能力天花板，生态最完善" },
+        { "toolId": "cursor", "rating": 5, "verdict": "开箱即用，最适合不想折腾的开发者" },
+        { "toolId": "codex-cli", "rating": 5, "verdict": "OpenAI 亲儿子，GPT-5.6 独占" },
+        { "toolId": "trae", "rating": 4, "verdict": "字节出品，国内模型集成最全" },
+        { "toolId": "opencode", "rating": 4, "verdict": "开源社区最强，完全免费" }
+      ]
+    },
+    {
+      "id": "domestic-picks",
+      "title": "🇨🇳 国内用户首选",
+      "subtitle": "无需特殊网络环境，国内模型直连",
+      "items": [
+        { "toolId": "trae", "rating": 5, "verdict": "字节跳动出品，国内最完善" },
+        { "toolId": "deepseek-coder", "rating": 4, "verdict": "DeepSeek 官方，API 价格最低" },
+        { "toolId": "zcode", "rating": 4, "verdict": "国内新秀，中文体验好" },
+        { "toolId": "qoder", "rating": 4, "verdict": "社区驱动，国内模型支持全" }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "工具优选 · 免费周刊",
+      "subtitle": "每周 AI 编程工具更新速报",
+      "description": "新工具发布、重大更新、价格变动、功能对比——每周一封邮件汇总。不贩卖焦虑，只说值得关注的变化。",
+      "highlights": [
+        "每周工具更新速报（邮件）",
+        "新工具第一时间上手实测",
+        "工具切换/迁移指南",
+        "完全免费，随时退订"
+      ],
+      "ctaText": "订阅免费周刊"
+    },
+    "paid": {
+      "title": "知识星球 · 工具深度内参",
+      "subtitle": "¥199/年（早鸟价 ¥99）",
+      "description": "比周刊多 10 倍信息密度。每月深度横评、工具链配置方案、1v1 工具选型咨询。帮你每年省 100+ 小时的试错时间。",
+      "highlights": [
+        "每月深度横评报告（20+ 工具对比）",
+        "独家工具链配置方案",
+        "每月 1v1 工具选型咨询",
+        "新工具内测邀请码",
+        "不满意 3 天内全额退款"
+      ],
+      "ctaText": "加入知识星球",
+      "url": "#"
+    }
+  },
+  "disclosure": "本站所有评测基于真实使用体验。部分工具链接可能包含 referral。所有推荐不受厂商影响，不接受付费排名。",
+  "footer": {
+    "about": "AI Coding 工具对比 · 饭庐者说的 AI 编程工具选型指南",
+    "links": [
+      { "label": "全部对比", "url": "#browse" },
+      { "label": "订阅周刊", "url": "#community" },
+      { "label": "最新动态", "url": "#updates" }
+    ]
+  }
+}

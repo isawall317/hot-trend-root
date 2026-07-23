@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding 工具对比 - 饭庐者说的 AI 编程工具选型指南</title>
+<meta name="description" content="Claude Code、Cursor、Copilot、Trae... 20+ 款 AI 编程工具，从 12 个维度帮你比清楚到底该用哪个，覆盖 8 大场景。">
+<style>
+/* === Design Tokens === */
+:root {
+  --bg-base: #090d14;
+  --bg-elevated: #111827;
+  --bg-card: rgba(20, 28, 46, 0.7);
+  --bg-card-hover: rgba(30, 41, 64, 0.85);
+  --bg-input: rgba(15, 23, 42, 0.8);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-default: rgba(148, 163, 184, 0.18);
+  --border-strong: rgba(148, 163, 184, 0.3);
+
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.12);
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-secondary: #818cf8;
+
+  --color-positive: #10b981;
+  --color-negative: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #6366f1;
+  --color-premium: #818cf8;
+
+  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --container-max: 1280px;
+  --nav-height: 56px;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(99, 102, 241, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(129, 140, 248, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul, ol { list-style: none; }
+input, select { font: inherit; }
+
+/* === Layout === */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); position: relative; z-index: 1; }
+.section { padding: var(--space-10) 0; position: relative; z-index: 1; }
+.section + .section { border-top: 1px solid var(--border-subtle); }
+.section-sm { padding: var(--space-6) 0; }
+.section-sm + .section-sm { border-top: 1px solid var(--border-subtle); }
+
+/* === Navigation === */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-height);
+  background: rgba(9, 13, 20, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.nav-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; flex-shrink: 0; }
+.nav-brand-name { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-tabs { display: flex; align-items: center; gap: var(--space-1); }
+.nav-tab { padding: var(--space-1) var(--space-3); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; color: var(--text-tertiary); transition: all 0.15s ease; white-space: nowrap; }
+.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-tab.active { color: var(--accent); background: var(--accent-soft); }
+.nav-cta { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--accent); color: #fff; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 2px 8px var(--accent-glow); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+/* === Tab Panels === */
+.tab-panel { display: none; padding: var(--space-6) 0; min-height: 60vh; }
+.tab-panel.active { display: block; }
+
+/* === Buttons === */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-5); border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; border: 1px solid transparent; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-default); }
+.btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--border-strong); }
+.btn-ghost { color: var(--text-secondary); }
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
+.btn-lg { padding: var(--space-3) var(--space-6); font-size: 14px; }
+.btn-sm { padding: var(--space-1) var(--space-3); font-size: 12px; }
+
+/* === Badges & Tags === */
+.badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+.badge-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(99, 102, 241, 0.3); }
+.badge-premium { background: rgba(251, 191, 36, 0.12); color: var(--color-premium); border-color: rgba(251, 191, 36, 0.25); }
+.badge-positive { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
+.badge-negative { background: rgba(239, 68, 68, 0.12); color: var(--color-negative); }
+.badge-warning { background: rgba(245, 158, 11, 0.12); color: var(--color-warning); }
+.tag { display: inline-flex; align-items: center; padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--bg-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
+
+/* === Stars === */
+.stars { display: inline-flex; gap: 1px; font-size: 12px; letter-spacing: 1px; color: var(--color-premium); }
+.stars-dim { color: var(--text-muted); }
+
+/* === Hero === */
+.hero { padding: var(--space-10) 0 var(--space-8); position: relative; z-index: 1; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.hero-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: var(--space-3); }
+.hero-title-accent { background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-5); max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.hero-stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.hero-stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* === Section Header === */
+.section-header { margin-bottom: var(--space-6); }
+.section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
+.section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--space-2); }
+.section-subtitle { font-size: 14px; color: var(--text-tertiary); max-width: 60ch; }
+.text-center { text-align: center; }
+
+/* === Quick Entries === */
+.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.quick-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: left; transition: all 0.15s ease; cursor: pointer; }
+.quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.quick-card-icon { font-size: 22px; line-height: 1; }
+.quick-card-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.quick-card-desc { font-size: 12px; color: var(--text-tertiary); }
+
+/* === Top Picks === */
+.top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.top-pick-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden; }
+.top-pick-card.pick-best { border-color: rgba(99, 102, 241, 0.3); background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), var(--bg-card)); }
+.top-pick-card.pick-best::before { content: 'BEST'; position: absolute; top: 12px; right: -28px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em; }
+.top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
+.top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
+.top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
+.top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+.top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+.top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.top-pick-action { margin-top: var(--space-3); text-align: right; }
+
+/* === Recommendation Cards === */
+.reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
+.reco-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; }
+.reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.reco-item-vendor { font-size: 17px; font-weight: 700; }
+.reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
+.reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+.reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.reco-item-reasons strong { color: var(--text-primary); font-weight: 600; }
+.reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+
+/* === Filter Bar === */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
+.filter-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-full); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 0.12s ease; }
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.filter-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.filter-select { padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; cursor: pointer; }
+.filter-stats { margin-left: auto; font-size: 12px; color: var(--text-tertiary); }
+.filter-stats strong { color: var(--accent); font-weight: 700; }
+
+/* === Combo Cards Grid === */
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: var(--space-4); }
+.tool-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; display: flex; flex-direction: column; }
+.tool-card:hover { border-color: var(--border-strong); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.tool-card.featured { border-color: rgba(99, 102, 241, 0.25); background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), var(--bg-card)); }
+.tool-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.tool-card-name { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.tool-card-scenario { font-size: 11px; color: var(--text-muted); }
+.tool-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-3); flex: 1; }
+
+/* === Tool Chain === */
+.tool-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin-bottom: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.tool-tool { display: flex; flex-direction: column; align-items: center; padding: var(--space-1) var(--space-2); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); min-width: 60px; text-align: center; }
+.tool-tool-name { font-size: 11px; font-weight: 700; color: var(--text-primary); }
+.tool-tool-role { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.tool-tool-arrow { font-size: 14px; color: var(--text-muted); flex-shrink: 0; }
+
+/* === Combo Meta === */
+.tool-card-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-3); }
+.tool-card-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--space-3); }
+.tool-card-meta-item { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.tool-card-meta-value { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.tool-card-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3); }
+.tool-card-pros, .tool-card-cons { font-size: 11px; line-height: 1.5; }
+.tool-card-pros strong { color: var(--color-positive); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tool-card-cons strong { color: var(--color-warning); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tool-card-pros ul, .tool-card-cons ul { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+.tool-card-pros li { color: var(--text-secondary); padding-left: var(--space-3); position: relative; }
+.tool-card-pros li::before { content: '✓'; position: absolute; left: 0; color: var(--color-positive); font-size: 10px; }
+.tool-card-cons li { color: var(--text-tertiary); padding-left: var(--space-3); position: relative; }
+.tool-card-cons li::before { content: '✗'; position: absolute; left: 0; color: var(--text-muted); font-size: 10px; }
+.tool-card-footer { display: flex; justify-content: space-between; align-items: center; }
+
+/* Scenario Badge Colors */
+.sc-frontend { background: rgba(236, 72, 153, 0.12); color: #f472b6; border-color: rgba(236, 72, 153, 0.25); }
+.sc-backend { background: rgba(16, 185, 129, 0.12); color: #34d399; border-color: rgba(16, 185, 129, 0.25); }
+.sc-fullstack { background: rgba(99, 102, 241, 0.12); color: #818cf8; border-color: rgba(99, 102, 241, 0.25); }
+.sc-solo { background: rgba(245, 158, 11, 0.12); color: #818cf8; border-color: rgba(245, 158, 11, 0.25); }
+.sc-team { background: rgba(139, 92, 246, 0.12); color: #a78bfa; border-color: rgba(139, 92, 246, 0.25); }
+
+/* === Recent Changes === */
+.rc-list { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+.rc-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--border-subtle); font-size: 13px; line-height: 1.4; transition: background 0.12s ease; position: relative; }
+.rc-item:last-child { border-bottom: none; }
+.rc-item:hover { background: var(--bg-card-hover); }
+.rc-item.rc-featured { border-left: 3px solid var(--accent); padding-left: calc(var(--space-4) - 3px); }
+.rc-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-shrink: 0; width: 42px; }
+.rc-title { color: var(--text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-title a { color: var(--text-secondary); }
+.rc-title a:hover { color: var(--accent); }
+.rc-vendor { color: var(--text-primary); font-weight: 600; }
+.rc-item:hover .rc-title { white-space: normal; overflow: visible; }
+.rc-item[data-detail]:hover::after {
+  content: attr(data-detail);
+  position: absolute; bottom: calc(100% + 6px); left: var(--space-4);
+  background: var(--bg-elevated); color: var(--text-primary);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  font-size: 12px; line-height: 1.5; white-space: normal; width: min(400px, 80vw);
+  z-index: 10; box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+/* === Community === */
+.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.community-card { position: relative; padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); overflow: hidden; }
+.community-card-free { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6)); }
+.community-card-paid { background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(129, 140, 248, 0.05)); border-color: rgba(99, 102, 241, 0.25); }
+.community-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.community-card-title { font-size: 18px; font-weight: 700; }
+.community-card-subtitle { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: var(--space-3); }
+.community-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-4); }
+.community-highlights { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+.community-highlights li { font-size: 12px; color: var(--text-secondary); padding-left: var(--space-4); position: relative; }
+.community-highlights li::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+/* === Footer === */
+.footer { padding: var(--space-8) 0 var(--space-6); border-top: 1px solid var(--border-subtle); position: relative; z-index: 1; }
+.footer-disclosure { font-size: 11px; color: var(--text-muted); line-height: 1.55; padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius-md); margin-bottom: var(--space-4); border-left: 2px solid var(--color-warning); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+.footer-brand { font-size: 12px; color: var(--text-tertiary); }
+.footer-links { display: flex; gap: var(--space-4); font-size: 12px; }
+.footer-links a { color: var(--text-tertiary); transition: color 0.12s ease; }
+.footer-links a:hover { color: var(--text-primary); }
+
+/* === Utility === */
+.text-accent { color: var(--accent); }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .top-pick-grid { grid-template-columns: 1fr; }
+  .tool-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --space-10: 32px; --space-16: 48px; }
+  .container { padding: 0 var(--space-4); }
+  .nav-tabs { gap: 0; }
+  .nav-tab { padding: var(--space-1) var(--space-2); font-size: 12px; }
+  .nav-cta { display: none; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .hero-stat-value { font-size: 18px; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .reco-list { grid-template-columns: 1fr; }
+  .filter-bar { padding: var(--space-2); }
+  .filter-stats { width: 100%; margin-left: 0; }
+  .community-card { padding: var(--space-5); }
+  .tool-tools { flex-direction: column; align-items: flex-start; }
+  .tool-tool-arrow { transform: rotate(90deg); }
+  .tool-card-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  .section-title { font-size: 20px; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .tool-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">CT</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">浏览</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+
+<script id="cp-data" type="application/json">{"generatedAt": "2026-07-22 13:51:48", "changes": [{"id": "2026-07-22-claude-work", "date": "2026-07-22", "kind": "new_tool", "vendor": "Anthropic", "title": "Claude Work 桌面版公测：Mac/Windows/Linux 全平台支持", "detail": "Anthropic 发布 Claude Work 桌面版公测。GUI + Claude Code 引擎，兼顾易用性和编程能力。全平台原生支持，不再是 CLI 专属。", "impact": "positive", "level": "high", "source": "manual", "relatedTools": ["claude-work", "claude-code"], "featured": true}, {"id": "2026-07-20-trae", "date": "2026-07-20", "kind": "tool_update", "vendor": "字节跳动", "title": "Trae 海外版发布 $8/月，字节 AI 编程工具出海", "detail": "字节跳动 Trae 发布海外版，定价 $8/月极具竞争力。深度集成 Kimi K3 和 GLM-5.2，国内模型首次大规模出海。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "relatedTools": ["trae"], "featured": true}, {"id": "2026-07-18-opencode", "date": "2026-07-18", "kind": "new_tool", "vendor": "OpenCode", "title": "OpenCode 1.0 正式版发布，200+ 贡献者", "detail": "开源社区最活跃的 AI 编程 CLI 工具发布 1.0 正式版。支持任意 OpenAI 兼容模型，社区贡献者超过 200 人。", "impact": "positive", "level": "medium", "source": "manual", "relatedTools": ["opencode"], "featured": false}, {"id": "2026-07-15-kimi-k3", "date": "2026-07-15", "kind": "article", "vendor": "通用", "title": "Kimi K3 全球登顶，AI 编程工具格局或将重塑", "detail": "Kimi K3 登顶全球多个榜单后，支持 K3 的 AI 编程工具（Trae/ZCode/Qoder）安装量激增。模型能力成为工具选择的关键因素。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "relatedTools": ["trae", "zcode", "qoder"], "featured": true, "excerpt": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "author": "51CTO", "readTime": "5分钟", "cover": "K3"}, {"id": "2026-07-10-sdd-trend", "date": "2026-07-10", "kind": "article", "vendor": "通用", "title": "三器合一工作流成为 AI 编程新标配", "detail": "OpenSpec + Superpowers + gstack 三器合一工作流在社区爆火。AI 编程从随意对话进化到 Spec-Driven Development 流水线。", "impact": "positive", "level": "medium", "source": "signal-dailyhot", "relatedTools": ["claude-code"], "featured": false, "excerpt": "OpenSpec + Superpowers + gstack 三器合一：你的 AI 编程终于可以从拍脑袋进化到流水线了", "author": "掘金", "readTime": "6分钟", "cover": "3S"}], "site": {"name": "AI Coding 工具对比", "tagline": "Claude Code、Cursor、Copilot、Trae... 20+ 款 AI 编程工具，到底该用哪个？饭庐者说从 12 个维度帮你比清楚", "domain": "coding-tools", "logo": "CT", "primaryColor": "#6366f1", "accentColor": "#818cf8", "blogger": {"name": "饭庐者说", "avatar": "FL", "title": "AI 工具重度用户 / 独立博主", "bio": "装了卸载、卸载了再装，试了 20+ 款 AI 编程工具，每个都深度使用过至少一周。这里只说实话，不吹不黑。", "platforms": [{"name": "公众号", "handle": "饭庐者说", "url": "#"}, {"name": "小红书", "handle": "饭庐者说", "url": "#"}, {"name": "知乎", "handle": "饭庐者说", "url": "#"}]}, "header": {"updateDate": "更新于 2026.07.22", "highlights": "本周关注：Kimi K3 冲击 AI 编程工具格局，OpenCode 1.0 正式版发布，字节 Trae 出海，Claude Work 桌面版公测", "stats": [{"label": "收录工具", "value": "22", "unit": "款"}, {"label": "覆盖维度", "value": "12", "unit": "个"}, {"label": "本周更新", "value": "4", "unit": "条"}]}, "quickEntries": [{"id": "cli", "icon": "⌨️", "title": "CLI 工具", "desc": "终端原生 / 极客首选", "filter": {"type": "CLI"}}, {"id": "desktop", "icon": "🖥️", "title": "桌面版 / IDE", "desc": "GUI 操作 / 开箱即用", "filter": {"type": "Desktop"}}, {"id": "free", "icon": "🆓", "title": "免费方案", "desc": "不花钱也能用好", "filter": {"pricing": "free"}}, {"id": "domestic", "icon": "🇨🇳", "title": "国内友好", "desc": "无需翻墙 / 国内模型", "filter": {"tag": "国内友好"}}], "recommendationGroups": [{"id": "best-overall", "title": "🏆 综合最佳", "subtitle": "2026年7月，我心中最值得用的 5 款", "items": [{"toolId": "claude-code", "rating": 5, "verdict": "编程能力天花板，生态最完善"}, {"toolId": "cursor", "rating": 5, "verdict": "开箱即用，最适合不想折腾的开发者"}, {"toolId": "codex-cli", "rating": 5, "verdict": "OpenAI 亲儿子，GPT-5.6 独占"}, {"toolId": "trae", "rating": 4, "verdict": "字节出品，国内模型集成最全"}, {"toolId": "opencode", "rating": 4, "verdict": "开源社区最强，完全免费"}]}, {"id": "domestic-picks", "title": "🇨🇳 国内用户首选", "subtitle": "无需特殊网络环境，国内模型直连", "items": [{"toolId": "trae", "rating": 5, "verdict": "字节跳动出品，国内最完善"}, {"toolId": "deepseek-coder", "rating": 4, "verdict": "DeepSeek 官方，API 价格最低"}, {"toolId": "zcode", "rating": 4, "verdict": "国内新秀，中文体验好"}, {"toolId": "qoder", "rating": 4, "verdict": "社区驱动，国内模型支持全"}]}], "community": {"free": {"title": "工具优选 · 免费周刊", "subtitle": "每周 AI 编程工具更新速报", "description": "新工具发布、重大更新、价格变动、功能对比——每周一封邮件汇总。不贩卖焦虑，只说值得关注的变化。", "highlights": ["每周工具更新速报（邮件）", "新工具第一时间上手实测", "工具切换/迁移指南", "完全免费，随时退订"], "ctaText": "订阅免费周刊"}, "paid": {"title": "知识星球 · 工具深度内参", "subtitle": "¥199/年（早鸟价 ¥99）", "description": "比周刊多 10 倍信息密度。每月深度横评、工具链配置方案、1v1 工具选型咨询。帮你每年省 100+ 小时的试错时间。", "highlights": ["每月深度横评报告（20+ 工具对比）", "独家工具链配置方案", "每月 1v1 工具选型咨询", "新工具内测邀请码", "不满意 3 天内全额退款"], "ctaText": "加入知识星球", "url": "#"}}, "disclosure": "本站所有评测基于真实使用体验。部分工具链接可能包含 referral。所有推荐不受厂商影响，不接受付费排名。", "footer": {"about": "AI Coding 工具对比 · 饭庐者说的 AI 编程工具选型指南", "links": [{"label": "全部对比", "url": "#browse"}, {"label": "订阅周刊", "url": "#community"}, {"label": "最新动态", "url": "#updates"}]}}, "tools": [{"id": "claude-code", "name": "Claude Code", "vendor": "Anthropic", "type": "CLI", "description": "Anthropic 官方 CLI 工具，编程能力业界最强。深度集成 Claude Opus 4 模型，支持 MCP 协议生态和 Skills 系统。Superpowers + OpenSpec + gstack 三器合一工作流的核心。", "pricing": "免费使用，需自备 API Key 或订阅 Claude Pro($20)/Max($100)", "modelIntegration": ["Claude Opus 4", "Claude Sonnet 4", "Claude Haiku 4.5", "Claude Mythos"], "codingPlanRelation": "推荐搭配 Claude Pro/Max Coding Plan 使用。也可用第三方 API 代理（蓝耘等）。", "features": ["Agent 模式", "MCP 协议", "Skills 系统", "多文件编辑", "终端集成", "Git 集成", "上下文记忆", "Spec-Driven Development"], "platforms": ["Mac", "Linux", "Windows(WSL)"], "rating": 5, "bestFor": ["全栈开发", "架构设计", "代码审查", "复杂重构"], "strengths": ["编程能力业界最强", "MCP 生态最完善", "Skills 系统灵活", "长上下文理解深", "安全性最高"], "weaknesses": ["需要 API Key 或付费套餐", "国内直接访问需特殊配置", "Windows 仅支持 WSL", "CLI 学习曲线", "高峰期可能排队"], "websiteUrl": "https://claude.com/claude-code", "tags": ["CLI", "国外", "MCP", "必装", "英文优先"], "featured": true, "trending": false, "addedAt": "2025-10-01"}, {"id": "codex-cli", "name": "Codex CLI", "vendor": "OpenAI", "type": "CLI", "description": "OpenAI 官方 CLI 工具，与 GPT-5.6 深度集成。五层工作系统支持跨小时/跨会话的长期任务持续推进。Codex Cloud 提供云端沙箱环境。", "pricing": "免费使用，需自备 API Key 或订阅 ChatGPT Pro($20)/Codex 企业版", "modelIntegration": ["GPT-5.6", "GPT-5.6-Sol", "GPT-5 Mini", "o4-mini"], "codingPlanRelation": "推荐搭配 ChatGPT Pro/Plus 使用。也支持 OpenAI API 按量计费。", "features": ["Agent 模式", "长期任务系统", "Codex Cloud 沙箱", "多文件编辑", "终端集成", "Git 集成", "MCP 协议", "插件系统"], "platforms": ["Mac", "Linux", "Windows(WSL)", "Web(Codex Cloud)"], "rating": 5, "bestFor": ["全栈开发", "长期任务", "GPT 生态用户"], "strengths": ["GPT-5.6 独占", "五层工作系统强大", "Codex Cloud 沙箱", "OpenAI 生态最完善", "长期任务持久化"], "weaknesses": ["需要 API Key 或付费", "国内直接访问困难", "编程不如 Claude Code", "MCP 生态不如 Anthropic", "安全限制严格"], "websiteUrl": "https://openai.com/codex", "tags": ["CLI", "国外", "GPT", "长期任务"], "featured": true, "trending": true, "addedAt": "2025-12-01"}, {"id": "gemini-cli", "name": "Gemini CLI", "vendor": "Google", "type": "CLI", "description": "Google 官方 CLI 工具，与 Gemini 2.0 Pro 深度集成。100 万 token 上下文窗口是最大亮点，适合处理超大型代码库。Google 搜索集成也是独有功能。", "pricing": "免费使用，需自备 API Key。Gemini API 有慷慨免费额度（每分钟 1500 次）。", "modelIntegration": ["Gemini 2.0 Pro", "Gemini 2.0 Flash"], "codingPlanRelation": "无需 Coding Plan，直接使用 Gemini API 免费额度或按量计费。", "features": ["Agent 模式", "100万上下文", "Google 搜索集成", "多文件编辑", "终端集成", "Git 集成"], "platforms": ["Mac", "Linux", "Windows(WSL)"], "rating": 4, "bestFor": ["大型代码库", "搜索集成", "多模态任务"], "strengths": ["100万上下文窗口", "Gemini API 免费额度大方", "Google 搜索集成", "多模态能力最强", "Google 生态"], "weaknesses": ["编程能力不如 Claude/Codex", "国内无法直接访问", "CLI 体验不如竞品", "MCP 生态不成熟", "社区资源少"], "websiteUrl": "https://ai.google.dev", "tags": ["CLI", "国外", "大上下文", "免费额度"], "featured": false, "trending": false, "addedAt": "2026-03-01"}, {"id": "opencode", "name": "OpenCode", "vendor": "社区开源", "type": "CLI", "description": "开源社区最活跃的 AI 编程 CLI 工具。完全免费，支持接入任何 OpenAI 兼容 API。1.0 正式版 2026 年 7 月发布，社区贡献者超过 200 人。", "pricing": "完全免费开源。需自备 API Key（支持任何 OpenAI 兼容接口）。", "modelIntegration": ["任何 OpenAI 兼容模型（Claude/GPT/DeepSeek/Kimi/Qwen 等）"], "codingPlanRelation": "无 Coding Plan，完全依赖第三方 API。灵活性最高，但需要自己管理 API Key 和费用。", "features": ["Agent 模式", "MCP 协议", "多模型切换", "多文件编辑", "终端集成", "Git 集成", "自定义 Hook", "插件系统"], "platforms": ["Mac", "Linux", "Windows"], "rating": 4, "bestFor": ["开源爱好者", "多模型灵活切换", "自定义工作流"], "strengths": ["完全免费开源", "支持任意模型", "社区活跃 200+ 贡献者", "高度可定制", "Windows 原生支持"], "weaknesses": ["需要自己管理 API", "稳定性和兼容性波动", "没有官方支持", "UI/UX 不如商业产品", "文档不如 Claude Code 完善"], "websiteUrl": "https://github.com/opencode-ai/opencode", "tags": ["CLI", "开源", "免费", "多模型", "社区"], "featured": true, "trending": true, "addedAt": "2025-08-01"}, {"id": "deepseek-coder", "name": "DeepSeek Coder", "vendor": "DeepSeek", "type": "CLI", "description": "DeepSeek 官方 CLI 编程工具，与 DeepSeek V4 深度集成。API 价格极低，数学和推理能力突出。支持本地部署 DeepSeek 开源模型。", "pricing": "免费使用，DeepSeek API 价格极低（输入 ¥0.14/1M tokens）。支持本地部署。", "modelIntegration": ["DeepSeek V4", "DeepSeek-V4-Pro", "DeepSeek-V4-Flash"], "codingPlanRelation": "无 Coding Plan，API 按量付费。成本极低，适合个人开发者。", "features": ["Agent 模式", "本地模型支持", "多文件编辑", "终端集成", "Git 集成", "数学推理增强"], "platforms": ["Mac", "Linux", "Windows"], "rating": 4, "bestFor": ["数学/算法", "成本敏感", "国内用户", "本地部署"], "strengths": ["API 价格极低", "数学推理强", "国内直接访问", "支持本地部署", "开源模型可用"], "weaknesses": ["编程能力不如 Claude", "API 偶尔不稳定", "MCP 生态不成熟", "社区资源少", "功能不如 Claude Code 丰富"], "websiteUrl": "https://api-docs.deepseek.com", "tags": ["CLI", "国内友好", "低成本", "开源", "本地部署"], "featured": false, "trending": false, "addedAt": "2025-11-01"}, {"id": "qoder", "name": "Qoder", "vendor": "社区开源", "type": "CLI", "description": "社区驱动的 AI 编程 CLI，专注国内模型集成。同时支持智谱 GLM、Kimi、DeepSeek、Qwen 等国内主流模型。中文 Prompt 体验优化。", "pricing": "免费开源。需自备各厂商 API Key。", "modelIntegration": ["GLM-5.2", "Kimi K3", "DeepSeek V4", "Qwen 3.8", "豆包 Pro", "混元 Hy3"], "codingPlanRelation": "无 Coding Plan，对接各厂商 API 按量付费。", "features": ["Agent 模式", "国内模型一键切换", "中文 Prompt 优化", "多文件编辑", "终端集成", "Git 集成"], "platforms": ["Mac", "Linux", "Windows"], "rating": 4, "bestFor": ["国内用户", "国内模型", "中文项目"], "strengths": ["国内模型支持最全", "中文体验优化", "开源免费", "国内直接访问", "一键切换模型"], "weaknesses": ["社区规模较小", "功能不如商业产品", "文档不够完善", "MCP 生态有限", "稳定性待提升"], "websiteUrl": "https://github.com/qoder-ai/qoder", "tags": ["CLI", "国内友好", "开源", "中文", "多模型"], "featured": false, "trending": true, "addedAt": "2026-04-01"}, {"id": "workbuddy", "name": "WorkBuddy", "vendor": "WorkBuddy Inc", "type": "CLI", "description": "专注团队协作的 AI 编程 CLI。支持共享上下文、团队 Skills 库、统一配置管理。适合 5-50 人的开发团队统一 AI 工具链。", "pricing": "个人免费，团队版 $15/人/月。企业版 $30/人/月。", "modelIntegration": ["Claude Opus 4", "GPT-5.6", "Gemini 2.0", "DeepSeek V4"], "codingPlanRelation": "自带团队订阅，统一管理 API 用量。也支持接入团队已有的各厂商 API Key。", "features": ["Agent 模式", "团队上下文共享", "Skills 库管理", "用量统计", "统一配置", "多文件编辑", "终端集成", "Git 集成"], "platforms": ["Mac", "Linux", "Windows(WSL)"], "rating": 4, "bestFor": ["团队协作", "企业统一管理", "中小团队"], "strengths": ["团队共享上下文", "统一用量管理", "Skills 团队库", "配置管理方便", "企业级安全"], "weaknesses": ["个人用户偏贵", "团队规模大了贵", "生态不如 Claude Code", "国内团队需额外配置", "知名度较低"], "websiteUrl": "https://workbuddy.dev", "tags": ["CLI", "团队", "企业", "国外"], "featured": false, "trending": false, "addedAt": "2026-02-01"}, {"id": "zcode", "name": "ZCode", "vendor": "ZCode Team", "type": "CLI", "description": "国内新秀 CLI 工具，专注中文开发者体验。深度集成智谱 GLM-5.2 和 Kimi K3，中文 Prompt 理解和代码生成质量高。国内网络环境零配置。", "pricing": "个人免费（限 100 次/天），Pro ¥39/月（无限次），Team ¥99/人/月。", "modelIntegration": ["GLM-5.2", "Kimi K3", "DeepSeek V4", "Qwen 3.8"], "codingPlanRelation": "自带订阅，Pro 版 ¥39/月包含模型调用额度。不需额外购买 Coding Plan。", "features": ["Agent 模式", "中文优化", "国内网络零配置", "多文件编辑", "终端集成", "Git 集成", "MCP 协议"], "platforms": ["Mac", "Linux", "Windows"], "rating": 4, "bestFor": ["国内开发者", "中文项目", "零配置上手"], "strengths": ["国内网络零配置", "中文体验最好", "自带订阅套餐", "Windows 原生支持", "价格亲民"], "weaknesses": ["功能不如 Claude Code", "MCP 生态刚起步", "社区规模小", "模型选择有限", "品牌知名度低"], "websiteUrl": "https://zcode.dev", "tags": ["CLI", "国内友好", "中文", "零配置", "自带订阅"], "featured": false, "trending": true, "addedAt": "2026-05-01"}, {"id": "hermes", "name": "Hermes", "vendor": "Hermes AI", "type": "CLI", "description": "专注代码安全和合规的 AI 编程 CLI。自动检测代码中的安全漏洞、许可证冲突、合规风险。适合金融、医疗等强监管行业。", "pricing": "免费基础版（安全扫描），Pro $25/月（完整功能），企业版按需定价。", "modelIntegration": ["Claude Opus 4", "GPT-5.6", "本地私有模型"], "codingPlanRelation": "需自备 API Key。企业版支持私有部署，完全不依赖外部 API。", "features": ["安全扫描", "许可证检查", "合规审计", "Agent 模式", "私有部署", "多文件编辑", "终端集成", "Git 集成"], "platforms": ["Mac", "Linux", "Windows"], "rating": 4, "bestFor": ["安全合规", "金融科技", "医疗健康", "企业私有部署"], "strengths": ["安全扫描专业", "合规审计完善", "支持私有部署", "许可证风险检测", "审计报告"], "weaknesses": ["编程能力不如通用工具", "价格偏高", "过度谨慎可能影响效率", "非监管行业不需要", "学习成本高"], "websiteUrl": "https://hermes-ai.dev", "tags": ["CLI", "安全", "合规", "企业", "私有部署"], "featured": false, "trending": false, "addedAt": "2026-01-01"}, {"id": "openclaw", "name": "OpenClaw", "vendor": "社区开源", "type": "CLI", "description": "开源 AI 编程 CLI，专注行业应用和智能物流等垂直场景。提供行业模板和预训练工作流，适合垂直领域快速落地。", "pricing": "完全免费开源。需自备 API Key。", "modelIntegration": ["任何 OpenAI 兼容模型", "本地模型支持"], "codingPlanRelation": "无 Coding Plan，依赖第三方 API。支持本地模型部署。", "features": ["Agent 模式", "行业模板", "垂直场景工作流", "本地模型", "多文件编辑", "终端集成", "Git 集成"], "platforms": ["Mac", "Linux", "Windows"], "rating": 3, "bestFor": ["垂直行业", "智能物流", "本地模型"], "strengths": ["行业模板开箱即用", "垂直场景优化", "开源免费", "本地模型支持", "可定制化高"], "weaknesses": ["通用编程能力弱", "社区规模小", "文档不完善", "行业模板有限", "知名度低"], "websiteUrl": "https://github.com/openclaw", "tags": ["CLI", "开源", "垂直行业", "本地模型"], "featured": false, "trending": false, "addedAt": "2025-12-01"}, {"id": "cursor", "name": "Cursor", "vendor": "Cursor Inc", "type": "Desktop", "description": "基于 VS Code 的 AI 编程 IDE，开箱即用。Tab 补全、内联编辑、Agent 模式、Composer 是核心功能。2026 年全球用户超 500 万，是最大的 AI 编程 IDE。", "pricing": "Hobby 免费（2000次/月），Pro $20/月，Business $40/月。", "modelIntegration": ["Claude Opus 4", "GPT-5.6", "Gemini 2.0", "Cursor 自有模型"], "codingPlanRelation": "自带订阅，Pro $20/月包含模型调用。也可以接入自己的 API Key。", "features": ["Tab 补全", "内联编辑", "Agent 模式", "Composer", "MCP 协议", "Git 集成", "VS Code 插件兼容", "多文件编辑"], "platforms": ["Mac", "Windows", "Linux"], "rating": 5, "bestFor": ["不想折腾", "开箱即用", "VS Code 用户", "全栈开发"], "strengths": ["开箱即用体验最好", "Tab 补全速度快", "500万用户社区大", "VS Code 插件兼容", "自带订阅省心"], "weaknesses": ["价格不便宜", "重度使用有限额", "不如 CLI 灵活", "自定义能力有限", "国内需特殊网络"], "websiteUrl": "https://cursor.com", "tags": ["Desktop", "IDE", "国外", "开箱即用"], "featured": true, "trending": false, "addedAt": "2024-06-01"}, {"id": "github-copilot", "name": "GitHub Copilot", "vendor": "GitHub(Microsoft)", "type": "Desktop", "description": "微软出品，深度集成 GitHub 生态。VS Code / JetBrains / Visual Studio 全平台支持。Copilot Agent 模式 2026 年全面升级，支持多文件编辑。", "pricing": "Free 免费（2000次/月），Pro $10/月，Pro+ $39/月，Max $100/月。", "modelIntegration": ["GPT-5.6", "Claude Opus 4(Max 独享)", "Copilot 自有模型"], "codingPlanRelation": "自带订阅（Copilot Pro/Max），与 GitHub 账户绑定。Max 版支持 Claude Opus 4。", "features": ["Agent 模式", "代码补全", "内联聊天", "多文件编辑", "PR 描述生成", "代码审查", "VS Code/JetBrains/VS"], "platforms": ["Mac", "Windows", "Linux", "Web(GitHub.com)"], "rating": 5, "bestFor": ["GitHub 生态用户", "多 IDE 用户", "企业团队"], "strengths": ["GitHub 深度集成", "多 IDE 支持", "价格分层合理", "企业级安全", "微软生态加持"], "weaknesses": ["Max 版偏贵", "Agent 不如 Claude Code", "国内需特殊网络", "VS Code 依赖较重", "Copilot 自有模型一般"], "websiteUrl": "https://github.com/features/copilot", "tags": ["Desktop", "IDE", "国外", "GitHub", "企业"], "featured": true, "trending": false, "addedAt": "2023-06-01"}, {"id": "claude-work", "name": "Claude Work", "vendor": "Anthropic", "type": "Desktop", "description": "Anthropic 官方桌面版 AI 编程工具，2026 年 7 月公测。Mac/Windows/Linux 全平台原生支持。GUI 操作 + Claude Code 引擎，兼顾易用性和能力。", "pricing": "免费公测中。预计正式版集成 Claude Pro/Max 订阅。", "modelIntegration": ["Claude Opus 4", "Claude Sonnet 4", "Claude Haiku 4.5"], "codingPlanRelation": "公测期免费。正式版预计与 Claude Pro/Max 绑定。", "features": ["Agent 模式", "GUI 操作", "Skills 系统", "MCP 协议", "多文件编辑", "Git 集成", "原生 App 体验", "Claude Code 引擎"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["不想用 CLI", "Claude 生态用户", "全平台用户"], "strengths": ["原生 App 体验好", "全平台支持", "Claude Code 引擎", "Skills 兼容", "公测免费"], "weaknesses": ["公测中不稳定", "功能不如 CLI 版丰富", "正式版预计收费", "国内需特殊网络", "社区资源少"], "websiteUrl": "https://claude.com/work", "tags": ["Desktop", "国外", "公测", "全平台", "Claude 生态"], "featured": false, "trending": true, "addedAt": "2026-07-01"}, {"id": "windsurf", "name": "Windsurf", "vendor": "Codeium", "type": "Desktop", "description": "Codeium 出品的 AI 编程 IDE，主打 Flow 模式（Agent 自动编程）。AI 自动理解项目上下文，Cascade 功能支持多文件级联编辑。", "pricing": "Free 免费（基础功能），Pro $15/月，Teams $35/人/月。", "modelIntegration": ["Claude Opus 4", "GPT-5.6", "Windsurf 自有模型"], "codingPlanRelation": "自带订阅，Pro $15/月包含模型调用。也可接入自己的 API Key。", "features": ["Flow 模式", "Cascade 多文件编辑", "Agent 模式", "MCP 协议", "Git 集成", "VS Code 插件兼容"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["Agent 自动编程", "中等复杂度项目"], "strengths": ["Flow 自动编程体验好", "Cascade 多文件编辑", "价格比 Cursor 便宜", "VS Code 插件兼容", "自带模型质量不错"], "weaknesses": ["品牌不如 Cursor", "社区规模较小", "极端复杂场景不稳定", "国内需特殊网络", "自定义能力有限"], "websiteUrl": "https://windsurf.com", "tags": ["Desktop", "IDE", "国外", "Agent"], "featured": false, "trending": false, "addedAt": "2025-06-01"}, {"id": "trae", "name": "Trae", "vendor": "字节跳动", "type": "Desktop", "description": "字节跳动出品的 AI 编程 IDE，2026 年重点发力海外市场。深度集成豆包 Pro、Kimi K3、GLM-5.2 等国内模型。国内网络零配置，中文体验最佳。", "pricing": "国内免费（基础功能），Pro ¥49/月（无限次）。海外版 Trae Pro $8/月。", "modelIntegration": ["豆包 Pro", "Kimi K3", "GLM-5.2", "DeepSeek V4", "Qwen 3.8"], "codingPlanRelation": "自带订阅，Pro ¥49/月包含多模型调用。也支持接入自己的 API Key。", "features": ["Agent 模式", "代码补全", "内联编辑", "多文件编辑", "Git 集成", "国内网络零配置", "中文优化", "MCP 协议"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["国内用户", "国内模型", "中文项目", "零配置"], "strengths": ["国内网络零配置", "国内模型集成最全", "中文体验最佳", "字节生态加持", "海外版价格低"], "weaknesses": ["功能不如 Cursor 成熟", "海外版生态薄", "VS Code 插件兼容性一般", "自有模型能力有限", "品牌在海外知名度低"], "websiteUrl": "https://trae.ai", "tags": ["Desktop", "IDE", "国内友好", "中文", "零配置", "字节"], "featured": true, "trending": true, "addedAt": "2025-09-01"}, {"id": "cline", "name": "Cline", "vendor": "社区开源", "type": "Desktop", "description": "VS Code 最流行的 AI 编程插件之一，社区驱动。支持接入任何 OpenAI 兼容 API。完全开源免费，自定义程度极高。", "pricing": "完全免费开源。需自备 API Key。", "modelIntegration": ["任何 OpenAI 兼容模型（Claude/GPT/DeepSeek/Kimi 等）"], "codingPlanRelation": "无 Coding Plan，完全依赖第三方 API。灵活性最高。", "features": ["Agent 模式", "多模型切换", "VS Code 深度集成", "多文件编辑", "终端集成", "Git 集成", "MCP 协议", "自定义 Prompt"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["VS Code 用户", "开源爱好者", "多模型灵活切换"], "strengths": ["完全免费开源", "VS Code 深度集成", "支持任意模型", "高度可定制", "社区活跃"], "weaknesses": ["需要自己管理 API", "不如 Cursor 开箱即用", "安装配置较复杂", "稳定性依赖社区", "没有官方支持"], "websiteUrl": "https://github.com/cline/cline", "tags": ["Desktop", "VS Code", "开源", "免费", "多模型"], "featured": false, "trending": false, "addedAt": "2024-09-01"}, {"id": "continue", "name": "Continue", "vendor": "Continue Dev", "type": "Desktop", "description": "VS Code + JetBrains 双平台 AI 编程插件。开源免费，支持接入任何模型。Hub 模式支持团队共享配置和 Prompt 模板。", "pricing": "免费开源。Continue Hub 免费（个人），团队 $20/人/月。", "modelIntegration": ["任何 OpenAI 兼容模型", "Claude/GPT/DeepSeek/Kimi 等"], "codingPlanRelation": "无 Coding Plan，依赖第三方 API。Hub 团队版提供统一管理。", "features": ["Agent 模式", "多模型切换", "Hub 团队共享", "VS Code+JetBrains", "MCP 协议", "多文件编辑", "自定义 Prompt", "Git 集成"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["VS Code+JetBrains 双修", "团队配置共享"], "strengths": ["VS Code+JetBrains 双平台", "Hub 团队共享好", "开源免费", "支持任意模型", "自定义 Prompt 强"], "weaknesses": ["不如 Cursor 集成度高", "配置学习成本", "Hub 团队版收费", "国内需自备 API", "知名度不如 Cline"], "websiteUrl": "https://continue.dev", "tags": ["Desktop", "VS Code", "JetBrains", "开源", "团队"], "featured": false, "trending": false, "addedAt": "2024-06-01"}, {"id": "cody", "name": "Cody", "vendor": "Sourcegraph", "type": "Desktop", "description": "Sourcegraph 出品的 AI 编程助手，强项是代码搜索和理解。基于 Sourcegraph 的代码图谱，能理解整个代码仓库的上下文。", "pricing": "Free 免费（基础功能），Pro $9/月，Enterprise $19/人/月。", "modelIntegration": ["Claude Opus 4", "GPT-5.6", "Sourcegraph 自有模型"], "codingPlanRelation": "自带订阅，Pro $9/月包含模型调用。免费版功能有限。", "features": ["代码搜索", "代码图谱", "Agent 模式", "上下文理解", "多文件编辑", "Git 集成", "VS Code/JetBrains"], "platforms": ["Mac", "Windows", "Linux", "Web"], "rating": 4, "bestFor": ["大型代码库理解", "代码搜索", "老项目维护"], "strengths": ["代码搜索能力最强", "代码图谱独一无二", "大项目上下文理解", "价格合理", "老项目维护利器"], "weaknesses": ["编程不如 Claude Code", "新项目创建较弱", "依赖 Sourcegraph 生态", "国内需特殊网络", "市场占有率低"], "websiteUrl": "https://sourcegraph.com/cody", "tags": ["Desktop", "代码搜索", "大项目", "VS Code"], "featured": false, "trending": false, "addedAt": "2024-03-01"}, {"id": "amazon-q", "name": "Amazon Q Developer", "vendor": "AWS(Amazon)", "type": "Desktop", "description": "AWS 官方 AI 编程助手，深度集成 AWS 生态。在 AWS 服务开发、基础设施即代码、安全扫描方面有独特优势。", "pricing": "Free Tier 免费（基础功能），Pro $20/月。", "modelIntegration": ["Amazon Bedrock 模型（Claude/GPT 等）"], "codingPlanRelation": "自带订阅，与 AWS 账户绑定。Pro 版包含 Bedrock 模型调用。", "features": ["Agent 模式", "AWS 服务集成", "IaC 生成", "安全扫描", "代码补全", "VS Code/JetBrains", "多文件编辑"], "platforms": ["Mac", "Windows", "Linux"], "rating": 3, "bestFor": ["AWS 生态用户", "云基础设施", "DevOps"], "strengths": ["AWS 生态最深度集成", "IaC 生成好", "安全扫描专业", "Bedrock 模型丰富", "企业级合规"], "weaknesses": ["非 AWS 用户没必要", "AWS 绑定太深", "编程能力一般", "国内 AWS 用户少", "学习成本高"], "websiteUrl": "https://aws.amazon.com/q/developer", "tags": ["Desktop", "AWS", "云", "企业", "IaC"], "featured": false, "trending": false, "addedAt": "2024-12-01"}, {"id": "tabnine", "name": "Tabnine", "vendor": "Tabnine", "type": "Desktop", "description": "老牌 AI 代码补全工具，2026 年全面升级 Agent 模式。强项是代码补全的速度和准确性。支持私有部署，适合对数据安全要求高的企业。", "pricing": "Free 免费（基础补全），Pro $12/月，Enterprise 私有部署按需定价。", "modelIntegration": ["Tabnine 自有模型", "Claude Opus 4(Pro)", "GPT-5.6(Pro)"], "codingPlanRelation": "自带订阅，Pro $12/月包含模型调用。企业版支持完全私有部署。", "features": ["代码补全", "Agent 模式", "私有部署", "VS Code/JetBrains", "多文件编辑", "安全合规"], "platforms": ["Mac", "Windows", "Linux"], "rating": 3, "bestFor": ["代码补全", "私有部署", "企业安全"], "strengths": ["代码补全速度最快", "私有部署成熟", "企业安全合规", "多 IDE 支持", "品牌历史悠久"], "weaknesses": ["Agent 模式不如竞品", "自有模型能力一般", "创新速度慢", "价格不便宜", "市场份额被 Cursor 侵蚀"], "websiteUrl": "https://tabnine.com", "tags": ["Desktop", "补全", "企业", "私有部署"], "featured": false, "trending": false, "addedAt": "2022-01-01"}, {"id": "replit-ai", "name": "Replit AI", "vendor": "Replit", "type": "Web", "description": "Replit 在线 IDE 的 AI 编程功能。浏览器里就能写代码、部署、协作。2026 年 AI Agent 全面升级，支持全栈应用一键生成。", "pricing": "Free 免费（基础功能），Core $25/月，Teams $40/人/月。", "modelIntegration": ["Replit 自有模型", "Claude Opus 4(Core)", "GPT-5.6(Core)"], "codingPlanRelation": "自带订阅，Core $25/月包含模型调用和部署。", "features": ["Agent 模式", "在线 IDE", "一键部署", "实时协作", "全栈应用生成", "模板市场"], "platforms": ["Web(任何浏览器)"], "rating": 4, "bestFor": ["在线编程", "快速原型", "教学", "协作"], "strengths": ["浏览器即用", "一键部署超方便", "全栈应用生成快", "协作功能好", "教学场景最佳"], "weaknesses": ["大型项目不适合", "离线不可用", "性能受限于浏览器", "深度定制有限", "Core 版价格高"], "websiteUrl": "https://replit.com", "tags": ["Web", "在线", "快速原型", "协作", "教学"], "featured": false, "trending": false, "addedAt": "2024-01-01"}, {"id": "augment", "name": "Augment Code", "vendor": "Augment", "type": "Desktop", "description": "2026 年快速崛起的 AI 编程工具，主打「上下文感知」。能自动理解整个团队代码库的上下文，生成的代码更贴合现有架构。", "pricing": "Free 免费（个人），Team $30/人/月，Enterprise 按需定价。", "modelIntegration": ["Augment 自有模型", "Claude Opus 4(Team)", "GPT-5.6(Team)"], "codingPlanRelation": "自带订阅，Team $30/人/月包含模型调用。", "features": ["上下文感知", "团队代码库理解", "Agent 模式", "代码补全", "多文件编辑", "VS Code/JetBrains"], "platforms": ["Mac", "Windows", "Linux"], "rating": 4, "bestFor": ["大型团队", "老项目维护", "代码库理解"], "strengths": ["团队代码库理解深", "生成的代码贴合架构", "大项目场景好", "多 IDE 支持", "创新力强"], "weaknesses": ["品牌新知名度低", "个人版功能有限", "Team 版价格高", "国内需特殊网络", "社区资源少"], "websiteUrl": "https://augmentcode.com", "tags": ["Desktop", "上下文", "大项目", "团队", "新秀"], "featured": false, "trending": true, "addedAt": "2026-03-01"}]}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('cp-data').textContent);
+const { site, tools, changes } = DATA;
+// Utils
+function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
+}
+function renderStars(rating) {
+  const full = '★'.repeat(rating);
+  const empty = '☆'.repeat(5 - rating);
+  return '<span class="stars">' + full + '</span><span class="stars stars-dim">' + empty + '</span>';
+}
+function renderTagsInline(tags) {
+  if (!tags || !tags.length) return '';
+  return tags.map(t => '<span class="tag">' + escapeHtml(t) + '</span>').join(' ');
+}
+function renderMarkdownLite(text) {
+  if (!text) return '';
+  let html = escapeHtml(text);
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return html;
+}
+
+const SCENARIO_LABELS = {
+  frontend: '前端开发', backend: '后端开发', fullstack: '全栈开发',
+  solo: '独立开发', team: '团队协作', prototype: '快速原型',
+  docs: '文档写作', devops: 'DevOps', ui: 'UI设计',
+  oss: '开源维护', learning: '学习入门', mobile: '移动端',
+  research: '学术研究', quality: '质量保障'
+};
+const TYPE_CSS = {
+  frontend: 'sc-frontend', backend: 'sc-backend', fullstack: 'sc-fullstack',
+  solo: 'sc-solo', team: 'sc-team'
+};
+const DIFFICULTY_LABELS = { '入门': '🟢 入门', '进阶': '🟡 进阶', '专家': '🔴 专家' };
+const COST_LABELS = { '免费': '免费', '低成本': '低成本', '中等': '中等', '高': '高费用' };
+
+function scenarioLabel(s) { return SCENARIO_LABELS[s] || s; }
+function scenarioCss(s) { return SCENARIO_CSS[s] || ''; }
+
+// Tab 路由
+function switchTab(hash) {
+  const tab = (hash || '#recommend').replace(/^#/, '').split('?')[0];
+  const validTabs = ['recommend', 'browse', 'community'];
+  const target = validTabs.includes(tab) ? tab : 'recommend';
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + target).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.addEventListener('hashchange', () => switchTab(location.hash));
+
+function renderRecommend(){
+  document.getElementById('recommend-body').innerHTML=renderHero()+renderTopTools()+renderQuickEntries()+renderRecommendations()+renderRecentChanges();
+  bindQuickEntries();
+}
+function renderHero(){
+  const h=site.header||{};
+  const stats=(h.stats||[]).map(s=>'<div><div class="hero-stat-value">'+escapeHtml(s.value)+'<span style="font-size:13px;color:var(--text-tertiary);font-weight:500;margin-left:2px;">'+escapeHtml(s.unit||'')+'</span></div><div class="hero-stat-label">'+escapeHtml(s.label)+'</div></div>').join('');
+  return'<section class="hero"><div class="container"><div class="hero-inner"><div>'+
+    '<span class="section-eyebrow">'+escapeHtml(h.updateDate||'')+'</span>'+
+    '<h1 class="hero-title">AI 编程工具<br><span class="hero-title-accent">22 款到底选哪个？</span></h1>'+
+    '<p class="hero-subtitle">'+escapeHtml(site.tagline||'')+'</p>'+
+    '<p style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-5);margin-top:-12px;">'+escapeHtml(h.highlights||'')+'</p>'+
+    '<div class="hero-actions"><a href="#browse" class="btn btn-primary btn-lg">对比所有工具</a><a href="#community" class="btn btn-secondary btn-lg">订阅周刊</a></div>'+
+    '<div class="hero-stats">'+stats+'</div></div></div></section>';
+}
+function renderTopTools(){
+  const top3=[...tools].filter(t=>t.featured).sort((a,b)=>b.rating-a.rating).slice(0,3);
+  if(!top3.length)return'';
+  const labels=['综合之王','开箱即用','开源最强'];
+  const reasons=['编程能力、生态和灵活性的综合冠军。Claude Code 是所有 AI 编程工具的标杆。','不想折腾配置、不想学 CLI？Cursor 开箱即用，500 万用户的选择。','完全免费、高度可定制、支持任意模型。开源社区最活跃的 AI 编程工具。'];
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">TOP PICKS</span><h2 class="section-title">不知道选哪个？先看这三款</h2><p class="section-subtitle">基于编程能力、易用性和生态的综合推荐。点击场景卡片筛选或浏览全部 22 款工具。</p></div><div class="top-pick-grid">'+top3.map((t,i)=>{const isBest=i===0;return'<div class="top-pick-card'+(isBest?' pick-best':'')+'"><div class="top-pick-label">'+labels[i]+'</div><div class="top-pick-vendor">'+escapeHtml(t.name)+'</div><div class="top-pick-plan">'+escapeHtml(t.vendor)+' · '+escapeHtml(t.type)+' · '+escapeHtml(t.pricing.split('。')[0])+'</div><div style="margin-top:var(--space-3);">'+renderStars(t.rating)+'</div><div class="top-pick-metrics"><div><div class="top-pick-metric-value">'+t.features.length+'</div><div class="top-pick-metric-label">功能数</div></div><div><div class="top-pick-metric-value">'+t.platforms.length+'</div><div class="top-pick-metric-label">平台</div></div></div><div class="top-pick-reason">'+reasons[i]+'</div><div class="top-pick-action"><a href="#browse" class="btn btn-primary btn-sm">查看详情 →</a></div></div>'}).join('')+'</div></div></section>';
+}
+function renderQuickEntries(){
+  const entries=site.quickEntries||[];if(!entries.length)return'';
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">SCENARIOS</span><h2 class="section-title">按你的需求来找</h2></div><div class="quick-grid">'+entries.map(q=>'<button class="quick-card" data-entry-id="'+escapeHtml(q.id)+'"><span class="quick-card-icon">'+escapeHtml(q.icon)+'</span><span class="quick-card-title">'+escapeHtml(q.title)+'</span><span class="quick-card-desc">'+escapeHtml(q.desc)+'</span></button>').join('')+'</div></div></section>';
+}
+function bindQuickEntries(){document.querySelectorAll('.quick-card').forEach(card=>{card.addEventListener('click',()=>{const id=card.dataset.entryId;const entry=(site.quickEntries||[]).find(q=>q.id===id);if(!entry||!entry.filter)return;location.hash='#browse?'+Object.entries(entry.filter).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&')})})}
+function renderRecommendations(){
+  const groups=site.recommendationGroups||[];if(!groups.length)return'';const html=groups.map((group,gi)=>{const items=(group.items||[]).map(item=>{const t=tools.find(t=>t.id===item.toolId);if(!t)return'';return'<div class="reco-item"><div class="reco-item-header"><div><div class="reco-item-vendor">'+escapeHtml(t.name)+'</div><div class="reco-item-plan">'+escapeHtml(t.vendor)+' · '+escapeHtml(t.type)+'</div></div>'+renderStars(item.rating)+'</div>'+(item.verdict?'<span class="reco-item-verdict">'+escapeHtml(item.verdict)+'</span>':'')+'<p style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:var(--space-3);">'+escapeHtml(t.description)+'</p><div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-3);"><strong style="color:var(--accent);font-size:11px;">💰 价格</strong><p style="font-size:13px;color:var(--text-primary);margin-top:2px;">'+escapeHtml(t.pricing)+'</p></div><ul class="reco-item-reasons" style="margin-bottom:var(--space-3);">'+(t.strengths||[]).slice(0,2).map(s=>'<li>'+escapeHtml(s)+'</li>').join('')+'</ul><div class="reco-item-footer"><span style="font-size:12px;color:var(--text-tertiary);">'+t.platforms.map(p=>escapeHtml(p)).join(' · ')+'</span><a href="'+(t.websiteUrl||'#')+'" target="_blank" rel="nofollow sponsored" class="btn btn-primary">官网 →</a></div></div>'}).join('');const header=groups.length>1?'<div style="margin-bottom:var(--space-4);"><h3 style="font-size:16px;font-weight:700;">'+escapeHtml(group.title)+'</h3>'+(group.subtitle?'<p style="font-size:13px;color:var(--text-tertiary);">'+escapeHtml(group.subtitle)+'</p>':'')+'</div>':'';return'<div style="'+(gi>0?'margin-top:var(--space-8);':'')+'">'+header+'<div class="reco-list">'+items+'</div></div>'}).join('');return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">ALL RECOMMENDATIONS</span><h2 class="section-title">饭庐者说的完整推荐</h2></div>'+html+'</div></section>';
+}
+const KIND_LABEL={new_tool:'新工具',tool_update:'更新',article:'文章'};
+function renderRecentChanges(){const now=new Date();const cutoff=new Date(now.getTime()-30*24*60*60*1000);const recent=(changes||[]).filter(c=>new Date(c.date)>=cutoff).sort((a,b)=>b.date.localeCompare(a.date));if(!recent.length)return'';const items=recent.map(c=>{const impactBadge=c.impact==='positive'?'<span class="badge badge-positive">利好</span>':c.impact==='negative'?'<span class="badge badge-negative">利空</span>':'<span class="badge">中性</span>';const kindLabel='<span class="tag">'+(KIND_LABEL[c.kind]||c.kind)+'</span>';const titleHtml=c.kind==='article'&&c.sourceUrl?'<a href="'+escapeHtml(c.sourceUrl)+'" target="_blank" rel="noopener">'+escapeHtml(c.title)+'</a>':escapeHtml(c.title);const detailAttr=c.detail&&c.detail!==c.title?' data-detail="'+escapeHtml(c.detail).replace(/"/g,'&quot;')+'"':'';return'<div class="rc-item'+(c.featured?' rc-featured':'')+'"'+detailAttr+'><span class="rc-date">'+escapeHtml(c.date.slice(5))+'</span>'+impactBadge+'<span class="rc-title">'+titleHtml+'</span>'+kindLabel+'</div>'}).join('');return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">RECENT CHANGES</span><h2 class="section-title">最近动态</h2><p class="section-subtitle">最近30天AI编程工具生态的关键变动。悬停查看详情。</p></div><div class="rc-list">'+items+'</div></div></section>';}
+
+
+const browseState={filters:{types:new Set,tags:new Set,search:''},sort:{key:null,dir:'asc'}};
+function renderBrowse(){document.getElementById('browse-body').innerHTML=renderBrowseSection();bindBrowseFilters();renderToolCards();}
+function renderBrowseSection(){return'<section class="section-sm"><div class="container"><div class="section-header"><span class="section-eyebrow">COMPARE ALL</span><h2 class="section-title">全部工具对比</h2><p class="section-subtitle">从 12 个维度对比 22 款 AI 编程工具。点击筛选，搜索关键词。</p></div><div id="browseFilterBar"></div><div class="tool-grid" id="toolGrid"></div></div></section>';}
+function renderBrowseFilterBar(){const types=[...new Set(tools.map(t=>t.type))].sort();const allTags=new Set();tools.forEach(t=>(t.tags||[]).forEach(t=>allTags.add(t)));const tagList=[...allTags].sort();const typeChips=types.map(t=>'<button class="filter-chip" data-filter-type="types" data-filter-value="'+escapeHtml(t)+'">'+escapeHtml(t)+'</button>').join('');const tagChips=tagList.map(t=>'<button class="filter-chip" data-filter-type="tags" data-filter-value="'+escapeHtml(t)+'">'+escapeHtml(t)+'</button>').join('');return'<div class="filter-bar"><select class="filter-select" id="sortSelect"><option value="">默认排序</option><option value="rating-desc">评分 高-低</option><option value="name-asc">名称 A-Z</option><option value="addedAt-desc">最新收录</option></select><input type="text" class="filter-select" id="searchInput" placeholder="搜索工具名/厂商/模型..." style="min-width:200px;"><button class="filter-chip" id="resetBtn">重置</button><span class="filter-stats">显示 <strong id="filterCount">0</strong> / '+tools.length+' 款工具</span></div>'+(typeChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>'+typeChips+'</div>':'')+(tagChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>'+tagChips+'</div>':'');}
+function bindBrowseFilters(){const fm=document.getElementById('browseFilterBar');if(!fm)return;fm.innerHTML=renderBrowseFilterBar();const hf=(()=>{const h=location.hash;const q=h.indexOf('?');if(q<0)return null;const p=new URLSearchParams(h.slice(q+1));const f={};for(const[k,v]of p)f[k]=v;return f})();if(hf){if(hf.type)browseState.filters.types.add(hf.type);if(hf.tag)browseState.filters.tags.add(hf.tag);if(hf.pricing===true||hf.pricing==='free')browseState.filters.search='免费';if(hf.search){browseState.filters.search=hf.search.toLowerCase();const si=document.getElementById('searchInput');if(si)si.value=hf.search}}syncFilter();fm.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{chip.addEventListener('click',()=>{const type=chip.dataset.filterType,value=chip.dataset.filterValue,set=browseState.filters[type];if(set.has(value))set.delete(value);else set.add(value);syncFilter();renderToolCards()})});document.getElementById('resetBtn')?.addEventListener('click',()=>{browseState.filters.types.clear();browseState.filters.tags.clear();browseState.filters.search='';browseState.sort={key:null,dir:'asc'};document.getElementById('sortSelect').value='';document.getElementById('searchInput').value='';syncFilter();renderToolCards()});document.getElementById('sortSelect')?.addEventListener('change',()=>{const v=document.getElementById('sortSelect').value;if(!v)browseState.sort={key:null,dir:'asc'};else{const[k,d]=v.split('-');browseState.sort={key:k,dir:d}}renderToolCards()});document.getElementById('searchInput')?.addEventListener('input',()=>{browseState.filters.search=document.getElementById('searchInput').value.trim().toLowerCase();renderToolCards()})}
+function syncFilter(){document.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{const type=chip.dataset.filterType,value=chip.dataset.filterValue,active=browseState.filters[type]&&browseState.filters[type].has(value);chip.classList.toggle('active',!!active)})}
+function filterTools(){const f=browseState.filters;let r=tools.filter(t=>{if(f.types.size&&!f.types.has(t.type))return false;if(f.tags.size&&!(t.tags||[]).some(t=>f.tags.has(t)))return false;if(f.search){const h=(t.name+' '+t.vendor+' '+t.description+' '+t.type+' '+(t.tags||[]).join(' ')+(t.modelIntegration||[]).join(' ')+(t.features||[]).join(' ')).toLowerCase();if(!h.includes(f.search))return false}return true});const{key,dir}=browseState.sort;if(key)r.sort((a,b)=>{const av=a[key],bv=b[key];if(key==='name'){return dir==='asc'?String(av).localeCompare(String(bv)):String(bv).localeCompare(String(av))}if(key==='addedAt'){return dir==='asc'?String(av).localeCompare(String(bv)):String(bv).localeCompare(String(av))}const aNum=typeof av==='number'?av:0;const bNum=typeof bv==='number'?bv:0;return dir==='asc'?aNum-bNum:bNum-aNum});return r}
+function renderToolCards(){const filtered=filterTools();const countEl=document.getElementById('filterCount');if(countEl)countEl.textContent=filtered.length;const grid=document.getElementById('toolGrid');if(!filtered.length){if(grid)grid.innerHTML='<div style="text-align:center;padding:48px;color:var(--text-muted);grid-column:1/-1;">没有匹配的工具，试试重置筛选</div>';return}if(grid)grid.innerHTML=filtered.map(t=>{const isFeatured=t.featured;const fb=isFeatured?'<span class="badge badge-accent" style="font-size:10px;">⭐ 精选</span>':'';const tb=t.trending?'<span class="badge badge-warning" style="font-size:10px;">🔥 热门</span>':'';return'<div class="tool-card'+(isFeatured?' featured':'')+'"><div class="tool-card-header"><div><div class="tool-card-name">'+escapeHtml(t.name)+' '+tb+fb+'</div><div class="tool-card-scenario">'+escapeHtml(t.vendor)+' · '+escapeHtml(t.type)+'</div></div><span class="badge">'+escapeHtml(t.type)+'</span></div><p class="tool-card-desc">'+escapeHtml(t.description)+'</p><div class="tool-card-tags">'+renderTagsInline(t.tags)+'</div><div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-3);"><strong style="color:var(--accent);font-size:11px;">💰 价格</strong><p style="font-size:13px;color:var(--text-primary);margin-top:2px;">'+escapeHtml(t.pricing)+'</p></div><div class="tool-card-meta"><div><div class="tool-card-meta-value">'+renderStars(t.rating)+'</div><div class="tool-card-meta-item">评分</div></div><div><div class="tool-card-meta-value">'+t.features.length+'</div><div class="tool-card-meta-item">功能</div></div><div><div class="tool-card-meta-value">'+(t.modelIntegration||[]).length+'</div><div class="tool-card-meta-item">模型</div></div><div><div class="tool-card-meta-value">'+t.platforms.length+'</div><div class="tool-card-meta-item">平台</div></div></div><div style="margin-bottom:var(--space-3);"><strong style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">🤖 支持模型</strong><p style="font-size:12px;color:var(--text-secondary);margin-top:2px;">'+(t.modelIntegration||[]).slice(0,4).map(m=>escapeHtml(m)).join(' · ')+((t.modelIntegration||[]).length>4?' ...':'')+'</p></div><div style="margin-bottom:var(--space-3);"><strong style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">🔧 核心功能</strong><p style="font-size:12px;color:var(--text-secondary);margin-top:2px;">'+(t.features||[]).slice(0,5).map(f=>'<span class="tag" style="margin:1px;">'+escapeHtml(f)+'</span>').join('')+'</p></div><div style="margin-bottom:var(--space-3);"><strong style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">📋 Coding Plan 关系</strong><p style="font-size:12px;color:var(--text-secondary);margin-top:2px;">'+escapeHtml(t.codingPlanRelation)+'</p></div><div class="tool-card-pros-cons"><div class="tool-card-pros"><strong>👍 优势</strong><ul>'+(t.strengths||[]).slice(0,3).map(s=>'<li>'+escapeHtml(s)+'</li>').join('')+'</ul></div><div class="tool-card-cons"><strong>👎 不足</strong><ul>'+(t.weaknesses||[]).slice(0,3).map(w=>'<li>'+escapeHtml(w)+'</li>').join('')+'</ul></div></div><div class="tool-card-footer"><span style="font-size:12px;color:var(--text-tertiary);">'+t.platforms.map(p=>escapeHtml(p)).join(' · ')+'</span><a href="'+(t.websiteUrl||'#')+'" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">官网 →</a></div></div>'}).join('')}
+
+
+function renderCommunity() {
+  const body = document.getElementById('community-body');
+  const c = site.community;
+  if (!c) { body.innerHTML = ''; return; }
+  body.innerHTML = '<section class="section-sm"><div class="container">' +
+    '<div class="section-header text-center">' +
+      '<span class="section-eyebrow">COMMUNITY</span>' +
+      '<h2 class="section-title">不止看数据，来群里聊</h2>' +
+      '<p class="section-subtitle" style="margin:0 auto;">通过本站链接注册工具，不影响你的价格，工具方会给我返佣。支持本站持续运营。</p>' +
+    '</div>' +
+    '<div class="community-grid">' +
+      renderCommunityCard(c.free, 'free', 'FREE', 'badge-accent', '#') +
+      renderCommunityCard(c.paid, 'paid', 'PRO', 'badge-premium', c.paid && c.paid.url ? c.paid.url : '#') +
+    '</div>' +
+  '</div></section>';
+}
+
+function renderCommunityCard(card, type, badgeText, badgeClass, actionUrl) {
+  if (!card) return '';
+  const highlights = (card.highlights || []).map(h => '<li>' + escapeHtml(h) + '</li>').join('');
+  return '<div class="community-card community-card-' + type + '">' +
+    '<div class="community-card-header"><h3 class="community-card-title">' + escapeHtml(card.title) + '</h3><span class="badge ' + badgeClass + '">' + badgeText + '</span></div>' +
+    '<div class="community-card-subtitle">' + escapeHtml(card.subtitle) + '</div>' +
+    '<p class="community-card-desc">' + escapeHtml(card.description) + '</p>' +
+    '<ul class="community-highlights">' + highlights + '</ul>' +
+    '<a href="' + escapeHtml(actionUrl) + '" class="btn ' + (type === 'paid' ? 'btn-primary' : 'btn-secondary') + ' btn-lg">' + escapeHtml(card.ctaText) + '</a>' +
+  '</div>';
+}
+
+function renderFooter() {
+  const fb = document.getElementById('footer-body');
+  if (!fb) return;
+  const links = (site.footer && site.footer.links || []).map(l => '<a href="' + escapeHtml(l.url) + '">' + escapeHtml(l.label) + '</a>').join('');
+  fb.innerHTML =
+    '<div class="footer-disclosure">' + escapeHtml(site.disclosure || '') + '</div>' +
+    '<div class="footer-inner">' +
+      '<div class="footer-brand">' + escapeHtml((site.footer && site.footer.about) || '') + '</div>' +
+      '<div class="footer-links">' + links + '</div>' +
+    '</div>';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('navBrand').textContent = site.name || 'AI Coding 工具对比';
+  renderRecommend();
+  renderBrowse();
+  renderCommunity();
+  renderFooter();
+  switchTab(location.hash || '#recommend');
+});
+</script>
+</body>
+</html>

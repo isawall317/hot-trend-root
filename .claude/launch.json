@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "codingplan-saver",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "dist"],
-      "port": 8080
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "python3 -m http.server ${PORT:-8080} --directory dist"],
+      "port": 8080,
+      "autoPort": true
     }
   ]
 }

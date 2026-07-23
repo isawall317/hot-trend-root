@@ -1,0 +1,184 @@
+{
+  "name": "AI Coding 经验库",
+  "tagline": "大家用 Claude Code / Codex 攒了几个月经验最后都去哪了？饭庐者说帮你整理成结构化知识库，不再让经验随聊天记录消失",
+  "domain": "aicoding-tips",
+  "logo": "AT",
+  "primaryColor": "#14b8a6",
+  "accentColor": "#5eead4",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "每天用 AI 写代码，积累了大量提示词、工作流和踩坑经验。这里把它们结构化整理，让你少走弯路。",
+    "platforms": [
+      {
+        "name": "公众号",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "小红书",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "知乎",
+        "handle": "饭庐者说",
+        "url": "#"
+      }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.07.22",
+    "highlights": "本周精选：三器合一工作流、Claude Code Prompt 工程、AI 代码审查最佳实践。关注公众号回复「Prompt」领 5 个免费模板 →",
+    "stats": [
+      {
+        "label": "精选经验",
+        "value": "30",
+        "unit": "条"
+      },
+      {
+        "label": "覆盖主题",
+        "value": "7",
+        "unit": "类"
+      },
+      {
+        "label": "本周新增",
+        "value": "5",
+        "unit": "条"
+      }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "prompts",
+      "icon": "💬",
+      "title": "Prompt 技巧",
+      "desc": "怎么写让 AI 更懂你",
+      "filter": {
+        "category": "prompts"
+      }
+    },
+    {
+      "id": "workflow",
+      "icon": "🔄",
+      "title": "工作流",
+      "desc": "SDD / TDD / CI 自动化",
+      "filter": {
+        "category": "workflow"
+      }
+    },
+    {
+      "id": "debug",
+      "icon": "🐛",
+      "title": "排错 Debug",
+      "desc": "AI 写错了怎么修",
+      "filter": {
+        "category": "debug"
+      }
+    },
+    {
+      "id": "tools",
+      "icon": "🔧",
+      "title": "工具配置",
+      "desc": "Cursor / Claude Code 调优",
+      "filter": {
+        "category": "tools"
+      }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "must-read",
+      "title": "🔥 必读经验",
+      "subtitle": "每条都能让你少踩一个坑",
+      "items": [
+        {
+          "tipId": "sdd-workflow",
+          "rating": 5,
+          "verdict": "需求不跑偏的核心方法论"
+        },
+        {
+          "tipId": "prompt-engineering",
+          "rating": 5,
+          "verdict": "同样的模型，Prompt 不同天差地别"
+        },
+        {
+          "tipId": "code-review-ai",
+          "rating": 5,
+          "verdict": "AI审查代码的正确姿势"
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "🚀 进阶技巧",
+      "subtitle": "从会用变成高手",
+      "items": [
+        {
+          "tipId": "context-management",
+          "rating": 4,
+          "verdict": "上下文管理是 AI 编程的核心竞争力"
+        },
+        {
+          "tipId": "monorepo-ai",
+          "rating": 4,
+          "verdict": "大项目的 AI 协作策略"
+        },
+        {
+          "tipId": "cost-optimize",
+          "rating": 4,
+          "verdict": "不降低质量的情况下省钱"
+        }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "免费 Prompt 模板包",
+      "subtitle": "5 个高频场景的 Prompt 模板",
+      "description": "关注公众号「饭庐者说」回复「Prompt」免费领取：代码生成/Code Review/Bug修复/重构/文档 五合一 Prompt 模板包。复制即用。",
+      "qrImage": "",
+      "highlights": [
+        "代码生成 Prompt 模板",
+        "Code Review Prompt 模板",
+        "Bug 修复 Prompt 模板",
+        "重构 Prompt 模板",
+        "关注公众号回复「Prompt」领取"
+      ],
+      "ctaText": "关注公众号领取"
+    },
+    "paid": {
+      "title": "小报童专栏 · AI 编程实战经验",
+      "subtitle": "¥99/年（50+ 篇深度经验）",
+      "description": "每篇都是我花真金白银试出来的经验。不是「AI 可以帮你写代码」这种水货，而是「这么写 Prompt 能省 3 次返工」这种干货。已有 50+ 篇。",
+      "highlights": [
+        "50+ 篇深度经验（每周更新 2 篇）",
+        "完整的 Prompt 模板库（30+ 个场景）",
+        "每月 1 次直播答疑",
+        "不满意 3 天内全额退款",
+        "开通后可看全部历史文章"
+      ],
+      "ctaText": "¥99 订阅专栏",
+      "url": "#"
+    }
+  },
+  "disclosure": "所有经验均来自真实使用体验。小报童专栏 ¥99/年，3 天内不满意全额退款。免费 Prompt 模板包通过公众号发放。",
+  "footer": {
+    "about": "AI Coding 经验库 · 饭庐者说的 AI 编程技巧与经验",
+    "links": [
+      {
+        "label": "浏览全部",
+        "url": "#browse"
+      },
+      {
+        "label": "订阅专栏",
+        "url": "#community"
+      },
+      {
+        "label": "领取模板",
+        "url": "#community"
+      }
+    ]
+  }
+}

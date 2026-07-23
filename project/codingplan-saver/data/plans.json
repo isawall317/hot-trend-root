@@ -486,13 +486,13 @@
     "updatedAt": "2026-07-22"
   },
   {
-    "id": "tencent-standard",
+    "id": "tencent-pro",
     "vendor": "腾讯云",
     "vendorId": "tencent",
-    "plan": "Standard",
+    "plan": "Pro",
     "type": "Token Plan",
     "tier": "pro",
-    "monthlyPrice": 99,
+    "monthlyPrice": 200,
     "currency": "¥",
     "firstMonthPrice": null,
     "rating": 3,
@@ -501,9 +501,9 @@
       "Kimi-K2.5",
       "MiniMax-M2.7"
     ],
-    "monthlyRequests": 100000,
+    "monthlyRequests": 90000,
     "tokenLimit": "100M Tokens",
-    "measuredMonthlyToken": 100.0,
+    "measuredMonthlyToken": 600,
     "tags": [
       "模型强",
       "兼容 Claude Code"
@@ -512,7 +512,7 @@
     "action": "https://cloud.tencent.com/product/tokenhub?Is=home",
     "status": "active",
     "source": "extracted-tencent",
-    "updatedAt": "2026-07-22"
+    "updatedAt": "2026-07-23"
   },
   {
     "id": "claude-pro",
@@ -721,5 +721,89 @@
     "status": "active",
     "source": "extracted-claude",
     "updatedAt": "2026-07-22"
+  },
+  {
+    "id": "mimo-lite",
+    "vendor": "小米·MiMo",
+    "vendorId": "mimo",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "tier": "lite",
+    "monthlyPrice": 39,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 3,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-ASR",
+      "MiMo-V2.5-TTS"
+    ],
+    "monthlyRequests": null,
+    "tokenLimit": "3M Tokens",
+    "measuredMonthlyToken": 108,
+    "tags": [],
+    "bloggerVerdict": "小米生态，价格低但模型少。",
+    "action": "https://platform.xiaomimimo.com/token-plan",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-23",
+    "notes": "MiMo-V2 已下线 (2026.6.30), V2.5 系列已上线"
+  },
+  {
+    "id": "mimo-pro",
+    "vendor": "小米·MiMo",
+    "vendorId": "mimo",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "tier": "pro",
+    "monthlyPrice": 329,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 3,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-ASR",
+      "MiMo-V2.5-TTS"
+    ],
+    "monthlyRequests": null,
+    "tokenLimit": "30M Tokens",
+    "measuredMonthlyToken": 1002,
+    "tags": [],
+    "bloggerVerdict": "高用量，但模型选择少。",
+    "action": "https://platform.xiaomimimo.com/token-plan",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-23",
+    "notes": "MiMo-V2 已下线 (2026.6.30), V2.5 系列已上线"
+  },
+  {
+    "id": "tencent-lite",
+    "vendor": "腾讯云",
+    "vendorId": "tencent",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "tier": "lite",
+    "monthlyPrice": 40,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 3,
+    "models": [
+      "DeepSeek-V4",
+      "GLM-5.2"
+    ],
+    "monthlyRequests": 18000,
+    "tokenLimit": null,
+    "measuredMonthlyToken": 120,
+    "tags": [
+      "性价比高",
+      "无需抢购"
+    ],
+    "bloggerVerdict": "入门便宜，适合轻度用户。",
+    "action": "https://cloud.tencent.com/act/pro/codingplan",
+    "status": "active",
+    "source": "extracted-tencent",
+    "updatedAt": "2026-07-23"
   }
 ]

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 模型选型助手 - 饭庐者说的模型对比与推荐</title>
+<meta name="description" content="Kimi K3、DeepSeek V4、Qwen 3.8、Claude Mythos... 模型太多不知道怎么选？饭庐者说帮你比了 22 个主流模型，覆盖编程/写作/多模态全场景。">
+<style>/* === Design Tokens === */
+:root {
+  --bg-base: #090d14;
+  --bg-elevated: #111827;
+  --bg-card: rgba(20, 28, 46, 0.7);
+  --bg-card-hover: rgba(30, 41, 64, 0.85);
+  --bg-input: rgba(15, 23, 42, 0.8);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-default: rgba(148, 163, 184, 0.18);
+  --border-strong: rgba(148, 163, 184, 0.3);
+
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.12);
+  --accent-glow: rgba(245, 158, 11, 0.25);
+  --accent-secondary: #fbbf24;
+
+  --color-positive: #10b981;
+  --color-negative: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+  --color-premium: #fbbf24;
+
+  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --container-max: 1280px;
+  --nav-height: 56px;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(245, 158, 11, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(251, 191, 36, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul, ol { list-style: none; }
+input, select { font: inherit; }
+
+/* === Layout === */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); position: relative; z-index: 1; }
+.section { padding: var(--space-10) 0; position: relative; z-index: 1; }
+.section + .section { border-top: 1px solid var(--border-subtle); }
+.section-sm { padding: var(--space-6) 0; }
+.section-sm + .section-sm { border-top: 1px solid var(--border-subtle); }
+
+/* === Navigation === */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-height);
+  background: rgba(9, 13, 20, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.nav-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; flex-shrink: 0; }
+.nav-brand-name { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-tabs { display: flex; align-items: center; gap: var(--space-1); }
+.nav-tab { padding: var(--space-1) var(--space-3); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; color: var(--text-tertiary); transition: all 0.15s ease; white-space: nowrap; }
+.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-tab.active { color: var(--accent); background: var(--accent-soft); }
+.nav-cta { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--accent); color: #fff; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 2px 8px var(--accent-glow); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+/* === Tab Panels === */
+.tab-panel { display: none; padding: var(--space-6) 0; min-height: 60vh; }
+.tab-panel.active { display: block; }
+
+/* === Buttons === */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-5); border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; border: 1px solid transparent; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-default); }
+.btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--border-strong); }
+.btn-ghost { color: var(--text-secondary); }
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
+.btn-lg { padding: var(--space-3) var(--space-6); font-size: 14px; }
+.btn-sm { padding: var(--space-1) var(--space-3); font-size: 12px; }
+
+/* === Badges & Tags === */
+.badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+.badge-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(245, 158, 11, 0.3); }
+.badge-premium { background: rgba(251, 191, 36, 0.12); color: var(--color-premium); border-color: rgba(251, 191, 36, 0.25); }
+.badge-positive { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
+.badge-negative { background: rgba(239, 68, 68, 0.12); color: var(--color-negative); }
+.badge-warning { background: rgba(245, 158, 11, 0.12); color: var(--color-warning); }
+.tag { display: inline-flex; align-items: center; padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--bg-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
+
+/* === Stars === */
+.stars { display: inline-flex; gap: 1px; font-size: 12px; letter-spacing: 1px; color: var(--color-premium); }
+.stars-dim { color: var(--text-muted); }
+
+/* === Hero === */
+.hero { padding: var(--space-10) 0 var(--space-8); position: relative; z-index: 1; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.hero-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: var(--space-3); }
+.hero-title-accent { background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-5); max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.hero-stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.hero-stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* === Section Header === */
+.section-header { margin-bottom: var(--space-6); }
+.section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
+.section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--space-2); }
+.section-subtitle { font-size: 14px; color: var(--text-tertiary); max-width: 60ch; }
+.text-center { text-align: center; }
+
+/* === Quick Entries === */
+.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.quick-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: left; transition: all 0.15s ease; cursor: pointer; }
+.quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.quick-card-icon { font-size: 22px; line-height: 1; }
+.quick-card-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.quick-card-desc { font-size: 12px; color: var(--text-tertiary); }
+
+/* === Top Picks === */
+.top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.top-pick-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden; }
+.top-pick-card.pick-best { border-color: rgba(245, 158, 11, 0.3); background: linear-gradient(135deg, rgba(245, 158, 11, 0.06), var(--bg-card)); }
+.top-pick-card.pick-best::before { content: 'BEST'; position: absolute; top: 12px; right: -28px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em; }
+.top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
+.top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
+.top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
+.top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+.top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+.top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.top-pick-action { margin-top: var(--space-3); text-align: right; }
+
+/* === Recommendation Cards === */
+.reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
+.reco-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; }
+.reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.reco-item-vendor { font-size: 17px; font-weight: 700; }
+.reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
+.reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+.reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.reco-item-reasons strong { color: var(--text-primary); font-weight: 600; }
+.reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+
+/* === Filter Bar === */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
+.filter-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-full); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 0.12s ease; }
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.filter-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.filter-select { padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; cursor: pointer; }
+.filter-stats { margin-left: auto; font-size: 12px; color: var(--text-tertiary); }
+.filter-stats strong { color: var(--accent); font-weight: 700; }
+
+/* === Combo Cards Grid === */
+.model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: var(--space-4); }
+.model-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; display: flex; flex-direction: column; }
+.model-card:hover { border-color: var(--border-strong); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.model-card.featured { border-color: rgba(245, 158, 11, 0.25); background: linear-gradient(135deg, rgba(245, 158, 11, 0.04), var(--bg-card)); }
+.model-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.model-card-name { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.model-card-scenario { font-size: 11px; color: var(--text-muted); }
+.model-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-3); flex: 1; }
+
+/* === Tool Chain === */
+.model-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin-bottom: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.model-tool { display: flex; flex-direction: column; align-items: center; padding: var(--space-1) var(--space-2); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); min-width: 60px; text-align: center; }
+.model-tool-name { font-size: 11px; font-weight: 700; color: var(--text-primary); }
+.model-tool-role { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.model-tool-arrow { font-size: 14px; color: var(--text-muted); flex-shrink: 0; }
+
+/* === Combo Meta === */
+.model-card-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-3); }
+.model-card-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--space-3); }
+.model-card-meta-item { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.model-card-meta-value { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.model-card-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3); }
+.model-card-pros, .model-card-cons { font-size: 11px; line-height: 1.5; }
+.model-card-pros strong { color: var(--color-positive); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.model-card-cons strong { color: var(--color-warning); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.model-card-pros ul, .model-card-cons ul { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+.model-card-pros li { color: var(--text-secondary); padding-left: var(--space-3); position: relative; }
+.model-card-pros li::before { content: '✓'; position: absolute; left: 0; color: var(--color-positive); font-size: 10px; }
+.model-card-cons li { color: var(--text-tertiary); padding-left: var(--space-3); position: relative; }
+.model-card-cons li::before { content: '✗'; position: absolute; left: 0; color: var(--text-muted); font-size: 10px; }
+.model-card-footer { display: flex; justify-content: space-between; align-items: center; }
+
+/* Scenario Badge Colors */
+.sc-frontend { background: rgba(236, 72, 153, 0.12); color: #f472b6; border-color: rgba(236, 72, 153, 0.25); }
+.sc-backend { background: rgba(16, 185, 129, 0.12); color: #34d399; border-color: rgba(16, 185, 129, 0.25); }
+.sc-fullstack { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-color: rgba(245, 158, 11, 0.25); }
+.sc-solo { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-color: rgba(245, 158, 11, 0.25); }
+.sc-team { background: rgba(139, 92, 246, 0.12); color: #a78bfa; border-color: rgba(139, 92, 246, 0.25); }
+
+/* === Recent Changes === */
+.rc-list { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+.rc-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--border-subtle); font-size: 13px; line-height: 1.4; transition: background 0.12s ease; position: relative; }
+.rc-item:last-child { border-bottom: none; }
+.rc-item:hover { background: var(--bg-card-hover); }
+.rc-item.rc-featured { border-left: 3px solid var(--accent); padding-left: calc(var(--space-4) - 3px); }
+.rc-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-shrink: 0; width: 42px; }
+.rc-title { color: var(--text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-title a { color: var(--text-secondary); }
+.rc-title a:hover { color: var(--accent); }
+.rc-vendor { color: var(--text-primary); font-weight: 600; }
+.rc-item:hover .rc-title { white-space: normal; overflow: visible; }
+.rc-item[data-detail]:hover::after {
+  content: attr(data-detail);
+  position: absolute; bottom: calc(100% + 6px); left: var(--space-4);
+  background: var(--bg-elevated); color: var(--text-primary);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  font-size: 12px; line-height: 1.5; white-space: normal; width: min(400px, 80vw);
+  z-index: 10; box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+/* === Community === */
+.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.community-card { position: relative; padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); overflow: hidden; }
+.community-card-free { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6)); }
+.community-card-paid { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(251, 191, 36, 0.05)); border-color: rgba(245, 158, 11, 0.25); }
+.community-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.community-card-title { font-size: 18px; font-weight: 700; }
+.community-card-subtitle { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: var(--space-3); }
+.community-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-4); }
+.community-highlights { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+.community-highlights li { font-size: 12px; color: var(--text-secondary); padding-left: var(--space-4); position: relative; }
+.community-highlights li::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+/* === Footer === */
+.footer { padding: var(--space-8) 0 var(--space-6); border-top: 1px solid var(--border-subtle); position: relative; z-index: 1; }
+.footer-disclosure { font-size: 11px; color: var(--text-muted); line-height: 1.55; padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius-md); margin-bottom: var(--space-4); border-left: 2px solid var(--color-warning); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+.footer-brand { font-size: 12px; color: var(--text-tertiary); }
+.footer-links { display: flex; gap: var(--space-4); font-size: 12px; }
+.footer-links a { color: var(--text-tertiary); transition: color 0.12s ease; }
+.footer-links a:hover { color: var(--text-primary); }
+
+/* === Utility === */
+.text-accent { color: var(--accent); }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .top-pick-grid { grid-template-columns: 1fr; }
+  .model-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --space-10: 32px; --space-16: 48px; }
+  .container { padding: 0 var(--space-4); }
+  .nav-tabs { gap: 0; }
+  .nav-tab { padding: var(--space-1) var(--space-2); font-size: 12px; }
+  .nav-cta { display: none; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .hero-stat-value { font-size: 18px; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .reco-list { grid-template-columns: 1fr; }
+  .filter-bar { padding: var(--space-2); }
+  .filter-stats { width: 100%; margin-left: 0; }
+  .community-card { padding: var(--space-5); }
+  .model-tools { flex-direction: column; align-items: flex-start; }
+  .model-tool-arrow { transform: rotate(90deg); }
+  .model-card-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  .section-title { font-size: 20px; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .model-grid { grid-template-columns: 1fr; }
+}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">MP</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+<script id="cp-data" type="application/json">{"generatedAt": "2026-07-22 10:06:26", "changes": [{"id": "2026-07-22-kimi-k3", "date": "2026-07-22", "kind": "new_model", "vendor": "Kimi", "title": "Kimi K3 全球登顶，暂停C端新用户", "detail": "Kimi K3 发布后登顶全球多个榜单，编程和推理能力获得广泛认可。但由于GPU资源不足，已暂停C端新用户订阅。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": null, "relatedModels": ["kimi-k3"], "featured": true}, {"id": "2026-07-20-qwen-ds", "date": "2026-07-20", "kind": "new_model", "vendor": "通用", "title": "Qwen 3.8 + DeepSeek V4 即将发布，模型更新加速", "detail": "掘金热文「AI大模型扎堆上新？旧的还没用上，新的就来了！」反映开发者跟进模型的焦虑。", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn", "relatedModels": ["qwen-38", "deepseek-v4"], "featured": true}, {"id": "2026-07-18-zhipu-drop", "date": "2026-07-18", "kind": "article", "vendor": "通用", "title": "智谱股价两天跌去40%，Kimi K3成了背锅侠", "detail": "Kimi K3 的发布对国内AI模型厂商造成冲击。但智谱 GLM-5.2 仍然是编程场景最稳定的选择之一。", "impact": "negative", "level": "medium", "source": "signal-dailyhot", "sourceUrl": null, "relatedModels": ["glm-52"], "featured": false, "excerpt": "智谱股价两天跌去40%，Kimi K3成了背锅侠？", "author": "36氪", "readTime": "5分钟", "cover": "ZP"}, {"id": "2026-07-15-hy3", "date": "2026-07-15", "kind": "new_model", "vendor": "腾讯", "title": "腾讯混元 Hy3 发布：295B参数开源，日均Token涨20倍", "detail": "腾讯混元 Hy3 正式开源，295B 参数规模，中文能力突出。微信生态中有独特优势。", "impact": "positive", "level": "medium", "source": "signal-dailyhot", "sourceUrl": null, "relatedModels": ["hunyuan-hy3"], "featured": false}, {"id": "2026-07-10-gpt-56", "date": "2026-07-10", "kind": "new_model", "vendor": "OpenAI", "title": "GPT-5.6 安全争议中发布，OpenAI紧急叫停GPT-6", "detail": "GPT-5.6 在网络安全攻防测试中表现突出，但OpenAI因安全顾虑紧急叫停GPT-6的开发。", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": null, "relatedModels": ["gpt-56"], "featured": false, "excerpt": "OpenAI紧急叫停GPT-6！", "author": "51CTO", "readTime": "4分钟", "cover": "GP"}, {"id": "2026-07-05-claude-mythos", "date": "2026-07-05", "kind": "article", "vendor": "Claude", "title": "Claude Mythos 发布：能力、访问、竞争与影响", "detail": "Claude Mythos 成为业界新话题。虽然编程能力仍然最强，但Kimi K3和DeepSeek V4的追赶让竞争更加激烈。", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": null, "relatedModels": ["claude-opus-4"], "featured": false, "excerpt": "Claude Mythos 常见问题：能力、访问、竞争与影响", "author": "51CTO", "readTime": "3分钟", "cover": "CM"}], "models": [{"id": "claude-opus-4", "name": "Claude Opus 4", "provider": "Anthropic", "description": "Anthropic 最新旗舰模型，编程和深度分析能力业界领先。Claude Code 默认推荐模型，在复杂架构设计和代码审查方面表现最佳。", "category": "commercial", "tier": "premium", "priceInput": 15, "priceOutput": 75, "currency": "$", "contextWindow": 200000, "rating": 5, "bestFor": ["编程", "架构设计", "深度分析", "长文写作"], "languages": ["中文", "英文", "多语言"], "strengths": ["编程能力业界最强", "长上下文理解极深", "安全性最高", "代码生成质量高"], "weaknesses": ["价格较高", "API 限制较多", "国内访问需要特殊配置"], "apiUrl": "https://claude.ai/pricing", "featured": true, "trending": false, "addedAt": "2026-04-01"}, {"id": "kimi-k3", "name": "Kimi K3", "provider": "月之暗面", "description": "2026年7月发布的旗舰模型，登顶全球多个榜单。开源社区反响热烈，编程和推理能力极强。已暂停C端新用户订阅，API仍可用。", "category": "commercial", "tier": "premium", "priceInput": 2, "priceOutput": 8, "currency": "¥", "contextWindow": 131072, "rating": 5, "bestFor": ["编程", "推理", "前端开发"], "languages": ["中文", "英文"], "strengths": ["全球榜单登顶", "编程能力极强", "中文理解最佳", "开源模型可用"], "weaknesses": ["已暂停C端新用户", "GPU资源紧张", "API可能排队"], "apiUrl": "https://platform.kimi.com", "featured": true, "trending": true, "addedAt": "2026-07-15"}, {"id": "glm-52", "name": "GLM-5.2", "provider": "智谱AI", "description": "智谱最新旗舰，编程场景实测非常稳定。Claude Code / Cursor 的 Opus 平替首选，价格远低于 Claude。", "category": "commercial", "tier": "premium", "priceInput": 8, "priceOutput": 28, "currency": "¥", "contextWindow": 128000, "rating": 5, "bestFor": ["编程", "中文处理", "代码生成"], "languages": ["中文", "英文"], "strengths": ["编程场景最稳", "国内访问方便", "价格有竞争力", "Coding Plan 可用"], "weaknesses": ["需要抢购Pro套餐", "英文能力稍弱于Claude", "生态不如OpenAI"], "apiUrl": "https://open.bigmodel.cn/pricing", "featured": true, "trending": false, "addedAt": "2026-06-01"}, {"id": "deepseek-v4", "name": "DeepSeek V4", "provider": "DeepSeek", "description": "开源模型标杆，API价格极低。在数学和推理方面表现突出，是性价比最高的选择之一。", "category": "open-source", "tier": "budget", "priceInput": 0.14, "priceOutput": 0.28, "currency": "¥", "contextWindow": 65536, "rating": 5, "bestFor": ["数学", "推理", "高性价比场景"], "languages": ["中文", "英文"], "strengths": ["价格极低", "开源可自部署", "数学推理强", "社区活跃"], "weaknesses": ["API不稳定", "上下文窗口偏小", "性能不如最新商业模型"], "apiUrl": "https://api-docs.deepseek.com", "featured": true, "trending": false, "addedAt": "2026-06-20"}, {"id": "qwen-38", "name": "Qwen 3.8", "provider": "阿里云", "description": "阿里最新开源大模型，中文能力出色。在中文写作和翻译场景表现优秀，即将发布。", "category": "open-source", "tier": "budget", "priceInput": 0.5, "priceOutput": 2, "currency": "¥", "contextWindow": 32768, "rating": 4, "bestFor": ["中文写作", "翻译", "本地部署"], "languages": ["中文", "英文"], "strengths": ["中文能力出色", "开源可商用", "阿里生态集成", "本地部署友好"], "weaknesses": ["上下文窗口偏小", "编程能力不如Claude", "尚未正式发布"], "apiUrl": "https://tongyi.aliyun.com", "featured": false, "trending": true, "addedAt": "2026-07-20"}, {"id": "gpt-56", "name": "GPT-5.6", "provider": "OpenAI", "description": "OpenAI 最新模型，安全争议中发布。多模态能力强，但在编程领域面临Claude和Kimi的激烈竞争。", "category": "commercial", "tier": "premium", "priceInput": 15, "priceOutput": 60, "currency": "$", "contextWindow": 128000, "rating": 4, "bestFor": ["通用对话", "多模态", "创意写作"], "languages": ["多语言"], "strengths": ["多模态能力强", "生态最完善", "插件丰富", "通用性最好"], "weaknesses": ["价格高", "安全限制严格", "编程被Claude超越", "国内访问困难"], "apiUrl": "https://platform.openai.com/pricing", "featured": false, "trending": false, "addedAt": "2026-07-01"}, {"id": "claude-haiku-45", "name": "Claude Haiku 4.5", "provider": "Anthropic", "description": "Claude 轻量模型，速度快成本低。适合简单编程任务和对话，性价比极高。", "category": "commercial", "tier": "budget", "priceInput": 0.8, "priceOutput": 4, "currency": "$", "contextWindow": 200000, "rating": 4, "bestFor": ["简单编程", "对话", "高性价比"], "languages": ["多语言"], "strengths": ["速度快", "成本低", "长上下文", "Claude生态"], "weaknesses": ["复杂任务能力弱", "不如Opus深度", "国内访问受限"], "apiUrl": "https://claude.ai/pricing", "featured": false, "trending": false, "addedAt": "2026-05-01"}, {"id": "glm-4-flash", "name": "GLM-4-Flash", "provider": "智谱AI", "description": "智谱最便宜的模型，几乎免费。适合大批量简单任务、数据清洗、文本分类等场景。", "category": "commercial", "tier": "budget", "priceInput": 0.002, "priceOutput": 0.04, "currency": "¥", "contextWindow": 8192, "rating": 3, "bestFor": ["大批量简单任务", "数据清洗", "文本分类"], "languages": ["中文", "英文"], "strengths": ["价格几乎免费", "速度快", "中文支持好", "国内直接访问"], "weaknesses": ["能力有限", "上下文短", "不适合复杂任务"], "apiUrl": "https://open.bigmodel.cn/pricing", "featured": false, "trending": false, "addedAt": "2026-03-01"}, {"id": "minimax-m3", "name": "MiniMax-M3", "provider": "MiniMax", "description": "MiniMax 最新模型，多模态能力强。Token Plan 套餐可用，适合高频使用的开发者。", "category": "commercial", "tier": "mid", "priceInput": 1, "priceOutput": 5, "currency": "¥", "contextWindow": 65536, "rating": 4, "bestFor": ["多模态", "高频调用", "国内开发"], "languages": ["中文", "英文"], "strengths": ["多模态能力好", "Token Plan 经济", "国内稳定访问", "客服不错"], "weaknesses": ["编程不如GLM-5.2", "知名度较低", "生态较小"], "apiUrl": "https://platform.minimaxi.com", "featured": false, "trending": false, "addedAt": "2026-06-15"}, {"id": "glm-5-turbo", "name": "GLM-5-Turbo", "provider": "智谱AI", "description": "GLM-5 的加速版，平衡速度和能力。适合需要一定质量但又不想花太多钱的场景。", "category": "commercial", "tier": "mid", "priceInput": 5, "priceOutput": 22, "currency": "¥", "contextWindow": 65536, "rating": 4, "bestFor": ["编程", "对话", "性价比场景"], "languages": ["中文", "英文"], "strengths": ["速度快", "能力接近GLM-5.2", "价格适中", "国内访问方便"], "weaknesses": ["能力不如GLM-5.2", "上下文窗口较小", "复杂任务有限"], "apiUrl": "https://open.bigmodel.cn/pricing", "featured": false, "trending": false, "addedAt": "2026-06-10"}, {"id": "doubao-pro", "name": "豆包 Pro", "provider": "字节跳动", "description": "字节跳动的旗舰模型，中文对话和创意写作表现出色。在抖音生态中有独特优势。", "category": "commercial", "tier": "mid", "priceInput": 2, "priceOutput": 8, "currency": "¥", "contextWindow": 32768, "rating": 4, "bestFor": ["中文对话", "创意写作", "内容创作"], "languages": ["中文"], "strengths": ["中文对话自然", "创意写作好", "字节生态集成", "价格合理"], "weaknesses": ["编程能力一般", "上下文窗口小", "以中文为主"], "apiUrl": "https://www.volcengine.com", "featured": false, "trending": false, "addedAt": "2026-05-15"}, {"id": "moonshot-v1", "name": "Moonshot V1", "provider": "Kimi (月之暗面)", "description": "Kimi 经典API模型，K3的前代。稳定性好，文档完善，适合已在Kimi生态中的开发者。", "category": "commercial", "tier": "mid", "priceInput": 10, "priceOutput": 30, "currency": "¥", "contextWindow": 131072, "rating": 4, "bestFor": ["对话", "长文本处理", "Kimi生态"], "languages": ["中文", "英文"], "strengths": ["稳定性好", "文档完善", "长文本处理", "Kimi生态"], "weaknesses": ["能力不如K3", "价格偏高", "已非Kimi主力"], "apiUrl": "https://platform.kimi.com/docs/pricing/chat", "featured": false, "trending": false, "addedAt": "2025-11-01"}, {"id": "llama-4", "name": "Llama 4", "provider": "Meta", "description": "Meta 最新开源模型，社区生态最活跃。适合自部署和定制化场景，有大量微调版本可用。", "category": "open-source", "tier": "budget", "priceInput": 0, "priceOutput": 0, "currency": "免费", "contextWindow": 8192, "rating": 4, "bestFor": ["自部署", "定制化", "研究", "学习"], "languages": ["英文为主", "中文有限"], "strengths": ["完全开源", "免费使用", "社区最活跃", "微调版本多"], "weaknesses": ["中文能力有限", "需要自部署", "能力不如商业模型"], "apiUrl": "https://llama.meta.com", "featured": false, "trending": false, "addedAt": "2026-05-01"}, {"id": "gemini-pro", "name": "Gemini 2.0 Pro", "provider": "Google", "description": "Google 最新模型，多模态和搜索集成是最大亮点。适合需要搜索引擎集成的场景。", "category": "commercial", "tier": "premium", "priceInput": 7, "priceOutput": 21, "currency": "$", "contextWindow": 1000000, "rating": 4, "bestFor": ["多模态", "搜索集成", "大数据分析"], "languages": ["多语言"], "strengths": ["上下文窗口巨大", "多模态最强", "Google搜索集成", "免费额度慷慨"], "weaknesses": ["编程不如Claude", "国内无法访问", "API限制较多"], "apiUrl": "https://ai.google.dev/pricing", "featured": false, "trending": false, "addedAt": "2026-06-01"}, {"id": "claude-sonnet", "name": "Claude Sonnet 4", "provider": "Anthropic", "description": "Claude 中档模型，在速度和能力间取得平衡。适合日常编程和对话，比Opus便宜很多。", "category": "commercial", "tier": "mid", "priceInput": 3, "priceOutput": 15, "currency": "$", "contextWindow": 200000, "rating": 4, "bestFor": ["日常编程", "对话", "性价比"], "languages": ["多语言"], "strengths": ["能力接近Opus", "价格更低", "长上下文", "速度快"], "weaknesses": ["复杂架构不如Opus", "国内访问受限", "API成本仍不低"], "apiUrl": "https://claude.ai/pricing", "featured": false, "trending": false, "addedAt": "2026-05-15"}, {"id": "hunyuan-hy3", "name": "混元 Hy3", "provider": "腾讯", "description": "腾讯 295B 参数开源模型，日均 Token 涨 20 倍。中文能力突出，适合微信生态。", "category": "open-source", "tier": "mid", "priceInput": 2, "priceOutput": 6, "currency": "¥", "contextWindow": 32768, "rating": 4, "bestFor": ["中文应用", "微信生态", "开源部署"], "languages": ["中文", "英文"], "strengths": ["中文能力强", "开源可商用", "微信生态集成", "增长迅速"], "weaknesses": ["生态不如Llama", "编程能力一般", "上下文窗口偏小"], "apiUrl": "https://cloud.tencent.com", "featured": false, "trending": true, "addedAt": "2026-07-10"}, {"id": "glm-5v-turbo", "name": "GLM-5V-Turbo", "provider": "智谱AI", "description": "智谱多模态视觉模型，看图识图能力强。支持图片理解、OCR、图表分析等场景。", "category": "commercial", "tier": "mid", "priceInput": 5, "priceOutput": 22, "currency": "¥", "contextWindow": 32768, "rating": 4, "bestFor": ["多模态", "图片理解", "OCR", "图表分析"], "languages": ["中文", "英文"], "strengths": ["看图能力强", "中文OCR好", "价格合理", "国内方便"], "weaknesses": ["纯文本不如GLM-5.2", "上下文窗口小", "仅支持图片"], "apiUrl": "https://open.bigmodel.cn/pricing", "featured": false, "trending": false, "addedAt": "2026-06-01"}, {"id": "tencent-lite", "name": "腾讯云 Lite", "provider": "腾讯云", "description": "腾讯云入门级模型，Coding Plan 每月 ¥40。适合预算有限的个人开发者。", "category": "commercial", "tier": "budget", "priceInput": 1, "priceOutput": 4, "currency": "¥", "contextWindow": 8192, "rating": 3, "bestFor": ["入门", "简单编程", "学习"], "languages": ["中文", "英文"], "strengths": ["每月¥40极低价格", "腾讯云生态", "中文支持好", "18000次/月"], "weaknesses": ["模型能力有限", "上下文窗口很小", "不适合复杂任务"], "apiUrl": "https://cloud.tencent.com", "featured": false, "trending": false, "addedAt": "2026-04-01"}, {"id": "gpt-5-mini", "name": "GPT-5 Mini", "provider": "OpenAI", "description": "GPT-5 的精简版，速度快成本低。适合简单任务和大批量调用场景。", "category": "commercial", "tier": "budget", "priceInput": 0.5, "priceOutput": 2, "currency": "$", "contextWindow": 65536, "rating": 4, "bestFor": ["简单任务", "大批量", "成本敏感"], "languages": ["多语言"], "strengths": ["速度快", "成本低", "OpenAI生态", "兼容性好"], "weaknesses": ["能力有限", "国内访问困难", "复杂任务不适合"], "apiUrl": "https://platform.openai.com/pricing", "featured": false, "trending": false, "addedAt": "2026-06-01"}, {"id": "wenxin-yiyan", "name": "文心一言 5.0", "provider": "百度", "description": "百度最新旗舰模型，中文知识问答和搜索能力突出。百度生态深度集成。", "category": "commercial", "tier": "mid", "priceInput": 3, "priceOutput": 10, "currency": "¥", "contextWindow": 32768, "rating": 3, "bestFor": ["中文知识问答", "搜索", "百度生态"], "languages": ["中文"], "strengths": ["中文知识丰富", "百度搜索集成", "国内稳定", "千帆平台"], "weaknesses": ["编程能力弱", "不如GLM系列", "生态封闭", "创新不足"], "apiUrl": "https://qianfan.baidubce.com", "featured": false, "trending": false, "addedAt": "2026-05-01"}, {"id": "xunfei-spark", "name": "讯飞星火 5.0", "provider": "科大讯飞", "description": "讯飞最新模型，语音和OCR能力行业领先。适合语音转文字、教育等垂直场景。", "category": "commercial", "tier": "mid", "priceInput": 3, "priceOutput": 12, "currency": "¥", "contextWindow": 16384, "rating": 3, "bestFor": ["语音", "OCR", "教育", "垂直场景"], "languages": ["中文"], "strengths": ["语音能力行业第一", "OCR识别好", "教育场景强", "国内合规"], "weaknesses": ["通用编程弱", "上下文窗口小", "生态较小", "价格不便宜"], "apiUrl": "https://xinghuo.xfyun.cn", "featured": false, "trending": false, "addedAt": "2026-04-15"}, {"id": "mistral-large", "name": "Mistral Large 3", "provider": "Mistral AI", "description": "欧洲最强模型，开源社区宠儿。在代码生成和多语言方面表现出色，特别适合欧洲合规需求。", "category": "open-source", "tier": "mid", "priceInput": 4, "priceOutput": 12, "currency": "$", "contextWindow": 128000, "rating": 4, "bestFor": ["代码生成", "多语言", "欧洲合规"], "languages": ["多语言", "英文", "法文"], "strengths": ["开源友好", "多语言强", "欧洲合规", "代码生成好"], "weaknesses": ["中文支持有限", "国内知名度低", "生态较小"], "apiUrl": "https://mistral.ai", "featured": false, "trending": false, "addedAt": "2026-06-01"}], "site": {"name": "AI 模型选型助手", "tagline": "Kimi K3、DeepSeek V4、Qwen 3.8、Claude Mythos... 模型太多不知道怎么选？饭庐者说帮你比了 20+ 个主流模型", "domain": "model-picker", "logo": "MP", "primaryColor": "#f59e0b", "accentColor": "#fbbf24", "blogger": {"name": "饭庐者说", "avatar": "FL", "title": "AI 工具重度用户 / 独立博主", "bio": "每个新模型发布都第一时间实测。编程、写作、翻译、画画——不同模型在不同任务上差异巨大。这里帮你选对模型，不乱花钱。", "platforms": [{"name": "公众号", "handle": "饭庐者说", "url": "#"}, {"name": "小红书", "handle": "饭庐者说", "url": "#"}, {"name": "知乎", "handle": "饭庐者说", "url": "#"}]}, "header": {"updateDate": "更新于 2026.07.22", "highlights": "本周关注：Kimi K3 全球登顶，Qwen 3.8 + DeepSeek V4 即将发布，智谱 GLM-5.2 持续稳定，GPT-5.6 安全争议中发布", "stats": [{"label": "收录模型", "value": "22", "unit": "个"}, {"label": "覆盖厂商", "value": "10", "unit": "家"}, {"label": "本周更新", "value": "5", "unit": "条"}]}, "quickEntries": [{"id": "coding", "icon": "💻", "title": "编程用哪个", "desc": "Claude Code / Cursor 最佳模型", "filter": {"task": "编程"}}, {"id": "writing", "icon": "✍️", "title": "写作翻译", "desc": "长文 / 翻译 / 润色", "filter": {"task": "写作"}}, {"id": "cheap", "icon": "💰", "title": "高性价比", "desc": "便宜够用 / 个人项目", "filter": {"tier": "budget"}}, {"id": "vision", "icon": "👁️", "title": "多模态", "desc": "看图 / 识图 / OCR", "filter": {"task": "多模态"}}], "recommendationGroups": [{"id": "best-coding", "title": "💻 编程最佳", "subtitle": "AI 编程场景下的最佳模型选择", "items": [{"modelId": "claude-opus-4", "rating": 5, "verdict": "编程能力天花板"}, {"modelId": "kimi-k3", "rating": 5, "verdict": "全球榜单登顶，性价比极高"}, {"modelId": "glm-52", "rating": 5, "verdict": "Opus 平替，国内首选"}]}, {"id": "budget-picks", "title": "💰 高性价比", "subtitle": "预算有限也能用好模型", "items": [{"modelId": "deepseek-v4", "rating": 5, "verdict": "开源最强，API 价格极低"}, {"modelId": "qwen-38", "rating": 4, "verdict": "阿里开源，中文能力强"}, {"modelId": "glm-4-flash", "rating": 4, "verdict": "几乎免费的入门选择"}]}], "community": {"free": {"title": "免费微信群", "subtitle": "每周模型动态推送", "description": "加群第一时间获取新模型发布 / 价格变动 / 实测对比。群里也有模型选型讨论和问题互助。", "qrImage": "", "highlights": ["每周模型动态速报", "新模型第一时间实测", "群友选型讨论", "免费进群"], "ctaText": "扫码进免费群"}, "paid": {"title": "知识星球", "subtitle": "¥199/年（早鸟价 ¥99）", "description": "比免费群多 5 倍信息密度。每周深度模型对比、每月 1 次 API 成本优化咨询、独家评测数据。", "highlights": ["每周深度模型对比（比公开早 24h）", "API 成本优化方案", "每月 1v1 模型选型咨询", "独家评测数据和排行榜", "模型切换最佳实践"], "ctaText": "加入知识星球", "url": "#"}}, "disclosure": "本站部分链接为联盟推广链接。所有推荐均基于真实使用体验，不接受厂商付费推广。", "footer": {"about": "AI 模型选型助手 · 饭庐者说的 AI 模型对比与推荐", "links": [{"label": "浏览全部", "url": "#browse"}, {"label": "最新动态", "url": "#updates"}, {"label": "加入社群", "url": "#community"}]}}}</script>
+<script>const DATA=JSON.parse(document.getElementById('cp-data').textContent);const{site,models,changes}=DATA;// Utils
+function escapeHtml(t){if(t===null||t===undefined)return'';const d=document.createElement('div');d.textContent=String(t);return d.innerHTML}
+function renderStars(r){const f='★'.repeat(r),e='☆'.repeat(5-r);return'<span class="stars">'+f+'</span><span class="stars stars-dim">'+e+'</span>'}
+function renderTagsInline(t){if(!t||!t.length)return'';return t.map(t=>'<span class="tag">'+escapeHtml(t)+'</span>').join(' ')}
+function formatPrice(v,c){if(v===null||v===undefined)return'—';const p=c==='$'?'$':'¥';return v===0?'免费':p+v}
+
+const TASK_LABELS={coding:'编程',writing:'写作',vision:'多模态',chat:'对话',analysis:'分析'};
+const TIER_LABELS={premium:'旗舰',mid:'中档',budget:'入门'};
+const TIER_CSS={premium:'badge-premium',mid:'badge-accent',budget:'badge-positive'};
+
+// Tab 路由
+function switchTab(hash){
+  const tab=(hash||'#recommend').replace(/^#/,'').split('?')[0];
+  const validTabs=['recommend','browse','community'];
+  const target=validTabs.includes(tab)?tab:'recommend';
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+target).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===target));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('hashchange',()=>switchTab(location.hash));
+
+function renderRecommend(){
+  document.getElementById('recommend-body').innerHTML=renderHero()+renderTopModels()+renderQuickEntries()+renderRecommendations()+renderRecentChanges();
+  bindQuickEntries();
+}
+function renderHero(){
+  const h=site.header||{};
+  const stats=(h.stats||[]).map(s=>'<div><div class="hero-stat-value">'+escapeHtml(s.value)+'<span style="font-size:13px;color:var(--text-tertiary);font-weight:500;margin-left:2px;">'+escapeHtml(s.unit||'')+'</span></div><div class="hero-stat-label">'+escapeHtml(s.label)+'</div></div>').join('');
+  return'<section class="hero"><div class="container"><div class="hero-inner"><div>'+
+    '<span class="section-eyebrow">'+escapeHtml(h.updateDate||'')+'</span>'+
+    '<h1 class="hero-title">AI 模型这么多<br><span class="hero-title-accent">选哪个最适合？</span></h1>'+
+    '<p class="hero-subtitle">'+escapeHtml(site.tagline||'')+'</p>'+
+    '<p style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-5);margin-top:-12px;">'+escapeHtml(h.highlights||'')+'</p>'+
+    '<div class="hero-actions"><a href="#browse" class="btn btn-primary btn-lg">对比所有模型</a><a href="#community" class="btn btn-secondary btn-lg">加入社群</a></div>'+
+    '<div class="hero-stats">'+stats+'</div></div></div></section>';
+}
+function renderTopModels(){
+  const top3=models.filter(m=>m.featured).sort((a,b)=>b.rating-a.rating).slice(0,3);
+  if(!top3.length)return'';
+  const labels=['综合最佳','本周最热','性价比之王'];
+  const reasons=['综合评分最高，编程和深度分析能力业界领先，适合严肃开发者。','最近一周最受关注的模型，全球榜单登顶，社区讨论度最高。','综合能力和价格的黄金平衡点，API价格极低但能力超强。'];
+  const picks=top3.map((m,i)=>{
+    const isBest=i===0;
+    return'<div class="top-pick-card'+(isBest?' pick-best':'')+'">'+
+      '<div class="top-pick-label">'+labels[i]+'</div>'+
+      '<div class="top-pick-vendor">'+escapeHtml(m.name)+'</div>'+
+      '<div class="top-pick-plan">'+escapeHtml(m.provider)+' · '+(TIER_LABELS[m.tier]||m.tier)+' · '+escapeHtml(m.category)+'</div>'+
+      '<div style="margin-top:var(--space-3);">'+renderStars(m.rating)+'</div>'+
+      '<div class="top-pick-metrics">'+
+        '<div><div class="top-pick-metric-value">'+formatPrice(m.priceInput,m.currency||'¥')+'</div><div class="top-pick-metric-label">输入/1M tokens</div></div>'+
+        '<div><div class="top-pick-metric-value">'+(m.contextWindow/1000).toFixed(0)+'K</div><div class="top-pick-metric-label">上下文窗口</div></div>'+
+      '</div>'+
+      '<div class="top-pick-reason">'+reasons[i]+'</div>'+
+      '<div class="top-pick-action"><a href="#browse" class="btn btn-primary btn-sm">查看详情 →</a></div></div>';
+  }).join('');
+  return'<section class="section-sm"><div class="container">'+
+    '<div class="section-header" style="margin-bottom:var(--space-4);">'+
+      '<span class="section-eyebrow">TOP PICKS</span><h2 class="section-title">不知道选哪个？先看这三个</h2>'+
+      '<p class="section-subtitle">基于评分、性价比和真实体验的综合推荐。点击场景卡片筛选或对比全部模型。</p></div>'+
+    '<div class="top-pick-grid">'+picks+'</div></div></section>';
+}
+function renderQuickEntries(){
+  const entries=site.quickEntries||[];if(!entries.length)return'';
+  const cards=entries.map(q=>'<button class="quick-card" data-entry-id="'+escapeHtml(q.id)+'">'+
+    '<span class="quick-card-icon">'+escapeHtml(q.icon)+'</span>'+
+    '<span class="quick-card-title">'+escapeHtml(q.title)+'</span>'+
+    '<span class="quick-card-desc">'+escapeHtml(q.desc)+'</span></button>').join('');
+  return'<section class="section-sm"><div class="container">'+
+    '<div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">SCENARIOS</span><h2 class="section-title">按你的场景来找</h2></div>'+
+    '<div class="quick-grid">'+cards+'</div></div></section>';
+}
+function bindQuickEntries(){
+  document.querySelectorAll('.quick-card').forEach(card=>{card.addEventListener('click',()=>{
+    const id=card.dataset.entryId;
+    const entry=(site.quickEntries||[]).find(q=>q.id===id);
+    if(!entry||!entry.filter)return;
+    const query=Object.entries(entry.filter).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&');
+    location.hash='#browse'+(query?'?'+query:'');
+  })});
+}
+function renderRecommendations(){
+  const groups=site.recommendationGroups||[];if(!groups.length)return'';
+  const html=groups.map((group,gi)=>{
+    const items=(group.items||[]).map(item=>{
+      const m=models.find(m=>m.id===item.modelId);if(!m)return'';
+      return'<div class="reco-item">'+
+        '<div class="reco-item-header"><div><div class="reco-item-vendor">'+escapeHtml(m.name)+'</div><div class="reco-item-plan">'+escapeHtml(m.provider)+' · '+(TIER_LABELS[m.tier]||m.tier)+'</div></div>'+renderStars(item.rating)+'</div>'+
+        (item.verdict?'<span class="reco-item-verdict">'+escapeHtml(item.verdict)+'</span>':'')+
+        '<p style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:var(--space-3);">'+escapeHtml(m.description)+'</p>'+
+        '<ul class="reco-item-reasons" style="margin-bottom:var(--space-3);">'+(m.strengths||[]).slice(0,2).map(s=>'<li>'+escapeHtml(s)+'</li>').join('')+'</ul>'+
+        '<div class="reco-item-footer">'+
+          '<span style="font-size:12px;color:var(--text-tertiary);">输入 '+formatPrice(m.priceInput,m.currency||'¥')+'/1M</span>'+
+          '<a href="#browse" class="btn btn-primary">查看详情 →</a></div></div>';
+    }).join('');
+    const header=groups.length>1?'<div style="margin-bottom:var(--space-4);"><h3 style="font-size:16px;font-weight:700;">'+escapeHtml(group.title)+'</h3>'+(group.subtitle?'<p style="font-size:13px;color:var(--text-tertiary);">'+escapeHtml(group.subtitle)+'</p>':'')+'</div>':'';
+    return'<div style="'+(gi>0?'margin-top:var(--space-8);':'')+'">'+header+'<div class="reco-list">'+items+'</div></div>';
+  }).join('');
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">ALL RECOMMENDATIONS</span><h2 class="section-title">饭庐者说的完整推荐</h2></div>'+html+'</div></section>';
+}
+const KIND_LABEL={new_model:'新模型',price_change:'价格变动',article:'文章'};
+function renderRecentChanges(){
+  const now=new Date();const cutoff=new Date(now.getTime()-30*24*60*60*1000);
+  const recent=(changes||[]).filter(c=>new Date(c.date)>=cutoff).sort((a,b)=>b.date.localeCompare(a.date));
+  if(!recent.length)return'';
+  const items=recent.map(c=>{
+    const impactBadge=c.impact==='positive'?'<span class="badge badge-positive">利好</span>':c.impact==='negative'?'<span class="badge badge-negative">利空</span>':'<span class="badge">中性</span>';
+    const kindLabel='<span class="tag">'+(KIND_LABEL[c.kind]||c.kind)+'</span>';
+    const vendorPrefix=c.vendor&&c.vendor!=='通用'?'<span class="rc-vendor">'+escapeHtml(c.vendor)+'</span> · ':'';
+    const isArticle=c.kind==='article';
+    const titleHtml=isArticle&&c.sourceUrl?'<a href="'+escapeHtml(c.sourceUrl)+'" target="_blank" rel="noopener">'+escapeHtml(c.title)+'</a>':escapeHtml(c.title);
+    const detailAttr=c.detail&&c.detail!==c.title?' data-detail="'+escapeHtml(c.detail).replace(/"/g,'&quot;')+'"':'';
+    return'<div class="rc-item'+(c.featured?' rc-featured':'')+'"'+detailAttr+'>'+
+      '<span class="rc-date">'+escapeHtml(c.date.slice(5))+'</span>'+impactBadge+
+      '<span class="rc-title">'+vendorPrefix+titleHtml+'</span>'+kindLabel+'</div>';
+  }).join('');
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">RECENT CHANGES</span><h2 class="section-title">最近动态 · 模型生态变化</h2><p class="section-subtitle">最近30天模型发布和价格变动。悬停查看详情。</p></div><div class="rc-list">'+items+'</div></div></section>';
+}
+
+const browseState={filters:{categories:new Set,tiers:new Set,search:''},sort:{key:null,dir:'asc'}};
+
+function renderBrowse(){
+  document.getElementById('browse-body').innerHTML=renderBrowseSection();
+  bindBrowseFilters();renderModelCards();
+}
+function renderBrowseSection(){
+  return'<section class="section-sm"><div class="container">'+
+    '<div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:var(--space-3);">'+
+      '<div><span class="section-eyebrow">COMPARE ALL</span><h2 class="section-title">全部模型对比</h2><p class="section-subtitle">点击分类筛选，搜索模型名或厂商。找到最适合你的模型。</p></div></div>'+
+    '<div id="browseFilterBar"></div><div class="model-grid" id="modelGrid"></div></div></section>';
+}
+function renderBrowseFilterBar(){
+  const categories=[...new Set(models.map(m=>m.category))].sort();
+  const tiers=[...new Set(models.map(m=>m.tier))].sort();
+  const catChips=categories.map(c=>'<button class="filter-chip" data-filter-type="categories" data-filter-value="'+escapeHtml(c)+'">'+(c==='commercial'?'商业模型':c==='open-source'?'开源模型':c)+'</button>').join('');
+  const tierChips=tiers.map(t=>'<button class="filter-chip" data-filter-type="tiers" data-filter-value="'+escapeHtml(t)+'">'+(TIER_LABELS[t]||t)+'</button>').join('');
+  return'<div class="filter-bar">'+
+    '<select class="filter-select" id="sortSelect">'+
+      '<option value="">默认排序</option><option value="rating-desc">评分 高-低</option>'+
+      '<option value="priceInput-asc">价格 低-高</option><option value="contextWindow-desc">上下文 大-小</option></select>'+
+    '<input type="text" class="filter-select" id="searchInput" placeholder="搜索模型名/厂商..." style="min-width:200px;">'+
+    '<button class="filter-chip" id="resetBtn">重置</button>'+
+    '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / '+models.length+' 个模型</span></div>'+
+    (catChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>'+catChips+'</div>':'')+
+    (tierChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">档次:</span>'+tierChips+'</div>':'');
+}
+function parseHashFilter(){
+  const hash=location.hash;const qIdx=hash.indexOf('?');if(qIdx<0)return null;
+  const params=new URLSearchParams(hash.slice(qIdx+1));const f={};
+  for(const[k,v]of params)f[k]=v;return f;
+}
+function bindBrowseFilters(){
+  const fm=document.getElementById('browseFilterBar');if(!fm)return;fm.innerHTML=renderBrowseFilterBar();
+  const hashFilter=parseHashFilter();
+  if(hashFilter){
+    if(hashFilter.task){const taskMap={coding:'编程',writing:'写作',vision:'多模态'};browseState.filters.search=taskMap[hashFilter.task]||hashFilter.task;const si=document.getElementById('searchInput');if(si)si.value=browseState.filters.search}
+    if(hashFilter.tier)browseState.filters.tiers.add(hashFilter.tier);
+  }
+  syncFilterUI();
+  fm.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{chip.addEventListener('click',()=>{
+    const type=chip.dataset.filterType,value=chip.dataset.filterValue,set=browseState.filters[type];
+    if(set.has(value))set.delete(value);else set.add(value);syncFilterUI();renderModelCards();
+  })});
+  document.getElementById('resetBtn')?.addEventListener('click',()=>{
+    browseState.filters.categories.clear();browseState.filters.tiers.clear();browseState.filters.search='';browseState.sort={key:null,dir:'asc'};
+    document.getElementById('sortSelect').value='';document.getElementById('searchInput').value='';syncFilterUI();renderModelCards();
+  });
+  document.getElementById('sortSelect')?.addEventListener('change',()=>{
+    const val=document.getElementById('sortSelect').value;
+    if(!val)browseState.sort={key:null,dir:'asc'};else{const[k,d]=val.split('-');browseState.sort={key:k,dir:d}}renderModelCards();
+  });
+  document.getElementById('searchInput')?.addEventListener('input',()=>{browseState.filters.search=document.getElementById('searchInput').value.trim().toLowerCase();renderModelCards();});
+}
+function syncFilterUI(){
+  document.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{
+    const type=chip.dataset.filterType,value=chip.dataset.filterValue,active=browseState.filters[type]&&browseState.filters[type].has(value);
+    chip.classList.toggle('active',!!active);
+  });
+}
+function filterModels(){
+  const f=browseState.filters;let result=models.filter(m=>{
+    if(f.categories.size&&!f.categories.has(m.category))return false;
+    if(f.tiers.size&&!f.tiers.has(m.tier))return false;
+    if(f.search){const hay=(m.name+' '+m.provider+' '+m.description+' '+(m.bestFor||[]).join(' ')+(m.strengths||[]).join(' ')).toLowerCase();if(!hay.includes(f.search))return false}
+    return true;
+  });
+  const{key,dir}=browseState.sort;
+  if(key)result.sort((a,b)=>{const av=a[key],bv=b[key];const aNum=typeof av==='number'?av:0;const bNum=typeof bv==='number'?bv:0;return dir==='asc'?aNum-bNum:bNum-aNum});
+  return result;
+}
+function renderModelCards(){
+  const filtered=filterModels();
+  const countEl=document.getElementById('filterCount');if(countEl)countEl.textContent=filtered.length;
+  const grid=document.getElementById('modelGrid');
+  if(!filtered.length){if(grid)grid.innerHTML='<div style="text-align:center;padding:48px;color:var(--text-muted);grid-column:1/-1;">没有匹配的模型，试试重置筛选</div>';return}
+  if(grid)grid.innerHTML=filtered.map(m=>{
+    const strengths=(m.strengths||[]).slice(0,2).map(s=>'<li>'+escapeHtml(s)+'</li>').join('');
+    const weaknesses=(m.weaknesses||[]).slice(0,2).map(w=>'<li>'+escapeHtml(w)+'</li>').join('');
+    const isFeatured=m.featured;const trendingBadge=m.trending?'<span class="badge badge-warning" style="font-size:10px;">🔥 热门</span>':'';
+    const featuredBadge=isFeatured?'<span class="badge badge-accent" style="font-size:10px;">⭐ 精选</span>':'';
+    return'<div class="model-card'+(isFeatured?' featured':'')+'">'+
+      '<div class="model-card-header"><div><div class="model-card-name">'+escapeHtml(m.name)+' '+trendingBadge+featuredBadge+'</div><div class="model-card-scenario">'+escapeHtml(m.provider)+' · '+(TIER_LABELS[m.tier]||m.tier)+'</div></div><span class="badge '+TIER_CSS[m.tier]+'">'+(TIER_LABELS[m.tier]||m.tier)+'</span></div>'+
+      '<p class="model-card-desc">'+escapeHtml(m.description)+'</p>'+
+      '<div class="model-card-tags">'+(m.bestFor||[]).slice(0,4).map(t=>'<span class="tag">'+escapeHtml(t)+'</span>').join(' ')+'</div>'+
+      '<div class="model-card-meta">'+
+        '<div><div class="model-card-meta-value">'+renderStars(m.rating)+'</div><div class="model-card-meta-item">评分</div></div>'+
+        '<div><div class="model-card-meta-value">'+formatPrice(m.priceInput,m.currency||'¥')+'</div><div class="model-card-meta-item">输入/1M</div></div>'+
+        '<div><div class="model-card-meta-value">'+formatPrice(m.priceOutput,m.currency||'¥')+'</div><div class="model-card-meta-item">输出/1M</div></div>'+
+        '<div><div class="model-card-meta-value">'+(m.contextWindow/1000).toFixed(0)+'K</div><div class="model-card-meta-item">上下文</div></div>'+
+      '</div>'+
+      '<div class="model-card-pros-cons">'+
+        (strengths?'<div class="model-card-pros"><strong>👍 优势</strong><ul>'+strengths+'</ul></div>':'<div></div>')+
+        (weaknesses?'<div class="model-card-cons"><strong>👎 注意</strong><ul>'+weaknesses+'</ul></div>':'<div></div>')+
+      '</div>'+
+      '<div class="model-card-footer"><span style="font-size:12px;color:var(--text-tertiary);">'+(m.languages||[]).slice(0,2).map(l=>escapeHtml(l)).join(' · ')+'</span><a href="'+(m.apiUrl||'#')+'" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">定价页 →</a></div></div>';
+  }).join('');
+}
+
+function renderCommunity(){
+  const body=document.getElementById('community-body');
+  const c=site.community;if(!c){body.innerHTML='';return}
+  body.innerHTML='<section class="section-sm"><div class="container">'+
+    '<div class="section-header text-center">'+
+      '<span class="section-eyebrow">COMMUNITY</span>'+
+      '<h2 class="section-title">不止看数据，来群里聊</h2>'+
+      '<p class="section-subtitle" style="margin:0 auto;">模型更新、价格变动、选型讨论，第一时间发在社群里。</p>'+
+    '</div>'+
+    '<div class="community-grid">'+
+      renderCommunityCard(c.free,'free','FREE','badge-accent','#')+
+      renderCommunityCard(c.paid,'paid','PRO','badge-premium',c.paid&&c.paid.url?c.paid.url:'#')+
+    '</div></div></section>';
+}
+function renderCommunityCard(card,type,badgeText,badgeClass,actionUrl){
+  if(!card)return'';
+  const highlights=(card.highlights||[]).map(h=>'<li>'+escapeHtml(h)+'</li>').join('');
+  return'<div class="community-card community-card-'+type+'">'+
+    '<div class="community-card-header"><h3 class="community-card-title">'+escapeHtml(card.title)+'</h3><span class="badge '+badgeClass+'">'+badgeText+'</span></div>'+
+    '<div class="community-card-subtitle">'+escapeHtml(card.subtitle)+'</div>'+
+    '<p class="community-card-desc">'+escapeHtml(card.description)+'</p>'+
+    '<ul class="community-highlights">'+highlights+'</ul>'+
+    '<a href="'+escapeHtml(actionUrl)+'" class="btn '+(type==='paid'?'btn-primary':'btn-secondary')+' btn-lg">'+escapeHtml(card.ctaText)+'</a>'+
+  '</div>';
+}
+function renderFooter(){
+  const fb=document.getElementById('footer-body');if(!fb)return;
+  const links=(site.footer&&site.footer.links||[]).map(l=>'<a href="'+escapeHtml(l.url)+'">'+escapeHtml(l.label)+'</a>').join('');
+  fb.innerHTML='<div class="footer-disclosure">'+escapeHtml(site.disclosure||'')+'</div>'+
+    '<div class="footer-inner"><div class="footer-brand">'+escapeHtml((site.footer&&site.footer.about)||'')+'</div><div class="footer-links">'+links+'</div></div>';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('navBrand').textContent=site.name||'AI 模型选型助手';
+  renderRecommend();renderBrowse();renderCommunity();renderFooter();
+  switchTab(location.hash||'#recommend');
+});</script>
+</body>
+</html>

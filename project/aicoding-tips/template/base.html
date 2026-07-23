@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding 经验库 - 饭庐者说的 AI 编程技巧与经验</title>
+<meta name="description" content="大家用 Claude Code / Codex 攒了几个月经验最后都去哪了？饭庐者说帮你整理成结构化知识库。30 条精选经验，覆盖 Prompt/工作流/Debug/工具配置。">
+<style>{{STYLE}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">AT</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+<script id="cp-data" type="application/json">{{DATA}}</script>
+<script>const DATA=JSON.parse(document.getElementById('cp-data').textContent);const{site,tips,changes}=DATA;{{SCRIPTS}}</script>
+</body>
+</html>

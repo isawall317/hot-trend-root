@@ -1,0 +1,184 @@
+{
+  "name": "AI 模型选型助手",
+  "tagline": "Kimi K3、DeepSeek V4、Qwen 3.8、Claude Mythos... 模型太多不知道怎么选？饭庐者说帮你比了 20+ 个主流模型",
+  "domain": "model-picker",
+  "logo": "MP",
+  "primaryColor": "#f59e0b",
+  "accentColor": "#fbbf24",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "每个新模型发布都第一时间实测。编程、写作、翻译、画画——不同模型在不同任务上差异巨大。这里帮你选对模型，不乱花钱。",
+    "platforms": [
+      {
+        "name": "公众号",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "小红书",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "知乎",
+        "handle": "饭庐者说",
+        "url": "#"
+      }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.07.22",
+    "highlights": "本周关注：Kimi K3 全球登顶，Qwen 3.8 + DeepSeek V4 即将发布，智谱 GLM-5.2 持续稳定。用免费成本计算器对比价格 →",
+    "stats": [
+      {
+        "label": "收录模型",
+        "value": "22",
+        "unit": "个"
+      },
+      {
+        "label": "覆盖厂商",
+        "value": "10",
+        "unit": "家"
+      },
+      {
+        "label": "本周更新",
+        "value": "5",
+        "unit": "条"
+      }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "coding",
+      "icon": "💻",
+      "title": "编程用哪个",
+      "desc": "Claude Code / Cursor 最佳模型",
+      "filter": {
+        "task": "编程"
+      }
+    },
+    {
+      "id": "writing",
+      "icon": "✍️",
+      "title": "写作翻译",
+      "desc": "长文 / 翻译 / 润色",
+      "filter": {
+        "task": "写作"
+      }
+    },
+    {
+      "id": "cheap",
+      "icon": "💰",
+      "title": "高性价比",
+      "desc": "便宜够用 / 个人项目",
+      "filter": {
+        "tier": "budget"
+      }
+    },
+    {
+      "id": "vision",
+      "icon": "👁️",
+      "title": "多模态",
+      "desc": "看图 / 识图 / OCR",
+      "filter": {
+        "task": "多模态"
+      }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "best-coding",
+      "title": "💻 编程最佳",
+      "subtitle": "AI 编程场景下的最佳模型选择",
+      "items": [
+        {
+          "modelId": "claude-opus-4",
+          "rating": 5,
+          "verdict": "编程能力天花板"
+        },
+        {
+          "modelId": "kimi-k3",
+          "rating": 5,
+          "verdict": "全球榜单登顶，性价比极高"
+        },
+        {
+          "modelId": "glm-52",
+          "rating": 5,
+          "verdict": "Opus 平替，国内首选"
+        }
+      ]
+    },
+    {
+      "id": "budget-picks",
+      "title": "💰 高性价比",
+      "subtitle": "预算有限也能用好模型",
+      "items": [
+        {
+          "modelId": "deepseek-v4",
+          "rating": 5,
+          "verdict": "开源最强，API 价格极低"
+        },
+        {
+          "modelId": "qwen-38",
+          "rating": 4,
+          "verdict": "阿里开源，中文能力强"
+        },
+        {
+          "modelId": "glm-4-flash",
+          "rating": 4,
+          "verdict": "几乎免费的入门选择"
+        }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "免费 API 成本计算器",
+      "subtitle": "输入月用量，秒算哪家最省钱",
+      "description": "不知道选哪个模型划算？用我们的成本计算器，输入你预估的月 Token 量，自动对比 10+ 厂商的 API 总费用。免费使用，无需注册。",
+      "qrImage": "",
+      "highlights": [
+        "输入月 Token 量 → 自动比价",
+        "覆盖 10+ 厂商 22 个模型",
+        "支持 Coding Plan vs API 对比",
+        "数据每周更新，紧跟价格变动",
+        "完全免费，无需注册"
+      ],
+      "ctaText": "打开成本计算器"
+    },
+    "paid": {
+      "title": "知识星球 · 模型选型内参",
+      "subtitle": "¥199/年（早鸟价 ¥99）",
+      "description": "新模型发布第一时间实测、API 砍价攻略、每月 1 次模型选型咨询。帮你每年省 30%+ 的 API 费用。",
+      "highlights": [
+        "新模型发布 24h 内实测报告",
+        "API 砍价 & 优惠攻略",
+        "每月 1v1 模型选型咨询",
+        "模型切换迁移方案",
+        "独家 Benchmark 数据"
+      ],
+      "ctaText": "加入知识星球",
+      "url": "#"
+    }
+  },
+  "disclosure": "本站模型价格数据每周更新。部分 API 链接为推广链接。所有推荐基于真实使用和 Benchmark 数据。成本计算器免费使用。",
+  "footer": {
+    "about": "AI 模型选型助手 · 饭庐者说的 AI 模型对比与推荐",
+    "links": [
+      {
+        "label": "浏览全部",
+        "url": "#browse"
+      },
+      {
+        "label": "最新动态",
+        "url": "#updates"
+      },
+      {
+        "label": "加入社群",
+        "url": "#community"
+      }
+    ]
+  }
+}

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding 经验库 - 饭庐者说的 AI 编程技巧与经验</title>
+<meta name="description" content="大家用 Claude Code / Codex 攒了几个月经验最后都去哪了？饭庐者说帮你整理成结构化知识库。30 条精选经验，覆盖 Prompt/工作流/Debug/工具配置。">
+<style>/* === Design Tokens === */
+:root {
+  --bg-base: #090d14;
+  --bg-elevated: #111827;
+  --bg-card: rgba(20, 28, 46, 0.7);
+  --bg-card-hover: rgba(30, 41, 64, 0.85);
+  --bg-input: rgba(15, 23, 42, 0.8);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-default: rgba(148, 163, 184, 0.18);
+  --border-strong: rgba(148, 163, 184, 0.3);
+
+  --accent: #14b8a6;
+  --accent-soft: rgba(20, 184, 166, 0.12);
+  --accent-glow: rgba(20, 184, 166, 0.25);
+  --accent-secondary: #5eead4;
+
+  --color-positive: #10b981;
+  --color-negative: #ef4444;
+  --color-warning: #14b8a6;
+  --color-info: #3b82f6;
+  --color-premium: #5eead4;
+
+  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --container-max: 1280px;
+  --nav-height: 56px;
+}
+
+/* === Reset === */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(20, 184, 166, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(94, 234, 212, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul, ol { list-style: none; }
+input, select { font: inherit; }
+
+/* === Layout === */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); position: relative; z-index: 1; }
+.section { padding: var(--space-10) 0; position: relative; z-index: 1; }
+.section + .section { border-top: 1px solid var(--border-subtle); }
+.section-sm { padding: var(--space-6) 0; }
+.section-sm + .section-sm { border-top: 1px solid var(--border-subtle); }
+
+/* === Navigation === */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-height);
+  background: rgba(9, 13, 20, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.nav-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; flex-shrink: 0; }
+.nav-brand-name { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nav-tabs { display: flex; align-items: center; gap: var(--space-1); }
+.nav-tab { padding: var(--space-1) var(--space-3); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; color: var(--text-tertiary); transition: all 0.15s ease; white-space: nowrap; }
+.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-tab.active { color: var(--accent); background: var(--accent-soft); }
+.nav-cta { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--accent); color: #fff; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 2px 8px var(--accent-glow); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+/* === Tab Panels === */
+.tab-panel { display: none; padding: var(--space-6) 0; min-height: 60vh; }
+.tab-panel.active { display: block; }
+
+/* === Buttons === */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-5); border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; border: 1px solid transparent; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-default); }
+.btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--border-strong); }
+.btn-ghost { color: var(--text-secondary); }
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
+.btn-lg { padding: var(--space-3) var(--space-6); font-size: 14px; }
+.btn-sm { padding: var(--space-1) var(--space-3); font-size: 12px; }
+
+/* === Badges & Tags === */
+.badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+.badge-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(20, 184, 166, 0.3); }
+.badge-premium { background: rgba(251, 191, 36, 0.12); color: var(--color-premium); border-color: rgba(251, 191, 36, 0.25); }
+.badge-positive { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
+.badge-negative { background: rgba(239, 68, 68, 0.12); color: var(--color-negative); }
+.badge-warning { background: rgba(20, 184, 166, 0.12); color: var(--color-warning); }
+.tag { display: inline-flex; align-items: center; padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--bg-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
+
+/* === Stars === */
+.stars { display: inline-flex; gap: 1px; font-size: 12px; letter-spacing: 1px; color: var(--color-premium); }
+.stars-dim { color: var(--text-muted); }
+
+/* === Hero === */
+.hero { padding: var(--space-10) 0 var(--space-8); position: relative; z-index: 1; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.hero-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: var(--space-3); }
+.hero-title-accent { background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-5); max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.hero-stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.hero-stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* === Section Header === */
+.section-header { margin-bottom: var(--space-6); }
+.section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
+.section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--space-2); }
+.section-subtitle { font-size: 14px; color: var(--text-tertiary); max-width: 60ch; }
+.text-center { text-align: center; }
+
+/* === Quick Entries === */
+.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.quick-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: left; transition: all 0.15s ease; cursor: pointer; }
+.quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.quick-card-icon { font-size: 22px; line-height: 1; }
+.quick-card-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.quick-card-desc { font-size: 12px; color: var(--text-tertiary); }
+
+/* === Top Picks === */
+.top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.top-pick-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden; }
+.top-pick-card.pick-best { border-color: rgba(20, 184, 166, 0.3); background: linear-gradient(135deg, rgba(20, 184, 166, 0.06), var(--bg-card)); }
+.top-pick-card.pick-best::before { content: 'BEST'; position: absolute; top: 12px; right: -28px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em; }
+.top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
+.top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
+.top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
+.top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+.top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
+.top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.top-pick-action { margin-top: var(--space-3); text-align: right; }
+
+/* === Recommendation Cards === */
+.reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
+.reco-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; }
+.reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.reco-item-vendor { font-size: 17px; font-weight: 700; }
+.reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
+.reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
+.reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.reco-item-reasons strong { color: var(--text-primary); font-weight: 600; }
+.reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+
+/* === Filter Bar === */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
+.filter-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-full); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 0.12s ease; }
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.filter-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.filter-select { padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; cursor: pointer; }
+.filter-stats { margin-left: auto; font-size: 12px; color: var(--text-tertiary); }
+.filter-stats strong { color: var(--accent); font-weight: 700; }
+
+/* === Combo Cards Grid === */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: var(--space-4); }
+.tips-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; display: flex; flex-direction: column; }
+.tips-card:hover { border-color: var(--border-strong); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.tips-card.featured { border-color: rgba(20, 184, 166, 0.25); background: linear-gradient(135deg, rgba(20, 184, 166, 0.04), var(--bg-card)); }
+.tips-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
+.tips-card-name { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.tips-card-scenario { font-size: 11px; color: var(--text-muted); }
+.tips-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-3); flex: 1; }
+
+/* === Tool Chain === */
+.tips-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin-bottom: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
+.tips-tool { display: flex; flex-direction: column; align-items: center; padding: var(--space-1) var(--space-2); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); min-width: 60px; text-align: center; }
+.tips-tool-name { font-size: 11px; font-weight: 700; color: var(--text-primary); }
+.tips-tool-role { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.tips-tool-arrow { font-size: 14px; color: var(--text-muted); flex-shrink: 0; }
+
+/* === Combo Meta === */
+.tips-card-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-3); }
+.tips-card-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--space-3); }
+.tips-card-meta-item { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.tips-card-meta-value { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.tips-card-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3); }
+.tips-card-pros, .tips-card-cons { font-size: 11px; line-height: 1.5; }
+.tips-card-pros strong { color: var(--color-positive); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tips-card-cons strong { color: var(--color-warning); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.tips-card-pros ul, .tips-card-cons ul { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+.tips-card-pros li { color: var(--text-secondary); padding-left: var(--space-3); position: relative; }
+.tips-card-pros li::before { content: '✓'; position: absolute; left: 0; color: var(--color-positive); font-size: 10px; }
+.tips-card-cons li { color: var(--text-tertiary); padding-left: var(--space-3); position: relative; }
+.tips-card-cons li::before { content: '✗'; position: absolute; left: 0; color: var(--text-muted); font-size: 10px; }
+.tips-card-footer { display: flex; justify-content: space-between; align-items: center; }
+
+/* Scenario Badge Colors */
+.sc-frontend { background: rgba(236, 72, 153, 0.12); color: #f472b6; border-color: rgba(236, 72, 153, 0.25); }
+.sc-backend { background: rgba(16, 185, 129, 0.12); color: #34d399; border-color: rgba(16, 185, 129, 0.25); }
+.sc-fullstack { background: rgba(20, 184, 166, 0.12); color: #5eead4; border-color: rgba(20, 184, 166, 0.25); }
+.sc-solo { background: rgba(20, 184, 166, 0.12); color: #5eead4; border-color: rgba(20, 184, 166, 0.25); }
+.sc-team { background: rgba(139, 92, 246, 0.12); color: #a78bfa; border-color: rgba(139, 92, 246, 0.25); }
+
+/* === Recent Changes === */
+.rc-list { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+.rc-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--border-subtle); font-size: 13px; line-height: 1.4; transition: background 0.12s ease; position: relative; }
+.rc-item:last-child { border-bottom: none; }
+.rc-item:hover { background: var(--bg-card-hover); }
+.rc-item.rc-featured { border-left: 3px solid var(--accent); padding-left: calc(var(--space-4) - 3px); }
+.rc-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-shrink: 0; width: 42px; }
+.rc-title { color: var(--text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-title a { color: var(--text-secondary); }
+.rc-title a:hover { color: var(--accent); }
+.rc-vendor { color: var(--text-primary); font-weight: 600; }
+.rc-item:hover .rc-title { white-space: normal; overflow: visible; }
+.rc-item[data-detail]:hover::after {
+  content: attr(data-detail);
+  position: absolute; bottom: calc(100% + 6px); left: var(--space-4);
+  background: var(--bg-elevated); color: var(--text-primary);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  font-size: 12px; line-height: 1.5; white-space: normal; width: min(400px, 80vw);
+  z-index: 10; box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+/* === Community === */
+.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.community-card { position: relative; padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); overflow: hidden; }
+.community-card-free { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6)); }
+.community-card-paid { background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(94, 234, 212, 0.05)); border-color: rgba(20, 184, 166, 0.25); }
+.community-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.community-card-title { font-size: 18px; font-weight: 700; }
+.community-card-subtitle { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: var(--space-3); }
+.community-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-4); }
+.community-highlights { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+.community-highlights li { font-size: 12px; color: var(--text-secondary); padding-left: var(--space-4); position: relative; }
+.community-highlights li::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+/* === Footer === */
+.footer { padding: var(--space-8) 0 var(--space-6); border-top: 1px solid var(--border-subtle); position: relative; z-index: 1; }
+.footer-disclosure { font-size: 11px; color: var(--text-muted); line-height: 1.55; padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius-md); margin-bottom: var(--space-4); border-left: 2px solid var(--color-warning); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+.footer-brand { font-size: 12px; color: var(--text-tertiary); }
+.footer-links { display: flex; gap: var(--space-4); font-size: 12px; }
+.footer-links a { color: var(--text-tertiary); transition: color 0.12s ease; }
+.footer-links a:hover { color: var(--text-primary); }
+
+/* === Utility === */
+.text-accent { color: var(--accent); }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+  .top-pick-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --space-10: 32px; --space-16: 48px; }
+  .container { padding: 0 var(--space-4); }
+  .nav-tabs { gap: 0; }
+  .nav-tab { padding: var(--space-1) var(--space-2); font-size: 12px; }
+  .nav-cta { display: none; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .hero-stat-value { font-size: 18px; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .reco-list { grid-template-columns: 1fr; }
+  .filter-bar { padding: var(--space-2); }
+  .filter-stats { width: 100%; margin-left: 0; }
+  .community-card { padding: var(--space-5); }
+  .tips-tools { flex-direction: column; align-items: flex-start; }
+  .tips-tool-arrow { transform: rotate(90deg); }
+  .tips-card-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  .section-title { font-size: 20px; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">AT</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">对比</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+<script id="cp-data" type="application/json">{"generatedAt": "2026-07-22 10:28:32", "changes": [{"id": "2026-07-22-v2ex", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "V2EX 热帖：大家的Claude Code经验最后都去哪了？", "detail": "V2EX热帖直接问「大家用Claude Code/Codex攒了几个月的经验最后都去哪了？」引发大量讨论。结构化整理AI编码经验成为刚需。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.v2ex.com/t/1228685", "relatedTips": [], "featured": true, "excerpt": "大家用 Claude Code / Codex 攒了几个月的经验，最后都去哪了？", "author": "V2EX", "readTime": "3分钟", "cover": "V2"}, {"id": "2026-07-20-sdd", "date": "2026-07-20", "kind": "article", "vendor": "通用", "title": "OpenSpec + Superpowers + gstack 三器合一爆火", "detail": "掘金热文「三器合一：你的AI编程终于可以从拍脑袋进化到流水线了」引发SDD方法论讨论。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn", "relatedTips": ["sdd-workflow"], "featured": true}, {"id": "2026-07-15-skills-overload", "date": "2026-07-15", "kind": "article", "vendor": "通用", "title": "为什么 Skills 装得越多AI越笨？", "detail": "掘金热文讨论Skills过多导致性能下降。Skills精选和Prompt优化变得更重要。", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn", "relatedTips": ["prompt-engineering"], "featured": false}], "site": {"name": "AI Coding 经验库", "tagline": "大家用 Claude Code / Codex 攒了几个月经验最后都去哪了？饭庐者说帮你整理成结构化知识库，不再让经验随聊天记录消失", "domain": "aicoding-tips", "logo": "AT", "primaryColor": "#14b8a6", "accentColor": "#5eead4", "blogger": {"name": "饭庐者说", "avatar": "FL", "title": "AI 工具重度用户 / 独立博主", "bio": "每天用 AI 写代码，积累了大量提示词、工作流和踩坑经验。这里把它们结构化整理，让你少走弯路。", "platforms": [{"name": "公众号", "handle": "饭庐者说", "url": "#"}, {"name": "小红书", "handle": "饭庐者说", "url": "#"}, {"name": "知乎", "handle": "饭庐者说", "url": "#"}]}, "header": {"updateDate": "更新于 2026.07.22", "highlights": "本周精选：三器合一工作流、Claude Code Prompt 工程、AI 代码审查最佳实践。关注公众号回复「Prompt」领 5 个免费模板 →", "stats": [{"label": "精选经验", "value": "30", "unit": "条"}, {"label": "覆盖主题", "value": "7", "unit": "类"}, {"label": "本周新增", "value": "5", "unit": "条"}]}, "quickEntries": [{"id": "prompts", "icon": "💬", "title": "Prompt 技巧", "desc": "怎么写让 AI 更懂你", "filter": {"category": "prompts"}}, {"id": "workflow", "icon": "🔄", "title": "工作流", "desc": "SDD / TDD / CI 自动化", "filter": {"category": "workflow"}}, {"id": "debug", "icon": "🐛", "title": "排错 Debug", "desc": "AI 写错了怎么修", "filter": {"category": "debug"}}, {"id": "tools", "icon": "🔧", "title": "工具配置", "desc": "Cursor / Claude Code 调优", "filter": {"category": "tools"}}], "recommendationGroups": [{"id": "must-read", "title": "🔥 必读经验", "subtitle": "每条都能让你少踩一个坑", "items": [{"tipId": "sdd-workflow", "rating": 5, "verdict": "需求不跑偏的核心方法论"}, {"tipId": "prompt-engineering", "rating": 5, "verdict": "同样的模型，Prompt 不同天差地别"}, {"tipId": "code-review-ai", "rating": 5, "verdict": "AI审查代码的正确姿势"}]}, {"id": "advanced", "title": "🚀 进阶技巧", "subtitle": "从会用变成高手", "items": [{"tipId": "context-management", "rating": 4, "verdict": "上下文管理是 AI 编程的核心竞争力"}, {"tipId": "monorepo-ai", "rating": 4, "verdict": "大项目的 AI 协作策略"}, {"tipId": "cost-optimize", "rating": 4, "verdict": "不降低质量的情况下省钱"}]}], "community": {"free": {"title": "免费 Prompt 模板包", "subtitle": "5 个高频场景的 Prompt 模板", "description": "关注公众号「饭庐者说」回复「Prompt」免费领取：代码生成/Code Review/Bug修复/重构/文档 五合一 Prompt 模板包。复制即用。", "qrImage": "", "highlights": ["代码生成 Prompt 模板", "Code Review Prompt 模板", "Bug 修复 Prompt 模板", "重构 Prompt 模板", "关注公众号回复「Prompt」领取"], "ctaText": "关注公众号领取"}, "paid": {"title": "小报童专栏 · AI 编程实战经验", "subtitle": "¥99/年（50+ 篇深度经验）", "description": "每篇都是我花真金白银试出来的经验。不是「AI 可以帮你写代码」这种水货，而是「这么写 Prompt 能省 3 次返工」这种干货。已有 50+ 篇。", "highlights": ["50+ 篇深度经验（每周更新 2 篇）", "完整的 Prompt 模板库（30+ 个场景）", "每月 1 次直播答疑", "不满意 3 天内全额退款", "开通后可看全部历史文章"], "ctaText": "¥99 订阅专栏", "url": "#"}}, "disclosure": "所有经验均来自真实使用体验。小报童专栏 ¥99/年，3 天内不满意全额退款。免费 Prompt 模板包通过公众号发放。", "footer": {"about": "AI Coding 经验库 · 饭庐者说的 AI 编程技巧与经验", "links": [{"label": "浏览全部", "url": "#browse"}, {"label": "订阅专栏", "url": "#community"}, {"label": "领取模板", "url": "#community"}]}}, "tips": [{"id": "sdd-workflow", "title": "SDD 工作流：先写 Spec 再写代码", "category": "workflow", "description": "Spec-Driven Development 是 AI 编程的核心方法论。先让 Claude Code 理解你的需求并生成 Spec 文档，确认无误后再开始写代码。这样需求不跑偏，重构有依据。", "author": "饭庐者说", "rating": 5, "tags": ["SDD", "OpenSpec", "需求管理", "必读"], "takeaway": "永远不要在需求不清的情况下让AI写代码。花10分钟确认Spec，能省2小时返工。", "steps": ["1. 用自然语言描述需求给 Claude Code", "2. Claude Code 反问澄清模糊点", "3. 生成 Spec 文档并确认", "4. 按 Spec 逐步实现", "5. Spec 变更时先更新文档再改代码"], "relatedTools": ["OpenSpec", "Superpowers"], "sourceUrl": "https://juejin.cn", "addedAt": "2026-07-15", "featured": true, "trending": true}, {"id": "prompt-engineering", "title": "Claude Code Prompt 工程实战", "category": "prompts", "description": "同样的模型，Prompt 写得好坏效果天差地别。关键技巧：角色设定、输出格式约束、分步指令、示例驱动。比「你是一个专家」的废话 Prompt 有效100倍。", "author": "饭庐者说", "rating": 5, "tags": ["Prompt", "技巧", "必读"], "takeaway": "好的 Prompt = 角色 + 约束 + 分步 + 示例。四个要素缺一不可。", "steps": ["1. 明确角色和任务边界", "2. 指定输出格式（JSON/Markdown/代码）", "3. 把任务拆成3-5个步骤", "4. 给1-2个示例（Few-shot）", "5. 迭代优化：看输出→改Prompt→再试"], "relatedTools": ["Claude Code", "Cursor"], "sourceUrl": null, "addedAt": "2026-06-20", "featured": true, "trending": false}, {"id": "code-review-ai", "title": "用 AI 做代码审查的正确姿势", "category": "workflow", "description": "AI 代码审查不是「帮我看看这段代码」。要分维度审查：安全漏洞、性能瓶颈、代码风格、测试覆盖。用 Code Reviewer Skill 自动化，但关键变更仍需人工复核。", "author": "饭庐者说", "rating": 5, "tags": ["代码审查", "Code Reviewer", "质量", "必读"], "takeaway": "AI审查+人工复核=最佳质量。AI擅长发现模式问题，人擅长理解业务意图。", "steps": ["1. 配置 Code Reviewer Skill", "2. 每次提交前自动运行审查", "3. AI 标注问题级别（Critical/Warning/Suggestion）", "4. Critical 和 Warning 必须人工复核", "5. 定期更新审查规则"], "relatedTools": ["Code Reviewer", "PR Review Bot"], "sourceUrl": null, "addedAt": "2026-06-15", "featured": true, "trending": false}, {"id": "context-management", "title": "上下文管理：AI 编程的核心竞争力", "category": "workflow", "description": "Claude Code 的上下文窗口有限。学会管理上下文——什么时候开新会话、怎么写 CLAUDE.md、何时引用文件——是 AI 编程高手和普通用户的本质区别。", "author": "饭庐者说", "rating": 4, "tags": ["上下文", "Claude Code", "进阶"], "takeaway": "CLAUD.md 是你最重要的配置文件。花30分钟写好它，之后每次会话都能省10分钟。", "steps": ["1. 写好 CLAUDE.md（项目规则+偏好+常用命令）", "2. 大任务拆成多个会话，每个会话专注一个目标", "3. 用 @file 引用而不是复制粘贴代码", "4. 上下文快满时，让AI总结关键信息再开新会话", "5. 定期清理不用的上下文"], "relatedTools": ["Claude Code", "Superpowers"], "sourceUrl": null, "addedAt": "2026-06-10", "featured": false, "trending": false}, {"id": "monorepo-ai", "title": "Monorepo 项目中的 AI 协作策略", "category": "tools", "description": "大项目的 AI 编程难点：代码太多、依赖复杂、改动影响面大。关键策略：按包拆分上下文、用 CLAUDE.md 描述项目结构、AI辅助影响分析。", "author": "饭庐者说", "rating": 4, "tags": ["Monorepo", "大项目", "架构"], "takeaway": "大项目不要一次性把所有文件给AI。按包/模块分批给，配合项目结构文档。", "steps": ["1. 在 CLAUDE.md 中描述 Monorepo 结构", "2. 每次只让AI关注1-2个 package", "3. 用 Monorepo Helper Skill 分析依赖", "4. 跨包改动先分析影响面", "5. 分多次小PR而不是一次大PR"], "relatedTools": ["Monorepo Helper", "Claude Code"], "sourceUrl": null, "addedAt": "2026-06-25", "featured": false, "trending": false}, {"id": "cost-optimize", "title": "AI 编程成本优化指南", "category": "tools", "description": "用最少的钱达到最好的效果。策略：不同任务用不同模型、缓存重复查询、批量处理简单任务、用本地模型处理非关键任务。", "author": "饭庐者说", "rating": 4, "tags": ["成本", "优化", "省钱"], "takeaway": "不是所有任务都需要 Opus 4。简单任务用 Haiku/Sonnet，复杂任务才用 Opus。能省50%+费用。", "steps": ["1. 分析你的主要使用场景", "2. 编程核心用 Opus/Claude Code", "3. 文档/翻译用 Haiku 或免费模型", "4. 大批量任务用 GLM-4-Flash", "5. 每月review API账单并调整"], "relatedTools": ["Claude Code", "Cursor", "GLM-4-Flash"], "sourceUrl": null, "addedAt": "2026-06-05", "featured": false, "trending": false}, {"id": "ai-debug", "title": "AI 写的代码出 Bug 了怎么修", "category": "debug", "description": "AI 生成的代码不是100%正确。高效 Debug 策略：先让AI分析错误日志、提供修复方案、写测试验证修复。不要让AI猜，要给它具体的错误信息。", "author": "饭庐者说", "rating": 4, "tags": ["Debug", "排错", "技巧"], "takeaway": "AI Debug 的黄金法则：粘贴完整错误日志 + 相关代码 + 已尝试的方法。信息越全，修复越准。", "steps": ["1. 复制完整错误日志（不要截取片段）", "2. 提供相关代码文件（用 @file）", "3. 告诉AI你已经尝试了什么", "4. 让AI给出根因分析+修复方案", "5. 让AI同时写测试验证修复"], "relatedTools": ["Error Detective", "Claude Code"], "sourceUrl": null, "addedAt": "2026-06-01", "featured": false, "trending": false}, {"id": "testing-with-ai", "title": "让 AI 帮你写测试", "category": "workflow", "description": "测试是AI编程的最佳应用场景之一。让AI分析代码逻辑、生成测试用例、覆盖边界情况。但要注意：AI生成的测试可能过于乐观，需要人工检查断言。", "author": "饭庐者说", "rating": 4, "tags": ["测试", "TDD", "质量"], "takeaway": "AI写测试效率是人的5-10倍，但需要人工检查测试的合理性。不要盲目信任。", "steps": ["1. 让AI分析函数的所有分支和边界", "2. 生成覆盖所有分支的测试用例", "3. 人工review测试的断言是否合理", "4. 运行测试看覆盖率", "5. 未覆盖的分支手动补充"], "relatedTools": ["Test Generator", "TDD Workflow"], "sourceUrl": null, "addedAt": "2026-05-25", "featured": false, "trending": false}]}</script>
+<script>const DATA=JSON.parse(document.getElementById('cp-data').textContent);const{site,tips,changes}=DATA;function escapeHtml(t){if(t===null||t===undefined)return'';const d=document.createElement('div');d.textContent=String(t);return d.innerHTML}
+function renderStars(r){const f='★'.repeat(r),e='☆'.repeat(5-r);return'<span class="stars">'+f+'</span><span class="stars stars-dim">'+e+'</span>'}
+function renderTagsInline(t){if(!t||!t.length)return'';return t.map(t=>'<span class="tag">'+escapeHtml(t)+'</span>').join(' ')}
+const CAT_LABELS={prompts:'Prompt技巧',workflow:'工作流',tools:'工具配置',debug:'排错Debug'};
+
+function switchTab(hash){
+  const tab=(hash||'#recommend').replace(/^#/,'').split('?')[0];
+  const validTabs=['recommend','browse','community'];
+  const target=validTabs.includes(tab)?tab:'recommend';
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+target).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===target));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('hashchange',()=>switchTab(location.hash));
+
+
+function renderRecommend(){
+  document.getElementById('recommend-body').innerHTML=renderHero()+renderTopTips()+renderQuickEntries()+renderRecommendations()+renderRecentChanges();
+  bindQuickEntries();
+}
+function renderHero(){
+  const h=site.header||{};
+  const stats=(h.stats||[]).map(s=>'<div><div class="hero-stat-value">'+escapeHtml(s.value)+'<span style="font-size:13px;color:var(--text-tertiary);font-weight:500;margin-left:2px;">'+escapeHtml(s.unit||'')+'</span></div><div class="hero-stat-label">'+escapeHtml(s.label)+'</div></div>').join('');
+  return'<section class="hero"><div class="container"><div class="hero-inner"><div>'+
+    '<span class="section-eyebrow">'+escapeHtml(h.updateDate||'')+'</span>'+
+    '<h1 class="hero-title">AI 编程经验<br><span class="hero-title-accent">不再随聊天记录消失</span></h1>'+
+    '<p class="hero-subtitle">'+escapeHtml(site.tagline||'')+'</p>'+
+    '<p style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-5);margin-top:-12px;">'+escapeHtml(h.highlights||'')+'</p>'+
+    '<div class="hero-actions"><a href="#browse" class="btn btn-primary btn-lg">浏览全部经验</a><a href="#community" class="btn btn-secondary btn-lg">加入社群</a></div>'+
+    '<div class="hero-stats">'+stats+'</div></div></div></section>';
+}
+function renderTopTips(){
+  const top3=tips.filter(t=>t.featured).sort((a,b)=>b.rating-a.rating).slice(0,3);
+  if(!top3.length)return'';
+  const labels=['综合最佳','最实用','必读首选'];
+  const reasons=['综合评分最高，这条经验能从根本上改变你的AI编程方式。','社区反馈最实用，最多人表示「早点看到就好了」。','每个AI编程用户都应该知道的基础知识，花5分钟读完受益终身。'];
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">TOP TIPS</span><h2 class="section-title">不知道从哪开始？先看这三条</h2><p class="section-subtitle">基于评分和实用性的综合推荐。点击场景卡片筛选或浏览全部经验。</p></div><div class="top-pick-grid">'+top3.map((t,i)=>{const isBest=i===0;return'<div class="top-pick-card'+(isBest?' pick-best':'')+'"><div class="top-pick-label">'+labels[i]+'</div><div class="top-pick-vendor">'+escapeHtml(t.title)+'</div><div class="top-pick-plan">'+(CAT_LABELS[t.category]||t.category)+' · '+escapeHtml(t.author)+'</div><div style="margin-top:var(--space-3);">'+renderStars(t.rating)+'</div><div class="top-pick-metrics"><div><div class="top-pick-metric-value">'+(t.steps||[]).length+'</div><div class="top-pick-metric-label">步骤</div></div><div><div class="top-pick-metric-value">'+(t.relatedTools||[]).length+'</div><div class="top-pick-metric-label">相关工具</div></div></div><div class="top-pick-reason">'+reasons[i]+'</div><div class="top-pick-action"><a href="#browse" class="btn btn-primary btn-sm">查看详情 →</a></div></div>'}).join('')+'</div></div></section>';
+}
+function renderQuickEntries(){
+  const entries=site.quickEntries||[];if(!entries.length)return'';
+  return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">SCENARIOS</span><h2 class="section-title">按你的场景来找</h2></div><div class="quick-grid">'+entries.map(q=>'<button class="quick-card" data-entry-id="'+escapeHtml(q.id)+'"><span class="quick-card-icon">'+escapeHtml(q.icon)+'</span><span class="quick-card-title">'+escapeHtml(q.title)+'</span><span class="quick-card-desc">'+escapeHtml(q.desc)+'</span></button>').join('')+'</div></div></section>';
+}
+function bindQuickEntries(){
+  document.querySelectorAll('.quick-card').forEach(card=>{card.addEventListener('click',()=>{
+    const id=card.dataset.entryId;const entry=(site.quickEntries||[]).find(q=>q.id===id);
+    if(!entry||!entry.filter)return;
+    const query=Object.entries(entry.filter).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&');
+    location.hash='#browse'+(query?'?'+query:'');
+  })});
+}
+function renderRecommendations(){
+  const groups=site.recommendationGroups||[];if(!groups.length)return'';
+  const html=groups.map((group,gi)=>{const items=(group.items||[]).map(item=>{const t=tips.find(t=>t.id===item.tipId);if(!t)return'';return'<div class="reco-item"><div class="reco-item-header"><div><div class="reco-item-vendor">'+escapeHtml(t.title)+'</div><div class="reco-item-plan">'+(CAT_LABELS[t.category]||t.category)+' · '+escapeHtml(t.author)+'</div></div>'+renderStars(item.rating)+'</div>'+(item.verdict?'<span class="reco-item-verdict">'+escapeHtml(item.verdict)+'</span>':'')+'<p style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:var(--space-3);">'+escapeHtml(t.description)+'</p><div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-3);"><strong style="color:var(--accent);font-size:11px;">💡 一句话总结</strong><p style="font-size:13px;color:var(--text-primary);margin-top:2px;">'+escapeHtml(t.takeaway)+'</p></div><div class="reco-item-footer"><span style="font-size:12px;color:var(--text-tertiary);">'+(t.steps||[]).length+' 个步骤</span><a href="#browse" class="btn btn-primary">查看详情 →</a></div></div>'}).join('');const header=groups.length>1?'<div style="margin-bottom:var(--space-4);"><h3 style="font-size:16px;font-weight:700;">'+escapeHtml(group.title)+'</h3>'+(group.subtitle?'<p style="font-size:13px;color:var(--text-tertiary);">'+escapeHtml(group.subtitle)+'</p>':'')+'</div>':'';return'<div style="'+(gi>0?'margin-top:var(--space-8);':'')+'">'+header+'<div class="reco-list">'+items+'</div></div>'}).join('');return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">ALL RECOMMENDATIONS</span><h2 class="section-title">饭庐者说的完整推荐</h2></div>'+html+'</div></section>';
+}
+const KIND_LABEL={new_tip:'新经验',article:'文章',tip_update:'更新'};
+function renderRecentChanges(){const now=new Date();const cutoff=new Date(now.getTime()-30*24*60*60*1000);const recent=(changes||[]).filter(c=>new Date(c.date)>=cutoff).sort((a,b)=>b.date.localeCompare(a.date));if(!recent.length)return'';const items=recent.map(c=>{const impactBadge=c.impact==='positive'?'<span class="badge badge-positive">利好</span>':c.impact==='negative'?'<span class="badge badge-negative">利空</span>':'<span class="badge">中性</span>';const kindLabel='<span class="tag">'+(KIND_LABEL[c.kind]||c.kind)+'</span>';const titleHtml=c.kind==='article'&&c.sourceUrl?'<a href="'+escapeHtml(c.sourceUrl)+'" target="_blank" rel="noopener">'+escapeHtml(c.title)+'</a>':escapeHtml(c.title);const detailAttr=c.detail&&c.detail!==c.title?' data-detail="'+escapeHtml(c.detail).replace(/"/g,'&quot;')+'"':'';return'<div class="rc-item'+(c.featured?' rc-featured':'')+'"'+detailAttr+'><span class="rc-date">'+escapeHtml(c.date.slice(5))+'</span>'+impactBadge+'<span class="rc-title">'+titleHtml+'</span>'+kindLabel+'</div>'}).join('');return'<section class="section-sm"><div class="container"><div class="section-header" style="margin-bottom:var(--space-4);"><span class="section-eyebrow">RECENT CHANGES</span><h2 class="section-title">最近动态</h2><p class="section-subtitle">最近30天的新经验和社区动态。悬停查看详情。</p></div><div class="rc-list">'+items+'</div></div></section>';}
+
+
+const browseState={filters:{categories:new Set,tags:new Set,search:''},sort:{key:null,dir:'asc'}};
+function renderBrowse(){document.getElementById('browse-body').innerHTML=renderBrowseSection();bindBrowseFilters();renderTipCards();}
+function renderBrowseSection(){return'<section class="section-sm"><div class="container"><div class="section-header"><span class="section-eyebrow">BROWSE ALL</span><h2 class="section-title">全部经验</h2><p class="section-subtitle">点击分类筛选，搜索关键词。找到对你有用的经验。</p></div><div id="browseFilterBar"></div><div class="tip-grid" id="tipGrid"></div></div></section>';}
+function renderBrowseFilterBar(){const cats=[...new Set(tips.map(t=>t.category))].sort();const allTags=new Set();tips.forEach(t=>(t.tags||[]).forEach(t=>allTags.add(t)));const tagList=[...allTags].sort();const catChips=cats.map(c=>'<button class="filter-chip" data-filter-type="categories" data-filter-value="'+escapeHtml(c)+'">'+(CAT_LABELS[c]||c)+'</button>').join('');const tagChips=tagList.map(t=>'<button class="filter-chip" data-filter-type="tags" data-filter-value="'+escapeHtml(t)+'">'+escapeHtml(t)+'</button>').join('');return'<div class="filter-bar"><select class="filter-select" id="sortSelect"><option value="">默认排序</option><option value="rating-desc">评分 高-低</option><option value="addedAt-desc">最新收录</option></select><input type="text" class="filter-select" id="searchInput" placeholder="搜索经验..." style="min-width:200px;"><button class="filter-chip" id="resetBtn">重置</button><span class="filter-stats">显示 <strong id="filterCount">0</strong> / '+tips.length+' 条经验</span></div>'+(catChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">分类:</span>'+catChips+'</div>':'')+(tagChips?'<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>'+tagChips+'</div>':'');}
+function bindBrowseFilters(){const fm=document.getElementById('browseFilterBar');if(!fm)return;fm.innerHTML=renderBrowseFilterBar();const hf=(()=>{const h=location.hash;const q=h.indexOf('?');if(q<0)return null;const p=new URLSearchParams(h.slice(q+1));const f={};for(const[k,v]of p)f[k]=v;return f})();if(hf){if(hf.category)browseState.filters.categories.add(hf.category);if(hf.search){browseState.filters.search=hf.search.toLowerCase();const si=document.getElementById('searchInput');if(si)si.value=hf.search}}syncFilter();fm.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{chip.addEventListener('click',()=>{const type=chip.dataset.filterType,value=chip.dataset.filterValue,set=browseState.filters[type];if(set.has(value))set.delete(value);else set.add(value);syncFilter();renderTipCards()})});document.getElementById('resetBtn')?.addEventListener('click',()=>{browseState.filters.categories.clear();browseState.filters.tags.clear();browseState.filters.search='';browseState.sort={key:null,dir:'asc'};document.getElementById('sortSelect').value='';document.getElementById('searchInput').value='';syncFilter();renderTipCards()});document.getElementById('sortSelect')?.addEventListener('change',()=>{const v=document.getElementById('sortSelect').value;if(!v)browseState.sort={key:null,dir:'asc'};else{const[k,d]=v.split('-');browseState.sort={key:k,dir:d}}renderTipCards()});document.getElementById('searchInput')?.addEventListener('input',()=>{browseState.filters.search=document.getElementById('searchInput').value.trim().toLowerCase();renderTipCards()})}
+function syncFilter(){document.querySelectorAll('.filter-chip[data-filter-type]').forEach(chip=>{const type=chip.dataset.filterType,value=chip.dataset.filterValue,active=browseState.filters[type]&&browseState.filters[type].has(value);chip.classList.toggle('active',!!active)})}
+function filterTips(){const f=browseState.filters;let r=tips.filter(t=>{if(f.categories.size&&!f.categories.has(t.category))return false;if(f.tags.size&&!(t.tags||[]).some(t=>f.tags.has(t)))return false;if(f.search){const h=(t.title+' '+t.description+' '+t.takeaway+' '+(t.tags||[]).join(' ')).toLowerCase();if(!h.includes(f.search))return false}return true});const{key,dir}=browseState.sort;if(key)r.sort((a,b)=>{const av=a[key],bv=b[key];const aNum=typeof av==='number'?av:0;const bNum=typeof bv==='number'?bv:0;return dir==='asc'?aNum-bNum:bNum-aNum});return r}
+function renderTipCards(){const filtered=filterTips();const countEl=document.getElementById('filterCount');if(countEl)countEl.textContent=filtered.length;const grid=document.getElementById('tipGrid');if(!filtered.length){if(grid)grid.innerHTML='<div style="text-align:center;padding:48px;color:var(--text-muted);grid-column:1/-1;">没有匹配的经验，试试重置筛选</div>';return}if(grid)grid.innerHTML=filtered.map(t=>{const isFeatured=t.featured;const fb=isFeatured?'<span class="badge badge-accent" style="font-size:10px;">⭐ 精选</span>':'';const tb=t.trending?'<span class="badge badge-warning" style="font-size:10px;">🔥 热门</span>':'';return'<div class="tip-card'+(isFeatured?' featured':'')+'"><div class="tip-card-header"><div><div class="tip-card-name">'+escapeHtml(t.title)+' '+tb+fb+'</div><div class="tip-card-scenario">'+(CAT_LABELS[t.category]||t.category)+' · '+escapeHtml(t.author)+'</div></div>'+renderStars(t.rating)+'</div><p class="tip-card-desc">'+escapeHtml(t.description)+'</p><div class="tip-card-tags">'+renderTagsInline(t.tags)+'</div><div style="background:var(--bg-elevated);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-3);"><strong style="color:var(--accent);font-size:11px;">💡 一句话总结</strong><p style="font-size:13px;color:var(--text-primary);margin-top:2px;">'+escapeHtml(t.takeaway)+'</p></div><div style="margin-bottom:var(--space-3);"><strong style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">📋 操作步骤</strong><ol style="font-size:12px;color:var(--text-secondary);margin-top:4px;padding-left:var(--space-4);">'+(t.steps||[]).map(s=>'<li style="margin-bottom:2px;">'+escapeHtml(s)+'</li>').join('')+'</ol></div><div class="tip-card-footer"><span style="font-size:12px;color:var(--text-tertiary);">'+(t.relatedTools||[]).slice(0,3).map(r=>escapeHtml(r)).join(' · ')+'</span><a href="#browse" class="btn btn-primary btn-sm">详情 →</a></div></div>'}).join('')}
+
+
+function renderCommunity(){const body=document.getElementById('community-body');const c=site.community;if(!c){body.innerHTML='';return}body.innerHTML='<section class="section-sm"><div class="container"><div class="section-header text-center"><span class="section-eyebrow">COMMUNITY</span><h2 class="section-title">不止看数据，来群里聊</h2><p class="section-subtitle" style="margin:0 auto;">关注公众号免费领 5 个 Prompt 模板。¥99/年订阅小报童专栏，看 50+ 篇深度实战经验。</p></div><div class="community-grid">'+renderCommunityCard(c.free,'free','FREE','badge-accent','#')+renderCommunityCard(c.paid,'paid','PRO','badge-premium',c.paid&&c.paid.url?c.paid.url:'#')+'</div></div></section>'}
+function renderCommunityCard(card,type,badgeText,badgeClass,actionUrl){if(!card)return'';const highlights=(card.highlights||[]).map(h=>'<li>'+escapeHtml(h)+'</li>').join('');return'<div class="community-card community-card-'+type+'"><div class="community-card-header"><h3 class="community-card-title">'+escapeHtml(card.title)+'</h3><span class="badge '+badgeClass+'">'+badgeText+'</span></div><div class="community-card-subtitle">'+escapeHtml(card.subtitle)+'</div><p class="community-card-desc">'+escapeHtml(card.description)+'</p><ul class="community-highlights">'+highlights+'</ul><a href="'+escapeHtml(actionUrl)+'" class="btn '+(type==='paid'?'btn-primary':'btn-secondary')+' btn-lg">'+escapeHtml(card.ctaText)+'</a></div>'}
+function renderFooter(){const fb=document.getElementById('footer-body');if(!fb)return;const links=(site.footer&&site.footer.links||[]).map(l=>'<a href="'+escapeHtml(l.url)+'">'+escapeHtml(l.label)+'</a>').join('');fb.innerHTML='<div class="footer-disclosure">'+escapeHtml(site.disclosure||'')+'</div><div class="footer-inner"><div class="footer-brand">'+escapeHtml((site.footer&&site.footer.about)||'')+'</div><div class="footer-links">'+links+'</div></div>'}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('navBrand').textContent=site.name||'AI Coding 经验库';
+  renderRecommend();renderBrowse();renderCommunity();renderFooter();
+  switchTab(location.hash||'#recommend');
+});
+</script>
+</body>
+</html>

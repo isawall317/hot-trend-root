@@ -1,0 +1,194 @@
+{
+  "name": "AI Coding 工具组合",
+  "tagline": "Claude Code + Cursor + Copilot... 工具太多不知道怎么搭配？饭庐者说帮你整理了 18 套实测好用的组合拳",
+  "domain": "aicoding-stack",
+  "logo": "AS",
+  "primaryColor": "#3b82f6",
+  "accentColor": "#60a5fa",
+  "blogger": {
+    "name": "饭庐者说",
+    "avatar": "FL",
+    "title": "AI 工具重度用户 / 独立博主",
+    "bio": "每天用 AI 编程工具写代码，试了上百种工具组合。踩过的坑比写过的代码还多，这里只推荐我实测过、真正提升效率的工具搭配。",
+    "platforms": [
+      {
+        "name": "公众号",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "小红书",
+        "handle": "饭庐者说",
+        "url": "#"
+      },
+      {
+        "name": "知乎",
+        "handle": "饭庐者说",
+        "url": "#"
+      }
+    ]
+  },
+  "header": {
+    "updateDate": "更新于 2026.07.22",
+    "highlights": "本周关注：Kimi K3 冲击 AI 编程工具格局，OpenSpec + Superpowers + gstack 三器合一成新标配，MonkeyCode 团队方案崛起",
+    "stats": [
+      {
+        "label": "工具组合",
+        "value": "18",
+        "unit": "套"
+      },
+      {
+        "label": "覆盖场景",
+        "value": "8",
+        "unit": "类"
+      },
+      {
+        "label": "本周新增",
+        "value": "3",
+        "unit": "套"
+      }
+    ]
+  },
+  "quickEntries": [
+    {
+      "id": "frontend",
+      "icon": "🎨",
+      "title": "前端开发",
+      "desc": "React / Vue / Tailwind 最佳搭配",
+      "filter": {
+        "scenario": "frontend"
+      }
+    },
+    {
+      "id": "backend",
+      "icon": "⚙️",
+      "title": "后端开发",
+      "desc": "API / 数据库 / 微服务",
+      "filter": {
+        "scenario": "backend"
+      }
+    },
+    {
+      "id": "fullstack",
+      "icon": "🚀",
+      "title": "全栈开发",
+      "desc": "一个人干所有事",
+      "filter": {
+        "scenario": "fullstack"
+      }
+    },
+    {
+      "id": "solo",
+      "icon": "🦾",
+      "title": "独立开发者",
+      "desc": "低成本 / 高效率 / 一人顶一队",
+      "filter": {
+        "scenario": "solo"
+      }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "must-have",
+      "title": "🔥 标配组合",
+      "subtitle": "每个 AI 编程用户都应该尝试的工具搭配",
+      "items": [
+        {
+          "comboId": "claude-superpowers",
+          "rating": 5,
+          "verdict": "目前最强的 AI 编程体验"
+        },
+        {
+          "comboId": "cursor-copilot",
+          "rating": 5,
+          "verdict": "编辑器内 AI 全覆盖"
+        },
+        {
+          "comboId": "vibe-coding",
+          "rating": 4,
+          "verdict": "快速原型和创意验证首选"
+        }
+      ]
+    },
+    {
+      "id": "frontend-group",
+      "title": "🎨 前端开发组合",
+      "subtitle": "React / Vue / Tailwind 开发提效",
+      "items": [
+        {
+          "comboId": "frontend-pro",
+          "rating": 5,
+          "verdict": "专业前端开发的最佳实践"
+        },
+        {
+          "comboId": "ui-prototype",
+          "rating": 4,
+          "verdict": "设计师 + 开发者协作"
+        }
+      ]
+    },
+    {
+      "id": "team-group",
+      "title": "👥 团队协作组合",
+      "subtitle": "多人项目、代码审查、CI/CD",
+      "items": [
+        {
+          "comboId": "team-standard",
+          "rating": 5,
+          "verdict": "中小团队标准配置"
+        },
+        {
+          "comboId": "enterprise",
+          "rating": 4,
+          "verdict": "企业级安全与合规"
+        }
+      ]
+    }
+  ],
+  "community": {
+    "free": {
+      "title": "这些工具都有返佣链接",
+      "subtitle": "点链接注册不影响你的价格",
+      "description": "本站推荐的 Cursor、GitHub Copilot、Claude Code 等工具均有 affiliate/referral 链接。你通过本站链接注册，工具方会给我返佣，但你的价格不变。",
+      "qrImage": "",
+      "highlights": [
+        "你的价格不受任何影响",
+        "返佣来自工具方，不是你",
+        "部分工具有本站专属优惠",
+        "推荐完全基于真实使用体验"
+      ],
+      "ctaText": "查看所有工具链接"
+    },
+    "paid": {
+      "title": "知识星球 · 工具配置内参",
+      "subtitle": "¥199/年（早鸟价 ¥99）",
+      "description": "独家配置文件模板、工具组合深度评测、每月 1 次工具链优化咨询。帮你把月费花在刀刃上。",
+      "highlights": [
+        "独家配置文件模板（直接可用）",
+        "工具组合深度评测",
+        "每月 1v1 工具链优化咨询",
+        "新工具第一时间上手实测"
+      ],
+      "ctaText": "加入知识星球",
+      "url": "#"
+    }
+  },
+  "disclosure": "本站部分工具链接为联盟推广/referral 链接，通过这些链接注册我可能获得返佣。你的价格不受任何影响，所有推荐均基于真实使用体验。",
+  "footer": {
+    "about": "AI Coding 工具组合 · 饭庐者说的 AI 编程工具选型指南",
+    "links": [
+      {
+        "label": "浏览全部",
+        "url": "#browse"
+      },
+      {
+        "label": "工具链接说明",
+        "url": "#community"
+      },
+      {
+        "label": "最新动态",
+        "url": "#updates"
+      }
+    ]
+  }
+}

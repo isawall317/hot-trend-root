@@ -1,0 +1,364 @@
+[
+  {
+    "id": "claude-superpowers",
+    "name": "Claude Code + Superpowers + OpenSpec",
+    "scenario": "fullstack",
+    "description": "目前最强的 AI 编程体验：Claude Code 作为主引擎，Superpowers 增强上下文理解，OpenSpec 确保需求清晰。适合全栈开发，从需求到部署一站式。",
+    "tools": [
+      {"name": "Claude Code", "role": "主编程助手", "url": "https://claude.ai"},
+      {"name": "Superpowers", "role": "上下文增强", "url": "https://github.com/anthropics/claude-code-superpowers"},
+      {"name": "OpenSpec", "role": "需求管理", "url": "https://github.com/community/openspec-claude"}
+    ],
+    "rating": 5,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["全栈", "必装", "SDD", "Claude Code"],
+    "pros": ["代码理解最深", "需求不跑偏", "上下文跨会话保持"],
+    "cons": ["需要 Claude Pro 订阅", "学习曲线较陡"],
+    "featured": true,
+    "trending": true,
+    "addedAt": "2026-07-15"
+  },
+  {
+    "id": "cursor-copilot",
+    "name": "Cursor + GitHub Copilot",
+    "scenario": "fullstack",
+    "description": "编辑器内 AI 全覆盖：Cursor 的 Tab 补全 + Copilot 的代码建议。两个 AI 互补，一个快一个深，覆盖编码全过程。",
+    "tools": [
+      {"name": "Cursor", "role": "AI 编辑器", "url": "https://cursor.sh"},
+      {"name": "GitHub Copilot", "role": "代码补全", "url": "https://github.com/features/copilot"}
+    ],
+    "rating": 5,
+    "difficulty": "入门",
+    "cost": "中等",
+    "tags": ["全栈", "编辑器", "代码补全", "Copilot"],
+    "pros": ["零配置开箱即用", "代码补全速度快", "编辑器体验流畅"],
+    "cons": ["两个订阅费用叠加", "Claude Code 深度不如终端版"],
+    "featured": true,
+    "trending": false,
+    "addedAt": "2026-06-01"
+  },
+  {
+    "id": "vibe-coding",
+    "name": "Vibe Coding 极速原型",
+    "scenario": "prototype",
+    "description": "适合快速原型和创意验证：用自然语言描述想法，AI 直接生成可运行的原型。不追求代码质量，只追求速度。",
+    "tools": [
+      {"name": "Claude Code", "role": "代码生成", "url": "https://claude.ai"},
+      {"name": "Vercel AI SDK", "role": "快速部署", "url": "https://sdk.vercel.ai"},
+      {"name": "v0 / Bolt", "role": "UI 原型", "url": "https://v0.dev"}
+    ],
+    "rating": 4,
+    "difficulty": "入门",
+    "cost": "免费",
+    "tags": ["原型", "快速开发", "MVP", "Vibe Coding"],
+    "pros": ["从想法到原型只需几分钟", "零配置部署", "适合验证想法"],
+    "cons": ["代码质量不高", "不适合正式项目", "项目结构标准化"],
+    "featured": true,
+    "trending": true,
+    "addedAt": "2026-07-10"
+  },
+  {
+    "id": "frontend-pro",
+    "name": "前端专业开发",
+    "scenario": "frontend",
+    "description": "专业前端开发的最佳实践：Claude Code 负责逻辑和组件，Cursor 负责快速编辑，UI Component Generator 生成组件。",
+    "tools": [
+      {"name": "Claude Code", "role": "逻辑与组件生成", "url": "https://claude.ai"},
+      {"name": "Cursor", "role": "快速编辑与补全", "url": "https://cursor.sh"},
+      {"name": "UI Component Gen", "role": "组件库生成", "url": "https://github.com/community/ui-component-gen"}
+    ],
+    "rating": 5,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["前端", "React", "Vue", "组件"],
+    "pros": ["组件生成质量高", "支持 shadcn/ui 等库", "编辑器补全+AI 深度协作"],
+    "cons": ["需要配置两个工具", "Cursor 与 Claude Code 有时冲突"],
+    "featured": true,
+    "trending": false,
+    "addedAt": "2026-06-15"
+  },
+  {
+    "id": "ui-prototype",
+    "name": "设计师 + 开发者协作",
+    "scenario": "ui",
+    "description": "设计师用 Figma 出设计，开发者用 Claude Code 将设计稿转代码，Design Review Skill 检查一致性。设计到代码的无缝衔接。",
+    "tools": [
+      {"name": "Figma", "role": "设计工具", "url": "https://figma.com"},
+      {"name": "Claude Code", "role": "设计稿转代码", "url": "https://claude.ai"},
+      {"name": "Design Review", "role": "UI 一致性检查", "url": "https://github.com/community/design-review-claude"}
+    ],
+    "rating": 4,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["UI", "设计", "Figma", "协作"],
+    "pros": ["设计到代码一致性高", "自动检查设计规范", "节省沟通成本"],
+    "cons": ["复杂交互仍需手动调整", "Figma 设计规范要求高"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-10"
+  },
+  {
+    "id": "backend-api",
+    "name": "后端 API 开发",
+    "scenario": "backend",
+    "description": "后端 API 开发最佳组合：Claude Code 负责业务逻辑，API Builder 快速生成端点，SQL Optimizer 优化数据库查询。",
+    "tools": [
+      {"name": "Claude Code", "role": "业务逻辑开发", "url": "https://claude.ai"},
+      {"name": "API Builder", "role": "API 脚手架", "url": "https://github.com/community/api-builder-claude"},
+      {"name": "SQL Optimizer", "role": "查询优化", "url": "https://github.com/community/sql-optimizer-claude"}
+    ],
+    "rating": 4,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["后端", "API", "数据库", "Node.js"],
+    "pros": ["API 开发速度快", "SQL 自动优化", "Swagger 文档自动生成"],
+    "cons": ["仅支持 Node.js 生态", "复杂业务逻辑需手动"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-20"
+  },
+  {
+    "id": "python-backend",
+    "name": "Python 后端 + 数据科学",
+    "scenario": "backend",
+    "description": "Python 生态的 AI 编程方案：用 Codex (ChatGPT) 或 Claude Code 写 Python，配合 FastAPI/Flask。适合数据科学和 ML 工程。",
+    "tools": [
+      {"name": "Codex (ChatGPT)", "role": "Python 代码生成", "url": "https://chatgpt.com"},
+      {"name": "Claude Code", "role": "复杂逻辑与架构", "url": "https://claude.ai"},
+      {"name": "Jupyter AI", "role": "数据分析", "url": "https://jupyter.org"}
+    ],
+    "rating": 4,
+    "difficulty": "入门",
+    "cost": "中等",
+    "tags": ["后端", "Python", "数据科学", "ML"],
+    "pros": ["Python 生态支持最好", "数据分析能力强", "两个 AI 互补"],
+    "cons": ["Codex Python 偏向旧版本", "Claude Code Python 支持不如 JS"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-25"
+  },
+  {
+    "id": "solo-indie",
+    "name": "独立开发者一条龙",
+    "scenario": "solo",
+    "description": "一个人干所有事的最佳方案：Claude Code 写代码，gstack 管 Git，Deploy Automation 一键部署，成本控制到最低。",
+    "tools": [
+      {"name": "Claude Code", "role": "主力开发", "url": "https://claude.ai"},
+      {"name": "gstack", "role": "Git 自动化", "url": "https://github.com/community/gstack"},
+      {"name": "Deploy Automation", "role": "一键部署", "url": "https://github.com/community/deploy-automation-claude"},
+      {"name": "Project Scaffolder", "role": "项目初始化", "url": "https://github.com/community/project-scaffold-claude"}
+    ],
+    "rating": 5,
+    "difficulty": "进阶",
+    "cost": "低成本",
+    "tags": ["独立开发", "全栈", "自动化", "一人公司"],
+    "pros": ["全流程覆盖", "自动化程度高", "成本可控"],
+    "cons": ["需要 Claude Pro 订阅", "所有环节依赖 AI 质量"],
+    "featured": true,
+    "trending": true,
+    "addedAt": "2026-07-01"
+  },
+  {
+    "id": "team-standard",
+    "name": "团队标准配置",
+    "scenario": "team",
+    "description": "中小团队（3-10 人）的 AI 编程标准配置：统一工具链、代码审查自动化、知识共享。平衡效率和质量。",
+    "tools": [
+      {"name": "Cursor", "role": "统一编辑器", "url": "https://cursor.sh"},
+      {"name": "GitHub Copilot", "role": "代码补全", "url": "https://github.com/features/copilot"},
+      {"name": "Code Reviewer", "role": "自动审查", "url": "https://github.com/anthropics/claude-code-reviewer"},
+      {"name": "PR Review Bot", "role": "PR 自动化", "url": "https://github.com/community/pr-review-bot"}
+    ],
+    "rating": 5,
+    "difficulty": "入门",
+    "cost": "中等",
+    "tags": ["团队", "协作", "代码审查", "PR"],
+    "pros": ["统一工具链", "代码审查自动化", "上手快"],
+    "cons": ["每人需要多个订阅", "自由选择工具受限"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-05"
+  },
+  {
+    "id": "enterprise",
+    "name": "企业安全合规",
+    "scenario": "team",
+    "description": "企业级 AI 编程方案：自部署 MonkeyCode 或使用企业版 Copilot，数据不出企业网络，符合安全合规要求。",
+    "tools": [
+      {"name": "MonkeyCode", "role": "自部署 AI 编程", "url": "https://github.com/community/monkeycode"},
+      {"name": "GitHub Copilot Enterprise", "role": "企业代码补全", "url": "https://github.com/features/copilot"},
+      {"name": "Env Manager", "role": "安全配置", "url": "https://github.com/community/env-manager-claude"}
+    ],
+    "rating": 4,
+    "difficulty": "专家",
+    "cost": "高",
+    "tags": ["企业", "安全", "私有部署", "合规"],
+    "pros": ["数据不出企业网络", "审计日志完善", "权限管理"],
+    "cons": ["部署复杂", "成本高", "需要运维支持"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-10"
+  },
+  {
+    "id": "codex-claude",
+    "name": "Codex + Claude Code 双引擎",
+    "scenario": "fullstack",
+    "description": "两个顶级 AI 编程工具双开：Codex 处理简单任务和快速补全，Claude Code 处理复杂架构和深度分析。用最合适的 AI 做最合适的事。",
+    "tools": [
+      {"name": "Codex (ChatGPT)", "role": "快速补全与简单任务", "url": "https://chatgpt.com"},
+      {"name": "Claude Code", "role": "复杂架构与深度分析", "url": "https://claude.ai"},
+      {"name": "OpenSpec", "role": "需求对齐", "url": "https://github.com/community/openspec-claude"}
+    ],
+    "rating": 5,
+    "difficulty": "进阶",
+    "cost": "高",
+    "tags": ["全栈", "双引擎", "Codex", "Claude Code"],
+    "pros": ["两个 AI 优势互补", "Codex 快 + Claude 深", "覆盖所有场景"],
+    "cons": ["两个订阅费用高", "需要切换工作流", "学习成本"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-15"
+  },
+  {
+    "id": "devops-automation",
+    "name": "DevOps 自动化",
+    "scenario": "devops",
+    "description": "DevOps 工程师的 AI 工具链：Claude Code 写 Infrastructure as Code，CLI Helper 生成命令，Dependency Updater 自动更新依赖。",
+    "tools": [
+      {"name": "Claude Code", "role": "IaC 编写", "url": "https://claude.ai"},
+      {"name": "CLI Helper", "role": "命令生成", "url": "https://github.com/community/cli-helper-claude"},
+      {"name": "Dependency Updater", "role": "依赖管理", "url": "https://github.com/community/dependency-updater"}
+    ],
+    "rating": 4,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["DevOps", "自动化", "IaC", "CI/CD"],
+    "pros": ["命令生成准确", "依赖更新自动化", "安全漏洞提醒"],
+    "cons": ["IaC 模板偏标准化", "不支持所有云平台"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-30"
+  },
+  {
+    "id": "docs-writing",
+    "name": "技术文档写作",
+    "scenario": "docs",
+    "description": "技术写作和文档维护：README Generator 生成项目文档，API Docs Generator 生成接口文档，Blog Writer 写技术博客。",
+    "tools": [
+      {"name": "README Generator", "role": "项目文档", "url": "https://github.com/community/readme-generator-claude"},
+      {"name": "API Docs Generator", "role": "接口文档", "url": "https://github.com/community/api-docs-generator"},
+      {"name": "Blog Writer", "role": "技术博客", "url": "https://github.com/community/blog-writer-claude"}
+    ],
+    "rating": 4,
+    "difficulty": "入门",
+    "cost": "免费",
+    "tags": ["文档", "写作", "开源", "博客"],
+    "pros": ["文档生成全面", "自动分析代码", "多平台格式"],
+    "cons": ["需要人工润色", "非标准项目可能出错"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-20"
+  },
+  {
+    "id": "oss-maintainer",
+    "name": "开源项目维护者",
+    "scenario": "oss",
+    "description": "开源项目维护者的 AI 工具包：Git Commit Helper 规范提交，PR Review Bot 自动审查，README Generator 维护文档，Dependency Updater 管理依赖。",
+    "tools": [
+      {"name": "Git Commit Helper", "role": "规范提交", "url": "https://github.com/community/git-commit-helper"},
+      {"name": "PR Review Bot", "role": "PR 审查", "url": "https://github.com/community/pr-review-bot"},
+      {"name": "README Generator", "role": "文档维护", "url": "https://github.com/community/readme-generator-claude"},
+      {"name": "Dependency Updater", "role": "依赖更新", "url": "https://github.com/community/dependency-updater"}
+    ],
+    "rating": 4,
+    "difficulty": "入门",
+    "cost": "免费",
+    "tags": ["开源", "维护", "自动化", "社区"],
+    "pros": ["自动化程度高", "免费工具为主", "社区协作友好"],
+    "cons": ["小型项目可能用不上", "需要 GitHub Actions 配合"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-01"
+  },
+  {
+    "id": "learning-path",
+    "name": "AI 编程学习路径",
+    "scenario": "learning",
+    "description": "新手入门 AI 编程的推荐路径：从 GitHub Copilot 开始，逐步过渡到 Cursor，最后进阶到 Claude Code。难度递进，不劝退。",
+    "tools": [
+      {"name": "GitHub Copilot", "role": "第一步：代码补全", "url": "https://github.com/features/copilot"},
+      {"name": "Cursor", "role": "第二步：AI 编辑器", "url": "https://cursor.sh"},
+      {"name": "Claude Code", "role": "第三步：深度 AI 编程", "url": "https://claude.ai"}
+    ],
+    "rating": 5,
+    "difficulty": "入门",
+    "cost": "低成本",
+    "tags": ["学习", "入门", "新手", "进阶路线"],
+    "pros": ["难度递进合理", "每步都有免费试用", "社区资源丰富"],
+    "cons": ["需要逐步升级工具", "学习路径因人而异"],
+    "featured": true,
+    "trending": false,
+    "addedAt": "2026-05-20"
+  },
+  {
+    "id": "mobile-dev",
+    "name": "移动端开发",
+    "scenario": "mobile",
+    "description": "React Native / Flutter 移动端开发的 AI 工具链：Claude Code 写逻辑，Cursor 快速编辑，UI Component Gen 生成移动端组件。",
+    "tools": [
+      {"name": "Claude Code", "role": "核心逻辑开发", "url": "https://claude.ai"},
+      {"name": "Cursor", "role": "快速编辑", "url": "https://cursor.sh"},
+      {"name": "Expo / Flutter", "role": "移动端框架", "url": "https://expo.dev"}
+    ],
+    "rating": 4,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["移动端", "React Native", "Flutter", "跨平台"],
+    "pros": ["跨平台开发效率高", "AI 对 RN 支持好", "Expo 热更新方便"],
+    "cons": ["原生功能受限", "性能不如原生开发"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-25"
+  },
+  {
+    "id": "academic-research",
+    "name": "学术研究助手",
+    "scenario": "research",
+    "description": "学术研究者的 AI 工具链：Academic Helper 处理文献，Claude Code 辅助实验代码，Blog Writer 辅助论文写作。",
+    "tools": [
+      {"name": "Academic Helper", "role": "文献检索与总结", "url": "https://github.com/community/academic-helper-claude"},
+      {"name": "Claude Code", "role": "实验代码与数据分析", "url": "https://claude.ai"},
+      {"name": "Blog Writer", "role": "论文辅助写作", "url": "https://github.com/community/blog-writer-claude"}
+    ],
+    "rating": 4,
+    "difficulty": "入门",
+    "cost": "低成本",
+    "tags": ["学术", "研究", "论文", "文献"],
+    "pros": ["文献总结质量高", "LaTeX 支持好", "实验设计建议实用"],
+    "cons": ["专业领域知识有限", "需要联网检索配合"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-15"
+  },
+  {
+    "id": "tdd-quality",
+    "name": "TDD 质量保障",
+    "scenario": "quality",
+    "description": "测试驱动开发 + AI 代码审查：TDD Workflow 强制测试先行，Test Generator 自动生成测试，Code Reviewer 检查代码质量。三层质量保障。",
+    "tools": [
+      {"name": "TDD Workflow", "role": "测试驱动流程", "url": "https://github.com/community/tdd-workflow-claude"},
+      {"name": "Test Generator", "role": "自动生成测试", "url": "https://github.com/community/test-generator-claude"},
+      {"name": "Code Reviewer", "role": "代码审查", "url": "https://github.com/anthropics/claude-code-reviewer"}
+    ],
+    "rating": 4,
+    "difficulty": "进阶",
+    "cost": "中等",
+    "tags": ["测试", "TDD", "质量", "代码审查"],
+    "pros": ["测试覆盖率自动提升", "三层质量保障", "重构更安全"],
+    "cons": ["学习曲线陡", "小项目开销大", "TDD 纪律要求高"],
+    "featured": false,
+    "trending": false,
+    "addedAt": "2026-06-10"
+  }
+]

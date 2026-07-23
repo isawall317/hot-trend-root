@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding 工具对比 - 饭庐者说的 AI 编程工具选型指南</title>
+<meta name="description" content="Claude Code、Cursor、Copilot、Trae... 20+ 款 AI 编程工具，从 12 个维度帮你比清楚到底该用哪个，覆盖 8 大场景。">
+<style>
+{{STYLE}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">CT</span></a>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
+      <a href="#browse" class="nav-tab" data-tab="browse">浏览</a>
+      <a href="#community" class="nav-tab" data-tab="community">社群</a>
+    </div>
+    <a href="#community" class="nav-cta">加入社群</a>
+  </div>
+</nav>
+
+<main>
+  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
+  <section id="tab-browse" class="tab-panel"><div class="container" id="browse-body"></div></section>
+  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+</main>
+
+<footer class="footer"><div class="container" id="footer-body"></div></footer>
+
+<script id="cp-data" type="application/json">{{DATA}}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('cp-data').textContent);
+const { site, tools, changes } = DATA;
+{{SCRIPTS}}
+</script>
+</body>
+</html>
