@@ -204,7 +204,7 @@
   "vendor": "智谱AI",                   // 对齐 vendors.json 的 name
   "vendorId": "zhipu",                  // 对齐 vendors.json 的 id
   "plan": "Pro",
-  "type": "Coding Plan",                // 枚举: Coding Plan | Token Plan
+  "type": "Coding Plan",                // 枚举: Coding Plan | Token Plan | API 按量 | Agent Plan
   "tier": "pro",                        // 枚举: lite | pro | max（便于分组排序）
   "monthlyPrice": 149,
   "currency": "¥",                      // ¥ | $
@@ -213,6 +213,21 @@
   "models": ["GLM-5.1", "GLM-5.2"],
   "monthlyRequests": 120000,            // Coding Plan 才有
   "tokenLimit": null,                   // Token Plan 才有（字符串如 "10M Tokens" 或 null）
+
+### `type` 枚举与分类逻辑
+
+| type | 含义 | 计费方式 | 典型厂商 | 适用场景 |
+|------|------|---------|---------|---------|
+| `Coding Plan` | 月订阅，专用于 AI 编程 | 固定月费 | 智谱/腾讯云/Claude/GitHub/Kimi/字节 | Claude Code / Cursor / Codex 用户 |
+| `Token Plan` | 月订阅，给 token 额度池，通用场景 | 固定月费 | MiniMax/阿里百炼/小米·MiMo | 通用 AI 调用，不限编程 |
+| `API 按量` | 无月费，按 token 消耗付费 | 按量后付费 | DeepSeek/OpenRouter/硅基流动 | 弹性用量，测试，不确定用量 |
+| `Agent Plan` | 月订阅，专用于 AI Agent 工作流 | 固定月费 | 字节方舟（Agent Plan） | 构建 AI Agent，MCP/工具调用 |
+
+**分类决策树：**
+1. 有月费吗？→ 无 → `API 按量`
+2. 专用于编程（含 Claude Code/Cursor 等工具）？→ 是 → `Coding Plan`
+3. 专用于 Agent 工作流？→ 是 → `Agent Plan`
+4. 通用 token 额度池 → `Token Plan`
   "measuredMonthlyToken": 600,          // token_estimator 自动补（单位 M）
   "tags": ["模型强", "需抢购"],          // 字符串数组
   "bloggerVerdict": "我的主力套餐...",   // 博主点评

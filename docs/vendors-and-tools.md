@@ -25,6 +25,7 @@
 | mimo | 小米·MiMo | platform.xiaomimomo.com/token-plan | xiaomimomo.com | manual | platform.xiaomimomo.com?ref=NB2PJ5 | V2.5 已上线；注册推广，双方各得 ¥10 体验金 + 首单 9 折；MiMoCode: mimo.xiaomi.com/zh/mimocode；API 按量: mimo.mi.com/docs/zh-CN/price/pay-as-you-go |
 | opencode | OpenCode | opencode.ai/zh/go | opencode.ai | manual | 待添加 | 待确认提取策略 |
 | jd | 京东云 | jdcloud.com/cn/pages/codingplan | jdcloud.com | manual | 待添加 | 待确认 |
+| baidu | 百度·千帆 | console.bce.baidu.com/qianfan/resource/token-plan | qianfan.baidubce.com | manual | 待添加 | 需登录控制台；文档: cloud.baidu.com/doc/qianfan/s/token-plan |
 
 提取策略：`Playwright` = 渲染 SPA 后解析 | `BS4 静态` = 直接解析文档页 | `manual` = 人工定期检查
 
