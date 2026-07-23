@@ -14,6 +14,11 @@ config.yaml
 # Hot Trend — 采集数据（不跟踪，数据量大且频繁变化）
 data/raw/
 data/archive/
+# KB baseline 快照（每次 pipeline 跑都会变，属运行时状态）
+data/knowledge-base/.last-run/
+
+# 编辑器配置
+.obsidian/
 
 # 外部工具源码（独立 clone 的仓库，不进主仓库）
 reference/codingplan/
