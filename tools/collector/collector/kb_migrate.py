@@ -16,7 +16,7 @@ from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-KB_DIR = PROJECT_ROOT / "data" / "knowledge-base"
+KB_DIR = PROJECT_ROOT / "aikb" / "database"
 
 # ── 源数据路径 ────────────────────────────────────────────
 OLD_VENDORS = PROJECT_ROOT / "project" / "codingplan-saver" / "data" / "vendors.json"

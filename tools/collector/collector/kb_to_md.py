@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-KB_DIR = PROJECT_ROOT / "data" / "knowledge-base"
+KB_DIR = PROJECT_ROOT / "aikb" / "database"
 OUTPUT = PROJECT_ROOT / "docs" / "vendors-and-tools.md"
 
 AUTO_START = "<!-- KB-AUTO-START -->"

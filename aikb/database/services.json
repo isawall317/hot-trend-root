@@ -1,0 +1,928 @@
+[
+  {
+    "id": "zhipu-coding-plan",
+    "vendorId": "zhipu",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": 46.55,
+        "monthlyRequests": 24000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 120,
+        "rating": 5,
+        "models": [
+          "GLM-4",
+          "GLM-4-0520",
+          "GLM-4-9B",
+          "GLM-4-Air",
+          "GLM-4-Air-250414",
+          "GLM-4-AirX",
+          "GLM-4-Flash",
+          "GLM-4-Flash-250414",
+          "GLM-4-Plus",
+          "GLM-4-Voice",
+          "GLM-4.1V-Thinking-Flash",
+          "GLM-4.5",
+          "GLM-4.5-Air",
+          "GLM-4.5V",
+          "GLM-4.6",
+          "GLM-4.6V",
+          "GLM-4.6V-FlashX",
+          "GLM-4.7",
+          "GLM-4.7-FlashX",
+          "GLM-4V",
+          "GLM-4V-Flash",
+          "GLM-4V-Plus",
+          "GLM-4V-Plus-0111",
+          "GLM-5",
+          "GLM-5-Turbo",
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5V-Turbo",
+          "GLM-ASR"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "我自己的入门套餐。3 倍 Claude Pro 用量，写代码完全够用。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 149,
+        "currency": "¥",
+        "firstMonthPrice": 141.55,
+        "monthlyRequests": 120000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 600,
+        "rating": 5,
+        "models": [
+          "GLM-4",
+          "GLM-4-0520",
+          "GLM-4-9B",
+          "GLM-4-Air",
+          "GLM-4-Air-250414",
+          "GLM-4-AirX",
+          "GLM-4-Flash",
+          "GLM-4-Flash-250414",
+          "GLM-4-Plus",
+          "GLM-4-Voice",
+          "GLM-4.1V-Thinking-Flash",
+          "GLM-4.5",
+          "GLM-4.5-Air",
+          "GLM-4.5V",
+          "GLM-4.6",
+          "GLM-4.6V",
+          "GLM-4.6V-FlashX",
+          "GLM-4.7",
+          "GLM-4.7-FlashX",
+          "GLM-4V",
+          "GLM-4V-Flash",
+          "GLM-4V-Plus",
+          "GLM-4V-Plus-0111",
+          "GLM-5",
+          "GLM-5-Turbo",
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5V-Turbo",
+          "GLM-ASR"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "我的主力套餐，5 倍 Lite 用量。重度开发必备。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 469,
+        "currency": "¥",
+        "firstMonthPrice": 445.55,
+        "monthlyRequests": 480000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 2400,
+        "rating": 5,
+        "models": [
+          "GLM-4",
+          "GLM-4-0520",
+          "GLM-4-9B",
+          "GLM-4-Air",
+          "GLM-4-Air-250414",
+          "GLM-4-AirX",
+          "GLM-4-Flash",
+          "GLM-4-Flash-250414",
+          "GLM-4-Plus",
+          "GLM-4-Voice",
+          "GLM-4.1V-Thinking-Flash",
+          "GLM-4.5",
+          "GLM-4.5-Air",
+          "GLM-4.5V",
+          "GLM-4.6",
+          "GLM-4.6V",
+          "GLM-4.6V-FlashX",
+          "GLM-4.7",
+          "GLM-4.7-FlashX",
+          "GLM-4V",
+          "GLM-4V-Flash",
+          "GLM-4V-Plus",
+          "GLM-4V-Plus-0111",
+          "GLM-5",
+          "GLM-5-Turbo",
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5V-Turbo",
+          "GLM-ASR"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "20 倍 Lite 用量。适合团队或重度 agentic 使用。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "⚠️ 连续涨价 200%+，未更名，变相逼用户转 API",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-zhipu"
+  },
+  {
+    "id": "minimax-token-plan",
+    "vendorId": "minimax",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "新Plus",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": 44.1,
+        "monthlyRequests": 60000,
+        "tokenLimit": "600M Tokens",
+        "measuredMonthlyToken": 600,
+        "rating": 5,
+        "models": [
+          "MiniMax-M3",
+          "MiniMax-M2.7",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "无需抢购",
+          "多模态"
+        ],
+        "bloggerVerdict": "额度最高 + 不抢购，养龙虾 / 长任务首选。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "新Max",
+        "monthlyPrice": 119,
+        "currency": "¥",
+        "firstMonthPrice": 107.1,
+        "monthlyRequests": 180000,
+        "tokenLimit": "1800M Tokens",
+        "measuredMonthlyToken": 1800,
+        "rating": 5,
+        "models": [
+          "MiniMax-M3",
+          "MiniMax-M2.7",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "无需抢购",
+          "多模态"
+        ],
+        "bloggerVerdict": "MiniMax 中档主力，重度使用者的甜点档位。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "新Ultra",
+        "monthlyPrice": 469,
+        "currency": "¥",
+        "firstMonthPrice": 422.1,
+        "monthlyRequests": 600000,
+        "tokenLimit": "7100M Tokens",
+        "measuredMonthlyToken": 7100,
+        "rating": 5,
+        "models": [
+          "MiniMax-M3",
+          "MiniMax-M2.7",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "无需抢购",
+          "多模态"
+        ],
+        "bloggerVerdict": "团队 / 多人共享场景的最高档。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-03)",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-minimax"
+  },
+  {
+    "id": "bytedance-coding-plan",
+    "vendorId": "bytedance",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": 9.4,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 250,
+        "rating": 5,
+        "models": [
+          "GLM-5.1",
+          "GLM-5.2",
+          "MiniMax-M3",
+          "Kimi-K3",
+          "DeepSeek-V4-Pro",
+          "Doubao-Seed-2.0"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "全家桶入门档，首月 9.4 元试水很划算。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": 47.4,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 1249,
+        "rating": 5,
+        "models": [
+          "GLM-5.1",
+          "GLM-5.2",
+          "MiniMax-M3",
+          "Kimi-K3",
+          "DeepSeek-V4-Pro",
+          "Doubao-Seed-2.0"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "全家桶主力档，2.5 折活动进行中，性价比拉满。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "request",
+    "migration": "次数包装，实质 Token 挂钩",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "kimi-coding-plan",
+    "vendorId": "kimi",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "Allegretto",
+        "monthlyPrice": 199,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 1428,
+        "rating": 4,
+        "models": [
+          "Kimi-K2.6",
+          "Kimi-K2.7-Code",
+          "Kimi-K3",
+          "moonshot-v1-128k",
+          "moonshot-v1-128k-vision-preview",
+          "moonshot-v1-32k",
+          "moonshot-v1-32k-vision-preview",
+          "moonshot-v1-8k",
+          "moonshot-v1-8k-vision-preview"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "20 倍额度档，长上下文场景无可替代。⚠️ 7.20 起暂停新用户订阅。",
+        "status": "paused"
+      },
+      {
+        "tier": "lite",
+        "name": "Andante",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 84,
+        "rating": 4,
+        "models": [
+          "Kimi-K2.6",
+          "Kimi-K2.7-Code",
+          "Kimi-K3",
+          "moonshot-v1-128k",
+          "moonshot-v1-128k-vision-preview",
+          "moonshot-v1-32k",
+          "moonshot-v1-32k-vision-preview",
+          "moonshot-v1-8k",
+          "moonshot-v1-8k-vision-preview"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "Kimi 入门档，Agent 4 倍速，体验原生 Kimi-K3。⚠️ 7.20 起暂停新用户订阅。",
+        "status": "paused"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "内核 Token 计量 (2026-01)，保留订阅名",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-kimi"
+  },
+  {
+    "id": "bailian-coding-plan",
+    "vendorId": "bailian",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 3000,
+        "rating": 5,
+        "models": [
+          "Qwen-3.7-Plus",
+          "Qwen-3.6-Plus",
+          "GLM-5",
+          "Kimi-K2.5",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高",
+          "需抢购"
+        ],
+        "bloggerVerdict": "3000M Token 月额度，写代码 + 通用任务兼顾。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-04)",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "deepseek-token-plan",
+    "vendorId": "deepseek",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "虚拟套餐 40",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "无限制",
+        "tokenLimit": "105M Tokens",
+        "measuredMonthlyToken": 105,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V4-Pro",
+          "deepseek-v4-pro"
+        ],
+        "tags": [
+          "性价比高",
+          "无需抢购"
+        ],
+        "bloggerVerdict": "原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "虚拟套餐 200",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "无限制",
+        "tokenLimit": "527M Tokens",
+        "measuredMonthlyToken": 527,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V4-Pro",
+          "deepseek-v4-pro"
+        ],
+        "tags": [
+          "性价比高",
+          "无需抢购"
+        ],
+        "bloggerVerdict": "原生 DeepSeek 重度档，527M Token。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-22",
+    "source": "extracted-deepseek"
+  },
+  {
+    "id": "tencent-coding-plan",
+    "vendorId": "tencent",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 90000,
+        "tokenLimit": "100M Tokens",
+        "measuredMonthlyToken": 600,
+        "rating": 3,
+        "models": [
+          "GLM-5.1",
+          "Kimi-K2.5",
+          "MiniMax-M2.7"
+        ],
+        "tags": [
+          "模型强",
+          "兼容 Claude Code"
+        ],
+        "bloggerVerdict": "TokenHub Token Plan，比 API 按量便宜 50-80%。100M Token 仅 200 轮问答，性价比偏低。",
+        "status": "active"
+      },
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 18000,
+        "tokenLimit": null,
+        "measuredMonthlyToken": 120,
+        "rating": 3,
+        "models": [
+          "DeepSeek-V4",
+          "GLM-5.2"
+        ],
+        "tags": [
+          "性价比高",
+          "无需抢购"
+        ],
+        "bloggerVerdict": "入门便宜，适合轻度用户。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-tencent"
+  },
+  {
+    "id": "claude-coding-plan",
+    "vendorId": "claude",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Pro",
+        "monthlyPrice": 20,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 416,
+        "rating": 4,
+        "models": [
+          "Claude Sonnet 4.6",
+          "Claude Opus 4.7",
+          "Claude Opus 4.6",
+          "Claude Haiku 4.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "原生 Claude 党的底线选项，第三方 Agent 不可用。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 100,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 800,
+        "rating": 4,
+        "models": [
+          "Fable",
+          "Opus",
+          "Sonnet",
+          "Haiku"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "5x Pro 用量，早鸟优先体验新功能。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "原生 Token 计量",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-claude"
+  },
+  {
+    "id": "codex-coding-plan",
+    "vendorId": "codex",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Plus",
+        "monthlyPrice": 20,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 480,
+        "rating": 5,
+        "models": [
+          "GPT-5.6",
+          "GPT-5.5",
+          "GPT-5.4",
+          "GPT-5.3-Codex",
+          "GPT-5.2"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "GPT-5.6 原生体验，海外党首选。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "原生 Token 计量",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "github-token-plan",
+    "vendorId": "github",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Free",
+        "monthlyPrice": 0,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": null,
+        "rating": 5,
+        "models": [
+          "GPT-5.2-Codex",
+          "GPT-4.1",
+          "GPT-5-mini",
+          "Gemini 3.1 Pro",
+          "Claude Haiku 4.5"
+        ],
+        "tags": [
+          "性价比高",
+          "学生认证"
+        ],
+        "bloggerVerdict": "学生党白嫖神器，认证后高级模型 300 次。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-22",
+    "source": "extracted-github"
+  },
+  {
+    "id": "github-coding-plan",
+    "vendorId": "github",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Copilot Pro",
+        "monthlyPrice": 10,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 30,
+        "rating": 3,
+        "models": [
+          "GPT-5.3-Codex",
+          "GPT-5.4",
+          "Claude Sonnet 4.6",
+          "Gemini 3.1 Pro"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "$10 拿到主流模型全家桶，海外账号党推荐。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro+",
+        "monthlyPrice": 39,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 200,
+        "rating": 4,
+        "models": [
+          "GPT-5.2-Codex",
+          "Opus",
+          "GPT-5.1",
+          "Gemini 3.1 Pro"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "含 Opus 模型，重度用户升级首选。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 100,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 500,
+        "rating": 4,
+        "models": [
+          "GPT-5.2-Codex",
+          "Opus",
+          "GPT-5.1",
+          "Gemini 3.1 Pro"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "最高用量，适合重度 Agent 工作流。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "原生 Token 计量",
+    "updatedAt": "2026-07-23",
+    "source": "extracted-github"
+  },
+  {
+    "id": "mimo-token-plan",
+    "vendorId": "mimo",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 39,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "3M Tokens",
+        "measuredMonthlyToken": 108,
+        "rating": 3,
+        "models": [
+          "MiMo-V2.5-Pro",
+          "MiMo-V2.5",
+          "MiMo-V2.5-ASR",
+          "MiMo-V2.5-TTS"
+        ],
+        "tags": [],
+        "bloggerVerdict": "小米生态，价格低但模型少。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 329,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "30M Tokens",
+        "measuredMonthlyToken": 1002,
+        "rating": 3,
+        "models": [
+          "MiMo-V2.5-Pro",
+          "MiMo-V2.5",
+          "MiMo-V2.5-ASR",
+          "MiMo-V2.5-TTS"
+        ],
+        "tags": [],
+        "bloggerVerdict": "高用量，但模型选择少。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "Token Plan，V2→V2.5 迁移中",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "openrouter-api-paygo",
+    "vendorId": "openrouter",
+    "type": "api-paygo",
+    "name": "API 按量",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "按量付费",
+        "monthlyPrice": null,
+        "currency": "$",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "按量",
+        "measuredMonthlyToken": null,
+        "rating": 4,
+        "models": [
+          "400+ 模型",
+          "70+ 厂商"
+        ],
+        "tags": [
+          "覆盖最全",
+          "统一 API",
+          "无月费"
+        ],
+        "bloggerVerdict": "终极比价工具，一套 API 通吃全球模型，+5.5% 平台费。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "原生 Token 按量",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "siliconflow-api-paygo",
+    "vendorId": "siliconflow",
+    "type": "api-paygo",
+    "name": "API 按量",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "按量付费",
+        "monthlyPrice": null,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "按量",
+        "measuredMonthlyToken": null,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V4",
+          "GLM-5.2",
+          "Kimi-K3",
+          "MiniMax-M3",
+          "Qwen-3.8"
+        ],
+        "tags": [
+          "国内聚合",
+          "实时价格",
+          "多厂商"
+        ],
+        "bloggerVerdict": "国内版 OpenRouter，统一 API 接入国产模型，适合国内网络环境。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "原生 Token 按量",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  },
+  {
+    "id": "baidu-coding-plan",
+    "vendorId": "baidu",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 99,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "4200万 Token",
+        "measuredMonthlyToken": 42,
+        "rating": 3,
+        "models": [
+          "ERNIE-4.5",
+          "ERNIE-Speed",
+          "DeepSeek-V4",
+          "GLM-5.2"
+        ],
+        "tags": [
+          "多模型",
+          "无高峰限流"
+        ],
+        "bloggerVerdict": "Coding Plan 升级为 Token Plan，取消限流+多模型，老用户顺延1个月。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 199,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "2.3亿 Token",
+        "measuredMonthlyToken": 230,
+        "rating": 3,
+        "models": [
+          "ERNIE-4.5",
+          "ERNIE-Speed",
+          "DeepSeek-V4",
+          "GLM-5.2"
+        ],
+        "tags": [
+          "多模型",
+          "无高峰限流",
+          "高频开发"
+        ],
+        "bloggerVerdict": "Pro 档升级为 2.3亿 Token，取消高峰限流，适合高频开发。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "→ Token Plan (2026-07)，旧权益平移+顺延1月",
+    "updatedAt": "2026-07-23",
+    "source": "manual"
+  }
+]

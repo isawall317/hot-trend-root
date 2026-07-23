@@ -58,17 +58,16 @@ cd tools/collector && uv run python -m collector.pipeline
 ```
 hot-trend-root/
 ├── CLAUDE.md                     # 本文件
+├── aikb/                         # 🆕 AI 知识库（Obsidian 兼容，MD 真相源）
+│   ├── index.md                  #   导航索引
+│   ├── vendors/                  #   厂商画像（14 家，每家一个 MD）
+│   ├── tools/                    #   工具详情（31 款，每款一个 MD）
+│   └── database/                 #   结构化 JSON（md_to_json.py 自动生成）
 ├── docs/                         # 项目文档
 │   ├── data-architecture.md      # 数据体系总地图
-│   └── vendors-and-tools.md      # 厂商/工具目录（由 KB JSON 自动生成）
+│   └── vendors-and-tools.md      # 厂商/工具一览表（由 kb_to_md.py 自动生成）
 ├── .claude/skills/               # 6 个技能定义
 ├── data/
-│   ├── knowledge-base/           # 🆕 统一厂商知识库（唯一真相源）
-│   │   ├── vendors.json          #   厂商画像
-│   │   ├── services.json         #   服务/套餐
-│   │   ├── tools.json            #   AI 编程工具
-│   │   ├── models.json           #   模型清单
-│   │   └── changes.json          #   变更时间线
 │   ├── raw/                      # 热点原始数据
 │   ├── signals/                  # 价格/文章信号
 │   └── pending/                  # 待审阅候选

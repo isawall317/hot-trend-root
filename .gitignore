@@ -15,7 +15,7 @@ config.yaml
 data/raw/
 data/archive/
 # KB baseline 快照（每次 pipeline 跑都会变，属运行时状态）
-data/knowledge-base/.last-run/
+aikb/database/.last-run/
 
 # 编辑器配置
 .obsidian/
