@@ -4,87 +4,94 @@
 
 从全网热点中自动发现**细分赛道利基** → AI 深度分析 → 快速验证 → 小软件产品变现。
 
+当前核心产品：
+- **CodingPlan 省钱攻略** ([codingplan.fyi](https://www.codingplan.fyi)) — 29 家 AI 模型厂商 Coding Plan / Token Plan 对比
+- **AI Coding 工具对比** (开发中) — 18 款 AI 编程工具横向评测
+
 **我不是在找热点新闻，而是在找可商业化的需求缺口。**
 
-## 架构
+## 架构概览
 
 ```
-采集层                    Claude Code 分析层              执行层
-DailyHotApi (40+平台)  →   /scan 热点扫描     →   机会卡
-RSSHub (500+源)        →   /analyze 利基分析  →   /validate 验证
-     ↓                      ↓                      ↓
-Python collector 归一化     Claude Code 直接读取     Claude Code 开发产品
-     ↓
-data/raw/YYYY-MM-DD/*.json
+数据源 → 采集 → 存储 → 审阅 → 构建 → 交付
+  │        │       │       │       │       │
+  │    engine.py  raw/  Claude   build.py  dist/
+  │    sources/   signals/ Code   template/ *.html
+  │    pipeline   pending/ 审阅
+  │
+DailyHotApi (40+平台) + RSSHub (500+源) + 11 家厂商定价页
 ```
 
-> 采集源 DailyHotApi 和 RSSHub 已手动部署在本地（或使用 Vercel 公共 API 降级），无需 Docker。
+> 详细数据流、模块职责、更新流程 → [`docs/data-architecture.md`](docs/data-architecture.md)
 
 ## 技能
 
-### /codingplan-page — 生成 CodingPlan 省钱攻略 HTML
+| 技能 | 触发 | 用途 |
+|------|------|------|
+| `/scan` | `scan` / `扫描热点` | 热点扫描 + 初筛，识别利基信号 |
+| `/analyze` | `analyze` / `分析` | 利基深度分析 + 6 维评分 |
+| `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
+| `/codingplan-page` | 或 `build` / `update` | CodingPlan 数据更新 + HTML 生成 |
 
-每次生成自动拉取最新数据，确保信息新鲜。
+> 详细执行流程见 `.claude/skills/{name}/SKILL.md`
+
+## 日常操作
 
 ```bash
-# 一键全量更新: 采集 → 审阅 → 生成 HTML
-/codingplan-page
-# 输出: dist/codingplan-saver-{YYYY-MM-DD-HHMM}.html
-```
+# 采集数据（每天 2-3 次，或 CronCreate 定时）
+cd tools/collector && uv run python -m collector.pipeline
 
-详见 `.claude/skills/codingplan-page/SKILL.md`
+# 一键全量更新 CodingPlan 页面（采集 → 审阅 → 生成 HTML）
+/codingplan-page
+
+# 单独审阅候选文章，更新 changes.json
+/codingplan-page update
+
+# 扫描信号（只读报告，不动 JSON）
+/codingplan-page scan
+```
 
 ## 目录结构
 
 ```
 hot-trend-root/
-├── CLAUDE.md                  # 本文件
-├── .claude/
-│   ├── skills/                # Claude Code skills
-│   │   ├── scan/SKILL.md      # 热点扫描 + 初筛
-│   │   ├── analyze/SKILL.md   # 利基深度分析 + 6维评分
-│   │   ├── validate/SKILL.md  # 快速验证 + Go/No-Go
-│   │   └── codingplan-page/SKILL.md  # CodingPlan 省钱攻略生成
-│   └── workflows/
+├── CLAUDE.md                     # 本文件
+├── docs/                         # 项目文档
+│   ├── data-architecture.md      # 数据体系总地图
+│   └── vendors-and-tools.md      # 厂商/工具唯一真相源
+├── .claude/skills/               # 4 个技能定义
 ├── tools/
-│   ├── collector/             # Python 数据采集聚合器
-│   │   ├── collector/
-│   │   │   ├── engine.py      # 采集引擎
-│   │   │   ├── storage.py     # 存储/读取
-│   │   │   └── pipeline.py    # 数据管道
-│   │   └── pyproject.toml
-│   └── builder/               # HTML 构建器
-│       └── build.py
-├── data/
-│   ├── raw/                   # 原始采集数据（.gitignore）
-│   ├── pending/               # 候选变更（待 Claude Code 审阅）
-│   ├── cards/                 # 机会卡（git 跟踪）
-│   ├── signals/               # 价格/文章信号
-│   └── archive/               # 历史归档
-├── reference/                 # 用户画像/参考资料
-└── project/                   # 已孵化项目
-    └── codingplan-saver/      # CodingPlan 省钱攻略
+│   ├── collector/                # Python 数据采集管道
+│   └── builder/build.py          # HTML 构建器
+├── data/                         # 采集数据（raw/signals/pending/cards）
+├── project/                      # 7 个孵化项目
+│   ├── codingplan-saver/         # 🟢 核心产品
+│   ├── coding-tools/             # 🟡 开发中
+│   ├── agent-patterns/           # 🟡 开发中
+│   ├── aicoding-stack/           # 🟡 开发中
+│   ├── aicoding-tips/            # 🟡 开发中
+│   ├── ccskills-market/          # 🟡 开发中
+│   └── model-picker/             # 🟡 开发中
+├── dist/                         # HTML 交付物
+└── reference/                    # 参考资料（用户画像）
 ```
 
-## 日常使用流程
+## 文档入口
 
-### 1. 采集服务（已部署，无需操作）
+| 想知道什么 | 去看 |
+|-----------|------|
+| 数据从哪来、怎么采、存哪里、谁在用 | [`docs/data-architecture.md`](docs/data-architecture.md) |
+| 有哪些厂商/工具、URL、提取策略、推广链接 | [`docs/vendors-and-tools.md`](docs/vendors-and-tools.md) |
+| plans.json / changes.json 字段定义 | [`project/codingplan-saver/data/SCHEMA.md`](project/codingplan-saver/data/SCHEMA.md) |
+| codingplan-page 完整操作流程 | [`.claude/skills/codingplan-page/SKILL.md`](.claude/skills/codingplan-page/SKILL.md) |
 
-DailyHotApi 和 RSSHub 已手动部署在本地。采集引擎会自动检测本地服务，不可达时降级到 Vercel 公共 API。
+## 关键原则
 
-### 2. 采集数据（每天 2-3 次，或 CronCreate 定时）
-```bash
-cd tools/collector && uv run python -m collector.engine
-```
-
-### 3. 使用 Claude Code 分析
-- 说 `/scan` 或 "扫描一下最近热点" → 自动读取 data/raw/ 最新数据，聚类筛选
-- 说 `/analyze` 或 "分析这个利基" → 对感兴趣的信号做深度分析+评分
-- 说 `/validate` 或 "验证这个方向" → 竞品调研+种子验证+Go/No-Go
-
-### 4. 开发产品
-- 机会卡进入 🟢 开发中 → Claude Code 直接开发 MVP
-- 目标：每个 MVP 不超过 10h AI 辅助开发时间
+- **需求优先** — 先确认有人在找解决方案，再考虑怎么解决
+- **数据驱动** — 让采集数据说话，不做主观判断
+- **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
+- **快速验证** — 不要完美，先验证再打磨
+- **文档即真相** — 新增厂商/工具先改 `docs/vendors-and-tools.md`，数据流变化先改 `docs/data-architecture.md`
 
 ## 用户画像（Frank）
 
@@ -95,20 +102,8 @@ cd tools/collector && uv run python -m collector.engine
 - 商业逻辑优先，AI 补齐能力短板
 - 国内优先，不碰灰产/合规雷区/重运营
 
-## 利基评估标准（6 维评分）
+## 利基评估标准（6 维）
 
-每次分析机会时，按以下 6 个维度打分（1-5）：
+1. **需求真实性** / 2. **增长潜力** / 3. **付费意愿** / 4. **竞争空间** / 5. **执行可行性** / 6. **规模化潜力**
 
-1. **需求真实性** — 有真实用户在找解决方案吗？（搜索量、讨论热度、付费证据）
-2. **增长潜力** — 赛道在增长吗？是新需求还是存量竞争？
-3. **付费意愿** — 用户愿意为这个付多少钱？有付费替代品吗？
-4. **竞争空间** — 有没有差异化空间？还是巨头林立？
-5. **执行可行性** — AI 能帮我做多少？技术难度？时间投入？
-6. **规模化潜力** — 能做成睡后收入吗？还是需要持续运营？
-
-## 关键原则
-
-- **需求优先** — 先确认有人在找解决方案，再考虑怎么解决
-- **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
-- **快速验证** — 不要完美，先验证再打磨
-- **数据驱动** — 让采集数据说话，不做主观判断
+> 详细评分标准见 `.claude/skills/analyze/SKILL.md`
