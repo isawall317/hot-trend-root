@@ -894,5 +894,72 @@
     "updatedAt": "2026-07-23",
     "notes": "按量付费无月费。覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等。",
     "category": "aggregator"
+  },
+  {
+    "id": "baidu-lite",
+    "vendor": "百度·千帆",
+    "vendorId": "baidu",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "tier": "lite",
+    "category": "cloud-maas",
+    "monthlyPrice": 99,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 3,
+    "models": [
+      "ERNIE-4.5",
+      "ERNIE-Speed",
+      "DeepSeek-V4",
+      "GLM-5.2"
+    ],
+    "monthlyRequests": null,
+    "tokenLimit": "4200万 Token",
+    "measuredMonthlyToken": 42,
+    "tags": [
+      "多模型",
+      "无高峰限流"
+    ],
+    "bloggerVerdict": "Coding Plan 升级为 Token Plan，取消限流+多模型，老用户顺延1个月。",
+    "action": "https://cloud.baidu.com/product-s/qianfan_home",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-23",
+    "notes": "2026-07-10 宣布迁移: Coding Plan → Token Plan, 调用次数→4200万Token",
+    "migration": "→ Token Plan (2026-07)"
+  },
+  {
+    "id": "baidu-pro",
+    "vendor": "百度·千帆",
+    "vendorId": "baidu",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "tier": "pro",
+    "category": "cloud-maas",
+    "monthlyPrice": 199,
+    "currency": "¥",
+    "firstMonthPrice": null,
+    "rating": 3,
+    "models": [
+      "ERNIE-4.5",
+      "ERNIE-Speed",
+      "DeepSeek-V4",
+      "GLM-5.2"
+    ],
+    "monthlyRequests": null,
+    "tokenLimit": "2.3亿 Token",
+    "measuredMonthlyToken": 230,
+    "tags": [
+      "多模型",
+      "无高峰限流",
+      "高频开发"
+    ],
+    "bloggerVerdict": "Pro 档升级为 2.3亿 Token，取消高峰限流，适合高频开发。",
+    "action": "https://cloud.baidu.com/product-s/qianfan_home",
+    "status": "active",
+    "source": "manual",
+    "updatedAt": "2026-07-23",
+    "notes": "2026-07-10 宣布迁移: Coding Plan → Token Plan, 调用次数→2.3亿Token",
+    "migration": "→ Token Plan (2026-07)"
   }
 ]

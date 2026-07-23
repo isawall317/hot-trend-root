@@ -212,5 +212,19 @@
     "extractStrategy": "manual",
     "lastVerified": "2026-07-23",
     "notes": "国内聚合商: 实时价格同步，覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等"
+  },
+  {
+    "id": "baidu",
+    "name": "百度·千帆",
+    "logo": "千",
+    "color": "#2468f0",
+    "category": "cloud-maas",
+    "urls": {
+      "pricing": "https://cloud.baidu.com/product-s/qianfan_home",
+      "home": "https://qianfan.cloud.baidu.com"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-07-23",
+    "notes": "2026-07-10 宣布 Coding Plan → Token Plan 升级迁移，取消高峰限流，调用次数→Token 额度"
   }
 ]

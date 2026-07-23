@@ -36,68 +36,6 @@
     "cover": "CL"
   },
   {
-    "id": "2026-07-21-deepseek-v4-leak",
-    "date": "2026-07-21",
-    "kind": "new_model",
-    "vendor": "DeepSeek 官方",
-    "title": "DeepSeek V4「满血版」曝光，最快明天发布",
-    "detail": "DeepSeek V4 满血版被曝光，预计近期发布。将进一步提升 DeepSeek Coding Plan 的模型能力。",
-    "impact": "positive",
-    "level": "high",
-    "source": "signal-dailyhot",
-    "sourceUrl": "",
-    "relatedPlans": [
-      "deepseek-pro"
-    ],
-    "featured": false,
-    "excerpt": null,
-    "author": null,
-    "readTime": null,
-    "cover": null
-  },
-  {
-    "id": "2026-07-21-claude-quota-reset",
-    "date": "2026-07-21",
-    "kind": "price_change",
-    "vendor": "Claude",
-    "title": "Claude 额度重置，应对 Kimi K3 竞争",
-    "detail": "Kimi K3 发布后，Anthropic 连夜调整 Claude 订阅额度，奥特曼罕见认错。两大巨头被迫改变定价策略。",
-    "impact": "positive",
-    "level": "high",
-    "source": "signal-dailyhot",
-    "sourceUrl": "",
-    "relatedPlans": [
-      "claude-pro",
-      "claude-max"
-    ],
-    "featured": true,
-    "excerpt": null,
-    "author": null,
-    "readTime": null,
-    "cover": null
-  },
-  {
-    "id": "2026-07-21-kimi-k3-launch",
-    "date": "2026-07-21",
-    "kind": "new_model",
-    "vendor": "Kimi",
-    "title": "Kimi K3 正式发布，登顶全球榜单",
-    "detail": "Kimi K3 发布后登顶全球模型榜单，前端开发榜第一，综合榜首次杀入 Top 10。发布 48 小时后算力告急，暂停 C 端新用户订阅。",
-    "impact": "positive",
-    "level": "high",
-    "source": "signal-dailyhot",
-    "sourceUrl": "",
-    "relatedPlans": [
-      "kimi-allegretto",
-      "kimi-andante"
-    ],
-    "featured": true,
-    "excerpt": null,
-    "author": null,
-    "readTime": null,
-    "cover": null
-  },
-  {
     "id": "b358585f7751",
     "date": "2026-07-22",
     "kind": "article",
@@ -294,6 +232,68 @@
     "author": "v2ex",
     "readTime": "5 分钟",
     "cover": "CL"
+  },
+  {
+    "id": "2026-07-21-deepseek-v4-leak",
+    "date": "2026-07-21",
+    "kind": "new_model",
+    "vendor": "DeepSeek 官方",
+    "title": "DeepSeek V4「满血版」曝光，最快明天发布",
+    "detail": "DeepSeek V4 满血版被曝光，预计近期发布。将进一步提升 DeepSeek Coding Plan 的模型能力。",
+    "impact": "positive",
+    "level": "high",
+    "source": "signal-dailyhot",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "deepseek-pro"
+    ],
+    "featured": false,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-07-21-claude-quota-reset",
+    "date": "2026-07-21",
+    "kind": "price_change",
+    "vendor": "Claude",
+    "title": "Claude 额度重置，应对 Kimi K3 竞争",
+    "detail": "Kimi K3 发布后，Anthropic 连夜调整 Claude 订阅额度，奥特曼罕见认错。两大巨头被迫改变定价策略。",
+    "impact": "positive",
+    "level": "high",
+    "source": "signal-dailyhot",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "claude-pro",
+      "claude-max"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-07-21-kimi-k3-launch",
+    "date": "2026-07-21",
+    "kind": "new_model",
+    "vendor": "Kimi",
+    "title": "Kimi K3 正式发布，登顶全球榜单",
+    "detail": "Kimi K3 发布后登顶全球模型榜单，前端开发榜第一，综合榜首次杀入 Top 10。发布 48 小时后算力告急，暂停 C 端新用户订阅。",
+    "impact": "positive",
+    "level": "high",
+    "source": "signal-dailyhot",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "kimi-allegretto",
+      "kimi-andante"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
   },
   {
     "id": "4ad193bdc013",
@@ -613,6 +613,27 @@
     "source": "manual",
     "sourceUrl": null,
     "relatedPlans": [],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-07-10-baidu-codingplan-to-tokenplan",
+    "date": "2026-07-10",
+    "kind": "price_change",
+    "vendor": "百度·千帆",
+    "title": "百度千帆 Coding Plan 升级为 Token Plan",
+    "detail": "Lite: 调用次数→4200万Token, Pro: 调用次数→2.3亿Token。取消高峰限流，支持多模型（GLM/DeepSeek），老用户有效期顺延1个月。",
+    "impact": "positive",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "baidu-lite",
+      "baidu-pro"
+    ],
     "featured": true,
     "excerpt": null,
     "author": null,
