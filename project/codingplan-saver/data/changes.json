@@ -620,6 +620,27 @@
     "cover": null
   },
   {
+    "id": "2026-07-10-百度·千帆-migration",
+    "date": "2026-07-10",
+    "kind": "price_change",
+    "vendor": "百度·千帆",
+    "title": "百度千帆 Coding Plan 升级为 Token Plan",
+    "detail": "Lite: 调用次数→4200万Token, Pro: →2.3亿Token。取消高峰限流，支持多模型，老用户有效期顺延1月。",
+    "impact": "neutral",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "baidu-lite",
+      "baidu-pro"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
     "id": "2026-07-10-baidu-codingplan-to-tokenplan",
     "date": "2026-07-10",
     "kind": "price_change",
@@ -688,6 +709,91 @@
     "source": "manual",
     "sourceUrl": null,
     "relatedPlans": [],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-04-15-阿里·百炼-migration",
+    "date": "2026-04-15",
+    "kind": "subscription_pause",
+    "vendor": "阿里·百炼",
+    "title": "阿里百炼下架 Coding Plan，推出 Token Plan 团队版",
+    "detail": "原 Coding Plan Pro 版长期「每日抢购售罄」，实质停止供给。推出 Token Plan 团队版（Credits 点数），¥198/698/1398 三档，支持全量模型。",
+    "impact": "neutral",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "bailian-pro"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-03-10-MiniMax-migration",
+    "date": "2026-03-10",
+    "kind": "new_plan",
+    "vendor": "MiniMax",
+    "title": "MiniMax Coding Plan → Token Plan 正式更名",
+    "detail": "从按 Prompt 次数计费改为按 Token 统一计量，文本/代码/图像/语音全模态共享额度。6月因计费切换争议补充老用户权益保护。",
+    "impact": "neutral",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "minimax-新plus",
+      "minimax-新max",
+      "minimax-新ultra"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-02-20-智谱AI-migration",
+    "date": "2026-02-20",
+    "kind": "price_change",
+    "vendor": "智谱AI",
+    "title": "智谱 Coding Plan 第一轮涨价 30%",
+    "detail": "取消首购优惠，Lite/Pro 档涨价 30% 起。后续两轮跟进，累计涨幅超 200%。变相用价格杠杆逼重度用户转 API 按量。",
+    "impact": "neutral",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "zhipu-lite",
+      "zhipu-pro",
+      "zhipu-max"
+    ],
+    "featured": true,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-01-15-Kimi-migration",
+    "date": "2026-01-15",
+    "kind": "new_model",
+    "vendor": "Kimi",
+    "title": "Kimi Code 套餐切换为 Token 计量",
+    "detail": "Kimi 率先完成切换：Code 套餐从按次数改为按 Token 计量，缓存命中低价计费，高速版 3x Token 消耗。",
+    "impact": "neutral",
+    "level": "high",
+    "source": "manual",
+    "sourceUrl": "",
+    "relatedPlans": [
+      "kimi-andante",
+      "kimi-allegretto"
+    ],
     "featured": true,
     "excerpt": null,
     "author": null,

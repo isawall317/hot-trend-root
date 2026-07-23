@@ -64,6 +64,8 @@
 | codex-cli | Codex CLI | OpenAI | 海外 | CLI | openai.com | openai.com/codex | — | GPT-5.6 独占 |
 | windsurf | Windsurf | Codeium | 海外 | IDE | codeium.com | windsurf.com | — | Flow 自动编程 |
 | opencode | OpenCode | 社区 | 海外 | CLI | opencode.ai | github.com/opencode-ai | — | 开源最活跃 |
+| cline | Cline | 社区 | 海外 | IDE | — | github.com/cline/cline | — | VS Code 最火 AI 插件之一 |
+| kiro | Kiro | 独立 | 待确认 | ❓ | — | — | — | 待确认所有信息 |
 
 ---
 
@@ -72,6 +74,7 @@
 1. **新增厂商/工具** → 先在此文件登记 → Frank 确认 → 更新对应 JSON
 2. **URL 变更**（定价页/官网/推广链接）→ 改此文件 → 同步更新 JSON
 3. **形态 ❓** 待确认 → Frank 确认后改；**分类** 按 `国内·厂商` / `国内·独立` / `海外` 维护
+4. **发现渠道** → 厂商 Token Plan / Coding Plan 页面通常会列出「本套餐支持哪些工具」，这些页面是发现新工具和竞品的最佳入口。如 MiniMax Token Plan 页列出了对接工具列表。
 
 ---
 

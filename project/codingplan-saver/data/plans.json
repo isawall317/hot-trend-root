@@ -54,7 +54,9 @@
     "status": "active",
     "source": "extracted-zhipu",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "⚠️ 连续涨价 200%+，未更名，变相逼用户转 API"
   },
   {
     "id": "zhipu-pro",
@@ -111,7 +113,9 @@
     "status": "active",
     "source": "extracted-zhipu",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "⚠️ 连续涨价 200%+，未更名，变相逼用户转 API"
   },
   {
     "id": "zhipu-max",
@@ -168,7 +172,9 @@
     "status": "active",
     "source": "extracted-zhipu",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "⚠️ 连续涨价 200%+，未更名，变相逼用户转 API"
   },
   {
     "id": "minimax-新plus",
@@ -200,7 +206,9 @@
     "status": "active",
     "source": "extracted-minimax",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-03)"
   },
   {
     "id": "minimax-新max",
@@ -232,7 +240,9 @@
     "status": "active",
     "source": "extracted-minimax",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-03)"
   },
   {
     "id": "minimax-新ultra",
@@ -264,7 +274,9 @@
     "status": "active",
     "source": "extracted-minimax",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-03)"
   },
   {
     "id": "bytedance-lite",
@@ -298,7 +310,9 @@
     "status": "active",
     "source": "manual",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "request",
+    "migration": "次数包装，实质 Token 挂钩"
   },
   {
     "id": "bytedance-pro",
@@ -332,7 +346,9 @@
     "status": "active",
     "source": "manual",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "request",
+    "migration": "次数包装，实质 Token 挂钩"
   },
   {
     "id": "kimi-allegretto",
@@ -368,7 +384,9 @@
     "status": "paused",
     "source": "extracted-kimi",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "内核 Token 计量 (2026-01)，保留订阅名"
   },
   {
     "id": "kimi-andante",
@@ -403,7 +421,9 @@
     "status": "paused",
     "source": "extracted-kimi",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "内核 Token 计量 (2026-01)，保留订阅名"
   },
   {
     "id": "bailian-pro",
@@ -436,7 +456,9 @@
     "status": "active",
     "source": "manual",
     "updatedAt": "2026-07-23",
-    "category": "cloud-maas"
+    "category": "cloud-maas",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan (2026-04)"
   },
   {
     "id": "deepseek-虚拟套餐-40",
@@ -466,7 +488,9 @@
     "status": "active",
     "source": "extracted-deepseek",
     "updatedAt": "2026-07-22",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": ""
   },
   {
     "id": "deepseek-虚拟套餐-200",
@@ -496,7 +520,9 @@
     "status": "active",
     "source": "extracted-deepseek",
     "updatedAt": "2026-07-22",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": ""
   },
   {
     "id": "tencent-pro",
@@ -526,7 +552,9 @@
     "status": "active",
     "source": "extracted-tencent",
     "updatedAt": "2026-07-23",
-    "category": "cloud-maas"
+    "category": "cloud-maas",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan"
   },
   {
     "id": "claude-pro",
@@ -556,7 +584,9 @@
     "status": "active",
     "source": "extracted-claude",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "codex-plus",
@@ -588,7 +618,9 @@
     "status": "active",
     "source": "manual",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "github-学生",
@@ -620,7 +652,9 @@
     "status": "active",
     "source": "extracted-github",
     "updatedAt": "2026-07-22",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": ""
   },
   {
     "id": "github-copilot-pro",
@@ -650,7 +684,9 @@
     "status": "active",
     "source": "extracted-github",
     "updatedAt": "2026-07-23",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "github-pro-plus",
@@ -680,7 +716,9 @@
     "status": "active",
     "source": "extracted-github",
     "updatedAt": "2026-07-23",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "github-max",
@@ -711,7 +749,9 @@
     "status": "active",
     "source": "extracted-github",
     "updatedAt": "2026-07-23",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "claude-max",
@@ -741,7 +781,9 @@
     "status": "active",
     "source": "extracted-claude",
     "updatedAt": "2026-07-23",
-    "category": "model-maker"
+    "category": "model-maker",
+    "billingCore": "token",
+    "migration": "原生 Token 计量"
   },
   {
     "id": "mimo-lite",
@@ -770,7 +812,9 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "MiMo-V2 已下线 (2026.6.30), V2.5 系列已上线",
-    "category": "vertical-cloud"
+    "category": "vertical-cloud",
+    "billingCore": "token",
+    "migration": "Token Plan，V2→V2.5 迁移中"
   },
   {
     "id": "mimo-pro",
@@ -799,7 +843,9 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "MiMo-V2 已下线 (2026.6.30), V2.5 系列已上线",
-    "category": "vertical-cloud"
+    "category": "vertical-cloud",
+    "billingCore": "token",
+    "migration": "Token Plan，V2→V2.5 迁移中"
   },
   {
     "id": "tencent-lite",
@@ -828,7 +874,9 @@
     "status": "active",
     "source": "extracted-tencent",
     "updatedAt": "2026-07-23",
-    "category": "cloud-maas"
+    "category": "cloud-maas",
+    "billingCore": "token",
+    "migration": "✅ 已切换 Token Plan"
   },
   {
     "id": "openrouter-payg",
@@ -859,7 +907,9 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "按量付费无月费，平台费 5.5%。Free tier 有 25+ 免费模型。",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": "原生 Token 按量"
   },
   {
     "id": "siliconflow-payg",
@@ -893,7 +943,9 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "按量付费无月费。覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等。",
-    "category": "aggregator"
+    "category": "aggregator",
+    "billingCore": "token",
+    "migration": "原生 Token 按量"
   },
   {
     "id": "baidu-lite",
@@ -926,7 +978,8 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "2026-07-10 宣布迁移: Coding Plan → Token Plan, 调用次数→4200万Token",
-    "migration": "→ Token Plan (2026-07)"
+    "migration": "→ Token Plan (2026-07)，旧权益平移+顺延1月",
+    "billingCore": "token"
   },
   {
     "id": "baidu-pro",
@@ -960,6 +1013,7 @@
     "source": "manual",
     "updatedAt": "2026-07-23",
     "notes": "2026-07-10 宣布迁移: Coding Plan → Token Plan, 调用次数→2.3亿Token",
-    "migration": "→ Token Plan (2026-07)"
+    "migration": "→ Token Plan (2026-07)，旧权益平移+顺延1月",
+    "billingCore": "token"
   }
 ]
