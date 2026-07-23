@@ -42,24 +42,29 @@ def merge_tencent(plan_entry: dict, extracted: dict) -> bool:
 
 @rule("minimax")
 def merge_minimax(plan_entry: dict, extracted: dict) -> bool:
-    """MiniMax: 提取结果有 monthlyPrice，按 tier 匹配"""
+    """MiniMax: 按 plan 名匹配 monthlyPrice。
+
+    注意: 曾用 tier+price 容差匹配，但 plans.json 存在多个同 tier plan（新Max/新Ultra
+    都是 tier=max），extract 的价格会同时命中多个 plan 造成数据污染。改为只用 plan 名
+    匹配——minimax 定价页命名与 plans.json 不一致时宁可不更新，也不误改。
+    名字归一化: 去掉"新"前缀和空格，大小写不敏感。
+    """
     changed = False
-    tier_price_map = {
-        "lite": 49,
-        "pro": 119,
-        "max": 469,
-    }
+    norm_entry = _norm_mm_name(plan_entry.get("plan", ""))
     for ext in extracted.get("plans", []):
-        price = ext.get("monthlyPrice")
-        if price is None:
+        norm_ext = _norm_mm_name(ext.get("plan", ""))
+        if not norm_ext or norm_ext != norm_entry:
             continue
-        # 匹配 tier
-        for tier, expected_price in tier_price_map.items():
-            if abs(price - expected_price) < 5 and plan_entry.get("tier") == tier:
-                if plan_entry.get("monthlyPrice") != price:
-                    plan_entry["monthlyPrice"] = price
-                    changed = True
+        price = ext.get("monthlyPrice")
+        if price is not None and plan_entry.get("monthlyPrice") != price:
+            plan_entry["monthlyPrice"] = price
+            changed = True
     return changed
+
+
+def _norm_mm_name(name: str) -> str:
+    """归一化 minimax plan 名: 去'新'前缀、去空格、小写"""
+    return (name or "").replace("新", "").replace(" ", "").lower()
 
 
 @rule("claude")
