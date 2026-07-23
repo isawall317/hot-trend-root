@@ -29,8 +29,8 @@
     ]
   },
   "header": {
-    "updateDate": "更新于 2026.07.22",
-    "highlights": "本周关注：Kimi K3 持续冲击行业，Claude 改策略，Qwen 3.8 + DeepSeek V4 将至，Dify 1.16 发布",
+    "updateDate": "更新于 2026.07.23",
+    "highlights": "本周关注：Kimi K3 暂停新用户，DeepSeek V4 将至，Claude Agent 500 技能，PPIO 智能网关",
     "stats": [
       {
         "label": "覆盖平台",
@@ -39,12 +39,12 @@
       },
       {
         "label": "套餐数据",
-        "value": "25",
+        "value": "28",
         "unit": "个"
       },
       {
         "label": "本周更新",
-        "value": "12",
+        "value": "24",
         "unit": "条"
       }
     ]

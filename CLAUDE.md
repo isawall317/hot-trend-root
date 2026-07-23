@@ -19,7 +19,7 @@
   │    sources/   signals/ Code   template/ *.html
   │    pipeline   pending/ 审阅
   │
-DailyHotApi (40+平台) + RSSHub (500+源) + 11 家厂商定价页
+DailyHotApi (40+平台) + RSSHub + Folo (本地RSS) + 11 家厂商定价页
 ```
 
 > 详细数据流、模块职责、更新流程 → [`docs/data-architecture.md`](docs/data-architecture.md)

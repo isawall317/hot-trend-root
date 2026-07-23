@@ -11,7 +11,7 @@
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                          数据源层                                    │
-│  DailyHotApi (40+平台)  RSSHub (500+源)  厂商定价页 (11家)  手动输入  │
+│  DailyHotApi (40+平台)  RSSHub  Folo (本地RSS)  厂商定价页 (11家) 手动│
 └──────────────────────────────┬──────────────────────────────────────┘
                                │
                                ▼
@@ -56,12 +56,17 @@
 
 ## 二、数据源层
 
-### 2.1 热点数据（DailyHotApi + RSSHub）
+### 2.1 热点数据（DailyHotApi + RSSHub + Folo）
 
 | 源 | 覆盖 | 采集方式 | 状态 |
 |----|------|---------|------|
-| DailyHotApi | 40+ 平台（知乎、微博、36氪、V2EX 等） | httpx 异步并发 | 本地部署，降级 Vercel 公共 API |
-| RSSHub | 500+ RSS 源 | httpx 异步并发 | 本地部署，降级公共实例 |
+| DailyHotApi | 40+ 平台（知乎、微博、36氪、V2EX 等） | httpx 异步并发 | 优先本地 Docker，降级 Vercel 公共 API |
+| RSSHub | RSS 源（GitHub、HackerNews、ProductHunt 等） | httpx 异步并发 | 优先本地 Docker，降级公共实例 |
+| Folo | 本地 RSS 阅读器订阅源 | `npx folocli@latest timeline` subprocess | 本地应用运行中时自动采集，未运行则跳过 |
+
+Folo 通过 `folocli` CLI 与本地 Folo（原 Follow）RSS 阅读器交互，拉取 timeline 中已订阅源的文章。环境变量控制：
+- `FOLO_LIMIT`（默认 100）：每次拉取条数
+- `FOLO_VIEW`（默认 0）：0=文章 1=社交 2=图片 3=视频
 
 归一化格式：`{title, url, hot_metric, source, source_type, collected_at}`
 
@@ -102,7 +107,7 @@
 
 ```
 tools/collector/collector/
-├── engine.py              # 热点采集引擎 (asyncio + httpx)
+├── engine.py              # 热点采集引擎 (DailyHotApi + RSSHub + Folo)
 ├── storage.py             # 存储/读取 (load_latest, load_date_range)
 ├── pipeline.py            # 数据管道编排 (5步)
 ├── price_monitor.py       # 价格信号监控 (关键词匹配)
@@ -128,7 +133,7 @@ cd tools/collector && uv run python -m collector.pipeline
 ```
 
 ```
-Step 1: engine.py       → data/raw/{date}/*.json          热点原始数据
+Step 1: engine.py       → data/raw/{date}/*.json          热点原始数据 (DailyHotApi + RSSHub + Folo)
 Step 2: article_disc..  → data/pending/{date}/articles.json 候选文章
 Step 3: price_monitor   → data/signals/{date}.json         价格信号
 Step 4: sources/runner  → data/signals/extract-{date}.json 厂商提取

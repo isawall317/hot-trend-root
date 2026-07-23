@@ -1,8 +1,9 @@
-"""采集引擎 — 从 DailyHotApi + RSSHub 拉取数据，归一化存储"""
+"""采集引擎 — 从 DailyHotApi + RSSHub + Folo 拉取数据，归一化存储"""
 
 import asyncio
 import json
 import os
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -26,6 +27,11 @@ DAILYHOT_PUBLIC = os.getenv(
 # RSSHub 地址
 RSSHUB_BASE = os.getenv("RSSHUB_BASE", "http://localhost:1200")
 RSSHUB_PUBLIC = "https://rsshub.app"
+
+# Folo 配置（本地 RSS 阅读器，通过 folocli 交互）
+FOLO_LIMIT = int(os.getenv("FOLO_LIMIT", "100"))  # 每次从 Folo 拉取的条目数
+FOLO_VIEW = int(os.getenv("FOLO_VIEW", "0"))       # 0=文章 1=社交 2=图片 3=视频
+FOLO_NPX = os.getenv("FOLO_NPX", "npx")            # npx 路径
 
 
 # ── DailyHotApi 源列表 ──────────────────────────────────────────
@@ -122,6 +128,92 @@ async def _fetch_rsshub(client: httpx.AsyncClient, route: str, tag: str, base_ur
         return tag, None
 
 
+def _fetch_folo(limit: int = 100, view: int = 0) -> list[dict]:
+    """从本地 Folo (RSS 阅读器) 拉取 timeline 条目
+
+    使用 folocli (npm 包) 与本地 Folo 应用交互。
+    要求 Folo 应用正在运行。
+    """
+    try:
+        cmd = [FOLO_NPX, "--yes", "folocli@latest", "timeline",
+               "--limit", str(limit), "--view", str(view)]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if r.returncode != 0:
+            print(f"  ⚠️  Folo/folocli 失败: {r.stderr[:200]}")
+            return []
+        data = json.loads(r.stdout)
+        if not data.get("ok"):
+            print(f"  ⚠️  Folo/folocli 返回异常: {data.get('error', 'unknown')}")
+            return []
+        entries = data.get("data", {}).get("entries", [])
+        return entries
+    except subprocess.TimeoutExpired:
+        print("  ⚠️  Folo/folocli 超时")
+        return []
+    except FileNotFoundError:
+        print("  ⚠️  Folo/folocli: npx 未找到，请确认 Node.js 已安装")
+        return []
+    except Exception as e:
+        print(f"  ⚠️  Folo/folocli 异常: {e}")
+        return []
+
+
+def _normalize_folo(entries: list[dict], timestamp: str) -> list[dict]:
+    """将 Folo timeline 条目归一化为统一格式"""
+    items = []
+    for entry in entries:
+        e = entry.get("entries") or {}
+        feed = entry.get("feeds") or {}
+        sub = entry.get("subscriptions") or {}
+
+        title = str(e.get("title", "")).strip()
+        url = str(e.get("url", "")).strip()
+
+        if not title:
+            continue
+
+        feed_title = feed.get("title") or sub.get("title") or "Folo"
+        # 生成 source tag: "folo:<feed_slug>"
+        feed_slug = feed_title.replace(" ", "-").replace("/", "-")[:30]
+
+        items.append({
+            "title": title,
+            "url": url,
+            "hot_metric": "",
+            "source": f"folo:{feed_slug}",
+            "source_type": _classify_folo_source(feed_title),
+            "collected_at": timestamp,
+            "author": str(e.get("author", "")).strip(),
+            "description": str(e.get("description", "")).strip()[:500],
+            "published_at": str(e.get("publishedAt", "")).strip(),
+        })
+
+    return items
+
+
+def _classify_folo_source(feed_title: str) -> str:
+    """将 Folo feed 标题归类"""
+    TECH_FEEDS = {"机器之心", "InfoQ", "掘金", "CSDN", "51CTO", "HelloGitHub",
+                  "少数派", "Ahead of AI", "OpenAI News", "Hacker News",
+                  "GitHub", "Product Hunt", "V2EX", "NodeSeek"}
+    NEWS_FEEDS = {"36氪", "财联社", "华尔街见闻", "IT之家", "爱范儿",
+                  "虎嗅", "澎湃新闻", "新浪新闻", "腾讯新闻", "网易新闻",
+                  "Readhub"}
+    SOCIAL_FEEDS = {"知乎", "微博", "即刻", "小红书", "豆瓣", "雪球",
+                    "今日话题"}
+
+    for kw in TECH_FEEDS:
+        if kw in feed_title:
+            return "tech"
+    for kw in NEWS_FEEDS:
+        if kw in feed_title:
+            return "news"
+    for kw in SOCIAL_FEEDS:
+        if kw in feed_title:
+            return "social"
+    return "other"
+
+
 async def collect_all(sources: list[str] | None = None):
     """采集所有源数据，归一化后存入 data/raw/
 
@@ -154,6 +246,11 @@ async def collect_all(sources: list[str] | None = None):
         ]
         rsshub_results = await asyncio.gather(*rsshub_tasks)
 
+    # ── Folo (本地 RSS 阅读器) ──
+    print(f"📡 Folo: 本地 RSS (limit={FOLO_LIMIT}, view={FOLO_VIEW})")
+    folo_entries = _fetch_folo(limit=FOLO_LIMIT, view=FOLO_VIEW)
+    print(f"   Folo: {len(folo_entries)} 条")
+
     # ── 归一化 + 存储 ──
     all_items = []
 
@@ -168,6 +265,11 @@ async def collect_all(sources: list[str] | None = None):
             continue
         normalized = _normalize_rsshub(tag, data, timestamp)
         all_items.extend(normalized)
+
+    # Folo 归一化
+    if folo_entries:
+        folo_normalized = _normalize_folo(folo_entries, timestamp)
+        all_items.extend(folo_normalized)
 
     if not all_items:
         print("❌ 没有采集到任何数据")

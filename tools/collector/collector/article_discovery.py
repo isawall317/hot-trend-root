@@ -36,6 +36,21 @@ SOURCE_NAMES = {
     "dailyhot:guokr": "果壳",
     "dailyhot:sina-news": "新浪",
     "dailyhot:netease-news": "网易",
+    # Folo 源
+    "folo:机器之心": "机器之心",
+    "folo:InfoQ-推荐": "InfoQ",
+    "folo:掘金本周最热": "掘金",
+    "folo:36氪---24小时热榜": "36氪",
+    "folo:华尔街见闻": "华尔街见闻",
+    "folo:财联社---头条": "财联社",
+    "folo:少数派": "少数派",
+    "folo:Ahead-of-AI": "Ahead of AI",
+    "folo:OpenAI-News": "OpenAI News",
+    "folo:IT之家": "IT之家",
+    "folo:爱范儿": "爱范儿",
+    "folo:虎嗅": "虎嗅",
+    "folo:Readhub---每日早报": "Readhub",
+    "folo:雪球": "雪球",
 }
 
 
@@ -44,7 +59,14 @@ def _make_id(url: str) -> str:
 
 
 def _extract_source(source: str) -> str:
-    return SOURCE_NAMES.get(source, source.replace("dailyhot:", ""))
+    name = SOURCE_NAMES.get(source)
+    if name:
+        return name
+    # 兜底：去掉前缀
+    for prefix in ("dailyhot:", "folo:", "rsshub:"):
+        if source.startswith(prefix):
+            return source[len(prefix):]
+    return source
 
 
 def _estimate_read_time(title: str) -> str:
