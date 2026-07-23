@@ -33,6 +33,7 @@ DailyHotApi (40+平台) + RSSHub (500+源) + 11 家厂商定价页
 | `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
 | `/codingplan-page` | 或 `build` / `update` | CodingPlan 数据更新 + HTML 生成 |
 | `/vendors-sync` | 或 `scan` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
+| `/kb-update` | 或 `kb` | 知识库更新：采集 → 检测 → 审阅 → 合并 |
 
 > 详细执行流程见 `.claude/skills/{name}/SKILL.md`
 
@@ -59,12 +60,21 @@ hot-trend-root/
 ├── CLAUDE.md                     # 本文件
 ├── docs/                         # 项目文档
 │   ├── data-architecture.md      # 数据体系总地图
-│   └── vendors-and-tools.md      # 厂商/工具唯一真相源
-├── .claude/skills/               # 5 个技能定义
+│   └── vendors-and-tools.md      # 厂商/工具目录（由 KB JSON 自动生成）
+├── .claude/skills/               # 6 个技能定义
+├── data/
+│   ├── knowledge-base/           # 🆕 统一厂商知识库（唯一真相源）
+│   │   ├── vendors.json          #   厂商画像
+│   │   ├── services.json         #   服务/套餐
+│   │   ├── tools.json            #   AI 编程工具
+│   │   ├── models.json           #   模型清单
+│   │   └── changes.json          #   变更时间线
+│   ├── raw/                      # 热点原始数据
+│   ├── signals/                  # 价格/文章信号
+│   └── pending/                  # 待审阅候选
 ├── tools/
 │   ├── collector/                # Python 数据采集管道
 │   └── builder/build.py          # HTML 构建器
-├── data/                         # 采集数据（raw/signals/pending/cards）
 ├── project/                      # 7 个孵化项目
 │   ├── codingplan-saver/         # 🟢 核心产品
 │   ├── coding-tools/             # 🟡 开发中
@@ -92,7 +102,7 @@ hot-trend-root/
 - **数据驱动** — 让采集数据说话，不做主观判断
 - **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
 - **快速验证** — 不要完美，先验证再打磨
-- **文档即真相** — 新增厂商/工具先改 `docs/vendors-and-tools.md`，数据流变化先改 `docs/data-architecture.md`
+- **KB 即真相** — 厂商/工具画像的唯一真相源是 `data/knowledge-base/` JSON；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 自动生成，勿手工编辑；新增厂商/工具先改 KB JSON → 跑 `/kb-update build` 重生成 MD
 
 ## 用户画像（Frank）
 

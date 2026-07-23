@@ -67,16 +67,30 @@
 
 ### 2.2 厂商定价数据
 
-11 家 AI 模型厂商的 Coding Plan / Token Plan 定价信息。
+14 家 AI 模型厂商的 Coding Plan / Token Plan 定价信息。
 
 | 状态 | 数量 | 厂商 | 提取方式 |
 |------|------|------|---------|
 | ✅ 自动提取 | 7 | 智谱AI, DeepSeek, Kimi, MiniMax, 腾讯云, Claude, GitHub | Playwright / BS4 静态解析 |
-| ❌ 手动维护 | 4 | 字节·方舟 (bot拦截), 阿里·百炼 (需登录), Codex (Cloudflare), 小米·MiMo (SPA) | 人工定期检查 |
+| ❌ 手动维护 | 7 | 字节·方舟, 阿里·百炼, Codex, 小米·MiMo, 百度·千帆, OpenRouter, 硅基流动 | 人工定期检查 |
 
-> 详细厂商 URL、提取策略、推广链接见 [`docs/vendors-and-tools.md`](vendors-and-tools.md)
+> 详细厂商 URL、提取策略、推广链接见 [`docs/vendors-and-tools.md`](vendors-and-tools.md)（由 `data/knowledge-base/` JSON 自动生成）
 
-### 2.3 手动输入
+### 2.3 KB 画像层（🆕）
+
+`data/knowledge-base/` 是**信息承载层**：存储厂商/服务/工具/模型的画像与关系，独立于价格投影层。
+
+| 文件 | 内容 | 更新方式 |
+|------|------|---------|
+| `vendors.json` | 厂商画像（URL、分类、提取策略、推广） | pipeline 自动同步 + `/kb-update` 审阅 |
+| `services.json` | 服务/套餐（Coding Plan、Token Plan、API 按量） | kb_migrate 从 plans.json 同步 |
+| `tools.json` | AI 编程工具详情 | 半自动维护 |
+| `models.json` | 模型清单 | 从 plans.json 模型字段提取 |
+| `changes.json` | 统一变更时间线 | pipeline 自动检测 + 审阅 |
+
+> KB 是 `plans.json`/`tools.json` 的"依据层"，但下游产品**暂不直接读 KB**（渐进迁移）。
+
+### 2.4 手动输入
 
 - 用户通过自然语言告知的变动（如"Kimi 涨价了"）
 - `/codingplan-page update` 解析自然语言 → 结构化变更
@@ -167,18 +181,27 @@ project/{name}/
 └── docs/                 # 项目文档 (可选)
 ```
 
-### 4.3 共享数据模型
+### 4.3 共享数据模型（🆕 统一知识库）
 
-多个项目共享同一套厂商基础数据：
+多个项目共享同一套厂商基础数据。**`data/knowledge-base/` 是新的唯一真相源**，逐步替代旧的分散 JSON。
 
 ```
-reference/vendors-and-tools.md  ← 厂商/工具真相源
+data/knowledge-base/              ← 🆕 统一厂商知识库（唯一真相源）
+├── vendors.json                   ← 厂商画像（URL、分类、提取策略、推广）
+├── services.json                  ← 服务/套餐（Coding Plan、Token Plan、API 按量）
+├── tools.json                     ← AI 编程工具
+├── models.json                    ← 模型清单
+└── changes.json                   ← 统一变更时间线
          │
-         ├── codingplan-saver/data/vendors.json  (模型厂商元信息)
-         ├── codingplan-saver/data/plans.json    (套餐价格)
-         ├── coding-tools/data/tools.json        (编程工具信息)
-         └── coding-tools/data/affiliates.json   (推广链接)
+         ├── docs/vendors-and-tools.md  (由 kb_to_md.py 自动生成，勿手编)
+         ├── codingplan-saver/data/plans.json    (价格投影层：下游直接读，pipeline 维护)
+         └── coding-tools/data/tools.json        (工具投影层：下游直接读)
 ```
+
+> **两层共存**：KB 是画像/关系层（谁是谁、有什么服务），`plans.json`/`tools.json` 是价格/详情投影层（下游产品直接读）。
+> pipeline 每次跑同时维护两层——价格进 plans.json（已有），画像进 KB（kb_migrate re-sync）。
+> 下游产品暂不切读 KB（渐进迁移），但 KB 是它们的"依据"。
+> KB JSON Schema 见 [`data/knowledge-base/README.md`](../data/knowledge-base/README.md)
 
 ### 4.4 通用文件模式
 
