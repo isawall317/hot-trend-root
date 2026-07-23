@@ -13,7 +13,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "Playwright headless 渲染，提取 API 定价"
+    "notes": "Playwright headless 渲染，提取 API 定价",
+    "category": "model-maker"
   },
   {
     "id": "bytedance",
@@ -29,7 +30,8 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-21",
-    "notes": "火山方舟检测到 bot 返回 404，无法自动提取"
+    "notes": "火山方舟检测到 bot 返回 404，无法自动提取",
+    "category": "model-maker"
   },
   {
     "id": "deepseek",
@@ -45,7 +47,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 API 定价"
+    "notes": "httpx + BS4 解析 API 定价",
+    "category": "model-maker"
   },
   {
     "id": "kimi",
@@ -61,7 +64,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "Playwright 渲染 docs 页 → 点击展开模型卡片 → 提取 API 价格"
+    "notes": "Playwright 渲染 docs 页 → 点击展开模型卡片 → 提取 API 价格",
+    "category": "model-maker"
   },
   {
     "id": "minimax",
@@ -77,7 +81,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 Token Plan 表格"
+    "notes": "httpx + BS4 解析 Token Plan 表格",
+    "category": "model-maker"
   },
   {
     "id": "bailian",
@@ -93,7 +98,8 @@
     },
     "extractStrategy": "manual",
     "lastVerified": null,
-    "notes": "阿里云百炼需登录控制台，定价页不可公开访问"
+    "notes": "阿里云百炼需登录控制台，定价页不可公开访问",
+    "category": "cloud-maas"
   },
   {
     "id": "tencent",
@@ -109,7 +115,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 Coding Plan 文档"
+    "notes": "httpx + BS4 解析 Coding Plan 文档",
+    "category": "cloud-maas"
   },
   {
     "id": "claude",
@@ -125,7 +132,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": null,
-    "notes": "Playwright 渲染 claude.com/pricing → 提取套餐价格"
+    "notes": "Playwright 渲染 claude.com/pricing → 提取套餐价格",
+    "category": "model-maker"
   },
   {
     "id": "codex",
@@ -141,7 +149,8 @@
     },
     "extractStrategy": "manual",
     "lastVerified": null,
-    "notes": "OpenAI 页面被 Cloudflare 拦截，无法自动提取"
+    "notes": "OpenAI 页面被 Cloudflare 拦截，无法自动提取",
+    "category": "model-maker"
   },
   {
     "id": "github",
@@ -157,7 +166,8 @@
     },
     "extractStrategy": "docs",
     "lastVerified": null,
-    "notes": "Playwright 渲染 github.com/features/copilot/plans → 提取套餐价格"
+    "notes": "Playwright 渲染 github.com/features/copilot/plans → 提取套餐价格",
+    "category": "aggregator"
   },
   {
     "id": "mimo",
@@ -171,6 +181,36 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-07-23",
-    "notes": "Token Plan 页为 SPA + 按量计费 API 文档页可提取模型价格。V2→V2.5 已迁移。"
+    "notes": "Token Plan 页为 SPA + 按量计费 API 文档页可提取模型价格。V2→V2.5 已迁移。",
+    "category": "vertical-cloud"
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "logo": "OR",
+    "color": "#6366f1",
+    "category": "aggregator",
+    "urls": {
+      "pricing": "https://openrouter.ai/pricing",
+      "docs": "https://openrouter.ai/models",
+      "home": "https://openrouter.ai"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-07-23",
+    "notes": "全球聚合商: 400+ 模型, 70+ 厂商, 统一 API Key, 按量付费 +5.5% 平台费"
+  },
+  {
+    "id": "siliconflow",
+    "name": "硅基流动",
+    "logo": "硅",
+    "color": "#8b5cf6",
+    "category": "aggregator",
+    "urls": {
+      "pricing": "https://siliconflow.cn/pricing",
+      "home": "https://siliconflow.cn"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-07-23",
+    "notes": "国内聚合商: 实时价格同步，覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等"
   }
 ]

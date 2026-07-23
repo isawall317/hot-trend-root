@@ -1,177 +1,82 @@
 # 厂商与工具数据源
 
-> **定位**：本项目所有数据采集的源头。新增厂商/工具、修改 URL、更新推广链接，都先改这里。
-> 最后更新：2026-07-23
-> 维护者：Frank + Claude Code
+> **定位**：本项目追踪的所有厂商和工具的源头清单。**只记录输入，不记录爬取结果。**
+> 爬取到的价格、套餐、模型等数据见 `plans.json` / `tools.json`。
+> 最后更新：2026-07-23 | 维护者：Frank + Claude Code
 
 ---
 
-## 链接格式规范
+## 一、AI 模型厂商
 
-- **定价页 URL** → 写入 `vendors.json` 的 `urls.pricing`，用于数据采集
-- **联盟推广链接** → 写入 `vendors.json` 的 `urls.affiliate`，`plans[].action` 优先使用
-- 统一使用 `?ref=fanluzhe` 或平台指定的邀请参数
-- 所有推广链接必须在此文件登记后才能上线
+> 定价页 URL 用于采集，推广链接用于"优惠购买"按钮。新增厂商先在此登记，再更新 `vendors.json`。
 
----
+| ID | 厂商 | 定价页 URL | 官网 | 提取策略 | 推广链接 | 备注 |
+|----|------|-----------|------|:--:|------|------|
+| zhipu | 智谱AI | open.bigmodel.cn/pricing | bigmodel.cn | Playwright | bigmodel.cn/invite?icode=PJ048yz3F... | 注册推广，新用户得 2000万 Tokens |
+| deepseek | DeepSeek | api-docs.deepseek.com/quick_start/pricing | deepseek.com | BS4 静态 | 无推广体系 | — |
+| kimi | Kimi | platform.kimi.com/docs/pricing/chat | kimi.com | Playwright | kimi-bot.com/.../A6EDXY | 注册推广，返佣待确认 |
+| minimax | MiniMax | platform.minimaxi.com/docs/guides/pricing-token-plan | minimaxi.com | BS4 静态 | platform.minimaxi.com/.../Gbn3DuotEx | Token Plan 推广，好友 9折 + 10% 返利 |
+| tencent | 腾讯云 | cloud.tencent.com/product/tokenhub | cloud.tencent.com | BS4 静态 | 待添加 | 云推荐奖励 |
+| claude | Claude | claude.com/pricing | claude.com | Playwright | 待添加 | 待确认 |
+| github | GitHub | github.com/features/copilot/plans | github.com | Playwright | 待添加 | 待确认 |
+| bytedance | 字节·方舟 | volcengine.com/ark | volcengine.com | manual | 待添加 | Bot 检测拦截 |
+| bailian | 阿里·百炼 | bailian.console.aliyun.com | bailian.aliyun.com | manual | 待添加 | 需登录控制台；阿里云推广返佣 |
+| codex | Codex(OpenAI) | openai.com/chatgpt/pricing | openai.com | manual | 待添加 | Cloudflare 拦截 |
+| mimo | 小米·MiMo | platform.xiaomimomo.com/token-plan | xiaomimomo.com | manual | platform.xiaomimomo.com?ref=NB2PJ5 | V2.5 已上线；注册推广，双方各得 ¥10 体验金 + 首单 9 折；MiMoCode: mimo.xiaomi.com/zh/mimocode；API 按量: mimo.mi.com/docs/zh-CN/price/pay-as-you-go |
+| opencode | OpenCode | opencode.ai/zh/go | opencode.ai | manual | 待添加 | 待确认提取策略 |
+| jd | 京东云 | jdcloud.com/cn/pages/codingplan | jdcloud.com | manual | 待添加 | 待确认 |
 
-## 一、AI 模型厂商（codingplan-saver 消费）
+提取策略：`Playwright` = 渲染 SPA 后解析 | `BS4 静态` = 直接解析文档页 | `manual` = 人工定期检查
 
-### 自动提取（7 家）
+### 待接入
 
-| ID | 厂商 | 定价页 URL | 提取方案 | 套餐 | 推广链接 | 返佣 | 最后验证 |
-|----|------|-----------|---------|------|---------|------|---------|
-| zhipu | 智谱AI | open.bigmodel.cn/pricing | Playwright | Lite ¥49 / Pro ¥149 / Max ¥469 | bigmodel.cn/invite?icode=PJ048yz3F... | 新用户注册得 2000万 Tokens | 2026-07-21 |
-| deepseek | DeepSeek | api-docs.deepseek.com/quick_start/pricing | BS4 静态 | 虚拟套餐 ¥40 / ¥200 | 无推广体系 | — | 2026-07-21 |
-| kimi | Kimi | platform.kimi.com/docs/pricing/chat | Playwright | Andante ¥49 / Allegretto ¥199 (paused) | kimi-bot.com/.../A6EDXY | 待确认 | 2026-07-21 |
-| minimax | MiniMax | platform.minimaxi.com/docs/guides/pricing-token-plan | BS4 静态 | Plus ¥49 / Max ¥119 / Ultra ¥469 | platform.minimaxi.com/.../Gbn3DuotEx | 好友 9折，邀请人 10% 返利 | 2026-07-21 |
-| tencent | 腾讯云 | cloud.tencent.com/product/tokenhub | BS4 静态 | Lite ¥40 / Pro ¥200 | 待添加 | 云推荐奖励 | 2026-07-21 |
-| claude | Claude | claude.com/pricing | Playwright | Pro $20 / Max $100 | 待添加 | 待确认 | — |
-| github | GitHub | github.com/features/copilot/plans | Playwright | Free $0 / Pro $10 / Pro+ $39 / Max $100 | 待添加 | 待确认 | — |
-
-### 手动维护（4 家）
-
-| ID | 厂商 | 定价页 URL | 套餐 | 原因 | 推广链接 | 最后验证 |
-|----|------|-----------|------|------|---------|---------|
-| bytedance | 字节·方舟 | volcengine.com/ark | Lite ¥40 / Pro ¥200 | Bot 检测拦截 | 待添加 | 2026-07-21 |
-| bailian | 阿里·百炼 | bailian.console.aliyun.com | Pro ¥200 | 需登录控制台 | 待添加 | — |
-| codex | Codex(OpenAI) | openai.com/chatgpt/pricing | Plus $20 | Cloudflare 拦截 | 待添加 | — |
-| mimo | 小米·MiMo | platform.xiaomimomo.com/token-plan | Lite ¥39 / Pro ¥329 | SPA，待适配 | platform.xiaomimomo.com?ref=NB2PJ5 | 双方各得 ¥10 体验金 + 首单 9 折 |
-
-### 小米·MiMo 详细 URL
-
-| 用途 | URL |
-|------|-----|
-| Token Plan 订阅 | https://platform.xiaomimomo.com/token-plan |
-| MiMoCode 主页 | https://mimo.xiaomi.com/zh/mimocode |
-| API 按量计费 | https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go |
-
-> V2 系列已于 2026.6.30 下线，V2.5 系列已上线。Token Plan 页当前只展示 Max 年付套餐。
-
-### 待接入厂商（7 家）
-
-| ID | 厂商 | 定价页 URL | 状态 |
-|----|------|-----------|------|
-| baidu | 百度·千帆 | — | 待采集 |
-| xunfei | 讯飞·星火 | — | 待采集 |
-| huawei | 华为云 | — | 待采集 |
-| jd | 京东云 | — | 待采集 |
-| opencode | OpenCode | — | 待采集 |
-| ollama | Ollama | — | 待采集 |
-| taotoken | TaoToken | — | 待采集 |
-
-> 完整 Schema 见 `project/codingplan-saver/data/SCHEMA.md`。提取策略：`docs`=静态文档页解析，`api`=JSON API，`manual`=手动维护。
+| ID | 厂商 | 定价页 URL |
+|----|------|-----------|
+| baidu | 百度·千帆 | — |
+| xunfei | 讯飞·星火 | — |
+| huawei | 华为云 | — |
+| ollama | Ollama | — |
+| taotoken | TaoToken | — |
 
 ---
 
-## 二、AI 编程工具（coding-tools 消费）
+## 二、AI 编程工具
 
-### 国内 — 模型厂商自有（10 家）
+> 新增工具先在此登记，再更新 `tools.json`。
 
-| ID | 厂商 | 工具名 | 形态 | 官网 | 推广链接 | 备注 |
-|----|------|--------|:--:|------|---------|------|
-| codegeex | 智谱AI | CodeGeeX | IDE | — | — | GLM 系列集成 |
-| trae | 字节·方舟 | Trae | IDE | — | — | 国内模型最全 |
-| deepseek-coder | DeepSeek | DeepSeek Coder | CLI | — | — | API 成本最低 |
-| kimi-code | Kimi | Kimi Code | ❓ | kimi.com/code/zh | kimi-bot.com/...?invitation_code=A6EDXY | 待确认 |
-| tongyi-lingma | 阿里·百炼 | 通义灵码 | IDE | — | — | 通义系列集成 |
-| codebuddy | 腾讯云 | CodeBuddy | ❓ | workbuddy.cn | — | 腾讯AI代码助手 |
-| baidu-comate | 百度·千帆 | 百度 Comate | IDE | — | — | 文心快码 |
-| iflycode | 讯飞·星火 | iFlyCode | IDE | — | — | — |
-| minimax-code | MiniMax | MiniMax Code | ❓ | agent.minimaxi.com/download | — | 待确认 |
-| mimo-code | 小米·MiMo | MiMo Code | ❓ | mimo.xiaomi.com/zh/mimocode | — | 待确认 |
-
-### 国内 — 独立/社区（2 家）
-
-| ID | 工具名 | 形态 | 官网 | 备注 |
-|----|--------|:--:|------|------|
-| zcode | ZCode | CLI | — | 中文优化，零配置 |
-| qoder | Qoder | CLI | — | 社区开源，国内模型支持全 |
-
-### 海外 — 头部精选（6 家）
-
-| ID | 工具名 | 厂商 | 形态 | 官网 | 备注 |
-|----|--------|------|:--:|------|------|
-| claude-code | Claude Code | Anthropic | CLI | claude.com/claude-code | 编程标杆 |
-| cursor | Cursor | Anysphere | IDE | cursor.com | 500万用户 |
-| github-copilot | GitHub Copilot | Microsoft | IDE | github.com/features/copilot | 用户量最大 |
-| codex-cli | Codex CLI | OpenAI | CLI | openai.com/codex | GPT-5.6独占 |
-| windsurf | Windsurf | Codeium | IDE | windsurf.com | Flow自动编程 |
-| opencode | OpenCode | 社区 | CLI | github.com/opencode-ai | 开源最活跃 |
+| ID | 工具名 | 厂商 | 分类 | 形态 | 官网 | 工具页 | 推广链接 | 备注 |
+|----|--------|------|:--:|:--:|------|------|------|------|
+| codegeex | CodeGeeX | 智谱AI | 国内·厂商 | IDE | bigmodel.cn | — | — | GLM 系列集成 |
+| trae | Trae | 字节·方舟 | 国内·厂商 | IDE | volcengine.com | trae.ai | — | 国内模型最全 |
+| deepseek-coder | DeepSeek Coder | DeepSeek | 国内·厂商 | CLI | deepseek.com | api-docs.deepseek.com | — | API 成本最低 |
+| kimi-code | Kimi Code | Kimi | 国内·厂商 | ❓ | kimi.com | kimi.com/code/zh | 同 Kimi | 待确认形态 |
+| tongyi-lingma | 通义灵码 | 阿里·百炼 | 国内·厂商 | IDE | aliyun.com | — | — | 通义系列集成 |
+| codebuddy | CodeBuddy | 腾讯云 | 国内·厂商 | ❓ | cloud.tencent.com | workbuddy.cn | — | 腾讯 AI 代码助手 |
+| baidu-comate | 百度 Comate | 百度·千帆 | 国内·厂商 | IDE | baidu.com | — | — | 文心快码 |
+| iflycode | iFlyCode | 讯飞·星火 | 国内·厂商 | IDE | xfyun.cn | — | — | — |
+| minimax-code | MiniMax Code | MiniMax | 国内·厂商 | ❓ | minimaxi.com | agent.minimaxi.com/download | — | 待确认形态 |
+| mimo-code | MiMo Code | 小米·MiMo | 国内·厂商 | ❓ | xiaomimomo.com | mimo.xiaomi.com/zh/mimocode | 同 MiMo | 待确认形态 |
+| zcode | ZCode | 独立 | 国内·独立 | CLI | — | — | — | 中文优化，零配置 |
+| qoder | Qoder | 独立 | 国内·独立 | CLI | — | — | — | 社区开源，国内模型支持全 |
+| claude-code | Claude Code | Anthropic | 海外 | CLI | anthropic.com | claude.com/claude-code | — | 编程标杆 |
+| cursor | Cursor | Anysphere | 海外 | IDE | anysphere.com | cursor.com | — | 500万用户 |
+| github-copilot | GitHub Copilot | Microsoft | 海外 | IDE | github.com | github.com/features/copilot | — | 用户量最大 |
+| codex-cli | Codex CLI | OpenAI | 海外 | CLI | openai.com | openai.com/codex | — | GPT-5.6 独占 |
+| windsurf | Windsurf | Codeium | 海外 | IDE | codeium.com | windsurf.com | — | Flow 自动编程 |
+| opencode | OpenCode | 社区 | 海外 | CLI | opencode.ai | github.com/opencode-ai | — | 开源最活跃 |
 
 ---
 
-## 三、推广链接汇总
+## 三、更新规则
 
-> 全部推广链接集中管理，方便统一替换和追踪。
-
-| 厂商 | 产品 | 推广链接 | 类型 | 返佣 |
-|------|------|---------|------|------|
-| 智谱AI | 智谱AI（C端） | bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D | 注册推广 | 新用户注册得 2000万 Tokens |
-| Kimi | Kimi（C端） | kimi-bot.com/activities/zh-cn/viral-referral/share?scenario=invite&from=share_poster&invitation_code=A6EDXY | 注册推广 | 待确认 |
-| Kimi | Kimi Code | 同上 | 注册推广 | 待确认 |
-| MiniMax | MiniMax | platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link | Token Plan 推广 | 好友 9折，邀请人 10% 返利 |
-| 小米·MiMo | MiMo | platform.xiaomimomo.com?ref=NB2PJ5 | 注册推广 | 双方各得 ¥10 体验金 + 首单 9 折 |
-| 字节·方舟 | 方舟 | 待添加 | 待确认 | 待确认 |
-| 阿里·百炼 | 百炼 | 待添加 | 阿里云推广返佣 | 待确认 |
-| 腾讯云 | 腾讯云 | 待添加 | 云推荐奖励 | 待确认 |
-| Claude | Claude | 待添加 | 待确认 | 待确认 |
-| GitHub | GitHub | 待添加 | 待确认 | 待确认 |
-| DeepSeek | DeepSeek | 无推广体系 | — | — |
-| Codex | Codex | 待添加 | 待确认 | 待确认 |
+1. **新增厂商/工具** → 先在此文件登记 → Frank 确认 → 更新对应 JSON
+2. **URL 变更**（定价页/官网/推广链接）→ 改此文件 → 同步更新 JSON
+3. **形态 ❓** 待确认 → Frank 确认后改；**分类** 按 `国内·厂商` / `国内·独立` / `海外` 维护
 
 ---
 
-## 四、待采集字段（coding-tools 每款工具）
-
-| 维度 | 字段 | 说明 |
-|------|------|------|
-| 基本信息 | name, vendor, type, websiteUrl | 名称、厂商、CLI/IDE/桌面/插件、官网 |
-| 定价 | pricing, freeTier, paidPlans | 免费额度、付费套餐、与 Coding Plan 关系 |
-| 模型集成 | modelIntegration | 支持的自有模型 + 三方模型 |
-| 功能 | features[] | Agent模式、MCP、多文件编辑、Git、终端等 |
-| 平台 | platforms[] | Mac/Win/Linux/Web/VS Code/JetBrains |
-| 优势/不足 | strengths[], weaknesses[] | 每条 ≤25 字 |
-| 适用场景 | bestFor[] | 什么类型开发最适合 |
-| 评分 | rating(1-5) | 主观综合评分 |
-
----
-
-## 五、数据文件映射
-
-| 数据 | 存储位置 | 用途 |
-|------|---------|------|
-| 厂商元信息 | `project/codingplan-saver/data/vendors.json` | 采集策略、URL、配色 |
-| 套餐价格 | `project/codingplan-saver/data/plans.json` | HTML 渲染数据源 |
-| 变动时间线 | `project/codingplan-saver/data/changes.json` | 推荐页"最近变动" |
-| 站点配置 | `project/codingplan-saver/data/site.json` | 博主信息、推荐分组、社群 |
-| 编程工具 | `project/coding-tools/data/tools.json` | 工具对比数据源 |
-| 推广链接 | `project/coding-tools/data/affiliates.json` | 工具推广链接 |
-| 数据 Schema | `project/codingplan-saver/data/SCHEMA.md` | 字段定义 + 枚举 |
-
----
-
-## 六、更新规则
-
-1. **新增厂商/工具** → 先加到此文件 → 再到各项目 data/ 下更新对应 JSON
-2. **URL 变更** → 改此文件 → 同步更新项目 JSON
-3. **推广链接** → 集中登记在第三部分 → 各项目引用
-4. **形态待确认**的 5 款（Kimi Code / CodeBuddy / MiniMax Code / MiMo Code / ZCode / Qoder）→ Frank 确认后把 ❓ 改为 CLI/IDE/桌面/插件
-5. **新增联盟链接** → 先在此文件登记 → 更新 `vendors.json` 和 `plans.json`
-
----
-
-## 七、结算记录
+## 四、结算记录
 
 | 日期 | 平台 | 金额 | 备注 |
 |------|------|------|------|
 | 待记录 | | | |
-
----
-
-## 八、变更记录
-
-| 日期 | 变更 |
-|------|------|
-| 2026-07-23 | 合并 vendors-reference.md 内容：新增返佣详情、MiMo URL、链接格式规范、数据文件映射、结算记录；数据架构文档拆分为独立 `data-architecture.md` |
-| 2026-07-22 | 初始版本：厂商 + 工具 + 推广链接 + 待采集字段 |

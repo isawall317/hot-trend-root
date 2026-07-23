@@ -32,6 +32,7 @@ DailyHotApi (40+平台) + RSSHub (500+源) + 11 家厂商定价页
 | `/analyze` | `analyze` / `分析` | 利基深度分析 + 6 维评分 |
 | `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
 | `/codingplan-page` | 或 `build` / `update` | CodingPlan 数据更新 + HTML 生成 |
+| `/vendors-sync` | 或 `scan` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
 
 > 详细执行流程见 `.claude/skills/{name}/SKILL.md`
 
@@ -59,7 +60,7 @@ hot-trend-root/
 ├── docs/                         # 项目文档
 │   ├── data-architecture.md      # 数据体系总地图
 │   └── vendors-and-tools.md      # 厂商/工具唯一真相源
-├── .claude/skills/               # 4 个技能定义
+├── .claude/skills/               # 5 个技能定义
 ├── tools/
 │   ├── collector/                # Python 数据采集管道
 │   └── builder/build.py          # HTML 构建器

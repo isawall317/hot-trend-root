@@ -2,7 +2,7 @@
 // Tab 2: 对比（散点图 + 筛选条 + 表格 + 移动端卡片）
 // ============================================================
 const compareState = {
-  filters: { types: new Set(), tags: new Set(), models: new Set(), monthlyPriceMax: null, search: '' },
+  filters: { types: new Set(), tags: new Set(), models: new Set(), categories: new Set(), monthlyPriceMax: null, search: '' },
   sort: { key: null, dir: 'asc' },
   columnsExpanded: false
 };
@@ -40,7 +40,7 @@ function renderTableSection() {
       '</div>' +
       '<div id="compareFilterBar"></div>' +
       '<div class="table-wrap"><table class="data-table"><thead><tr>' +
-        '<th>平台</th><th>套餐</th><th>类型</th><th>评分</th><th>月费</th>' +
+        '<th>平台</th><th>套餐</th><th>分层</th><th>类型</th><th>评分</th><th>月费</th>' +
         '<th class="col-extra">首月</th><th class="col-extra">月请求</th>' +
         '<th>实测月Token</th><th>每元Token</th>' +
         '<th class="col-extra">1M价</th><th>支持模型</th><th>标签</th><th>优惠购买</th>' +
@@ -58,6 +58,9 @@ function renderCompareFilterBar() {
 
   const typeChips = types.map(t => '<button class="filter-chip" data-filter-type="types" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
   const tagChips = tags.map(t => '<button class="filter-chip" data-filter-type="tags" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
+  const catLabels = { 'model-maker': '原厂', 'cloud-maas': '云厂商', 'vertical-cloud': '垂直云', 'aggregator': '聚合商' };
+  const cats = [...new Set(filterable.map(p => p.category || 'model-maker'))].sort();
+  const catChips = cats.map(c => '<button class="filter-chip" data-filter-type="categories" data-filter-value="' + c + '">' + (catLabels[c] || c) + '</button>').join('');
 
   return '<div class="filter-bar">' +
     '<select class="filter-select" id="sortSelect">' +
@@ -72,6 +75,7 @@ function renderCompareFilterBar() {
     '<button class="filter-chip" id="resetBtn">重置</button>' +
     '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / ' + filterable.length + ' 个套餐</span>' +
   '</div>' +
+  (catChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">分层:</span>' + catChips + '</div>' : '') +
   (typeChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>' + typeChips + '</div>' : '') +
   (tagChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>' + tagChips + '</div>' : '');
 }
@@ -165,7 +169,7 @@ function filterPlans() {
   const f = compareState.filters;
   let result = plans.filter(p => {
     if (p.status === 'deprecated') return false;
-    if (f.types.size && !f.types.has(p.type)) return false;
+    if (f.categories.size && !f.categories.has(p.category || 'model-maker')) return false;
     if (f.tags.size && !(p.tags || []).some(t => f.tags.has(t))) return false;
     if (f.models.size && !(p.models || []).some(m => f.models.has(m))) return false;
     if (f.monthlyPriceMax && typeof p.monthlyPrice === 'number' && p.monthlyPrice > f.monthlyPriceMax) return false;
@@ -218,9 +222,12 @@ function renderCompareTable() {
       const models = (p.models || []).slice(0, 4).join(', ') + ((p.models || []).length > 4 ? '...' : '');
       const statusBadge = p.status === 'paused' ? '<span class="badge badge-warning">暂停</span>' :
                           p.status === 'sold_out' ? '<span class="badge">售罄</span>' : '';
+      const catLabels = { 'model-maker': '原厂', 'cloud-maas': '云厂商', 'vertical-cloud': '垂直云', 'aggregator': '聚合商' };
+      const catLabel = catLabels[p.category] || p.category || '原厂';
       return '<tr>' +
         '<td class="col-vendor">' + escapeHtml(p.vendor) + (statusBadge ? ' ' + statusBadge : '') + '</td>' +
         '<td>' + escapeHtml(p.plan) + '</td>' +
+        '<td><span class="badge">' + catLabel + '</span></td>' +
         '<td><span class="badge">' + escapeHtml(p.type) + '</span></td>' +
         '<td>' + renderStars(p.rating) + '</td>' +
         '<td class="col-price">' + price + '</td>' +
