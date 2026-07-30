@@ -1,0 +1,61 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "character-sheet",
+      "promptFiles": ["prompts/00-cover-character-sheet.md"],
+      "image": "characters/characters.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "4:3"
+    },
+    {
+      "id": "page-1-starting-point",
+      "promptFiles": ["prompts/01-page-1-starting-point.md"],
+      "image": "01-page-1-starting-point.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    },
+    {
+      "id": "page-2-fear",
+      "promptFiles": ["prompts/02-page-2-fear.md"],
+      "image": "02-page-2-fear.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    },
+    {
+      "id": "page-3-retreat",
+      "promptFiles": ["prompts/03-page-3-retreat.md"],
+      "image": "03-page-3-retreat.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    },
+    {
+      "id": "page-4-flashback",
+      "promptFiles": ["prompts/04-page-4-flashback.md"],
+      "image": "04-page-4-flashback.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    },
+    {
+      "id": "page-5-decision",
+      "promptFiles": ["prompts/05-page-5-decision.md"],
+      "image": "05-page-5-decision.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    },
+    {
+      "id": "page-6-the-jump",
+      "promptFiles": ["prompts/06-page-6-the-jump.md"],
+      "image": "06-page-6-the-jump.png",
+      "provider": "minimax",
+      "model": "image-01",
+      "ar": "3:4"
+    }
+  ]
+}

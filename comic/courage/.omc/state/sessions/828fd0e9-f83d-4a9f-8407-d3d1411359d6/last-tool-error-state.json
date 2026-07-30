@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"jq '[.items[] | select(.source_type == \\\"tech\\\" or .source | test(\\\"github|juejin|51cto|ithome|sspai|hellogithub|huxiu|ifanr|36kr\\\"))] | sort_by(.hot_metric | tonumber) | reverse | .[0:30]...",
+  "error": "Exit code 5\njq: error (at /Users/doumoman/Gits/hot-trend-root/data/raw/2026-07-20/20260720T145959.json:11637): boolean (true) cannot be matched, as it is not a string",
+  "timestamp": "2026-07-29T06:10:49.618Z",
+  "retry_count": 1
+}

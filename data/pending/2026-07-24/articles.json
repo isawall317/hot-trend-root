@@ -1,0 +1,177 @@
+{
+  "date": "2026-07-24",
+  "total": 17,
+  "scanner": "maintenance_scanner",
+  "candidates": [
+    {
+      "title": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响",
+      "url": "https://www.ithome.com/0/978/808.htm",
+      "hot_metric": "150",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "Kimi (score=5)",
+      "level": "high",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "GitHub 爆款开源工具：给 rsync 装上一套现代化操作界面",
+      "url": "https://www.51cto.com/article/850654.html",
+      "hot_metric": "",
+      "source": "dailyhot:51cto",
+      "source_type": "tech",
+      "author": "GitHub (score=4)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "Kimi 叫停新订阅后，如何用上 K3",
+      "url": "https://www.36kr.com/p/3908782033114242",
+      "hot_metric": "3",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "Kimi (score=4)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "OpenAI官方发布最新提示词技巧！",
+      "url": "https://juejin.cn/post/7665417513739780148",
+      "hot_metric": "234",
+      "source": "dailyhot:juejin",
+      "source_type": "tech",
+      "author": "Codex (ChatGPT) (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "刚刚，Claude爆改语音！11种语言，就是没中文",
+      "url": "https://www.51cto.com/article/850731.html",
+      "hot_metric": "",
+      "source": "dailyhot:51cto",
+      "source_type": "tech",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "Claude 和 Codex 都很好，但我还是狂烧5.6sol&fable5花十天做了个 IDE",
+      "url": "https://www.51cto.com/article/850621.html",
+      "hot_metric": "",
+      "source": "dailyhot:51cto",
+      "source_type": "tech",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "DeepSeek 分享对话被 Google 批量收录，「分享」被做成了「公开发布」",
+      "url": "https://www.51cto.com/article/850648.html",
+      "hot_metric": "",
+      "source": "dailyhot:51cto",
+      "source_type": "tech",
+      "author": "DeepSeek 官方 (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破",
+      "url": "https://www.ithome.com/0/978/670.htm",
+      "hot_metric": "189",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "Kimi (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "（更新：已恢复）由于技术原因，DeepSeek 联网搜索暂不可用",
+      "url": "https://www.ithome.com/0/980/005.htm",
+      "hot_metric": "112",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "DeepSeek 官方 (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "小米 REDMI K90 至尊版手机发布：骁龙 8 至尊版 + 主动散热风扇，首销到手价 2799 元起",
+      "url": "https://www.ithome.com/0/970/727.htm",
+      "hot_metric": "359",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "小米·MiMo (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "Claude Agent突然大更新，狂塞500个技能，网友直呼疯狂",
+      "url": "https://www.36kr.com/p/3907809216959622",
+      "hot_metric": "12",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "Kimi，“等芯来”",
+      "url": "https://www.36kr.com/p/3908058642961542",
+      "hot_metric": "24",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "Kimi (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "刚刚，Claude爆改语音，11种语言，就是没中文",
+      "url": "https://www.36kr.com/p/3909033823049097",
+      "hot_metric": "3",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "Kimi K3，已经撕裂了整个硅谷",
+      "url": "https://www.36kr.com/p/3909007592002695",
+      "hot_metric": "10",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "Kimi (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "林俊旸离职140天，Qwen3.8重回开源，阿里大模型还能打吗？",
+      "url": "https://www.36kr.com/p/3908187603621252",
+      "hot_metric": "",
+      "source": "dailyhot:36kr",
+      "source_type": "news",
+      "author": "阿里·百炼 (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "梁文锋 4 小时投资会讲话流出：DeepSeek 只赚取合理利润，克制、开源与低成本是实现 AGI 的核心策略",
+      "url": "https://readhub.cn/topic/8uzILlt0kKR",
+      "hot_metric": "",
+      "source": "folo:Readhub---每日早报",
+      "source_type": "news",
+      "author": "DeepSeek 官方 (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    },
+    {
+      "title": "一周末打通AMD全套适配：Anthropic用Claude自举而非英伟达硬件，打破CUDA“人力壁垒”",
+      "url": "https://wallstreetcn.com/articles/3777816",
+      "hot_metric": "",
+      "source": "folo:华尔街见闻",
+      "source_type": "news",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-24T05:50:58Z"
+    }
+  ]
+}

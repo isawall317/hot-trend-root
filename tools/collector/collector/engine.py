@@ -1,4 +1,4 @@
-"""采集引擎 — 从 DailyHotApi + RSSHub + Folo 拉取数据，归一化存储"""
+"""采集引擎 — 从 DailyHotApi + Folo 拉取数据，归一化存储"""
 
 import asyncio
 import json
@@ -24,11 +24,7 @@ DAILYHOT_PUBLIC = os.getenv(
     "https://dailyhotapi-vercel-mauve.vercel.app"
 )
 
-# RSSHub 地址
-RSSHUB_BASE = os.getenv("RSSHUB_BASE", "http://localhost:1200")
-RSSHUB_PUBLIC = "https://rsshub.app"
-
-# Folo 配置（本地 RSS 阅读器，通过 folocli 交互）
+# ── Folo 配置（本地 RSS 阅读器，通过 folocli 交互）──
 FOLO_LIMIT = int(os.getenv("FOLO_LIMIT", "100"))  # 每次从 Folo 拉取的条目数
 FOLO_VIEW = int(os.getenv("FOLO_VIEW", "0"))       # 0=文章 1=社交 2=图片 3=视频
 FOLO_NPX = os.getenv("FOLO_NPX", "npx")            # npx 路径
@@ -89,21 +85,6 @@ DAILYHOT_SOURCES = [
 ]
 
 
-# ── RSSHub 源列表 ────────────────────────────────────────────────
-# 格式: (路由路径, 标签)
-RSSHUB_SOURCES = [
-    # 技术与开源
-    ("/github/trending/daily", "github"),
-    ("/hackernews/best", "hackernews"),
-    # 产品与商业
-    ("/producthunt/today", "producthunt"),
-    # 国内内容平台（RSSHub 补充 DailyHotApi 没覆盖的）
-    ("/jike/topic/553870e6e4b0c63c1a0d68e1", "jike"),  # 即刻精选
-    # 小红书（DailyHotApi 不支持）
-    ("/xiaohongshu/board/feed", "xiaohongshu"),
-]
-
-
 async def _fetch_dailyhot(client: httpx.AsyncClient, source: str, base_url: str):
     """从 DailyHotApi 拉取单个源"""
     try:
@@ -114,18 +95,6 @@ async def _fetch_dailyhot(client: httpx.AsyncClient, source: str, base_url: str)
     except Exception as e:
         print(f"  ⚠️  DailyHotApi/{source} 失败: {e}")
         return source, None
-
-
-async def _fetch_rsshub(client: httpx.AsyncClient, route: str, tag: str, base_url: str):
-    """从 RSSHub 拉取单个 RSS 源"""
-    try:
-        resp = await client.get(f"{base_url}{route}", timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
-        return tag, data
-    except Exception as e:
-        print(f"  ⚠️  RSSHub{route} 失败: {e}")
-        return tag, None
 
 
 def _fetch_folo(limit: int = 100, view: int = 0) -> list[dict]:
@@ -237,15 +206,6 @@ async def collect_all(sources: list[str] | None = None):
         ]
         dailyhot_results = await asyncio.gather(*dailyhot_tasks)
 
-        # ── RSSHub ──
-        rsshub_base = await _detect_rsshub_api(client)
-        print(f"📡 RSSHub: {rsshub_base}")
-        rsshub_tasks = [
-            _fetch_rsshub(client, route, tag, rsshub_base)
-            for route, tag in RSSHUB_SOURCES
-        ]
-        rsshub_results = await asyncio.gather(*rsshub_tasks)
-
     # ── Folo (本地 RSS 阅读器) ──
     print(f"📡 Folo: 本地 RSS (limit={FOLO_LIMIT}, view={FOLO_VIEW})")
     folo_entries = _fetch_folo(limit=FOLO_LIMIT, view=FOLO_VIEW)
@@ -258,12 +218,6 @@ async def collect_all(sources: list[str] | None = None):
         if data is None:
             continue
         normalized = _normalize_dailyhot(source, data, timestamp)
-        all_items.extend(normalized)
-
-    for tag, data in rsshub_results:
-        if data is None:
-            continue
-        normalized = _normalize_rsshub(tag, data, timestamp)
         all_items.extend(normalized)
 
     # Folo 归一化
@@ -298,17 +252,6 @@ async def _detect_dailyhot_api(client: httpx.AsyncClient) -> str:
     return DAILYHOT_PUBLIC
 
 
-async def _detect_rsshub_api(client: httpx.AsyncClient) -> str:
-    """检测使用本地 Docker 还是公共 API"""
-    try:
-        resp = await client.get(f"{RSSHUB_BASE}/github/trending/daily", timeout=5)
-        if resp.status_code == 200:
-            return RSSHUB_BASE
-    except Exception:
-        pass
-    return RSSHUB_PUBLIC
-
-
 def _normalize_dailyhot(source: str, data: dict, timestamp: str) -> list[dict]:
     """将 DailyHotApi 返回数据归一化为统一格式"""
     items = []
@@ -326,28 +269,6 @@ def _normalize_dailyhot(source: str, data: dict, timestamp: str) -> list[dict]:
                     "hot_metric": str(item.get("hot", "")),
                     "source": f"dailyhot:{source}",
                     "source_type": _classify_source(source),
-                    "collected_at": timestamp,
-                })
-
-    return items
-
-
-def _normalize_rsshub(tag: str, data: dict, timestamp: str) -> list[dict]:
-    """将 RSSHub 返回数据归一化为统一格式"""
-    items = []
-
-    # RSSHub 返回格式: { "items": [{ "title": "...", "url": "...", ... }] }
-    raw_items = data.get("items", []) if isinstance(data, dict) else []
-
-    if isinstance(raw_items, list):
-        for item in raw_items:
-            if isinstance(item, dict):
-                items.append({
-                    "title": str(item.get("title", "")).strip(),
-                    "url": str(item.get("url", "")).strip(),
-                    "hot_metric": "",
-                    "source": f"rsshub:{tag}",
-                    "source_type": _classify_source(tag),
                     "collected_at": timestamp,
                 })
 

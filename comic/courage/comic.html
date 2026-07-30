@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>勇气 — 那一跳</title>
+<style>
+  :root {
+    --blue-deep: #0a3a6e;
+    --blue-mid: #1e6fb8;
+    --blue-light: #6db4e8;
+    --gold-warm: #f5c542;
+    --gold-deep: #d97a26;
+    --skin: #f4d5b3;
+    --ink: #1a1a1a;
+    --paper: #fdfaf2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #2c2c2c;
+    color: var(--ink);
+    padding: 24px;
+  }
+  .book {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 32px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  }
+  h1 {
+    text-align: center;
+    font-size: 42px;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+    color: var(--blue-deep);
+  }
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+  }
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid var(--gold-deep);
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #6b4a1e;
+  }
+  .pages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .page {
+    aspect-ratio: 3/4;
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 2px;
+    padding: 12px;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .page-title {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    padding: 4px;
+    border-bottom: 1px dashed #ccc;
+    grid-row: -2;
+  }
+  .panel {
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+  }
+  .panel svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .bubble {
+    position: absolute;
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 1.3;
+    max-width: 70%;
+    box-shadow: 1.5px 1.5px 0 var(--ink);
+  }
+  .bubble.thought {
+    border-style: dashed;
+    background: #fffbe6;
+  }
+  .bubble.sfx {
+    background: var(--gold-warm);
+    color: var(--ink);
+    font-weight: bold;
+    transform: rotate(-4deg);
+    padding: 2px 6px;
+    font-size: 13px;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--blue-deep);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin-right: 6px;
+  }
+  /* Page-specific palettes via filter */
+  .page.warm { filter: saturate(1.1); }
+  .page.cool { filter: contrast(1.05); }
+  .page.triumph { filter: saturate(1.15); }
+
+  /* SVG common */
+  .stroke-ink { stroke: #1a1a1a; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-ink-thick { stroke: #1a1a1a; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .fill-skin { fill: #f4d5b3; }
+  .fill-blue-trunks { fill: #ffffff; }
+  .fill-blue-stripe { fill: #1e6fb8; }
+  .fill-blue-goggle { fill: #2563eb; }
+  .fill-goggle-frame { fill: #f5f5f5; }
+  .fill-water { fill: #4ba8d8; }
+  .fill-water-deep { fill: #1e6fb8; }
+  .fill-water-light { fill: #9bd0ee; }
+  .fill-sky { fill: #a8d8f0; }
+  .fill-gold { fill: #f5c542; }
+  .fill-gold-deep { fill: #d97a26; }
+  .fill-warm-water { fill: #7dc9b8; }
+  .fill-platform { fill: #d4d4d4; }
+  .fill-shadow { fill: #1a1a1a; opacity: 0.18; }
+  .fill-mole { fill: #5a3a1f; }
+
+  /* Annotation labels */
+  .label {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    font-size: 10px;
+    color: #888;
+    font-family: monospace;
+  }
+  @media (max-width: 900px) {
+    .pages { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .pages { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="book">
+
+  <h1>勇 气</h1>
+  <div class="subtitle">那一跳 · 勇气漫画占位版</div>
+
+  <div class="notice">
+    <strong>📌 占位说明：</strong> 因当前环境无可用图像生成 API key，本页面使用 SVG 矢量占位图模拟分镜布局、对话气泡与色调节奏。最终成品应替换为 AI 生成的分镜图（保留对话气泡与音效位置即可）。
+  </div>
+
+  <div class="pages">
+
+    <!-- =============== PAGE 1: 起点 =============== -->
+    <div class="page cool">
+      <div class="panel">
+        <!-- 1.1 泳馆远景 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="60"/>
+          <rect class="fill-water-light" x="0" y="60" width="200" height="40"/>
+          <!-- Sun -->
+          <circle cx="40" cy="20" r="10" fill="#ffe88a"/>
+          <!-- Pool deck -->
+          <rect x="0" y="68" width="200" height="6" fill="#e8e8e8"/>
+          <!-- Diving tower silhouette -->
+          <rect x="140" y="20" width="6" height="48" fill="#888"/>
+          <rect x="130" y="20" width="26" height="3" fill="#888"/>
+          <!-- Light reflections -->
+          <path d="M20 75 Q40 70 60 75" stroke="white" stroke-width="1.5" fill="none"/>
+          <path d="M80 78 Q100 73 120 78" stroke="white" stroke-width="1.5" fill="none"/>
+          <!-- Sun glare -->
+          <ellipse cx="60" cy="68" rx="20" ry="2" fill="white" opacity="0.6"/>
+        </svg>
+        <div class="bubble sfx" style="top: 6px; left: 8px;">啾——</div>
+      </div>
+
+      <div class="panel">
+        <!-- 1.2 跳台 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <!-- Tower -->
+          <rect x="140" y="35" width="4" height="65" fill="#777"/>
+          <rect x="125" y="35" width="34" height="3" fill="#777"/>
+          <rect x="124" y="35" width="36" height="2" fill="#555"/>
+          <!-- Ladder rungs -->
+          <line x1="140" y1="50" x2="155" y2="50" stroke="#777" stroke-width="1"/>
+          <line x1="140" y1="60" x2="155" y2="60" stroke="#777" stroke-width="1"/>
+          <line x1="140" y1="70" x2="155" y2="70" stroke="#777" stroke-width="1"/>
+          <!-- Platform shadow -->
+          <ellipse cx="141" cy="100" rx="15" ry="3" fill="#000" opacity="0.2"/>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 1.3 小宇在队尾 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect x="0" y="80" width="200" height="20" fill="#e8e8e8"/>
+          <!-- Line of kids (silhouettes) -->
+          <g fill="#888">
+            <circle cx="40" cy="55" r="6"/>
+            <rect x="36" y="60" width="8" height="18" rx="2"/>
+            <circle cx="70" cy="55" r="6"/>
+            <rect x="66" y="60" width="8" height="18" rx="2"/>
+            <circle cx="100" cy="55" r="6"/>
+            <rect x="96" y="60" width="8" height="18" rx="2"/>
+          </g>
+          <!-- Xiao Yu at end -->
+          <g>
+            <!-- Head -->
+            <circle cx="150" cy="50" r="9" class="fill-skin"/>
+            <!-- Hair -->
+            <path d="M141 47 Q141 41 150 41 Q159 41 159 47 L159 49 Q156 47 150 47 Q144 47 141 49 Z" fill="#1a1a1a"/>
+            <!-- Body -->
+            <path d="M144 59 L156 59 L158 78 L142 78 Z" fill="#ffffff"/>
+            <!-- Trunk stripes -->
+            <rect x="143" y="64" width="14" height="2" class="fill-blue-stripe"/>
+            <rect x="143" y="69" width="14" height="2" class="fill-blue-stripe"/>
+            <rect x="143" y="74" width="14" height="2" class="fill-blue-stripe"/>
+            <!-- Arms -->
+            <line x1="144" y1="62" x2="138" y2="72" class="stroke-ink"/>
+            <line x1="156" y1="62" x2="162" y2="72" class="stroke-ink"/>
+            <!-- Goggles on forehead -->
+            <ellipse cx="148" cy="46" rx="4" ry="2.5" class="fill-blue-goggle"/>
+            <ellipse cx="148" cy="46" rx="4" ry="2.5" class="fill-goggle-frame" fill-opacity="0.3" stroke="#1a1a1a" stroke-width="0.5"/>
+            <!-- Mole on left eyebrow -->
+            <circle cx="143" cy="49" r="0.7" class="fill-mole"/>
+            <!-- Nervous eyes looking up -->
+            <circle cx="146" cy="51" r="0.8" fill="#1a1a1a"/>
+            <circle cx="151" cy="51" r="0.8" fill="#1a1a1a"/>
+            <!-- Tight mouth -->
+            <line x1="147" y1="55" x2="150" y2="55" class="stroke-ink"/>
+          </g>
+        </svg>
+        <div class="bubble thought" style="top: 6px; left: 60%;">好高……</div>
+      </div>
+
+      <div class="panel">
+        <!-- 1.4 特写眼睛 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#a8d8f0" x="0" y="0" width="200" height="100"/>
+          <!-- Eye outlines -->
+          <ellipse cx="80" cy="50" rx="35" ry="20" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+          <ellipse cx="130" cy="50" rx="35" ry="20" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+          <!-- Iris -->
+          <circle cx="80" cy="50" r="12" fill="#1a1a1a"/>
+          <circle cx="130" cy="50" r="12" fill="#1a1a1a"/>
+          <!-- Pupil reflection of tower -->
+          <rect x="78" y="38" width="4" height="20" fill="#888"/>
+          <rect x="75" y="38" width="10" height="2" fill="#888"/>
+          <circle cx="84" cy="48" r="2" fill="white"/>
+          <circle cx="134" cy="48" r="2" fill="white"/>
+          <!-- Eyebrows raised -->
+          <path d="M50 28 Q80 22 110 28" class="stroke-ink"/>
+          <path d="M100 28 Q130 22 160 28" class="stroke-ink"/>
+          <!-- Mole -->
+          <circle cx="50" cy="30" r="0.8" class="fill-mole"/>
+        </svg>
+        <div class="bubble thought" style="bottom: 6px; right: 6px;">这次一定要跳。</div>
+      </div>
+
+      <div class="page-title"><span class="badge">1</span>起点</div>
+    </div>
+
+    <!-- =============== PAGE 2: 恐惧 =============== -->
+    <div class="page cool">
+      <div class="panel">
+        <!-- 2.1 主观俯视 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <!-- Top edge of platform -->
+          <rect x="0" y="0" width="200" height="20" fill="#666"/>
+          <rect x="0" y="18" width="200" height="4" fill="#333"/>
+          <!-- Looking down -->
+          <rect x="0" y="22" width="200" height="78" class="fill-water-deep"/>
+          <!-- Pool tiles (tiny squares, vertical) -->
+          <g stroke="#1a1a1a" stroke-width="0.3" fill="none">
+            <line x1="0" y1="35" x2="200" y2="35"/>
+            <line x1="0" y1="50" x2="200" y2="50"/>
+            <line x1="0" y1="65" x2="200" y2="65"/>
+            <line x1="0" y1="80" x2="200" y2="80"/>
+            <line x1="40" y1="22" x2="40" y2="100"/>
+            <line x1="80" y1="22" x2="80" y2="100"/>
+            <line x1="120" y1="22" x2="120" y2="100"/>
+            <line x1="160" y1="22" x2="160" y2="100"/>
+          </g>
+          <!-- Tiny people -->
+          <g fill="#333">
+            <circle cx="60" cy="80" r="1"/>
+            <rect x="59" y="81" width="2" height="3"/>
+            <circle cx="100" cy="85" r="1"/>
+            <rect x="99" y="86" width="2" height="3"/>
+            <circle cx="140" cy="78" r="1"/>
+            <rect x="139" y="79" width="2" height="3"/>
+          </g>
+          <!-- Dizziness lines -->
+          <g stroke="#1a1a1a" stroke-width="1" fill="none" opacity="0.4">
+            <line x1="30" y1="30" x2="40" y2="40"/>
+            <line x1="170" y1="30" x2="160" y2="40"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 2.2 极端俯视 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-water" x="0" y="0" width="200" height="100"/>
+          <!-- Concentric ripples -->
+          <circle cx="100" cy="50" r="40" fill="none" stroke="white" stroke-width="1" opacity="0.4"/>
+          <circle cx="100" cy="50" r="25" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+          <circle cx="100" cy="50" r="12" fill="none" stroke="white" stroke-width="1" opacity="0.6"/>
+          <!-- Pool center dot -->
+          <circle cx="100" cy="50" r="3" fill="#1a1a1a"/>
+          <!-- Heartbeat text -->
+          <text x="50%" y="50%" text-anchor="middle" font-size="20" font-weight="bold" fill="#c00" font-family="serif">咚……咚……</text>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 2.3 上楼梯 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <!-- Tower structure -->
+          <rect x="50" y="0" width="40" height="100" fill="#aaa"/>
+          <!-- Ladder -->
+          <g stroke="#666" stroke-width="1.5">
+            <line x1="65" y1="20" x2="65" y2="100"/>
+            <line x1="78" y1="20" x2="78" y2="100"/>
+            <line x1="65" y1="30" x2="78" y2="30"/>
+            <line x1="65" y1="42" x2="78" y2="42"/>
+            <line x1="65" y1="54" x2="78" y2="54"/>
+            <line x1="65" y1="66" x2="78" y2="66"/>
+            <line x1="65" y1="78" x2="78" y2="78"/>
+          </g>
+          <!-- Xiao Yu climbing (back view) -->
+          <g>
+            <circle cx="71" cy="38" r="6" class="fill-skin"/>
+            <path d="M65 36 Q65 32 71 32 Q77 32 77 36 L77 38 Q74 36 71 36 Q68 36 65 38 Z" fill="#1a1a1a"/>
+            <rect x="65" y="44" width="12" height="22" fill="#ffffff"/>
+            <line x1="65" y1="48" x2="77" y2="48" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="65" y1="54" x2="77" y2="54" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="65" y1="60" x2="77" y2="60" stroke="#1e6fb8" stroke-width="2"/>
+            <!-- Arm on rail -->
+            <line x1="78" y1="45" x2="84" y2="48" class="stroke-ink"/>
+            <line x1="84" y1="48" x2="82" y2="52" class="stroke-ink"/>
+            <!-- Trembling lines -->
+            <g stroke="#1a1a1a" stroke-width="0.8" fill="none">
+              <path d="M88 50 L92 48"/>
+              <path d="M88 54 L92 52"/>
+              <path d="M88 58 L92 56"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 2.4 手部特写 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#e8e0d0" x="0" y="0" width="200" height="100"/>
+          <!-- Handrail -->
+          <rect x="0" y="45" width="200" height="20" fill="#888"/>
+          <rect x="0" y="43" width="200" height="3" fill="#666"/>
+          <!-- Hand gripping -->
+          <path d="M70 30 Q70 20 90 20 L120 20 Q140 20 140 30 L140 50 L70 50 Z" class="fill-skin stroke-ink-thick"/>
+          <!-- Knuckles (white = pressure) -->
+          <g fill="#e8d0b0">
+            <circle cx="85" cy="25" r="3"/>
+            <circle cx="100" cy="23" r="3"/>
+            <circle cx="115" cy="23" r="3"/>
+            <circle cx="125" cy="26" r="3"/>
+          </g>
+          <!-- Finger lines -->
+          <line x1="80" y1="20" x2="80" y2="48" class="stroke-ink"/>
+          <line x1="92" y1="20" x2="92" y2="48" class="stroke-ink"/>
+          <line x1="105" y1="20" x2="105" y2="48" class="stroke-ink"/>
+          <line x1="118" y1="20" x2="118" y2="48" class="stroke-ink"/>
+          <line x1="128" y1="22" x2="128" y2="48" class="stroke-ink"/>
+          <!-- Sweat drops -->
+          <path d="M150 15 Q148 22 152 22 Q156 22 154 15 Z" class="fill-blue-light"/>
+          <path d="M160 30 Q158 36 162 36 Q166 36 164 30 Z" class="fill-blue-light"/>
+          <!-- Birthmark hint -->
+          <ellipse cx="100" cy="70" rx="6" ry="2" fill="#8b5a2b" opacity="0.6"/>
+        </svg>
+        <div class="bubble thought" style="top: 4px; left: 8px;">要是没接住怎么办？</div>
+      </div>
+
+      <div class="page-title"><span class="badge">2</span>恐惧</div>
+    </div>
+
+    <!-- =============== PAGE 3: 退缩 =============== -->
+    <div class="page cool">
+      <div class="panel">
+        <!-- 3.1 站在台边 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <!-- Platform edge -->
+          <rect x="0" y="75" width="200" height="25" class="fill-platform"/>
+          <rect x="0" y="73" width="200" height="3" fill="#888"/>
+          <!-- Empty space ahead (cliff) -->
+          <rect x="0" y="60" width="200" height="15" class="fill-sky"/>
+          <line x1="0" y1="75" x2="200" y2="75" class="stroke-ink-thick"/>
+          <!-- Xiao Yu small on platform -->
+          <g transform="translate(95, 50)">
+            <circle cx="0" cy="0" r="5" class="fill-skin"/>
+            <path d="M-5 -2 Q-5 -6 0 -6 Q5 -6 5 -2 L5 0 Q2 -2 0 -2 Q-3 -2 -5 0 Z" fill="#1a1a1a"/>
+            <rect x="-5" y="5" width="10" height="18" fill="#ffffff"/>
+            <line x1="-5" y1="9" x2="5" y2="9" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-5" y1="14" x2="5" y2="14" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-5" y1="19" x2="5" y2="19" stroke="#1e6fb8" stroke-width="1.5"/>
+            <!-- Arms stiff -->
+            <line x1="-5" y1="7" x2="-10" y2="22" class="stroke-ink"/>
+            <line x1="5" y1="7" x2="10" y2="22" class="stroke-ink"/>
+          </g>
+          <!-- Distant shadow on platform -->
+          <ellipse cx="100" cy="92" rx="8" ry="1.5" fill="#000" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 3.2 教练 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="60"/>
+          <rect fill="#e8e8e8" x="0" y="75" width="200" height="25"/>
+          <!-- Coach -->
+          <g transform="translate(100, 25)">
+            <!-- Head -->
+            <circle cx="0" cy="0" r="11" class="fill-skin"/>
+            <!-- Crew cut -->
+            <path d="M-11 -2 Q-11 -10 0 -10 Q11 -10 11 -2 L11 0 Q5 -4 0 -4 Q-5 -4 -11 0 Z" fill="#1a1a1a"/>
+            <!-- Grey temples hint -->
+            <circle cx="-10" cy="-1" r="1.5" fill="#aaa"/>
+            <circle cx="10" cy="-1" r="1.5" fill="#aaa"/>
+            <!-- Eyes -->
+            <line x1="-4" y1="0" x2="-2" y2="0" class="stroke-ink"/>
+            <line x1="2" y1="0" x2="4" y2="0" class="stroke-ink"/>
+            <!-- Mouth -->
+            <line x1="-3" y1="4" x2="3" y2="4" class="stroke-ink"/>
+            <!-- Whistle -->
+            <circle cx="0" cy="7" r="1.5" fill="silver"/>
+            <line x1="0" y1="5" x2="0" y2="7" stroke="#666" stroke-width="0.5"/>
+            <!-- Body (white polo + blue trunks) -->
+            <rect x="-12" y="10" width="24" height="32" fill="white"/>
+            <rect x="-12" y="42" width="24" height="14" fill="#1e6fb8"/>
+            <!-- Arms on hips -->
+            <line x1="-12" y1="15" x2="-22" y2="22" class="stroke-ink"/>
+            <line x1="-22" y1="22" x2="-15" y2="28" class="stroke-ink"/>
+            <line x1="12" y1="15" x2="22" y2="22" class="stroke-ink"/>
+            <line x1="22" y1="22" x2="15" y2="28" class="stroke-ink"/>
+            <!-- Looking up at platform -->
+          </g>
+          <!-- Speech bubble -->
+          <g>
+            <ellipse cx="155" cy="30" rx="38" ry="14" fill="white" stroke="#1a1a1a" stroke-width="1.5"/>
+            <polygon points="125,40 130,55 140,42" fill="white" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="155" y="33" text-anchor="middle" font-size="11" font-weight="bold">小宇——下一个。</text>
+          </g>
+          <!-- Platform shadow above -->
+          <rect x="0" y="0" width="200" height="3" fill="#666" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 3.3 同学加油 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#a8d8f0" x="0" y="0" width="200" height="60"/>
+          <rect fill="#e8e8e8" x="0" y="75" width="200" height="25"/>
+          <!-- Classmate A (cap) -->
+          <g transform="translate(35, 30)">
+            <ellipse cx="0" cy="0" rx="11" ry="3" fill="#c0392b"/>
+            <circle cx="0" cy="2" r="8" class="fill-skin"/>
+            <circle cx="-2" cy="1" r="0.8" fill="#1a1a1a"/>
+            <circle cx="2" cy="1" r="0.8" fill="#1a1a1a"/>
+            <path d="M-3 4 Q0 6 3 4" class="stroke-ink" fill="none"/>
+            <rect x="-8" y="10" width="16" height="20" fill="#f5c542"/>
+            <line x1="-8" y1="22" x2="8" y2="22" stroke="#1a1a1a" stroke-width="0.5"/>
+            <!-- Waving arm -->
+            <line x1="8" y1="14" x2="16" y2="-2" class="stroke-ink"/>
+          </g>
+          <!-- Classmate B (ponytail) -->
+          <g transform="translate(80, 30)">
+            <circle cx="0" cy="0" r="8" class="fill-skin"/>
+            <path d="M-8 -2 Q-8 -8 0 -8 Q8 -8 8 -2 L8 1 Q4 -2 0 -2 Q-4 -2 -8 1 Z" fill="#3a2515"/>
+            <ellipse cx="10" cy="-2" rx="2" ry="4" fill="#3a2515"/>
+            <circle cx="-2" cy="0" r="0.8" fill="#1a1a1a"/>
+            <circle cx="2" cy="0" r="0.8" fill="#1a1a1a"/>
+            <path d="M-3 4 Q0 7 3 4" class="stroke-ink" fill="none"/>
+            <rect x="-7" y="8" width="14" height="20" fill="#e91e63"/>
+            <line x1="5" y1="12" x2="12" y2="-2" class="stroke-ink"/>
+          </g>
+          <!-- Classmate C (chunky, red goggles) -->
+          <g transform="translate(130, 32)">
+            <ellipse cx="-3" cy="0" rx="3" ry="2" fill="#c0392b" stroke="#1a1a1a" stroke-width="0.5"/>
+            <ellipse cx="3" cy="0" rx="3" ry="2" fill="#c0392b" stroke="#1a1a1a" stroke-width="0.5"/>
+            <circle cx="0" cy="3" r="8" class="fill-skin"/>
+            <circle cx="-2" cy="2" r="0.8" fill="#1a1a1a"/>
+            <circle cx="2" cy="2" r="0.8" fill="#1a1a1a"/>
+            <path d="M-3 6 Q0 9 3 6" class="stroke-ink" fill="none"/>
+            <rect x="-10" y="11" width="20" height="22" fill="#4caf50"/>
+            <line x1="-10" y1="11" x2="-10" y2="33" class="stroke-ink"/>
+            <line x1="10" y1="11" x2="10" y2="33" class="stroke-ink"/>
+            <line x1="10" y1="14" x2="18" y2="0" class="stroke-ink"/>
+          </g>
+          <!-- Classmate D (white cap) -->
+          <g transform="translate(175, 32)">
+            <ellipse cx="0" cy="-2" rx="9" ry="3" fill="white" stroke="#1a1a1a" stroke-width="0.5"/>
+            <circle cx="0" cy="3" r="7" class="fill-skin"/>
+            <circle cx="-2" cy="2" r="0.8" fill="#1a1a1a"/>
+            <circle cx="2" cy="2" r="0.8" fill="#1a1a1a"/>
+            <path d="M-3 5 Q0 7 3 5" class="stroke-ink" fill="none"/>
+            <rect x="-7" y="10" width="14" height="20" fill="#2196f3"/>
+          </g>
+          <!-- Speech bubbles -->
+          <g>
+            <ellipse cx="50" cy="75" rx="28" ry="9" fill="white" stroke="#1a1a1a" stroke-width="1.2"/>
+            <text x="50" y="78" text-anchor="middle" font-size="9" font-weight="bold">小宇加油！</text>
+          </g>
+          <g>
+            <ellipse cx="150" cy="78" rx="22" ry="8" fill="white" stroke="#1a1a1a" stroke-width="1.2"/>
+            <text x="150" y="81" text-anchor="middle" font-size="9" font-weight="bold">冲啊！</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 3.4 退缩 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect x="0" y="80" width="200" height="20" class="fill-platform"/>
+          <line x1="0" y1="80" x2="200" y2="80" class="stroke-ink-thick"/>
+          <!-- Xiao Yu's foot stepping back -->
+          <g transform="translate(100, 30)">
+            <!-- Head (top portion) -->
+            <circle cx="0" cy="0" r="14" class="fill-skin"/>
+            <path d="M-14 -4 Q-14 -14 0 -14 Q14 -14 14 -4 L14 -2 Q8 -7 0 -7 Q-8 -7 -14 -2 Z" fill="#1a1a1a"/>
+            <!-- Goggles on forehead -->
+            <ellipse cx="-4" cy="-7" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <ellipse cx="4" cy="-7" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <line x1="-1" y1="-7" x2="1" y2="-7" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Mole -->
+            <circle cx="-12" cy="-2" r="0.7" class="fill-mole"/>
+            <!-- Eyes averted (looking down-left) -->
+            <ellipse cx="-6" cy="2" rx="1.2" ry="0.8" fill="#1a1a1a"/>
+            <ellipse cx="2" cy="3" rx="1.2" ry="0.8" fill="#1a1a1a"/>
+            <!-- Eyebrows worried -->
+            <path d="M-9 -2 Q-6 -4 -3 -2" class="stroke-ink" fill="none"/>
+            <path d="M0 -1 Q3 -3 6 -1" class="stroke-ink" fill="none"/>
+            <!-- Lip biting -->
+            <path d="M-2 7 Q0 8 2 7" class="stroke-ink" fill="none"/>
+          </g>
+          <!-- Half-face shadow -->
+          <path d="M100 16 Q86 35 100 60 L130 60 L130 16 Z" fill="#1a1a1a" opacity="0.25"/>
+          <!-- Foot stepping back -->
+          <ellipse cx="120" cy="82" rx="6" ry="2" fill="#ffffff" stroke="#1a1a1a" stroke-width="1"/>
+          <path d="M115 82 L120 78" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <defs>
+            <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <polygon points="0 0, 6 3, 0 6" fill="#c0392b"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="bubble thought" style="bottom: 4px; right: 6px;">我做不到……</div>
+      </div>
+
+      <div class="page-title"><span class="badge">3</span>退缩</div>
+    </div>
+
+    <!-- =============== PAGE 4: 回忆（金色） =============== -->
+    <div class="page warm">
+      <div class="panel" style="background: linear-gradient(180deg, #fff5d6 0%, #ffe8a3 100%);">
+        <!-- 4.1 转场 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="transition" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#a8d8f0"/>
+              <stop offset="50%" stop-color="#e8d090"/>
+              <stop offset="100%" stop-color="#f5c542"/>
+            </linearGradient>
+          </defs>
+          <rect fill="url(#transition)" x="0" y="0" width="200" height="100"/>
+          <!-- Wavy boundary line -->
+          <path d="M0 50 Q50 30 100 50 T200 50" stroke="white" stroke-width="2" fill="none" opacity="0.7"/>
+          <path d="M0 60 Q50 40 100 60 T200 60" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <!-- Sparkles -->
+          <g fill="white">
+            <circle cx="30" cy="30" r="2"/>
+            <circle cx="80" cy="20" r="1.5"/>
+            <circle cx="140" cy="25" r="2"/>
+            <circle cx="170" cy="40" r="1.5"/>
+            <circle cx="50" cy="80" r="2"/>
+            <circle cx="120" cy="75" r="1.5"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel" style="background: linear-gradient(180deg, #fff5d6 0%, #ffd97a 100%);">
+        <!-- 4.2 哥哥伸手 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#7dc9b8" x="0" y="0" width="200" height="65"/>
+          <!-- Sunbeams -->
+          <g opacity="0.5">
+            <polygon points="50,0 70,0 100,65 80,65" fill="#fff5d6"/>
+            <polygon points="130,0 150,0 130,65 110,65" fill="#fff5d6"/>
+          </g>
+          <!-- Pool deck -->
+          <rect x="0" y="75" width="200" height="25" fill="#e8d090"/>
+          <!-- Little Xiao Yu on edge (smaller) -->
+          <g transform="translate(35, 55)">
+            <circle cx="0" cy="0" r="6" class="fill-skin"/>
+            <path d="M-6 -2 Q-6 -7 0 -7 Q6 -7 6 -2 L6 0 Q3 -2 0 -2 Q-3 -2 -6 0 Z" fill="#1a1a1a"/>
+            <rect x="-5" y="6" width="10" height="14" fill="#ffffff"/>
+            <line x1="-5" y1="9" x2="5" y2="9" stroke="#1e6fb8" stroke-width="1"/>
+            <line x1="-5" y1="13" x2="5" y2="13" stroke="#1e6fb8" stroke-width="1"/>
+            <!-- Goggles on forehead -->
+            <ellipse cx="-2" cy="-4" rx="2.5" ry="1.5" class="fill-blue-goggle"/>
+            <ellipse cx="2" cy="-4" rx="2.5" ry="1.5" class="fill-blue-goggle"/>
+          </g>
+          <!-- Brother in water -->
+          <g transform="translate(135, 55)">
+            <!-- Head -->
+            <circle cx="0" cy="0" r="9" class="fill-skin"/>
+            <path d="M-9 -3 Q-9 -10 0 -10 Q9 -10 9 -3 L9 -1 Q4 -4 0 -4 Q-4 -4 -9 -1 Z" fill="#1a1a1a"/>
+            <!-- Slicked back look -->
+            <path d="M-7 -3 Q0 -7 7 -3" stroke="#1a1a1a" stroke-width="0.5" fill="none"/>
+            <!-- Warm smile -->
+            <circle cx="-3" cy="0" r="0.8" fill="#1a1a1a"/>
+            <circle cx="3" cy="0" r="0.8" fill="#1a1a1a"/>
+            <path d="M-3 3 Q0 6 3 3" class="stroke-ink" fill="none"/>
+            <!-- Body -->
+            <rect x="-10" y="9" width="20" height="20" fill="#1e6fb8"/>
+            <!-- Arms reaching out -->
+            <line x1="-10" y1="13" x2="-50" y2="0" class="stroke-ink"/>
+            <line x1="-50" y1="0" x2="-45" y2="5" class="stroke-ink"/>
+          </g>
+          <!-- Speech bubble -->
+          <g>
+            <ellipse cx="135" cy="25" rx="40" ry="12" fill="white" stroke="#1a1a1a" stroke-width="1.5"/>
+            <polygon points="100,33 90,40 105,38" fill="white" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="135" y="28" text-anchor="middle" font-size="10" font-weight="bold">别怕，我接着你。</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel" style="background: #ffe8a3;">
+        <!-- 4.3 小宇憋气 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#ffd97a" x="0" y="0" width="200" height="100"/>
+          <!-- Head close-up -->
+          <g transform="translate(100, 50)">
+            <circle cx="0" cy="0" r="35" class="fill-skin"/>
+            <!-- Hair -->
+            <path d="M-35 -10 Q-35 -38 0 -38 Q35 -38 35 -10 L35 -5 Q15 -18 0 -18 Q-15 -18 -35 -5 Z" fill="#1a1a1a"/>
+            <!-- Goggles on forehead -->
+            <ellipse cx="-10" cy="-25" rx="10" ry="6" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1"/>
+            <ellipse cx="10" cy="-25" rx="10" ry="6" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Mole -->
+            <circle cx="-32" cy="-7" r="1" class="fill-mole"/>
+            <!-- Eyes squeezed shut -->
+            <path d="M-15 -8 Q-12 -10 -9 -8" class="stroke-ink" fill="none"/>
+            <path d="M9 -8 Q12 -10 15 -8" class="stroke-ink" fill="none"/>
+            <!-- Puffed cheeks -->
+            <ellipse cx="-15" cy="0" rx="8" ry="10" class="fill-skin" stroke="#1a1a1a" stroke-width="1"/>
+            <ellipse cx="15" cy="0" rx="8" ry="10" class="fill-skin" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Hands pinching nose -->
+            <ellipse cx="0" cy="-5" rx="6" ry="4" class="fill-skin" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Pouty mouth -->
+            <ellipse cx="0" cy="12" rx="4" ry="3" fill="#1a1a1a"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel" style="background: linear-gradient(180deg, #ffe8a3 0%, #ffd97a 100%);">
+        <!-- 4.4 入水拥抱 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#7dc9b8" x="0" y="0" width="200" height="100"/>
+          <!-- Splash crown -->
+          <g fill="white" stroke="#1a1a1a" stroke-width="1">
+            <path d="M40 70 L50 50 L55 30 L60 50 L70 70"/>
+            <path d="M130 70 L140 50 L150 30 L155 50 L160 70"/>
+            <path d="M80 65 L90 45 L100 25 L110 45 L120 65"/>
+          </g>
+          <!-- Water droplets -->
+          <g fill="#fff5d6">
+            <circle cx="30" cy="40" r="3"/>
+            <circle cx="170" cy="35" r="3"/>
+            <circle cx="50" cy="20" r="2"/>
+            <circle cx="150" cy="25" r="2"/>
+            <circle cx="100" cy="10" r="3"/>
+          </g>
+          <!-- Two figures hugging in water -->
+          <g transform="translate(100, 60)">
+            <!-- Brother -->
+            <circle cx="-8" cy="-15" r="10" class="fill-skin"/>
+            <path d="M-18 -18 Q-18 -25 -8 -25 Q2 -25 2 -18 L2 -15 Q-3 -19 -8 -19 Q-13 -19 -18 -15 Z" fill="#1a1a1a"/>
+            <circle cx="-11" cy="-15" r="0.8" fill="#1a1a1a"/>
+            <circle cx="-5" cy="-15" r="0.8" fill="#1a1a1a"/>
+            <path d="M-11 -12 Q-8 -9 -5 -12" class="stroke-ink" fill="none"/>
+            <rect x="-15" y="-5" width="20" height="20" fill="#1e6fb8"/>
+            <!-- Arm around little Yu -->
+            <path d="M-15 -2 Q-25 -10 -20 -20 Q-15 -25 -10 -22" fill="#1e6fb8" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Little Yu -->
+            <circle cx="10" cy="-12" r="7" class="fill-skin"/>
+            <path d="M3 -15 Q3 -20 10 -20 Q17 -20 17 -15 L17 -13 Q14 -16 10 -16 Q6 -16 3 -13 Z" fill="#1a1a1a"/>
+            <ellipse cx="7" cy="-18" rx="3" ry="1.5" class="fill-blue-goggle"/>
+            <ellipse cx="13" cy="-18" rx="3" ry="1.5" class="fill-blue-goggle"/>
+            <path d="M7 -12 Q10 -9 13 -12" class="stroke-ink" fill="none"/>
+            <rect x="4" y="-5" width="14" height="15" fill="#ffffff"/>
+            <line x1="4" y1="-1" x2="18" y2="-1" stroke="#1e6fb8" stroke-width="1"/>
+            <line x1="4" y1="3" x2="18" y2="3" stroke="#1e6fb8" stroke-width="1"/>
+            <line x1="4" y1="7" x2="18" y2="7" stroke="#1e6fb8" stroke-width="1"/>
+          </g>
+          <!-- SFX -->
+          <g>
+            <ellipse cx="100" cy="20" rx="35" ry="14" fill="#f5c542" stroke="#1a1a1a" stroke-width="2"/>
+            <text x="100" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">扑通！</text>
+          </g>
+          <text x="30" y="35" font-size="11" fill="#1a1a1a" font-style="italic">哈哈——</text>
+        </svg>
+      </div>
+
+      <div class="page-title"><span class="badge" style="background:#d97a26">4</span>回忆（金色闪回）</div>
+    </div>
+
+    <!-- =============== PAGE 5: 决定 =============== -->
+    <div class="page">
+      <div class="panel">
+        <!-- 5.1 转回当下 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="warmth" cx="60%" cy="40%">
+              <stop offset="0%" stop-color="#ffe8a3" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#a8d8f0" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect fill="url(#warmth)" x="0" y="0" width="200" height="100"/>
+          <rect x="0" y="75" width="200" height="25" class="fill-platform"/>
+          <line x1="0" y1="75" x2="200" y2="75" class="stroke-ink-thick"/>
+          <!-- Xiao Yu profile -->
+          <g transform="translate(100, 50)">
+            <ellipse cx="0" cy="0" rx="14" ry="16" class="fill-skin"/>
+            <!-- Hair -->
+            <path d="M-12 -8 Q-14 -18 0 -18 Q14 -18 14 -8 L14 -6 Q8 -10 0 -10 Q-8 -10 -12 -6 Z" fill="#1a1a1a"/>
+            <!-- Side profile: nose, mouth -->
+            <path d="M13 0 L16 2 L13 4" fill="#1a1a1a" opacity="0.2"/>
+            <!-- Eye (profile) -->
+            <ellipse cx="9" cy="2" rx="1.5" ry="0.8" fill="#1a1a1a"/>
+            <!-- Subtle mouth -->
+            <line x1="13" y1="8" x2="14" y2="8" class="stroke-ink"/>
+            <!-- Goggles strap on back of head -->
+            <path d="M-14 -2 Q-15 0 -14 4" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+            <!-- Golden rim light -->
+            <path d="M-13 -16 Q-10 -18 -5 -18" stroke="#f5c542" stroke-width="2" fill="none"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 5.2 眼睛特写 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#f4d5b3" x="0" y="0" width="200" height="100"/>
+          <!-- Single eye close-up -->
+          <ellipse cx="100" cy="50" rx="60" ry="30" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+          <!-- Iris -->
+          <circle cx="100" cy="50" r="20" fill="#3a2515"/>
+          <!-- Pupil -->
+          <circle cx="100" cy="50" r="8" fill="#1a1a1a"/>
+          <!-- Golden reflection -->
+          <circle cx="92" cy="42" r="6" fill="#f5c542" opacity="0.7"/>
+          <!-- White highlight -->
+          <circle cx="105" cy="45" r="3" fill="white"/>
+          <!-- Eyelashes -->
+          <g class="stroke-ink" fill="none">
+            <path d="M40 30 Q35 25 30 28"/>
+            <path d="M60 22 Q58 16 52 17"/>
+            <path d="M85 18 Q84 12 78 13"/>
+            <path d="M115 18 Q116 12 122 13"/>
+            <path d="M140 22 Q142 16 148 17"/>
+            <path d="M160 30 Q165 25 170 28"/>
+          </g>
+          <!-- Mole hint (corner of eyebrow above) -->
+          <circle cx="48" cy="22" r="1" class="fill-mole"/>
+          <!-- Eyebrow -->
+          <path d="M55 18 Q100 10 145 18" stroke="#1a1a1a" stroke-width="3" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 5.3 深呼吸 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect x="0" y="75" width="200" height="25" class="fill-platform"/>
+          <!-- Xiao Yu from below -->
+          <g transform="translate(100, 35)">
+            <circle cx="0" cy="0" r="14" class="fill-skin"/>
+            <path d="M-14 -4 Q-14 -16 0 -16 Q14 -16 14 -4 L14 -2 Q8 -8 0 -8 Q-8 -8 -14 -2 Z" fill="#1a1a1a"/>
+            <!-- Goggles on forehead -->
+            <ellipse cx="-5" cy="-9" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <ellipse cx="5" cy="-9" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <!-- Focused eyes -->
+            <circle cx="-5" cy="0" r="1.2" fill="#1a1a1a"/>
+            <circle cx="5" cy="0" r="1.2" fill="#1a1a1a"/>
+            <!-- Determined brow -->
+            <path d="M-10 -5 L-2 -4" class="stroke-ink" fill="none"/>
+            <path d="M2 -4 L10 -5" class="stroke-ink" fill="none"/>
+            <!-- Mole -->
+            <circle cx="-12" cy="-2" r="0.7" class="fill-mole"/>
+            <!-- Chest rising -->
+            <path d="M-15 15 L15 15 L18 45 L-18 45 Z" fill="#ffffff"/>
+            <line x1="-15" y1="22" x2="15" y2="22" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-15" y1="30" x2="15" y2="30" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-15" y1="38" x2="15" y2="38" stroke="#1e6fb8" stroke-width="2"/>
+            <!-- Breath lines -->
+            <g stroke="#a8d8f0" stroke-width="2" fill="none">
+              <path d="M-22 5 Q-30 0 -25 -5"/>
+              <path d="M22 5 Q30 0 25 -5"/>
+            </g>
+          </g>
+        </svg>
+        <div class="bubble thought" style="top: 6px; right: 8px;">哥哥说——</div>
+      </div>
+
+      <div class="panel">
+        <!-- 5.4 拉泳镜 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect x="0" y="80" width="200" height="20" class="fill-platform"/>
+          <!-- Xiao Yu -->
+          <g transform="translate(100, 45)">
+            <circle cx="0" cy="0" r="16" class="fill-skin"/>
+            <!-- Hair -->
+            <path d="M-15 -5 Q-15 -18 0 -18 Q15 -18 15 -5 L15 -3 Q8 -10 0 -10 Q-8 -10 -15 -3 Z" fill="#1a1a1a"/>
+            <!-- Goggles now covering eyes -->
+            <ellipse cx="-6" cy="2" rx="6" ry="4" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1.5"/>
+            <ellipse cx="6" cy="2" rx="6" ry="4" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1.5"/>
+            <line x1="-1" y1="2" x2="1" y2="2" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Strap -->
+            <path d="M-12 1 Q-15 0 -16 -5" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+            <path d="M12 1 Q15 0 16 -5" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+            <!-- Determined mouth -->
+            <line x1="-3" y1="10" x2="3" y2="10" class="stroke-ink"/>
+            <!-- Mole -->
+            <circle cx="-13" cy="-1" r="0.7" class="fill-mole"/>
+            <!-- Body -->
+            <path d="M-15 16 L15 16 L18 38 L-18 38 Z" fill="#ffffff"/>
+            <line x1="-15" y1="22" x2="15" y2="22" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-15" y1="28" x2="15" y2="28" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-15" y1="34" x2="15" y2="34" stroke="#1e6fb8" stroke-width="2"/>
+            <!-- Right fist clenched with birthmark -->
+            <circle cx="22" cy="20" r="6" class="fill-skin" stroke="#1a1a1a" stroke-width="1.5"/>
+            <ellipse cx="22" cy="22" rx="3" ry="1" fill="#8b5a2b"/>
+            <!-- Determined nod motion lines -->
+            <g stroke="#1a1a1a" stroke-width="1" fill="none" opacity="0.6">
+              <path d="M-22 -10 L-25 -14"/>
+              <path d="M22 -10 L25 -14"/>
+            </g>
+          </g>
+        </svg>
+        <div class="bubble thought" style="bottom: 4px; right: 6px;">——别怕。</div>
+      </div>
+
+      <div class="page-title"><span class="badge" style="background:#7dc9b8">5</span>决定</div>
+    </div>
+
+    <!-- =============== PAGE 6: 那一跳 =============== -->
+    <div class="page triumph">
+      <div class="panel" style="grid-row: span 1;">
+        <!-- 6.1 凌空 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <!-- Clouds -->
+          <g fill="white" opacity="0.7">
+            <ellipse cx="40" cy="30" rx="20" ry="6"/>
+            <ellipse cx="160" cy="20" rx="25" ry="7"/>
+          </g>
+          <!-- Platform at bottom -->
+          <rect x="0" y="85" width="200" height="15" class="fill-platform"/>
+          <line x1="0" y1="85" x2="200" y2="85" class="stroke-ink-thick"/>
+          <!-- Wind lines -->
+          <g stroke="#1a1a1a" stroke-width="1" fill="none" opacity="0.5">
+            <path d="M30 50 Q50 45 70 50"/>
+            <path d="M40 70 Q60 65 80 70"/>
+            <path d="M130 60 Q150 55 170 60"/>
+            <path d="M120 80 Q140 75 160 80"/>
+          </g>
+          <!-- Xiao Yu diving -->
+          <g transform="translate(100, 35)">
+            <!-- Body extended in dive -->
+            <ellipse cx="0" cy="-3" rx="8" ry="9" class="fill-skin"/>
+            <path d="M-8 -8 Q-8 -14 0 -14 Q8 -14 8 -8 L8 -6 Q4 -10 0 -10 Q-4 -10 -8 -6 Z" fill="#1a1a1a"/>
+            <!-- Goggles on eyes -->
+            <ellipse cx="-3" cy="-3" rx="3" ry="2" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <ellipse cx="3" cy="-3" rx="3" ry="2" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="0.5"/>
+            <!-- Body horizontal -->
+            <rect x="-7" y="6" width="14" height="20" fill="#ffffff"/>
+            <line x1="-7" y1="11" x2="7" y2="11" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-7" y1="16" x2="7" y2="16" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-7" y1="21" x2="7" y2="21" stroke="#1e6fb8" stroke-width="1.5"/>
+            <!-- Arms stretched forward -->
+            <line x1="-6" y1="9" x2="-18" y2="-2" class="stroke-ink"/>
+            <line x1="-18" y1="-2" x2="-22" y2="-5" class="stroke-ink"/>
+            <line x1="6" y1="9" x2="18" y2="-2" class="stroke-ink"/>
+            <line x1="18" y1="-2" x2="22" y2="-5" class="stroke-ink"/>
+            <!-- Legs straight -->
+            <line x1="-4" y1="26" x2="-8" y2="40" class="stroke-ink"/>
+            <line x1="4" y1="26" x2="8" y2="40" class="stroke-ink"/>
+            <!-- Toes pointed -->
+            <line x1="-8" y1="40" x2="-10" y2="42" class="stroke-ink"/>
+            <line x1="8" y1="40" x2="10" y2="42" class="stroke-ink"/>
+          </g>
+          <!-- Receding tower -->
+          <rect x="180" y="50" width="3" height="35" fill="#aaa"/>
+          <rect x="173" y="50" width="17" height="2" fill="#aaa"/>
+        </svg>
+        <div class="bubble thought" style="top: 6px; left: 8px;">跳——</div>
+      </div>
+
+      <div class="panel">
+        <!-- 6.2 穿过金光 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="goldbeam" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#f5c542" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5c542" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect class="fill-sky" x="0" y="0" width="200" height="100"/>
+          <rect x="80" y="0" width="40" height="100" fill="url(#goldbeam)"/>
+          <!-- Xiao Yu in beam -->
+          <g transform="translate(100, 50) scale(0.6)">
+            <ellipse cx="0" cy="0" rx="10" ry="12" class="fill-skin"/>
+            <rect x="-8" y="10" width="16" height="25" fill="#ffffff"/>
+            <line x1="-8" y1="16" x2="8" y2="16" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-8" y1="22" x2="8" y2="22" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-8" y1="28" x2="8" y2="28" stroke="#1e6fb8" stroke-width="2"/>
+            <line x1="-8" y1="13" x2="-20" y2="0" class="stroke-ink"/>
+            <line x1="8" y1="13" x2="20" y2="0" class="stroke-ink"/>
+          </g>
+          <text x="20" y="30" font-size="14" font-weight="bold" fill="#c0392b" font-family="serif">呼——</text>
+        </svg>
+      </div>
+
+      <div class="panel" style="grid-row: span 1;">
+        <!-- 6.3 入水水花 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <rect fill="#1e6fb8" x="0" y="0" width="200" height="100"/>
+          <!-- Splash crown (multiple arcs) -->
+          <g fill="white" stroke="#1a1a1a" stroke-width="1.5">
+            <path d="M50 70 L60 40 L65 20 L70 40 L80 70 Z"/>
+            <path d="M80 70 L92 35 L100 15 L108 35 L120 70 Z"/>
+            <path d="M120 70 L132 40 L140 22 L148 40 L160 70 Z"/>
+            <path d="M160 70 L168 50 L173 35 L178 50 L185 70 Z"/>
+          </g>
+          <!-- Water droplets -->
+          <g fill="white">
+            <circle cx="40" cy="50" r="2"/>
+            <circle cx="65" cy="15" r="3"/>
+            <circle cx="100" cy="5" r="4"/>
+            <circle cx="135" cy="15" r="3"/>
+            <circle cx="160" cy="50" r="2"/>
+            <circle cx="20" cy="70" r="2"/>
+            <circle cx="180" cy="70" r="2"/>
+          </g>
+          <!-- Light rays from above -->
+          <g opacity="0.5" fill="#f5c542">
+            <polygon points="100,0 105,0 110,40 95,40"/>
+            <polygon points="100,0 95,0 85,40 100,40"/>
+            <polygon points="100,0 110,0 120,40 105,40"/>
+          </g>
+          <!-- Splash big SFX -->
+          <g>
+            <ellipse cx="100" cy="78" rx="55" ry="16" fill="#f5c542" stroke="#c0392b" stroke-width="3"/>
+            <text x="100" y="84" text-anchor="middle" font-size="22" font-weight="bold" fill="#c0392b">扑——通！</text>
+          </g>
+          <!-- Xiao Yu's hands entering water -->
+          <ellipse cx="100" cy="65" rx="8" ry="4" class="fill-skin" stroke="#1a1a1a" stroke-width="1"/>
+          <path d="M92 65 L88 70" stroke="#1a1a1a" stroke-width="1"/>
+          <path d="M108 65 L112 70" stroke="#1a1a1a" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <!-- 6.4 水下视角 -->
+        <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="underwater" cx="50%" cy="0%">
+              <stop offset="0%" stop-color="#7dc9b8" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#4ba8d8" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#1e6fb8"/>
+            </radialGradient>
+          </defs>
+          <rect fill="url(#underwater)" x="0" y="0" width="200" height="100"/>
+          <!-- Light columns from above -->
+          <g opacity="0.6">
+            <polygon points="60,0 70,0 90,100 50,100" fill="#fff5d6"/>
+            <polygon points="100,0 110,0 130,100 80,100" fill="#f5c542"/>
+            <polygon points="140,0 150,0 170,100 130,100" fill="#fff5d6"/>
+          </g>
+          <!-- Bubbles -->
+          <g fill="white" opacity="0.8">
+            <circle cx="40" cy="80" r="2"/>
+            <circle cx="160" cy="85" r="2.5"/>
+            <circle cx="20" cy="50" r="1.5"/>
+            <circle cx="180" cy="40" r="2"/>
+            <circle cx="100" cy="90" r="2"/>
+          </g>
+          <!-- Xiao Yu smiling underwater -->
+          <g transform="translate(100, 50)">
+            <ellipse cx="0" cy="0" rx="14" ry="16" class="fill-skin"/>
+            <!-- Hair floating -->
+            <path d="M-13 -5 Q-15 -16 0 -16 Q15 -16 13 -5 L13 -3 Q8 -10 0 -10 Q-8 -10 -13 -3 Z" fill="#1a1a1a"/>
+            <path d="M-12 -15 L-18 -22" stroke="#1a1a1a" stroke-width="1"/>
+            <path d="M12 -15 L18 -22" stroke="#1a1a1a" stroke-width="1"/>
+            <!-- Goggles (still on) -->
+            <ellipse cx="-5" cy="-3" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1"/>
+            <ellipse cx="5" cy="-3" rx="5" ry="3" class="fill-blue-goggle" stroke="#1a1a1a" stroke-width="1"/>
+            <line x1="-1" y1="-3" x2="1" y2="-3" stroke="#1a1a1a" stroke-width="0.5"/>
+            <!-- Eyes visible through goggles, happy -->
+            <circle cx="-5" cy="-3" r="1.5" fill="#1a1a1a"/>
+            <circle cx="5" cy="-3" r="1.5" fill="#1a1a1a"/>
+            <circle cx="-4" cy="-4" r="0.5" fill="white"/>
+            <circle cx="6" cy="-4" r="0.5" fill="white"/>
+            <!-- Big smile -->
+            <path d="M-6 5 Q0 11 6 5" class="stroke-ink-thick" fill="none"/>
+            <!-- Body -->
+            <path d="M-13 14 L13 14 L16 35 L-16 35 Z" fill="#ffffff"/>
+            <line x1="-13" y1="20" x2="13" y2="20" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-13" y1="26" x2="13" y2="26" stroke="#1e6fb8" stroke-width="1.5"/>
+            <line x1="-13" y1="32" x2="13" y2="32" stroke="#1e6fb8" stroke-width="1.5"/>
+          </g>
+          <!-- Small bubble text -->
+          <text x="20" y="20" font-size="9" font-style="italic" fill="white">咕噜……</text>
+          <div style="position:absolute; bottom:4px; right:6px; font-size:10px; color:white; font-style:italic;">我做到了。</div>
+        </svg>
+      </div>
+
+      <div class="page-title"><span class="badge" style="background:#f5c542; color:#1a1a1a;">6</span>那一跳</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 32px; padding: 16px; background: #f5f5f5; border-radius: 4px; font-size: 12px; color: #555;">
+    <strong>📋 故事板说明</strong><br>
+    • 主角：小宇（8 岁，左眉尾有痣，右腕有胎记）<br>
+    • 视觉节奏：冷蓝（1-3）→ 金色闪回（4）→ 蓝金过渡（5）→ 蓝 → 金爆发（6）<br>
+    • 核心意象：泳镜、蓝色条纹泳裤、高度差、水花、金色光柱<br>
+    • 全书张力曲线：^_^^，第 3 页心理压力峰 → 第 4 页情感谷 → 第 6 页高潮释放
+  </div>
+
+</div>
+
+</body>
+</html>

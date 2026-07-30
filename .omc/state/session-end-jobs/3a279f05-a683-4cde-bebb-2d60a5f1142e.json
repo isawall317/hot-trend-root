@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "jobId": "651c76e5-f157-49b4-be51-d77392b8c0ff",
+  "sessionId": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+  "scopeKey": "243ba81927fe6e939e6c8f2a9c24e63e9a89fd0446bacbaf02fc47d629b1a9d6",
+  "revision": 41,
+  "createdAt": "2026-07-29T06:25:11.536Z",
+  "updatedAt": "2026-07-29T06:25:12.335Z",
+  "producerGraceExpiresAt": "2026-07-29T06:25:41.536Z",
+  "bestEffortDeadlineAt": "2026-07-29T06:26:32.536Z",
+  "producers": {
+    "core": {
+      "state": "sealed",
+      "intentKey": "42a5cd47c1cfc69358188dfc42aa0d05ca4daf139ebff0e5be0e1da8649f9c7b",
+      "payloadDigest": "42a5cd47c1cfc69358188dfc42aa0d05ca4daf139ebff0e5be0e1da8649f9c7b",
+      "sealedAt": "2026-07-29T06:25:11.578Z",
+      "sealedBy": "foreground"
+    },
+    "wiki": {
+      "state": "no-op",
+      "sealedAt": "2026-07-29T06:25:11.536Z",
+      "sealedBy": "wiki-producer"
+    }
+  },
+  "actions": {
+    "foreground-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 0,
+      "idempotencyKey": "febf6dba2f2536433960a07f7cedce72e946b43ced0896570df80f017b8914d2",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {},
+        "foregroundResult": {
+          "removedTransientFiles": 1,
+          "completedAt": "2026-07-29T06:25:11.577Z"
+        }
+      },
+      "budgetMs": 9000,
+      "completedAt": "2026-07-29T06:25:11.578Z",
+      "lastOutcomeCode": "completed"
+    },
+    "wiki-capture": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 0,
+      "idempotencyKey": "1719cd1ef5b51e0269b78c4cb8c9308c9c1f7b82fd1c067fc034c060f23863f5",
+      "payload": {},
+      "budgetMs": 9000,
+      "completedAt": "2026-07-29T06:25:11.536Z"
+    },
+    "team-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "cee6ac31df545408e1e822247ac249b3f8182a98a5fe8e448ae3b251e55bdee1",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-29T06:25:11.610Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "6b4300bb-c7bc-48c1-b9c7-9dbe2c97c916",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:11.712Z"
+    },
+    "python-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "1f1370c4ac056606059d517e2f106b602d8cbcb04587b3fcc5f3b9f89e649cd0",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-29T06:25:11.728Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "70f89be7-1408-450e-8c71-c15730639fde",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:11.841Z"
+    },
+    "reply-cleanup": {
+      "class": "required",
+      "phase": "deferred-required",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "0b3a8b47c28b26d56aca004d4f572b96c118f16819c0d35162418816f9a5420a",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 9000,
+      "claimedAt": "2026-07-29T06:25:11.857Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "7ba1bb72-26e2-4d47-ba2b-f75771c4a87c",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:11.958Z"
+    },
+    "callback": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "d068ede2655bf89e0c0950e087d0603d7dcf45538e94f20a654d08c6f4841895",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-29T06:25:11.974Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "0c25ea2a-7ad9-4d7a-ae3b-8a6a8c8cc20c",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:12.069Z"
+    },
+    "notification": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "89c0438ff63097ce04beb60efb87292ff68a7af350a0ee331f3de9dbf42d62fc",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-29T06:25:12.086Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "9998abe8-dbea-42d8-ba35-732b400118de",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:12.185Z"
+    },
+    "openclaw": {
+      "class": "best-effort",
+      "phase": "deferred-best-effort",
+      "status": "completed",
+      "attempts": 1,
+      "idempotencyKey": "31fe8f6e1cf204e27006de511df257326fdd98655122ca437013e8779ffc735b",
+      "payload": {
+        "transcriptPath": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+        "cwd": "/Users/doumoman/Gits/hot-trend-root",
+        "reason": "other",
+        "input": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "transcript_path": "/Users/doumoman/.claude/projects/-Users-doumoman-Gits-hot-trend-root/3a279f05-a683-4cde-bebb-2d60a5f1142e.jsonl",
+          "cwd": "/Users/doumoman/Gits/hot-trend-root",
+          "hook_event_name": "SessionEnd",
+          "reason": "other"
+        },
+        "metrics": {
+          "session_id": "3a279f05-a683-4cde-bebb-2d60a5f1142e",
+          "ended_at": "2026-07-29T06:25:11.535Z",
+          "reason": "other",
+          "agents_spawned": 0,
+          "agents_completed": 0,
+          "modes_used": []
+        },
+        "initialTeamNames": [],
+        "openClawEnabled": false,
+        "openClawRouting": {}
+      },
+      "budgetMs": 2000,
+      "claimedAt": "2026-07-29T06:25:12.201Z",
+      "runner": {
+        "attempt": 1,
+        "runnerNonce": "d084a8a7-33e8-4afc-b666-9f1bc5dcda64",
+        "phase": "terminal",
+        "deadlineAt": "2026-07-29T06:25:21.587Z"
+      },
+      "lastOutcomeCode": "completed",
+      "completedAt": "2026-07-29T06:25:12.302Z"
+    }
+  },
+  "owner": null,
+  "phase": "complete",
+  "completion": {
+    "completedAt": "2026-07-29T06:25:12.318Z",
+    "terminalDigest": "a3eb5a5da35d8725ef1dcb336b1746ccc7df411a284387ffddaa4243a0fe2d4b",
+    "terminalRevision": 40
+  }
+}

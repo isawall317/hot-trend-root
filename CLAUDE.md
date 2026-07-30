@@ -13,25 +13,29 @@
 ## 架构概览
 
 ```
-数据源 → 采集 → 存储 → 审阅 → 构建 → 交付
-  │        │       │       │       │       │
-  │    engine.py  raw/  Claude   build.py  dist/
-  │    sources/   signals/ Code   template/ *.html
-  │    pipeline   pending/ 审阅
+数据源 → 采集 → 两条并行管线
+  │        │       │
+  │    engine.py  Pipeline A: 发现  → LLM 语义扫描 → 需求信号 → /discover
+  │    sources/   Pipeline B: 维护  → 实体匹配 + 价格信号 → /codingplan-page
+  │    pipeline                     (维护已有产品数据)
   │
-DailyHotApi (40+平台) + RSSHub + Folo (本地RSS) + 11 家厂商定价页
+DailyHotApi (40+平台) + Folo (本地RSS) + 14 家厂商定价页
 ```
 
+> **两条管线的根本区别**：
+> - **Pipeline A (Discovery)**: 开放式问题 — "今天有什么值得做的新东西？" → LLM 语义扫描，不做关键词过滤
+> - **Pipeline B (Maintenance)**: 闭合式问题 — "CodingPlan/Tools 的数据需要哪些更新？" → 基于 KB 已知实体的精确匹配
+> 
 > 详细数据流、模块职责、更新流程 → [`docs/data-architecture.md`](docs/data-architecture.md)
 
 ## 技能
 
 | 技能 | 触发 | 用途 |
 |------|------|------|
-| `/scan` | `scan` / `扫描热点` | 热点扫描 + 初筛，识别利基信号 |
+| `/discover` | `discover` / `发现需求` | **Pipeline A**: 热点 → LLM 语义扫描 → 需求信号 |
 | `/analyze` | `analyze` / `分析` | 利基深度分析 + 6 维评分 |
 | `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
-| `/codingplan-page` | 或 `build` / `update` | CodingPlan 数据更新 + HTML 生成 |
+| `/codingplan-page` | 或 `build` / `update` | **Pipeline B**: CodingPlan 数据更新 + HTML 生成 |
 | `/vendors-sync` | 或 `scan` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
 | `/kb-update` | 或 `kb` | 知识库更新：采集 → 检测 → 审阅 → 合并 |
 

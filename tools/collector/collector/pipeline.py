@@ -5,7 +5,7 @@
 
 流程:
   1. engine.py            → 采集热点数据到 data/raw/
-  2. article_discovery.py → 关键词召回候选文章到 data/pending/{date}/articles.json
+  2. maintenance_scanner.py → 实体匹配候选文章到 data/pending/{date}/articles.json
   3. price_monitor.py     → 检测价格变动信号到 data/signals/{date}.json
   4. sources/runner.py    → Playwright/BS4 自动提取 7 家厂商定价
   5. sources/merge.py     → 合并提取结果到 plans.json
@@ -15,7 +15,7 @@
   9. kb_diff.py           → KB 变更检测 + 风险分级 → data/pending/{date}/kb-changes.json
   10. 生成统一待审阅报告 → data/pending/{date}/report.md
 
-注意: article_discovery 不再直接写入 changes.json。
+注意: maintenance_scanner 不再直接写入 changes.json。
       编辑决策（哪些文章收录、哪些价格变动记录）由 Claude Code 通过
       /codingplan-page update 完成——读 data/pending/ → 去噪 → 用户确认 → 写入。
 """
@@ -190,8 +190,8 @@ def main():
     # Step 1: 采集热点数据
     results["热点采集"] = run_step("Step 1/6: 采集热点数据", "engine")
 
-    # Step 2: 文章发现 → data/pending/{date}/articles.json
-    results["文章发现"] = run_step("Step 2/6: 关键词召回候选文章", "article_discovery")
+    # Step 2: 实体匹配候选文章 → data/pending/{date}/articles.json
+    results["实体匹配"] = run_step("Step 2/6: 实体匹配候选文章", "maintenance_scanner")
 
     # Step 3: 价格监控 → data/signals/{date}.json
     results["价格监控"] = run_step("Step 3/6: 价格变动检测", "price_monitor")

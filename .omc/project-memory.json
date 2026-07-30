@@ -1,0 +1,122 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1785303065819,
+  "projectRoot": "/Users/doumoman/Gits/hot-trend-root",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "aikb": {
+      "path": "aikb",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1785303065807,
+      "keyFiles": [
+        "index.md"
+      ]
+    },
+    "comic": {
+      "path": "comic",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1785303065808,
+      "keyFiles": []
+    },
+    "data": {
+      "path": "data",
+      "purpose": "Data files",
+      "fileCount": 0,
+      "lastAccessed": 1785303065808,
+      "keyFiles": []
+    },
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 34,
+      "lastAccessed": 1785303065808,
+      "keyFiles": [
+        "agent-patterns-2026-07-22-1020.html",
+        "agent-patterns-2026-07-22-1026.html",
+        "agent-patterns-2026-07-22-1028.html",
+        "agent-patterns.html",
+        "aicoding-stack-2026-07-22-1001.html"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 2,
+      "lastAccessed": 1785303065809,
+      "keyFiles": [
+        "data-architecture.md",
+        "vendors-and-tools.md"
+      ]
+    },
+    "project": {
+      "path": "project",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1785303065809,
+      "keyFiles": []
+    },
+    "reference": {
+      "path": "reference",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1785303065810,
+      "keyFiles": [
+        "个人使用说明书-v2026.md"
+      ]
+    },
+    "tools": {
+      "path": "tools",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1785303065811,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "comic/courage/comic.html",
+      "accessCount": 1,
+      "lastAccessed": 1785303471915,
+      "type": "file"
+    },
+    {
+      "path": ".claude/workflows/demo-scan-analyze.js",
+      "accessCount": 1,
+      "lastAccessed": 1785305345504,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
