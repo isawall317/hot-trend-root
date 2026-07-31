@@ -67,8 +67,8 @@ python3 tools/builder/build.py
 
 ### 数据校验
 
-构建前 AI 应对照 `project/codingplan-saver/data/SCHEMA.md` 快速检查：
-- `plans.json` 每条有 `id` / `vendor` / `vendorId` / `plan` / `monthlyPrice`
+构建前 AI 应对照 `project/codingplan-saver/data/SCHEMA.md` 快速检查（字段全集以 SCHEMA 为准）：
+- `plans.json` 每条含必填字段（id / vendor / vendorId / plan / type / tier / monthlyPrice / measuredMonthlyToken / category / billingCore 等）
 - `changes.json` 每条有 `id` / `date` / `kind` / `vendor` / `title`
 - 缺失字段 → 用默认值（如 `status` 默认 `active`），不阻塞构建
 
@@ -84,8 +84,8 @@ python3 tools/builder/build.py
 |------|------|---------|
 | `data/site.json` | 站点配置（博主、推荐分组、社群） | 手动 |
 | `data/vendors.json` | 厂商元信息（URL、提取策略） | 半自动 |
-| `data/plans.json` | 套餐主数据（31 条） | 半自动 |
-| `data/changes.json` | 变动时间线（40 条） | 半自动 |
+| `data/plans.json` | 套餐主数据（核心更新对象） | 半自动 |
+| `data/changes.json` | 变动时间线 | 半自动 |
 | `data/history/` | plans.json 快照 | 自动 |
 
 ### 联盟变现

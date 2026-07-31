@@ -72,12 +72,14 @@ Folo 通过 `folocli` CLI 与本地 Folo（原 Follow）RSS 阅读器交互，�
 
 ### 2.2 厂商定价数据
 
-14 家 AI 模型厂商的 Coding Plan / Token Plan 定价信息。
+28 家 AI 模型厂商的 Coding Plan / Token Plan 定价信息。
 
 | 状态 | 数量 | 厂商 | 提取方式 |
 |------|------|------|---------|
 | ✅ 自动提取 | 7 | 智谱AI, DeepSeek, Kimi, MiniMax, 腾讯云, Claude, GitHub | Playwright / BS4 静态解析 |
-| ❌ 手动维护 | 7 | 字节·方舟, 阿里·百炼, Codex, 小米·MiMo, 百度·千帆, OpenRouter, 硅基流动 | 人工定期检查 |
+| ❌ 手动维护 | 21 | 字节·方舟, 阿里·百炼, Codex, 小米·MiMo, 百度·千帆, OpenRouter, 硅基流动 + 回填的 14 家（联通云/华为云/讯飞·星火/天翼云/阶跃星辰/智谱国际版/京东云/移动云/无问芯穹/TaoToken/Ollama/OpenCode/超算/优云智算） | 人工定期检查 |
+
+> 2026-07-31 从线上 codingplan.fyi 抢救数据，回填 14 家厂商（见 `docs/deployment.md`）。回填厂商暂为手动维护，`measuredMonthlyToken` 多为估算值。
 
 > 详细厂商 URL、提取策略、推广链接见 [`docs/vendors-and-tools.md`](vendors-and-tools.md)（由 `kb_to_md.py` 从 `aikb/database/` JSON 自动生成）
 
@@ -195,7 +197,7 @@ project/{name}/
 ```
 aikb/                               ← 🆕 AI 知识库（Obsidian 兼容）
 ├── index.md                         ← 导航索引
-├── vendors/                         ← 厂商画像（14 家，每家一个 MD）
+├── vendors/                         ← 厂商画像 MD（14 家，覆盖中；database 有 28 家）
 │   ├── zhipu.md
 │   ├── deepseek.md
 │   └── ...

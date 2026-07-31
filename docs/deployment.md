@@ -74,16 +74,19 @@ aikb/database/*.json                   ← 下游产物（知识库元数据，�
 
 ---
 
-## 这意味着什么
+## 这意味着什么（⚠️ 决策前的历史诊断，已被上方决策取代）
 
-当前 Pipeline B 的终点（`dist/codingplan-saver.html`）是一个本地死胡同：
+> 以下内容反映的是 **2026-07-31 决策前**的认知状态。当前部署链路已打通（见文首「迁移路线」），
+> 这里的描述仅供追溯历史问题。**现状以文首决策和「部署目标态」为准。**
+
+决策前，Pipeline B 的终点（`dist/codingplan-saver.html`）曾是一个本地死胡同：
 
 ```
 pipeline 采集 → 审阅 → plans.json 更新 → build → dist/*.html   ✅ 这段是通的
-dist/*.html → 线上 codingplan.fyi                              ❌ 这段不存在
+dist/*.html → 线上 codingplan.fyi                              ❌ 当时这段不存在
 ```
 
-即使定时采集每天跑，数据更新也无法触达用户。同时存在**两个真相源**的风险：repo KB（14 家）与线上数据（29 家）各自漂移，越久越难合并。
+当时即使定时采集每天跑，数据更新也无法触达用户。同时存在**两个真相源**的风险：repo 数据与线上数据各自漂移。**这些问题已被 2026-07-31 的回填（14→28 家）和 EdgeOne 部署链路解决。**
 
 > 当时的三选一方案（A 找回源码 / B repo 覆盖 / C 双轨）已被 2026-07-31 晚的决策取代——
 > 数据直接从线上 plans.json 抢救（无需源码），部署平台改用 EdgeOne Makers，见文首。
@@ -93,7 +96,7 @@ dist/*.html → 线上 codingplan.fyi                              ❌ 这段不
 ## 部署目标态
 
 ```
-project/codingplan-saver/data/*.json   （数据，本仓库维护，回填后 29 家）
+project/codingplan-saver/data/*.json   （数据，本仓库维护，回填后 28 家）
         ↓ tools/builder/build.py
 project/codingplan-site/index.html     （部署目录）
         ↓ tools/deploy/deploy.sh  →  edgeone makers deploy

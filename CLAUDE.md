@@ -5,8 +5,8 @@
 从全网热点中自动发现**细分赛道利基** → AI 深度分析 → 快速验证 → 小软件产品变现。
 
 当前核心产品：
-- **CodingPlan 省钱攻略** ([codingplan.fyi](https://www.codingplan.fyi)) — 29 家 AI 模型厂商 Coding Plan / Token Plan 对比
-- **AI Coding 工具对比** (开发中) — 18 款 AI 编程工具横向评测
+- **CodingPlan 省钱攻略** ([codingplan.fyi](https://www.codingplan.fyi)) — 28 家 AI 模型厂商 Coding Plan / Token Plan 对比
+- **AI Coding 工具对比** (开发中) — 22 款 AI 编程工具横向评测
 
 **我不是在找热点新闻，而是在找可商业化的需求缺口。**
 
@@ -19,7 +19,7 @@
   │    sources/   Pipeline B: 维护  → 实体匹配 + 价格信号 → /codingplan-page
   │    pipeline                     (维护已有产品数据)
   │
-DailyHotApi (40+平台) + Folo (本地RSS) + 14 家厂商定价页
+DailyHotApi (40+平台) + Folo (本地RSS) + 8 家厂商定价页自动提取
 ```
 
 > **两条管线的根本区别**：
@@ -33,10 +33,11 @@ DailyHotApi (40+平台) + Folo (本地RSS) + 14 家厂商定价页
 | 技能 | 触发 | 用途 |
 |------|------|------|
 | `/discover` | `discover` / `发现需求` | **Pipeline A**: 热点 → LLM 语义扫描 → 需求信号 |
+| `/scan` | `scan` / `扫描` | 热点扫描 + 初筛（聚类 + 利基信号） |
 | `/analyze` | `analyze` / `分析` | 利基深度分析 + 6 维评分 |
 | `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
 | `/codingplan-page` | 或 `build` / `update` | **Pipeline B**: CodingPlan 数据更新 + HTML 生成 |
-| `/vendors-sync` | 或 `scan` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
+| `/vendors-sync` | `vendors-sync` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
 | `/kb-update` | 或 `kb` | 知识库更新：采集 → 检测 → 审阅 → 合并 |
 
 > 详细执行流程见 `.claude/skills/{name}/SKILL.md`
@@ -72,16 +73,18 @@ hot-trend-root/
 ├── docs/                         # 项目文档
 │   ├── data-architecture.md      # 数据体系总地图
 │   └── vendors-and-tools.md      # 厂商/工具一览表（由 kb_to_md.py 自动生成）
-├── .claude/skills/               # 6 个技能定义
+├── .claude/skills/               # 7 个技能定义
 ├── data/
 │   ├── raw/                      # 热点原始数据
 │   ├── signals/                  # 价格/文章信号
 │   └── pending/                  # 待审阅候选
 ├── tools/
 │   ├── collector/                # Python 数据采集管道
-│   └── builder/build.py          # HTML 构建器
-├── project/                      # 7 个孵化项目
-│   ├── codingplan-saver/         # 🟢 核心产品
+│   ├── builder/build.py          # HTML 构建器
+│   └── deploy/deploy.sh          # EdgeOne Makers 部署脚本
+├── project/                      # 孵化项目矩阵
+│   ├── codingplan-saver/         # 🟢 核心产品（数据真相源）
+│   ├── codingplan-site/          #    codingplan-saver 的部署目录
 │   ├── coding-tools/             # 🟡 开发中
 │   ├── agent-patterns/           # 🟡 开发中
 │   ├── aicoding-stack/           # 🟡 开发中

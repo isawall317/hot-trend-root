@@ -5,9 +5,11 @@ updated: 2026-07-23
 
 # AI 知识库
 
-> AI 自动维护的厂商/工具/模型知识库。`database/` 目录下的 JSON 由 `md_to_json.py` 从本目录的 MD 文件自动生成，供下游项目消费。
+> AI 维护的厂商/工具/模型知识库（Obsidian 兼容）。
+>
+> **真相源说明**：套餐/价格的真实数据源是 `project/codingplan-saver/data/*.json`（builder 读取），`database/*.json` 由 `kb_migrate.py` 从 project 自动同步。本目录的 MD 画像层覆盖中（厂商 14/28 家已有 MD，其余待补）。
 
-## 厂商（14 家）
+## 厂商（MD 画像 14/28 家，覆盖中）
 
 ### 模型厂商（7 家）
 
