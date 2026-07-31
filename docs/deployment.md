@@ -1,13 +1,40 @@
 # 部署链路 — codingplan.fyi
 
 > 线上站点与本仓库构建产物的关系、部署方式现状、待决策事项。
-> 最后更新：2026-07-31（由全项目 review 侦查产出）
+> 最后更新：2026-07-31（决策落地：迁移至腾讯云 EdgeOne Makers）
 
 ---
 
-## 现状结论（2026-07-31 侦查）
+## 决策（2026-07-31 晚）
 
-**线上站点与本仓库 `dist/` 产物是两套不同的代码，目前不存在自动化部署链路。**
+**部署目标平台：腾讯云 EdgeOne Makers**（边缘 Web 与 Agent 托管平台，3200+ 边缘节点）。
+
+理由：
+- 国内厂商、国内节点，对目标用户（国内开发者）访问速度优于 Cloudflare
+- 边缘函数 + KV + 定时触发能力，为后续**实测测速**功能预留运行位（测速数据可存 KV、API 化输出）
+- CLI 部署（`edgeone makers deploy`）可挂进 `/codingplan-page` 工作流末尾，打通最后一段
+
+**数据抢救已完成**：线上站点的数据文件可直接下载（`codingplan.fyi/plans.json` 运行时加载），
+已封存至 `data/recovery/codingplan-fyi-2026-07-31/`（101 条套餐 / 29 家厂商 + config.json + HTML 壳）。
+原"找回源码"问题降级为"数据回填"问题（见下方回填计划）。
+
+## 迁移路线（四步）
+
+```
+① 通路  edgeone login → 创建项目 → repo 版（14 家）部署到 staging 域名验证
+② 对齐  线上独有的 ~19 家厂商回填 aikb/ + plans.json（schema 映射：旧字段 → billingCore 等新字段）
+③ 切换  EdgeOne 控制台绑定 codingplan.fyi（CNAME 验证，SSL 自动）→ DNS 从 Cloudflare 切出
+④ 延长  /codingplan-page 终点 = tools/deploy/deploy.sh（build → 同步 site 目录 → makers deploy）
+```
+
+注意：`.fyi` 域名无法 ICP 备案 → 大陆加速区域不可用，走海外节点（与现状 Cloudflare 持平）；
+若未来需要大陆节点，需换可备案域名。
+
+---
+
+## 历史侦查（2026-07-31 白天，决策前）
+
+**线上站点与本仓库 `dist/` 产物是两套不同的代码，当时不存在自动化部署链路。**
 
 | 维度 | 线上 codingplan.fyi | 本仓库 `dist/codingplan-saver.html` |
 |------|--------------------|------------------------------------|
@@ -43,49 +70,19 @@ dist/*.html → 线上 codingplan.fyi                              ❌ 这段不
 
 即使定时采集每天跑，数据更新也无法触达用户。同时存在**两个真相源**的风险：repo KB（14 家）与线上数据（29 家）各自漂移，越久越难合并。
 
----
-
-## 待决策（三选一）
-
-### 方案 A：找回线上源码，纳入 repo（推荐）
-
-线上版本是更先进的资产（29 家覆盖、v2 交互、百度收录权重），值得保留。
-
-1. 找回线上源码（检查其他机器 / Time Machine / Cloudflare Pages 部署历史 / 浏览器下载记录）
-2. 放入 `project/codingplan-site/`（与 `codingplan-saver/` 数据项目并列）
-3. 线上多出来的 15 家厂商反向补录进 `aikb/`
-4. 建立 `build → wrangler pages deploy` 的发布步骤
-
-### 方案 B：以 repo 为准，重新部署
-
-放弃线上增量，用 repo 的 14 家版本覆盖部署。代价：丢失 29 家扩展、v2 交互、可能的 SEO 资产。**不推荐**——除非线上源码确认无法找回。
-
-### 方案 C：维持双轨（现状默认）
-
-repo 只做数据采集和 KB 维护，线上站点手动维护。代价：两个真相源持续漂移，pipeline 产出的价值无法变现。
+> 当时的三选一方案（A 找回源码 / B repo 覆盖 / C 双轨）已被 2026-07-31 晚的决策取代——
+> 数据直接从线上 plans.json 抢救（无需源码），部署平台改用 EdgeOne Makers，见文首。
 
 ---
 
-## 找回线索清单
-
-排查线上源码时可以检查：
-
-- [ ] 其他常用机器（公司电脑 / 旧 Mac）的 `~/Gits`、`~/Projects`
-- [ ] Time Machine / iCloud 备份中 2026-06 ~ 07 的目录快照
-- [ ] Cloudflare Dashboard → Pages 项目的部署历史（可看到每次部署的来源：Git 集成 vs 直接上传）
-- [ ] 若是 Git 集成：Dashboard 里能看到连接的 repo 和分支
-- [ ] 浏览器历史 / 下载目录中的上传记录
-
----
-
-## 部署目标态（方案 A 落地后）
+## 部署目标态
 
 ```
-project/codingplan-saver/data/*.json   （数据，本仓库维护）
-        ↓ build
-project/codingplan-site/               （线上站点源码，纳入 repo）
-        ↓ wrangler pages deploy（或 Git push 触发 Pages 自动部署）
-codingplan.fyi
+project/codingplan-saver/data/*.json   （数据，本仓库维护，回填后 29 家）
+        ↓ tools/builder/build.py
+project/codingplan-site/index.html     （部署目录）
+        ↓ tools/deploy/deploy.sh  →  edgeone makers deploy
+EdgeOne Makers 项目 codingplan  →  staging 域名验证  →  codingplan.fyi（DNS 切换后）
 ```
 
-`/codingplan-page` 工作流的终点从 `dist/` 延长到 `wrangler pages deploy`，由用户确认后执行最后一步。
+`/codingplan-page` 工作流的终点延长为 `tools/deploy/deploy.sh`，由用户确认后执行最后一步。

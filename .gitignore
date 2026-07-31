@@ -30,3 +30,9 @@ tools/collector/tools/
 # dist/
 # launchd 定时采集日志
 data/logs/
+
+# Tencent Cloud EdgeOne
+.env
+.edgeone/*
+.tef_dist/*
+  
