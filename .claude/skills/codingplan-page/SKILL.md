@@ -63,6 +63,8 @@ python3 tools/builder/build.py
 
 告知用户：采集条数、候选文章数、收录数、结构化变动数、文件大小。提示 `open` 命令。
 
+> ⚠️ **注意**：`dist/` 产物目前**不会**自动发布到 codingplan.fyi。线上站点源码位置与部署方式待确认，见 [`docs/deployment.md`](../../../docs/deployment.md)。在方案落地前，向用户汇报时必须明确说明"本次更新尚未上线"。
+
 ### 数据校验
 
 构建前 AI 应对照 `project/codingplan-saver/data/SCHEMA.md` 快速检查：

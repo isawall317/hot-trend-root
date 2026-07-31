@@ -1,0 +1,379 @@
+[
+  {
+    "vendorId": "zhipu",
+    "vendor": "智谱AI",
+    "plans": [
+      {
+        "models": [
+          {
+            "name": "GLM-5.2",
+            "input_price_per_1m": 8.0,
+            "output_price_per_1m": 28.0
+          },
+          {
+            "name": "GLM-5.1",
+            "input_price_per_1m": 6.0,
+            "output_price_per_1m": 24.0
+          },
+          {
+            "name": "GLM-5-Turbo",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 22.0
+          },
+          {
+            "name": "GLM-5",
+            "input_price_per_1m": 4.0,
+            "output_price_per_1m": 18.0
+          },
+          {
+            "name": "GLM-4.7",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 8.0
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 0.8,
+            "output_price_per_1m": 2.0
+          },
+          {
+            "name": "GLM-4.7-FlashX",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 3.0
+          },
+          {
+            "name": "GLM-5V-Turbo",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 22.0
+          },
+          {
+            "name": "GLM-4.6V",
+            "input_price_per_1m": 1.0,
+            "output_price_per_1m": 3.0
+          },
+          {
+            "name": "GLM-4.6V-FlashX",
+            "input_price_per_1m": 0.15,
+            "output_price_per_1m": 1.5
+          },
+          {
+            "name": "GLM-4.5V",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 6.0
+          },
+          {
+            "name": "GLM-4-Voice",
+            "input_price_per_1m": 80.0
+          },
+          {
+            "name": "GLM-ASR",
+            "input_price_per_1m": 0.06
+          },
+          {
+            "name": "GLM-4-0520",
+            "input_price_per_1m": 100.0,
+            "output_price_per_1m": 50.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 4.0
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 50.0,
+            "output_price_per_1m": 25.0
+          },
+          {
+            "name": "GLM-4",
+            "input_price_per_1m": 100.0,
+            "output_price_per_1m": 50.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 0.25
+          },
+          {
+            "name": "GLM-4.5",
+            "input_price_per_1m": 0.1
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 0.035,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 0.05
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 0.025,
+            "output_price_per_1m": 0.04
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 0.025,
+            "output_price_per_1m": 0.04
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 0.03
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 0.003,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 0.03,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 0.002,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 0.002,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-0520",
+            "input_price_per_1m": 0.5,
+            "output_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4.6",
+            "input_price_per_1m": 175.0
+          },
+          {
+            "name": "GLM-4.5",
+            "input_price_per_1m": 175.0
+          },
+          {
+            "name": "GLM-4.5-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Plus",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air-250414",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Air",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-AirX",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash-250414",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4-9B",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4.5V",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4.1V-Thinking-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4V-Flash",
+            "input_price_per_1m": 100.0
+          },
+          {
+            "name": "GLM-4V",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus-0111",
+            "input_price_per_1m": 200.0
+          },
+          {
+            "name": "GLM-4V-Plus-0111",
+            "input_price_per_1m": 200.0
+          }
+        ],
+        "count": 51,
+        "note": "API 按量计费，Coding Plan 需登录控制台"
+      }
+    ],
+    "extractedFields": [
+      "models"
+    ],
+    "missingFields": [
+      "monthlyPrice"
+    ],
+    "sourceUrl": "https://open.bigmodel.cn/pricing",
+    "fetchedAt": "2026-07-31T12:24:17Z",
+    "error": null
+  },
+  {
+    "vendorId": "deepseek",
+    "vendor": "DeepSeek 官方",
+    "plans": [
+      {
+        "models": [
+          "deepseek-v4-flash",
+          "deepseek-v4-pro",
+          "DeepSeek-V4-Flash-0731",
+          "DeepSeek-V4-Pro"
+        ],
+        "pricing": {
+          "output_per_1m": [
+            0.28,
+            0.87
+          ],
+          "input_per_1m": [
+            0.14,
+            0.435
+          ]
+        },
+        "note": "API 按量计费，非 Coding Plan"
+      }
+    ],
+    "extractedFields": [
+      "models",
+      "pricing"
+    ],
+    "missingFields": [],
+    "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+    "fetchedAt": "2026-07-31T12:22:05Z",
+    "error": null
+  },
+  {
+    "vendorId": "kimi",
+    "vendor": "Kimi",
+    "plans": [],
+    "extractedFields": [],
+    "missingFields": [],
+    "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+    "fetchedAt": "2026-07-31T12:24:16Z",
+    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://platform.kimi.com/docs/pricing/chat\", waiting until \"load\"\n"
+  },
+  {
+    "vendorId": "minimax",
+    "vendor": "MiniMax",
+    "plans": [
+      {
+        "monthlyPrice": 49.0,
+        "currency": "¥",
+        "description": "轻量个人开发与日常试用",
+        "plan": "获得积分",
+        "type": "Token Plan"
+      },
+      {
+        "monthlyPrice": 119.0,
+        "currency": "¥",
+        "description": "高频编程 Agent 与多模态调用",
+        "plan": "Max",
+        "type": "Token Plan"
+      },
+      {
+        "monthlyPrice": 469.0,
+        "currency": "¥",
+        "description": "重度 Agent 工作流与更长时间使用",
+        "plan": "Ultra",
+        "type": "Token Plan"
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice"
+    ],
+    "missingFields": [
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
+    "fetchedAt": "2026-07-31T12:22:07Z",
+    "error": null
+  },
+  {
+    "vendorId": "tencent",
+    "vendor": "腾讯云",
+    "plans": [
+      {
+        "plan": "Lite",
+        "type": "Coding Plan",
+        "monthlyPrice": 40.0,
+        "monthlyRequests": 18000
+      },
+      {
+        "plan": "Pro",
+        "type": "Coding Plan",
+        "monthlyPrice": 200.0,
+        "monthlyRequests": 90000
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice",
+      "monthlyRequests"
+    ],
+    "missingFields": [
+      "measuredMonthlyToken"
+    ],
+    "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
+    "fetchedAt": "2026-07-31T12:22:05Z",
+    "error": null
+  },
+  {
+    "vendorId": "claude",
+    "vendor": "Claude",
+    "plans": [],
+    "extractedFields": [],
+    "missingFields": [],
+    "sourceUrl": "https://claude.com/pricing",
+    "fetchedAt": "2026-07-31T12:24:16Z",
+    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://claude.com/pricing\", waiting until \"load\"\n"
+  },
+  {
+    "vendorId": "github",
+    "vendor": "GitHub",
+    "plans": [],
+    "extractedFields": [],
+    "missingFields": [],
+    "sourceUrl": "https://github.com/features/copilot/plans",
+    "fetchedAt": "2026-07-31T12:24:16Z",
+    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://github.com/features/copilot/plans\", waiting until \"load\"\n"
+  }
+]

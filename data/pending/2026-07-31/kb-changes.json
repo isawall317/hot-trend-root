@@ -1,0 +1,148 @@
+{
+  "timestamp": "2026-07-31T12:24:17Z",
+  "date": "2026-07-31",
+  "vendors": [],
+  "services": [
+    {
+      "entity": "service",
+      "id": "deepseek-token-plan",
+      "name": "Token Plan",
+      "change": "modified",
+      "risk": "medium",
+      "fields": {
+        "plans": {
+          "old": [
+            {
+              "tier": "lite",
+              "name": "虚拟套餐 40",
+              "monthlyPrice": 40,
+              "currency": "¥",
+              "firstMonthPrice": null,
+              "monthlyRequests": "无限制",
+              "tokenLimit": "105M Tokens",
+              "measuredMonthlyToken": 105,
+              "rating": 4,
+              "models": [
+                "DeepSeek-V4-Flash",
+                "DeepSeek-V4-Pro",
+                "deepseek-v4-flash",
+                "deepseek-v4-pro"
+              ],
+              "tags": [
+                "性价比高",
+                "无需抢购"
+              ],
+              "bloggerVerdict": "原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。",
+              "status": "active"
+            },
+            {
+              "tier": "pro",
+              "name": "虚拟套餐 200",
+              "monthlyPrice": 200,
+              "currency": "¥",
+              "firstMonthPrice": null,
+              "monthlyRequests": "无限制",
+              "tokenLimit": "527M Tokens",
+              "measuredMonthlyToken": 527,
+              "rating": 4,
+              "models": [
+                "DeepSeek-V4-Flash",
+                "DeepSeek-V4-Pro",
+                "deepseek-v4-flash",
+                "deepseek-v4-pro"
+              ],
+              "tags": [
+                "性价比高",
+                "无需抢购"
+              ],
+              "bloggerVerdict": "原生 DeepSeek 重度档，527M Token。",
+              "status": "active"
+            }
+          ],
+          "new": [
+            {
+              "tier": "lite",
+              "name": "虚拟套餐 40",
+              "monthlyPrice": 40,
+              "currency": "¥",
+              "firstMonthPrice": null,
+              "monthlyRequests": "无限制",
+              "tokenLimit": "105M Tokens",
+              "measuredMonthlyToken": 105,
+              "rating": 4,
+              "models": [
+                "DeepSeek-V4-Flash",
+                "DeepSeek-V4-Flash-0731",
+                "DeepSeek-V4-Pro",
+                "deepseek-v4-flash",
+                "deepseek-v4-pro"
+              ],
+              "tags": [
+                "性价比高",
+                "无需抢购"
+              ],
+              "bloggerVerdict": "原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。",
+              "status": "active"
+            },
+            {
+              "tier": "pro",
+              "name": "虚拟套餐 200",
+              "monthlyPrice": 200,
+              "currency": "¥",
+              "firstMonthPrice": null,
+              "monthlyRequests": "无限制",
+              "tokenLimit": "527M Tokens",
+              "measuredMonthlyToken": 527,
+              "rating": 4,
+              "models": [
+                "DeepSeek-V4-Flash",
+                "DeepSeek-V4-Flash-0731",
+                "DeepSeek-V4-Pro",
+                "deepseek-v4-flash",
+                "deepseek-v4-pro"
+              ],
+              "tags": [
+                "性价比高",
+                "无需抢购"
+              ],
+              "bloggerVerdict": "原生 DeepSeek 重度档，527M Token。",
+              "status": "active"
+            }
+          ],
+          "added": [
+            "{'tier': 'lite', 'name': '虚拟套餐 40', 'monthlyPrice': 40, 'currency': '¥', 'firstMonthPrice': None, 'monthlyRequests': '无限制', 'tokenLimit': '105M Tokens', 'measuredMonthlyToken': 105, 'rating': 4, 'models': ['DeepSeek-V4-Flash', 'DeepSeek-V4-Flash-0731', 'DeepSeek-V4-Pro', 'deepseek-v4-flash', 'deepseek-v4-pro'], 'tags': ['性价比高', '无需抢购'], 'bloggerVerdict': '原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。', 'status': 'active'}",
+            "{'tier': 'pro', 'name': '虚拟套餐 200', 'monthlyPrice': 200, 'currency': '¥', 'firstMonthPrice': None, 'monthlyRequests': '无限制', 'tokenLimit': '527M Tokens', 'measuredMonthlyToken': 527, 'rating': 4, 'models': ['DeepSeek-V4-Flash', 'DeepSeek-V4-Flash-0731', 'DeepSeek-V4-Pro', 'deepseek-v4-flash', 'deepseek-v4-pro'], 'tags': ['性价比高', '无需抢购'], 'bloggerVerdict': '原生 DeepSeek 重度档，527M Token。', 'status': 'active'}"
+          ],
+          "removed": [
+            "{'tier': 'pro', 'name': '虚拟套餐 200', 'monthlyPrice': 200, 'currency': '¥', 'firstMonthPrice': None, 'monthlyRequests': '无限制', 'tokenLimit': '527M Tokens', 'measuredMonthlyToken': 527, 'rating': 4, 'models': ['DeepSeek-V4-Flash', 'DeepSeek-V4-Pro', 'deepseek-v4-flash', 'deepseek-v4-pro'], 'tags': ['性价比高', '无需抢购'], 'bloggerVerdict': '原生 DeepSeek 重度档，527M Token。', 'status': 'active'}",
+            "{'tier': 'lite', 'name': '虚拟套餐 40', 'monthlyPrice': 40, 'currency': '¥', 'firstMonthPrice': None, 'monthlyRequests': '无限制', 'tokenLimit': '105M Tokens', 'measuredMonthlyToken': 105, 'rating': 4, 'models': ['DeepSeek-V4-Flash', 'DeepSeek-V4-Pro', 'deepseek-v4-flash', 'deepseek-v4-pro'], 'tags': ['性价比高', '无需抢购'], 'bloggerVerdict': '原生 DeepSeek-V4-Pro，¥40 估算 105M Token，7 月起高峰翻倍。', 'status': 'active'}"
+          ]
+        }
+      },
+      "detail": "service deepseek-token-plan: plans: +2/-2"
+    }
+  ],
+  "tools": [],
+  "models": [
+    {
+      "entity": "model",
+      "id": "deepseek-v4-flash-0731",
+      "change": "added",
+      "risk": "medium",
+      "detail": "新增 model: DeepSeek-V4-Flash-0731",
+      "new_data": {
+        "id": "deepseek-v4-flash-0731",
+        "vendorId": "deepseek",
+        "name": "DeepSeek-V4-Flash-0731",
+        "type": "vision",
+        "status": "active"
+      }
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "high": 0,
+    "medium": 2,
+    "low": 0
+  }
+}

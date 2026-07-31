@@ -44,7 +44,7 @@ DailyHotApi (40+平台) + Folo (本地RSS) + 14 家厂商定价页
 ## 日常操作
 
 ```bash
-# 采集数据（每天 2-3 次，或 CronCreate 定时）
+# 采集数据（launchd 定时：每天 9:17 / 14:17 / 20:17 自动跑，日志在 data/logs/）
 cd tools/collector && uv run python -m collector.pipeline
 
 # 一键全量更新 CodingPlan 页面（采集 → 审阅 → 生成 HTML）
@@ -56,6 +56,8 @@ cd tools/collector && uv run python -m collector.pipeline
 # 扫描信号（只读报告，不动 JSON）
 /codingplan-page scan
 ```
+
+> ⚠️ build 产物（dist/）与线上 codingplan.fyi 目前是两套代码，**不存在自动部署链路**。现状与待决策方案见 [`docs/deployment.md`](docs/deployment.md)。
 
 ## 目录结构
 
@@ -95,6 +97,7 @@ hot-trend-root/
 | 想知道什么 | 去看 |
 |-----------|------|
 | 数据从哪来、怎么采、存哪里、谁在用 | [`docs/data-architecture.md`](docs/data-architecture.md) |
+| 线上站点与仓库的关系、部署链路现状 | [`docs/deployment.md`](docs/deployment.md) |
 | 有哪些厂商/工具、URL、提取策略、推广链接 | [`docs/vendors-and-tools.md`](docs/vendors-and-tools.md) |
 | plans.json / changes.json 字段定义 | [`project/codingplan-saver/data/SCHEMA.md`](project/codingplan-saver/data/SCHEMA.md) |
 | codingplan-page 完整操作流程 | [`.claude/skills/codingplan-page/SKILL.md`](.claude/skills/codingplan-page/SKILL.md) |
@@ -105,7 +108,7 @@ hot-trend-root/
 - **数据驱动** — 让采集数据说话，不做主观判断
 - **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
 - **快速验证** — 不要完美，先验证再打磨
-- **KB 即真相** — 厂商/工具画像的唯一真相源是 `data/knowledge-base/` JSON；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 自动生成，勿手工编辑；新增厂商/工具先改 KB JSON → 跑 `/kb-update build` 重生成 MD
+- **KB 即真相** — 厂商/工具画像的唯一真相源是 `aikb/` MD（AI 直接读写）；`aikb/database/` JSON 由 `md_to_json.py` 自动生成，供下游项目消费；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 自动生成，勿手工编辑；新增厂商/工具 → AI 新建 `aikb/vendors|tools/` MD → 跑 `python -m collector.md_to_json` 刷新 JSON → 跑 `python -m collector.kb_to_md` 重生成一览表
 
 ## 用户画像（Frank）
 

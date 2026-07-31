@@ -28,3 +28,5 @@ tools/collector/tools/
 
 # 构建产物（dist/ 现在跟踪，因为是最终交付物）
 # dist/
+# launchd 定时采集日志
+data/logs/

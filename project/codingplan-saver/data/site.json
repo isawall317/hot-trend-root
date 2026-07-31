@@ -29,12 +29,12 @@
     ]
   },
   "header": {
-    "updateDate": "更新于 2026.07.23",
-    "highlights": "本周关注：Kimi K3 暂停新用户，DeepSeek V4 将至，Claude Agent 500 技能，PPIO 智能网关",
+    "updateDate": "更新于 2026.07.31",
+    "highlights": "本周关注：GPT-5.6 降价 80%，DeepSeek V4 正式上线，Kimi K3 仍暂停新用户",
     "stats": [
       {
         "label": "覆盖平台",
-        "value": "16",
+        "value": "14",
         "unit": "家"
       },
       {
@@ -43,8 +43,8 @@
         "unit": "个"
       },
       {
-        "label": "本周更新",
-        "value": "24",
+        "label": "本月更新",
+        "value": "51",
         "unit": "条"
       }
     ]

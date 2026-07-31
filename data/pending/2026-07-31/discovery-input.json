@@ -1,0 +1,1570 @@
+{
+  "date": "2026-07-31",
+  "total": 173,
+  "tier1_count": 143,
+  "tier2_count": 30,
+  "filter": "discovery_prefilter (per-source quota sampling)",
+  "config": {
+    "tier1_quota": 12,
+    "tier2_quota": 3
+  },
+  "items": [
+    {
+      "title": "美媒：日本正建造全世界最大驱逐舰",
+      "url": "https://www.toutiao.com/trending/7668392469377368114/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "20696515",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "南充市委原书记古正举贪1.24亿获无期",
+      "url": "https://www.toutiao.com/trending/7668601537605668394/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "18726981",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "我国电力系统迎来结构性转变",
+      "url": "https://www.toutiao.com/trending/7667493705678569513/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "16944873",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "荣耀焕新品牌片「敢想，敢不同」",
+      "url": "https://b23.tv/BV1NH3j6pEve",
+      "source": "dailyhot:bilibili",
+      "hot_metric": "11882970",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "抵抗者2026实机演示",
+      "url": "https://b23.tv/BV1rW326hEKe",
+      "source": "dailyhot:bilibili",
+      "hot_metric": "8796563",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "和解剖了4000具尸体的法医，一起看了影片中的尸体...",
+      "url": "https://b23.tv/BV1QEgZ6rEGj",
+      "source": "dailyhot:bilibili",
+      "hot_metric": "8090789",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中共中央政治局第二十七次集体学习",
+      "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%85%B1%E4%B8%AD%E5%A4%AE%E6%94%BF%E6%B2%BB%E5%B1%80%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E6%AC%A1%E9%9B%86%E4%BD%93%E5%AD%A6%E4%B9%A0",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7904900",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "地球正在发烧 50°C高温来了",
+      "url": "https://www.baidu.com/s?wd=%E5%9C%B0%E7%90%83%E6%AD%A3%E5%9C%A8%E5%8F%91%E7%83%A7%2050%C2%B0C%E9%AB%98%E6%B8%A9%E6%9D%A5%E4%BA%86",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7807864",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "清华求真书院预科班部分学生被清退",
+      "url": "https://www.baidu.com/s?wd=%E6%B8%85%E5%8D%8E%E6%B1%82%E7%9C%9F%E4%B9%A6%E9%99%A2%E9%A2%84%E7%A7%91%E7%8F%AD%E9%83%A8%E5%88%86%E5%AD%A6%E7%94%9F%E8%A2%AB%E6%B8%85%E9%80%80",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7714405",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "四部门联合发布22条措施 健全金融机构治理",
+      "url": "https://new.qq.com/rain/a/20260731A08NRT00",
+      "source": "dailyhot:qq-news",
+      "hot_metric": "2676417",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "截至2025年末 我国60周岁及以上老年人口超3.23亿人",
+      "url": "https://new.qq.com/rain/a/20260731A08OS400",
+      "source": "dailyhot:qq-news",
+      "hot_metric": "2467524",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "千帆竞发正逢时——7月全国各地经济社会发展观察",
+      "url": "https://new.qq.com/rain/a/20260730A0BMH500",
+      "source": "dailyhot:qq-news",
+      "hot_metric": "2364191",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "陕西文旅辟谣遭伪史论者骚扰",
+      "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356681&amp;topic_name=%E9%99%95%E8%A5%BF%E6%96%87%E6%97%85%E8%BE%9F%E8%B0%A3%E9%81%AD%E4%BC%AA%E5%8F%B2%E8%AE%BA%E8%80%85%E9%AA%9A%E6%89%B0",
+      "source": "dailyhot:tieba",
+      "hot_metric": "2078850",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "贵州NPC伴漂服务被指擦边",
+      "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356680&amp;topic_name=%E8%B4%B5%E5%B7%9ENPC%E4%BC%B4%E6%BC%82%E6%9C%8D%E5%8A%A1%E8%A2%AB%E6%8C%87%E6%93%A6%E8%BE%B9",
+      "source": "dailyhot:tieba",
+      "hot_metric": "1509943",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "AC米兰传奇队长巴雷西离世",
+      "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356675&amp;topic_name=AC%E7%B1%B3%E5%85%B0%E4%BC%A0%E5%A5%87%E9%98%9F%E9%95%BF%E5%B7%B4%E9%9B%B7%E8%A5%BF%E7%A6%BB%E4%B8%96",
+      "source": "dailyhot:tieba",
+      "hot_metric": "1284556",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "河南多地重新发布“三支一扶”名单，人数变少了",
+      "url": "https://news.sina.com.cn/c/2026-07-30/doc-inikqupy9667820.shtml",
+      "source": "dailyhot:sina-news",
+      "hot_metric": "2721",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "还得是雷军！30万卖的不是小米增程SUV是「移动大平层」",
+      "url": "https://finance.sina.com.cn/tech/csj/2026-07-30/doc-inikqywc5041891.shtml",
+      "source": "dailyhot:sina-news",
+      "hot_metric": "2707",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "爆料：美国要对法国做一件“极不寻常”的事",
+      "url": "https://news.sina.com.cn/w/2026-07-30/doc-inikquqi1895484.shtml",
+      "source": "dailyhot:sina-news",
+      "hot_metric": "2679",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "C罗晒与16岁儿子肌肉合照",
+      "url": "https://s.weibo.com/weibo?q=C%E7%BD%97%E6%99%92%E4%B8%8E16%E5%B2%81%E5%84%BF%E5%AD%90%E8%82%8C%E8%82%89%E5%90%88%E7%85%A7",
+      "source": "dailyhot:weibo",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "百花奖",
+      "url": "https://s.weibo.com/weibo?q=%E7%99%BE%E8%8A%B1%E5%A5%96",
+      "source": "dailyhot:weibo",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "读懂好感度攀升背后的中国魅力",
+      "url": "https://s.weibo.com/weibo?q=%E8%AF%BB%E6%87%82%E5%A5%BD%E6%84%9F%E5%BA%A6%E6%94%80%E5%8D%87%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%AD%E5%9B%BD%E9%AD%85%E5%8A%9B",
+      "source": "dailyhot:weibo",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "花20年从\"数学天才\"变成一个\"俗人\" 柳智宇：我不后悔",
+      "url": "https://www.163.com/dy/article/L369MD490512D3VJ.html",
+      "source": "dailyhot:netease-news",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "和第三者做试管婴儿男子欲按月支付财产 患癌原配发声",
+      "url": "https://www.163.com/dy/article/L3664QBL00019K82.html",
+      "source": "dailyhot:netease-news",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "&quot;竹知了&quot;意外爆火，被称作“1000万以内最好玩具”",
+      "url": "https://www.163.com/dy/article/L369HA2B0519U3I5.html",
+      "source": "dailyhot:netease-news",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "卸载小红书后一身轻松",
+      "url": "https://www.douban.com/group/topic/495209798/?_spm_id=MTQzNDc0ODcy",
+      "source": "dailyhot:douban-group",
+      "hot_metric": "0",
+      "source_type": "content",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "清凉夏日",
+      "url": "https://www.douban.com/group/topic/495403197/?_spm_id=MTc4OTE1MTE0",
+      "source": "dailyhot:douban-group",
+      "hot_metric": "0",
+      "source_type": "content",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "大女人就该练拳击！拳击入门以及经验分享",
+      "url": "https://www.douban.com/group/topic/495405267/?_spm_id=MTY3MTU4NjYw",
+      "source": "dailyhot:douban-group",
+      "hot_metric": "0",
+      "source_type": "content",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "Projection-Regularized Indirect Data-Driven Predictive Control",
+      "url": "https://arxiv.org/abs/2607.28123",
+      "source": "folo:eess.SY-updates-on-arXiv.org",
+      "hot_metric": "",
+      "source_type": "other",
+      "tier": 2,
+      "description": "arXiv:2607.28123v1 Announce Type: new Abstract: Indirect data-driven predictive control methods often suffer under process noise and data…"
+    },
+    {
+      "title": "Generalized Query-Oriented Image Semantic Coding Empowered by Large AI Models and Semantic-Aware Hybrid Beamforming",
+      "url": "https://arxiv.org/abs/2607.28276",
+      "source": "folo:eess.SY-updates-on-arXiv.org",
+      "hot_metric": "",
+      "source_type": "other",
+      "tier": 2,
+      "description": "arXiv:2607.28276v1 Announce Type: cross Abstract: Semantic communication is an emerging paradigm that can preserve the meaning of data…"
+    },
+    {
+      "title": "Data-Driven Formal Methods for Complex Dynamical Systems: A Survey",
+      "url": "https://arxiv.org/abs/2607.27908",
+      "source": "folo:eess.SY-updates-on-arXiv.org",
+      "hot_metric": "",
+      "source_type": "other",
+      "tier": 2,
+      "description": "arXiv:2607.27908v1 Announce Type: new Abstract: Data-driven approaches with formal guarantees have recently emerged as a powerful means for…"
+    },
+    {
+      "title": "DeepSeek V4 flash 正式版发布，有哪些亮点值得关注？",
+      "url": "https://www.zhihu.com/question/2066521165246489298",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "16610000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "柯洁在王中王围棋争霸赛决赛中，从 1%胜率逆转夺冠，有多难？如何评价他本次比赛的表现？",
+      "url": "https://www.zhihu.com/question/2066221979250774781",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "6560000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "曝《流浪地球 3》导演版素材750分钟，公映版125分钟，郭帆称「我也不知道时长」，哪些看点值得期待？",
+      "url": "https://www.zhihu.com/question/2064704539450782573",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "5890000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "中央宣传部授予王戟同志「时代楷模」称号，他的身上有怎样的故事？哪些精神值得学习？",
+      "url": "https://www.zhihu.com/question/2065728985242326749",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "3250000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "为什么许多美剧都发生在缅因州?",
+      "url": "https://www.zhihu.com/question/21377980",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "3110000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "7 月31 日长鑫科技盘中涨超 13%，总市值突破 4 万亿，还会持续上涨吗？",
+      "url": "https://www.zhihu.com/question/2066475673590265734",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2810000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "游客进入青海黑独山禁游区拍照，工作人员称一个脚印十年难恢复，砾石层为何难恢复？景区该如何管住越界打卡？",
+      "url": "https://www.zhihu.com/question/2065022640889098964",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2700000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "如何看待王虹在大学期间因为数学难度陡增，「felt a little discouraged」?",
+      "url": "https://www.zhihu.com/question/2064865610480277464",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2590000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "入伏以来多名市民赤裸上身去公园「晒背」，为什么晒背会流行？对身体健康有什么好处吗？",
+      "url": "https://www.zhihu.com/question/2065749316019532347",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2260000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "《基督山伯爵》这种纯爽文为什么能成为名著？",
+      "url": "https://www.zhihu.com/question/2036258860516762419",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2240000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "伊朗称击毁驻约旦美军基地 3 架 F-35，哪些信息值得关注？",
+      "url": "https://www.zhihu.com/question/2066282514805679344",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2240000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "长鑫上市，对合肥普通市民能有影响吗？",
+      "url": "https://www.zhihu.com/question/2065114398650283660",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "2230000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "解剖 Claude Code：逆向工程视角下的入口架构分析",
+      "url": "https://juejin.cn/post/7667096004731846682",
+      "source": "dailyhot:juejin",
+      "hot_metric": "2277",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "2026 了，前端转 AI 全栈我是这么学的 😍😍😍",
+      "url": "https://juejin.cn/post/7667503991685857290",
+      "source": "dailyhot:juejin",
+      "hot_metric": "1494",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "为什么在 2026 年，MPA（多页面应用）正在悄悄复辟？",
+      "url": "https://juejin.cn/post/7667127162155581449",
+      "source": "dailyhot:juejin",
+      "hot_metric": "1224",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "《深入理解 AI Agent：设计原理与工程实践》",
+      "url": "https://hellogithub.com/repository/c80ce91cc4744361adf369269922c8cf",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "1129",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "上线一个人静态网站需要多少钱，难不难？",
+      "url": "https://juejin.cn/post/7666490925375815718",
+      "source": "dailyhot:juejin",
+      "hot_metric": "999",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "小米汽车：澎程系列搭载全新昆仑增程器，92/95/98 号汽油都能加",
+      "url": "https://www.ithome.com/0/982/463.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "856",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "把多张网卡的带宽叠加起来",
+      "url": "https://hellogithub.com/repository/b199a1e3939347f7a23b33be72415595",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "829",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "A 社官方：我们删掉了 80% 的 skills",
+      "url": "https://juejin.cn/post/7667756207138848819",
+      "source": "dailyhot:juejin",
+      "hot_metric": "828",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "可多人协作的旅行规划平台",
+      "url": "https://hellogithub.com/repository/ee9c31fd98ec4a16835db811cbd93952",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "799",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "29.99 万元！小米澎程 N90 Max 增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/882.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "793",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "华为 Mate 80 Pro 性能解禁：麒麟 9030 Pro GPU 相比 9020 提升 76%，《原神》能效表现优于高通骁龙 8 Gen3",
+      "url": "https://www.ithome.com/0/972/456.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "780",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "让 AI 读代码画出架构图",
+      "url": "https://hellogithub.com/repository/8b436445b5e642dd84f3a1af24800399",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "749",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "上千个健身动作的集合",
+      "url": "https://hellogithub.com/repository/14ebe7e93550459e9ad7532018e8de21",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "747",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "徐洁云回怼小米澎程可加 92/95/98 号汽油被指营销：这么厉害的断章取义手段，咋不早点告诉我",
+      "url": "https://www.ithome.com/0/982/741.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "701",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "任正非：τ 定律是华为可以选择的唯一一条突围道路",
+      "url": "https://www.ithome.com/0/980/708.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "601",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Flutter UI 解耦 - 天下大势，合久必分， 分久必合",
+      "url": "https://juejin.cn/post/7667440437864300544",
+      "source": "dailyhot:juejin",
+      "hot_metric": "585",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "更好用的 Windows 系统清理工具",
+      "url": "https://hellogithub.com/repository/6aacf0d14caf4fe7884cbf2badead9f0",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "550",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "在线 AI 简历编辑器",
+      "url": "https://hellogithub.com/repository/51a0f545d0964a47a173794478119ec7",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "548",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "拒绝 AI 味的网页设计技能",
+      "url": "https://hellogithub.com/repository/ac9c66a44a5940e5988e92b5ac615343",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "533",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "原来 AI Agent 的核心循环这么简单：手搓一个 Agent Loop",
+      "url": "https://juejin.cn/post/7666403249923473459",
+      "source": "dailyhot:juejin",
+      "hot_metric": "531",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "华为何庭波发布 V2 版“韬定律”论文，补充工程细节和实测数据",
+      "url": "https://www.ithome.com/0/972/524.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "520",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "华为李小龙：有些手机其实不是故意锁容量不让消费者用，而是因为设计时就没考虑低压下工作",
+      "url": "https://www.ithome.com/0/981/677.htm",
+      "source": "dailyhot:ithome",
+      "hot_metric": "501",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "欧足联宣布抵制所有国际足联赛事",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688311",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "500",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "终于在今天入选了 Gitee GVP，这真值得庆祝~",
+      "url": "https://juejin.cn/post/7667399814504202275",
+      "source": "dailyhot:juejin",
+      "hot_metric": "441",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "复古 PC 模拟器",
+      "url": "https://hellogithub.com/repository/b2227163c9b44d79beb8cb9278ec033a",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "425",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "为什么越来越多人用Apache Tika？",
+      "url": "https://juejin.cn/post/7667853684410302490",
+      "source": "dailyhot:juejin",
+      "hot_metric": "423",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "谷歌的一个优化建议，让我重新学了一遍Android里面如何正确处理位图",
+      "url": "https://juejin.cn/post/7667097178154319912",
+      "source": "dailyhot:juejin",
+      "hot_metric": "387",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "工作 5 年后，决定你薪资上限的究竟是什么？",
+      "url": "https://juejin.cn/post/7667750500683120675",
+      "source": "dailyhot:juejin",
+      "hot_metric": "387",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "为什么越来越多人使用FastAPI？",
+      "url": "https://juejin.cn/post/7667412478401822730",
+      "source": "dailyhot:juejin",
+      "hot_metric": "387",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "《强化学习小册子》",
+      "url": "https://hellogithub.com/repository/fe8478dd8bbd45899bc3c6a078d94879",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "376",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "政治局会议深读｜九大信号：宏观政策要发力提效，务实管用的增量政策可期",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33687100",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "361",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "宇树科技：8月10日打新",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33687840",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "355",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "把 AI 编程助手变成视频工作室",
+      "url": "https://hellogithub.com/repository/650efabacf0746639add4b319ae5b2f7",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "348",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "中共中央决定：罗文任河北省委书记",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688575",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "345",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "半年多急涨急跌52次，韩国股市到底怎么了？",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33671320",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "325",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "把整个网站打包离线阅读",
+      "url": "https://hellogithub.com/repository/7def6aa7604446e3ba1f28951a6155be",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "320",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "中国五矿集团原总经理国文清主动投案，接受审查调查",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688472",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "286",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "特朗普称与哈马斯及加沙其他武装团体达成解除武装协议",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688329",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "266",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "视频丨日本“国家情报局”正式设立，专家：突破战后和平体制束缚",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688333",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "196",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "重庆彭水山体崩塌灾害找到并确认51人遇难，仍有10名失联人员",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33688077",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "171",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "刘国洪任自然资源部党组书记",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33686758",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "154",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "这四个工作习惯，或许也能帮你找到掌控感",
+      "url": "https://sspai.com/post/111708",
+      "source": "dailyhot:sspai",
+      "hot_metric": "153",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "快捷指令｜让 iPhone 用上锤子的「大爆炸」",
+      "url": "https://sspai.com/post/111405",
+      "source": "dailyhot:sspai",
+      "hot_metric": "136",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "澎湃漫评｜机票退改别总让消费者“挨宰”",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33684912",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "124",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "“祖辈所种百年古树被扣押后遭转赠”，官方已成立专项工作组核查",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33685404",
+      "source": "dailyhot:thepaper",
+      "hot_metric": "121",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Parti：一个零门槛联机游戏平台，凭什么不需要服务器？",
+      "url": "https://sspai.com/post/112545",
+      "source": "dailyhot:sspai",
+      "hot_metric": "73",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Vibe Coding 时代，为什么降本不一定增效？",
+      "url": "https://sspai.com/post/111975",
+      "source": "dailyhot:sspai",
+      "hot_metric": "71",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "在格鲁吉亚的大地上：徒步篇",
+      "url": "https://sspai.com/post/111369",
+      "source": "dailyhot:sspai",
+      "hot_metric": "64",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "新玩意 245｜少数派的编辑们最近买了啥？",
+      "url": "https://sspai.com/post/111518",
+      "source": "dailyhot:sspai",
+      "hot_metric": "52",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "给记忆一个归处：我为什么开始使用 Apple 手记",
+      "url": "https://sspai.com/post/111421",
+      "source": "dailyhot:sspai",
+      "hot_metric": "50",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "App+1 | 把「从长视频截取片段」做到极致：Trimly",
+      "url": "https://sspai.com/post/111569",
+      "source": "dailyhot:sspai",
+      "hot_metric": "49",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "6月音乐精选：不得不听的 17 张……没错 17 张专辑！",
+      "url": "https://sspai.com/post/112035",
+      "source": "dailyhot:sspai",
+      "hot_metric": "46",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "派评 | 近期值得关注的 App",
+      "url": "https://sspai.com/post/112785",
+      "source": "dailyhot:sspai",
+      "hot_metric": "45",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "看不见、摸得着的家居要素：聊聊湿度管理的方法与实践",
+      "url": "https://sspai.com/post/112093",
+      "source": "dailyhot:sspai",
+      "hot_metric": "44",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "WorkBuddy正在重估腾讯",
+      "url": "https://www.36kr.com/p/3917969453395334",
+      "source": "dailyhot:36kr",
+      "hot_metric": "44",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "小米 NAS 拆解与初步上手：它会是你的第一台 NAS 吗？",
+      "url": "https://sspai.com/post/112398",
+      "source": "dailyhot:sspai",
+      "hot_metric": "42",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "吞并飞书，豆包成“豆办”",
+      "url": "https://www.36kr.com/p/3917991880633990",
+      "source": "dailyhot:36kr",
+      "hot_metric": "37",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "科学揭秘：为什么有些人天生自带人格吸引力",
+      "url": "https://www.36kr.com/p/3879835256008963",
+      "source": "dailyhot:36kr",
+      "hot_metric": "36",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "8点1氪丨宇树科技：8月10日网下申购；字节跳动成立新的豆包产品团队；美股三大指数集体收涨，微软创近18年以来最大单日涨幅",
+      "url": "https://www.36kr.com/p/3918776472022402",
+      "source": "dailyhot:36kr",
+      "hot_metric": "27",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "我不再相信“情商”这套理论了",
+      "url": "https://www.36kr.com/p/3879918269329417",
+      "source": "dailyhot:36kr",
+      "hot_metric": "26",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "清晰错觉：如何检验自己是否真正弄懂一件事",
+      "url": "https://www.36kr.com/p/3783442016263176",
+      "source": "dailyhot:36kr",
+      "hot_metric": "19",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "25岁OpenAI神童，拉全球股民陪葬",
+      "url": "https://www.36kr.com/p/3918999971622280",
+      "source": "dailyhot:36kr",
+      "hot_metric": "18",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "瑞幸卖起了700块的洞洞鞋，谁还在为Crocs买单？",
+      "url": "https://www.36kr.com/p/3917837504272000",
+      "source": "dailyhot:36kr",
+      "hot_metric": "14",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "中层消失，Token狂热退潮，硅谷工程师眼里的「AI创业下半场」",
+      "url": "https://www.36kr.com/p/3918250549931394",
+      "source": "dailyhot:36kr",
+      "hot_metric": "13",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Al，清华校友赢麻了，北大怎么样？",
+      "url": "https://www.36kr.com/p/3918058934414979",
+      "source": "dailyhot:36kr",
+      "hot_metric": "13",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "当爱马仕CEO开始关心中国猪肉价格",
+      "url": "https://www.36kr.com/p/3918896884848514",
+      "source": "dailyhot:36kr",
+      "hot_metric": "12",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Claude Code之父：Harness保质期只有半年，解开缰绳吧",
+      "url": "https://www.36kr.com/p/3917823189380741",
+      "source": "dailyhot:36kr",
+      "hot_metric": "9",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "一直拍打蚊子不让蚊子落地，让它只能一直飞，蚊子会累死吗？",
+      "url": "https://daily.zhihu.com/story/9791570",
+      "source": "dailyhot:zhihu-daily",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "如果塔里木河最终流入大海的话长度将会如何？",
+      "url": "https://daily.zhihu.com/story/9791575",
+      "source": "dailyhot:zhihu-daily",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "黄鳝泥鳅这种在国内被视为滋补佳肴的淡水生物，为啥在西方餐桌上几乎绝迹？是文化不同还是口味差异？",
+      "url": "https://daily.zhihu.com/story/9791576",
+      "source": "dailyhot:zhihu-daily",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "瞎扯 · 如何正确地吐槽",
+      "url": "https://daily.zhihu.com/story/9791583",
+      "source": "dailyhot:zhihu-daily",
+      "hot_metric": "",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "让应用听懂中文——用 HarmonyOS Core Speech Kit 实现端侧语音识别",
+      "url": "https://ost.51cto.com/posts/54291",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "PostgreSQL 表膨胀完整治理指南：Vacuum 原理、阻塞根因、应急处理与长期预防方案",
+      "url": "https://www.51cto.com/article/851467.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "告警救火、薪资触顶！传统运维出路在哪？AIOps 开启运维下一代晋升通道",
+      "url": "https://www.51cto.com/article/851514.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "直接优化策略：策略梯度、Actor-Critic、Advantage 与重要性采样",
+      "url": "https://www.51cto.com/article/851511.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "Claude Code 越聪明越烧钱？先检查后端有没有让它猜",
+      "url": "https://www.51cto.com/article/851510.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "GPT-5.6一夜爆砍80%，一元屠杀最贵Claude！",
+      "url": "https://www.51cto.com/article/851509.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "循环里的 Task.Run 与无界 Parallel.ForEach：离生产事故只差一步",
+      "url": "https://www.51cto.com/article/851508.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "OpenAI突然杀疯！GPT 5.6系列价格最高暴降80%，AI竟开始自己改代码实现原地飞升",
+      "url": "https://www.51cto.com/article/851499.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "ChatGPT突发封杀令！全球AI写手一夜断粮",
+      "url": "https://www.51cto.com/article/851506.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "OpenAI公布秘术：两个设置，GPT-5.6 Sol ARC-AGI-3成绩暴涨三倍！",
+      "url": "https://www.51cto.com/article/851461.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "推荐系统只会「猜你喜欢」，却未必「听你的」？我们用多智能体给黑盒推荐做了一次外部可控性体检",
+      "url": "https://www.51cto.com/article/851460.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "大厂面试官：两根绳子烧 45 分钟，第一反应就错了",
+      "url": "https://www.51cto.com/article/851446.html",
+      "source": "dailyhot:51cto",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "2026 ChinaJoy 骁龙主题馆盛大启幕，「集你所爱」解锁未来数字娱乐体验",
+      "url": "https://www.ifanr.com/1673527",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "高阶智驾芯片市场加速扩容，英伟达、地平线稳居前二",
+      "url": "https://www.ifanr.com/1673477",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "200 个任务、1700 万帧！大晓 ACE-Data-0 把真实家庭场景变成物理智能「数据引擎」",
+      "url": "https://www.ifanr.com/1673470",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "荣耀官宣韩寒出任“荣耀影像创想家”",
+      "url": "https://www.ifanr.com/1673467",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "荣耀携手阿莱打造全球首款随身电影机",
+      "url": "https://www.ifanr.com/1673422",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "德塔智能完成近5亿元天使++轮融资，成立半年融资六轮",
+      "url": "https://www.ifanr.com/1673326",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "TCL发布Q系列旗舰回音壁：打破海外垄断，高端影音迎来中国声音",
+      "url": "https://www.ifanr.com/1673235",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "荣耀 Robot Phone 定档 8 月 12 日，全球首款机器人手机即将发布",
+      "url": "https://www.ifanr.com/1673139",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "黑格科技发布“全球首款全彩3D+UV打印机”，众筹首日销售额近 5000 万元",
+      "url": "https://www.ifanr.com/1673127",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "2026 P&I 上海展｜摄影师现场体验美图云修 8.0：「终于不用反复切换软件了」",
+      "url": "https://www.ifanr.com/1673029",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "亚太唯一！阿里云跻身 Gartner 可观测魔力象限「挑战者」象限",
+      "url": "https://www.ifanr.com/1673024",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "一目科技完成超 10 亿元 E 轮融资，估值破百亿",
+      "url": "https://www.ifanr.com/1672931",
+      "source": "dailyhot:ifanr",
+      "hot_metric": "0",
+      "source_type": "news",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "全力推动企业部署AI！微软之后，OpenAI成立“FDE公司”",
+      "url": "https://wallstreetcn.com/articles/3778382",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "OpenAI正在以前所未有的力度押注企业市场。这家人工智能巨头近期相继成立独立服务公司、投资合作伙伴网络，试图弥合AI模型能力与企业实际应用之间的巨大鸿沟，并在竞争日趋激烈的企业AI赛道上巩固地位。 据《华尔街日报》周五报道，OpenAI近期推出两项重大举措：一是成立独立服务公司…"
+    },
+    {
+      "title": "高盛：美联储框架不透明或适得其反，长端利率或倒逼再度加息",
+      "url": "https://wallstreetcn.com/articles/3778388",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "美联储按兵不动，但一场新闻发布会引发的市场动荡，正在动摇投资者对其政策框架的信心。 美联储7月议息会议维持利率不变，然而真正牵动市场神经的并非决议本身，而是主席沃什在发布会上的表态。高盛交易台负责人Rich Privorotsky指出…"
+    },
+    {
+      "title": "日本央行行长：将视情况继续加息、节奏可能加快，汇率对通胀的影响比以往更大",
+      "url": "https://wallstreetcn.com/articles/3778410",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "7月31日，日本央行行长植田和男在议息会议后的新闻发布会上多次强调通胀上行风险，并指出潜在通胀已接近2%目标，央行将避免政策滞后于经济形势。他明确表示，若金融环境过度宽松，央行可能加快升息步伐。 植田和男还指出，尽管重返通缩的风险已显著下降，但并未完全消除。他特别提到…"
+    },
+    {
+      "title": "东鹏饮料上半年收入增长16%，茶饮料接棒多品类扩张",
+      "url": "https://wallstreetcn.com/articles/3778418",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "东鹏饮料仍在增长，但驱动力正在从单一大单品转向更多品类共同拉动。 7月31日，东鹏饮料发布2026年半年度报告。上半年，公司实现营业收入124.43亿元，同比增长15.9%；归母净利润28.67亿元，同比增长20.7%。\n\n不过，若剔除非经常性损益，东鹏饮料扣非净利润增速仅14.4…"
+    },
+    {
+      "title": "加拿大鹅大中华区收入大增44%，亚太市场反超北美",
+      "url": "https://wallstreetcn.com/articles/3778415",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "加拿大鹅的增长重新向中国市场倾斜。 7月30日，加拿大鹅披露截至6月28日的2027财年第一季度业绩。\n\n公司收入同比增长10.3%至1.189亿加元，按固定汇率计算增长8.6%，高于市场预期的1.088亿加元。\n\n分渠道看，DTC收入同比增长8.6%至8480万加元…"
+    },
+    {
+      "title": "字节跳动发布Seedance 2.5，单次生成翻倍至30秒，AIGC落地加速",
+      "url": "https://wallstreetcn.com/articles/3778407",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "字节跳动最新一代视频生成模型Seedance 2.5正式发布，以单次生成时长翻倍、多模态参考扩容及精准编辑能力为核心突破，将视频生成从内容创作工具推向可工业化交付的生产力基础设施。 7月31日，Seedance 2.5正式上线豆包、即梦、扣子等字节旗下产品…"
+    },
+    {
+      "title": "美股科技巨头财报季留下的悬念：“资本开支”与“AI收入”都在增长，谁会赢得叙事？",
+      "url": "https://wallstreetcn.com/articles/3778408",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "科技巨头正在经历一场史无前例的资本扩张，但市场对这场豪赌的耐心正在分化。 本轮财报季揭示出一个核心矛盾：AI投入的规模与速度远超收入变现的节奏，云业务的强劲增长为部分公司赢得了喘息空间，而自由现金流的集体恶化则令另一些公司股价承压。这场叙事争夺战的胜负，将在未来数年内逐步见分晓。…"
+    },
+    {
+      "title": "铠侠Q1营业利润1.27万亿日元不及预期，毛利率78%，2028年长协拟锁定50%产能 |  财报见闻",
+      "url": "https://wallstreetcn.com/articles/3778409",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "铠侠控股发布的一季度业绩低于市场预期，叠加前景指引令人失望，引发投资者对AI驱动的闪存价格上涨周期是否正在放缓的担忧。公司宣布1股拆3股及最高8000亿日元的股票回购计划，以期稳定市场情绪。 公司截至2026年6月的第一季度营业利润为1.27万亿日元，低于市场平均预估的1…"
+    },
+    {
+      "title": "MiniMax发布开源全模态模型H3：视频编辑能力登顶全球第一，定价砍至同行三分之一",
+      "url": "https://wallstreetcn.com/articles/3778403",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "在国产AI赛道从参数竞赛转向成本与生态较量的关键节点，MiniMax以一款定价仅为同行三分之一的视频生成模型，向市场投下了一枚\"价格核弹\"，同时也向Sora等全球竞品发起正面挑战。 7月31日，MiniMax正式发布首款开源多模态生成模型H3…"
+    },
+    {
+      "title": "小米杀入增程大SUV，SkyNomad定价体现“冲量野心”，华尔街紧盯销量和毛利",
+      "url": "https://wallstreetcn.com/articles/3778394",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "小米刚刚向中国新能源汽车市场投下了一枚重磅炸弹。 2026年7月30日，小米在北京举办第二届汽车科技日，正式发布全新“昆仑”技术架构及“SkyNomad（澎程）”增程（EREV）SUV系列，标志着其从运动型纯电（BEV）向家庭大空间增程市场的战略性跨越。旗舰七座N90…"
+    },
+    {
+      "title": "阿迪达斯季度收入创新高，世界杯投入未能兑现利润期待",
+      "url": "https://wallstreetcn.com/articles/3778406",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "阿迪达斯在世界杯期间卖出了创纪录的产品，却没有交出市场期待的利润表现。 7月30日，阿迪达斯披露2026年第二季度业绩。公司收入同比增长13%至67.43亿欧元，按汇率中性口径增长14%，创下单季度历史新高。\n\n营业利润则仅增长5%至5.74亿欧元，低于分析师一致预期的6.23亿欧元…"
+    },
+    {
+      "title": "CPE源峰签约收购猛犸象，能否复制始祖鸟的中国故事？",
+      "url": "https://wallstreetcn.com/articles/3778401",
+      "source": "folo:华尔街见闻",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "又一个国际高端户外品牌将进入中国资本版图。 中国私募股权机构CPE源峰已与欧洲私募股权机构Jacobs Capital签署股权购买协议，拟全资收购拥有逾160年历史的瑞士户外品牌猛犸象（Mammut）。\n\n双方于7月30日签署协议，交易仍需经过常规监管审批，预计在未来数月内完成交割…"
+    },
+    {
+      "title": "Advancing responsible AI across Europe",
+      "url": "https://openai.com/index/advancing-responsible-ai-across-europe",
+      "source": "folo:OpenAI-News",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "OpenAI shares how its safety, security, transparency, and provenance practices support responsible AI governance in Europe. The work will…"
+    },
+    {
+      "title": "日本央行7月如期按兵不动 但未来加息或将提速？",
+      "url": "https://www.cls.cn/detail/2442408",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 刘蕊）周五中午，日本央行公布了7月利率决议。如外界此前普遍预期的一样，日本央行维持利率不变。\n\n但令市场尤其在意的是，日本央行警告称，日本核心通胀率可能超过其2%的目标。这可能为其后续加快加息步伐埋下伏笔。\n\n日本央行维持利率不变\n\n日本央行以8比1的投票结果…"
+    },
+    {
+      "title": "自今日起！韩个股杠杆ETF基础保证金提升至3000万韩元，且仅限现金",
+      "url": "https://www.cls.cn/detail/2442416",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 李莹）自今日起，追踪三星电子、SK海力士等个股每日2倍变动的杠杆型ETF，其投资准入门槛将大幅上调。有意申购该类产品的投资者，证券账户内须持有至少3000万韩元现金——股票、债券等资产将不再计入。\n\n据韩国金融圈消息…"
+    },
+    {
+      "title": "电力设备股海外订单高增与业绩盈喜共振 潍柴动力涨近9%",
+      "url": "https://www.cls.cn/detail/2442421",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑胡家荣）受海外巨头订单高增、国内龙头中报超预期等多重利好刺激，港股电力设备股多数走强。\n\n截至发稿，潍柴动力(02338.HK)涨8.75%，哈尔滨电气(01133.HK)涨4.20%，东方电气(01072.HK)涨2.87%，金风科技(02208.HK…"
+    },
+    {
+      "title": "事关半导体！特朗普政府再出手：将入股七家科技公司",
+      "url": "https://www.cls.cn/detail/2442363",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 卞纯）美国商务部本周低调宣布，将向半导体制造领域提供超过8.7亿美元的联邦激励资金，以换取7家公司的少数股权。\n\n周三，美国国家标准与技术研究院（NIST）在一篇博客文章中表示，商务部下属的“芯片研发办公室”（CHIPS Research and…"
+    },
+    {
+      "title": "SK海力士股价在首尔涨幅扩大至30% 触及涨停板",
+      "url": "https://www.cls.cn/detail/2442403",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "【SK海力士股价在首尔涨幅扩大至30% 触及涨停板】财联社7月31日电，SK海力士股价在首尔涨幅扩大至30%，触及涨停板，市值重回8500亿美元上方。韩国KOSPI指数日内持续维持高位，现涨超17%。"
+    },
+    {
+      "title": "无视欧足联等抵制 国际足联称将继续推进商业计划",
+      "url": "https://www.cls.cn/detail/2442381",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "当地时间7月31日，国际足联表示，尽管受到以欧足联为首的强烈反对，但仍将继续推进拟议中的“世界杯等赛事业务股权出售”磋商程序。\n\n国际足联在声明中称：“我们原定的磋商进程受到了媒体不实报道的干扰。我们将继续推进这一磋商，以确保每个会员协会都能基于事实行使表决权。”\n\n国际足联主席因凡…"
+    },
+    {
+      "title": "【午报】创业板指半日涨超5%，全市场超4500股飘红，AI应用端全线爆发",
+      "url": "https://www.cls.cn/detail/2442370",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "一、【早盘盘面回顾】\n\n财联社7月31日讯，市场早盘高开后震荡，创业板指涨超5%，深成指涨超3%。量能明显放大，沪深两市半日成交额1.79万亿，较上个交易日放量3323亿。盘面上热点快速轮动，全市场超4500只个股上涨。从板块来看，AI应用端爆发，中文在线、荣信文化、蓝色光标…"
+    },
+    {
+      "title": "特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息",
+      "url": "https://www.cls.cn/detail/2442358",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "特斯拉官方回应了“剥离中国业务”传言。\n\n7月31日，有消息称特斯拉正考虑剥离中国业务，此举是为未来与SpaceX的潜在合并铺路。特斯拉中国方面就此回应澎湃新闻记者称此为“不实消息”。\n\n当下，以上海超级工厂为核心的中国市场，既是特斯拉全球最大整车产能基地与出口枢纽…"
+    },
+    {
+      "title": "马斯克据称准备再“砸”超1亿美元，为特朗普中期选举铺路！",
+      "url": "https://www.cls.cn/detail/2442307",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 黄君芝）自特朗普竞选总统开始，全球首富马斯克就各种展示其“钞能力”并深入政界，引发外界诸多不满。不过一年前，他与特朗普关系急剧降温、还多次表达对共和党的强烈不满，甚至扬言要组建第三政党，最后无疾而终渐渐淡出政界。\n\n然而如今，马斯克似乎又要卷土重来，用…"
+    },
+    {
+      "title": "俄罗斯无奈之举！哈萨克斯坦透露拟帮助加工俄油",
+      "url": "https://www.cls.cn/detail/2442309",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 马兰）哈萨克斯坦周四表示，正在与俄罗斯进行谈判，计划在哈萨克斯坦炼油厂加工俄罗斯石油，加工后的燃料部分在哈萨克斯坦内部销售，部分则返销给俄罗斯。\n\n哈萨克斯坦能源部表示，所生产燃料的最终去向将由市场参与者决定。目前为止，哈萨克斯坦尚未公布具体数量…"
+    },
+    {
+      "title": "从“造车”到“造星”：台州空天产业的链式突围｜活力中国调研行",
+      "url": "https://www.cls.cn/detail/2442300",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（记者 陈夏筱）走进浙江台州湾新区的星空智联卫星工厂，恍惚间会产生一种错觉，这里没有航天院所惯常的神秘，取而代之的是类似汽车工业特有的“精益”与“节拍”。\n\n作为台州空天产业的链主企业，星空智联成立于2019年8月，是吉利旗下全球卫星通信服务商时空道宇的全资子公司…"
+    },
+    {
+      "title": "国际金价重新站上4100美元 灵宝黄金和赤峰黄均涨超4%",
+      "url": "https://www.cls.cn/detail/2442303",
+      "source": "folo:财联社---头条",
+      "hot_metric": "",
+      "source_type": "news",
+      "tier": 1,
+      "description": "财联社7月31日讯（编辑 胡家荣）受隔夜国际贵金属市场强劲反弹及宏观利好催化，港股黄金股多数走强。\n\n截至发稿，灵宝黄金(03330.HK)涨6.58%，赤峰黄金(06693.HK)涨4.97%，潼关黄金(00340.HK)涨4.55%，山东黄金(01787.HK)涨3.28%。…"
+    },
+    {
+      "title": "GitHub AI Agent 翻车：攻击者不用黑客技术，只写一句话就能窃取数据",
+      "url": "https://www.infoq.cn/article/u4rDqep8zVWUJsqVoQ23",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "GitLost\" 是由 Noma Security 发现的一种提示注入漏洞利用方式，它能够诱骗 GitHub 新推出的 Agentic Workflows\" 泄露私有数据。攻击者只需在公开 GitHub Issue 中嵌入隐藏指令，就可以绕过安全防护措施，诱导 AI Agent…"
+    },
+    {
+      "title": "盯盘虾：让龙虾替你看盘！用skills实现财报抓取+异动告警自动化",
+      "url": "https://www.infoq.cn/article/Emku5bsTgvr3BWj12gIM",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "AI 研习社系列直播"
+    },
+    {
+      "title": "家教虾：提分不愁！用skills完成海量课件解析、智能出题，助力作业辅助与考",
+      "url": "https://www.infoq.cn/article/U3E6bCFP9fgMYpEwxhKC",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "AI 研习社系列直播"
+    },
+    {
+      "title": "AI浪潮中，如何定义自己的“确定性”之旅？",
+      "url": "https://www.infoq.cn/article/PVdaiz9gRseK6wx54ajX",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "当AI基础设施的竞争从\"谁有更多算力\"的上半场，迈入\"谁能把算力的价值发挥到最大\"的下半场，一家从传统IDC起家的公司，正在用自己的方式回答一个行业级的问题：在AI时代，什么样的基础设施才是客户真正需要的？ 2026年WAIC上，首都在线给出了清晰的答案——做AI的金牌伙伴…"
+    },
+    {
+      "title": "微软、Meta 同日交财报：小扎把现金流烧到只剩7.84亿美元，纳德拉靠 Azure 赚疯了",
+      "url": "https://www.infoq.cn/article/cWloUAofMHCLHpvscihh",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "微软、Meta 同日交出财报 7 月 29 日，微软与 Meta 在同一天公布财报，也交出了两份方向相反的 AI 成绩单。\n\n微软盘后一度上涨超过 8%，微软 CEO 纳德拉刚刚结束财报电话会议就在X 发文表示，“这是微软创纪录的财年的一个非常强劲的收官之作，更大的机遇还在前方。”\n\n据悉…"
+    },
+    {
+      "title": "翁荔被爆重返OpenAI！两天前因身体原因从Thinking Machines Lab离职",
+      "url": "https://www.infoq.cn/article/im3GxWtxYPZpkodNRgVQ",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "重返 OpenAI 的前一天，她在X上宣布因健康问题退出创业公司，转身便回到了老东家。 当地时间7月27日，Thinking Machines Lab 联合创始人、北京大学校友翁荔（Lilian Weng）公开了一封发给内部员工的告别信。她表示…"
+    },
+    {
+      "title": "记者对话：请回答 WAIC 2026——期待 vs 现实",
+      "url": "https://www.infoq.cn/article/v68qTCHUc29dEl8LBmr5",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "你进场前最想让 WAIC 回答的问题，得到答案了吗？三天下来，哪个判断被颠覆、哪个被印证？WAIC 最大的留白是什么？InfoQ 记者内部局，开扒热点虚实，陪你聊聊圈内真心话。"
+    },
+    {
+      "title": "让团队记忆在共建中完善： TencentDB Agent Memory 的开源之路 | 腾讯云数据库 DBTalk",
+      "url": "https://www.infoq.cn/article/ylsc5EZdSya6DbkWwgdU",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "本议题从开源社区建设的角度出发，通过团队记忆管理面板的实际演示，展示记忆资产如何被查看、治理与复用；随后分享 TencentDB Agent Memory 开源社区的建设思路与产品 Roadmap，并向所有开发者发出共建邀请——无论你是想接入使用、贡献代码，还是共创场景…"
+    },
+    {
+      "title": "企业级 AI 新解法：从“第一性原理”到“5A路径”｜对话观远数据张进",
+      "url": "https://www.infoq.cn/article/pvr2j4G3vxdy4Od9RGPb",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "这两年，几乎每家公司都在讨论 AI 落地。开会必提 AI，方案必带 AI，甚至 KPI 里都要加上 AI 相关的指标。但真正走进企业内部看一看，会发现一个尴尬的现象：员工个人用 AI 写文案、做 PPT 效率翻倍，可一旦要把 AI 融合到业务流程当中，对业务的帮助非常有限。 问题到…"
+    },
+    {
+      "title": "DataBuddy：数据语义驱动的企业 Agent Runtime 设计与落地｜AICon深圳",
+      "url": "https://www.infoq.cn/article/M9l2eJdhQkbruQlETEbt",
+      "source": "folo:InfoQ-推荐",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "Agent 时代，哪些方向正在成为行业关键变量？50 + 实战案例揭晓答案！ 模型参数规模不断突破，推理成本持续下降，开源生态日益繁荣。当模型能力逐渐成为行业共识，一个新的问题开始浮现：当人人都能获得强大的模型能力之后，真正的竞争力还剩下什么？ 答案正在从模型能力本身…"
+    },
+    {
+      "title": "简单有效的 E-cise，如何让我摆脱体态不良的「三件套」？",
+      "url": "https://sspai.com/post/112833",
+      "source": "folo:少数派",
+      "hot_metric": "",
+      "source_type": "tech",
+      "tier": 1,
+      "description": "无论你的运动专项为何，E-cise 都可以构成一个很好的辅助和补充。查看全文"
+    }
+  ]
+}

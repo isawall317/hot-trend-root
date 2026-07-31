@@ -434,7 +434,9 @@
         "rating": 4,
         "models": [
           "DeepSeek-V4-Flash",
+          "DeepSeek-V4-Flash-0731",
           "DeepSeek-V4-Pro",
+          "deepseek-v4-flash",
           "deepseek-v4-pro"
         ],
         "tags": [
@@ -456,7 +458,9 @@
         "rating": 4,
         "models": [
           "DeepSeek-V4-Flash",
+          "DeepSeek-V4-Flash-0731",
           "DeepSeek-V4-Pro",
+          "deepseek-v4-flash",
           "deepseek-v4-pro"
         ],
         "tags": [
@@ -469,7 +473,7 @@
     ],
     "billingCore": "token",
     "migration": "",
-    "updatedAt": "2026-07-22",
+    "updatedAt": "2026-07-31",
     "source": "extracted-deepseek"
   },
   {

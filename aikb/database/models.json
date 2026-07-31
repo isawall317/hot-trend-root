@@ -371,6 +371,13 @@
     "status": "active"
   },
   {
+    "id": "deepseek-v4-flash-0731",
+    "vendorId": "deepseek",
+    "name": "DeepSeek-V4-Flash-0731",
+    "type": "vision",
+    "status": "active"
+  },
+  {
     "id": "deepseek-v4-pro",
     "vendorId": "deepseek",
     "name": "DeepSeek-V4-Pro",
