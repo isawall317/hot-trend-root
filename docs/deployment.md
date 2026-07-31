@@ -22,10 +22,25 @@
 
 ```
 ① 通路  edgeone login → 创建项目 → repo 版（14 家）部署到 staging 域名验证
-② 对齐  线上独有的 ~19 家厂商回填 aikb/ + plans.json（schema 映射：旧字段 → billingCore 等新字段）
+② 对齐  线上独有的厂商回填到 project/codingplan-saver/data/（builder 真相源）→ kb_migrate.py 同步 aikb
 ③ 切换  EdgeOne 控制台绑定 codingplan.fyi（CNAME 验证，SSL 自动）→ DNS 从 Cloudflare 切出
 ④ 延长  /codingplan-page 终点 = tools/deploy/deploy.sh（build → 同步 site 目录 → makers deploy）
 ```
+
+### 数据流（② 回填的关键认知）
+
+```
+project/codingplan-saver/data/*.json   ← 真相源（builder/build.py 只读这里）
+        ↓ tools/collector/collector/kb_migrate.py
+aikb/database/*.json                   ← 下游产物（知识库元数据，自动同步）
+```
+
+**回填主改对象是 `project/codingplan-saver/data/`，不是 `aikb/`。** aikb 是由
+`kb_migrate.py` 从 project 自动生成的下游镜像。改错方向会导致重新部署后站点内容不变。
+
+第一批回填（2026-07-31）：14 家厂商 / 45 条 plans，由 `tools/builder/backfill_batch1.js`
+从 `data/recovery/codingplan-fyi-2026-07-31/plans.json` 转换而来。跳过摩尔线程（无价占位）、
+商汤·日日新（仅免费公测），第二批待真实定价。
 
 注意：`.fyi` 域名无法 ICP 备案 → 大陆加速区域不可用，走海外节点（与现状 Cloudflare 持平）；
 若未来需要大陆节点，需换可备案域名。

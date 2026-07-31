@@ -391,5 +391,384 @@
     },
     "lastVerified": "2026-07-23",
     "notes": "2026-07-10 宣布 Coding Plan → Token Plan 升级迁移，取消高峰限流，调用次数→Token 额度"
+  },
+  {
+    "id": "unicom",
+    "name": "联通云",
+    "logo": "联",
+    "color": "#ca0a14",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqunicomcp",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqunicomcp",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan",
+      "token-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "huawei",
+    "name": "华为云",
+    "logo": "华",
+    "color": "#ff0000",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "pricing": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "token-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "xunfei",
+    "name": "讯飞·星火",
+    "logo": "讯",
+    "color": "#0a7efa",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqxunfei",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqxunfei",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "ctyun",
+    "name": "天翼云",
+    "logo": "天",
+    "color": "#1a73e8",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "stepfun",
+    "name": "阶跃星辰",
+    "logo": "阶",
+    "color": "#7c3aed",
+    "category": "model-maker",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqstepfun",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqstepfun",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "zhipu-intl",
+    "name": "智谱国际版",
+    "logo": "智",
+    "color": "#facc15",
+    "category": "model-maker",
+    "country": "global",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqzai",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqzai",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "jd",
+    "name": "京东云",
+    "logo": "京",
+    "color": "#c7162d",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "cmcc",
+    "name": "移动云",
+    "logo": "移",
+    "color": "#005bac",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqmobilecp",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqmobilecp",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "infini",
+    "name": "无问芯穹",
+    "logo": "芯",
+    "color": "#06b6d4",
+    "category": "aggregator",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqinfini",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqinfini",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "taotoken",
+    "name": "TaoToken",
+    "logo": "TT",
+    "color": "#10b981",
+    "category": "aggregator",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "logo": "Ol",
+    "color": "#22c55e",
+    "category": "vertical-cloud",
+    "country": "global",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqollama",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqollama",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "opencode",
+    "name": "OpenCode",
+    "logo": "OC",
+    "color": "#f97316",
+    "category": "vertical-cloud",
+    "country": "global",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqopencode",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqopencode",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "token-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "scnet",
+    "name": "超算",
+    "logo": "算",
+    "color": "#64748b",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqscnetcp",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqscnetcp",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+  },
+  {
+    "id": "uyun",
+    "name": "优云智算",
+    "logo": "优",
+    "color": "#0ea5e9",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://api.dreamfree.space/c/s/cpyqyyzs",
+      "pricing": "https://api.dreamfree.space/c/s/cpyqyyzs",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": ""
+    },
+    "lastVerified": "2026-07-31",
+    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
   }
 ]

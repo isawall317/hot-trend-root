@@ -928,5 +928,1176 @@
     "migration": "→ Token Plan (2026-07)，旧权益平移+顺延1月",
     "updatedAt": "2026-07-23",
     "source": "manual"
+  },
+  {
+    "id": "zhipu-intl-coding-plan",
+    "vendorId": "zhipu-intl",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 18,
+        "currency": "¥",
+        "firstMonthPrice": 16.2,
+        "monthlyRequests": 24000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 90,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5-Turbo"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 72,
+        "currency": "¥",
+        "firstMonthPrice": 64.8,
+        "monthlyRequests": 120000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 360,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5-Turbo",
+          "GLM-5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 160,
+        "currency": "¥",
+        "firstMonthPrice": 144,
+        "monthlyRequests": 480000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 800,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5.2",
+          "GLM-5-Turbo",
+          "GLM-5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "海外版，独立计费",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "uyun-coding-plan",
+    "vendorId": "uyun",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Mini",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 1900,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 147,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      },
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 99,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 3800,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 297,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Basic",
+        "monthlyPrice": 199,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 7600,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 597,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 499,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 19000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 1497,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 799,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 31000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 2397,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Ultra",
+        "monthlyPrice": 999,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 39000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 2997,
+        "rating": 4,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "MiniMax-M2.7",
+          "DeepSeek-V4-Flash",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "opencode-token-plan",
+    "vendorId": "opencode",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "Go",
+        "monthlyPrice": 10,
+        "currency": "¥",
+        "firstMonthPrice": 5,
+        "monthlyRequests": null,
+        "tokenLimit": "未公开",
+        "measuredMonthlyToken": 150,
+        "rating": 5,
+        "models": [
+          "GLM-5.2",
+          "GLM-5.1",
+          "GLM-5",
+          "Kimi-K2.7-Code",
+          "Kimi-K3",
+          "Kimi-K2.6",
+          "MiMo-V2.5-Pro",
+          "MiMo-V2.5",
+          "Qwen-3.7-Max",
+          "Qwen-3.7-Plus",
+          "Qwen-3.6-Plus",
+          "MiniMax-M3",
+          "MiniMax-M2.7",
+          "MiniMax-M2.5",
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "xunfei-coding-plan",
+    "vendorId": "xunfei",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "专业版",
+        "monthlyPrice": 39,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 117,
+        "rating": 5,
+        "models": [
+          "GLM-5.1",
+          "Kimi-K2.6",
+          "Qwen3.6-35B-A3B",
+          "MiniMax-M2.5",
+          "Kimi-K2.5",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "已下架",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "高效版",
+        "monthlyPrice": 199,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 597,
+        "rating": 3,
+        "models": [
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "GLM-5.1",
+          "GLM-5.2",
+          "Kimi-K2.6",
+          "Qwen3.6-35B-A3B",
+          "GLM-5",
+          "MiniMax-M2.5",
+          "Kimi-K2.5",
+          "DeepSeek-V3.2"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "高效版已支持 GLM-5.2",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "速通版",
+        "monthlyPrice": 699,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "-",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 2097,
+        "rating": 3,
+        "models": [
+          "GLM-5.2",
+          "DeepSeek-V4-Pro",
+          "Kimi-K2.7-Code"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "价格比较贵，据宣传无需等待",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "taotoken-coding-plan",
+    "vendorId": "taotoken",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 39,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "-",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 117,
+        "rating": 3,
+        "models": [
+          "GLM-5.2"
+        ],
+        "tags": [],
+        "bloggerVerdict": "TaoToken Lite 档套餐。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 149,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "-",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 447,
+        "rating": 3,
+        "models": [
+          "GLM-5.2"
+        ],
+        "tags": [],
+        "bloggerVerdict": "TaoToken Pro 档套餐。",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 388,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "-",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 1164,
+        "rating": 3,
+        "models": [
+          "GLM-5.2"
+        ],
+        "tags": [],
+        "bloggerVerdict": "TaoToken Max 档套餐。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "unicom-coding-plan",
+    "vendorId": "unicom",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 120,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "GLM-5.1",
+          "GLM-5",
+          "MiniMax-M2.5",
+          "Qwen-3.5-Plus",
+          "Kimi-K2.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "不同云区域可用模型不同",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 600,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "GLM-5.1",
+          "GLM-5",
+          "MiniMax-M2.5",
+          "Qwen-3.5-Plus",
+          "Kimi-K2.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "不同云区域可用模型不同",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "unicom-token-plan",
+    "vendorId": "unicom",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "个人 Lite",
+        "monthlyPrice": 15,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "6M Tokens",
+        "measuredMonthlyToken": 6,
+        "rating": 1,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "个人 Pro",
+        "monthlyPrice": 30,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "12M Tokens",
+        "measuredMonthlyToken": 12,
+        "rating": 1,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "个人 Max",
+        "monthlyPrice": 45,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "18M Tokens",
+        "measuredMonthlyToken": 18,
+        "rating": 1,
+        "models": [
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      },
+      {
+        "tier": "lite",
+        "name": "团队 Lite",
+        "monthlyPrice": 198,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "200M Tokens",
+        "measuredMonthlyToken": 200,
+        "rating": 3,
+        "models": [
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "团队 Pro",
+        "monthlyPrice": 698,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "800M Tokens",
+        "measuredMonthlyToken": 800,
+        "rating": 3,
+        "models": [
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "团队 Max",
+        "monthlyPrice": 1398,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "2000M Tokens",
+        "measuredMonthlyToken": 2000,
+        "rating": 3,
+        "models": [
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.5"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "jd-coding-plan",
+    "vendorId": "jd",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": 19.9,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 120,
+        "rating": 3,
+        "models": [
+          "Kimi-K2.5",
+          "GLM-5",
+          "MiniMax-M2.5",
+          "DeepSeek-V3.2",
+          "Qwen-3-Coder"
+        ],
+        "tags": [],
+        "bloggerVerdict": "京东云 Lite 档套餐。",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": 99.9,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 600,
+        "rating": 3,
+        "models": [
+          "Kimi-K2.5",
+          "GLM-5",
+          "MiniMax-M2.5",
+          "DeepSeek-V3.2",
+          "Qwen-3-Coder"
+        ],
+        "tags": [],
+        "bloggerVerdict": "京东云 Pro 档套餐。",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "stepfun-coding-plan",
+    "vendorId": "stepfun",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Flash Mini",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 24000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 245,
+        "rating": 2,
+        "models": [
+          "step-3.7-flash",
+          "step-3.5-flash-2603",
+          "step-3.5-flash",
+          "step-router-v1"
+        ],
+        "tags": [],
+        "bloggerVerdict": "当前主打 Step 自有模型，模型较弱",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Flash Plus",
+        "monthlyPrice": 99,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 96000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 495,
+        "rating": 2,
+        "models": [
+          "step-3.7-flash",
+          "step-3.5-flash-2603",
+          "step-3.5-flash",
+          "step-router-v1"
+        ],
+        "tags": [],
+        "bloggerVerdict": "当前主打 Step 自有模型，模型较弱",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Flash Pro",
+        "monthlyPrice": 199,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 360000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 995,
+        "rating": 2,
+        "models": [
+          "step-3.7-flash",
+          "step-3.5-flash-2603",
+          "step-3.5-flash",
+          "step-router-v1"
+        ],
+        "tags": [],
+        "bloggerVerdict": "当前主打 Step 自有模型，模型较弱",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Flash Max",
+        "monthlyPrice": 699,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 1200000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 3495,
+        "rating": 2,
+        "models": [
+          "step-3.7-flash",
+          "step-3.5-flash-2603",
+          "step-3.5-flash",
+          "step-router-v1"
+        ],
+        "tags": [],
+        "bloggerVerdict": "当前主打 Step 自有模型，模型较弱",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "ctyun-coding-plan",
+    "vendorId": "ctyun",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "GLM Lite",
+        "monthlyPrice": 49,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 24000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 147,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5-Turbo"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "GLM Pro",
+        "monthlyPrice": 149,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 120000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 447,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5-Turbo",
+          "GLM-5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "GLM Max",
+        "monthlyPrice": 469,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 480000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 1407,
+        "rating": 4,
+        "models": [
+          "GLM-5.1",
+          "GLM-5-Turbo",
+          "GLM-5"
+        ],
+        "tags": [
+          "模型强",
+          "性价比高"
+        ],
+        "bloggerVerdict": "官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "cmcc-coding-plan",
+    "vendorId": "cmcc",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": 7.9,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 120,
+        "rating": 3,
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "tags": [],
+        "bloggerVerdict": "模型较弱",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": 39.9,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 600,
+        "rating": 3,
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "tags": [],
+        "bloggerVerdict": "模型较弱",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "scnet-coding-plan",
+    "vendorId": "scnet",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 20,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 18000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 30,
+        "rating": 2,
+        "models": [
+          "MiniMax-M2.5",
+          "Qwen-3-235B-A22B"
+        ],
+        "tags": [
+          "性价比高"
+        ],
+        "bloggerVerdict": "模型较弱",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 100,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 90000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 150,
+        "rating": 2,
+        "models": [
+          "MiniMax-M2.5",
+          "Qwen-3-235B-A22B"
+        ],
+        "tags": [
+          "性价比高"
+        ],
+        "bloggerVerdict": "模型较弱",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "infini-coding-plan",
+    "vendorId": "infini",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 40,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 12000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 120,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V3.2",
+          "Kimi-K2.5",
+          "MiniMax-M2.5",
+          "MiniMax-M2.7",
+          "GLM-5",
+          "GLM-5.1"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "当前售罄",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 200,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": 60000,
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 600,
+        "rating": 4,
+        "models": [
+          "DeepSeek-V3.2",
+          "Kimi-K2.5",
+          "MiniMax-M2.5",
+          "MiniMax-M2.7",
+          "GLM-5",
+          "GLM-5.1"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "当前售罄",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "ollama-coding-plan",
+    "vendorId": "ollama",
+    "type": "coding-plan",
+    "name": "Coding Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 20,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 60,
+        "rating": 3,
+        "models": [
+          "Kimi-K2.6",
+          "GLM-5.1",
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.7",
+          "Qwen-3-Coder",
+          "Qwen-3-Coder-next",
+          "Gemini-3-Flash-Preview",
+          "Mistral-Large-3"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 100,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": "未公开",
+        "tokenLimit": "无限制",
+        "measuredMonthlyToken": 300,
+        "rating": 3,
+        "models": [
+          "Kimi-K2.6",
+          "GLM-5.1",
+          "DeepSeek-V4-Pro",
+          "DeepSeek-V4-Flash",
+          "MiniMax-M2.7",
+          "Qwen-3-Coder",
+          "Qwen-3-Coder-next",
+          "Gemini-3-Flash-Preview",
+          "Mistral-Large-3"
+        ],
+        "tags": [
+          "模型强"
+        ],
+        "bloggerVerdict": "支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "本地部署代理",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
+  },
+  {
+    "id": "huawei-token-plan",
+    "vendorId": "huawei",
+    "type": "token-plan",
+    "name": "Token Plan",
+    "status": "active",
+    "plans": [
+      {
+        "tier": "lite",
+        "name": "Lite",
+        "monthlyPrice": 59,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "50M Tokens",
+        "measuredMonthlyToken": 50,
+        "rating": 3,
+        "models": [
+          "GLM-5.1",
+          "GLM-5",
+          "Kimi-K2.6",
+          "DeepSeek-V4-Flash"
+        ],
+        "tags": [],
+        "bloggerVerdict": "限个人用户购买，每个用户限购 1 套",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Standard",
+        "monthlyPrice": 149,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "130M Tokens",
+        "measuredMonthlyToken": 130,
+        "rating": 3,
+        "models": [
+          "GLM-5.1",
+          "GLM-5",
+          "Kimi-K2.6",
+          "DeepSeek-V4-Flash"
+        ],
+        "tags": [],
+        "bloggerVerdict": "限个人用户购买，每个用户限购 1 套",
+        "status": "active"
+      },
+      {
+        "tier": "pro",
+        "name": "Pro",
+        "monthlyPrice": 399,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "380M Tokens",
+        "measuredMonthlyToken": 380,
+        "rating": 3,
+        "models": [
+          "GLM-5.1",
+          "GLM-5",
+          "Kimi-K2.6",
+          "DeepSeek-V4-Flash"
+        ],
+        "tags": [],
+        "bloggerVerdict": "限个人用户购买，每个用户限购 1 套",
+        "status": "active"
+      },
+      {
+        "tier": "max",
+        "name": "Max",
+        "monthlyPrice": 799,
+        "currency": "¥",
+        "firstMonthPrice": null,
+        "monthlyRequests": null,
+        "tokenLimit": "880M Tokens",
+        "measuredMonthlyToken": 880,
+        "rating": 3,
+        "models": [
+          "GLM-5.1",
+          "GLM-5",
+          "Kimi-K2.6",
+          "DeepSeek-V4-Flash"
+        ],
+        "tags": [],
+        "bloggerVerdict": "限个人用户购买，每个用户限购 1 套",
+        "status": "active"
+      }
+    ],
+    "billingCore": "token",
+    "migration": "",
+    "updatedAt": "2026-07-31",
+    "source": "manual"
   }
 ]

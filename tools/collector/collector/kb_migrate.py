@@ -43,6 +43,11 @@ VENDOR_COUNTRY = {
     "claude": "us", "codex": "us", "github": "us",
     "openrouter": "global",
     "opencode": "global",
+    # 第一批回填厂商（2026-07-31）
+    "unicom": "cn", "huawei": "cn", "xunfei": "cn", "ctyun": "cn",
+    "cmcc": "cn", "infini": "cn", "scnet": "cn", "uyun": "cn",
+    "zhipu-intl": "global", "stepfun": "cn", "taotoken": "cn",
+    "ollama": "global",
 }
 
 # 厂商 mass 服务类型（从现有 plans 数据反推 + 手动补充）
@@ -61,6 +66,21 @@ VENDOR_MASS_SERVICES = {
     "baidu": ["coding-plan", "token-plan", "api-paygo"],
     "openrouter": ["api-paygo"],
     "siliconflow": ["api-paygo"],
+    # 第一批回填厂商（2026-07-31）—— 按 recovery plans.json 的 type 反推
+    "unicom": ["coding-plan", "token-plan"],
+    "huawei": ["token-plan"],
+    "xunfei": ["coding-plan"],
+    "ctyun": ["coding-plan"],
+    "cmcc": ["coding-plan"],
+    "jd": ["coding-plan"],
+    "infini": ["coding-plan"],
+    "scnet": ["coding-plan"],
+    "uyun": ["coding-plan"],
+    "zhipu-intl": ["coding-plan"],
+    "stepfun": ["coding-plan"],
+    "taotoken": ["coding-plan"],
+    "ollama": ["coding-plan"],
+    "opencode": ["token-plan"],
 }
 
 # 提取策略映射（vendors.json 旧值 → 新值）
