@@ -207,13 +207,16 @@ def _compare_fields(old_obj: dict, new_obj: dict) -> dict[str, dict]:
         new_val = new_obj.get(key)
 
         if isinstance(old_val, list) and isinstance(new_val, list):
-            # 列表对比
-            old_set = set(str(x) for x in old_val)
-            new_set = set(str(x) for x in new_val)
-            added = new_set - old_set
-            removed = old_set - new_set
+            # 列表对比：dict 元素用 json.dumps 标准化（避免 Python repr 串污染），
+            # 其余元素（str/int）用 str。按稳定序列化后做 set 差集。
+            def _serialize(x):
+                return json.dumps(x, ensure_ascii=False, sort_keys=True) if isinstance(x, (dict, list)) else str(x)
+            old_set = set(_serialize(x) for x in old_val)
+            new_set = set(_serialize(x) for x in new_val)
+            added = [x for x in new_val if _serialize(x) not in old_set]
+            removed = [x for x in old_val if _serialize(x) not in new_set]
             if added or removed:
-                diffs[key] = {"old": old_val, "new": new_val, "added": list(added), "removed": list(removed)}
+                diffs[key] = {"old": old_val, "new": new_val, "added": added, "removed": removed}
         elif isinstance(old_val, dict) and isinstance(new_val, dict):
             # 嵌套字典对比
             nested = _compare_fields(old_val, new_val)

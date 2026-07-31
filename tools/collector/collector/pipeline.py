@@ -118,7 +118,13 @@ def generate_pending_report(date_str: str) -> Path:
 
     if signals:
         for s in signals:
-            lines.append(f"- [{s.get('type', '?')}] {s.get('vendor', '?')}: {s.get('message', '?')}")
+            # 信号字段：title / url / source / keywords / vendors（见 price_monitor.py）
+            vendors = s.get("vendors") or ["?"]
+            kw = s.get("keywords") or []
+            kw_str = f"「{'+'.join(kw)}」" if kw else ""
+            lines.append(
+                f"- [{vendors[0]}] {s.get('title', '?')[:60]} {kw_str}".rstrip()
+            )
     else:
         lines.append("无价格信号。")
 
