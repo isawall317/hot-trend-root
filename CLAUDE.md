@@ -58,7 +58,7 @@ cd tools/collector && uv run python -m collector.pipeline
 /codingplan-page scan
 ```
 
-> ✅ 2026-07-31 起 EdgeOne Makers 部署链路已打通（`tools/deploy/deploy.sh`：build → cp 到 codingplan-site → makers deploy）。线上最终入口 `codingplan.fyi` 待 DNS 切换，当前用默认域名访问受区域限制（401）。详见 [`docs/deployment.md`](docs/deployment.md)。
+> ✅ 2026-07-31 EdgeOne Makers 部署链路已打通并首次部署成功（28 家版本已上线 production）。`tools/deploy/deploy.sh`（跨平台 Win/Mac/Unix）已接进 `/codingplan-page` 的 Step 6，支持 `preview` 先验证再 `production` 上线。最终入口 `codingplan.fyi` 待绑定自定义域名（迁移路线 ③）。详见 [`docs/deployment.md`](docs/deployment.md)。
 
 ## 目录结构
 

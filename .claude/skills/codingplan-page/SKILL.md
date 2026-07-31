@@ -59,11 +59,24 @@ python3 tools/builder/build.py
 
 输出到 `dist/codingplan-saver-{YYYY-MM-DD-HHMM}.html` + `dist/codingplan-saver.html`（latest 副本）。
 
-**Step 6: 汇报**
+**Step 6: 汇报 + 部署**
 
-告知用户：采集条数、候选文章数、收录数、结构化变动数、文件大小。提示 `open` 命令。
+告知用户：采集条数、候选文章数、收录数、结构化变动数、文件大小。提示 `open` 命令预览本地产物。
 
-> ⚠️ **注意**：`dist/` 产物目前**不会**自动发布到 codingplan.fyi。线上站点源码位置与部署方式待确认，见 [`docs/deployment.md`](../../../docs/deployment.md)。在方案落地前，向用户汇报时必须明确说明"本次更新尚未上线"。
+然后**询问用户是否部署上线**（部署是 outward-facing 操作，必须用户确认）：
+
+```bash
+# 稳妥流程：先 preview 验证，用户确认后再 production
+bash tools/deploy/deploy.sh preview      # 生成带 token 的预览链接，用户打开验证
+bash tools/deploy/deploy.sh production    # 用户确认后，推生产（更新默认域名内容）
+```
+
+deploy.sh 自动完成 build → cp 到 codingplan-site → edgeone makers deploy 三步（跨平台 Win/Mac/Unix 自适应）。
+
+- **preview 环境**：生成带 `eo_token` 的临时链接，不受默认域名区域限制，专供验证
+- **production 环境**：更新 `codingplan-llnvmecs.edgeone.cool` 默认域名内容
+- **前置**：`edgeone login` 已完成（或设置 `EDGEONE_PAGES_API_TOKEN` 环境变量）
+- **自定义域名**：最终入口 `codingplan.fyi` 需在 EdgeOne 控制台绑定（CNAME 验证），见 [`docs/deployment.md`](../../../docs/deployment.md) 迁移路线 ③
 
 ### 数据校验
 

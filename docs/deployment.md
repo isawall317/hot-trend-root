@@ -21,10 +21,10 @@
 ## 迁移路线（四步）
 
 ```
-① 通路  edgeone login → 创建项目 → repo 版（14 家）部署到 staging 域名验证
-② 对齐  线上独有的厂商回填到 project/codingplan-saver/data/（builder 真相源）→ kb_migrate.py 同步 aikb
-③ 切换  EdgeOne 控制台绑定 codingplan.fyi（CNAME 验证，SSL 自动）→ DNS 从 Cloudflare 切出
-④ 延长  /codingplan-page 终点 = tools/deploy/deploy.sh（build → 同步 site 目录 → makers deploy）
+① 通路  edgeone login → 创建项目 → repo 版（14 家）部署到 staging 域名验证      ✅ 已完成（2026-07-31）
+② 对齐  线上独有的厂商回填到 project/codingplan-saver/data/（builder 真相源）→ kb_migrate.py 同步 aikb  ✅ 已完成（14→28 家）
+③ 切换  EdgeOne 控制台绑定 codingplan.fyi（CNAME 验证，SSL 自动）→ DNS 从 Cloudflare 切出  ⏳ 待执行
+④ 延长  /codingplan-page 终点 = tools/deploy/deploy.sh（build → 同步 site 目录 → makers deploy）  ✅ 已完成（Step 6 接进 SKILL）
 ```
 
 ### 数据流（② 回填的关键认知）
