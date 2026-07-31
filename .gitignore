@@ -28,8 +28,10 @@ tools/DailyHotApi/
 tools/RSSHub/
 tools/collector/tools/
 
-# 构建产物（dist/ 现在跟踪，因为是最终交付物）
-# dist/
+# 构建产物：只跟踪 latest 副本（*-saver.html 等无时间戳文件），忽略时间戳历史副本
+# build.py 每次 build 会生成带时间戳的副本（本地调试用），这些是构建垃圾不进仓库
+dist/*-2026-*.html
+dist/*-2025-*.html
 # launchd 定时采集日志
 data/logs/
 
