@@ -203,6 +203,41 @@
     "status": "active"
   },
   {
+    "id": "glm-asr-2512",
+    "vendorId": "zhipu",
+    "name": "GLM-ASR-2512",
+    "type": "audio",
+    "status": "active"
+  },
+  {
+    "id": "glm-realtime-air",
+    "vendorId": "zhipu",
+    "name": "GLM-Realtime-Air",
+    "type": "text",
+    "status": "active"
+  },
+  {
+    "id": "glm-realtime-flash",
+    "vendorId": "zhipu",
+    "name": "GLM-Realtime-Flash",
+    "type": "text",
+    "status": "active"
+  },
+  {
+    "id": "glm-tts",
+    "vendorId": "zhipu",
+    "name": "GLM-TTS",
+    "type": "audio",
+    "status": "active"
+  },
+  {
+    "id": "glm-tts-clone",
+    "vendorId": "zhipu",
+    "name": "GLM-TTS-Clone",
+    "type": "audio",
+    "status": "active"
+  },
+  {
     "id": "minimax-m3",
     "vendorId": "minimax",
     "name": "MiniMax-M3",

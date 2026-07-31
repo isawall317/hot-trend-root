@@ -61,12 +61,28 @@
             "output_price_per_1m": 6.0
           },
           {
+            "name": "GLM-TTS",
+            "input_price_per_1m": 2.0
+          },
+          {
+            "name": "GLM-TTS-Clone",
+            "input_price_per_1m": 6.0
+          },
+          {
+            "name": "GLM-ASR-2512",
+            "input_price_per_1m": 16.0
+          },
+          {
             "name": "GLM-4-Voice",
             "input_price_per_1m": 80.0
           },
           {
-            "name": "GLM-ASR",
-            "input_price_per_1m": 0.06
+            "name": "GLM-Realtime-Flash",
+            "input_price_per_1m": 0.18
+          },
+          {
+            "name": "GLM-Realtime-Air",
+            "input_price_per_1m": 0.3
           },
           {
             "name": "GLM-4-0520",
@@ -235,7 +251,7 @@
             "input_price_per_1m": 200.0
           }
         ],
-        "count": 51,
+        "count": 55,
         "note": "API 按量计费，Coding Plan 需登录控制台"
       }
     ],
@@ -246,7 +262,7 @@
       "monthlyPrice"
     ],
     "sourceUrl": "https://open.bigmodel.cn/pricing",
-    "fetchedAt": "2026-07-31T12:24:17Z",
+    "fetchedAt": "2026-07-31T17:11:28Z",
     "error": null
   },
   {
@@ -279,18 +295,65 @@
     ],
     "missingFields": [],
     "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "fetchedAt": "2026-07-31T12:22:05Z",
+    "fetchedAt": "2026-07-31T17:11:19Z",
     "error": null
   },
   {
     "vendorId": "kimi",
     "vendor": "Kimi",
-    "plans": [],
-    "extractedFields": [],
-    "missingFields": [],
+    "plans": [
+      {
+        "models": [
+          {
+            "name": "moonshot-v1-8k",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 10.0,
+            "context": 8192
+          },
+          {
+            "name": "moonshot-v1-32k",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 20.0,
+            "context": 32768
+          },
+          {
+            "name": "moonshot-v1-128k",
+            "input_price_per_1m": 10.0,
+            "output_price_per_1m": 30.0,
+            "context": 131072
+          },
+          {
+            "name": "moonshot-v1-8k-vision-preview",
+            "input_price_per_1m": 2.0,
+            "output_price_per_1m": 10.0,
+            "context": 8192
+          },
+          {
+            "name": "moonshot-v1-32k-vision-preview",
+            "input_price_per_1m": 5.0,
+            "output_price_per_1m": 20.0,
+            "context": 32768
+          },
+          {
+            "name": "moonshot-v1-128k-vision-preview",
+            "input_price_per_1m": 10.0,
+            "output_price_per_1m": 30.0,
+            "context": 131072
+          }
+        ],
+        "count": 6,
+        "note": "API 按量计费，Coding Plan 需登录控制台"
+      }
+    ],
+    "extractedFields": [
+      "models"
+    ],
+    "missingFields": [
+      "monthlyPrice"
+    ],
     "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
-    "fetchedAt": "2026-07-31T12:24:16Z",
-    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://platform.kimi.com/docs/pricing/chat\", waiting until \"load\"\n"
+    "fetchedAt": "2026-07-31T17:11:36Z",
+    "error": null
   },
   {
     "vendorId": "minimax",
@@ -325,7 +388,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-    "fetchedAt": "2026-07-31T12:22:07Z",
+    "fetchedAt": "2026-07-31T17:11:19Z",
     "error": null
   },
   {
@@ -353,7 +416,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
-    "fetchedAt": "2026-07-31T12:22:05Z",
+    "fetchedAt": "2026-07-31T17:11:19Z",
     "error": null
   },
   {
@@ -363,8 +426,8 @@
     "extractedFields": [],
     "missingFields": [],
     "sourceUrl": "https://claude.com/pricing",
-    "fetchedAt": "2026-07-31T12:24:16Z",
-    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://claude.com/pricing\", waiting until \"load\"\n"
+    "fetchedAt": "2026-07-31T17:11:42Z",
+    "error": "Playwright 失败: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://claude.com/pricing\nCall log:\n  - navigating to \"https://claude.com/pricing\", waiting until \"load\"\n"
   },
   {
     "vendorId": "github",
@@ -373,7 +436,7 @@
     "extractedFields": [],
     "missingFields": [],
     "sourceUrl": "https://github.com/features/copilot/plans",
-    "fetchedAt": "2026-07-31T12:24:16Z",
+    "fetchedAt": "2026-07-31T17:11:51Z",
     "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://github.com/features/copilot/plans\", waiting until \"load\"\n"
   }
 ]

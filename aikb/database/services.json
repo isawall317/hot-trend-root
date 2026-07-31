@@ -45,7 +45,12 @@
           "GLM-5.1",
           "GLM-5.2",
           "GLM-5V-Turbo",
-          "GLM-ASR"
+          "GLM-ASR",
+          "GLM-ASR-2512",
+          "GLM-Realtime-Air",
+          "GLM-Realtime-Flash",
+          "GLM-TTS",
+          "GLM-TTS-Clone"
         ],
         "tags": [
           "模型强",
@@ -94,7 +99,12 @@
           "GLM-5.1",
           "GLM-5.2",
           "GLM-5V-Turbo",
-          "GLM-ASR"
+          "GLM-ASR",
+          "GLM-ASR-2512",
+          "GLM-Realtime-Air",
+          "GLM-Realtime-Flash",
+          "GLM-TTS",
+          "GLM-TTS-Clone"
         ],
         "tags": [
           "模型强",
@@ -143,7 +153,12 @@
           "GLM-5.1",
           "GLM-5.2",
           "GLM-5V-Turbo",
-          "GLM-ASR"
+          "GLM-ASR",
+          "GLM-ASR-2512",
+          "GLM-Realtime-Air",
+          "GLM-Realtime-Flash",
+          "GLM-TTS",
+          "GLM-TTS-Clone"
         ],
         "tags": [
           "模型强",
@@ -156,7 +171,7 @@
     ],
     "billingCore": "token",
     "migration": "⚠️ 连续涨价 200%+，未更名，变相逼用户转 API",
-    "updatedAt": "2026-07-23",
+    "updatedAt": "2026-08-01",
     "source": "extracted-zhipu"
   },
   {

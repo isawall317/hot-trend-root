@@ -1,37 +1,37 @@
 {
   "date": "2026-07-31",
-  "total": 38,
+  "total": 30,
   "scanner": "maintenance_scanner",
   "candidates": [
     {
       "title": "DeepSeek V4 正式版发布，使用体验如何？和降价后的 GPT5.6 luna 对比谁更有优势？",
       "url": "https://www.zhihu.com/question/2066526486505461299",
-      "hot_metric": "1940000",
+      "hot_metric": "1970000",
       "source": "dailyhot:zhihu",
       "source_type": "social",
       "author": "DeepSeek 官方 (score=4)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "降价 80%！OpenAI 下调 GPT-5.6 Luna AI 模型费用，性价比超 DeepSeek V4 Pro",
       "url": "https://www.ithome.com/0/983/912.htm",
-      "hot_metric": "96",
+      "hot_metric": "98",
       "source": "dailyhot:ithome",
       "source_type": "tech",
       "author": "DeepSeek 官方 (score=4)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "突发，GPT-5.6今起大降价",
       "url": "https://www.36kr.com/p/3918835009351298",
-      "hot_metric": "6",
+      "hot_metric": "8",
       "source": "dailyhot:36kr",
       "source_type": "news",
       "author": "Codex (ChatGPT) (score=4)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "月之暗面全面开源Kimi K3；新研究推翻三星堆祭祀坑献祭说；台风“白海豚”生成",
@@ -41,7 +41,7 @@
       "source_type": "content",
       "author": "Kimi (score=4)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "黄仁勋、Kimi K3，与一场即将到来的开源战争。",
@@ -51,87 +51,97 @@
       "source_type": "content",
       "author": "Kimi (score=4)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "MiniMax发布开源全模态模型H3：视频编辑能力登顶全球第一，定价砍至同行三分之一",
-      "url": "https://wallstreetcn.com/articles/3778403",
-      "hot_metric": "",
-      "source": "folo:华尔街见闻",
-      "source_type": "news",
-      "author": "MiniMax (score=4)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "DeepSeek V4 flash 正式版发布，有哪些亮点值得关注？",
       "url": "https://www.zhihu.com/question/2066521165246489298",
-      "hot_metric": "18630000",
+      "hot_metric": "25650000",
       "source": "dailyhot:zhihu",
       "source_type": "social",
       "author": "DeepSeek 官方 (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "如何看待Claude大规模封禁国内开发者账号，让依赖AI的程序员「功力尽失」，被调侃天才程序员陨落？",
       "url": "https://www.zhihu.com/question/2065499504187371980",
-      "hot_metric": "1190000",
+      "hot_metric": "960000",
       "source": "dailyhot:zhihu",
       "source_type": "social",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "跑分超glm5.2,DSv4flash发布",
       "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28356678&amp;topic_name=%E8%B7%91%E5%88%86%E8%B6%85glm5.2%2CDSv4flash%E5%8F%91%E5%B8%83",
-      "hot_metric": "87759",
+      "hot_metric": "34860",
       "source": "dailyhot:tieba",
       "source_type": "social",
       "author": "智谱AI (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "解剖 Claude Code：逆向工程视角下的入口架构分析",
       "url": "https://juejin.cn/post/7667096004731846682",
-      "hot_metric": "2331",
+      "hot_metric": "2367",
       "source": "dailyhot:juejin",
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "我用 Claude Code 后，编码效率翻 3 倍。但更值钱的是别的。",
-      "url": "https://juejin.cn/post/7667045310732468251",
-      "hot_metric": "144",
-      "source": "dailyhot:juejin",
-      "source_type": "tech",
-      "author": "Claude (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "Claude Code 接国产模型不能识图？一个 MCP 让纯文本模型也能看图",
       "url": "https://juejin.cn/post/7667756207139651635",
-      "hot_metric": "135",
+      "hot_metric": "171",
       "source": "dailyhot:juejin",
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "Kimi K3竟是GPT-2的22580倍，博主「肝」48小时发现：七年进化大模型不只是参数暴涨",
       "url": "https://juejin.cn/post/7667842166609805358",
-      "hot_metric": "117",
+      "hot_metric": "126",
       "source": "dailyhot:juejin",
       "source_type": "tech",
       "author": "Kimi (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
+    },
+    {
+      "title": "A 社封杀了 1140 万个账号，下午 Claude 崩了。",
+      "url": "https://juejin.cn/post/7668568406279569446",
+      "hot_metric": "99",
+      "source": "dailyhot:juejin",
+      "source_type": "tech",
+      "author": "Claude (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-31T17:11:05Z"
+    },
+    {
+      "title": "Spring Boot 集成硅基流动免费Qwen大模型实战——从零搭建支持多轮对话的网页应用",
+      "url": "https://blog.csdn.net/yelangkingwuzuhu/article/details/163313796",
+      "hot_metric": "10706",
+      "source": "dailyhot:csdn",
+      "source_type": "tech",
+      "author": "阿里·百炼 (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-31T17:11:05Z"
+    },
+    {
+      "title": "智谱 GLM-4.1V-Thinking 视频识别 API 全解析：免费 / 收费双版本落地开发指南",
+      "url": "https://blog.csdn.net/beautifulmemory/article/details/163369644",
+      "hot_metric": "9519",
+      "source": "dailyhot:csdn",
+      "source_type": "tech",
+      "author": "智谱AI (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "Claude Code 越聪明越烧钱？先检查后端有没有让它猜",
@@ -141,7 +151,7 @@
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "GPT-5.6一夜爆砍80%，一元屠杀最贵Claude！",
@@ -151,7 +161,7 @@
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "十万科学家免费用一年！OpenAI把科研流水线搬进ChatGPT",
@@ -161,7 +171,7 @@
       "source_type": "tech",
       "author": "Codex (ChatGPT) (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "OpenAI，开源了！",
@@ -171,7 +181,7 @@
       "source_type": "tech",
       "author": "Codex (ChatGPT) (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "Claude Code 的 Dynamic Workflow 到底是什么",
@@ -181,7 +191,7 @@
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "新出的 Claude Managed Agents 是什么？把 Agent 的大脑和双手拆开",
@@ -191,7 +201,7 @@
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "不用开 Copilot Pro 也能用 Claude！vscode配置key使用第三方大模型全流程",
@@ -201,47 +211,47 @@
       "source_type": "tech",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "小米澎程 N90/N70 车型 9 月发布，今晚 21:00 开启预订",
-      "url": "https://www.ithome.com/0/983/884.htm",
-      "hot_metric": "304",
-      "source": "dailyhot:ithome",
-      "source_type": "tech",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "小米澎程系列技术发布会一文汇总：雷军详解昆仑架构，N90/N70 预售价亮眼",
-      "url": "https://www.ithome.com/0/983/903.htm",
-      "hot_metric": "388",
-      "source": "dailyhot:ithome",
-      "source_type": "tech",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "DeepSeek-V4-Flash 正式版 API 上线公测，V4-Pro 正式版将“尽快”发布",
       "url": "https://www.ithome.com/0/984/116.htm",
-      "hot_metric": "201",
+      "hot_metric": "218",
       "source": "dailyhot:ithome",
       "source_type": "tech",
       "author": "DeepSeek 官方 (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "小米 REDMI K100 Pro 系列“满分旗舰”手机官宣，8 月 11 日发布",
       "url": "https://www.ithome.com/0/983/940.htm",
-      "hot_metric": "269",
+      "hot_metric": "282",
       "source": "dailyhot:ithome",
       "source_type": "tech",
       "author": "小米·MiMo (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
+    },
+    {
+      "title": "小米澎程 N90/N70 车型 9 月发布，今晚 21:00 开启预订",
+      "url": "https://www.ithome.com/0/983/884.htm",
+      "hot_metric": "306",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "小米·MiMo (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-31T17:11:05Z"
+    },
+    {
+      "title": "小米澎程系列技术发布会一文汇总：雷军详解昆仑架构，N90/N70 预售价亮眼",
+      "url": "https://www.ithome.com/0/983/903.htm",
+      "hot_metric": "389",
+      "source": "dailyhot:ithome",
+      "source_type": "tech",
+      "author": "小米·MiMo (score=3)",
+      "level": "medium",
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破",
@@ -251,47 +261,17 @@
       "source_type": "tech",
       "author": "Kimi (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "破解 Trae CN 加密协议",
-      "url": "https://www.52pojie.cn/forum.php?mod=viewthread&tid=2113927",
-      "hot_metric": "",
-      "source": "dailyhot:52pojie",
-      "source_type": "tech",
-      "author": "Trae (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "DeepSeek-V4-Flash正式版上线",
-      "url": "https://www.baidu.com/s?wd=DeepSeek-V4-Flash%E6%AD%A3%E5%BC%8F%E7%89%88%E4%B8%8A%E7%BA%BF",
-      "hot_metric": "4929720",
-      "source": "dailyhot:baidu",
-      "source_type": "news",
-      "author": "DeepSeek 官方 (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "澎程发布次日小米股价下跌",
-      "url": "https://www.toutiao.com/trending/7668520620040408619/",
-      "hot_metric": "135823",
-      "source": "dailyhot:toutiao",
-      "source_type": "news",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "刚刚，DeepSeek-V4-Flash正式版API公测上线",
       "url": "https://www.36kr.com/p/3919242384043654",
-      "hot_metric": "2",
+      "hot_metric": "3",
       "source": "dailyhot:36kr",
       "source_type": "news",
       "author": "DeepSeek 官方 (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "翁荔刚回OpenAI，Thinking Machines反手甩出新模型",
@@ -301,27 +281,7 @@
       "source_type": "news",
       "author": "Codex (ChatGPT) (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "Kimi K3公开了不少秘密，但最重要的Infra却很难抄",
-      "url": "https://www.36kr.com/p/3918081073262209",
-      "hot_metric": "7",
-      "source": "dailyhot:36kr",
-      "source_type": "news",
-      "author": "Kimi (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "小米澎程发布之际，SU7、YU7幕后功臣却急着三进港交所",
-      "url": "https://www.36kr.com/p/3917856470062722",
-      "hot_metric": "",
-      "source": "dailyhot:36kr",
-      "source_type": "news",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "Claude Code之父：每半年清空一次claude.md、skills和hooks，模型自己会想办法",
@@ -331,57 +291,17 @@
       "source_type": "news",
       "author": "Claude (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "小米杀入增程大SUV，定价体现“冲量野心”，华尔街紧盯销量和毛利",
-      "url": "https://new.qq.com/rain/a/20260731A076S100",
-      "hot_metric": "1644713",
-      "source": "dailyhot:qq-news",
-      "source_type": "news",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     },
     {
       "title": "DeepSeek-V4-Flash正式版api发布，agent性能远远超过v4 pro",
       "url": "https://bbs.nga.cn/read.php?tid=47288714",
-      "hot_metric": "39",
+      "hot_metric": "43",
       "source": "dailyhot:ngabbs",
       "source_type": "game",
       "author": "DeepSeek 官方 (score=3)",
       "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "字节跳动发布Seedance 2.5，单次视频生成时长升至30秒",
-      "url": "https://wallstreetcn.com/articles/3778434",
-      "hot_metric": "",
-      "source": "folo:华尔街见闻",
-      "source_type": "news",
-      "author": "字节·方舟 (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "字节跳动发布Seedance 2.5，单次生成翻倍至30秒，AIGC落地加速",
-      "url": "https://wallstreetcn.com/articles/3778407",
-      "hot_metric": "",
-      "source": "folo:华尔街见闻",
-      "source_type": "news",
-      "author": "字节·方舟 (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
-    },
-    {
-      "title": "小米杀入增程大SUV，SkyNomad定价体现“冲量野心”，华尔街紧盯销量和毛利",
-      "url": "https://wallstreetcn.com/articles/3778394",
-      "hot_metric": "",
-      "source": "folo:华尔街见闻",
-      "source_type": "news",
-      "author": "小米·MiMo (score=3)",
-      "level": "medium",
-      "collected_at": "2026-07-31T12:21:49Z"
+      "collected_at": "2026-07-31T17:11:05Z"
     }
   ]
 }
