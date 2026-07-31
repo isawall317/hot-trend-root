@@ -83,13 +83,15 @@ Folo 通过 `folocli` CLI 与本地 Folo（原 Follow）RSS 阅读器交互，�
 
 ### 2.3 AI 知识库（🆕 `aikb/`）
 
-`aikb/` 是**AI 维护的文档数据库**：MD 文件是真相源（AI 读写），`aikb/database/` 下的 JSON 由 `md_to_json.py` 从 MD frontmatter 自动生成，供下游项目消费。
+`aikb/` 是**AI 维护的文档数据库**：MD 文件是画像层（AI 读写），`aikb/database/` 下的 JSON 由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步，供下游项目消费。
+
+> ⚠️ **真相源说明**：套餐/价格的真实数据源是 `project/codingplan-saver/data/*.json`（builder 实际读取），`aikb/database/` 是其下游镜像。MD 画像层（`aikb/vendors|tools/*.md`）覆盖中，部分厂商尚无 MD（目标态）。
 
 | 目录 | 内容 | 格式 | 维护方式 |
 |------|------|------|---------|
-| `aikb/vendors/` | 14 家厂商画像（每家一个 MD） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
-| `aikb/tools/` | 31 款工具详情（每款一个 MD） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
-| `aikb/database/` | 结构化 JSON（vendors/services/tools/models/changes） | JSON | `md_to_json.py` 从 MD 自动生成 |
+| `aikb/vendors/` | 厂商画像 MD（覆盖中，14/28 家） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
+| `aikb/tools/` | 工具详情 MD（每款一个 MD） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
+| `aikb/database/` | 结构化 JSON（vendors/services/tools/models/changes） | JSON | `kb_migrate.py` 从 project/ 自动同步 |
 
 > MD 是 AI 的原生语言（LLM 在 MD 上读写的准确率远高于 JSON），
 > `database/` JSON 是给下游项目（codingplan-saver 等）消费的结构化视图。
@@ -188,7 +190,7 @@ project/{name}/
 
 ### 4.3 AI 知识库（`aikb/`）
 
-多个项目共享同一套厂商基础数据。**`aikb/` 是 AI 维护的文档数据库**，MD 文件是真相源，`aikb/database/` JSON 是派生输出。
+多个项目共享同一套厂商基础数据。**`aikb/database/` JSON 由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步**（pipeline Step 5b），`aikb/vendors|tools/*.md` 是 AI 维护的画像层（覆盖中）。
 
 ```
 aikb/                               ← 🆕 AI 知识库（Obsidian 兼容）
@@ -245,15 +247,16 @@ aikb/                               ← 🆕 AI 知识库（Obsidian 兼容）
 ### 5.2 数据依赖关系
 
 ```
-vendors-and-tools.md (厂商/工具真相源)
+project/codingplan-saver/data/*.json (套餐/价格真相源，builder 读取)
     │
-    ├── codingplan-saver: 依赖 vendors.json + plans.json
+    ├── codingplan-saver: 依赖 vendors.json + plans.json + changes.json
     │       └── 产出: codingplan-saver.html
     │
-    ├── coding-tools: 依赖 tools.json + affiliates.json
-    │       └── 产出: coding-tools.html
+    ├── kb_migrate.py → aikb/database/*.json (下游镜像)
+    │       └── kb_to_md.py → docs/vendors-and-tools.md (自动生成一览表)
     │
-    └── 其他项目: 可能引用 vendors 信息
+    └── coding-tools: 独立 tools.json（aikb/database/tools.json 含补充的国产工具）
+            └── 产出: coding-tools.html
 ```
 
 ---

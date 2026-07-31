@@ -2,8 +2,8 @@
 KB 变更检测 — 对比上次快照与当前 KB，产出结构化变更报告 + 风险分级
 
 机制:
-  pipeline 每次跑会先把"上一次的 KB"快照到 data/knowledge-base/.last-run/，
-  然后 kb_migrate 把最新数据写入 data/knowledge-base/。
+  pipeline 每次跑会先把"上一次的 KB"快照到 aikb/database/.last-run/，
+  然后 kb_migrate 把最新数据写入 aikb/database/。
   kb_diff 对比二者:
     - .last-run/  = 上一次的 KB（"old"）
     - KB_DIR/     = 本次 kb_migrate 刚写完的 KB（"new"）

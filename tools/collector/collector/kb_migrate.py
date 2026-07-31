@@ -488,7 +488,7 @@ def main():
     # 汇总
     print(f"\n{'='*50}")
     print(f"  知识库迁移完成！")
-    print(f"  data/knowledge-base/")
+    print(f"  aikb/database/")
     print(f"    ├── vendors.json   ({len(vendors)} 家)")
     print(f"    ├── services.json  ({len(services)} 个服务)")
     print(f"    ├── tools.json     ({len(tools)} 款)")

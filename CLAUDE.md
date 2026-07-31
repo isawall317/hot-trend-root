@@ -57,18 +57,18 @@ cd tools/collector && uv run python -m collector.pipeline
 /codingplan-page scan
 ```
 
-> ⚠️ build 产物（dist/）与线上 codingplan.fyi 目前是两套代码，**不存在自动部署链路**。现状与待决策方案见 [`docs/deployment.md`](docs/deployment.md)。
+> ✅ 2026-07-31 起 EdgeOne Makers 部署链路已打通（`tools/deploy/deploy.sh`：build → cp 到 codingplan-site → makers deploy）。线上最终入口 `codingplan.fyi` 待 DNS 切换，当前用默认域名访问受区域限制（401）。详见 [`docs/deployment.md`](docs/deployment.md)。
 
 ## 目录结构
 
 ```
 hot-trend-root/
 ├── CLAUDE.md                     # 本文件
-├── aikb/                         # 🆕 AI 知识库（Obsidian 兼容，MD 真相源）
+├── aikb/                         # 🆕 AI 知识库（Obsidian 兼容）
 │   ├── index.md                  #   导航索引
-│   ├── vendors/                  #   厂商画像（14 家，每家一个 MD）
-│   ├── tools/                    #   工具详情（31 款，每款一个 MD）
-│   └── database/                 #   结构化 JSON（md_to_json.py 自动生成）
+│   ├── vendors/                  #   厂商画像 MD（AI 维护，部分厂商待补）
+│   ├── tools/                    #   工具详情 MD（每款一个 MD）
+│   └── database/                 #   结构化 JSON（kb_migrate.py 从 project/ 同步）
 ├── docs/                         # 项目文档
 │   ├── data-architecture.md      # 数据体系总地图
 │   └── vendors-and-tools.md      # 厂商/工具一览表（由 kb_to_md.py 自动生成）
@@ -108,7 +108,7 @@ hot-trend-root/
 - **数据驱动** — 让采集数据说话，不做主观判断
 - **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
 - **快速验证** — 不要完美，先验证再打磨
-- **KB 即真相** — 厂商/工具画像的唯一真相源是 `aikb/` MD（AI 直接读写）；`aikb/database/` JSON 由 `md_to_json.py` 自动生成，供下游项目消费；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 自动生成，勿手工编辑；新增厂商/工具 → AI 新建 `aikb/vendors|tools/` MD → 跑 `python -m collector.md_to_json` 刷新 JSON → 跑 `python -m collector.kb_to_md` 重生成一览表
+- **plans.json 为价格真相源** — `project/codingplan-saver/data/*.json` 是 builder 实际读取的数据源（vendors/plans/changes）；`aikb/database/*.json` 由 `kb_migrate.py` 从 project 自动同步（pipeline Step 5b）；`aikb/vendors|tools/*.md` 是 AI 维护的画像层（部分厂商 MD 待补，目标态见 `docs/data-architecture.md`）；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 从 `aikb/database/` 自动生成，勿手工编辑。**改套餐/价格 → 改 project；改完跑 `python -m collector.kb_migrate` 同步 aikb，再跑 `python -m collector.kb_to_md` 刷新一览表。**
 
 ## 用户画像（Frank）
 

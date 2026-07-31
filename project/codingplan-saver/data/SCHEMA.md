@@ -204,7 +204,7 @@
   "vendor": "智谱AI",                   // 对齐 vendors.json 的 name
   "vendorId": "zhipu",                  // 对齐 vendors.json 的 id
   "plan": "Pro",
-  "type": "Coding Plan",                // 枚举: Coding Plan | Token Plan | API 按量 | Agent Plan
+  "type": "Coding Plan",                // 枚举: 见下方 type 表
   "tier": "pro",                        // 枚举: lite | pro | max（便于分组排序）
   "monthlyPrice": 149,
   "currency": "¥",                      // ¥ | $
@@ -213,30 +213,35 @@
   "models": ["GLM-5.1", "GLM-5.2"],
   "monthlyRequests": 120000,            // Coding Plan 才有
   "tokenLimit": null,                   // Token Plan 才有（字符串如 "10M Tokens" 或 null）
+  "measuredMonthlyToken": 600,          // token_estimator 自动补（单位 M）；散点图/每元Token 列依赖
+  "tags": ["模型强", "需抢购"],          // 字符串数组
+  "bloggerVerdict": "我的主力套餐...",   // 博主点评
+  "action": "https://open.bigmodel.cn/pricing",  // 套餐购买/详情页 URL
+  "status": "active",                   // 枚举: active | paused | sold_out | deprecated
+  "source": "manual",                   // 数据来源追溯: manual | extracted-{vendorId}
+  "updatedAt": "2026-07-20",            // ISO 日期
+  // —— 以下为画像层字段（kb_migrate 透传到 aikb/database/services.json）——
+  "category": "model-maker",            // 枚举: model-maker | cloud-maas | aggregator | vertical-cloud（对齐 vendors.json）
+  "billingCore": "token",               // 枚举: token | request（核心计费维度）
+  "migration": "⚠️ 连续涨价 200%+",     // 可选，自由文本，迁移/计费变动提示
+  "notes": "..."                        // 可选，自由文本，数据质量/估算说明（如 measuredMonthlyToken 为估算值）
+}
+```
 
 ### `type` 枚举与分类逻辑
 
 | type | 含义 | 计费方式 | 典型厂商 | 适用场景 |
 |------|------|---------|---------|---------|
 | `Coding Plan` | 月订阅，专用于 AI 编程 | 固定月费 | 智谱/腾讯云/Claude/GitHub/Kimi/字节 | Claude Code / Cursor / Codex 用户 |
-| `Token Plan` | 月订阅，给 token 额度池，通用场景 | 固定月费 | MiniMax/阿里百炼/小米·MiMo | 通用 AI 调用，不限编程 |
+| `Token Plan` | 月订阅，给 token 额度池，通用场景 | 固定月费 | MiniMax/阿里百炼/小米·MiMo/华为云 | 通用 AI 调用，不限编程 |
 | `API 按量` | 无月费，按 token 消耗付费 | 按量后付费 | DeepSeek/OpenRouter/硅基流动 | 弹性用量，测试，不确定用量 |
-| `Agent Plan` | 月订阅，专用于 AI Agent 工作流 | 固定月费 | 字节方舟（Agent Plan） | 构建 AI Agent，MCP/工具调用 |
+| `Agent Plan` | 月订阅，专用于 AI Agent 工作流 | 固定月费 | _暂未使用（字节方舟预留）_ | 构建 AI Agent，MCP/工具调用 |
 
 **分类决策树：**
 1. 有月费吗？→ 无 → `API 按量`
 2. 专用于编程（含 Claude Code/Cursor 等工具）？→ 是 → `Coding Plan`
 3. 专用于 Agent 工作流？→ 是 → `Agent Plan`
 4. 通用 token 额度池 → `Token Plan`
-  "measuredMonthlyToken": 600,          // token_estimator 自动补（单位 M）
-  "tags": ["模型强", "需抢购"],          // 字符串数组
-  "bloggerVerdict": "我的主力套餐...",   // 博主点评
-  "action": "https://open.bigmodel.cn/pricing",  // 套餐购买/详情页 URL
-  "status": "active",                   // 枚举: active | paused | sold_out | deprecated
-  "source": "manual",                   // 数据来源追溯: manual | extracted-{vendorId}
-  "updatedAt": "2026-07-20"             // ISO 日期
-}
-```
 
 ### `status` 枚举
 
@@ -300,8 +305,8 @@
 | `new_model` | 新增支持某模型 | "新增模型" / "新模型即将发布" |
 | `new_plan` | 新套餐上线 | "新增平台" |
 | `subscription_pause` | 暂停订阅 | "暂停订阅" |
-| `promotion` | 限时活动/折扣 | "活动" |
-| `outage` | 故障/下架 | — |
+| `promotion` | 限时活动/折扣 | _暂未使用_ |
+| `outage` | 故障/下架 | _暂未使用_ |
 | `article` | 行业文章/资讯 | 原 articles.json |
 
 页面"动态" Tab 的筛选分组：
@@ -329,7 +334,7 @@
 - V1 `vendor` → 新 `vendor` + 新 `vendorId`（通过 VENDOR_ID_MAP 查表）
 - 新增 `id` = `{vendorId}-{plan-lower}`
 - 新增 `tier`：根据 plan 名推断（Lite/Mini→lite，Max/Ultra→max，其余→pro）
-- 删除 `quarterlyPrice` / `yearlyPrice` / `fiveHoursRequests` / `weeklyRequests` / `quarterlyPrice`（页面未用）
+- 删除 `quarterlyPrice` / `yearlyPrice` / `fiveHoursRequests` / `weeklyRequests`（页面未用）
 - `status` 默认 `active`，已知暂停的（Kimi）手工改 `paused`
 - `source` 统一设为 `manual`（迁移自人工数据）
 - `updatedAt` 设为迁移当天

@@ -1,6 +1,6 @@
 ---
 name: kb-update
-description: 知识库更新 — 采集 → 变更检测 → 审阅 → 合并，维护 data/knowledge-base/ 数据
+description: 知识库更新 — 采集 → 变更检测 → 审阅 → 合并，维护 aikb/database/ 数据
 metadata:
   type: skill
 ---
@@ -16,13 +16,13 @@ metadata:
 
 ## 定位
 
-`data/knowledge-base/` 是**信息承载层**：厂商/服务/工具/模型的画像与关系。
-`plans.json`/`tools.json` 是**价格投影层**：KB 在某一时刻的快照，下游产品直接读。
-pipeline 每次跑同时维护两层：价格进 plans.json（已有），画像进 KB（本次新增）。
+`aikb/database/` 是**信息承载层**：厂商/服务/工具/模型的画像与关系，由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步。
+`project/codingplan-saver/data/plans.json` 是**价格真相源**：builder 直接读取，aikb/database 是其下游镜像。
+pipeline 每次跑同时维护两层：价格进 plans.json（真相源），画像经 kb_migrate 同步进 aikb/database。
 
 ## 核心原则
 
-- **KB JSON 是唯一真相源**，`docs/vendors-and-tools.md` 由它自动生成
+- **`project/codingplan-saver/data/` 是真相源**，`aikb/database/` 由 `kb_migrate.py` 自动同步，`docs/vendors-and-tools.md` 由 `kb_to_md.py` 从 aikb/database 生成
 - **自动采集 + 人工审阅**，不是全自动
 - **低风险变更自动合**（新模型、小价差），**高风险人工确认**（涨价、下架、新服务）
 - **先检测后审阅**，绝不盲目覆盖

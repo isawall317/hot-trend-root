@@ -1,24 +1,8 @@
 # 厂商与工具数据源
 
 > **定位**：本项目追踪的所有厂商和工具的源头清单。
-> **本文件由 `kb_to_md.py` 从 `data/knowledge-base/` JSON 自动生成，勿手工编辑。**
-> 最后更新：2026-07-23 | 维护者：Frank + Claude Code
-
----
-
-# 厂商与工具数据源
-
-> **定位**：本项目追踪的所有厂商和工具的源头清单。
-> **本文件由 `kb_to_md.py` 从 `data/knowledge-base/` JSON 自动生成，勿手工编辑。**
-> 最后更新：2026-07-23 | 维护者：Frank + Claude Code
-
----
-
-# 厂商与工具数据源
-
-> **定位**：本项目追踪的所有厂商和工具的源头清单。
-> **本文件由 `kb_to_md.py` 从 `data/knowledge-base/` JSON 自动生成，勿手工编辑。**
-> 最后更新：2026-07-23 | 维护者：Frank + Claude Code
+> **本文件由 `kb_to_md.py` 从 `aikb/database/` JSON 自动生成，勿手工编辑。**
+> 最后更新：2026-07-31 | 维护者：Frank + Claude Code
 
 ---
 
@@ -43,6 +27,20 @@
 | openrouter | OpenRouter | 聚合商 | 🌐 | https://openrouter.ai/pricing | manual | 待添加 | 全球聚合商: 400+ 模型, 70+ 厂商, 统一 API Key, 按量付费 +5.5% 平台费（手动维护） |
 | siliconflow | 硅基流动 | 聚合商 | 🇨🇳 | https://siliconflow.cn/pricing | manual | 待添加 | 国内聚合商: 实时价格同步，覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等（手动维护） |
 | baidu | 百度·千帆 | 云厂商 MaaS | 🇨🇳 | https://cloud.baidu.com/product-s/qianfan_home | manual | 待添加 | 2026-07-10 宣布 Coding Plan → Token Plan 升级迁移，取消高峰限流，调用次数→Toke（手动维护） |
+| unicom | 联通云 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqunicomcp | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| huawei | 华为云 | 云厂商 MaaS | 🇨🇳 | https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| xunfei | 讯飞·星火 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqxunfei | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| ctyun | 天翼云 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqctyun | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| stepfun | 阶跃星辰 | 模型厂商 | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqstepfun | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| zhipu-intl | 智谱国际版 | 模型厂商 | 🌐 | https://api.dreamfree.space/c/s/cpyqzai | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| jd | 京东云 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqjingdong | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| cmcc | 移动云 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqmobilecp | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| infini | 无问芯穹 | 聚合商 | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqinfini | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| taotoken | TaoToken | 聚合商 | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqtaotoken | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| ollama | Ollama | 垂直云 | 🌐 | https://api.dreamfree.space/c/s/cpyqollama | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| opencode | OpenCode | 垂直云 | 🌐 | https://api.dreamfree.space/c/s/cpyqopencode | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| scnet | 超算 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqscnetcp | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
+| uyun | 优云智算 | 云厂商 MaaS | 🇨🇳 | https://api.dreamfree.space/c/s/cpyqyyzs | manual | 待添加 | 回填自线上 codingplan.fyi 抢救数据（2026-07-31）（手动维护） |
 
 提取策略：`Playwright` = 渲染 SPA 后解析 | `BS4 静态` = 直接解析文档页 | `API` = JSON API | `manual` = 人工定期检查
 <!-- KB-AUTO-END -->
@@ -91,9 +89,9 @@
 
 ## 三、更新规则
 
-1. **新增厂商/工具** → 更新 `data/knowledge-base/` JSON → 运行 `python -m collector.kb_to_md` 重新生成此文件
-2. **URL 变更** → 更新 KB JSON → 重新生成
-3. **数据变更** → 自动采集管道检测 → `/kb-update review` 审阅 → 更新 KB JSON
+1. **新增厂商/工具** → 更新 `project/codingplan-saver/data/` JSON → 跑 `kb_migrate.py` 同步到 `aikb/database/` → 运行 `python -m collector.kb_to_md` 重新生成此文件
+2. **URL 变更** → 更新 project JSON → 跑 kb_migrate → 重新生成
+3. **数据变更** → 自动采集管道检测 → `/kb-update review` 审阅 → 更新 project JSON
 4. **发现渠道** → 厂商 Token Plan / Coding Plan 页面通常会列出「本套餐支持哪些工具」，这些页面是发现新工具和竞品的最佳入口
 
 ---

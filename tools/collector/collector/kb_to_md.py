@@ -55,104 +55,55 @@ TOOL_TYPE_ICON = {
 
 
 def generate():
+    """全量重新生成 vendors-and-tools.md（本文件全自动生成，勿手工编辑）。
+
+    历史上用 _merge_content 试图"保留手动区块"，但导致 header 累积重复
+    （每次运行 append 一份 header）。既然文件声明"勿手工编辑"，改为
+    全量覆盖最干净，消除累积 bug。
+    """
     vendors = _load("vendors.json")
     tools = _load("tools.json")
 
-    # 读取现有 MD（保留手动区块）
-    existing_content = ""
-    if OUTPUT.exists():
-        existing_content = OUTPUT.read_text(encoding="utf-8")
-
-    # 生成 header + 自动区块
-    auto_sections = [
-        _generate_vendor_table(vendors),
-        _generate_tool_table(tools),
-    ]
-
-    # 合并：自动区块替换，手动区块保留
-    new_content = _merge_content(existing_content, auto_sections)
-
-    OUTPUT.write_text(new_content, encoding="utf-8")
-    print(f"✅ 已生成: {OUTPUT}")
-
-
-def _merge_content(existing: str, auto_sections: list[str]) -> str:
-    """将自动区块插入到现有 MD 中。保留标记外的内容。"""
     now = datetime.now().strftime("%Y-%m-%d")
-
     header = f"""# 厂商与工具数据源
 
 > **定位**：本项目追踪的所有厂商和工具的源头清单。
-> **本文件由 `kb_to_md.py` 从 `data/knowledge-base/` JSON 自动生成，勿手工编辑。**
+> **本文件由 `kb_to_md.py` 从 `aikb/database/` JSON 自动生成，勿手工编辑。**
 > 最后更新：{now} | 维护者：Frank + Claude Code
 
 ---
 
 """
 
-    # 如果现有文件有自动标记，替换标记内的内容
-    if AUTO_START in existing:
-        # 提取标记外的内容（header 之前 + 标记之间 + 最后一个标记之后）
-        # 简单策略：只保留第一个 AUTO_START 之前和最后一个 AUTO_END 之后的内容
-        # 中间所有 AUTO_START...AUTO_END 块替换为新的 auto_sections
+    sections = [
+        f"{AUTO_START}",
+        _generate_vendor_table(vendors),
+        f"{AUTO_END}",
+        "",
+        f"{AUTO_START}",
+        _generate_tool_table(tools),
+        f"{AUTO_END}",
+        "",
+        "---",
+        "",
+        "## 三、更新规则",
+        "",
+        "1. **新增厂商/工具** → 更新 `project/codingplan-saver/data/` JSON → 跑 `kb_migrate.py` 同步到 `aikb/database/` → 运行 `python -m collector.kb_to_md` 重新生成此文件",
+        "2. **URL 变更** → 更新 project JSON → 跑 kb_migrate → 重新生成",
+        "3. **数据变更** → 自动采集管道检测 → `/kb-update review` 审阅 → 更新 project JSON",
+        "4. **发现渠道** → 厂商 Token Plan / Coding Plan 页面通常会列出「本套餐支持哪些工具」，这些页面是发现新工具和竞品的最佳入口",
+        "",
+        "---",
+        "",
+        "## 四、结算记录",
+        "",
+        "| 日期 | 平台 | 金额 | 备注 |",
+        "|------|------|------|------|",
+        "| 待记录 | | | |",
+    ]
 
-        parts = []
-        remaining = existing
-        auto_idx = 0
-
-        while AUTO_START in remaining:
-            # 保留 AUTO_START 之前的内容
-            before = remaining.split(AUTO_START, 1)[0]
-            parts.append(before)
-
-            if auto_idx < len(auto_sections):
-                # 插入新的自动区块
-                parts.append(f"{AUTO_START}\n{auto_sections[auto_idx]}\n{AUTO_END}")
-                auto_idx += 1
-
-            # 跳到 AUTO_END 之后
-            if AUTO_END in remaining:
-                remaining = remaining.split(AUTO_END, 1)[1]
-            else:
-                remaining = ""
-                break
-
-        # 剩余未匹配的自动区块追加到末尾
-        while auto_idx < len(auto_sections):
-            parts.append(f"\n{AUTO_START}\n{auto_sections[auto_idx]}\n{AUTO_END}")
-            auto_idx += 1
-
-        parts.append(remaining)
-        return header + "".join(parts)
-    else:
-        # 首次生成：全量输出
-        sections = [
-            f"{AUTO_START}",
-            auto_sections[0],
-            f"{AUTO_END}",
-            "",
-            f"{AUTO_START}",
-            auto_sections[1],
-            f"{AUTO_END}",
-            "",
-            "---",
-            "",
-            "## 三、更新规则",
-            "",
-            "1. **新增厂商/工具** → 更新 `data/knowledge-base/` JSON → 运行 `python -m collector.kb_to_md` 重新生成此文件",
-            "2. **URL 变更** → 更新 KB JSON → 重新生成",
-            "3. **数据变更** → 自动采集管道检测 → `/kb-update review` 审阅 → 更新 KB JSON",
-            "4. **发现渠道** → 厂商 Token Plan / Coding Plan 页面通常会列出「本套餐支持哪些工具」，这些页面是发现新工具和竞品的最佳入口",
-            "",
-            "---",
-            "",
-            "## 四、结算记录",
-            "",
-            "| 日期 | 平台 | 金额 | 备注 |",
-            "|------|------|------|------|",
-            "| 待记录 | | | |",
-        ]
-        return header + "\n".join(sections)
+    OUTPUT.write_text(header + "\n".join(sections), encoding="utf-8")
+    print(f"✅ 已生成: {OUTPUT}")
 
 
 def _generate_vendor_table(vendors: list[dict]) -> str:

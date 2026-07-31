@@ -139,7 +139,7 @@ hot-trend-root/
 │   └── codingplan-saver.html           ← 最终交付物
 └── docs/
     ├── data-architecture.md            ← 数据体系总地图
-    └── vendors-and-tools.md            ← 厂商/工具唯一真相源
+    └── vendors-and-tools.md            ← 厂商/工具一览表（kb_to_md.py 自动生成）
 ```
 
 ---
