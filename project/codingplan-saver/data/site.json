@@ -1,10 +1,11 @@
 {
   "name": "CodingPlan 省钱攻略",
-  "tagline": "每月在 AI Coding Plan 上花 200-1000 块？饭庐者说帮你选最划算的",
+  "tagline": "7 家 AI Coding Plan / Token Plan 定价对比",
   "domain": "codingplan-saver",
   "logo": "CP",
   "primaryColor": "#10b981",
   "accentColor": "#06b6d4",
+  "updatedAt": "2026-08-01",
   "blogger": {
     "name": "饭庐者说",
     "avatar": "FL",
@@ -29,8 +30,7 @@
     ]
   },
   "header": {
-    "updateDate": "更新于 2026.07.31",
-    "highlights": "本周关注：GPT-5.6 降价 80%，DeepSeek V4 正式上线，Kimi K3 仍暂停新用户",
+    "updateDate": "更新于 2026.08.01",
     "stats": [
       {
         "label": "覆盖平台",
@@ -87,143 +87,21 @@
       }
     }
   ],
-  "recommendationGroups": [
-    {
-      "id": "monthly-plans",
-      "title": "月订阅套餐评测",
-      "subtitle": "固定月费换额度，适合有稳定用量的开发者",
-      "items": [
-        {
-          "vendor": "字节·方舟",
-          "plan": "Auto",
-          "rating": 5,
-          "verdict": "最便宜的全家桶",
-          "reasons": [
-            "¥9.9/月，13+ 模型 Auto 智能调度",
-            "唯一同时支持 GLM-5.2 / DeepSeek-V4 / MiniMax-M3 / Kimi 的平台",
-            "不用抢购，随时可买"
-          ]
-        },
-        {
-          "vendor": "腾讯云",
-          "plan": "Token Plan Standard",
-          "rating": 5,
-          "verdict": "最均衡的 Token 池",
-          "reasons": [
-            "¥99/月，1 亿 Token，约 200 轮问答",
-            "含 DeepSeek-V4 原厂直供 + GLM-5 + Kimi-K2.5",
-            "比 API 按量便宜 50%+"
-          ]
-        },
-        {
-          "vendor": "MiniMax",
-          "plan": "Max",
-          "rating": 5,
-          "verdict": "多模态重度首选",
-          "reasons": [
-            "¥119/月，3 倍 Plus 用量，约 36,000 次/月",
-            "图/音/视频生成全共享额度",
-            "M3 模型 + 无需抢购"
-          ]
-        },
-        {
-          "vendor": "智谱AI",
-          "plan": "Pro",
-          "rating": 5,
-          "verdict": "GLM-5.2 旗舰党",
-          "reasons": [
-            "¥538/月，6 倍 Lite 积分，GLM-5.2 原生平台",
-            "非高峰 5 折，实际成本更低",
-            "**7-30 改版涨价 260%**，但 GLM-5.2 代码能力 T0"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "api-paygo",
-      "title": "API 按量评测",
-      "subtitle": "无月费，按 token 消耗付费，适合弹性/不确定用量",
-      "items": [
-        {
-          "vendor": "DeepSeek 官方",
-          "plan": "V4-Flash 按量",
-          "rating": 5,
-          "verdict": "性价比之王",
-          "reasons": [
-            "输入 1 元 / 输出 2 元每百万 token",
-            "1M 上下文，极速推理",
-            "**⚠️ 即将峰谷定价**，高峰时段 2 倍"
-          ]
-        },
-        {
-          "vendor": "DeepSeek 官方",
-          "plan": "V4-Pro 按量",
-          "rating": 5,
-          "verdict": "Agent 能力旗舰",
-          "reasons": [
-            "输入 3 元 / 输出 6 元，默认深度思考",
-            "1M 上下文，Agent 能力显著增强",
-            "比 V4-Flash 贵 3 倍，但复杂任务更稳"
-          ]
-        },
-        {
-          "vendor": "智谱AI",
-          "plan": "GLM-5.2 按量",
-          "rating": 5,
-          "verdict": "GLM-5.2 弹性选择",
-          "reasons": [
-            "输入 8 元 / 输出 28 元每百万 token",
-            "1M 上下文，缓存命中仅 2 元",
-            "不想订阅智谱套餐时，按量更灵活"
-          ]
-        }
-      ]
-    }
-  ],
-  "community": {
-    "free": {
-      "title": "免费微信群",
-      "subtitle": "每周价格变动推送",
-      "description": "加群第一时间获取价格变动 / 限购提醒，群里也有选型讨论和实测反馈。免费进，门槛低。",
-      "qrImage": "",
-      "highlights": [
-        "每周价格变动速报",
-        "抢购开放时间提醒",
-        "群友选型讨论",
-        "免费进群"
-      ],
-      "ctaText": "扫码进免费群"
-    },
-    "paid": {
-      "title": "知识星球",
-      "subtitle": "¥199/年（早鸟价 ¥99）",
-      "description": "比免费群多 5 倍信息密度。每周实测报告、每月 1 次 1v1 选型答疑、独家优惠链接、决策树高级模式。",
-      "highlights": [
-        "每周价格变动推送（比公开早 24h）",
-        "每月实测报告（含 Token 消耗数据）",
-        "每月 1v1 选型答疑",
-        "独家优惠链接 + 返佣返还",
-        "决策树高级模式"
-      ],
-      "ctaText": "加入知识星球",
-      "url": "#"
-    }
-  },
   "disclosure": "本站部分链接为联盟推广链接，通过这些链接注册我可能获得返佣，但不影响你的价格。所有推荐均基于真实使用体验，不接受厂商付费推广。",
   "footer": {
-    "about": "CodingPlan 省钱攻略 · 饭庐者说的 AI Coding Plan 选型指南",
+    "about": "CodingPlan 省钱攻略 · 7 家厂商定价对比 · by 饭庐者说",
     "links": [
       {
         "label": "完整对比",
         "url": "#compare"
       },
       {
-        "label": "最新动态",
-        "url": "#updates"
+        "label": "加群交流",
+        "url": "#"
       },
       {
-        "label": "加入社群",
-        "url": "#community"
+        "label": "知识星球",
+        "url": "#"
       }
     ]
   }

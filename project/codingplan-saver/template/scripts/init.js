@@ -1,11 +1,14 @@
 // ============================================================
-// Init — 页面加载时初始化所有 Tab
+// Init — 单页模式，只渲染对比表
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('navBrand').textContent = site.name || 'CodingPlan 省钱攻略';
-  renderRecommend();
+  const taglineEl = document.getElementById('navTagline');
+  if (taglineEl) taglineEl.textContent = site.tagline || '';
   renderCompare();
-  renderCommunity();
   renderFooter();
-  switchTab(location.hash || '#recommend');
+  // 单页模式，对比表是首屏，直接渲染散点图
+  setTimeout(() => {
+    if (typeof echarts !== 'undefined') renderChart();
+  }, 100);
 });

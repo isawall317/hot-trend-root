@@ -3,61 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodingPlan 省钱攻略 - AI Coding Plan 选型指南</title>
-<meta name="description" content="10个平台、18+套餐全方位对比。每月花20-500元买AI Coding Plan？饭庐者说帮你选最划算的。">
+<title>CodingPlan 省钱攻略 - 7 家 AI Coding Plan / Token Plan 定价对比</title>
+<meta name="description" content="智谱/字节方舟/腾讯/DeepSeek/MiniMax/Kimi/阿里百炼 7 家厂商 Coding Plan / Token Plan / API 按量定价对比。数据源官网快照，支持月订阅与 API 按量两套评测。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* === Inlined from template/style.css === */
-/* === Design Tokens（继承自 V1 shared.css）=== */
+/* ============================================================
+   CodingPlan 省钱攻略 — 瑞士国际主义风 (Swiss Style)
+   参考 guizang-ppt-skill Swiss Style: 克莱因蓝 IKB + 灰白底
+   设计原则: 高级灰白底 + 单一高亮色 + 全无衬线 + 极致字号对比
+   ============================================================ */
+
 :root {
-  --bg-base: #090d14;
-  --bg-elevated: #111827;
-  --bg-card: rgba(20, 28, 46, 0.7);
-  --bg-card-hover: rgba(30, 41, 64, 0.85);
-  --bg-input: rgba(15, 23, 42, 0.8);
+  /* ============ 主题色 · 克莱因蓝 IKB ============ */
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #002fa7;
+  --accent-rgb: 0, 47, 167;
+  --accent-on: #ffffff;
 
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-muted: #64748b;
+  /* ============ 文本角色 token (role-based) ============ */
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --text-helper: #737373;
+  --text-placeholder: #a3a3a3;
+  --border-subtle: #e0e0e0;
+  --border-strong: #a3a3a3;
+  /* === 兼容旧 JS 引用的别名 === */
+  --border: #e0e0e0;
+  --text-muted: #737373;
+  --text-tertiary: #a3a3a3;
+  --color-warning: #002fa7;
 
-  --border-subtle: rgba(148, 163, 184, 0.1);
-  --border-default: rgba(148, 163, 184, 0.18);
-  --border-strong: rgba(148, 163, 184, 0.3);
+  /* ============ 字体 (全无衬线) ============ */
+  --sans: "Inter", "Helvetica Neue", "Helvetica", "Arial", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --sans-zh: "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", "IBM Plex Mono", "SF Mono", "Cascadia Code", "Consolas", monospace;
 
-  --accent: #10b981;
-  --accent-soft: rgba(16, 185, 129, 0.12);
-  --accent-glow: rgba(16, 185, 129, 0.25);
-  --accent-secondary: #06b6d4;
+  /* ============ Carbon 2x Grid 间距模数 (基础 8px) ============ */
+  --sp-3: 8px;
+  --sp-4: 12px;
+  --sp-5: 16px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+  --sp-9: 48px;
+  --sp-10: 64px;
 
-  --color-positive: #10b981;
-  --color-negative: #ef4444;
-  --color-warning: #f59e0b;
-  --color-info: #3b82f6;
-  --color-premium: #fbbf24;
+  /* ============ Motion ============ */
+  --ease-prod: cubic-bezier(.2, 0, .38, .9);
+  --dur-fast: .11s;
+  --dur-mod: .15s;
 
-  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
-
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
-
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-
+  /* ============ 容器 ============ */
   --container-max: 1280px;
   --nav-height: 56px;
 }
@@ -67,304 +70,314 @@
 * { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: var(--font-sans);
-  background: var(--bg-base);
+  font-family: var(--sans), var(--sans-zh);
+  background: var(--paper);
   color: var(--text-primary);
   line-height: 1.6;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(16, 185, 129, 0.08), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(6, 182, 212, 0.06), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-img, svg { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-ul, ol { list-style: none; }
-input, select { font: inherit; }
 
-/* === Layout === */
-.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); position: relative; z-index: 1; }
-.section { padding: var(--space-10) 0; position: relative; z-index: 1; }
-.section + .section { border-top: 1px solid var(--border-subtle); }
-.section-sm { padding: var(--space-6) 0; }
-.section-sm + .section-sm { border-top: 1px solid var(--border-subtle); }
+/* === 容器 === */
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--sp-6); }
 
-/* === Navigation === */
+/* === Nav (瑞士风: 极简顶栏) === */
 .nav {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border-subtle);
   height: var(--nav-height);
-  background: rgba(9, 13, 20, 0.85);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+.nav-inner {
+  max-width: var(--container-max); margin: 0 auto;
+  padding: 0 var(--sp-6);
+  height: 100%;
+  display: flex; align-items: center; gap: var(--sp-5);
+}
+.nav-brand {
+  text-decoration: none;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.nav-brand-name {
+  display: inline-block;
+}
+.nav-tagline {
+  font-size: 13px;
+  color: var(--text-helper);
+  font-weight: 500;
+  border-left: 1px solid var(--border-subtle);
+  padding-left: var(--sp-5);
+}
+
+/* === Section === */
+.section-sm { padding: var(--sp-7) 0; }
+.section-header { margin-bottom: var(--sp-5); }
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-3);
+}
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-helper);
+  margin-top: var(--sp-3);
+}
+
+/* === 筛选条 / 快捷切换 === */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: var(--sp-3);
+  align-items: center;
+  margin-bottom: var(--sp-4);
+}
+.filter-bar + .filter-bar { margin-top: var(--sp-3); }
+.filter-chip {
+  display: inline-flex; align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 0; /* 瑞士风: 直角 */
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--sans);
+  transition: all var(--dur-fast) var(--ease-prod);
+}
+.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.filter-chip.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.filter-select {
+  padding: 6px 12px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 0;
+  font-size: 12px;
+  font-family: var(--sans);
+  cursor: pointer;
+  outline: none;
+}
+.filter-select:focus { border-color: var(--accent); }
+.filter-stats {
+  font-size: 12px;
+  color: var(--text-helper);
+  font-family: var(--mono);
+}
+
+/* === 快捷切换按钮 (内联样式 override) === */
+.quick-switch-btn {
+  border-radius: 0 !important;
+  font-family: var(--sans) !important;
+}
+
+/* === 表格 (瑞士风: 极简横线, 无圆角, 近黑边框) === */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: var(--sans);
+}
+.data-table th {
+  text-align: left;
+  padding: var(--sp-4) var(--sp-4);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-helper);
+  border-bottom: 1px solid var(--ink);
+  background: var(--grey-1);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: var(--sp-4);
   border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+  color: var(--text-primary);
 }
-.nav-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-5); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
-.nav-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; flex-shrink: 0; }
-.nav-brand-name { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.nav-tabs { display: flex; align-items: center; gap: var(--space-1); }
-.nav-tab { padding: var(--space-1) var(--space-3); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; color: var(--text-tertiary); transition: all 0.15s ease; white-space: nowrap; }
-.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
-.nav-tab.active { color: var(--accent); background: var(--accent-soft); }
-.nav-cta { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--accent); color: #090d14; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 0 2px 8px var(--accent-glow); }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+.data-table tr:hover td { background: var(--grey-1); }
+.data-table .col-vendor { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.data-table .col-price { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+.data-table .col-action { white-space: nowrap; }
+.data-table .col-extra { font-size: 12px; }
+.col-hidden { display: none; }
 
-/* === Tab Panels === */
-.tab-panel { display: none; padding: var(--space-6) 0; min-height: 60vh; }
-.tab-panel.active { display: block; }
-
-/* === Buttons === */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-5); border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; border: 1px solid transparent; }
-.btn-primary { background: var(--accent); color: #090d14; box-shadow: 0 2px 8px var(--accent-glow); }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
-.btn-secondary { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-default); }
-.btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--border-strong); }
-.btn-ghost { color: var(--text-secondary); }
-.btn-ghost:hover { color: var(--text-primary); background: var(--bg-card); }
-.btn-lg { padding: var(--space-3) var(--space-6); font-size: 14px; }
-.btn-sm { padding: var(--space-1) var(--space-3); font-size: 12px; }
-
-/* === Badges & Tags === */
-.badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; letter-spacing: 0.02em; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
-.badge-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(16, 185, 129, 0.3); }
-.badge-premium { background: rgba(251, 191, 36, 0.12); color: var(--color-premium); border-color: rgba(251, 191, 36, 0.25); }
-.badge-positive { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
-.badge-negative { background: rgba(239, 68, 68, 0.12); color: var(--color-negative); }
-.badge-warning { background: rgba(245, 158, 11, 0.12); color: var(--color-warning); }
-.tag { display: inline-flex; align-items: center; padding: 2px var(--space-2); border-radius: var(--radius-sm); font-size: 11px; font-weight: 500; background: var(--bg-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
-
-/* === Stars === */
-.stars { display: inline-flex; gap: 1px; font-size: 12px; letter-spacing: 1px; color: var(--color-premium); }
-.stars-dim { color: var(--text-muted); }
-
-/* === Cards === */
-.card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.15s ease; }
-.card-hover:hover { border-color: var(--border-strong); background: var(--bg-card-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-
-/* === Hero === */
-.hero { padding: var(--space-10) 0 var(--space-8); position: relative; z-index: 1; }
-.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
-.hero-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: var(--space-3); }
-.hero-title-accent { background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero-subtitle { font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-5); max-width: 48ch; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
-.hero-stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
-.hero-stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* === Section Header === */
-.section-header { margin-bottom: var(--space-6); }
-.section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-2); }
-.section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--space-2); }
-.section-subtitle { font-size: 14px; color: var(--text-tertiary); max-width: 60ch; }
-.text-center { text-align: center; }
-
-/* === Quick Entries === */
-.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
-.quick-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: left; transition: all 0.15s ease; cursor: pointer; }
-.quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.quick-card-icon { font-size: 22px; line-height: 1; }
-.quick-card-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
-.quick-card-desc { font-size: 12px; color: var(--text-tertiary); }
-
-/* === Top Picks (推荐页 Top3) === */
-.top-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-.top-pick-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); position: relative; overflow: hidden; }
-.top-pick-card.pick-best { border-color: rgba(16, 185, 129, 0.3); background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), var(--bg-card)); }
-.top-pick-card.pick-best::before { content: 'BEST'; position: absolute; top: 12px; right: -28px; background: var(--accent); color: #090d14; font-size: 10px; font-weight: 800; padding: 2px 32px; transform: rotate(45deg); letter-spacing: 0.08em; }
-.top-pick-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: var(--space-2); }
-.top-pick-vendor { font-size: 18px; font-weight: 700; margin-bottom: var(--space-1); }
-.top-pick-plan { font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--space-3); }
-.top-pick-price { font-size: 28px; font-weight: 800; font-family: var(--font-mono); color: var(--accent); }
-.top-pick-price-unit { font-size: 13px; font-weight: 500; color: var(--text-tertiary); }
-.top-pick-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
-.top-pick-metric-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
-.top-pick-metric-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
-.top-pick-reason { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-3); padding: var(--space-3); background: var(--bg-elevated); border-radius: var(--radius-md); }
-.top-pick-action { margin-top: var(--space-3); text-align: right; }
-
-/* === Recommendation Cards === */
-.reco-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); }
-.reco-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); transition: all 0.15s ease; }
-.reco-item:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.reco-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-2); }
-.reco-item-vendor { font-size: 17px; font-weight: 700; }
-.reco-item-plan { font-size: 12px; color: var(--text-tertiary); }
-.reco-item-verdict { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
-.reco-item-reasons { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
-.reco-item-reasons li { position: relative; padding-left: var(--space-4); font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
-.reco-item-reasons li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-.reco-item-reasons strong { color: var(--text-primary); font-weight: 600; }
-.reco-item-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
-
-/* === Filter Bar === */
-.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; padding: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
-.filter-chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-full); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 0.12s ease; }
-.filter-chip:hover { color: var(--text-primary); border-color: var(--border-strong); }
-.filter-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
-.filter-select { padding: var(--space-1) var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; cursor: pointer; }
-.filter-stats { margin-left: auto; font-size: 12px; color: var(--text-tertiary); }
-.filter-stats strong { color: var(--accent); font-weight: 700; }
-
-/* === Data Table === */
-.table-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: auto; max-height: 640px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
-.table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
-.table-wrap::-webkit-scrollbar-track { background: transparent; }
-.table-wrap::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--radius-full); }
-.data-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1000px; }
-.data-table thead { position: sticky; top: 0; background: var(--bg-elevated); z-index: 2; }
-.data-table th { padding: var(--space-2) var(--space-3); text-align: left; font-size: 10px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border-default); white-space: nowrap; }
-.data-table td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap; }
-.data-table tbody tr { transition: background 0.1s ease; }
-.data-table tbody tr:hover { background: var(--bg-card-hover); }
-.data-table .col-vendor { font-weight: 600; color: var(--text-primary); }
-.data-table .col-price { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--text-primary); font-weight: 600; }
-.data-table .col-action a { color: var(--accent); font-weight: 600; }
-.data-table .col-action a:hover { text-decoration: underline; }
-th.col-extra { display: table-cell; }
-td.col-extra.col-hidden { display: none; }
-td.col-extra { display: table-cell; }
-.table-toggle-btn { font-size: 11px; padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); background: var(--bg-elevated); border: 1px solid var(--border-default); color: var(--text-tertiary); cursor: pointer; transition: all 0.12s ease; white-space: nowrap; }
-.table-toggle-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
-.table-toggle-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
-
-/* === Chart === */
-.chart-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); }
-.chart-container { width: 100%; height: 520px; }
-
-/* === Recent Changes（推荐页底部紧凑时间线）=== */
-.rc-list { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
-.rc-item {
-  display: flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-2) var(--space-4);
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 13px; line-height: 1.4;
-  transition: background 0.12s ease;
-  position: relative;
+/* === Badge (瑞士风: 极小标签, 直角) === */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  background: var(--grey-1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
 }
-.rc-item:last-child { border-bottom: none; }
-.rc-item:hover { background: var(--bg-card-hover); }
-.rc-item.rc-featured { border-left: 3px solid var(--accent); padding-left: calc(var(--space-4) - 3px); }
-.rc-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-shrink: 0; width: 42px; }
-.rc-title { color: var(--text-secondary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rc-title a { color: var(--text-secondary); }
-.rc-title a:hover { color: var(--accent); }
-.rc-vendor { color: var(--text-primary); font-weight: 600; }
-.rc-item:hover .rc-title { white-space: normal; overflow: visible; }
-.rc-item[data-detail]:hover::after {
-  content: attr(data-detail);
-  position: absolute; bottom: calc(100% + 6px); left: var(--space-4);
-  background: var(--bg-elevated); color: var(--text-primary);
-  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
-  border: 1px solid var(--border-default);
-  font-size: 12px; line-height: 1.5; white-space: normal; width: min(400px, 80vw);
-  z-index: 10; box-shadow: var(--shadow-md);
-  pointer-events: none;
+.badge-warning { background: var(--accent); color: var(--accent-on); border-color: var(--accent); }
+
+/* === 评分星星 === */
+.stars { color: var(--accent); font-size: 12px; letter-spacing: 1px; }
+.stars .star-empty { color: var(--grey-2); }
+
+/* === 按钮 (瑞士风: 直角, 克莱因蓝) === */
+.btn {
+  display: inline-flex; align-items: center;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--sans);
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-prod);
+  white-space: nowrap;
 }
-@media (max-width: 768px) {
-  .rc-item { flex-wrap: wrap; }
-  .rc-title { white-space: normal; overflow: visible; width: 100%; flex: none; }
-  .rc-item:hover .rc-title { white-space: normal; }
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-on);
+  border-color: var(--accent);
+}
+.btn-primary:hover { background: #002080; border-color: #002080; }
+.btn-sm { padding: 4px 10px; font-size: 11px; }
+
+/* === 标签内联 === */
+.tag-inline {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text-helper);
 }
 
-/* === Community === */
-.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
-.community-card { position: relative; padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); overflow: hidden; }
-.community-card-free { background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6)); }
-.community-card-paid { background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05)); border-color: rgba(16, 185, 129, 0.25); }
-.community-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
-.community-card-title { font-size: 18px; font-weight: 700; }
-.community-card-subtitle { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: var(--space-3); }
-.community-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-4); }
-.community-highlights { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
-.community-highlights li { font-size: 12px; color: var(--text-secondary); padding-left: var(--space-4); position: relative; }
-.community-highlights li::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+/* === 散点图卡片 === */
+.chart-card {
+  border: 1px solid var(--border-subtle);
+  background: var(--paper);
+  padding: var(--sp-5);
+}
+.chart-container {
+  width: 100%;
+  height: 420px;
+}
 
-/* === Mobile Plan Cards === */
+/* === 移动端卡片视图 === */
 .plan-cards-view { display: none; }
-.plan-card-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-4); margin-bottom: var(--space-3); }
-.plan-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2); }
-.plan-card-vendor { font-size: 15px; font-weight: 700; }
-.plan-card-plan { font-size: 12px; color: var(--text-tertiary); }
-.plan-card-price { font-size: 18px; font-weight: 800; color: var(--accent); font-family: var(--font-mono); }
-
-/* === Footer === */
-.footer { padding: var(--space-8) 0 var(--space-6); border-top: 1px solid var(--border-subtle); position: relative; z-index: 1; }
-.footer-disclosure { font-size: 11px; color: var(--text-muted); line-height: 1.55; padding: var(--space-3); background: var(--bg-card); border-radius: var(--radius-md); margin-bottom: var(--space-4); border-left: 2px solid var(--color-warning); }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
-.footer-brand { font-size: 12px; color: var(--text-tertiary); }
-.footer-links { display: flex; gap: var(--space-4); font-size: 12px; }
-.footer-links a { color: var(--text-tertiary); transition: color 0.12s ease; }
-.footer-links a:hover { color: var(--text-primary); }
-
-/* === Utility === */
-.text-accent { color: var(--accent); }
-
-/* === Responsive === */
-@media (max-width: 1024px) {
-  .community-grid { grid-template-columns: 1fr; }
-  .quick-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
-  .top-pick-grid { grid-template-columns: 1fr; }
+.plan-card-item {
+  border: 1px solid var(--border-subtle);
+  padding: var(--sp-4);
+  background: var(--paper);
+  margin-bottom: var(--sp-3);
 }
+.plan-card-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: var(--sp-3);
+}
+.plan-card-vendor { font-weight: 700; font-size: 15px; color: var(--ink); }
+.plan-card-plan { font-size: 12px; color: var(--text-helper); }
+.plan-card-price { font-family: var(--mono); font-weight: 700; font-size: 16px; color: var(--accent); }
+
+/* === Footer (瑞士风: 极简, 分割线) === */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--paper);
+  padding: var(--sp-6) 0;
+  margin-top: var(--sp-9);
+}
+.footer-disclosure {
+  font-size: 11px;
+  color: var(--text-helper);
+  padding: 0 var(--sp-6) var(--sp-4);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+.footer-brand {
+  font-size: 12px;
+  color: var(--text-helper);
+  font-family: var(--mono);
+}
+.footer-links {
+  display: flex;
+  gap: var(--sp-5);
+}
+.footer-links a {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* === 表格展开切换按钮 === */
+.table-toggle-btn {
+  border-radius: 0 !important;
+}
+
+/* === 响应式 === */
 @media (max-width: 768px) {
-  :root { --space-10: 32px; --space-16: 48px; }
-  .container { padding: 0 var(--space-4); }
-  .nav-tabs { gap: 0; }
-  .nav-tab { padding: var(--space-1) var(--space-2); font-size: 12px; }
-  .nav-cta { display: none; }
-  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
-  .hero-stat-value { font-size: 18px; }
-  .quick-grid { grid-template-columns: 1fr 1fr; }
-  .reco-list { grid-template-columns: 1fr; }
-  .filter-bar { padding: var(--space-2); }
-  .filter-stats { width: 100%; margin-left: 0; }
-  .community-card { padding: var(--space-5); }
-  .table-wrap { display: none; }
+  .data-table { display: none; }
   .plan-cards-view { display: block; }
-  .chart-container { height: 360px; }
+  .section-title { font-size: 22px; }
+  .nav-tagline { display: none; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
 }
-@media (max-width: 480px) {
-  .hero-title { font-size: 24px; }
-  .section-title { font-size: 20px; }
-  .quick-grid { grid-template-columns: 1fr; }
-}
+
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#recommend" class="nav-brand"><span class="nav-brand-name" id="navBrand">CP</span></a>
-    <div class="nav-tabs" id="navTabs">
-      <a href="#recommend" class="nav-tab active" data-tab="recommend">推荐</a>
-      <a href="#compare" class="nav-tab" data-tab="compare">对比</a>
-      <a href="#community" class="nav-tab" data-tab="community">社群</a>
-    </div>
-    <a href="#community" class="nav-cta">加入社群</a>
+    <a href="#" class="nav-brand"><span class="nav-brand-name" id="navBrand">CP</span></a>
+    <span class="nav-tagline" id="navTagline"></span>
   </div>
 </nav>
 
 <main>
-  <section id="tab-recommend" class="tab-panel active"><div class="container" id="recommend-body"></div></section>
-  <section id="tab-compare" class="tab-panel"><div class="container" id="compare-body"></div></section>
-  <section id="tab-community" class="tab-panel"><div class="container" id="community-body"></div></section>
+  <section id="tab-compare" class="tab-panel active"><div class="container" id="compare-body"></div></section>
 </main>
 
 <footer class="footer"><div class="container" id="footer-body"></div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
-<script id="cp-data" type="application/json">{"generatedAt": "2026-08-01 12:39:11", "changes": [{"id": "2026-07-31-unicom-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "联通云", "title": "联通云 新增平台", "detail": "8 档套餐上线：Lite / Pro / 个人 Lite / 个人 Pro / 个人 Max / 团队 Lite / 团队 Pro / 团队 Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["unicom-lite", "unicom-pro", "unicom-个人-lite", "unicom-个人-pro", "unicom-个人-max", "unicom-团队-lite", "unicom-团队-pro", "unicom-团队-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-huawei-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "华为云", "title": "华为云 新增平台", "detail": "4 档套餐上线：Lite / Standard / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["huawei-lite", "huawei-standard", "huawei-pro", "huawei-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-xunfei-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "讯飞·星火", "title": "讯飞·星火 新增平台", "detail": "3 档套餐上线：专业版 / 高效版 / 速通版", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["xunfei-专业版", "xunfei-高效版", "xunfei-速通版"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-ctyun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "天翼云", "title": "天翼云 新增平台", "detail": "3 档套餐上线：GLM Lite / GLM Pro / GLM Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["ctyun-glm-lite", "ctyun-glm-pro", "ctyun-glm-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-stepfun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "阶跃星辰", "title": "阶跃星辰 新增平台", "detail": "4 档套餐上线：Flash Mini / Flash Plus / Flash Pro / Flash Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["stepfun-flash-mini", "stepfun-flash-plus", "stepfun-flash-pro", "stepfun-flash-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-zhipu-intl-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "智谱国际版", "title": "智谱国际版 新增平台", "detail": "3 档套餐上线：Lite / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["zhipu-intl-lite", "zhipu-intl-pro", "zhipu-intl-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-jd-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "京东云", "title": "京东云 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["jd-lite", "jd-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-cmcc-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "移动云", "title": "移动云 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["cmcc-lite", "cmcc-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-infini-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "无问芯穹", "title": "无问芯穹 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["infini-lite", "infini-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-taotoken-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "TaoToken", "title": "TaoToken 新增平台", "detail": "3 档套餐上线：Lite / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["taotoken-lite", "taotoken-pro", "taotoken-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-ollama-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "Ollama", "title": "Ollama 新增平台", "detail": "2 档套餐上线：Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["ollama-pro", "ollama-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-opencode-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "OpenCode", "title": "OpenCode 新增平台", "detail": "1 档套餐上线：Go", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["opencode-go"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-scnet-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "超算", "title": "超算 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["scnet-lite", "scnet-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-uyun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "优云智算", "title": "优云智算 新增平台", "detail": "6 档套餐上线：Mini / Lite / Basic / Pro / Max / Ultra", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["uyun-mini", "uyun-lite", "uyun-basic", "uyun-pro", "uyun-max", "uyun-ultra"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-codex-gpt56-promo", "date": "2026-07-31", "kind": "price_change", "vendor": "Codex (ChatGPT)", "title": "GPT-5.6 降价促销：Luna 降 80%，Sol 反向加价", "detail": "OpenAI GPT-5.6 促销——Luna 档降价 80%，Sol 档首推 2.5 倍速\"反向加价\"模式。ChatGPT Plus 订阅月费 $20 不变，模型调用性价比提升。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3918835009351298", "relatedPlans": ["codex-plus"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-deepseek-v4-live", "date": "2026-07-31", "kind": "new_model", "vendor": "DeepSeek 官方", "title": "DeepSeek V4 正式上线定价页", "detail": "V4 定价页正式落地 Flash + Pro 两档，API 按量 output ¥0.28-0.87/M、input ¥0.14-0.435/M。7-21\"曝光即将发布\"→7-31 正式上线。", "impact": "positive", "level": "high", "source": "extracted-deepseek", "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing", "relatedPlans": ["deepseek-虚拟套餐-40", "deepseek-虚拟套餐-200"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "e9435525714e", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "detail": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850508.html", "relatedPlans": [], "featured": true, "excerpt": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "author": "51CTO", "readTime": "5 分钟", "cover": "DS"}, {"id": "11da7d1541ab", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Kimi K3时刻：中美AI产业链叙事要变天？", "detail": "Kimi K3时刻：中美AI产业链叙事要变天？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3906759052907910", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3时刻：中美AI产业链叙事要变天？", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "d954fc69fba0", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "detail": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://finance.sina.com.cn/roll/2026-07-23/doc-iniitvfq4522490.shtml", "relatedPlans": [], "featured": true, "excerpt": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "author": "新浪", "readTime": "3 分钟", "cover": "K3"}, {"id": "2245c953de14", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "detail": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/548976", "relatedPlans": [], "featured": false, "excerpt": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "author": "爱范儿", "readTime": "5 分钟", "cover": "NEW"}, {"id": "b40b28926c0d", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "detail": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/548975", "relatedPlans": [], "featured": false, "excerpt": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "author": "爱范儿", "readTime": "5 分钟", "cover": "NEW"}, {"id": "c91710c6ced2", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "detail": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850582.html", "relatedPlans": [], "featured": false, "excerpt": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "author": "51CTO", "readTime": "5 分钟", "cover": "CL"}, {"id": "7b50ce769d81", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Vibe Coding 时代，为什么降本不一定增效？", "detail": "Vibe Coding 时代，为什么降本不一定增效？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://sspai.com/post/111975", "relatedPlans": [], "featured": false, "excerpt": "Vibe Coding 时代，为什么降本不一定增效？", "author": "少数派", "readTime": "3 分钟", "cover": "NEW"}, {"id": "23a1166e0caa", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "detail": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3907365426467969", "relatedPlans": [], "featured": false, "excerpt": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "author": "36氪", "readTime": "3 分钟", "cover": "CL"}, {"id": "f4953244e106", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "detail": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3906553920165253", "relatedPlans": [], "featured": false, "excerpt": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "author": "36氪", "readTime": "5 分钟", "cover": "NEW"}, {"id": "d1c2da790f0b", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "智谱向左，MiniMax向右", "detail": "智谱向左，MiniMax向右", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://new.qq.com/rain/a/20260723A04PN400", "relatedPlans": [], "featured": false, "excerpt": "智谱向左，MiniMax向右", "author": "qq-news", "readTime": "3 分钟", "cover": "NEW"}, {"id": "8f685b8b35ad", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "detail": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/549014", "relatedPlans": [], "featured": false, "excerpt": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "author": "爱范儿", "readTime": "3 分钟", "cover": "NEW"}, {"id": "d9e9877d7708", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "detail": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7664549690965934126", "relatedPlans": [], "featured": false, "excerpt": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "author": "掘金", "readTime": "5 分钟", "cover": "NEW"}, {"id": "fc68a8169a89", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "detail": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://blog.csdn.net/weixin_74809706/article/details/162941467", "relatedPlans": [], "featured": false, "excerpt": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "author": "csdn", "readTime": "5 分钟", "cover": "NEW"}, {"id": "987d38441922", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "detail": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://blog.csdn.net/Mrxiao_bo/article/details/163052500", "relatedPlans": [], "featured": false, "excerpt": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "author": "csdn", "readTime": "5 分钟", "cover": "CL"}, {"id": "b358585f7751", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "detail": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://finance.sina.com.cn/stock/t/2026-07-21/doc-iniipats8088739.shtml", "relatedPlans": [], "featured": true, "excerpt": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "author": "新浪", "readTime": "5 分钟", "cover": "K3"}, {"id": "d7f1f836d71e", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "detail": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3904135800751745", "relatedPlans": [], "featured": true, "excerpt": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "e6d2fb00d370", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3爆火，GPU先扛不住了", "detail": "Kimi K3爆火，GPU先扛不住了", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3904634803701385", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3爆火，GPU先扛不住了", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "3bafd4cbbbb9", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "detail": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.nodeseek.com/post-832857-1", "relatedPlans": [], "featured": true, "excerpt": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "author": "nodeseek", "readTime": "3 分钟", "cover": "K3"}, {"id": "6b338445921d", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "detail": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/979/196.htm", "relatedPlans": [], "featured": true, "excerpt": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "e50fb6c6243b", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "detail": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/956.htm", "relatedPlans": [], "featured": true, "excerpt": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "author": "IT之家", "readTime": "7 分钟", "cover": "K3"}, {"id": "edf23d8c9b8e", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "用于学术研究的 Claude Code 技能包", "detail": "用于学术研究的 Claude Code 技能包", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://hellogithub.com/repository/124d87f507434c2da4aa4384d7d6d305", "relatedPlans": [], "featured": false, "excerpt": "用于学术研究的 Claude Code 技能包", "author": "HelloGitHub", "readTime": "3 分钟", "cover": "CL"}, {"id": "935cc1e1cab6", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "detail": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850140.html", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "author": "51CTO", "readTime": "3 分钟", "cover": "K3"}, {"id": "521644bf4554", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "detail": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663762583839064090", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "author": "掘金", "readTime": "3 分钟", "cover": "K3"}, {"id": "773d7e7a224f", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "detail": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663822459978137646", "relatedPlans": [], "featured": false, "excerpt": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "author": "掘金", "readTime": "5 分钟", "cover": "CL"}, {"id": "547b75e0f3a3", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "detail": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.v2ex.com/t/1228685", "relatedPlans": [], "featured": false, "excerpt": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "author": "v2ex", "readTime": "5 分钟", "cover": "CL"}, {"id": "2026-07-21-deepseek-v4-leak", "date": "2026-07-21", "kind": "new_model", "vendor": "DeepSeek 官方", "title": "DeepSeek V4「满血版」曝光，最快明天发布", "detail": "DeepSeek V4 满血版被曝光，预计近期发布。将进一步提升 DeepSeek Coding Plan 的模型能力。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["deepseek-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-21-claude-quota-reset", "date": "2026-07-21", "kind": "price_change", "vendor": "Claude", "title": "Claude 额度重置，应对 Kimi K3 竞争", "detail": "Kimi K3 发布后，Anthropic 连夜调整 Claude 订阅额度，奥特曼罕见认错。两大巨头被迫改变定价策略。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["claude-pro", "claude-max"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-21-kimi-k3-launch", "date": "2026-07-21", "kind": "new_model", "vendor": "Kimi", "title": "Kimi K3 正式发布，登顶全球榜单", "detail": "Kimi K3 发布后登顶全球模型榜单，前端开发榜第一，综合榜首次杀入 Top 10。发布 48 小时后算力告急，暂停 C 端新用户订阅。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["kimi-allegretto", "kimi-andante"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "4ad193bdc013", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "掌管Codex额度的「赛博义父」，到底什么来头", "detail": "掌管Codex额度的「赛博义父」，到底什么来头", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903253946254979", "relatedPlans": [], "featured": false, "excerpt": "掌管Codex额度的「赛博义父」，到底什么来头", "author": "36氪", "readTime": "3 分钟", "cover": "NEW"}, {"id": "d957d7b132a5", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "detail": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903442689049736", "relatedPlans": [], "featured": true, "excerpt": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "author": "36氪", "readTime": "5 分钟", "cover": "K3"}, {"id": "b273df343149", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "DeepSeek V4「满血版」曝光了，最快明天发布", "detail": "DeepSeek V4「满血版」曝光了，最快明天发布", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903106705606274", "relatedPlans": [], "featured": true, "excerpt": "DeepSeek V4「满血版」曝光了，最快明天发布", "author": "36氪", "readTime": "3 分钟", "cover": "DS"}, {"id": "c36f69997aa3", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "detail": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/808.htm", "relatedPlans": [], "featured": true, "excerpt": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "44046f4cc42d", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "detail": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663687263675416595", "relatedPlans": [], "featured": true, "excerpt": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "author": "掘金", "readTime": "5 分钟", "cover": "K3"}, {"id": "accca41ff1cb", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "全网都在吹的 Kimi K3，到底怎么样？", "detail": "全网都在吹的 Kimi K3，到底怎么样？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663685196478611506", "relatedPlans": [], "featured": true, "excerpt": "全网都在吹的 Kimi K3，到底怎么样？", "author": "掘金", "readTime": "3 分钟", "cover": "K3"}, {"id": "85ab808ef881", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "KimiK3发布后Anthropic遭外网吐槽", "detail": "KimiK3发布后Anthropic遭外网吐槽", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://s.weibo.com/weibo?q=KimiK3%E5%8F%91%E5%B8%83%E5%90%8EAnthropic%E9%81%AD%E5%A4%96%E7%BD%91%E5%90%90%E6%A7%BD", "relatedPlans": [], "featured": true, "excerpt": "KimiK3发布后Anthropic遭外网吐槽", "author": "weibo", "readTime": "3 分钟", "cover": "K3"}, {"id": "ce020642972f", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "detail": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.zhihu.com/question/2061405940272960418", "relatedPlans": [], "featured": true, "excerpt": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "author": "知乎", "readTime": "5 分钟", "cover": "K3"}, {"id": "aa9ca8b934df", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "detail": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://news.sina.com.cn/c/2026-07-20/doc-iniikhwv3269554.shtml", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "author": "新浪", "readTime": "7 分钟", "cover": "K3"}, {"id": "d144c2bc5393", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "detail": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903164634679175", "relatedPlans": [], "featured": false, "excerpt": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "author": "36氪", "readTime": "5 分钟", "cover": "K3"}, {"id": "da276c7cf473", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "detail": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/670.htm", "relatedPlans": [], "featured": true, "excerpt": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "2026-07-20-kimi-subscription_pause", "date": "2026-07-20", "kind": "subscription_pause", "vendor": "Kimi", "title": "Kimi 暂停订阅", "detail": "Kimi K3 发布后算力告急，暂停 C 端新用户订阅，已订阅用户不受影响。恢复时间待官方公告。", "impact": "negative", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-20-deepseek-new_model", "date": "2026-07-20", "kind": "new_model", "vendor": "DeepSeek", "title": "DeepSeek 新模型即将发布", "detail": "DeepSeek V4「满血版」曝光，最快 7.21 发布。预计将影响各平台定价和模型配置。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-字节-方舟-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "字节·方舟", "title": "字节·方舟 新增模型", "detail": "Coding Plan / Token Plan 全档位追加支持 Kimi-K3 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-kimi-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "Kimi", "title": "Kimi 新增模型", "detail": "Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）追加支持 Kimi-K3", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-codex-chatgpt-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "Codex (ChatGPT)", "title": "Codex (ChatGPT) 新增模型", "detail": "Token Plan（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-18-anthropic-price_change", "date": "2026-07-18", "kind": "price_change", "vendor": "Anthropic", "title": "Anthropic 订阅调整", "detail": "Kimi K3 发布后 Anthropic 连夜修改订阅方案，Claude 额度重置。奥特曼罕见认错。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-15-deepseek-官方-price_change", "date": "2026-07-15", "kind": "price_change", "vendor": "DeepSeek 官方", "title": "DeepSeek 官方 计费调整", "detail": "7 月中旬起高峰时段价格翻倍，缓存和输出价不变", "impact": "negative", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-10-百度·千帆-migration", "date": "2026-07-10", "kind": "price_change", "vendor": "百度·千帆", "title": "百度千帆 Coding Plan 升级为 Token Plan", "detail": "Lite: 调用次数→4200万Token, Pro: →2.3亿Token。取消高峰限流，支持多模型，老用户有效期顺延1月。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["baidu-lite", "baidu-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-10-baidu-codingplan-to-tokenplan", "date": "2026-07-10", "kind": "price_change", "vendor": "百度·千帆", "title": "百度千帆 Coding Plan 升级为 Token Plan", "detail": "Lite: 调用次数→4200万Token, Pro: 调用次数→2.3亿Token。取消高峰限流，支持多模型（GLM/DeepSeek），老用户有效期顺延1个月。", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["baidu-lite", "baidu-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-01-taotoken-new_plan", "date": "2026-07-01", "kind": "new_plan", "vendor": "TaoToken", "title": "TaoToken 新增平台", "detail": "GLM-5.2 Coding Plan 三档套餐上线（已售罄）", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-06-29-讯飞-星火-new_model", "date": "2026-06-29", "kind": "new_model", "vendor": "讯飞·星火", "title": "讯飞·星火 新增模型", "detail": "高效版追加支持 GLM-5.2 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-06-26-优云智算-new_model", "date": "2026-06-26", "kind": "new_model", "vendor": "优云智算", "title": "优云智算 新增模型", "detail": "Coding Plan 全档位追加支持 GLM-5.2（限时倍率 x2）", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-04-15-阿里·百炼-migration", "date": "2026-04-15", "kind": "subscription_pause", "vendor": "阿里·百炼", "title": "阿里百炼下架 Coding Plan，推出 Token Plan 团队版", "detail": "原 Coding Plan Pro 版长期「每日抢购售罄」，实质停止供给。推出 Token Plan 团队版（Credits 点数），¥198/698/1398 三档，支持全量模型。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["bailian-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-03-10-MiniMax-migration", "date": "2026-03-10", "kind": "new_plan", "vendor": "MiniMax", "title": "MiniMax Coding Plan → Token Plan 正式更名", "detail": "从按 Prompt 次数计费改为按 Token 统一计量，文本/代码/图像/语音全模态共享额度。6月因计费切换争议补充老用户权益保护。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["minimax-新plus", "minimax-新max", "minimax-新ultra"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-02-20-智谱AI-migration", "date": "2026-02-20", "kind": "price_change", "vendor": "智谱AI", "title": "智谱 Coding Plan 第一轮涨价 30%", "detail": "取消首购优惠，Lite/Pro 档涨价 30% 起。后续两轮跟进，累计涨幅超 200%。变相用价格杠杆逼重度用户转 API 按量。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["zhipu-lite", "zhipu-pro", "zhipu-max"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-01-15-Kimi-migration", "date": "2026-01-15", "kind": "new_model", "vendor": "Kimi", "title": "Kimi Code 套餐切换为 Token 计量", "detail": "Kimi 率先完成切换：Code 套餐从按次数改为按 Token 计量，缓存命中低价计费，高速版 3x Token 消耗。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["kimi-andante", "kimi-allegretto"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}], "plans": [{"id": "zhipu-lite", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Lite", "type": "Coding Plan", "tier": "lite", "monthlyPrice": 118, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周10,000积分（5小时2,000）", "measuredMonthlyToken": 87, "tags": ["模型强", "需抢购", "非高峰5折"], "bloggerVerdict": "7-30改版后入门档，积分制。GLM-5.2 代码能力 T0，非高峰5折划算。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥49已停，涨价140%", "notes": "measuredMonthlyToken 按官网'0.43~0.87亿Tokens/周'折算（取上限×4周）"}, {"id": "zhipu-pro", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 538, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周60,000积分（5小时12,000）", "measuredMonthlyToken": 522, "tags": ["模型强", "需抢购", "非高峰5折"], "bloggerVerdict": "6倍Lite用量，主力档。改版后价格翻3.6倍，但GLM-5.2+非高峰5折仍有竞争力。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥149已停", "notes": "measuredMonthlyToken = Lite × 6"}, {"id": "zhipu-max", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Max", "type": "Coding Plan", "tier": "max", "monthlyPrice": 1078, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周140,000积分（5小时28,000）", "measuredMonthlyToken": 1218, "tags": ["模型强", "需抢购", "非高峰5折", "高峰专属资源"], "bloggerVerdict": "14倍Lite，旗舰档。高峰期专属资源保障，重度agentic首选。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥469已停，涨价130%", "notes": "measuredMonthlyToken = Lite × 14"}, {"id": "zhipu-api-glm52", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "GLM-5.2 按量", "type": "API 按量", "tier": "pro", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["模型强", "1M上下文"], "bloggerVerdict": "GLM-5.2 按量，输入8元/输出28元每百万token。1M上下文，缓存命中2元。", "action": "https://bigmodel.cn/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": "输入8/输出28/缓存命中2 元/百万token"}, {"id": "zhipu-api-glm-turbo", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "GLM-5-Turbo 按量", "type": "API 按量", "tier": "lite", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["GLM-5-Turbo"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["高性价比"], "bloggerVerdict": "GLM-5-Turbo 按量，输入5/输出22元。比5.2便宜，日常够用。", "action": "https://bigmodel.cn/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": "输入5/输出22/缓存命中1.2 元/百万token"}, {"id": "bytedance-coding-auto", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Auto", "type": "Coding Plan", "tier": "lite", "monthlyPrice": 9.9, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "GLM-5.2", "Kimi-K2.7-Code", "DeepSeek-V4-Pro", "DeepSeek-V4-Flash", "MiniMax-M3", "Doubao-Seed-Code", "MiniMax-M2.7", "Kimi-K2.6", "DeepSeek-V3.2", "Doubao-Seed-2.1-turbo"], "monthlyRequests": null, "tokenLimit": "Auto智能调度", "measuredMonthlyToken": 250, "tags": ["模型强", "性价比高", "全家桶", "无需抢购"], "bloggerVerdict": "¥9.9全家桶，13+模型Auto调度。唯一同时支持GLM/DeepSeek/MiniMax/Kimi的平台。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "改版单档制，旧Lite¥40/Pro¥200已停", "notes": "measuredMonthlyToken 为估算（¥9.9×25 M/元，全家桶历史比），待实测"}, {"id": "bytedance-agent-lite", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Agent Lite", "type": "Agent Plan", "tier": "lite", "monthlyPrice": 9.9, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "Doubao-Seed-2.0-Mini"], "monthlyRequests": null, "tokenLimit": "每月20,000 Agent燃料值", "measuredMonthlyToken": null, "tags": ["多模态", "Agent", "性价比高"], "bloggerVerdict": "Agent入门档，20K燃料值，语言/图像/向量化多模态。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/agent-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "", "notes": "燃料值制，非直接Token计量"}, {"id": "bytedance-agent-large", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Agent Large", "type": "Agent Plan", "tier": "max", "monthlyPrice": 1000, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "Doubao-Seed-2.0-Mini"], "monthlyRequests": null, "tokenLimit": "每月500,000 Agent燃料值（25x）", "measuredMonthlyToken": null, "tags": ["多模态", "Agent", "重度"], "bloggerVerdict": "Agent旗舰档，500K燃料值，极致多模态Harness体验。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/agent-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "", "notes": "燃料值制，25x Lite"}, {"id": "tencent-tp-lite", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Lite", "type": "Token Plan", "tier": "lite", "monthlyPrice": 39, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "3500万 Tokens/月", "measuredMonthlyToken": 35, "tags": ["性价比高", "多模型", "DeepSeek原厂"], "bloggerVerdict": "入门Token池，3500万Token，含DeepSeek原厂直供。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "Coding Plan已售罄，主推Token Plan", "notes": "MiniMax-M2.5将于8-6下线，Kimi-K2.5将于7-31下线"}, {"id": "tencent-tp-standard", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Standard", "type": "Token Plan", "tier": "pro", "monthlyPrice": 99, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "1亿 Tokens/月", "measuredMonthlyToken": 100, "tags": ["性价比高", "多模型", "DeepSeek原厂"], "bloggerVerdict": "日常高性价比档，1亿Token，约200轮问答。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-tp-pro", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Pro", "type": "Token Plan", "tier": "pro", "monthlyPrice": 299, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "3.2亿 Tokens/月", "measuredMonthlyToken": 320, "tags": ["模型强", "多模型", "高频开发"], "bloggerVerdict": "高频AI开发档，3.2亿Token，比基础版3倍额度。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-tp-max", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Max", "type": "Token Plan", "tier": "max", "monthlyPrice": 599, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "6.5亿 Tokens/月", "measuredMonthlyToken": 650, "tags": ["模型强", "多模型", "重度"], "bloggerVerdict": "重度用户旗舰档，6.5亿Token，全栈AI生成+多Agent协同。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-cp-pro", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Coding Plan Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 200, "currency": "¥", "firstMonthPrice": null, "rating": 3, "models": ["GLM-5.1", "Kimi-K2.5", "MiniMax-M2.7"], "monthlyRequests": 90000, "tokenLimit": "100M Tokens", "measuredMonthlyToken": 600, "tags": ["已售罄", "兼容Claude Code"], "bloggerVerdict": "⚠️ 已售罄。原TokenHub Coding Plan，比API按量便宜50-80%。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "sold_out", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "Coding Plan已售罄，迁移至Token Plan", "notes": "售罄状态，保留供参考"}, {"id": "deepseek-api-flash", "vendor": "DeepSeek 官方", "vendorId": "deepseek", "plan": "V4-Flash 按量", "type": "API 按量", "tier": "lite", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Flash-0731"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["性价比高", "1M上下文", "极速"], "bloggerVerdict": "V4-Flash按量，输入1/输出2元每百万token。极速推理，1M上下文，性价比之王。", "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "即将峰谷定价（高峰2倍）", "notes": "缓存命中0.02/未命中1元输入；即将峰谷定价"}, {"id": "deepseek-api-pro", "vendor": "DeepSeek 官方", "vendorId": "deepseek", "plan": "V4-Pro 按量", "type": "API 按量", "tier": "pro", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Pro"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["模型强", "1M上下文", "思考模式"], "bloggerVerdict": "V4-Pro按量，输入3/输出6元。Agent能力显著增强，默认深度思考。", "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "即将峰谷定价（高峰2倍）", "notes": "缓存命中0.025/未命中3元输入"}, {"id": "minimax-plus", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Plus", "type": "Token Plan", "tier": "lite", "monthlyPrice": 49, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约12,000次/月（M3）", "measuredMonthlyToken": 600, "tags": ["模型强", "性价比高", "多模态", "无需抢购"], "bloggerVerdict": "入门档，用量翻倍后性价比最高。M3+多模态，养龙虾首选。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "Frontier模型，用量翻倍升级", "notes": "按M3单次~50K token估算12,000次/月"}, {"id": "minimax-max", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Max", "type": "Token Plan", "tier": "pro", "monthlyPrice": 119, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约36,000次/月（M3）", "measuredMonthlyToken": 1800, "tags": ["模型强", "性价比高", "多模态", "无需抢购"], "bloggerVerdict": "中档主力，3倍Plus用量。最划算的选择。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": ""}, {"id": "minimax-ultra", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Ultra", "type": "Token Plan", "tier": "max", "monthlyPrice": 469, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约140,000次/月（M3）", "measuredMonthlyToken": 7100, "tags": ["模型强", "多模态", "重度", "无需抢购"], "bloggerVerdict": "重度旗舰档，140K次/月。多模态全共享，团队/多项目并行首选。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": ""}, {"id": "kimi-daily", "vendor": "Kimi", "vendorId": "kimi", "plan": "日常使用", "type": "会员", "tier": "lite", "monthlyPrice": 39, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Kimi-K3", "Kimi-K2.7-Code"], "monthlyRequests": null, "tokenLimit": "Agent额度", "measuredMonthlyToken": null, "tags": ["深度研究", "Office", "网站部署"], "bloggerVerdict": "新会员体系日常档，含Agent额度+Office+深度研究。Kimi Code将拆分独立。", "action": "https://www.kimi.com/membership/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "新体系即将上线，Kimi权益与Code拆分", "notes": "旧Andante¥49/Allegretto¥199待新体系上线后确认"}, {"id": "bailian-pro", "vendor": "阿里·百炼", "vendorId": "bailian", "plan": "Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 200, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["qwen3.7-plus", "qwen3.6-plus", "kimi-k2.5", "glm-5", "MiniMax-M2.5", "qwen3-coder-next", "glm-4.7"], "monthlyRequests": 90000, "tokenLimit": "5h 6,000次/周45,000次/月90,000次", "measuredMonthlyToken": 3000, "tags": ["模型强", "需抢购", "全家桶", "按次计费"], "bloggerVerdict": "全家桶Coding Plan，¥200含qwen3.7/kimi-k2.5/glm-5/MiniMax-M2.5。限量抢购，每日9:30补货。", "action": "https://www.aliyun.com/benefit/scene/codingplan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "request", "migration": "Lite已停售(3-20)，只剩Pro", "notes": "按次计费（非Token），简单任务5-10次/复杂10-30+次"}], "site": {"name": "CodingPlan 省钱攻略", "tagline": "每月在 AI Coding Plan 上花 200-1000 块？饭庐者说帮你选最划算的", "domain": "codingplan-saver", "logo": "CP", "primaryColor": "#10b981", "accentColor": "#06b6d4", "blogger": {"name": "饭庐者说", "avatar": "FL", "title": "AI 工具重度用户 / 独立博主", "bio": "每月在 AI Coding Plan 上花 500-1000 块的真金白银，把踩过的坑和试过的套餐都记在这里。不收厂商钱，只说真话。", "platforms": [{"name": "公众号", "handle": "饭庐者说", "url": "#"}, {"name": "小红书", "handle": "饭庐者说", "url": "#"}, {"name": "知乎", "handle": "饭庐者说", "url": "#"}]}, "header": {"updateDate": "更新于 2026.07.31", "highlights": "本周关注：GPT-5.6 降价 80%，DeepSeek V4 正式上线，Kimi K3 仍暂停新用户", "stats": [{"label": "覆盖平台", "value": "7", "unit": "家"}, {"label": "套餐数据", "value": "20", "unit": "个"}, {"label": "数据更新", "value": "8.01", "unit": ""}]}, "quickEntries": [{"id": "budget-under-50", "icon": "¥", "title": "月费 50 元以内", "desc": "学生党 / 体验党 / 试试水", "filter": {"monthlyPriceMax": 50}}, {"id": "monthly-plans", "icon": "M", "title": "月订阅套餐", "desc": "固定月费 / 稳定用量 / 省心", "filter": {"type": "Coding Plan"}}, {"id": "api-paygo", "icon": "API", "title": "API 按量付费", "desc": "无月费 / 用多少付多少 / 弹性", "filter": {"type": "API 按量"}}, {"id": "no-rush", "icon": "OK", "title": "不用抢购", "desc": "随时可下单 / 不拼手速", "filter": {"tag": "无需抢购"}}], "recommendationGroups": [{"id": "monthly-plans", "title": "月订阅套餐评测", "subtitle": "固定月费换额度，适合有稳定用量的开发者", "items": [{"vendor": "字节·方舟", "plan": "Auto", "rating": 5, "verdict": "最便宜的全家桶", "reasons": ["¥9.9/月，13+ 模型 Auto 智能调度", "唯一同时支持 GLM-5.2 / DeepSeek-V4 / MiniMax-M3 / Kimi 的平台", "不用抢购，随时可买"]}, {"vendor": "腾讯云", "plan": "Token Plan Standard", "rating": 5, "verdict": "最均衡的 Token 池", "reasons": ["¥99/月，1 亿 Token，约 200 轮问答", "含 DeepSeek-V4 原厂直供 + GLM-5 + Kimi-K2.5", "比 API 按量便宜 50%+"]}, {"vendor": "MiniMax", "plan": "Max", "rating": 5, "verdict": "多模态重度首选", "reasons": ["¥119/月，3 倍 Plus 用量，约 36,000 次/月", "图/音/视频生成全共享额度", "M3 模型 + 无需抢购"]}, {"vendor": "智谱AI", "plan": "Pro", "rating": 5, "verdict": "GLM-5.2 旗舰党", "reasons": ["¥538/月，6 倍 Lite 积分，GLM-5.2 原生平台", "非高峰 5 折，实际成本更低", "**7-30 改版涨价 260%**，但 GLM-5.2 代码能力 T0"]}]}, {"id": "api-paygo", "title": "API 按量评测", "subtitle": "无月费，按 token 消耗付费，适合弹性/不确定用量", "items": [{"vendor": "DeepSeek 官方", "plan": "V4-Flash 按量", "rating": 5, "verdict": "性价比之王", "reasons": ["输入 1 元 / 输出 2 元每百万 token", "1M 上下文，极速推理", "**⚠️ 即将峰谷定价**，高峰时段 2 倍"]}, {"vendor": "DeepSeek 官方", "plan": "V4-Pro 按量", "rating": 5, "verdict": "Agent 能力旗舰", "reasons": ["输入 3 元 / 输出 6 元，默认深度思考", "1M 上下文，Agent 能力显著增强", "比 V4-Flash 贵 3 倍，但复杂任务更稳"]}, {"vendor": "智谱AI", "plan": "GLM-5.2 按量", "rating": 5, "verdict": "GLM-5.2 弹性选择", "reasons": ["输入 8 元 / 输出 28 元每百万 token", "1M 上下文，缓存命中仅 2 元", "不想订阅智谱套餐时，按量更灵活"]}]}], "community": {"free": {"title": "免费微信群", "subtitle": "每周价格变动推送", "description": "加群第一时间获取价格变动 / 限购提醒，群里也有选型讨论和实测反馈。免费进，门槛低。", "qrImage": "", "highlights": ["每周价格变动速报", "抢购开放时间提醒", "群友选型讨论", "免费进群"], "ctaText": "扫码进免费群"}, "paid": {"title": "知识星球", "subtitle": "¥199/年（早鸟价 ¥99）", "description": "比免费群多 5 倍信息密度。每周实测报告、每月 1 次 1v1 选型答疑、独家优惠链接、决策树高级模式。", "highlights": ["每周价格变动推送（比公开早 24h）", "每月实测报告（含 Token 消耗数据）", "每月 1v1 选型答疑", "独家优惠链接 + 返佣返还", "决策树高级模式"], "ctaText": "加入知识星球", "url": "#"}}, "disclosure": "本站部分链接为联盟推广链接，通过这些链接注册我可能获得返佣，但不影响你的价格。所有推荐均基于真实使用体验，不接受厂商付费推广。", "footer": {"about": "CodingPlan 省钱攻略 · 饭庐者说的 AI Coding Plan 选型指南", "links": [{"label": "完整对比", "url": "#compare"}, {"label": "最新动态", "url": "#updates"}, {"label": "加入社群", "url": "#community"}]}}, "vendors": [{"id": "zhipu", "name": "智谱AI", "logo": "智", "color": "#F5F527", "category": "model-maker", "urls": {"pricing": "https://bigmodel.cn/glm-coding", "home": "https://open.bigmodel.cn"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "7-30 套餐改版，积分制，旧版¥49/149/469已停"}, {"id": "bytedance", "name": "字节·方舟", "logo": "字", "color": "#FF3B3B", "category": "model-maker", "urls": {"pricing": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan", "home": "https://www.volcengine.com/ark"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "反爬+SPA，依赖人工快照"}, {"id": "tencent", "name": "腾讯云", "logo": "腾", "color": "#eab308", "category": "cloud-maas", "urls": {"pricing": "https://cloud.tencent.com/product/tokenhub", "home": "https://cloud.tencent.com/product/tokenhub"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Coding Plan已售罄，主推Token Plan 4档"}, {"id": "deepseek", "name": "DeepSeek 官方", "logo": "D", "color": "#71717B", "category": "model-maker", "urls": {"pricing": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "home": "https://api-docs.deepseek.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "纯API按量，无月订阅套餐，即将峰谷定价"}, {"id": "minimax", "name": "MiniMax", "logo": "M", "color": "#f97316", "category": "model-maker", "urls": {"pricing": "https://platform.minimaxi.com/subscribe/token-plan", "home": "https://platform.minimaxi.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Token Plan用量翻倍，多模态全共享额度"}, {"id": "kimi", "name": "Kimi", "logo": "K", "color": "#10C2B0", "category": "model-maker", "urls": {"pricing": "https://www.kimi.com/membership/pricing", "home": "https://www.kimi.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "新会员体系即将上线，Kimi权益与Kimi Code将拆分"}, {"id": "bailian", "name": "阿里·百炼", "logo": "阿", "color": "#22c55e", "category": "cloud-maas", "urls": {"pricing": "https://www.aliyun.com/benefit/scene/codingplan", "home": "https://bailian.aliyun.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Lite已停售(3-20)，只剩Pro，限量抢购"}]}</script>
+<script id="cp-data" type="application/json">{"generatedAt": "2026-08-02 02:28:31", "changes": [{"id": "2026-07-31-unicom-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "联通云", "title": "联通云 新增平台", "detail": "8 档套餐上线：Lite / Pro / 个人 Lite / 个人 Pro / 个人 Max / 团队 Lite / 团队 Pro / 团队 Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["unicom-lite", "unicom-pro", "unicom-个人-lite", "unicom-个人-pro", "unicom-个人-max", "unicom-团队-lite", "unicom-团队-pro", "unicom-团队-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-huawei-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "华为云", "title": "华为云 新增平台", "detail": "4 档套餐上线：Lite / Standard / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["huawei-lite", "huawei-standard", "huawei-pro", "huawei-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-xunfei-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "讯飞·星火", "title": "讯飞·星火 新增平台", "detail": "3 档套餐上线：专业版 / 高效版 / 速通版", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["xunfei-专业版", "xunfei-高效版", "xunfei-速通版"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-ctyun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "天翼云", "title": "天翼云 新增平台", "detail": "3 档套餐上线：GLM Lite / GLM Pro / GLM Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["ctyun-glm-lite", "ctyun-glm-pro", "ctyun-glm-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-stepfun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "阶跃星辰", "title": "阶跃星辰 新增平台", "detail": "4 档套餐上线：Flash Mini / Flash Plus / Flash Pro / Flash Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["stepfun-flash-mini", "stepfun-flash-plus", "stepfun-flash-pro", "stepfun-flash-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-zhipu-intl-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "智谱国际版", "title": "智谱国际版 新增平台", "detail": "3 档套餐上线：Lite / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["zhipu-intl-lite", "zhipu-intl-pro", "zhipu-intl-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-jd-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "京东云", "title": "京东云 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["jd-lite", "jd-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-cmcc-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "移动云", "title": "移动云 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["cmcc-lite", "cmcc-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-infini-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "无问芯穹", "title": "无问芯穹 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["infini-lite", "infini-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-taotoken-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "TaoToken", "title": "TaoToken 新增平台", "detail": "3 档套餐上线：Lite / Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["taotoken-lite", "taotoken-pro", "taotoken-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-ollama-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "Ollama", "title": "Ollama 新增平台", "detail": "2 档套餐上线：Pro / Max", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["ollama-pro", "ollama-max"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-opencode-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "OpenCode", "title": "OpenCode 新增平台", "detail": "1 档套餐上线：Go", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["opencode-go"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-scnet-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "超算", "title": "超算 新增平台", "detail": "2 档套餐上线：Lite / Pro", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["scnet-lite", "scnet-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-uyun-new_plan", "date": "2026-07-31", "kind": "new_plan", "vendor": "优云智算", "title": "优云智算 新增平台", "detail": "6 档套餐上线：Mini / Lite / Basic / Pro / Max / Ultra", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": ["uyun-mini", "uyun-lite", "uyun-basic", "uyun-pro", "uyun-max", "uyun-ultra"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-codex-gpt56-promo", "date": "2026-07-31", "kind": "price_change", "vendor": "Codex (ChatGPT)", "title": "GPT-5.6 降价促销：Luna 降 80%，Sol 反向加价", "detail": "OpenAI GPT-5.6 促销——Luna 档降价 80%，Sol 档首推 2.5 倍速\"反向加价\"模式。ChatGPT Plus 订阅月费 $20 不变，模型调用性价比提升。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3918835009351298", "relatedPlans": ["codex-plus"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-31-deepseek-v4-live", "date": "2026-07-31", "kind": "new_model", "vendor": "DeepSeek 官方", "title": "DeepSeek V4 正式上线定价页", "detail": "V4 定价页正式落地 Flash + Pro 两档，API 按量 output ¥0.28-0.87/M、input ¥0.14-0.435/M。7-21\"曝光即将发布\"→7-31 正式上线。", "impact": "positive", "level": "high", "source": "extracted-deepseek", "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing", "relatedPlans": ["deepseek-虚拟套餐-40", "deepseek-虚拟套餐-200"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "e9435525714e", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "detail": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850508.html", "relatedPlans": [], "featured": true, "excerpt": "满血DeepSeek V4塞进办公室！专属「Token工厂」成标配", "author": "51CTO", "readTime": "5 分钟", "cover": "DS"}, {"id": "11da7d1541ab", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Kimi K3时刻：中美AI产业链叙事要变天？", "detail": "Kimi K3时刻：中美AI产业链叙事要变天？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3906759052907910", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3时刻：中美AI产业链叙事要变天？", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "d954fc69fba0", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "detail": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://finance.sina.com.cn/roll/2026-07-23/doc-iniitvfq4522490.shtml", "relatedPlans": [], "featured": true, "excerpt": "国产开源、全球前沿，大模型Kimi K3强在哪里？", "author": "新浪", "readTime": "3 分钟", "cover": "K3"}, {"id": "2245c953de14", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "detail": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/548976", "relatedPlans": [], "featured": false, "excerpt": "PPIO发布智能模型网关，打造面向Agent时代的智能Token工厂", "author": "爱范儿", "readTime": "5 分钟", "cover": "NEW"}, {"id": "b40b28926c0d", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "detail": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/548975", "relatedPlans": [], "featured": false, "excerpt": "小红书亮相2026世界人工智能大会：发布Red SKill、Vibe Coding", "author": "爱范儿", "readTime": "5 分钟", "cover": "NEW"}, {"id": "c91710c6ced2", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "detail": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850582.html", "relatedPlans": [], "featured": false, "excerpt": "Claude Agent突然大更新！狂塞500个技能，网友直呼疯狂", "author": "51CTO", "readTime": "5 分钟", "cover": "CL"}, {"id": "7b50ce769d81", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Vibe Coding 时代，为什么降本不一定增效？", "detail": "Vibe Coding 时代，为什么降本不一定增效？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://sspai.com/post/111975", "relatedPlans": [], "featured": false, "excerpt": "Vibe Coding 时代，为什么降本不一定增效？", "author": "少数派", "readTime": "3 分钟", "cover": "NEW"}, {"id": "23a1166e0caa", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "detail": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3907365426467969", "relatedPlans": [], "featured": false, "excerpt": "Codex 之后，你现在能在 Claude 「蒸馏」自己了", "author": "36氪", "readTime": "3 分钟", "cover": "CL"}, {"id": "f4953244e106", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "detail": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3906553920165253", "relatedPlans": [], "featured": false, "excerpt": "腾讯QClaw并入WorkBuddy：Agent大战进入整合时代，谁能成为下一个办公入口？", "author": "36氪", "readTime": "5 分钟", "cover": "NEW"}, {"id": "d1c2da790f0b", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "智谱向左，MiniMax向右", "detail": "智谱向左，MiniMax向右", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://new.qq.com/rain/a/20260723A04PN400", "relatedPlans": [], "featured": false, "excerpt": "智谱向左，MiniMax向右", "author": "qq-news", "readTime": "3 分钟", "cover": "NEW"}, {"id": "8f685b8b35ad", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "detail": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ifanr.com/549014", "relatedPlans": [], "featured": false, "excerpt": "大模型会不会吃掉软件？金山办公用两款新产品给出了答案", "author": "爱范儿", "readTime": "3 分钟", "cover": "NEW"}, {"id": "d9e9877d7708", "date": "2026-07-23", "kind": "article", "vendor": "通用", "title": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "detail": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7664549690965934126", "relatedPlans": [], "featured": false, "excerpt": "AI编程已经如此强大，我们还需要再学习基础嘛？或者说初级程序员还有可能存在吗？", "author": "掘金", "readTime": "5 分钟", "cover": "NEW"}, {"id": "fc68a8169a89", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "detail": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://blog.csdn.net/weixin_74809706/article/details/162941467", "relatedPlans": [], "featured": false, "excerpt": "Codex 长期任务五层工作系统：让 AI 跨小时、跨会话持续推进", "author": "csdn", "readTime": "5 分钟", "cover": "NEW"}, {"id": "987d38441922", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "detail": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://blog.csdn.net/Mrxiao_bo/article/details/163052500", "relatedPlans": [], "featured": false, "excerpt": "Claude Code 接蓝耘实测：选第三方 API 的三条铁律", "author": "csdn", "readTime": "5 分钟", "cover": "CL"}, {"id": "b358585f7751", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "detail": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://finance.sina.com.cn/stock/t/2026-07-21/doc-iniipats8088739.shtml", "relatedPlans": [], "featured": true, "excerpt": "全球第九、开源第一即遭算力「熔断」：Kimi K3的排名突破，反而坐实了硬件需求逻辑", "author": "新浪", "readTime": "5 分钟", "cover": "K3"}, {"id": "d7f1f836d71e", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "detail": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3904135800751745", "relatedPlans": [], "featured": true, "excerpt": "智谱股价两天跌去40%，Kimi K3成了“背锅侠”？", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "e6d2fb00d370", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3爆火，GPU先扛不住了", "detail": "Kimi K3爆火，GPU先扛不住了", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3904634803701385", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3爆火，GPU先扛不住了", "author": "36氪", "readTime": "3 分钟", "cover": "K3"}, {"id": "3bafd4cbbbb9", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "detail": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.nodeseek.com/post-832857-1", "relatedPlans": [], "featured": true, "excerpt": "各位大佬麻烦问下,Kimi K3 值得花钱么,GPT有点贵", "author": "nodeseek", "readTime": "3 分钟", "cover": "K3"}, {"id": "6b338445921d", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "detail": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/979/196.htm", "relatedPlans": [], "featured": true, "excerpt": "AI 大模型周榜：国产 Kimi K3 首次杀入综合榜 Top 10，登顶前端开发榜", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "e50fb6c6243b", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "detail": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/956.htm", "relatedPlans": [], "featured": true, "excerpt": "OpenAI 战略未来主管批 Kimi K3 开源：非常优秀的模型，但本质上是减速主义，阻碍进一步的 AI 资本支出", "author": "IT之家", "readTime": "7 分钟", "cover": "K3"}, {"id": "edf23d8c9b8e", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "用于学术研究的 Claude Code 技能包", "detail": "用于学术研究的 Claude Code 技能包", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://hellogithub.com/repository/124d87f507434c2da4aa4384d7d6d305", "relatedPlans": [], "featured": false, "excerpt": "用于学术研究的 Claude Code 技能包", "author": "HelloGitHub", "readTime": "3 分钟", "cover": "CL"}, {"id": "935cc1e1cab6", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "detail": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://www.51cto.com/article/850140.html", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3上线48小时：模型爆火，GPU爆肝，会员停售", "author": "51CTO", "readTime": "3 分钟", "cover": "K3"}, {"id": "521644bf4554", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "detail": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "impact": "neutral", "level": "high", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663762583839064090", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3 真实体验：全网评价整理，优缺点一次性说清楚", "author": "掘金", "readTime": "3 分钟", "cover": "K3"}, {"id": "773d7e7a224f", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "detail": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663822459978137646", "relatedPlans": [], "featured": false, "excerpt": "阿里要求全员卸载 Claude Code：事件始末与深层逻辑", "author": "掘金", "readTime": "5 分钟", "cover": "CL"}, {"id": "547b75e0f3a3", "date": "2026-07-22", "kind": "article", "vendor": "通用", "title": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "detail": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.v2ex.com/t/1228685", "relatedPlans": [], "featured": false, "excerpt": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？", "author": "v2ex", "readTime": "5 分钟", "cover": "CL"}, {"id": "2026-07-21-deepseek-v4-leak", "date": "2026-07-21", "kind": "new_model", "vendor": "DeepSeek 官方", "title": "DeepSeek V4「满血版」曝光，最快明天发布", "detail": "DeepSeek V4 满血版被曝光，预计近期发布。将进一步提升 DeepSeek Coding Plan 的模型能力。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["deepseek-pro"], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-21-claude-quota-reset", "date": "2026-07-21", "kind": "price_change", "vendor": "Claude", "title": "Claude 额度重置，应对 Kimi K3 竞争", "detail": "Kimi K3 发布后，Anthropic 连夜调整 Claude 订阅额度，奥特曼罕见认错。两大巨头被迫改变定价策略。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["claude-pro", "claude-max"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-21-kimi-k3-launch", "date": "2026-07-21", "kind": "new_model", "vendor": "Kimi", "title": "Kimi K3 正式发布，登顶全球榜单", "detail": "Kimi K3 发布后登顶全球模型榜单，前端开发榜第一，综合榜首次杀入 Top 10。发布 48 小时后算力告急，暂停 C 端新用户订阅。", "impact": "positive", "level": "high", "source": "signal-dailyhot", "sourceUrl": "", "relatedPlans": ["kimi-allegretto", "kimi-andante"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "4ad193bdc013", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "掌管Codex额度的「赛博义父」，到底什么来头", "detail": "掌管Codex额度的「赛博义父」，到底什么来头", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903253946254979", "relatedPlans": [], "featured": false, "excerpt": "掌管Codex额度的「赛博义父」，到底什么来头", "author": "36氪", "readTime": "3 分钟", "cover": "NEW"}, {"id": "d957d7b132a5", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "detail": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903442689049736", "relatedPlans": [], "featured": true, "excerpt": "K3发布48小时，服务器满载、英伟达暴跌、Anthropic连夜改订阅", "author": "36氪", "readTime": "5 分钟", "cover": "K3"}, {"id": "b273df343149", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "DeepSeek V4「满血版」曝光了，最快明天发布", "detail": "DeepSeek V4「满血版」曝光了，最快明天发布", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903106705606274", "relatedPlans": [], "featured": true, "excerpt": "DeepSeek V4「满血版」曝光了，最快明天发布", "author": "36氪", "readTime": "3 分钟", "cover": "DS"}, {"id": "c36f69997aa3", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "detail": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/808.htm", "relatedPlans": [], "featured": true, "excerpt": "月之暗面 Kimi：暂停 C 端新用户订阅，保障已订阅用户的全部权益不受影响", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "44046f4cc42d", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "detail": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663687263675416595", "relatedPlans": [], "featured": true, "excerpt": "我被 Kimi K3 榨干了 99 块，还笑出了声——一个程序员的“真香”现场", "author": "掘金", "readTime": "5 分钟", "cover": "K3"}, {"id": "accca41ff1cb", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "全网都在吹的 Kimi K3，到底怎么样？", "detail": "全网都在吹的 Kimi K3，到底怎么样？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://juejin.cn/post/7663685196478611506", "relatedPlans": [], "featured": true, "excerpt": "全网都在吹的 Kimi K3，到底怎么样？", "author": "掘金", "readTime": "3 分钟", "cover": "K3"}, {"id": "85ab808ef881", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "KimiK3发布后Anthropic遭外网吐槽", "detail": "KimiK3发布后Anthropic遭外网吐槽", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://s.weibo.com/weibo?q=KimiK3%E5%8F%91%E5%B8%83%E5%90%8EAnthropic%E9%81%AD%E5%A4%96%E7%BD%91%E5%90%90%E6%A7%BD", "relatedPlans": [], "featured": true, "excerpt": "KimiK3发布后Anthropic遭外网吐槽", "author": "weibo", "readTime": "3 分钟", "cover": "K3"}, {"id": "ce020642972f", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "detail": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.zhihu.com/question/2061405940272960418", "relatedPlans": [], "featured": true, "excerpt": "中国 K3 大模型震惊 AI 界，美巨头高价模式还能撑多久？", "author": "知乎", "readTime": "5 分钟", "cover": "K3"}, {"id": "aa9ca8b934df", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "detail": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://news.sina.com.cn/c/2026-07-20/doc-iniikhwv3269554.shtml", "relatedPlans": [], "featured": true, "excerpt": "Kimi K3发布2天后月之暗面Kimi称算力紧缺：暂停C端新用户订阅，将已有算力全部投入于服务已订阅用户", "author": "新浪", "readTime": "7 分钟", "cover": "K3"}, {"id": "d144c2bc5393", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "detail": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.36kr.com/p/3903164634679175", "relatedPlans": [], "featured": false, "excerpt": "Kimi逼得两大巨头改变定价？奥特曼罕见认错，Claude额度重置", "author": "36氪", "readTime": "5 分钟", "cover": "K3"}, {"id": "da276c7cf473", "date": "2026-07-21", "kind": "article", "vendor": "通用", "title": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "detail": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "impact": "neutral", "level": "medium", "source": "signal-dailyhot", "sourceUrl": "https://www.ithome.com/0/978/670.htm", "relatedPlans": [], "featured": true, "excerpt": "月之暗面 Kimi K3 大模型登顶全球榜单后，彭博社称美国 AI 领先中国固有认知被打破", "author": "IT之家", "readTime": "5 分钟", "cover": "K3"}, {"id": "2026-07-20-kimi-subscription_pause", "date": "2026-07-20", "kind": "subscription_pause", "vendor": "Kimi", "title": "Kimi 暂停订阅", "detail": "Kimi K3 发布后算力告急，暂停 C 端新用户订阅，已订阅用户不受影响。恢复时间待官方公告。", "impact": "negative", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-20-deepseek-new_model", "date": "2026-07-20", "kind": "new_model", "vendor": "DeepSeek", "title": "DeepSeek 新模型即将发布", "detail": "DeepSeek V4「满血版」曝光，最快 7.21 发布。预计将影响各平台定价和模型配置。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-字节-方舟-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "字节·方舟", "title": "字节·方舟 新增模型", "detail": "Coding Plan / Token Plan 全档位追加支持 Kimi-K3 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-kimi-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "Kimi", "title": "Kimi 新增模型", "detail": "Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）追加支持 Kimi-K3", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-19-codex-chatgpt-new_model", "date": "2026-07-19", "kind": "new_model", "vendor": "Codex (ChatGPT)", "title": "Codex (ChatGPT) 新增模型", "detail": "Token Plan（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-18-anthropic-price_change", "date": "2026-07-18", "kind": "price_change", "vendor": "Anthropic", "title": "Anthropic 订阅调整", "detail": "Kimi K3 发布后 Anthropic 连夜修改订阅方案，Claude 额度重置。奥特曼罕见认错。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-15-deepseek-官方-price_change", "date": "2026-07-15", "kind": "price_change", "vendor": "DeepSeek 官方", "title": "DeepSeek 官方 计费调整", "detail": "7 月中旬起高峰时段价格翻倍，缓存和输出价不变", "impact": "negative", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-10-百度·千帆-migration", "date": "2026-07-10", "kind": "price_change", "vendor": "百度·千帆", "title": "百度千帆 Coding Plan 升级为 Token Plan", "detail": "Lite: 调用次数→4200万Token, Pro: →2.3亿Token。取消高峰限流，支持多模型，老用户有效期顺延1月。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["baidu-lite", "baidu-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-10-baidu-codingplan-to-tokenplan", "date": "2026-07-10", "kind": "price_change", "vendor": "百度·千帆", "title": "百度千帆 Coding Plan 升级为 Token Plan", "detail": "Lite: 调用次数→4200万Token, Pro: 调用次数→2.3亿Token。取消高峰限流，支持多模型（GLM/DeepSeek），老用户有效期顺延1个月。", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["baidu-lite", "baidu-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-07-01-taotoken-new_plan", "date": "2026-07-01", "kind": "new_plan", "vendor": "TaoToken", "title": "TaoToken 新增平台", "detail": "GLM-5.2 Coding Plan 三档套餐上线（已售罄）", "impact": "positive", "level": "medium", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": false, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-06-29-讯飞-星火-new_model", "date": "2026-06-29", "kind": "new_model", "vendor": "讯飞·星火", "title": "讯飞·星火 新增模型", "detail": "高效版追加支持 GLM-5.2 模型", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-06-26-优云智算-new_model", "date": "2026-06-26", "kind": "new_model", "vendor": "优云智算", "title": "优云智算 新增模型", "detail": "Coding Plan 全档位追加支持 GLM-5.2（限时倍率 x2）", "impact": "positive", "level": "high", "source": "manual", "sourceUrl": null, "relatedPlans": [], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-04-15-阿里·百炼-migration", "date": "2026-04-15", "kind": "subscription_pause", "vendor": "阿里·百炼", "title": "阿里百炼下架 Coding Plan，推出 Token Plan 团队版", "detail": "原 Coding Plan Pro 版长期「每日抢购售罄」，实质停止供给。推出 Token Plan 团队版（Credits 点数），¥198/698/1398 三档，支持全量模型。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["bailian-pro"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-03-10-MiniMax-migration", "date": "2026-03-10", "kind": "new_plan", "vendor": "MiniMax", "title": "MiniMax Coding Plan → Token Plan 正式更名", "detail": "从按 Prompt 次数计费改为按 Token 统一计量，文本/代码/图像/语音全模态共享额度。6月因计费切换争议补充老用户权益保护。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["minimax-新plus", "minimax-新max", "minimax-新ultra"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-02-20-智谱AI-migration", "date": "2026-02-20", "kind": "price_change", "vendor": "智谱AI", "title": "智谱 Coding Plan 第一轮涨价 30%", "detail": "取消首购优惠，Lite/Pro 档涨价 30% 起。后续两轮跟进，累计涨幅超 200%。变相用价格杠杆逼重度用户转 API 按量。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["zhipu-lite", "zhipu-pro", "zhipu-max"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}, {"id": "2026-01-15-Kimi-migration", "date": "2026-01-15", "kind": "new_model", "vendor": "Kimi", "title": "Kimi Code 套餐切换为 Token 计量", "detail": "Kimi 率先完成切换：Code 套餐从按次数改为按 Token 计量，缓存命中低价计费，高速版 3x Token 消耗。", "impact": "neutral", "level": "high", "source": "manual", "sourceUrl": "", "relatedPlans": ["kimi-andante", "kimi-allegretto"], "featured": true, "excerpt": null, "author": null, "readTime": null, "cover": null}], "plans": [{"id": "zhipu-lite", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Lite", "type": "Coding Plan", "tier": "lite", "monthlyPrice": 118, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周10,000积分（5小时2,000）", "measuredMonthlyToken": 87, "tags": ["模型强", "需抢购", "非高峰5折"], "bloggerVerdict": "7-30改版后入门档，积分制。GLM-5.2 代码能力 T0，非高峰5折划算。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥49已停，涨价140%", "notes": "measuredMonthlyToken 按官网'0.43~0.87亿Tokens/周'折算（取上限×4周）"}, {"id": "zhipu-pro", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 538, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周60,000积分（5小时12,000）", "measuredMonthlyToken": 522, "tags": ["模型强", "需抢购", "非高峰5折"], "bloggerVerdict": "6倍Lite用量，主力档。改版后价格翻3.6倍，但GLM-5.2+非高峰5折仍有竞争力。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥149已停", "notes": "measuredMonthlyToken = Lite × 6"}, {"id": "zhipu-max", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "Max", "type": "Coding Plan", "tier": "max", "monthlyPrice": 1078, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2", "GLM-5-Turbo", "GLM-4.7"], "monthlyRequests": null, "tokenLimit": "每周140,000积分（5小时28,000）", "measuredMonthlyToken": 1218, "tags": ["模型强", "需抢购", "非高峰5折", "高峰专属资源"], "bloggerVerdict": "14倍Lite，旗舰档。高峰期专属资源保障，重度agentic首选。", "action": "https://bigmodel.cn/glm-coding", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "7-30改版积分制，旧版¥469已停，涨价130%", "notes": "measuredMonthlyToken = Lite × 14"}, {"id": "zhipu-api-glm52", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "GLM-5.2 按量", "type": "API 按量", "tier": "pro", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["GLM-5.2"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["模型强", "1M上下文"], "bloggerVerdict": "GLM-5.2 按量，输入8元/输出28元每百万token。1M上下文，缓存命中2元。", "action": "https://bigmodel.cn/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": "输入8/输出28/缓存命中2 元/百万token", "inputPrice": 8, "outputPrice": 28, "cachePrice": 2, "contextLen": "1M"}, {"id": "zhipu-api-glm-turbo", "vendor": "智谱AI", "vendorId": "zhipu", "plan": "GLM-5-Turbo 按量", "type": "API 按量", "tier": "lite", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["GLM-5-Turbo"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["高性价比"], "bloggerVerdict": "GLM-5-Turbo 按量，输入5/输出22元。比5.2便宜，日常够用。", "action": "https://bigmodel.cn/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": "输入5/输出22/缓存命中1.2 元/百万token", "inputPrice": 5, "outputPrice": 22, "cachePrice": 1.2, "contextLen": "1M"}, {"id": "bytedance-coding-auto", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Auto", "type": "Coding Plan", "tier": "lite", "monthlyPrice": 9.9, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "GLM-5.2", "Kimi-K2.7-Code", "DeepSeek-V4-Pro", "DeepSeek-V4-Flash", "MiniMax-M3", "Doubao-Seed-Code", "MiniMax-M2.7", "Kimi-K2.6", "DeepSeek-V3.2", "Doubao-Seed-2.1-turbo"], "monthlyRequests": null, "tokenLimit": "Auto智能调度", "measuredMonthlyToken": 250, "tags": ["模型强", "性价比高", "全家桶", "无需抢购"], "bloggerVerdict": "¥9.9全家桶，13+模型Auto调度。唯一同时支持GLM/DeepSeek/MiniMax/Kimi的平台。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "改版单档制，旧Lite¥40/Pro¥200已停", "notes": "measuredMonthlyToken 为估算（¥9.9×25 M/元，全家桶历史比），待实测"}, {"id": "bytedance-agent-lite", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Agent Lite", "type": "Agent Plan", "tier": "lite", "monthlyPrice": 9.9, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "Doubao-Seed-2.0-Mini"], "monthlyRequests": null, "tokenLimit": "每月20,000 Agent燃料值", "measuredMonthlyToken": null, "tags": ["多模态", "Agent", "性价比高"], "bloggerVerdict": "Agent入门档，20K燃料值，语言/图像/向量化多模态。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/agent-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "", "notes": "燃料值制，非直接Token计量"}, {"id": "bytedance-agent-large", "vendor": "字节·方舟", "vendorId": "bytedance", "plan": "Agent Large", "type": "Agent Plan", "tier": "max", "monthlyPrice": 1000, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Doubao-Seed-2.0-Code", "Doubao-Seed-2.0-Pro", "Doubao-Seed-2.0-Lite", "Doubao-Seed-2.0-Mini"], "monthlyRequests": null, "tokenLimit": "每月500,000 Agent燃料值（25x）", "measuredMonthlyToken": null, "tags": ["多模态", "Agent", "重度"], "bloggerVerdict": "Agent旗舰档，500K燃料值，极致多模态Harness体验。", "action": "https://console.volcengine.com/ark/region:cn-beijing/subscription/agent-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "", "notes": "燃料值制，25x Lite"}, {"id": "tencent-tp-lite", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Lite", "type": "Token Plan", "tier": "lite", "monthlyPrice": 39, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "3500万 Tokens/月", "measuredMonthlyToken": 35, "tags": ["性价比高", "多模型", "DeepSeek原厂"], "bloggerVerdict": "入门Token池，3500万Token，含DeepSeek原厂直供。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "Coding Plan已售罄，主推Token Plan", "notes": "MiniMax-M2.5将于8-6下线，Kimi-K2.5将于7-31下线"}, {"id": "tencent-tp-standard", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Standard", "type": "Token Plan", "tier": "pro", "monthlyPrice": 99, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "1亿 Tokens/月", "measuredMonthlyToken": 100, "tags": ["性价比高", "多模型", "DeepSeek原厂"], "bloggerVerdict": "日常高性价比档，1亿Token，约200轮问答。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-tp-pro", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Pro", "type": "Token Plan", "tier": "pro", "monthlyPrice": 299, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "3.2亿 Tokens/月", "measuredMonthlyToken": 320, "tags": ["模型强", "多模型", "高频开发"], "bloggerVerdict": "高频AI开发档，3.2亿Token，比基础版3倍额度。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-tp-max", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Token Plan Max", "type": "Token Plan", "tier": "max", "monthlyPrice": 599, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Pro", "MiniMax-M2.7", "GLM-5", "GLM-5.1", "Kimi-K2.5"], "monthlyRequests": null, "tokenLimit": "6.5亿 Tokens/月", "measuredMonthlyToken": 650, "tags": ["模型强", "多模型", "重度"], "bloggerVerdict": "重度用户旗舰档，6.5亿Token，全栈AI生成+多Agent协同。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "", "notes": ""}, {"id": "tencent-cp-pro", "vendor": "腾讯云", "vendorId": "tencent", "plan": "Coding Plan Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 200, "currency": "¥", "firstMonthPrice": null, "rating": 3, "models": ["GLM-5.1", "Kimi-K2.5", "MiniMax-M2.7"], "monthlyRequests": 90000, "tokenLimit": "100M Tokens", "measuredMonthlyToken": 600, "tags": ["已售罄", "兼容Claude Code"], "bloggerVerdict": "⚠️ 已售罄。原TokenHub Coding Plan，比API按量便宜50-80%。", "action": "https://cloud.tencent.com/product/tokenhub", "status": "sold_out", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "token", "migration": "Coding Plan已售罄，迁移至Token Plan", "notes": "售罄状态，保留供参考"}, {"id": "deepseek-api-flash", "vendor": "DeepSeek 官方", "vendorId": "deepseek", "plan": "V4-Flash 按量", "type": "API 按量", "tier": "lite", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Flash", "DeepSeek-V4-Flash-0731"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["性价比高", "1M上下文", "极速"], "bloggerVerdict": "V4-Flash按量，输入1/输出2元每百万token。极速推理，1M上下文，性价比之王。", "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "即将峰谷定价（高峰2倍）", "notes": "缓存命中0.02/未命中1元输入；即将峰谷定价", "inputPrice": 1, "outputPrice": 2, "cachePrice": 0.02, "contextLen": "1M"}, {"id": "deepseek-api-pro", "vendor": "DeepSeek 官方", "vendorId": "deepseek", "plan": "V4-Pro 按量", "type": "API 按量", "tier": "pro", "monthlyPrice": null, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["DeepSeek-V4-Pro"], "monthlyRequests": null, "tokenLimit": "按量", "measuredMonthlyToken": null, "tags": ["模型强", "1M上下文", "思考模式"], "bloggerVerdict": "V4-Pro按量，输入3/输出6元。Agent能力显著增强，默认深度思考。", "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "即将峰谷定价（高峰2倍）", "notes": "缓存命中0.025/未命中3元输入", "inputPrice": 3, "outputPrice": 6, "cachePrice": 0.025, "contextLen": "1M"}, {"id": "minimax-plus", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Plus", "type": "Token Plan", "tier": "lite", "monthlyPrice": 49, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约12,000次/月（M3）", "measuredMonthlyToken": 600, "tags": ["模型强", "性价比高", "多模态", "无需抢购"], "bloggerVerdict": "入门档，用量翻倍后性价比最高。M3+多模态，养龙虾首选。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "Frontier模型，用量翻倍升级", "notes": "按M3单次~50K token估算12,000次/月"}, {"id": "minimax-max", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Max", "type": "Token Plan", "tier": "pro", "monthlyPrice": 119, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约36,000次/月（M3）", "measuredMonthlyToken": 1800, "tags": ["模型强", "性价比高", "多模态", "无需抢购"], "bloggerVerdict": "中档主力，3倍Plus用量。最划算的选择。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": ""}, {"id": "minimax-ultra", "vendor": "MiniMax", "vendorId": "minimax", "plan": "Ultra", "type": "Token Plan", "tier": "max", "monthlyPrice": 469, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"], "monthlyRequests": null, "tokenLimit": "约140,000次/月（M3）", "measuredMonthlyToken": 7100, "tags": ["模型强", "多模态", "重度", "无需抢购"], "bloggerVerdict": "重度旗舰档，140K次/月。多模态全共享，团队/多项目并行首选。", "action": "https://platform.minimaxi.com/subscribe/token-plan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "token", "migration": "", "notes": ""}, {"id": "kimi-daily", "vendor": "Kimi", "vendorId": "kimi", "plan": "日常使用", "type": "会员", "tier": "lite", "monthlyPrice": 39, "currency": "¥", "firstMonthPrice": null, "rating": 4, "models": ["Kimi-K3", "Kimi-K2.7-Code"], "monthlyRequests": null, "tokenLimit": "Agent额度", "measuredMonthlyToken": null, "tags": ["深度研究", "Office", "网站部署"], "bloggerVerdict": "新会员体系日常档，含Agent额度+Office+深度研究。Kimi Code将拆分独立。", "action": "https://www.kimi.com/membership/pricing", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "model-maker", "billingCore": "credit", "migration": "新体系即将上线，Kimi权益与Code拆分", "notes": "旧Andante¥49/Allegretto¥199待新体系上线后确认"}, {"id": "bailian-pro", "vendor": "阿里·百炼", "vendorId": "bailian", "plan": "Pro", "type": "Coding Plan", "tier": "pro", "monthlyPrice": 200, "currency": "¥", "firstMonthPrice": null, "rating": 5, "models": ["Qwen-3.7-Plus", "Qwen-3.6-Plus", "Kimi-K2.5", "GLM-5", "MiniMax-M2.5", "Qwen-3-Coder-Next", "GLM-4.7"], "monthlyRequests": 90000, "tokenLimit": "5h 6,000次/周45,000次/月90,000次", "measuredMonthlyToken": 3000, "tags": ["模型强", "需抢购", "全家桶", "按次计费"], "bloggerVerdict": "全家桶Coding Plan，¥200含qwen3.7/kimi-k2.5/glm-5/MiniMax-M2.5。限量抢购，每日9:30补货。", "action": "https://www.aliyun.com/benefit/scene/codingplan", "status": "active", "source": "manual-snapshot-20260801", "updatedAt": "2026-08-01", "category": "cloud-maas", "billingCore": "request", "migration": "Lite已停售(3-20)，只剩Pro", "notes": "按次计费（非Token），简单任务5-10次/复杂10-30+次"}], "site": {"name": "CodingPlan 省钱攻略", "tagline": "7 家 AI Coding Plan / Token Plan 定价对比", "domain": "codingplan-saver", "logo": "CP", "primaryColor": "#10b981", "accentColor": "#06b6d4", "updatedAt": "2026-08-01", "blogger": {"name": "饭庐者说", "avatar": "FL", "title": "AI 工具重度用户 / 独立博主", "bio": "每月在 AI Coding Plan 上花 500-1000 块的真金白银，把踩过的坑和试过的套餐都记在这里。不收厂商钱，只说真话。", "platforms": [{"name": "公众号", "handle": "饭庐者说", "url": "#"}, {"name": "小红书", "handle": "饭庐者说", "url": "#"}, {"name": "知乎", "handle": "饭庐者说", "url": "#"}]}, "header": {"updateDate": "更新于 2026.08.01", "stats": [{"label": "覆盖平台", "value": "7", "unit": "家"}, {"label": "套餐数据", "value": "20", "unit": "个"}, {"label": "数据更新", "value": "8.01", "unit": ""}]}, "quickEntries": [{"id": "budget-under-50", "icon": "¥", "title": "月费 50 元以内", "desc": "学生党 / 体验党 / 试试水", "filter": {"monthlyPriceMax": 50}}, {"id": "monthly-plans", "icon": "M", "title": "月订阅套餐", "desc": "固定月费 / 稳定用量 / 省心", "filter": {"type": "Coding Plan"}}, {"id": "api-paygo", "icon": "API", "title": "API 按量付费", "desc": "无月费 / 用多少付多少 / 弹性", "filter": {"type": "API 按量"}}, {"id": "no-rush", "icon": "OK", "title": "不用抢购", "desc": "随时可下单 / 不拼手速", "filter": {"tag": "无需抢购"}}], "disclosure": "本站部分链接为联盟推广链接，通过这些链接注册我可能获得返佣，但不影响你的价格。所有推荐均基于真实使用体验，不接受厂商付费推广。", "footer": {"about": "CodingPlan 省钱攻略 · 7 家厂商定价对比 · by 饭庐者说", "links": [{"label": "完整对比", "url": "#compare"}, {"label": "加群交流", "url": "#"}, {"label": "知识星球", "url": "#"}]}}, "vendors": [{"id": "zhipu", "name": "智谱AI", "logo": "智", "color": "#F5F527", "category": "model-maker", "urls": {"pricing": "https://bigmodel.cn/glm-coding", "home": "https://open.bigmodel.cn"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "7-30 套餐改版，积分制，旧版¥49/149/469已停"}, {"id": "bytedance", "name": "字节·方舟", "logo": "字", "color": "#FF3B3B", "category": "model-maker", "urls": {"pricing": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan", "home": "https://www.volcengine.com/ark"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "反爬+SPA，依赖人工快照"}, {"id": "tencent", "name": "腾讯云", "logo": "腾", "color": "#eab308", "category": "cloud-maas", "urls": {"pricing": "https://cloud.tencent.com/product/tokenhub", "home": "https://cloud.tencent.com/product/tokenhub"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Coding Plan已售罄，主推Token Plan 4档"}, {"id": "deepseek", "name": "DeepSeek 官方", "logo": "D", "color": "#71717B", "category": "model-maker", "urls": {"pricing": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing", "home": "https://api-docs.deepseek.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "纯API按量，无月订阅套餐，即将峰谷定价"}, {"id": "minimax", "name": "MiniMax", "logo": "M", "color": "#f97316", "category": "model-maker", "urls": {"pricing": "https://platform.minimaxi.com/subscribe/token-plan", "home": "https://platform.minimaxi.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Token Plan用量翻倍，多模态全共享额度"}, {"id": "kimi", "name": "Kimi", "logo": "K", "color": "#10C2B0", "category": "model-maker", "urls": {"pricing": "https://www.kimi.com/membership/pricing", "home": "https://www.kimi.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "新会员体系即将上线，Kimi权益与Kimi Code将拆分"}, {"id": "bailian", "name": "阿里·百炼", "logo": "阿", "color": "#22c55e", "category": "cloud-maas", "urls": {"pricing": "https://www.aliyun.com/benefit/scene/codingplan", "home": "https://bailian.aliyun.com"}, "extractStrategy": "manual", "lastVerified": "2026-08-01", "notes": "Lite已停售(3-20)，只剩Pro，限量抢购"}]}</script>
 <script>
 // ============================================================
 // CodingPlan 省钱攻略 - 单文件版（3 Tab + hash 路由）
@@ -413,29 +426,13 @@ function vendorColor(name) {
   return v && v.color ? v.color : '#71717B';
 }
 
-// Tab 路由
-function switchTab(hash) {
-  const tab = (hash || '#recommend').replace(/^#/, '').split('?')[0];
-  const validTabs = ['recommend', 'compare', 'community'];
-  const target = validTabs.includes(tab) ? tab : 'recommend';
-
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tab-' + target).classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === target));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // 对比 tab：首次进入渲染散点图，后续进入 resize
-  if (target === 'compare') {
-    setTimeout(() => {
-      if (window._chart) {
-        window._chart.resize();
-      } else if (typeof echarts !== 'undefined') {
-        renderChart();
-      }
-    }, 100);
-  }
+// 单页模式，无 Tab 切换。保留 hashchange 监听以兼容旧书签。
+function switchTab() {
+  // 不再有 Tab，但散点图可能需要 resize
+  if (window._chart) window._chart.resize();
 }
 window.addEventListener('hashchange', () => switchTab(location.hash));
+
 
 // ============================================================
 // Tab 1: 推荐（Hero + Top3 + 场景卡片 + 博主推荐 + 最近变动）
@@ -620,49 +617,169 @@ function renderRecentChanges() {
 const compareState = {
   filters: { types: new Set(), tags: new Set(), models: new Set(), categories: new Set(), monthlyPriceMax: null, search: '' },
   sort: { key: null, dir: 'asc' },
-  columnsExpanded: false
+  columnsExpanded: false,
+  columnMode: 'all', // all | monthly | api | model
+  selectedModel: null
 };
 
 function renderCompare() {
   const body = document.getElementById('compare-body');
-  body.innerHTML = renderChartSection() + renderTableSection();
+  body.innerHTML = renderTableSection();
   bindCompareFilters();
+  renderQuickSwitch();
+  bindQuickSwitch();
   renderCompareTable();
   setTimeout(renderChart, 200);
+}
+
+// 月订阅 / API按量 快捷切换（本质是 type 筛选的预设）
+function renderQuickSwitch() {
+  const el = document.getElementById('compareQuickSwitch');
+  if (!el) return '';
+  const presets = [
+    { label: '全部', types: [] },
+    { label: '月订阅套餐', types: ['Coding Plan', 'Token Plan', 'Agent Plan', '会员'] },
+    { label: 'API 按量', types: ['API 按量'] },
+    { label: '按模型', types: [], isModelView: true },
+  ];
+  const btnStyle = 'display:inline-flex;align-items:center;padding:8px 16px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:0;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;';
+  const btnActive = 'border-color:var(--accent);background:var(--accent);color:#fff;';
+  el.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">' +
+    presets.map((p, i) =>
+      '<button class="quick-switch-btn" style="' + btnStyle + (i === 0 ? btnActive : '') + '" data-preset="' + i + '">' + p.label + '</button>'
+    ).join('') +
+    '</div>';
+  return '';
+}
+
+function bindQuickSwitch() {
+  const el = document.getElementById('compareQuickSwitch');
+  if (!el) return;
+  const presets = [
+    { types: [], columnMode: 'all' },
+    { types: ['Coding Plan', 'Token Plan', 'Agent Plan', '会员'], columnMode: 'monthly' },
+    { types: ['API 按量'], columnMode: 'api' },
+    { types: [], columnMode: 'model', isModelView: true },
+  ];
+  el.addEventListener('click', e => {
+    const btn = e.target.closest('.quick-switch-btn');
+    if (!btn) return;
+    const idx = parseInt(btn.dataset.preset, 10);
+    const preset = presets[idx];
+    compareState.filters.types = new Set(preset.types);
+    compareState.columnMode = preset.columnMode;
+    const btnStyle = 'display:inline-flex;align-items:center;padding:8px 16px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:0;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;';
+    const btnActive = 'border-color:var(--accent);background:var(--accent);color:#fff;';
+    el.querySelectorAll('.quick-switch-btn').forEach(b => {
+      b.setAttribute('style', btnStyle + (b === btn ? btnActive : ''));
+    });
+    syncCompareFilterUI();
+    renderCompareTable();
+    renderChart();
+  });
 }
 
 function renderChartSection() {
   return '<section class="section-sm">' +
     '<div class="container">' +
-      '<div class="section-header" style="margin-bottom:var(--space-4);">' +
-        '<span class="section-eyebrow">CHART</span>' +
-        '<h2 class="section-title">价格 vs Token 上限</h2>' +
-        '<p class="section-subtitle">横轴月费，纵轴月Token。绿色区域为高性价比区。</p>' +
+      '<div class="section-header" style="margin-bottom:var(--sp-4);">' +
+        '<h2 class="section-title" id="chartTitle" style="margin:0;">价格 vs Token 额度</h2>' +
+        '<p class="section-subtitle" id="chartSubtitle" style="margin:0;">越靠左下越便宜（高性价比区）</p>' +
       '</div>' +
       '<div class="chart-card"><div class="chart-container" id="priceVsTokenChart"></div></div>' +
     '</div></section>';
 }
 
 function renderTableSection() {
+  const vendorCount = new Set(plans.map(p => p.vendorId)).size;
+  const planCount = plans.filter(p => p.status !== 'deprecated').length;
+  const updatedDate = (site.updatedAt || '').slice(5).replace('-', '.') || '官网快照';
   return '<section class="section-sm">' +
     '<div class="container">' +
-      '<div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:var(--space-3);">' +
-        '<div>' +
-          '<span class="section-eyebrow">FULL COMPARISON</span>' +
-          '<h2 class="section-title">完整套餐对比表</h2>' +
-          '<p class="section-subtitle">点击标签筛选，点击展开看额外列。</p>' +
+      '<div class="section-header" style="margin-bottom:var(--sp-3);">' +
+        '<h2 class="section-title" style="margin:0;">套餐对比</h2>' +
+        '<p class="section-subtitle" style="margin:0;">' + vendorCount + ' 家厂商 · ' + planCount + ' 个套餐 · 数据源官网快照 · 更新 ' + updatedDate + '</p>' +
+      '</div>' +
+      '<div id="compareQuickSwitch" style="margin-bottom:var(--sp-3);"></div>' +
+      // 散点图（放在搜索栏上面）
+      '<div class="chart-card" style="margin-bottom:var(--sp-4);">' +
+        '<div style="margin-bottom:var(--sp-3);">' +
+          '<h3 class="section-title" id="chartTitle" style="margin:0;font-size:15px;">价格 vs Token 额度</h3>' +
+          '<p class="section-subtitle" id="chartSubtitle" style="margin:0;">越靠左下越便宜（高性价比区）</p>' +
         '</div>' +
-        '<button class="table-toggle-btn" id="toggleColumnsBtn">展开全部列</button>' +
+        '<div class="chart-container" id="priceVsTokenChart"></div>' +
       '</div>' +
       '<div id="compareFilterBar"></div>' +
-      '<div class="table-wrap"><table class="data-table"><thead><tr>' +
-        '<th>平台</th><th>套餐</th><th>分层</th><th>类型</th><th>评分</th><th>月费</th>' +
-        '<th class="col-extra">首月</th><th class="col-extra">月请求</th>' +
-        '<th>实测月Token</th><th>每元Token</th>' +
-        '<th class="col-extra">1M价</th><th>支持模型</th><th>标签</th><th>优惠购买</th>' +
-      '</tr></thead><tbody id="plansTableBody"></tbody></table></div>' +
+      '<div class="table-wrap"><table class="data-table"><thead id="plansTableHead"><tr></tr></thead><tbody id="plansTableBody"></tbody></table></div>' +
       '<div class="plan-cards-view" id="plansCardsView"></div>' +
     '</div></section>';
+}
+
+// 渲染"点击对比"折叠触发按钮（放在表格下方，点开才显示模型对比图）
+function renderModelToggle() {
+  // 仅 model 模式才显示折叠触发
+  const toggle = document.getElementById('modelChartToggle');
+  if (toggle) toggle.remove();
+  if (compareState.columnMode !== 'model') return;
+  const table = document.querySelector('.table-wrap');
+  if (!table) return;
+  const btn = document.createElement('div');
+  btn.id = 'modelChartToggle';
+  const sm = compareState.selectedModel || '';
+  btn.innerHTML = '<button class="btn" id="modelToggleBtn" style="margin-top:var(--sp-4);background:transparent;color:var(--accent);border-color:var(--accent);">▸ 对比' + (sm ? ' [' + sm + ']' : '') + ' 各平台 TOKEN/元</button>';
+  table.parentNode.insertBefore(btn, table.nextSibling);
+  btn.querySelector('#modelToggleBtn').addEventListener('click', () => {
+    const card = document.getElementById('modelChartCard');
+    const b = document.getElementById('modelToggleBtn');
+    const open = card.style.display === 'block';
+    if (open) {
+      card.style.display = 'none';
+      b.innerHTML = '▸ 对比' + (compareState.selectedModel ? ' [' + compareState.selectedModel + ']' : '') + ' 各平台 TOKEN/元';
+    } else {
+      card.style.display = 'block';
+      b.innerHTML = '▾ 收起对比';
+      renderModelChart(compareState.selectedModel);
+      if (window._modelChart) window._modelChart.resize();
+    }
+  });
+}
+
+// 根据当前 columnMode 生成表头
+function renderTableHead() {
+  const head = document.getElementById('plansTableHead');
+  if (!head) return;
+  const cols = getColumns(compareState.columnMode);
+  head.innerHTML = '<tr>' + cols.map(c => '<th' + (c.extra ? ' class="col-extra"' : '') + '>' + c.label + '</th>').join('') + '</tr>';
+}
+
+// 列定义：月订阅/API按量/按模型/全部 多种模式
+function getColumns(mode) {
+  const common = [{ key: 'vendor', label: '平台 / 套餐' }];
+  const action = [{ key: 'action', label: '去购买', isAction: true }];
+  if (mode === 'api') {
+    return common.concat([
+      { key: 'inputPrice', label: '输入价', unit: '元/M' },
+      { key: 'outputPrice', label: '输出价', unit: '元/M' },
+      { key: 'cachePrice', label: '缓存价', unit: '元/M' },
+      { key: 'contextLen', label: '上下文' },
+    ]).concat(action);
+  }
+  if (mode === 'model') {
+    return [
+      { key: 'modelName', label: '模型', isModelName: true },
+      { key: 'platformCount', label: '支持平台', isCount: true },
+      { key: 'cheapestMonthly', label: '最便宜月订阅', isCheapest: true },
+      { key: 'cheapestApi', label: '最便宜 API 按量', isCheapest: true },
+      { key: 'action', label: '去购买', isAction: true },
+    ];
+  }
+  // monthly 和 all 都用月订阅列（all 时 API 行的月费/月用量会是空，但能通过筛选切到 API 模式）
+  return common.concat([
+    { key: 'monthlyPrice', label: '月费', isPrice: true },
+    { key: 'usage', label: '月用量' },
+    { key: 'tpu', label: '每元Token', isTPU: true },
+    { key: 'models', label: '关键模型' },
+  ]).concat(action);
 }
 
 function renderCompareFilterBar() {
@@ -683,17 +800,13 @@ function renderCompareFilterBar() {
       '<option value="">默认排序</option>' +
       '<option value="monthlyPrice-asc">月费 低-高</option>' +
       '<option value="monthlyPrice-desc">月费 高-低</option>' +
-      '<option value="rating-desc">评分 高-低</option>' +
-      '<option value="measuredMonthlyToken-desc">月Token 多-少</option>' +
-      '<option value="tokensPerYuan-desc">性价比 高-低</option>' +
+      '<option value="measuredMonthlyToken-desc">月用量 多-少</option>' +
+      '<option value="tokensPerYuan-desc">每元Token 高-低</option>' +
     '</select>' +
-    '<input type="text" class="filter-select" id="searchInput" placeholder="搜索平台/套餐..." style="min-width:160px;">' +
+    '<input type="text" class="filter-select" id="searchInput" placeholder="搜索厂商/套餐..." style="min-width:160px;">' +
     '<button class="filter-chip" id="resetBtn">重置</button>' +
     '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / ' + filterable.length + ' 个套餐</span>' +
-  '</div>' +
-  (catChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">分层:</span>' + catChips + '</div>' : '') +
-  (typeChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">类型:</span>' + typeChips + '</div>' : '') +
-  (tagChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-muted);">标签:</span>' + tagChips + '</div>' : '');
+  '</div>';
 }
 
 function parseHashFilter() {
@@ -826,40 +939,194 @@ function renderCompareTable() {
     return;
   }
 
+  renderTableHead();
+  if (compareState.columnMode === 'model') {
+    renderModelRows(filtered);
+    return;
+  }
   if (tbody) {
+    const cols = getColumns(compareState.columnMode);
     tbody.innerHTML = filtered.map(p => {
-      const price = formatPrice(p.monthlyPrice, p.currency || '¥');
-      const firstPrice = p.firstMonthPrice ? formatPrice(p.firstMonthPrice, p.currency || '¥') : '—';
-      const measured = p.measuredMonthlyToken ? p.measuredMonthlyToken + 'M' : '—';
-      const tpu = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
-        ? (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2) : '—';
-      const pricePerM = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.measuredMonthlyToken > 0)
-        ? '¥' + (p.monthlyPrice / p.measuredMonthlyToken).toFixed(2) : '—';
-      const models = (p.models || []).slice(0, 4).join(', ') + ((p.models || []).length > 4 ? '...' : '');
-      const statusBadge = p.status === 'paused' ? '<span class="badge badge-warning">暂停</span>' :
-                          p.status === 'sold_out' ? '<span class="badge">售罄</span>' : '';
-      const catLabels = { 'model-maker': '原厂', 'cloud-maas': '云厂商', 'vertical-cloud': '垂直云', 'aggregator': '聚合商' };
-      const catLabel = catLabels[p.category] || p.category || '原厂';
-      return '<tr>' +
-        '<td class="col-vendor">' + escapeHtml(p.vendor) + (statusBadge ? ' ' + statusBadge : '') + '</td>' +
-        '<td>' + escapeHtml(p.plan) + '</td>' +
-        '<td><span class="badge">' + catLabel + '</span></td>' +
-        '<td><span class="badge">' + escapeHtml(p.type) + '</span></td>' +
-        '<td>' + renderStars(p.rating) + '</td>' +
-        '<td class="col-price">' + price + '</td>' +
-        '<td class="col-price col-extra col-hidden" style="color:var(--color-warning);">' + firstPrice + '</td>' +
-        '<td class="col-extra col-hidden">' + formatNumber(p.monthlyRequests) + '</td>' +
-        '<td class="col-price">' + measured + '</td>' +
-        '<td class="col-price" style="color:var(--accent);">' + tpu + '</td>' +
-        '<td class="col-extra col-hidden" style="font-size:12px;color:var(--text-tertiary);">' + pricePerM + '</td>' +
-        '<td><span style="font-size:12px;">' + escapeHtml(models) + '</span></td>' +
-        '<td>' + renderTagsInline(p.tags) + '</td>' +
-        '<td class="col-action"><a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">优惠购买</a></td>' +
-      '</tr>';
+      const cells = cols.map(c => {
+        if (c.isAction) {
+          const buyBtn = p.status === 'sold_out' || p.status === 'paused' || p.status === 'deprecated'
+            ? '<span class="badge">' + ({sold_out:'售罄',paused:'暂停',deprecated:'下架'}[p.status]||'—') + '</span>'
+            : '<a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">去购买 →</a>';
+          return '<td class="col-action">' + buyBtn + '</td>';
+        }
+        if (c.key === 'vendor') {
+          return '<td class="col-vendor">' +
+            '<div style="font-weight:600;">' + escapeHtml(p.vendor) + '</div>' +
+            '<div style="font-size:12px;color:var(--text-helper);font-weight:400;">' + escapeHtml(p.plan) + ' · ' + escapeHtml(p.type) + '</div>' +
+          '</td>';
+        }
+        if (c.isPrice) {
+          const val = typeof p.monthlyPrice === 'number' ? formatPrice(p.monthlyPrice, p.currency || '¥') : '<span style="color:var(--text-placeholder);">—</span>';
+          return '<td class="col-price">' + val + '</td>';
+        }
+        if (c.key === 'usage') {
+          const val = p.tokenLimit || (p.measuredMonthlyToken ? p.measuredMonthlyToken + 'M Token' : '<span style="color:var(--text-placeholder);">按量</span>');
+          return '<td style="font-size:12px;color:var(--text-secondary);">' + escapeHtml(val) + '</td>';
+        }
+        if (c.isTPU) {
+          const tpu = (typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0)
+            ? '<span style="font-family:var(--mono);font-weight:700;color:var(--accent);">' + (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2) + '</span><span style="color:var(--text-helper);font-size:10px;"> M/元</span>'
+            : '<span style="color:var(--text-placeholder);">—</span>';
+          return '<td class="col-price">' + tpu + '</td>';
+        }
+        if (c.key === 'models') {
+          const km = (p.models || []).slice(0, 3).join(' / ') + ((p.models || []).length > 3 ? ' +' + (p.models.length - 3) : '');
+          return '<td style="font-size:12px;">' + escapeHtml(km) + '</td>';
+        }
+        // API 按量列
+        if (c.key === 'inputPrice' || c.key === 'outputPrice' || c.key === 'cachePrice') {
+          const v = p[c.key];
+          const val = typeof v === 'number' ? '<span style="font-family:var(--mono);font-weight:600;">¥' + v + '</span>' : '<span style="color:var(--text-placeholder);">—</span>';
+          return '<td class="col-price">' + val + '</td>';
+        }
+        if (c.key === 'contextLen') {
+          return '<td style="font-size:12px;color:var(--text-secondary);">' + escapeHtml(p.contextLen || '—') + '</td>';
+        }
+        return '<td>—</td>';
+      }).join('');
+      return '<tr>' + cells + '</tr>';
     }).join('');
   }
+  renderCompareCards(filtered);
+}
 
-  if (cardsView) {
+function renderModelRows(filtered) {
+  const tbody = document.getElementById('plansTableBody');
+  if (!tbody) return;
+  // 展平所有模型 → 支持的套餐
+  const modelMap = {};
+  filtered.forEach(p => {
+    (p.models || []).forEach(m => {
+      if (!modelMap[m]) modelMap[m] = [];
+      modelMap[m].push(p);
+    });
+  });
+  // 按支持平台数降序，再按模型名
+  const models = Object.keys(modelMap).sort((a, b) => {
+    const d = modelMap[b].length - modelMap[a].length;
+    return d !== 0 ? d : a.localeCompare(b);
+  });
+  tbody.innerHTML = models.map(m => {
+    const ps = modelMap[m];
+    const platforms = [...new Set(ps.map(p => p.vendor))];
+    // 最便宜月订阅（排除 sold_out/deprecated）
+    const monthly = ps.filter(p => p.type !== 'API 按量' && typeof p.monthlyPrice === 'number' && p.status !== 'sold_out' && p.status !== 'deprecated');
+    const cheapM = monthly.sort((a, b) => a.monthlyPrice - b.monthlyPrice)[0];
+    // 最便宜 API（按输入价）
+    const api = ps.filter(p => p.type === 'API 按量' && typeof p.inputPrice === 'number');
+    const cheapA = api.sort((a, b) => a.inputPrice - b.inputPrice)[0];
+    // 去购买按钮：优先最便宜月订阅，没有则 API
+    const buyPlan = cheapM || cheapA;
+    const buyBtn = buyPlan
+      ? '<a href="' + (buyPlan.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">去购买 -></a>'
+      : '<span class="badge">-</span>';
+    return '<tr class="model-row" data-model="' + escapeHtml(m) + '" style="cursor:pointer;">' +
+      '<td class="col-vendor"><div style="font-weight:600;font-size:13px;">' + escapeHtml(m) + '</div></td>' +
+      '<td><span class="badge">' + platforms.length + ' 家</span> <span style="font-size:11px;color:var(--text-helper);">' + escapeHtml(platforms.join(' / ')) + '</span></td>' +
+      '<td class="col-price">' + (cheapM ? '<span style="font-family:var(--mono);font-weight:700;color:var(--accent);">¥' + cheapM.monthlyPrice + '</span><div style="font-size:11px;color:var(--text-helper);">' + escapeHtml(cheapM.vendor + ' ' + cheapM.plan) + '</div>' : '<span style="color:var(--text-placeholder);">-</span>') + '</td>' +
+      '<td class="col-price">' + (cheapA ? '<span style="font-family:var(--mono);font-weight:700;color:var(--accent);">¥' + cheapA.inputPrice + '/¥' + cheapA.outputPrice + '</span><div style="font-size:11px;color:var(--text-helper);">输入/输出 per M · ' + escapeHtml(cheapA.vendor) + '</div>' : '<span style="color:var(--text-placeholder);">-</span>') + '</td>' +
+      '<td class="col-action">' + buyBtn + '</td>' +
+    '</tr>';
+  }).join('');
+  // 绑定点击事件：行内展开/收起比价图
+  tbody.querySelectorAll('.model-row').forEach(row => {
+    row.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      const modelName = row.dataset.model;
+      const next = row.nextElementSibling;
+      const isOpen = next && next.classList && next.classList.contains('model-chart-row');
+      // 先关闭所有已展开的
+      tbody.querySelectorAll('.model-chart-row').forEach(r => r.remove());
+      tbody.querySelectorAll('.model-row').forEach(r => { r.style.background = ''; });
+      // 如果当前行没展开过，则展开（点已展开的行 = 收起）
+      if (!isOpen) {
+        row.style.background = 'var(--grey-1)';
+        compareState.selectedModel = modelName;
+        const chartRow = document.createElement('tr');
+        chartRow.className = 'model-chart-row';
+        chartRow.innerHTML = '<td colspan="5" style="padding:0;background:var(--grey-1);"><div id="inlineModelChart" style="width:100%;height:280px;"></div></td>';
+        row.parentNode.insertBefore(chartRow, row.nextSibling);
+        renderModelChart(modelName, 'inlineModelChart');
+      }
+    });
+  });
+  // 默认展开第一个多平台模型（行内就地展开）
+  const firstMulti = models.find(m => modelMap[m].length >= 2) || models[0];
+  if (firstMulti) {
+    const firstRow = tbody.querySelector('.model-row[data-model="' + CSS.escape(firstMulti) + '"]');
+    if (firstRow) firstRow.click();
+  }
+}
+
+// 单个模型各平台 TOKEN/元 柱状图（行内就地渲染）
+function renderModelChart(modelName, chartId) {
+  const chartDom = document.getElementById(chartId || 'inlineModelChart');
+  if (!chartDom || typeof echarts === 'undefined') return;
+  const existing = echarts.getInstanceByDom(chartDom);
+  if (existing) existing.dispose();
+
+  // 收集该模型所有套餐
+  const ps = plans.filter(p => p.status !== 'deprecated' && (p.models || []).includes(modelName));
+  // 计算 TOKEN/元（M）：1元能买多少 M token
+  // API 按量：1/输出价；月订阅：从 tokenLimit 解析总 token ÷ 月费，或用 measuredMonthlyToken
+  const parseTokenM = (p) => {
+    if (typeof p.measuredMonthlyToken === 'number' && p.measuredMonthlyToken > 0) return p.measuredMonthlyToken;
+    if (!p.tokenLimit) return null;
+    const t = p.tokenLimit;
+    // 匹配 "3500万 Tokens/月" "1亿 Tokens/月" "6.5亿" 等
+    const m = t.match(/([\d.]+)\s*([亿万])\s*Tokens?/i) || t.match(/([\d.]+)\s*([亿万])/);
+    if (!m) return null;
+    let n = parseFloat(m[1]);
+    if (m[2] === '亿') n *= 100;
+    else if (m[2] === '万') n /= 100; // 万 token = 0.01M
+    return n; // 单位 M
+  };
+  const items = ps.map(p => {
+    let tpu, type, isEstimate = false;
+    if (p.type === 'API 按量' && typeof p.outputPrice === 'number' && p.outputPrice > 0) {
+      tpu = 1 / p.outputPrice; // 1元买多少M输出
+      type = 'API按量';
+    } else if (typeof p.monthlyPrice === 'number' && p.monthlyPrice > 0) {
+      const totalM = parseTokenM(p);
+      if (!totalM) return null;
+      tpu = totalM / p.monthlyPrice; // 整池总额度÷月费（估算，多模型共享）
+      type = '月订阅';
+      isEstimate = true;
+    } else return null;
+    return { name: p.vendor + ' ' + p.plan, tpu: Math.round(tpu * 100) / 100, type, isEstimate, action: p.action, status: p.status };
+  }).filter(Boolean).sort((a, b) => b.tpu - a.tpu); // 高→低，越高越划算
+
+  if (!items.length) { card.style.display = 'none'; return; }
+  const C = { text: '#525252', grid: '#e0e0e0', monthly: '#002fa7', api: '#737373', tooltipBg: '#0a0a0a', tooltipText: '#fafaf8' };
+  const chart = echarts.init(chartDom);
+  window._modelChart = chart;
+  chart.setOption({
+    animationDuration: 400,
+    grid: { left: 60, right: 30, top: 30, bottom: 40 },
+    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, textStyle: { color: C.tooltipText, fontSize: 12 },
+      formatter: p => { const d = items[p.dataIndex]; return '<b>' + d.name + '</b><div style="font-size:11px;color:#d4d4d2;margin-top:3px;">' + d.type + ' · <b>' + d.tpu + ' M/元</b>' + (d.isEstimate ? '（整池额度估算）' : '') + '</div><div style="font-size:11px;color:#d4d4d2;">1元 = ' + d.tpu + 'M token</div>'; } },
+    legend: { data: ['月订阅', 'API按量'], bottom: 0, textStyle: { color: C.text, fontSize: 11 }, itemWidth: 10, itemHeight: 10 },
+    xAxis: { type: 'category', data: items.map(i => i.name + (i.isEstimate ? ' *' : '')), axisLabel: { color: C.text, fontSize: 10, rotate: 20, interval: 0 }, axisLine: { lineStyle: { color: C.grid } } },
+    yAxis: { type: 'value', name: 'TOKEN/元 (M)', nameTextStyle: { color: C.text, fontSize: 11 }, axisLabel: { color: C.text, formatter: v => v + 'M' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
+    series: [{
+      type: 'bar', barWidth: '55%',
+      itemStyle: { color: p => items[p.dataIndex].type === '月订阅' ? C.monthly : C.api },
+      label: { show: true, position: 'top', color: C.text, fontSize: 11, fontWeight: 700, formatter: p => items[p.dataIndex].tpu + 'M' },
+      data: items.map(i => i.tpu),
+    }],
+    graphic: [{ type: 'text', left: 0, top: 0, silent: true, z: 100, style: { text: '* 月订阅按整池额度÷月费估算（多模型共享，非单一模型精确值）· 越高越划算', fill: C.text, fontSize: 10 } }],
+  });
+  window.addEventListener('resize', () => chart.resize());
+}
+
+function renderCompareCards(filtered) {
+  const cardsView = document.getElementById('plansCardsView');
+  if (!cardsView) return;
     cardsView.innerHTML = filtered.map(p => {
       const price = formatPrice(p.monthlyPrice, p.currency || '¥');
       const measured = p.measuredMonthlyToken ? p.measuredMonthlyToken + 'M' : '—';
@@ -869,16 +1136,15 @@ function renderCompareTable() {
       return '<div class="plan-card-item">' +
         '<div class="plan-card-header"><div><div class="plan-card-vendor">' + escapeHtml(p.vendor) + '</div><div class="plan-card-plan">' + escapeHtml(p.plan) + ' · ' + escapeHtml(p.type) + '</div></div><div class="plan-card-price">' + price + '</div></div>' +
         renderStars(p.rating) +
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2) var(--space-4);font-size:12px;padding:var(--space-2) 0;border-top:1px solid var(--border-subtle);margin-top:var(--space-2);">' +
-          '<div><span style="color:var(--text-muted);font-size:10px;">月Token</span><br><b>' + measured + '</b></div>' +
-          '<div><span style="color:var(--text-muted);font-size:10px;">每元Token</span><br><b>' + tpu + ' M</b></div>' +
-          '<div><span style="color:var(--text-muted);font-size:10px;">模型</span><br>' + escapeHtml(models) + '</div>' +
-          '<div><span style="color:var(--text-muted);font-size:10px;">标签</span><br>' + renderTagsInline(p.tags) + '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3) var(--sp-5);font-size:12px;padding:var(--sp-3) 0;border-top:1px solid var(--border-subtle);margin-top:var(--sp-3);">' +
+          '<div><span style="color:var(--text-helper);font-size:10px;">月Token</span><br><b>' + measured + '</b></div>' +
+          '<div><span style="color:var(--text-helper);font-size:10px;">每元Token</span><br><b>' + tpu + ' M</b></div>' +
+          '<div><span style="color:var(--text-helper);font-size:10px;">模型</span><br>' + escapeHtml(models) + '</div>' +
+          '<div><span style="color:var(--text-helper);font-size:10px;">标签</span><br>' + renderTagsInline(p.tags) + '</div>' +
         '</div>' +
-        '<div style="margin-top:var(--space-3);text-align:right;"><a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">优惠购买 →</a></div>' +
+        '<div style="margin-top:var(--sp-4);text-align:right;"><a href="' + (p.action || '#') + '" target="_blank" rel="nofollow sponsored" class="btn btn-primary btn-sm">去购买 →</a></div>' +
       '</div>';
     }).join('');
-  }
 }
 
 function renderChart() {
@@ -888,19 +1154,104 @@ function renderChart() {
   const existing = echarts.getInstanceByDom(dom);
   if (existing) existing.dispose();
 
-  const items = plans.filter(p => p.status === 'active' && typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number');
+  const mode = compareState.columnMode;
+  const isApi = mode === 'api';
+  const isModel = mode === 'model';
+
+  // 更新标题
+  const titleEl = document.getElementById('chartTitle');
+  const subEl = document.getElementById('chartSubtitle');
+  dom.style.height = '';
+  if (titleEl) titleEl.textContent = isModel ? '模型覆盖度 vs 最便宜月订阅价' : (isApi ? '输入价 vs 输出价' : '月费 vs 月Token额度');
+  if (subEl) subEl.textContent = isModel ? '越靠右下越优（覆盖广 + 便宜）' : (isApi ? '越靠左下越便宜（¥/百万token）' : '越靠左下越便宜（高性价比区）');
+
+  // 瑞士风配色
+  const C = {
+    text: '#525252', grid: '#e0e0e0', accent: '#002fa7', accentSoft: 'rgba(0,47,167,0.1)',
+    tooltipBg: '#0a0a0a', tooltipText: '#fafaf8', tooltipBorder: '#737373',
+    cheap: 'rgba(0,47,167,0.08)', expensive: 'rgba(115,115,115,0.05)',
+  };
+
+  if (isModel) {
+    // 按模型散点图：X=支持平台数, Y=最便宜月订阅价
+    const modelMap = {};
+    plans.filter(p => p.status !== 'deprecated').forEach(p => (p.models||[]).forEach(m => {
+      if (!modelMap[m]) modelMap[m] = [];
+      modelMap[m].push(p);
+    }));
+    const items = Object.entries(modelMap).map(([m, ps]) => {
+      const platforms = [...new Set(ps.map(p => p.vendor))];
+      const monthly = ps.filter(p => p.type !== 'API 按量' && typeof p.monthlyPrice === 'number' && p.status !== 'sold_out');
+      const cheap = monthly.sort((a,b) => a.monthlyPrice - b.monthlyPrice)[0];
+      return cheap ? { model: m, platformCount: platforms.length, price: cheap.monthlyPrice, vendor: cheap.vendor, plan: cheap.plan } : null;
+    }).filter(Boolean);
+    if (!items.length) return;
+    const chart = echarts.init(dom);
+    window._chart = chart;
+    const allP = items.map(i => i.price);
+    const minP = Math.min(...allP), maxP = Math.max(...allP);
+    chart.setOption({
+      animationDuration: 400,
+      grid: { left: 70, right: 100, top: 40, bottom: 50 },
+      tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
+        formatter: p => { const d = p.data; return '<b>' + d.model + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">支持 ' + d.platformCount + ' 平台 · 最便宜 ¥' + d.price + '/月</div><div style="font-size:11px;color:#d4d4d2;">' + d.vendor + ' ' + d.plan + '</div>'; } },
+      xAxis: { type: 'value', name: '支持平台数', nameTextStyle: { color: C.text, fontSize: 11 }, min: 0.5, max: 3.5, axisLabel: { color: C.text, formatter: v => v + ' 家' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
+      yAxis: { type: 'log', name: '最便宜月订阅 (¥)', nameTextStyle: { color: C.text, fontSize: 11 }, min: minP * 0.5, max: maxP * 2, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
+      series: [{
+        type: 'scatter', symbolSize: 16, color: C.accent,
+        label: { show: true, position: 'right', distance: 8, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.model, labelLayout: { hideOverlap: true } },
+        itemStyle: { color: C.accent, borderColor: '#fff', borderWidth: 1.5 },
+        data: items.map(i => ({ value: [i.platformCount, i.price], model: i.model, platformCount: i.platformCount, price: i.price, vendor: i.vendor, plan: i.plan })),
+        emphasis: { scale: 1.2 },
+      }],
+      graphic: [
+        { type: 'text', right: 40, bottom: 20, silent: true, style: { text: '最优：覆盖广 + 便宜', fill: C.accent, fontSize: 11, fontWeight: 700 } }
+      ],
+    });
+    window.addEventListener('resize', () => chart.resize());
+    return;
+  }
+
+  if (isApi) {
+    // API 按量图：X=输入价, Y=输出价
+    const items = plans.filter(p => p.status === 'active' && p.type === 'API 按量' && typeof p.inputPrice === 'number' && typeof p.outputPrice === 'number');
+    if (!items.length) return;
+    const chart = echarts.init(dom);
+    window._chart = chart;
+    const vendors = [...new Set(items.map(p => p.vendor))];
+    const series = vendors.map(v => {
+      const data = items.filter(p => p.vendor === v).map(p => ({
+        value: [p.inputPrice, p.outputPrice],
+        plan: p.plan, vendor: p.vendor, input: p.inputPrice, output: p.outputPrice, cache: p.cachePrice,
+      }));
+      return { name: v, type: 'scatter', color: vendorColor(v), symbolSize: 14,
+        label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.plan, labelLayout: { hideOverlap: true } },
+        itemStyle: { color: vendorColor(v), borderColor: '#fff', borderWidth: 1.5 },
+        data };
+    });
+    const allX = items.map(p => p.inputPrice), allY = items.map(p => p.outputPrice);
+    chart.setOption({
+      animationDuration: 400,
+      grid: { left: 60, right: 40, top: 40, bottom: 50 },
+      tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
+        formatter: p => { const d = p.data; return '<div style="min-width:160px"><b>' + d.vendor + ' ' + d.plan + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">输入: <b>¥' + d.input + '/M</b> | 输出: <b>¥' + d.output + '/M</b></div><div style="font-size:12px;color:#d4d4d2;">缓存命中: <b>¥' + d.cache + '/M</b></div></div>'; } },
+      xAxis: { type: 'log', name: '输入价 (¥/M)', nameTextStyle: { color: C.text, fontSize: 11 }, min: 0.5, max: 12, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
+      yAxis: { type: 'log', name: '输出价 (¥/M)', nameTextStyle: { color: C.text, fontSize: 11 }, min: 1, max: 40, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
+      series,
+    });
+    window.addEventListener('resize', () => chart.resize());
+    return;
+  }
+
+  // 月订阅图（默认 + all 模式）
+  const items = plans.filter(p => p.status === 'active' && typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0);
   if (!items.length) return;
   const chart = echarts.init(dom);
   window._chart = chart;
-
   const vendorsInData = [...new Set(items.map(p => p.vendor))];
   const allP = items.map(p => p.monthlyPrice), allT = items.map(p => p.measuredMonthlyToken);
   const minP = Math.min(...allP), maxP = Math.max(...allP);
   const minT = Math.min(...allT), maxT = Math.max(...allT);
-  const sP = [...allP].sort((a, b) => a - b), sT = [...allT].sort((a, b) => a - b);
-  const medP = sP[Math.floor(sP.length / 2)], medT = sT[Math.floor(sT.length / 2)];
-  const tpuVals = items.map(p => p.measuredMonthlyToken / p.monthlyPrice).sort((a, b) => a - b);
-  const medTPU = tpuVals[Math.floor(tpuVals.length / 2)];
 
   const series = vendorsInData.map(v => {
     const data = items.filter(p => p.vendor === v).sort((a, b) => a.monthlyPrice - b.monthlyPrice).map(p => ({
@@ -911,38 +1262,39 @@ function renderChart() {
     return {
       name: v, type: 'line', color: vendorColor(v), symbol: 'circle', symbolSize: 14, showSymbol: true,
       lineStyle: { width: data.length > 1 ? 1.5 : 0, opacity: data.length > 1 ? 0.3 : 0 },
-      label: { show: true, position: 'right', distance: 6, color: '#94a3b8', fontSize: 10, fontWeight: 600, formatter: p => p.data.plan || '', labelLayout: { hideOverlap: true } },
-      itemStyle: { color: vendorColor(v), borderColor: 'rgba(255,255,255,0.95)', borderWidth: 1.5, shadowBlur: 12, shadowColor: 'rgba(0,0,0,0.12)' },
+      label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.plan || '', labelLayout: { hideOverlap: true } },
+      itemStyle: { color: vendorColor(v), borderColor: '#fff', borderWidth: 1.5 },
       data, emphasis: { scale: 1.15 }
     };
   });
 
+  const medP = [...allP].sort((a, b) => a - b)[Math.floor(allP.length / 2)];
+  const medT = [...allT].sort((a, b) => a - b)[Math.floor(allT.length / 2)];
+
   const helper = {
-    type: 'scatter', silent: true, animation: false, data: [], symbolSize: 0, tooltip: { show: false }, itemStyle: { opacity: 0 },
+    type: 'scatter', silent: true, animation: false, data: [], symbolSize: 0,
     markArea: { silent: true, label: { show: false }, data: [
-      [{ itemStyle: { color: 'rgba(16,185,129,0.12)' }, xAxis: minP * 0.7, yAxis: minP * 0.7 * medTPU }, { xAxis: medP, yAxis: maxT * 1.2 }],
-      [{ itemStyle: { color: 'rgba(16,185,129,0.06)' }, xAxis: medP, yAxis: medP * medTPU }, { xAxis: maxP * 1.3, yAxis: maxT * 1.2 }],
-      [{ itemStyle: { color: 'rgba(148,163,184,0.04)' }, xAxis: minP * 0.7, yAxis: minT * 0.4 }, { xAxis: medP, yAxis: medP * medTPU }],
-      [{ itemStyle: { color: 'rgba(239,68,68,0.08)' }, xAxis: medP, yAxis: minT * 0.4 }, { xAxis: maxP * 1.3, yAxis: medP * medTPU }]
+      [{ itemStyle: { color: C.cheap }, xAxis: minP * 0.7, yAxis: minT * 0.5 }, { xAxis: medP, yAxis: maxT * 1.2 }],
+      [{ itemStyle: { color: C.expensive }, xAxis: medP, yAxis: minT * 0.5 }, { xAxis: maxP * 1.3, yAxis: medT }]
     ]},
     markLine: { silent: true, symbol: 'none', label: { show: false }, data: [
-      { xAxis: medP, lineStyle: { color: 'rgba(148,163,184,0.25)', type: 'dashed' } },
-      { yAxis: medT, lineStyle: { color: 'rgba(148,163,184,0.25)', type: 'dashed' } }
+      { xAxis: medP, lineStyle: { color: 'rgba(115,115,115,0.25)', type: 'dashed' } },
+      { yAxis: medT, lineStyle: { color: 'rgba(115,115,115,0.25)', type: 'dashed' } }
     ]}
   };
 
   chart.setOption({
     animationDuration: 400,
-    grid: { left: 90, right: 40, top: 60, bottom: 60 },
-    tooltip: { trigger: 'item', backgroundColor: 'rgba(15,23,42,0.96)', borderColor: 'rgba(148,163,184,0.2)', textStyle: { color: '#f1f5f9', fontSize: 13 },
-      formatter: p => { const d = p.data; return '<div style="min-width:180px"><div style="font-size:14px;font-weight:800;margin-bottom:4px;">' + d.vendor + ' ' + d.plan + '</div><div style="font-size:12px;line-height:1.7;color:#cbd5e1;"><div>类型: ' + d.type + '</div><div>月费: <b>' + d.price + '</b> | 月Token: <b>' + d.token + 'M</b></div><div>每元Token: <b>' + d.tpu + ' M</b></div></div></div>'; } },
-    legend: { top: 0, left: 0, itemWidth: 10, itemHeight: 10, icon: 'circle', textStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 600 } },
+    grid: { left: 70, right: 40, top: 40, bottom: 50 },
+    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
+      formatter: p => { const d = p.data; return '<div style="min-width:160px"><b>' + d.vendor + ' ' + d.plan + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">月费: <b>¥' + d.price + '</b> | 月Token: <b>' + d.token + 'M</b></div><div style="font-size:12px;color:#d4d4d2;">每元Token: <b>' + d.tpu + ' M</b></div></div>'; } },
+    legend: { top: 0, left: 0, itemWidth: 10, itemHeight: 10, icon: 'circle', textStyle: { color: C.text, fontSize: 11, fontWeight: 600 } },
     graphic: [
-      { type: 'text', left: 100, top: 40, silent: true, style: { text: '高性价比', fill: '#10b981', fontSize: 12, fontWeight: 700 } },
-      { type: 'text', right: 40, bottom: 24, silent: true, style: { text: '低性价比', fill: '#ef4444', fontSize: 11, fontWeight: 700 } }
+      { type: 'text', left: 80, top: 32, silent: true, style: { text: '高性价比', fill: C.accent, fontSize: 11, fontWeight: 700 } },
+      { type: 'text', right: 40, bottom: 20, silent: true, style: { text: '低性价比', fill: C.text, fontSize: 11, fontWeight: 700 } }
     ],
-    xAxis: { type: 'log', logBase: 2, min: minP * 0.75, max: maxP * 1.12, name: '月费', nameTextStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 700 }, axisLabel: { color: '#94a3b8', fontSize: 11, fontWeight: 700, formatter: v => '¥' + (Number.isInteger(v) ? v : v.toFixed(0)) }, splitLine: { show: true, lineStyle: { color: 'rgba(148,163,184,0.1)', type: 'dashed' } } },
-    yAxis: { type: 'log', logBase: 10, min: minT * 0.65, max: maxT * 1.18, name: '月Token上限', nameTextStyle: { color: '#94a3b8', fontSize: 11, fontWeight: 700 }, axisLabel: { color: '#94a3b8', formatter: v => v >= 1000 ? (v / 1000).toFixed(1) + 'B' : v + 'M' }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.1)', type: 'dashed' } } },
+    xAxis: { type: 'log', logBase: 2, min: minP * 0.75, max: maxP * 1.12, name: '月费 (¥)', nameTextStyle: { color: C.text, fontSize: 11, fontWeight: 700 }, axisLabel: { color: C.text, fontSize: 11, fontWeight: 700, formatter: v => '¥' + (Number.isInteger(v) ? v : v.toFixed(0)) }, splitLine: { show: true, lineStyle: { color: C.grid, type: 'dashed' } } },
+    yAxis: { type: 'log', logBase: 10, min: minT * 0.65, max: maxT * 1.18, name: '月Token额度', nameTextStyle: { color: C.text, fontSize: 11, fontWeight: 700 }, axisLabel: { color: C.text, formatter: v => v >= 1000 ? (v / 1000).toFixed(1) + 'B' : v + 'M' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
     series: [helper].concat(series)
   });
   window.addEventListener('resize', () => chart.resize());
@@ -993,16 +1345,20 @@ function renderFooter() {
 }
 
 // ============================================================
-// Init — 页面加载时初始化所有 Tab
+// Init — 单页模式，只渲染对比表
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('navBrand').textContent = site.name || 'CodingPlan 省钱攻略';
-  renderRecommend();
+  const taglineEl = document.getElementById('navTagline');
+  if (taglineEl) taglineEl.textContent = site.tagline || '';
   renderCompare();
-  renderCommunity();
   renderFooter();
-  switchTab(location.hash || '#recommend');
+  // 单页模式，对比表是首屏，直接渲染散点图
+  setTimeout(() => {
+    if (typeof echarts !== 'undefined') renderChart();
+  }, 100);
 });
+
 </script>
 </body>
 </html>
