@@ -222,7 +222,7 @@
   "updatedAt": "2026-07-20",            // ISO 日期
   // —— 以下为画像层字段（kb_migrate 透传到 aikb/database/services.json）——
   "category": "model-maker",            // 枚举: model-maker | cloud-maas | aggregator | vertical-cloud（对齐 vendors.json）
-  "billingCore": "token",               // 枚举: token | request（核心计费维度）
+  "billingCore": "token",               // 枚举: token | request | credit（token=按Token计量, request=按次, credit=积分/燃料值制）
   "migration": "⚠️ 连续涨价 200%+",     // 可选，自由文本，迁移/计费变动提示
   "notes": "..."                        // 可选，自由文本，数据质量/估算说明（如 measuredMonthlyToken 为估算值）
 }
@@ -235,7 +235,7 @@
 | `Coding Plan` | 月订阅，专用于 AI 编程 | 固定月费 | 智谱/腾讯云/Claude/GitHub/Kimi/字节 | Claude Code / Cursor / Codex 用户 |
 | `Token Plan` | 月订阅，给 token 额度池，通用场景 | 固定月费 | MiniMax/阿里百炼/小米·MiMo/华为云 | 通用 AI 调用，不限编程 |
 | `API 按量` | 无月费，按 token 消耗付费 | 按量后付费 | DeepSeek/OpenRouter/硅基流动 | 弹性用量，测试，不确定用量 |
-| `Agent Plan` | 月订阅，专用于 AI Agent 工作流 | 固定月费 | _暂未使用（字节方舟预留）_ | 构建 AI Agent，MCP/工具调用 |
+| `Agent Plan` | 月订阅，专用于 AI Agent 工作流 | 固定月费 | 字节方舟（Agent Plan Lite/Large） | 构建 AI Agent，MCP/工具调用 |
 
 **分类决策树：**
 1. 有月费吗？→ 无 → `API 按量`
@@ -321,6 +321,7 @@
 | 值 | 含义 |
 |----|------|
 | `manual` | 用户直接告知的变动 |
+| `manual-snapshot-{date}` | 基于官网快照人工核对（如 `manual-snapshot-20260801`，快照存 `reference/pricing-snapshots/`） |
 | `signal-dailyhot` | DailyHotApi 科技源关键词命中 |
 | `signal-rsshub` | RSSHub feed 命中 |
 | `extracted-{vendorId}` | sources/ parser 自动提取发现（如 `extracted-deepseek`） |

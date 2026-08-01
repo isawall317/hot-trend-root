@@ -26,6 +26,7 @@ aikb/database/.last-run/
 reference/codingplan/
 tools/DailyHotApi/
 tools/RSSHub/
+# 注：reference/pricing-snapshots/ 不忽略，存厂商官网快照作为数据准确性证据
 tools/collector/tools/
 
 # 构建产物：只跟踪 latest 副本（*-saver.html 等无时间戳文件），忽略时间戳历史副本

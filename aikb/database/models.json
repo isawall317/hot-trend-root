@@ -1,169 +1,8 @@
 [
   {
-    "id": "glm-4",
+    "id": "glm-5-2",
     "vendorId": "zhipu",
-    "name": "GLM-4",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-0520",
-    "vendorId": "zhipu",
-    "name": "GLM-4-0520",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-9b",
-    "vendorId": "zhipu",
-    "name": "GLM-4-9B",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-air",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Air",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-air-250414",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Air-250414",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-airx",
-    "vendorId": "zhipu",
-    "name": "GLM-4-AirX",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-flash",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Flash",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-flash-250414",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Flash-250414",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-plus",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Plus",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-voice",
-    "vendorId": "zhipu",
-    "name": "GLM-4-Voice",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-1v-thinking-flash",
-    "vendorId": "zhipu",
-    "name": "GLM-4.1V-Thinking-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-5",
-    "vendorId": "zhipu",
-    "name": "GLM-4.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-5-air",
-    "vendorId": "zhipu",
-    "name": "GLM-4.5-Air",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-5v",
-    "vendorId": "zhipu",
-    "name": "GLM-4.5V",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-6",
-    "vendorId": "zhipu",
-    "name": "GLM-4.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-6v",
-    "vendorId": "zhipu",
-    "name": "GLM-4.6V",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-6v-flashx",
-    "vendorId": "zhipu",
-    "name": "GLM-4.6V-FlashX",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-7",
-    "vendorId": "zhipu",
-    "name": "GLM-4.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4-7-flashx",
-    "vendorId": "zhipu",
-    "name": "GLM-4.7-FlashX",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4v",
-    "vendorId": "zhipu",
-    "name": "GLM-4V",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-4v-flash",
-    "vendorId": "zhipu",
-    "name": "GLM-4V-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-4v-plus",
-    "vendorId": "zhipu",
-    "name": "GLM-4V-Plus",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-4v-plus-0111",
-    "vendorId": "zhipu",
-    "name": "GLM-4V-Plus-0111",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "zhipu",
-    "name": "GLM-5",
+    "name": "GLM-5.2",
     "type": "text",
     "status": "active"
   },
@@ -175,93 +14,30 @@
     "status": "active"
   },
   {
-    "id": "glm-5-1",
+    "id": "glm-4-7",
     "vendorId": "zhipu",
-    "name": "GLM-5.1",
+    "name": "GLM-4.7",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "glm-5-2",
-    "vendorId": "zhipu",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5v-turbo",
-    "vendorId": "zhipu",
-    "name": "GLM-5V-Turbo",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-asr",
-    "vendorId": "zhipu",
-    "name": "GLM-ASR",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "glm-asr-2512",
-    "vendorId": "zhipu",
-    "name": "GLM-ASR-2512",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "glm-realtime-air",
-    "vendorId": "zhipu",
-    "name": "GLM-Realtime-Air",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-realtime-flash",
-    "vendorId": "zhipu",
-    "name": "GLM-Realtime-Flash",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-tts",
-    "vendorId": "zhipu",
-    "name": "GLM-TTS",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "glm-tts-clone",
-    "vendorId": "zhipu",
-    "name": "GLM-TTS-Clone",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m3",
-    "vendorId": "minimax",
-    "name": "MiniMax-M3",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-7",
-    "vendorId": "minimax",
-    "name": "MiniMax-M2.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "minimax",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
+    "id": "doubao-seed-2-0-code",
     "vendorId": "bytedance",
-    "name": "GLM-5.1",
+    "name": "Doubao-Seed-2.0-Code",
+    "type": "code",
+    "status": "active"
+  },
+  {
+    "id": "doubao-seed-2-0-pro",
+    "vendorId": "bytedance",
+    "name": "Doubao-Seed-2.0-Pro",
+    "type": "text",
+    "status": "active"
+  },
+  {
+    "id": "doubao-seed-2-0-lite",
+    "vendorId": "bytedance",
+    "name": "Doubao-Seed-2.0-Lite",
     "type": "text",
     "status": "active"
   },
@@ -273,17 +49,10 @@
     "status": "active"
   },
   {
-    "id": "minimax-m3",
+    "id": "kimi-k2-7-code",
     "vendorId": "bytedance",
-    "name": "MiniMax-M3",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k3",
-    "vendorId": "bytedance",
-    "name": "Kimi-K3",
-    "type": "text",
+    "name": "Kimi-K2.7-Code",
+    "type": "code",
     "status": "active"
   },
   {
@@ -294,107 +63,100 @@
     "status": "active"
   },
   {
-    "id": "doubao-seed-2-0",
+    "id": "deepseek-v4-flash",
     "vendorId": "bytedance",
-    "name": "Doubao-Seed-2.0",
+    "name": "DeepSeek-V4-Flash",
+    "type": "vision",
+    "status": "active"
+  },
+  {
+    "id": "minimax-m3",
+    "vendorId": "bytedance",
+    "name": "MiniMax-M3",
+    "type": "text",
+    "status": "active"
+  },
+  {
+    "id": "doubao-seed-code",
+    "vendorId": "bytedance",
+    "name": "Doubao-Seed-Code",
+    "type": "code",
+    "status": "active"
+  },
+  {
+    "id": "minimax-m2-7",
+    "vendorId": "bytedance",
+    "name": "MiniMax-M2.7",
     "type": "text",
     "status": "active"
   },
   {
     "id": "kimi-k2-6",
-    "vendorId": "kimi",
+    "vendorId": "bytedance",
     "name": "Kimi-K2.6",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "kimi-k2-7-code",
-    "vendorId": "kimi",
-    "name": "Kimi-K2.7-Code",
-    "type": "code",
+    "id": "deepseek-v3-2",
+    "vendorId": "bytedance",
+    "name": "DeepSeek-V3.2",
+    "type": "vision",
     "status": "active"
   },
   {
-    "id": "kimi-k3",
-    "vendorId": "kimi",
-    "name": "Kimi-K3",
+    "id": "doubao-seed-2-1-turbo",
+    "vendorId": "bytedance",
+    "name": "Doubao-Seed-2.1-turbo",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "moonshot-v1-128k",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-128k",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "moonshot-v1-128k-vision-preview",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-128k-vision-preview",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "moonshot-v1-32k",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-32k",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "moonshot-v1-32k-vision-preview",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-32k-vision-preview",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "moonshot-v1-8k",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-8k",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "moonshot-v1-8k-vision-preview",
-    "vendorId": "kimi",
-    "name": "moonshot-v1-8k-vision-preview",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-7-plus",
-    "vendorId": "bailian",
-    "name": "Qwen-3.7-Plus",
+    "id": "doubao-seed-2-0-mini",
+    "vendorId": "bytedance",
+    "name": "Doubao-Seed-2.0-Mini",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "qwen-3-6-plus",
-    "vendorId": "bailian",
-    "name": "Qwen-3.6-Plus",
+    "id": "deepseek-v4-flash",
+    "vendorId": "tencent",
+    "name": "DeepSeek-V4-Flash",
+    "type": "vision",
+    "status": "active"
+  },
+  {
+    "id": "deepseek-v4-pro",
+    "vendorId": "tencent",
+    "name": "DeepSeek-V4-Pro",
+    "type": "vision",
+    "status": "active"
+  },
+  {
+    "id": "minimax-m2-7",
+    "vendorId": "tencent",
+    "name": "MiniMax-M2.7",
     "type": "text",
     "status": "active"
   },
   {
     "id": "glm-5",
-    "vendorId": "bailian",
+    "vendorId": "tencent",
     "name": "GLM-5",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "kimi-k2-5",
-    "vendorId": "bailian",
-    "name": "Kimi-K2.5",
+    "id": "glm-5-1",
+    "vendorId": "tencent",
+    "name": "GLM-5.1",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "minimax-m2-5",
-    "vendorId": "bailian",
-    "name": "MiniMax-M2.5",
+    "id": "kimi-k2-5",
+    "vendorId": "tencent",
+    "name": "Kimi-K2.5",
     "type": "text",
     "status": "active"
   },
@@ -420,843 +182,87 @@
     "status": "active"
   },
   {
-    "id": "glm-5-1",
-    "vendorId": "tencent",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-5",
-    "vendorId": "tencent",
-    "name": "Kimi-K2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-7",
-    "vendorId": "tencent",
-    "name": "MiniMax-M2.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-sonnet-4-6",
-    "vendorId": "claude",
-    "name": "Claude Sonnet 4.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-opus-4-7",
-    "vendorId": "claude",
-    "name": "Claude Opus 4.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-opus-4-6",
-    "vendorId": "claude",
-    "name": "Claude Opus 4.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-haiku-4-5",
-    "vendorId": "claude",
-    "name": "Claude Haiku 4.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-6",
-    "vendorId": "codex",
-    "name": "GPT-5.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-5",
-    "vendorId": "codex",
-    "name": "GPT-5.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-4",
-    "vendorId": "codex",
-    "name": "GPT-5.4",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-3-codex",
-    "vendorId": "codex",
-    "name": "GPT-5.3-Codex",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-2",
-    "vendorId": "codex",
-    "name": "GPT-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-2-codex",
-    "vendorId": "github",
-    "name": "GPT-5.2-Codex",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "gpt-4-1",
-    "vendorId": "github",
-    "name": "GPT-4.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-mini",
-    "vendorId": "github",
-    "name": "GPT-5-mini",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gemini-3-1-pro",
-    "vendorId": "github",
-    "name": "Gemini 3.1 Pro",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-haiku-4-5",
-    "vendorId": "github",
-    "name": "Claude Haiku 4.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-3-codex",
-    "vendorId": "github",
-    "name": "GPT-5.3-Codex",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-4",
-    "vendorId": "github",
-    "name": "GPT-5.4",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "claude-sonnet-4-6",
-    "vendorId": "github",
-    "name": "Claude Sonnet 4.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "opus",
-    "vendorId": "github",
-    "name": "Opus",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "gpt-5-1",
-    "vendorId": "github",
-    "name": "GPT-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "fable",
-    "vendorId": "claude",
-    "name": "Fable",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "opus",
-    "vendorId": "claude",
-    "name": "Opus",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "sonnet",
-    "vendorId": "claude",
-    "name": "Sonnet",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "haiku",
-    "vendorId": "claude",
-    "name": "Haiku",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5-pro",
-    "vendorId": "mimo",
-    "name": "MiMo-V2.5-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5",
-    "vendorId": "mimo",
-    "name": "MiMo-V2.5",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5-asr",
-    "vendorId": "mimo",
-    "name": "MiMo-V2.5-ASR",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5-tts",
-    "vendorId": "mimo",
-    "name": "MiMo-V2.5-TTS",
-    "type": "audio",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4",
-    "vendorId": "tencent",
-    "name": "DeepSeek-V4",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "tencent",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4",
-    "vendorId": "siliconflow",
-    "name": "DeepSeek-V4",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "siliconflow",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k3",
-    "vendorId": "siliconflow",
-    "name": "Kimi-K3",
-    "type": "text",
-    "status": "active"
-  },
-  {
     "id": "minimax-m3",
-    "vendorId": "siliconflow",
-    "name": "MiniMax-M3",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-8",
-    "vendorId": "siliconflow",
-    "name": "Qwen-3.8",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "ernie-4-5",
-    "vendorId": "baidu",
-    "name": "ERNIE-4.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "ernie-speed",
-    "vendorId": "baidu",
-    "name": "ERNIE-Speed",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4",
-    "vendorId": "baidu",
-    "name": "DeepSeek-V4",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "baidu",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "zhipu-intl",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "zhipu-intl",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-turbo",
-    "vendorId": "zhipu-intl",
-    "name": "GLM-5-Turbo",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "zhipu-intl",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "uyun",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "uyun",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-6",
-    "vendorId": "uyun",
-    "name": "Kimi-K2.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-7",
-    "vendorId": "uyun",
-    "name": "MiniMax-M2.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-flash",
-    "vendorId": "uyun",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v3-2",
-    "vendorId": "uyun",
-    "name": "DeepSeek-V3.2",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "opencode",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "opencode",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "opencode",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-7-code",
-    "vendorId": "opencode",
-    "name": "Kimi-K2.7-Code",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k3",
-    "vendorId": "opencode",
-    "name": "Kimi-K3",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-6",
-    "vendorId": "opencode",
-    "name": "Kimi-K2.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5-pro",
-    "vendorId": "opencode",
-    "name": "MiMo-V2.5-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "mimo-v2-5",
-    "vendorId": "opencode",
-    "name": "MiMo-V2.5",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-7-max",
-    "vendorId": "opencode",
-    "name": "Qwen-3.7-Max",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-7-plus",
-    "vendorId": "opencode",
-    "name": "Qwen-3.7-Plus",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-6-plus",
-    "vendorId": "opencode",
-    "name": "Qwen-3.6-Plus",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m3",
-    "vendorId": "opencode",
+    "vendorId": "minimax",
     "name": "MiniMax-M3",
     "type": "text",
     "status": "active"
   },
   {
     "id": "minimax-m2-7",
-    "vendorId": "opencode",
+    "vendorId": "minimax",
     "name": "MiniMax-M2.7",
     "type": "text",
     "status": "active"
   },
   {
     "id": "minimax-m2-5",
-    "vendorId": "opencode",
+    "vendorId": "minimax",
     "name": "MiniMax-M2.5",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "deepseek-v4-pro",
-    "vendorId": "opencode",
-    "name": "DeepSeek-V4-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-flash",
-    "vendorId": "opencode",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "xunfei",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-6",
-    "vendorId": "xunfei",
-    "name": "Kimi-K2.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen3-6-35b-a3b",
-    "vendorId": "xunfei",
-    "name": "Qwen3.6-35B-A3B",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "xunfei",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-5",
-    "vendorId": "xunfei",
-    "name": "Kimi-K2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v3-2",
-    "vendorId": "xunfei",
-    "name": "DeepSeek-V3.2",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-pro",
-    "vendorId": "xunfei",
-    "name": "DeepSeek-V4-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-flash",
-    "vendorId": "xunfei",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-2",
-    "vendorId": "xunfei",
-    "name": "GLM-5.2",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "xunfei",
-    "name": "GLM-5",
+    "id": "kimi-k3",
+    "vendorId": "kimi",
+    "name": "Kimi-K3",
     "type": "text",
     "status": "active"
   },
   {
     "id": "kimi-k2-7-code",
-    "vendorId": "xunfei",
+    "vendorId": "kimi",
     "name": "Kimi-K2.7-Code",
     "type": "code",
     "status": "active"
   },
   {
-    "id": "glm-5-2",
-    "vendorId": "taotoken",
-    "name": "GLM-5.2",
+    "id": "qwen3-7-plus",
+    "vendorId": "bailian",
+    "name": "qwen3.7-plus",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "deepseek-v4-flash",
-    "vendorId": "unicom",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "unicom",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "unicom",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "unicom",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-5-plus",
-    "vendorId": "unicom",
-    "name": "Qwen-3.5-Plus",
+    "id": "qwen3-6-plus",
+    "vendorId": "bailian",
+    "name": "qwen3.6-plus",
     "type": "text",
     "status": "active"
   },
   {
     "id": "kimi-k2-5",
-    "vendorId": "unicom",
-    "name": "Kimi-K2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-pro",
-    "vendorId": "unicom",
-    "name": "DeepSeek-V4-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-5",
-    "vendorId": "jd",
-    "name": "Kimi-K2.5",
+    "vendorId": "bailian",
+    "name": "kimi-k2.5",
     "type": "text",
     "status": "active"
   },
   {
     "id": "glm-5",
-    "vendorId": "jd",
-    "name": "GLM-5",
+    "vendorId": "bailian",
+    "name": "glm-5",
     "type": "text",
     "status": "active"
   },
   {
     "id": "minimax-m2-5",
-    "vendorId": "jd",
+    "vendorId": "bailian",
     "name": "MiniMax-M2.5",
     "type": "text",
     "status": "active"
   },
   {
-    "id": "deepseek-v3-2",
-    "vendorId": "jd",
-    "name": "DeepSeek-V3.2",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-coder",
-    "vendorId": "jd",
-    "name": "Qwen-3-Coder",
+    "id": "qwen3-coder-next",
+    "vendorId": "bailian",
+    "name": "qwen3-coder-next",
     "type": "code",
     "status": "active"
   },
   {
-    "id": "step-3-7-flash",
-    "vendorId": "stepfun",
-    "name": "step-3.7-flash",
+    "id": "glm-4-7",
+    "vendorId": "bailian",
+    "name": "glm-4.7",
     "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "step-3-5-flash-2603",
-    "vendorId": "stepfun",
-    "name": "step-3.5-flash-2603",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "step-3-5-flash",
-    "vendorId": "stepfun",
-    "name": "step-3.5-flash",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "step-router-v1",
-    "vendorId": "stepfun",
-    "name": "step-router-v1",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "ctyun",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-turbo",
-    "vendorId": "ctyun",
-    "name": "GLM-5-Turbo",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "ctyun",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "cmcc",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "scnet",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-235b-a22b",
-    "vendorId": "scnet",
-    "name": "Qwen-3-235B-A22B",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v3-2",
-    "vendorId": "infini",
-    "name": "DeepSeek-V3.2",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-5",
-    "vendorId": "infini",
-    "name": "Kimi-K2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-5",
-    "vendorId": "infini",
-    "name": "MiniMax-M2.5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-7",
-    "vendorId": "infini",
-    "name": "MiniMax-M2.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "infini",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "infini",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-6",
-    "vendorId": "ollama",
-    "name": "Kimi-K2.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "ollama",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-pro",
-    "vendorId": "ollama",
-    "name": "DeepSeek-V4-Pro",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-flash",
-    "vendorId": "ollama",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
-    "status": "active"
-  },
-  {
-    "id": "minimax-m2-7",
-    "vendorId": "ollama",
-    "name": "MiniMax-M2.7",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-coder",
-    "vendorId": "ollama",
-    "name": "Qwen-3-Coder",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "qwen-3-coder-next",
-    "vendorId": "ollama",
-    "name": "Qwen-3-Coder-next",
-    "type": "code",
-    "status": "active"
-  },
-  {
-    "id": "gemini-3-flash-preview",
-    "vendorId": "ollama",
-    "name": "Gemini-3-Flash-Preview",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "mistral-large-3",
-    "vendorId": "ollama",
-    "name": "Mistral-Large-3",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5-1",
-    "vendorId": "huawei",
-    "name": "GLM-5.1",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "glm-5",
-    "vendorId": "huawei",
-    "name": "GLM-5",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "kimi-k2-6",
-    "vendorId": "huawei",
-    "name": "Kimi-K2.6",
-    "type": "text",
-    "status": "active"
-  },
-  {
-    "id": "deepseek-v4-flash",
-    "vendorId": "huawei",
-    "name": "DeepSeek-V4-Flash",
-    "type": "vision",
     "status": "active"
   }
 ]

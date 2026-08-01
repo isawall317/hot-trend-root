@@ -8,24 +8,24 @@
     "country": "cn",
     "urls": {
       "home": "https://open.bigmodel.cn",
-      "pricing": "https://open.bigmodel.cn/pricing",
+      "pricing": "https://bigmodel.cn/glm-coding",
       "docs": "",
       "api": "",
       "console": ""
     },
-    "extractStrategy": "playwright",
-    "extractStatus": "ok",
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
     "massServices": [
       "coding-plan",
       "api-paygo"
     ],
     "affiliate": {
-      "url": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D",
-      "type": "referral",
+      "url": "",
+      "type": "none",
       "benefit": "新用户得 2000万 Tokens"
     },
-    "lastVerified": "2026-07-21",
-    "notes": "Playwright headless 渲染，提取 API 定价"
+    "lastVerified": "2026-08-01",
+    "notes": "7-30 套餐改版，积分制，旧版¥49/149/469已停"
   },
   {
     "id": "bytedance",
@@ -36,8 +36,8 @@
     "country": "cn",
     "urls": {
       "home": "https://www.volcengine.com/ark",
-      "pricing": "https://www.volcengine.com/ark",
-      "docs": "https://www.volcengine.com/docs/82379/1099320",
+      "pricing": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan",
+      "docs": "",
       "api": "",
       "console": ""
     },
@@ -53,8 +53,37 @@
       "type": "none",
       "benefit": ""
     },
-    "lastVerified": "2026-07-21",
-    "notes": "火山方舟检测到 bot 返回 404，无法自动提取"
+    "lastVerified": "2026-08-01",
+    "notes": "反爬+SPA，依赖人工快照"
+  },
+  {
+    "id": "tencent",
+    "name": "腾讯云",
+    "logo": "腾",
+    "color": "#eab308",
+    "category": "cloud-maas",
+    "country": "cn",
+    "urls": {
+      "home": "https://cloud.tencent.com/product/tokenhub",
+      "pricing": "https://cloud.tencent.com/product/tokenhub",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "coding-plan",
+      "token-plan",
+      "api-paygo"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": "云推荐奖励"
+    },
+    "lastVerified": "2026-08-01",
+    "notes": "Coding Plan已售罄，主推Token Plan 4档"
   },
   {
     "id": "deepseek",
@@ -65,13 +94,13 @@
     "country": "cn",
     "urls": {
       "home": "https://api-docs.deepseek.com",
-      "pricing": "https://api-docs.deepseek.com/quick_start/pricing",
-      "docs": "https://api-docs.deepseek.com/quick_start/pricing",
+      "pricing": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      "docs": "",
       "api": "",
       "console": ""
     },
-    "extractStrategy": "bs4",
-    "extractStatus": "ok",
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
     "massServices": [
       "api-paygo"
     ],
@@ -80,8 +109,36 @@
       "type": "none",
       "benefit": ""
     },
-    "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 API 定价"
+    "lastVerified": "2026-08-01",
+    "notes": "纯API按量，无月订阅套餐，即将峰谷定价"
+  },
+  {
+    "id": "minimax",
+    "name": "MiniMax",
+    "logo": "M",
+    "color": "#f97316",
+    "category": "model-maker",
+    "country": "cn",
+    "urls": {
+      "home": "https://platform.minimaxi.com",
+      "pricing": "https://platform.minimaxi.com/subscribe/token-plan",
+      "docs": "",
+      "api": "",
+      "console": ""
+    },
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
+    "massServices": [
+      "token-plan",
+      "api-paygo"
+    ],
+    "affiliate": {
+      "url": "",
+      "type": "none",
+      "benefit": "好友 9折 + 10% 返利"
+    },
+    "lastVerified": "2026-08-01",
+    "notes": "Token Plan用量翻倍，多模态全共享额度"
   },
   {
     "id": "kimi",
@@ -93,12 +150,12 @@
     "urls": {
       "home": "https://www.kimi.com",
       "pricing": "https://www.kimi.com/membership/pricing",
-      "docs": "https://platform.kimi.com/docs/pricing/chat",
+      "docs": "",
       "api": "",
       "console": ""
     },
-    "extractStrategy": "playwright",
-    "extractStatus": "ok",
+    "extractStrategy": "manual",
+    "extractStatus": "manual",
     "massServices": [
       "coding-plan",
       "api-paygo"
@@ -108,36 +165,8 @@
       "type": "none",
       "benefit": "注册推广，返佣待确认"
     },
-    "lastVerified": "2026-07-21",
-    "notes": "Playwright 渲染 docs 页 → 点击展开模型卡片 → 提取 API 价格"
-  },
-  {
-    "id": "minimax",
-    "name": "MiniMax",
-    "logo": "M",
-    "color": "#f97316",
-    "category": "model-maker",
-    "country": "cn",
-    "urls": {
-      "home": "https://platform.minimaxi.com",
-      "pricing": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-      "docs": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "bs4",
-    "extractStatus": "ok",
-    "massServices": [
-      "token-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "https://platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link",
-      "type": "referral",
-      "benefit": "好友 9折 + 10% 返利"
-    },
-    "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 Token Plan 表格"
+    "lastVerified": "2026-08-01",
+    "notes": "新会员体系即将上线，Kimi权益与Kimi Code将拆分"
   },
   {
     "id": "bailian",
@@ -148,7 +177,7 @@
     "country": "cn",
     "urls": {
       "home": "https://bailian.aliyun.com",
-      "pricing": "https://bailian.console.aliyun.com/cn-beijing?tab=doc#/doc/?type=model&url=3028856",
+      "pricing": "https://www.aliyun.com/benefit/scene/codingplan",
       "docs": "",
       "api": "",
       "console": ""
@@ -165,610 +194,7 @@
       "type": "none",
       "benefit": "阿里云推广返佣"
     },
-    "lastVerified": null,
-    "notes": "阿里云百炼需登录控制台，定价页不可公开访问"
-  },
-  {
-    "id": "tencent",
-    "name": "腾讯云",
-    "logo": "腾",
-    "color": "#eab308",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://cloud.tencent.com/product/tokenhub",
-      "pricing": "https://cloud.tencent.com/product/tokenhub?Is=home",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "bs4",
-    "extractStatus": "ok",
-    "massServices": [
-      "coding-plan",
-      "token-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": "云推荐奖励"
-    },
-    "lastVerified": "2026-07-21",
-    "notes": "httpx + BS4 解析 Coding Plan 文档"
-  },
-  {
-    "id": "claude",
-    "name": "Claude",
-    "logo": "Cl",
-    "color": "#ec4899",
-    "category": "model-maker",
-    "country": "us",
-    "urls": {
-      "home": "https://claude.com",
-      "pricing": "https://claude.com/pricing",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "playwright",
-    "extractStatus": "ok",
-    "massServices": [
-      "coding-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": null,
-    "notes": "Playwright 渲染 claude.com/pricing → 提取套餐价格"
-  },
-  {
-    "id": "codex",
-    "name": "Codex (ChatGPT)",
-    "logo": "GPT",
-    "color": "#A15CF6",
-    "category": "model-maker",
-    "country": "us",
-    "urls": {
-      "home": "https://openai.com",
-      "pricing": "https://openai.com/chatgpt/pricing/",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": null,
-    "notes": "OpenAI 页面被 Cloudflare 拦截，无法自动提取"
-  },
-  {
-    "id": "github",
-    "name": "GitHub",
-    "logo": "GH",
-    "color": "#71717B",
-    "category": "aggregator",
-    "country": "us",
-    "urls": {
-      "home": "https://github.com",
-      "pricing": "https://github.com/features/copilot/plans",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "playwright",
-    "extractStatus": "ok",
-    "massServices": [
-      "coding-plan",
-      "token-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": null,
-    "notes": "Playwright 渲染 github.com/features/copilot/plans → 提取套餐价格"
-  },
-  {
-    "id": "mimo",
-    "name": "小米·MiMo",
-    "logo": "米",
-    "color": "#FF6900",
-    "category": "vertical-cloud",
-    "country": "cn",
-    "urls": {
-      "home": "https://mimo.xiaomi.com/zh/mimocode",
-      "pricing": "https://platform.xiaomimimo.com/token-plan",
-      "docs": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "token-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": "双方各得 ¥10 体验金 + 首单 9 折"
-    },
-    "lastVerified": "2026-07-23",
-    "notes": "Token Plan 页为 SPA + 按量计费 API 文档页可提取模型价格。V2→V2.5 已迁移。"
-  },
-  {
-    "id": "openrouter",
-    "name": "OpenRouter",
-    "logo": "OR",
-    "color": "#6366f1",
-    "category": "aggregator",
-    "country": "global",
-    "urls": {
-      "home": "https://openrouter.ai",
-      "pricing": "https://openrouter.ai/pricing",
-      "docs": "https://openrouter.ai/models",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-23",
-    "notes": "全球聚合商: 400+ 模型, 70+ 厂商, 统一 API Key, 按量付费 +5.5% 平台费"
-  },
-  {
-    "id": "siliconflow",
-    "name": "硅基流动",
-    "logo": "硅",
-    "color": "#8b5cf6",
-    "category": "aggregator",
-    "country": "cn",
-    "urls": {
-      "home": "https://siliconflow.cn",
-      "pricing": "https://siliconflow.cn/pricing",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-23",
-    "notes": "国内聚合商: 实时价格同步，覆盖美团/智谱/Kimi/DeepSeek/MiniMax/通义/百度/字节等"
-  },
-  {
-    "id": "baidu",
-    "name": "百度·千帆",
-    "logo": "千",
-    "color": "#2468f0",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://qianfan.cloud.baidu.com",
-      "pricing": "https://cloud.baidu.com/product-s/qianfan_home",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan",
-      "token-plan",
-      "api-paygo"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-23",
-    "notes": "2026-07-10 宣布 Coding Plan → Token Plan 升级迁移，取消高峰限流，调用次数→Token 额度"
-  },
-  {
-    "id": "unicom",
-    "name": "联通云",
-    "logo": "联",
-    "color": "#ca0a14",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqunicomcp",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqunicomcp",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan",
-      "token-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "huawei",
-    "name": "华为云",
-    "logo": "华",
-    "color": "#ff0000",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-      "pricing": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "token-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "xunfei",
-    "name": "讯飞·星火",
-    "logo": "讯",
-    "color": "#0a7efa",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqxunfei",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqxunfei",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "ctyun",
-    "name": "天翼云",
-    "logo": "天",
-    "color": "#1a73e8",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqctyun",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqctyun",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "stepfun",
-    "name": "阶跃星辰",
-    "logo": "阶",
-    "color": "#7c3aed",
-    "category": "model-maker",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqstepfun",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqstepfun",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "zhipu-intl",
-    "name": "智谱国际版",
-    "logo": "智",
-    "color": "#facc15",
-    "category": "model-maker",
-    "country": "global",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqzai",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqzai",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "jd",
-    "name": "京东云",
-    "logo": "京",
-    "color": "#c7162d",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqjingdong",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqjingdong",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "cmcc",
-    "name": "移动云",
-    "logo": "移",
-    "color": "#005bac",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqmobilecp",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqmobilecp",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "infini",
-    "name": "无问芯穹",
-    "logo": "芯",
-    "color": "#06b6d4",
-    "category": "aggregator",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqinfini",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqinfini",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "taotoken",
-    "name": "TaoToken",
-    "logo": "TT",
-    "color": "#10b981",
-    "category": "aggregator",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqtaotoken",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqtaotoken",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "ollama",
-    "name": "Ollama",
-    "logo": "Ol",
-    "color": "#22c55e",
-    "category": "vertical-cloud",
-    "country": "global",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqollama",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqollama",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "opencode",
-    "name": "OpenCode",
-    "logo": "OC",
-    "color": "#f97316",
-    "category": "vertical-cloud",
-    "country": "global",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqopencode",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqopencode",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "token-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "scnet",
-    "name": "超算",
-    "logo": "算",
-    "color": "#64748b",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqscnetcp",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqscnetcp",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
-  },
-  {
-    "id": "uyun",
-    "name": "优云智算",
-    "logo": "优",
-    "color": "#0ea5e9",
-    "category": "cloud-maas",
-    "country": "cn",
-    "urls": {
-      "home": "https://api.dreamfree.space/c/s/cpyqyyzs",
-      "pricing": "https://api.dreamfree.space/c/s/cpyqyyzs",
-      "docs": "",
-      "api": "",
-      "console": ""
-    },
-    "extractStrategy": "manual",
-    "extractStatus": "manual",
-    "massServices": [
-      "coding-plan"
-    ],
-    "affiliate": {
-      "url": "",
-      "type": "none",
-      "benefit": ""
-    },
-    "lastVerified": "2026-07-31",
-    "notes": "回填自线上 codingplan.fyi 抢救数据（2026-07-31）"
+    "lastVerified": "2026-08-01",
+    "notes": "Lite已停售(3-20)，只剩Pro，限量抢购"
   }
 ]

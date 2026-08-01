@@ -34,18 +34,18 @@
     "stats": [
       {
         "label": "覆盖平台",
-        "value": "28",
+        "value": "7",
         "unit": "家"
       },
       {
         "label": "套餐数据",
-        "value": "73",
+        "value": "20",
         "unit": "个"
       },
       {
-        "label": "本月更新",
-        "value": "51",
-        "unit": "条"
+        "label": "数据更新",
+        "value": "8.01",
+        "unit": ""
       }
     ]
   },
@@ -53,34 +53,34 @@
     {
       "id": "budget-under-50",
       "icon": "¥",
-      "title": "预算 50 元以内",
+      "title": "月费 50 元以内",
       "desc": "学生党 / 体验党 / 试试水",
       "filter": {
         "monthlyPriceMax": 50
       }
     },
     {
-      "id": "kimi-k3",
-      "icon": "K3",
-      "title": "新出的 Kimi K3",
-      "desc": "最新模型 / 暂停新用户",
+      "id": "monthly-plans",
+      "icon": "M",
+      "title": "月订阅套餐",
+      "desc": "固定月费 / 稳定用量 / 省心",
       "filter": {
-        "model": "Kimi-K3"
+        "type": "Coding Plan"
       }
     },
     {
-      "id": "glm-52",
-      "icon": "G5",
-      "title": "要用 GLM-5.2",
-      "desc": "T0 模型党 / Opus 平替",
+      "id": "api-paygo",
+      "icon": "API",
+      "title": "API 按量付费",
+      "desc": "无月费 / 用多少付多少 / 弹性",
       "filter": {
-        "model": "GLM-5.2"
+        "type": "API 按量"
       }
     },
     {
       "id": "no-rush",
       "icon": "OK",
-      "title": "不想抢购",
+      "title": "不用抢购",
       "desc": "随时可下单 / 不拼手速",
       "filter": {
         "tag": "无需抢购"
@@ -89,88 +89,92 @@
   ],
   "recommendationGroups": [
     {
-      "id": "best-overall",
-      "title": "综合推荐",
-      "subtitle": "我自己在用 / 真心推荐的几家",
+      "id": "monthly-plans",
+      "title": "月订阅套餐评测",
+      "subtitle": "固定月费换额度，适合有稳定用量的开发者",
       "items": [
+        {
+          "vendor": "字节·方舟",
+          "plan": "Auto",
+          "rating": 5,
+          "verdict": "最便宜的全家桶",
+          "reasons": [
+            "¥9.9/月，13+ 模型 Auto 智能调度",
+            "唯一同时支持 GLM-5.2 / DeepSeek-V4 / MiniMax-M3 / Kimi 的平台",
+            "不用抢购，随时可买"
+          ]
+        },
+        {
+          "vendor": "腾讯云",
+          "plan": "Token Plan Standard",
+          "rating": 5,
+          "verdict": "最均衡的 Token 池",
+          "reasons": [
+            "¥99/月，1 亿 Token，约 200 轮问答",
+            "含 DeepSeek-V4 原厂直供 + GLM-5 + Kimi-K2.5",
+            "比 API 按量便宜 50%+"
+          ]
+        },
+        {
+          "vendor": "MiniMax",
+          "plan": "Max",
+          "rating": 5,
+          "verdict": "多模态重度首选",
+          "reasons": [
+            "¥119/月，3 倍 Plus 用量，约 36,000 次/月",
+            "图/音/视频生成全共享额度",
+            "M3 模型 + 无需抢购"
+          ]
+        },
         {
           "vendor": "智谱AI",
           "plan": "Pro",
           "rating": 5,
-          "verdict": "我的主力套餐",
+          "verdict": "GLM-5.2 旗舰党",
           "reasons": [
-            "GLM-5.2 模型 T0 级别，Opus 平替甚至更强",
-            "代码场景体验最稳，Claude Code / Cursor 都顺畅",
-            "**需要抢购**，加群交流抢购经验"
-          ]
-        },
-        {
-          "vendor": "Kimi",
-          "plan": "Allegretto",
-          "rating": 5,
-          "verdict": "K3 发布后最强新选手",
-          "reasons": [
-            "Kimi-K3 模型能力惊艳，全球榜单登顶",
-            "Coding Plan 价格有竞争力",
-            "**⚠️ 目前已暂停新用户订阅**，需关注恢复时间"
-          ]
-        },
-        {
-          "vendor": "字节·方舟",
-          "plan": "Pro",
-          "rating": 5,
-          "verdict": "全家桶用户首选",
-          "reasons": [
-            "唯一同时支持 GLM-5.2 / DeepSeek-V4 / MiniMax-M3 / Kimi-K3 的平台",
-            "**当前 2.5 折 + 用量 2.5 倍活动**，性价比拉满",
-            "模型多到挑花眼，适合不确定用哪个的人"
+            "¥538/月，6 倍 Lite 积分，GLM-5.2 原生平台",
+            "非高峰 5 折，实际成本更低",
+            "**7-30 改版涨价 260%**，但 GLM-5.2 代码能力 T0"
           ]
         }
       ]
     },
     {
-      "id": "no-rush",
-      "title": "不用抢，随时可买",
-      "subtitle": "不想蹲点拼手速的看这里",
+      "id": "api-paygo",
+      "title": "API 按量评测",
+      "subtitle": "无月费，按 token 消耗付费，适合弹性/不确定用量",
       "items": [
         {
-          "vendor": "MiniMax",
-          "plan": "新Plus",
+          "vendor": "DeepSeek 官方",
+          "plan": "V4-Flash 按量",
           "rating": 5,
-          "verdict": "额度高 + 不抢购",
+          "verdict": "性价比之王",
           "reasons": [
-            "额度最高档之一，模型能力够用",
-            "支持多模态",
-            "随时下单，不用蹲点"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "kimi-k3-group",
-      "title": "支持 Kimi-K3 模型",
-      "subtitle": "最新 T0 模型，全球榜单登顶",
-      "items": [
-        {
-          "vendor": "Kimi",
-          "plan": "Moderato",
-          "rating": 5,
-          "verdict": "K3 官方平台，但暂停新用户",
-          "reasons": [
-            "Kimi-K3 原生平台，体验最佳",
-            "**已暂停 C 端新用户订阅**，已订阅用户不受影响",
-            "恢复时间待官方公告"
+            "输入 1 元 / 输出 2 元每百万 token",
+            "1M 上下文，极速推理",
+            "**⚠️ 即将峰谷定价**，高峰时段 2 倍"
           ]
         },
         {
-          "vendor": "字节·方舟",
-          "plan": "Pro",
+          "vendor": "DeepSeek 官方",
+          "plan": "V4-Pro 按量",
           "rating": 5,
-          "verdict": "不用抢的 K3 全家桶",
+          "verdict": "Agent 能力旗舰",
           "reasons": [
-            "7.19 起全档位支持 Kimi-K3",
-            "全家桶平台，同时用 GLM-5.2 / DeepSeek-V4",
-            "2.5 折活动进行中（至 8.8）"
+            "输入 3 元 / 输出 6 元，默认深度思考",
+            "1M 上下文，Agent 能力显著增强",
+            "比 V4-Flash 贵 3 倍，但复杂任务更稳"
+          ]
+        },
+        {
+          "vendor": "智谱AI",
+          "plan": "GLM-5.2 按量",
+          "rating": 5,
+          "verdict": "GLM-5.2 弹性选择",
+          "reasons": [
+            "输入 8 元 / 输出 28 元每百万 token",
+            "1M 上下文，缓存命中仅 2 元",
+            "不想订阅智谱套餐时，按量更灵活"
           ]
         }
       ]
