@@ -246,7 +246,7 @@
       "monthlyPrice"
     ],
     "sourceUrl": "https://open.bigmodel.cn/pricing",
-    "fetchedAt": "2026-08-02T12:25:18Z",
+    "fetchedAt": "2026-08-01T12:19:48Z",
     "error": null
   },
   {
@@ -279,7 +279,7 @@
     ],
     "missingFields": [],
     "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-    "fetchedAt": "2026-08-02T12:25:11Z",
+    "fetchedAt": "2026-08-01T12:19:39Z",
     "error": null
   },
   {
@@ -336,7 +336,7 @@
       "monthlyPrice"
     ],
     "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
-    "fetchedAt": "2026-08-02T12:25:19Z",
+    "fetchedAt": "2026-08-01T12:19:50Z",
     "error": null
   },
   {
@@ -372,7 +372,7 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
-    "fetchedAt": "2026-08-02T12:25:13Z",
+    "fetchedAt": "2026-08-01T12:19:41Z",
     "error": null
   },
   {
@@ -400,18 +400,40 @@
       "measuredMonthlyToken"
     ],
     "sourceUrl": "https://cloud.tencent.com/document/product/1823/130092",
-    "fetchedAt": "2026-08-02T12:25:11Z",
+    "fetchedAt": "2026-08-01T12:19:39Z",
     "error": null
   },
   {
     "vendorId": "claude",
     "vendor": "Claude",
-    "plans": [],
-    "extractedFields": [],
-    "missingFields": [],
+    "plans": [
+      {
+        "plan": "Pro",
+        "type": "Coding Plan",
+        "tier": "pro",
+        "monthlyPrice": 20,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      },
+      {
+        "plan": "Max",
+        "type": "Coding Plan",
+        "tier": "max",
+        "monthlyPrice": 100,
+        "currency": "$",
+        "note": "Playwright 自动提取"
+      }
+    ],
+    "extractedFields": [
+      "monthlyPrice"
+    ],
+    "missingFields": [
+      "monthlyRequests",
+      "measuredMonthlyToken"
+    ],
     "sourceUrl": "https://claude.com/pricing",
-    "fetchedAt": "2026-08-02T12:25:41Z",
-    "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://claude.com/pricing\", waiting until \"load\"\n"
+    "fetchedAt": "2026-08-01T12:20:03Z",
+    "error": null
   },
   {
     "vendorId": "github",
@@ -420,7 +442,7 @@
     "extractedFields": [],
     "missingFields": [],
     "sourceUrl": "https://github.com/features/copilot/plans",
-    "fetchedAt": "2026-08-02T12:25:41Z",
+    "fetchedAt": "2026-08-01T12:26:48Z",
     "error": "Playwright 失败: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://github.com/features/copilot/plans\", waiting until \"load\"\n"
   }
 ]

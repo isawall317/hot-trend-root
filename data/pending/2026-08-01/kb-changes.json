@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-31T17:11:51Z",
+  "timestamp": "2026-08-01T12:26:48Z",
   "date": "2026-08-01",
   "vendors": [],
   "services": [],
@@ -10,6 +10,5 @@
     "high": 0,
     "medium": 0,
     "low": 0
-  },
-  "note": "首次运行，已初始化 baseline 快照，无变更可对比"
+  }
 }
