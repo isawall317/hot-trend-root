@@ -338,6 +338,309 @@ body {
   border-radius: 0 !important;
 }
 
+/* === Hero (瑞士风: 大字号, 左对齐, 克莱因蓝强调) === */
+.hero {
+  padding: var(--sp-9) 0 var(--sp-8);
+}
+.hero-inner { }
+.hero-title {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--sp-4);
+  color: var(--ink);
+}
+.hero-title-accent { color: var(--accent); }
+.hero-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--sp-5);
+  max-width: 48ch;
+}
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.hero-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.hero-stat-label {
+  font-size: 11px;
+  color: var(--text-helper);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  margin-top: var(--sp-2);
+}
+
+/* === Top3 推荐卡片 (瑞士风: 直角, 边框, 强调色高亮最佳) === */
+.top-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+.top-pick-card {
+  border: 1px solid var(--border-subtle);
+  padding: var(--sp-5);
+  background: var(--paper);
+  transition: border-color var(--dur-fast) var(--ease-prod);
+}
+.top-pick-card:hover { border-color: var(--ink); }
+.top-pick-card.pick-best {
+  border-color: var(--accent);
+  border-width: 2px;
+}
+.top-pick-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-3);
+}
+.top-pick-vendor {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.top-pick-plan {
+  font-size: 12px;
+  color: var(--text-helper);
+  margin-bottom: var(--sp-3);
+}
+.top-pick-price {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: var(--mono);
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.top-pick-price-unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-helper);
+}
+.top-pick-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+  margin: var(--sp-4) 0;
+  padding: var(--sp-3) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.top-pick-metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--mono);
+  color: var(--ink);
+}
+.top-pick-metric-label {
+  font-size: 10px;
+  color: var(--text-helper);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--mono);
+  margin-top: 2px;
+}
+.top-pick-reason {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: var(--sp-4);
+}
+.top-pick-action { }
+
+/* === 推荐列表 (reco-item, 用于额外分组) === */
+.reco-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sp-4);
+}
+.reco-item {
+  border: 1px solid var(--border-subtle);
+  padding: var(--sp-5);
+  background: var(--paper);
+}
+.reco-item-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+.reco-item-vendor { font-size: 16px; font-weight: 700; color: var(--ink); }
+.reco-item-plan { font-size: 12px; color: var(--text-helper); }
+.reco-item-verdict {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--mono);
+  color: var(--accent);
+  margin-bottom: var(--sp-3);
+}
+.reco-item-reasons {
+  list-style: none;
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+.reco-item-reasons li {
+  position: relative;
+  padding-left: var(--sp-4);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.reco-item-reasons li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 5px; height: 5px;
+  background: var(--accent);
+}
+.reco-item-reasons strong { color: var(--ink); font-weight: 600; }
+.reco-item-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* === 场景卡片 (quick-card) === */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+.quick-card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  background: var(--paper);
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all var(--dur-fast) var(--ease-prod);
+}
+.quick-card:hover {
+  border-color: var(--accent);
+  background: var(--grey-1);
+}
+.quick-card-icon {
+  font-size: 20px; line-height: 1;
+  font-family: var(--mono); font-weight: 700;
+  color: var(--accent);
+}
+.quick-card-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+.quick-card-desc { font-size: 12px; color: var(--text-helper); line-height: 1.5; }
+
+/* === 最近变动 (rc-list) === */
+.rc-list {
+  border-top: 1px solid var(--border-subtle);
+}
+.rc-item {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px;
+}
+.rc-item:hover { background: var(--grey-1); }
+.rc-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-helper);
+  font-weight: 600;
+}
+.rc-vendor {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.rc-title { color: var(--text-primary); flex: 1; min-width: 0; }
+.rc-title a { color: var(--accent); text-decoration: none; }
+.rc-title a:hover { text-decoration: underline; }
+.rc-featured { background: var(--grey-1); }
+
+/* === Badge 扩展 (利好/利空) === */
+.badge-positive { background: rgba(0, 47, 167, 0.08); color: var(--accent); border-color: rgba(0, 47, 167, 0.2); }
+.badge-negative { background: rgba(115, 115, 115, 0.08); color: var(--grey-3); border-color: var(--border-subtle); }
+
+/* === 最近变动弹窗 === */
+.rc-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 10, 0.4);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 100;
+  padding: var(--sp-5);
+}
+.rc-modal-overlay.rc-modal-open { display: flex; }
+.rc-modal {
+  background: var(--paper);
+  border: 1px solid var(--border-subtle);
+  width: 100%; max-width: 880px;
+  max-height: 80vh;
+  display: flex; flex-direction: column;
+}
+.rc-modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--sp-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.rc-modal-header h3 { font-size: 16px; font-weight: 700; color: var(--ink); }
+.rc-modal-close {
+  border: none; background: transparent;
+  font-size: 18px; cursor: pointer;
+  color: var(--text-helper);
+  padding: 4px 8px;
+  line-height: 1;
+}
+.rc-modal-close:hover { color: var(--ink); }
+.rc-modal-sub { font-size: 12px; color: var(--text-helper); padding: 0 var(--sp-5); margin-top: var(--sp-3); }
+.rc-modal-body {
+  overflow-y: auto;
+  padding: var(--sp-3) var(--sp-5) var(--sp-5);
+  flex: 1;
+}
+
+/* === Tag (内联标签) === */
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--sans);
+  background: var(--grey-1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+}
+
+/* === btn-secondary (Hero CTA) === */
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+.btn-lg { padding: 10px 20px; font-size: 13px; }
+
 /* === 响应式 === */
 @media (max-width: 768px) {
   .data-table { display: none; }
@@ -345,4 +648,10 @@ body {
   .section-title { font-size: 22px; }
   .nav-tagline { display: none; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
+  .top-pick-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { grid-template-columns: 1fr; gap: var(--sp-3); }
+  .hero-stat-value { font-size: 22px; }
+  .hero-title { font-size: 26px; }
+  .top-pick-price { font-size: 24px; }
 }

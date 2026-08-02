@@ -7,7 +7,8 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://bigmodel.cn/glm-coding",
-      "home": "https://open.bigmodel.cn"
+      "home": "https://open.bigmodel.cn",
+      "affiliate": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -21,7 +22,8 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan",
-      "home": "https://www.volcengine.com/ark"
+      "home": "https://www.volcengine.com/ark",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqfangzhou"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -35,7 +37,8 @@
     "category": "cloud-maas",
     "urls": {
       "pricing": "https://cloud.tencent.com/product/tokenhub",
-      "home": "https://cloud.tencent.com/product/tokenhub"
+      "home": "https://cloud.tencent.com/product/tokenhub",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqtengxunt"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -49,7 +52,8 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-      "home": "https://api-docs.deepseek.com"
+      "home": "https://api-docs.deepseek.com",
+      "affiliate": ""
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -63,7 +67,8 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://platform.minimaxi.com/subscribe/token-plan",
-      "home": "https://platform.minimaxi.com"
+      "home": "https://platform.minimaxi.com",
+      "affiliate": "https://platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -77,7 +82,8 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://www.kimi.com/membership/pricing",
-      "home": "https://www.kimi.com"
+      "home": "https://www.kimi.com",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
@@ -91,7 +97,8 @@
     "category": "cloud-maas",
     "urls": {
       "pricing": "https://www.aliyun.com/benefit/scene/codingplan",
-      "home": "https://bailian.aliyun.com"
+      "home": "https://bailian.aliyun.com",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqbailianc"
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",

@@ -1,8 +1,25 @@
 # Hot Trend 数据架构
 
 > 项目数据体系的"总地图"——回答：数据从哪来、怎么采、存哪里、谁在用。
-> 最后更新：2026-07-23
+> 最后更新：2026-08-02
 > 维护者：Frank + Claude Code
+
+---
+
+## ⚠️ 唯一真相源声明
+
+**`project/codingplan-saver/data/*.json` 是唯一真相源。**
+
+所有结构化数据（厂商元信息、套餐价格、变动时间线、站点配置、计费规则）只在此目录手动维护。
+其他位置的数据均为自动生成的下游镜像，不手动编辑：
+
+| 位置 | 定位 | 生成方式 |
+|------|------|---------|
+| `project/codingplan-saver/data/*.json` | **唯一真相源** | 手动维护 + 采集管道更新 |
+| `project/codingplan-saver/vendors-and-tools.md` | 一览表 | `kb_to_md.py` 自动生成 |
+| `dist/*.html` | 构建产物 | `build.py` 生成 |
+
+**已废弃**：`aikb/` 目录已删除（MD 画像移至 `project/codingplan-saver/archive/aikb/`），`kb_migrate.py` 和 `md_to_json.py` 标记 `.deprecated`。数据流不再有中间镜像层。
 
 ---
 
@@ -79,26 +96,11 @@ Folo 通过 `folocli` CLI 与本地 Folo（原 Follow）RSS 阅读器交互，�
 | ✅ 自动提取 | 7 | 智谱AI, DeepSeek, Kimi, MiniMax, 腾讯云, Claude, GitHub | Playwright / BS4 静态解析 |
 | ❌ 手动维护 | 21 | 字节·方舟, 阿里·百炼, Codex, 小米·MiMo, 百度·千帆, OpenRouter, 硅基流动 + 回填的 14 家（联通云/华为云/讯飞·星火/天翼云/阶跃星辰/智谱国际版/京东云/移动云/无问芯穹/TaoToken/Ollama/OpenCode/超算/优云智算） | 人工定期检查 |
 
-> 2026-07-31 从线上 codingplan.fyi 抢救数据，回填 14 家厂商（见 `docs/deployment.md`）。回填厂商暂为手动维护，`measuredMonthlyToken` 多为估算值。
+> 2026-07-31 从线上 codingplan.fyi 抢救数据，回填 7 家核心厂商（见 `project/codingplan-saver/deployment.md`）。`measuredMonthlyToken` 多为估算值。
 
-> 详细厂商 URL、提取策略、推广链接见 [`docs/vendors-and-tools.md`](vendors-and-tools.md)（由 `kb_to_md.py` 从 `aikb/database/` JSON 自动生成）
+> 详细厂商 URL、提取策略、推广链接见 [`project/codingplan-saver/vendors-and-tools.md`](../project/codingplan-saver/vendors-and-tools.md)（由 `kb_to_md.py` 从 data/ 直接生成）
 
-### 2.3 AI 知识库（🆕 `aikb/`）
-
-`aikb/` 是**AI 维护的文档数据库**：MD 文件是画像层（AI 读写），`aikb/database/` 下的 JSON 由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步，供下游项目消费。
-
-> ⚠️ **真相源说明**：套餐/价格的真实数据源是 `project/codingplan-saver/data/*.json`（builder 实际读取），`aikb/database/` 是其下游镜像。MD 画像层（`aikb/vendors|tools/*.md`）覆盖中，部分厂商尚无 MD（目标态）。
-
-| 目录 | 内容 | 格式 | 维护方式 |
-|------|------|------|---------|
-| `aikb/vendors/` | 厂商画像 MD（覆盖中，14/28 家） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
-| `aikb/tools/` | 工具详情 MD（每款一个 MD） | MD + YAML frontmatter | `/kb-update` + AI 直接编辑 |
-| `aikb/database/` | 结构化 JSON（vendors/services/tools/models/changes） | JSON | `kb_migrate.py` 从 project/ 自动同步 |
-
-> MD 是 AI 的原生语言（LLM 在 MD 上读写的准确率远高于 JSON），
-> `database/` JSON 是给下游项目（codingplan-saver 等）消费的结构化视图。
-
-### 2.4 手动输入
+### 2.3 手动输入
 
 - 用户通过自然语言告知的变动（如"Kimi 涨价了"）
 - `/codingplan-page update` 解析自然语言 → 结构化变更
@@ -190,34 +192,17 @@ project/{name}/
 └── docs/                 # 项目文档 (可选)
 ```
 
-### 4.3 AI 知识库（`aikb/`）
+### 4.3 项目间数据共享
 
-多个项目共享同一套厂商基础数据。**`aikb/database/` JSON 由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步**（pipeline Step 5b），`aikb/vendors|tools/*.md` 是 AI 维护的画像层（覆盖中）。
+多个项目各自维护自己的 `data/*.json`，不共享中间层。`project/codingplan-saver/data/` 是核心数据源，其他项目（coding-tools 等）独立维护各自数据。
 
 ```
-aikb/                               ← 🆕 AI 知识库（Obsidian 兼容）
-├── index.md                         ← 导航索引
-├── vendors/                         ← 厂商画像 MD（14 家，覆盖中；database 有 28 家）
-│   ├── zhipu.md
-│   ├── deepseek.md
-│   └── ...
-├── tools/                           ← 工具详情（31 款，每款一个 MD）
-│   ├── cursor.md
-│   └── ...
-└── database/                        ← 结构化 JSON（md_to_json.py 自动生成）
-    ├── vendors.json
-    ├── services.json
-    ├── tools.json
-    ├── models.json
-    └── changes.json
-         │
-         ├── docs/vendors-and-tools.md  (由 kb_to_md.py 从 database/ JSON 生成)
-         ├── codingplan-saver/data/plans.json    (价格投影层：下游直接读，pipeline 维护)
-         └── coding-tools/data/tools.json        (工具投影层：下游直接读)
+project/codingplan-saver/data/       ← 唯一真相源（厂商 + 套餐 + 变动）
+        ↓ kb_to_md.py
+project/codingplan-saver/vendors-and-tools.md  ← 自动生成的一览表
 ```
 
-> **三层架构**：MD 画像（AI 维护）→ database/ JSON（md_to_json.py 生成）→ 下游项目（直接读 JSON）。
-> pipeline 每次跑同时维护两层——价格进 plans.json（已有），画像进 aikb/database/（kb_migrate re-sync）。
+> **单层架构**：真相源 → 一览表，无中间镜像层。
 > AI 修改 MD 后运行 `python -m collector.md_to_json` 刷新 database/ JSON。
 
 ### 4.4 通用文件模式
@@ -249,15 +234,14 @@ aikb/                               ← 🆕 AI 知识库（Obsidian 兼容）
 ### 5.2 数据依赖关系
 
 ```
-project/codingplan-saver/data/*.json (套餐/价格真相源，builder 读取)
+project/codingplan-saver/data/*.json (唯一真相源，builder 读取)
     │
-    ├── codingplan-saver: 依赖 vendors.json + plans.json + changes.json
+    ├── codingplan-saver: 依赖 vendors.json + plans.json + changes.json + pricing-models.json
     │       └── 产出: codingplan-saver.html
     │
-    ├── kb_migrate.py → aikb/database/*.json (下游镜像)
-    │       └── kb_to_md.py → docs/vendors-and-tools.md (自动生成一览表)
+    ├── kb_to_md.py → project/codingplan-saver/vendors-and-tools.md (自动生成一览表)
     │
-    └── coding-tools: 独立 tools.json（aikb/database/tools.json 含补充的国产工具）
+    └── coding-tools: 独立 data/*.json（自行维护）
             └── 产出: coding-tools.html
 ```
 
@@ -310,7 +294,8 @@ python -m collector.pipeline
 
 | 文档 | 用途 |
 |------|------|
-| [`docs/vendors-and-tools.md`](vendors-and-tools.md) | 厂商/工具 URL、提取策略、推广链接 |
+| [`project/codingplan-saver/vendors-and-tools.md`](../project/codingplan-saver/vendors-and-tools.md) | 厂商 URL、提取策略、推广链接 |
+| [`project/codingplan-saver/deployment.md`](../project/codingplan-saver/deployment.md) | 部署链路 |
 | [`project/codingplan-saver/data/SCHEMA.md`](../project/codingplan-saver/data/SCHEMA.md) | plans.json / changes.json 详细字段定义 |
 | [`.claude/skills/codingplan-page/SKILL.md`](../.claude/skills/codingplan-page/SKILL.md) | CodingPlan 省钱攻略更新流程 |
 | [`CLAUDE.md`](../CLAUDE.md) | 项目总入口 |

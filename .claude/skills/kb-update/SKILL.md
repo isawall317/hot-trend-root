@@ -1,28 +1,27 @@
 ---
 name: kb-update
-description: 知识库更新 — 采集 → 变更检测 → 审阅 → 合并，维护 aikb/database/ 数据
+description: 知识库更新 — 采集 → 变更检测 → 审阅 → 合并，维护 project/codingplan-saver/data/ 数据
 metadata:
   type: skill
 ---
 
-# /kb-update — 厂商知识库更新
+# /kb-update — 厂商数据更新
 
 ## 触发
 
 - `/kb-update` — 全量更新：跑 pipeline → 审阅 → 合并
 - `/kb-update scan` — 快速扫描：只读 kb-changes.json + market signals，出报告，不动文件
 - `/kb-update review` — 审阅模式：读取上次 pipeline 产生的 kb-changes.json，逐条确认
-- `/kb-update build` — 重新生成 MD：跑 `kb_to_md.py`，刷新 `docs/vendors-and-tools.md`
+- `/kb-update build` — 重新生成一览表：跑 `kb_to_md.py`，刷新 `project/codingplan-saver/vendors-and-tools.md`
 
 ## 定位
 
-`aikb/database/` 是**信息承载层**：厂商/服务/工具/模型的画像与关系，由 `kb_migrate.py` 从 `project/codingplan-saver/data/` 自动同步。
-`project/codingplan-saver/data/plans.json` 是**价格真相源**：builder 直接读取，aikb/database 是其下游镜像。
-pipeline 每次跑同时维护两层：价格进 plans.json（真相源），画像经 kb_migrate 同步进 aikb/database。
+`project/codingplan-saver/data/` 是**唯一真相源**：厂商/套餐/变动数据只在此目录维护。
+pipeline 每次跑完更新 plans.json，`kb_to_md.py` 从 data 直接生成一览表。不存在 aikb 中间镜像层。
 
 ## 核心原则
 
-- **`project/codingplan-saver/data/` 是真相源**，`aikb/database/` 由 `kb_migrate.py` 自动同步，`docs/vendors-and-tools.md` 由 `kb_to_md.py` 从 aikb/database 生成
+- **`project/codingplan-saver/data/` 是唯一真相源**，`vendors-and-tools.md` 由 `kb_to_md.py` 从 data 直接生成
 - **自动采集 + 人工审阅**，不是全自动
 - **低风险变更自动合**（新模型、小价差），**高风险人工确认**（涨价、下架、新服务）
 - **先检测后审阅**，绝不盲目覆盖
@@ -41,8 +40,7 @@ cd tools/collector && uv run python -m collector.pipeline
 
 pipeline 自动完成：
 - 热点采集 → 文章发现 → 价格监控 → 厂商定价提取 → Token 推算
-- **市场发现**（热点召回 + 生态页抓取）→ `data/signals/market-{date}.json`
-- **KB 同步**（re-sync plans.json 价格 → KB services）
+- **市场发现**（热点召回）→ `data/signals/market-{date}.json`
 - **KB 变更检测**（kb_diff）→ `data/pending/{date}/kb-changes.json`
 
 #### Step 2: 审阅 KB 变更
@@ -58,20 +56,20 @@ pipeline 自动完成：
 #### Step 3: 审阅市场发现
 
 读取 `data/signals/market-{date}.json`：
-- 🟢 高置信度 → 建议 Frank 确认后加入 KB
+- 🟢 高置信度 → 建议 Frank 确认后加入数据
 - 🟡 中置信度 → 标记，等更多证据
 - 🔴 低置信度 → 可选跳过
 
-#### Step 4: 确认后写回 KB
+#### Step 4: 确认后写回
 
-高风险变更使用 Edit 工具逐条改 KB JSON（AI 草拟 + Frank 确认），展示 diff 预览格式：
+高风险变更使用 Edit 工具逐条改 `project/codingplan-saver/data/*.json`（AI 草拟 + Frank 确认），展示 diff 预览格式：
 ```
 + 新增 / ~ 修改 / - 移除
 ```
 
 低风险变更批量自动 patch。
 
-#### Step 5: 重新生成 MD
+#### Step 5: 重新生成一览表
 
 ```bash
 cd tools/collector && uv run python -m collector.kb_to_md
@@ -95,13 +93,13 @@ cd tools/collector && uv run python -m collector.kb_to_md
 
 ---
 
-### 模式 4: `build` — 重新生成 MD
+### 模式 4: `build` — 重新生成一览表
 
 ```bash
 cd tools/collector && uv run python -m collector.kb_to_md
 ```
 
-适用场景：手动修改了 KB JSON 后，刷新 MD 文件。
+适用场景：手动修改了 data/*.json 后，刷新一览表。
 
 ---
 
@@ -112,13 +110,12 @@ cd tools/collector && uv run python -m collector.kb_to_md
 | 发现新厂商/新工具 | `/kb-update`（pipeline 自动发现 + 人工确认） |
 | 校验 URL 和提取策略 | `/vendors-sync`（专注源头校验） |
 | 更新 CodingPlan 价格/套餐 | `/codingplan-page update`（专注价格层） |
-| 从 KB 重新生成 MD | `/kb-update build` |
+| 从 data 重新生成一览表 | `/kb-update build` |
 
 ---
 
 ## 边界规则
 
-- KB JSON 只能通过 kb-update skill 或 kb_migrate 脚本修改，不直接手动编辑
-- `docs/vendors-and-tools.md` 由 `kb_to_md.py` 生成，不手动编辑（标记外的内容除外）
-- 新增厂商/工具：先在 KB JSON 登记 → 重新生成 MD
-- 下游产品（codingplan-saver, coding-tools 等）**暂不切读 KB**，仍读各自的 JSON（渐进迁移）
+- `project/codingplan-saver/data/*.json` 是唯一真相源，通过 kb-update skill 或手动 Edit 修改
+- `project/codingplan-saver/vendors-and-tools.md` 由 `kb_to_md.py` 生成，不手动编辑
+- 新增厂商：先在 `vendors.json` 登记 → 在 `plans.json` 加套餐 → 跑 `kb_to_md` 刷新一览表

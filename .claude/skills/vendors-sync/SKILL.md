@@ -14,7 +14,7 @@ metadata:
 
 ## 定位
 
-`docs/vendors-and-tools.md` 是**输入源头**，只记录 URL、提取策略、推广链接。本 skill 校验这些输入是否仍然有效，不涉及爬取结果（价格/套餐/模型在 `plans.json` 和 `tools.json` 中）。
+`project/codingplan-saver/vendors-and-tools.md` 是**输入源头一览表**（由 `kb_to_md.py` 从 `data/*.json` 自动生成），只记录 URL、提取策略、推广链接。本 skill 校验这些输入是否仍然有效，不涉及爬取结果（价格/套餐/模型在 `plans.json` 中）。
 
 ## 核心原则
 
@@ -28,7 +28,7 @@ metadata:
 
 ### Step 1: 读取源头文档
 
-读 `docs/vendors-and-tools.md`，提取所有厂商和工具的 URL。
+读 `project/codingplan-saver/vendors-and-tools.md`（或直接读 `data/vendors.json`），提取所有厂商的 URL。
 
 ### Step 2: 逐家校验
 
@@ -83,7 +83,7 @@ cd tools/collector && uv run python -m collector.pipeline
 - 备注（补充说明）
 - 形态 ❓ → 确认后的类型
 
-**不更新**：定价、套餐、模型（这些在 plans.json / tools.json 中，通过 `/codingplan-page` 更新）。
+**不更新**：定价、套餐、模型（这些在 plans.json 中，通过 `/codingplan-page` 更新）。
 
 ---
 
@@ -98,4 +98,4 @@ cd tools/collector && uv run python -m collector.pipeline
 - URL 返回非 200 → 标记 ⚠️，不改 URL（URL 变更需 Frank 确认）
 - 提取策略失效 → 标记 ⚠️，建议排查方向，不改策略
 - 推广链接大面积"待添加" → 提醒 Frank 补充，但这是正常状态
-- 所有变更需 Frank 确认后才写入 `docs/vendors-and-tools.md`
+- 所有变更需 Frank 确认后写入 `project/codingplan-saver/data/vendors.json`，再跑 `kb_to_md` 刷新一览表

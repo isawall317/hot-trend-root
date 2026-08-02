@@ -31,6 +31,7 @@
   },
   "header": {
     "updateDate": "更新于 2026.08.01",
+    "highlights": "本周关注：智谱 7-30 改积分制涨价 · 字节方舟 ¥9.9 试水 · 腾讯 Token 池性价比稳",
     "stats": [
       {
         "label": "覆盖平台",
@@ -85,6 +86,51 @@
       "filter": {
         "tag": "无需抢购"
       }
+    }
+  ],
+  "recommendationGroups": [
+    {
+      "id": "top-picks",
+      "title": "不知道买哪个？看这三个就够了",
+      "subtitle": "饭庐者说真实使用后的推荐，不是算法排名",
+      "items": [
+        {
+          "vendor": "智谱AI",
+          "plan": "Pro",
+          "rating": 5,
+          "verdict": "综合最佳 · 我的主力",
+          "reasons": [
+            "GLM-5.2 代码能力 T0 级别",
+            "非高峰时段 5 折，实际更便宜",
+            "6 倍 Lite 用量，重度编码够用"
+          ],
+          "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
+        },
+        {
+          "vendor": "腾讯云",
+          "plan": "Token Plan Standard",
+          "rating": 5,
+          "verdict": "高性价比 · 每元 Token 高",
+          "reasons": [
+            "¥99 拿 1 亿 Token，每元 1.01M",
+            "Token 池三类 1:1 统一抵扣，省心",
+            "DeepSeek / MiniMax 多模型可选"
+          ],
+          "action": "https://api.dreamfree.space/c/s/cpyqtengxunt"
+        },
+        {
+          "vendor": "字节·方舟",
+          "plan": "Auto",
+          "rating": 4,
+          "verdict": "入门首选 · ¥9.9 试水",
+          "reasons": [
+            "最低门槛体验 AI 编程",
+            "Auto 智能调度，不用纠结选模型",
+            "Doubao 系列模型，代码能力够用"
+          ],
+          "action": "https://api.dreamfree.space/c/s/cpyqfangzhou"
+        }
+      ]
     }
   ],
   "disclosure": "本站部分链接为联盟推广链接，通过这些链接注册我可能获得返佣，但不影响你的价格。所有推荐均基于真实使用体验，不接受厂商付费推广。",

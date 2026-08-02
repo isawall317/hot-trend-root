@@ -76,7 +76,7 @@ deploy.sh 自动完成 build → cp 到 codingplan-site → edgeone makers deplo
 - **preview 环境**：生成带 `eo_token` 的临时链接，不受默认域名区域限制，专供验证
 - **production 环境**：更新 `codingplan-llnvmecs.edgeone.cool` 默认域名内容
 - **前置**：`edgeone login` 已完成（或设置 `EDGEONE_PAGES_API_TOKEN` 环境变量）
-- **自定义域名**：最终入口 `codingplan.fyi` 需在 EdgeOne 控制台绑定（CNAME 验证），见 [`docs/deployment.md`](../../../docs/deployment.md) 迁移路线 ③
+- **自定义域名**：最终入口 `codingplan.fyi` 需在 EdgeOne 控制台绑定（CNAME 验证），见 [`project/codingplan-saver/deployment.md`](../../../project/codingplan-saver/deployment.md) 迁移路线 ③
 
 ### 数据校验
 
@@ -105,13 +105,13 @@ deploy.sh 自动完成 build → cp 到 codingplan-site → edgeone makers deplo
 
 所有套餐链接（`plans[].action`）优先使用 `vendors[].urls.affiliate`（联盟推广链接），为空时 fallback 到 `vendors[].urls.pricing`（定价页）。HTML 模板中所有 CTA 按钮统一为"优惠购买"，`rel="nofollow sponsored"`（SEO 合规）。Footer 保留联盟推广披露。
 
-> **厂商参考手册**：`docs/vendors-and-tools.md` — 统一管理定价页 URL（数据采集用）+ 联盟推广链接（"优惠购买"按钮用）+ 返佣信息。新增联盟链接时先在手册登记，再更新 `vendors.json` 和 `plans.json`。
+> **厂商参考手册**：`project/codingplan-saver/vendors-and-tools.md` — 统一管理定价页 URL（数据采集用）+ 联盟推广链接（"优惠购买"按钮用）+ 返佣信息。新增联盟链接时先在手册登记，再更新 `vendors.json` 和 `plans.json`。
 
 ---
 
 ## HTML 模板
 
-见 `project/codingplan-saver/template/index.html`（标准件）。
+见 `project/codingplan-saver/template/base.html`（HTML 骨架）+ `template/style.css` + `template/scripts/*.js`（模块化脚本，由 build.py 组装注入）。
 
 ### 页面结构
 
@@ -143,7 +143,10 @@ hot-trend-root/
 │   │   ├── site.json / vendors.json
 │   │   ├── plans.json / changes.json
 │   │   └── history/
-│   ├── template/index.html             ← HTML 标准件
+│   ├── template/
+│   │   ├── base.html              ← HTML 骨架（{{STYLE}}/{{SCRIPTS}}/{{DATA}} 占位）
+│   │   ├── style.css               ← 全部 CSS
+│   │   └── scripts/                ← 模块化 JS（utils/router/recommend/compare/community/calculator/init）
 │   └── archive/                        ← V1 归档
 ├── tools/
 │   ├── builder/build.py                ← 构建脚本

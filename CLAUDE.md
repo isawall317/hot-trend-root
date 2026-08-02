@@ -5,8 +5,8 @@
 从全网热点中自动发现**细分赛道利基** → AI 深度分析 → 快速验证 → 小软件产品变现。
 
 当前核心产品：
-- **CodingPlan 省钱攻略** ([codingplan.fyi](https://www.codingplan.fyi)) — 28 家 AI 模型厂商 Coding Plan / Token Plan 对比
-- **AI Coding 工具对比** (开发中) — 22 款 AI 编程工具横向评测
+- **CodingPlan 省钱攻略** ([codingplan.fyi](https://www.codingplan.fyi)) — 7 家 AI 模型厂商 Coding Plan / Token Plan 对比（当前跟踪价格的核心厂商）
+- **AI Coding 工具对比** (开发中) — 31 款 AI 编程工具横向评测
 
 **我不是在找热点新闻，而是在找可商业化的需求缺口。**
 
@@ -37,7 +37,7 @@ DailyHotApi (40+平台) + Folo (本地RSS) + 8 家厂商定价页自动提取
 | `/analyze` | `analyze` / `分析` | 利基深度分析 + 6 维评分 |
 | `/validate` | `validate` / `验证` | 竞品调研 + MVP 定义 + Go/No-Go |
 | `/codingplan-page` | 或 `build` / `update` | **Pipeline B**: CodingPlan 数据更新 + HTML 生成 |
-| `/vendors-sync` | `vendors-sync` | 厂商/工具信息同步，更新 docs/vendors-and-tools.md |
+| `/vendors-sync` | `vendors-sync` | 厂商信息同步，更新 project/codingplan-saver/vendors-and-tools.md |
 | `/kb-update` | 或 `kb` | 知识库更新：采集 → 检测 → 审阅 → 合并 |
 
 > 详细执行流程见 `.claude/skills/{name}/SKILL.md`
@@ -58,41 +58,36 @@ cd tools/collector && uv run python -m collector.pipeline
 /codingplan-page scan
 ```
 
-> ✅ 2026-07-31 EdgeOne Makers 部署链路已打通并首次部署成功（28 家版本已上线 production）。`tools/deploy/deploy.sh`（跨平台 Win/Mac/Unix）已接进 `/codingplan-page` 的 Step 6，支持 `preview` 先验证再 `production` 上线。最终入口 `codingplan.fyi` 待绑定自定义域名（迁移路线 ③）。详见 [`docs/deployment.md`](docs/deployment.md)。
+> ✅ 2026-07-31 EdgeOne Makers 部署链路已打通并首次部署成功（7 家核心厂商版本已上线 production）。`tools/deploy/deploy.sh`（跨平台 Win/Mac/Unix）已接进 `/codingplan-page` 的 Step 6，支持 `preview` 先验证再 `production` 上线。最终入口 `codingplan.fyi` 待绑定自定义域名（迁移路线 ③）。详见 [`project/codingplan-saver/deployment.md`](project/codingplan-saver/deployment.md)。
 
 ## 目录结构
 
 ```
 hot-trend-root/
-├── CLAUDE.md                     # 本文件
-├── aikb/                         # 🆕 AI 知识库（Obsidian 兼容）
-│   ├── index.md                  #   导航索引
-│   ├── vendors/                  #   厂商画像 MD（AI 维护，部分厂商待补）
-│   ├── tools/                    #   工具详情 MD（每款一个 MD）
-│   └── database/                 #   结构化 JSON（kb_migrate.py 从 project/ 同步）
-├── docs/                         # 项目文档
-│   ├── data-architecture.md      # 数据体系总地图
-│   └── vendors-and-tools.md      # 厂商/工具一览表（由 kb_to_md.py 自动生成）
+├── CLAUDE.md                     # 本文件（系统总纲）
+├── docs/
+│   └── data-architecture.md      # 数据体系总地图（系统级）
 ├── .claude/skills/               # 7 个技能定义
 ├── data/
 │   ├── raw/                      # 热点原始数据
 │   ├── signals/                  # 价格/文章信号
-│   └── pending/                  # 待审阅候选
+│   ├── pending/                  # 待审阅候选
+│   └── recovery/                 # 线上抢救数据（只读）
 ├── tools/
 │   ├── collector/                # Python 数据采集管道
 │   ├── builder/build.py          # HTML 构建器
 │   └── deploy/deploy.sh          # EdgeOne Makers 部署脚本
 ├── project/                      # 孵化项目矩阵
-│   ├── codingplan-saver/         # 🟢 核心产品（数据真相源）
-│   ├── codingplan-site/          #    codingplan-saver 的部署目录
-│   ├── coding-tools/             # 🟡 开发中
-│   ├── agent-patterns/           # 🟡 开发中
-│   ├── aicoding-stack/           # 🟡 开发中
-│   ├── aicoding-tips/            # 🟡 开发中
-│   ├── ccskills-market/          # 🟡 开发中
-│   └── model-picker/             # 🟡 开发中
+│   ├── codingplan-saver/         # 🟢 核心产品
+│   │   ├── data/                 #   唯一真相源（*.json + SCHEMA.md）
+│   │   ├── template/             #   HTML 模板 + 脚本
+│   │   ├── deployment.md         #   部署链路
+│   │   ├── vendors-and-tools.md  #   厂商一览表（kb_to_md.py 自动生成）
+│   │   └── archive/              #   V1 + aikb 历史归档
+│   ├── codingplan-site/          #   codingplan-saver 的部署目录
+│   └── (其他项目: coding-tools/agent-patterns/...)
 ├── dist/                         # HTML 交付物
-└── reference/                    # 参考资料（用户画像）
+└── reference/                    # 参考资料
 ```
 
 ## 文档入口
@@ -100,8 +95,8 @@ hot-trend-root/
 | 想知道什么 | 去看 |
 |-----------|------|
 | 数据从哪来、怎么采、存哪里、谁在用 | [`docs/data-architecture.md`](docs/data-architecture.md) |
-| 线上站点与仓库的关系、部署链路现状 | [`docs/deployment.md`](docs/deployment.md) |
-| 有哪些厂商/工具、URL、提取策略、推广链接 | [`docs/vendors-and-tools.md`](docs/vendors-and-tools.md) |
+| 线上站点与仓库的关系、部署链路 | [`project/codingplan-saver/deployment.md`](project/codingplan-saver/deployment.md) |
+| 有哪些厂商、URL、提取策略、推广链接 | [`project/codingplan-saver/vendors-and-tools.md`](project/codingplan-saver/vendors-and-tools.md) |
 | plans.json / changes.json 字段定义 | [`project/codingplan-saver/data/SCHEMA.md`](project/codingplan-saver/data/SCHEMA.md) |
 | codingplan-page 完整操作流程 | [`.claude/skills/codingplan-page/SKILL.md`](.claude/skills/codingplan-page/SKILL.md) |
 
@@ -111,7 +106,7 @@ hot-trend-root/
 - **数据驱动** — 让采集数据说话，不做主观判断
 - **AI 撬动** — 每个环节问"AI 能做多少？我只需要做什么？"
 - **快速验证** — 不要完美，先验证再打磨
-- **plans.json 为价格真相源** — `project/codingplan-saver/data/*.json` 是 builder 实际读取的数据源（vendors/plans/changes）；`aikb/database/*.json` 由 `kb_migrate.py` 从 project 自动同步（pipeline Step 5b）；`aikb/vendors|tools/*.md` 是 AI 维护的画像层（部分厂商 MD 待补，目标态见 `docs/data-architecture.md`）；`docs/vendors-and-tools.md` 由 `kb_to_md.py` 从 `aikb/database/` 自动生成，勿手工编辑。**改套餐/价格 → 改 project；改完跑 `python -m collector.kb_migrate` 同步 aikb，再跑 `python -m collector.kb_to_md` 刷新一览表。**
+- **project/data 是唯一真相源** — `project/codingplan-saver/data/*.json` 是 builder 和所有下游唯一读取的数据源。`project/codingplan-saver/vendors-and-tools.md` 由 `kb_to_md.py` 从 data 直接生成。**改套餐/价格 → 改 project/data → 跑 `python -m collector.kb_to_md` 刷新一览表 → 跑 build.py 重建 HTML。** 不存在 aikb/ 中间镜像层。
 
 ## 用户画像（Frank）
 

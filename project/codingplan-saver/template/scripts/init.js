@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('navBrand').textContent = site.name || 'CodingPlan 省钱攻略';
   const taglineEl = document.getElementById('navTagline');
   if (taglineEl) taglineEl.textContent = site.tagline || '';
+  renderRecommend();
   renderCompare();
   renderFooter();
-  // 单页模式，对比表是首屏，直接渲染散点图
+  // 对比表散点图在第二屏，延迟渲染
   setTimeout(() => {
     if (typeof echarts !== 'undefined') renderChart();
   }, 100);

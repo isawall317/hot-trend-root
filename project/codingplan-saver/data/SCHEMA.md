@@ -224,7 +224,8 @@
   "category": "model-maker",            // 枚举: model-maker | cloud-maas | aggregator | vertical-cloud（对齐 vendors.json）
   "billingCore": "token",               // 枚举: token | request | credit（token=按Token计量, request=按次, credit=积分/燃料值制）
   "migration": "⚠️ 连续涨价 200%+",     // 可选，自由文本，迁移/计费变动提示
-  "notes": "..."                        // 可选，自由文本，数据质量/估算说明（如 measuredMonthlyToken 为估算值）
+  "notes": "...",                       // 可选，自由文本，数据质量/估算说明（如 measuredMonthlyToken 为估算值）
+  "rateLimit": "5h 2,000积分 / 周 10,000积分"  // 可选，限速/用量上限描述，对比表"限速"列展示
 }
 ```
 
