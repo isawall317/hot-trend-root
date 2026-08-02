@@ -204,7 +204,7 @@
     ],
     "monthlyRequests": null,
     "tokenLimit": "Auto智能调度",
-    "measuredMonthlyToken": 250,
+    "measuredMonthlyToken": null,
     "tags": [
       "模型强",
       "性价比高",
@@ -219,7 +219,7 @@
     "category": "model-maker",
     "billingCore": "token",
     "migration": "改版单档制，旧Lite¥40/Pro¥200已停",
-    "notes": "measuredMonthlyToken 为估算（¥9.9×25 M/元，全家桶历史比），待实测",
+    "notes": "Auto智能调度，token上限未公开，不参与性价比排名",
     "rateLimit": "Auto 智能调度，无硬性限速"
   },
   {
