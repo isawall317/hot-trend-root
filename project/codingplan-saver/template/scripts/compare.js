@@ -629,7 +629,7 @@ function renderModelRows(filtered) {
         compareState.selectedModel = modelName;
         const chartRow = document.createElement('tr');
         chartRow.className = 'model-chart-row';
-        chartRow.innerHTML = '<td colspan="5" style="padding:0;background:var(--grey-1);"><div id="inlineModelChart" style="width:100%;height:280px;"></div></td>';
+        chartRow.innerHTML = '<td colspan="5" style="padding:0;background:var(--grey-1);"><div id="inlineModelChart" style="width:100%;height:320px;"></div></td>';
         row.parentNode.insertBefore(chartRow, row.nextSibling);
         renderModelChart(modelName, 'inlineModelChart');
       }
@@ -687,11 +687,11 @@ function renderModelChart(modelName, chartId) {
   window._modelChart = chart;
   chart.setOption({
     animationDuration: 400,
-    grid: { left: 60, right: 30, top: 30, bottom: 40 },
+    grid: { left: 60, right: 30, top: 40, bottom: 90 },
     tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, textStyle: { color: C.tooltipText, fontSize: 12 },
       formatter: p => { const d = items[p.dataIndex]; return '<b>' + d.name + '</b><div style="font-size:11px;color:#d4d4d2;margin-top:3px;">' + d.type + ' · <b>' + d.tpu + ' M/元</b>' + (d.isEstimate ? '（整池额度估算）' : '') + '</div><div style="font-size:11px;color:#d4d4d2;">1元 = ' + d.tpu + 'M token</div>'; } },
     legend: { data: ['月订阅', 'API按量'], bottom: 0, textStyle: { color: C.text, fontSize: 11 }, itemWidth: 10, itemHeight: 10 },
-    xAxis: { type: 'category', data: items.map(i => i.name + (i.isEstimate ? ' *' : '')), axisLabel: { color: C.text, fontSize: 10, rotate: 20, interval: 0 }, axisLine: { lineStyle: { color: C.grid } } },
+    xAxis: { type: 'category', data: items.map(i => i.name + (i.isEstimate ? ' *' : '')), axisLabel: { color: C.text, fontSize: 10, rotate: 35, interval: 0, width: 80, overflow: 'truncate' }, axisLine: { lineStyle: { color: C.grid } } },
     yAxis: { type: 'value', name: 'TOKEN/元 (M)', nameTextStyle: { color: C.text, fontSize: 11 }, axisLabel: { color: C.text, formatter: v => v + 'M' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
     series: [{
       type: 'bar', barWidth: '55%',
