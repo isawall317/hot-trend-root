@@ -1,0 +1,107 @@
+[
+  {
+    "id": "zhipu",
+    "name": "智谱AI",
+    "logo": "智",
+    "color": "#F5F527",
+    "category": "model-maker",
+    "urls": {
+      "pricing": "https://bigmodel.cn/glm-coding",
+      "home": "https://open.bigmodel.cn",
+      "affiliate": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "7-30 套餐改版，积分制，旧版¥49/149/469已停"
+  },
+  {
+    "id": "bytedance",
+    "name": "字节·方舟",
+    "logo": "字",
+    "color": "#FF3B3B",
+    "category": "model-maker",
+    "urls": {
+      "pricing": "https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan",
+      "home": "https://www.volcengine.com/ark",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqfangzhou"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "反爬+SPA，依赖人工快照"
+  },
+  {
+    "id": "tencent",
+    "name": "腾讯云",
+    "logo": "腾",
+    "color": "#eab308",
+    "category": "cloud-maas",
+    "urls": {
+      "pricing": "https://cloud.tencent.com/product/tokenhub",
+      "home": "https://cloud.tencent.com/product/tokenhub",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqtengxunt"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "Coding Plan已售罄，主推Token Plan 4档"
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek 官方",
+    "logo": "D",
+    "color": "#71717B",
+    "category": "model-maker",
+    "urls": {
+      "pricing": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      "home": "https://api-docs.deepseek.com",
+      "affiliate": ""
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "纯API按量，无月订阅套餐，即将峰谷定价"
+  },
+  {
+    "id": "minimax",
+    "name": "MiniMax",
+    "logo": "M",
+    "color": "#f97316",
+    "category": "model-maker",
+    "urls": {
+      "pricing": "https://platform.minimaxi.com/subscribe/token-plan",
+      "home": "https://platform.minimaxi.com",
+      "affiliate": "https://platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "Token Plan用量翻倍，多模态全共享额度"
+  },
+  {
+    "id": "kimi",
+    "name": "Kimi",
+    "logo": "K",
+    "color": "#10C2B0",
+    "category": "model-maker",
+    "urls": {
+      "pricing": "https://www.kimi.com/membership/pricing",
+      "home": "https://www.kimi.com",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqkimi"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "新会员体系即将上线，Kimi权益与Kimi Code将拆分"
+  },
+  {
+    "id": "bailian",
+    "name": "阿里·百炼",
+    "logo": "阿",
+    "color": "#22c55e",
+    "category": "cloud-maas",
+    "urls": {
+      "pricing": "https://www.aliyun.com/benefit/scene/codingplan",
+      "home": "https://bailian.aliyun.com",
+      "affiliate": "https://api.dreamfree.space/c/s/cpyqbailianc"
+    },
+    "extractStrategy": "manual",
+    "lastVerified": "2026-08-01",
+    "notes": "Lite已停售(3-20)，只剩Pro，限量抢购"
+  }
+]

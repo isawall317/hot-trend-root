@@ -10,10 +10,9 @@
   4. sources/runner.py    → Playwright/BS4 自动提取 7 家厂商定价
   5. sources/merge.py     → 合并提取结果到 plans.json
   6. token_estimator.py   → 推算 Token 用量, 更新 plans.json（纯计算）
-  7. market_discovery.py  → 市场发现：热点召回 + 生态页抓取 → 新厂商/工具候选
-  8. kb_migrate.py        → 同步 plans.json 价格 → KB services（维护 KB 画像层）
-  9. kb_diff.py           → KB 变更检测 + 风险分级 → data/pending/{date}/kb-changes.json
-  10. 生成统一待审阅报告 → data/pending/{date}/report.md
+  7. market_discovery.py  → 市场发现：热点召回 → 新厂商/工具候选
+  8. kb_diff.py           → data/ 变更检测 + 风险分级 → data/pending/{date}/kb-changes.json
+  9. 生成统一待审阅报告 → data/pending/{date}/report.md
 
 注意: maintenance_scanner 不再直接写入 changes.json。
       编辑决策（哪些文章收录、哪些价格变动记录）由 Claude Code 通过
@@ -224,26 +223,17 @@ def main():
     # Step 5: Token 推算 → plans.json（纯计算，直接写入）
     results["Token推算"] = run_step("Step 5/6: Token 用量推算", "token_estimator")
 
-    # Step 5b: 同步 plans.json → KB services（维护 KB 画像层）
-    try:
-        from .kb_migrate import main as kb_migrate_main
-        kb_migrate_main()
-        results["KB同步"] = True
-    except Exception as e:
-        results["KB同步"] = False
-        print(f"  ⚠️  KB 同步失败: {e}")
-
     # Step 6: 市场发现 → data/signals/market-{date}.json
     results["市场发现"] = run_step("Step 6/6: 市场发现（新厂商/工具）", "market_discovery")
 
-    # Step 6b: KB 变更检测 → data/pending/{date}/kb-changes.json
+    # Step 6b: data 变更检测 → data/pending/{date}/kb-changes.json
     try:
         from .kb_diff import diff_all
         diff_all(date_str)
-        results["KB变更检测"] = True
+        results["变更检测"] = True
     except Exception as e:
-        results["KB变更检测"] = False
-        print(f"  ⚠️  KB 变更检测失败: {e}")
+        results["变更检测"] = False
+        print(f"  ⚠️  变更检测失败: {e}")
 
     # 生成待审阅报告
     print(f"\n{'='*60}")

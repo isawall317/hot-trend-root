@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-08-02T13:54:35Z",
+  "date": "2026-08-02",
+  "vendors": [],
+  "plans": [
+    {
+      "entity": "plan",
+      "id": "bytedance-agent-large",
+      "name": "bytedance-agent-large",
+      "change": "modified",
+      "risk": "low",
+      "fields": {
+        "measuredMonthlyToken": {
+          "old": null,
+          "new": 1085
+        }
+      },
+      "detail": "plan bytedance-agent-large: measuredMonthlyToken 变更"
+    },
+    {
+      "entity": "plan",
+      "id": "bytedance-agent-lite",
+      "name": "bytedance-agent-lite",
+      "change": "modified",
+      "risk": "low",
+      "fields": {
+        "measuredMonthlyToken": {
+          "old": null,
+          "new": 11
+        }
+      },
+      "detail": "plan bytedance-agent-lite: measuredMonthlyToken 变更"
+    },
+    {
+      "entity": "plan",
+      "id": "kimi-daily",
+      "name": "kimi-daily",
+      "change": "modified",
+      "risk": "low",
+      "fields": {
+        "measuredMonthlyToken": {
+          "old": null,
+          "new": 42
+        }
+      },
+      "detail": "plan kimi-daily: measuredMonthlyToken 变更"
+    },
+    {
+      "entity": "plan",
+      "id": "tencent-cp-pro",
+      "name": "tencent-cp-pro",
+      "change": "modified",
+      "risk": "low",
+      "fields": {
+        "measuredMonthlyToken": {
+          "old": null,
+          "new": 4500
+        }
+      },
+      "detail": "plan tencent-cp-pro: measuredMonthlyToken 变更"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "high": 0,
+    "medium": 0,
+    "low": 4
+  }
+}
