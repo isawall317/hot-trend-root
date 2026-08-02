@@ -2,7 +2,7 @@
 // Tab 2: 对比（散点图 + 筛选条 + 表格 + 移动端卡片）
 // ============================================================
 const compareState = {
-  filters: { types: new Set(), tags: new Set(), models: new Set(), categories: new Set(), monthlyPriceMax: null, search: '' },
+  filters: { types: new Set(['Coding Plan', 'Token Plan', 'Agent Plan', '会员']), tags: new Set(), models: new Set(), categories: new Set(), monthlyPriceMax: null, search: '' },
   sort: { key: null, dir: 'asc' },
   columnsExpanded: false,
   columnMode: 'monthly', // monthly | api | model | calc
@@ -55,6 +55,15 @@ function bindQuickSwitch() {
     const preset = presets[idx];
     compareState.filters.types = new Set(preset.types);
     compareState.columnMode = preset.columnMode;
+    // 切换预设时清空其他筛选条件，避免残留
+    compareState.filters.tags.clear();
+    compareState.filters.models.clear();
+    compareState.filters.categories.clear();
+    compareState.filters.monthlyPriceMax = null;
+    compareState.filters.search = '';
+    compareState.sort = { key: null, dir: 'asc' };
+    const si = document.getElementById('searchInput'); if (si) si.value = '';
+    const ss = document.getElementById('sortSelect'); if (ss) ss.value = '';
     const btnStyle = 'display:inline-flex;align-items:center;padding:8px 16px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:0;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;';
     const btnActive = 'border-color:var(--accent);background:var(--accent);color:#fff;';
     el.querySelectorAll('.quick-switch-btn').forEach(b => {
@@ -293,6 +302,7 @@ function filterPlans() {
   const f = compareState.filters;
   let result = plans.filter(p => {
     if (p.status === 'deprecated') return false;
+    if (f.types.size && !f.types.has(p.type)) return false;
     if (f.categories.size && !f.categories.has(p.category || 'model-maker')) return false;
     if (f.tags.size && !(p.tags || []).some(t => f.tags.has(t))) return false;
     if (f.models.size && !(p.models || []).some(m => f.models.has(m))) return false;

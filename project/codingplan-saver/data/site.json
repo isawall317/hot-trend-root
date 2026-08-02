@@ -57,6 +57,12 @@
       "title": "月费 50 元以内",
       "desc": "学生党 / 体验党 / 试试水",
       "filter": {
+        "types": [
+          "Coding Plan",
+          "Token Plan",
+          "Agent Plan",
+          "会员"
+        ],
         "monthlyPriceMax": 50
       }
     },
@@ -66,7 +72,12 @@
       "title": "月订阅套餐",
       "desc": "固定月费 / 稳定用量 / 省心",
       "filter": {
-        "type": "Coding Plan"
+        "types": [
+          "Coding Plan",
+          "Token Plan",
+          "Agent Plan",
+          "会员"
+        ]
       }
     },
     {
@@ -104,7 +115,7 @@
             "非高峰时段 5 折，实际更便宜",
             "6 倍 Lite 用量，重度编码够用"
           ],
-          "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
+          "action": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D"
         },
         {
           "vendor": "腾讯云",

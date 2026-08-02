@@ -190,9 +190,34 @@ function bindQuickEntries() {
       const id = card.dataset.entryId;
       const entry = (site.quickEntries || []).find(q => q.id === id);
       if (!entry || !entry.filter) return;
-      const query = Object.entries(entry.filter).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
-      location.hash = '#compare' + (query ? '?' + query : '');
-      // 平滑滚动到对比表（单页模式 router 只 resize 图表，不会自动滚）
+      // 直接应用筛选条件到 compareState 并重渲染（不设 hash，避免 reload 残留）
+      const f = compareState.filters;
+      f.types.clear(); f.tags.clear(); f.models.clear(); f.categories.clear();
+      f.monthlyPriceMax = null; f.search = '';
+      const si = document.getElementById('searchInput'); if (si) si.value = '';
+      const ss = document.getElementById('sortSelect'); if (ss) ss.value = '';
+      compareState.sort = { key: null, dir: 'asc' };
+      for (const [k, v] of Object.entries(entry.filter)) {
+        if (k === 'monthlyPriceMax') f.monthlyPriceMax = Number(v);
+        else if (k === 'type') { f.types.clear(); f.types.add(v); }
+        else if (k === 'types') { f.types.clear(); v.forEach(t => f.types.add(t)); }
+        else if (k === 'tag') f.tags.add(v);
+        else if (k === 'vendor') { f.search = String(v).toLowerCase(); if (si) si.value = v; }
+        else if (k === 'model') f.models.add(v);
+      }
+      // 根据 types 决定 columnMode：API 按量→api 模式，否则 monthly
+      if (f.types.size === 1 && f.types.has('API 按量')) {
+        compareState.columnMode = 'api';
+      } else if (f.types.size && !f.types.has('API 按量')) {
+        compareState.columnMode = 'monthly';
+      }
+      if (typeof renderQuickSwitch === 'function') renderQuickSwitch();
+      syncCompareFilterUI();
+      renderCompareTable();
+      renderChart();
+      // 清掉残留 hash，避免 reload 时 parseHashFilter 重复筛选
+      history.replaceState(null, '', '#compare');
+      // 平滑滚动到对比表
       const target = document.getElementById('tab-compare');
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
