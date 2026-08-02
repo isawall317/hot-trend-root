@@ -36,7 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 
 # 脚本加载顺序（init.js 必须最后）
-SCRIPT_FILES = ["utils.js", "router.js", "recommend.js", "compare.js", "community.js", "init.js"]
+SCRIPT_FILES = ["utils.js", "router.js", "recommend.js", "compare.js", "community.js", "calculator.js", "init.js"]
 
 
 def load_json(data_dir: Path, name: str):

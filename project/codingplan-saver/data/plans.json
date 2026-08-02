@@ -31,7 +31,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "7-30改版积分制，旧版¥49已停，涨价140%",
-    "notes": "measuredMonthlyToken 按官网'0.43~0.87亿Tokens/周'折算（取上限×4周）"
+    "notes": "measuredMonthlyToken 按官网'0.43~0.87亿Tokens/周'折算（取上限×4周）",
+    "rateLimit": "5h 2,000积分 / 周 10,000积分"
   },
   {
     "id": "zhipu-pro",
@@ -65,7 +66,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "7-30改版积分制，旧版¥149已停",
-    "notes": "measuredMonthlyToken = Lite × 6"
+    "notes": "measuredMonthlyToken = Lite × 6",
+    "rateLimit": "5h 12,000积分 / 周 60,000积分"
   },
   {
     "id": "zhipu-max",
@@ -100,7 +102,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "7-30改版积分制，旧版¥469已停，涨价130%",
-    "notes": "measuredMonthlyToken = Lite × 14"
+    "notes": "measuredMonthlyToken = Lite × 14",
+    "rateLimit": "5h 28,000积分 / 周 140,000积分"
   },
   {
     "id": "zhipu-api-glm52",
@@ -135,7 +138,8 @@
     "inputPrice": 8,
     "outputPrice": 28,
     "cachePrice": 2,
-    "contextLen": "1M"
+    "contextLen": "1M",
+    "rateLimit": "按量付费，无套餐限速"
   },
   {
     "id": "zhipu-api-glm-turbo",
@@ -169,7 +173,8 @@
     "inputPrice": 5,
     "outputPrice": 22,
     "cachePrice": 1.2,
-    "contextLen": "1M"
+    "contextLen": "1M",
+    "rateLimit": "按量付费，无套餐限速"
   },
   {
     "id": "bytedance-coding-auto",
@@ -214,7 +219,8 @@
     "category": "model-maker",
     "billingCore": "token",
     "migration": "改版单档制，旧Lite¥40/Pro¥200已停",
-    "notes": "measuredMonthlyToken 为估算（¥9.9×25 M/元，全家桶历史比），待实测"
+    "notes": "measuredMonthlyToken 为估算（¥9.9×25 M/元，全家桶历史比），待实测",
+    "rateLimit": "Auto 智能调度，无硬性限速"
   },
   {
     "id": "bytedance-agent-lite",
@@ -249,7 +255,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "",
-    "notes": "燃料值制，非直接Token计量"
+    "notes": "燃料值制，非直接Token计量",
+    "rateLimit": "月 20,000 Agent 燃料值"
   },
   {
     "id": "bytedance-agent-large",
@@ -284,7 +291,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "",
-    "notes": "燃料值制，25x Lite"
+    "notes": "燃料值制，25x Lite",
+    "rateLimit": "月 500,000 Agent 燃料值（25x）"
   },
   {
     "id": "tencent-tp-lite",
@@ -302,8 +310,7 @@
       "DeepSeek-V4-Pro",
       "MiniMax-M2.7",
       "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5"
+      "GLM-5.1"
     ],
     "monthlyRequests": null,
     "tokenLimit": "3500万 Tokens/月",
@@ -321,7 +328,8 @@
     "category": "cloud-maas",
     "billingCore": "token",
     "migration": "Coding Plan已售罄，主推Token Plan",
-    "notes": "MiniMax-M2.5将于8-6下线，Kimi-K2.5将于7-31下线"
+    "notes": "MiniMax-M2.5将于8-6下线，Kimi-K2.5将于7-31下线；Kimi-K2.5 已于 7-31 下线，已移除",
+    "rateLimit": "并发随档位（Lite 最低）"
   },
   {
     "id": "tencent-tp-standard",
@@ -339,8 +347,7 @@
       "DeepSeek-V4-Pro",
       "MiniMax-M2.7",
       "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5"
+      "GLM-5.1"
     ],
     "monthlyRequests": null,
     "tokenLimit": "1亿 Tokens/月",
@@ -358,7 +365,8 @@
     "category": "cloud-maas",
     "billingCore": "token",
     "migration": "",
-    "notes": ""
+    "notes": "；Kimi-K2.5 已于 7-31 下线，已移除",
+    "rateLimit": "并发随档位（Standard）"
   },
   {
     "id": "tencent-tp-pro",
@@ -376,8 +384,7 @@
       "DeepSeek-V4-Pro",
       "MiniMax-M2.7",
       "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5"
+      "GLM-5.1"
     ],
     "monthlyRequests": null,
     "tokenLimit": "3.2亿 Tokens/月",
@@ -395,7 +402,8 @@
     "category": "cloud-maas",
     "billingCore": "token",
     "migration": "",
-    "notes": ""
+    "notes": "；Kimi-K2.5 已于 7-31 下线，已移除",
+    "rateLimit": "并发随档位（Pro）"
   },
   {
     "id": "tencent-tp-max",
@@ -413,8 +421,7 @@
       "DeepSeek-V4-Pro",
       "MiniMax-M2.7",
       "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5"
+      "GLM-5.1"
     ],
     "monthlyRequests": null,
     "tokenLimit": "6.5亿 Tokens/月",
@@ -432,7 +439,8 @@
     "category": "cloud-maas",
     "billingCore": "token",
     "migration": "",
-    "notes": ""
+    "notes": "；Kimi-K2.5 已于 7-31 下线，已移除",
+    "rateLimit": "并发随档位（Max 最高）"
   },
   {
     "id": "tencent-cp-pro",
@@ -451,8 +459,8 @@
       "MiniMax-M2.7"
     ],
     "monthlyRequests": 90000,
-    "tokenLimit": "100M Tokens",
-    "measuredMonthlyToken": 600,
+    "tokenLimit": "5h 6,000次 / 周 45,000次 / 月 90,000次",
+    "measuredMonthlyToken": null,
     "tags": [
       "已售罄",
       "兼容Claude Code"
@@ -465,7 +473,8 @@
     "category": "cloud-maas",
     "billingCore": "token",
     "migration": "Coding Plan已售罄，迁移至Token Plan",
-    "notes": "售罄状态，保留供参考"
+    "notes": "按次计费（已售罄），无 Token 上限，tokenLimit 改为次数描述",
+    "rateLimit": "5h 6,000次 / 周 45,000次 / 月 90,000次（已售罄）"
   },
   {
     "id": "deepseek-api-flash",
@@ -502,7 +511,8 @@
     "inputPrice": 1,
     "outputPrice": 2,
     "cachePrice": 0.02,
-    "contextLen": "1M"
+    "contextLen": "1M",
+    "rateLimit": "并发 2,500"
   },
   {
     "id": "deepseek-api-pro",
@@ -538,7 +548,8 @@
     "inputPrice": 3,
     "outputPrice": 6,
     "cachePrice": 0.025,
-    "contextLen": "1M"
+    "contextLen": "1M",
+    "rateLimit": "并发 500"
   },
   {
     "id": "minimax-plus",
@@ -573,7 +584,8 @@
     "category": "model-maker",
     "billingCore": "token",
     "migration": "Frontier模型，用量翻倍升级",
-    "notes": "按M3单次~50K token估算12,000次/月"
+    "notes": "按M3单次~50K token估算12,000次/月；MiniMax-M2.5 在 MiniMax 自家快照未列价格行，归属待确认",
+    "rateLimit": "OpenClaw 并发 3-4 个"
   },
   {
     "id": "minimax-max",
@@ -608,7 +620,8 @@
     "category": "model-maker",
     "billingCore": "token",
     "migration": "",
-    "notes": ""
+    "notes": "measuredMonthlyToken 为估算（36,000次×50K÷1M≈1800M）；MiniMax-M2.5 在 MiniMax 自家快照未列价格行，归属待确认",
+    "rateLimit": "OpenClaw 并发 4-5 个"
   },
   {
     "id": "minimax-ultra",
@@ -643,7 +656,8 @@
     "category": "model-maker",
     "billingCore": "token",
     "migration": "",
-    "notes": ""
+    "notes": "measuredMonthlyToken 为估算（140,000次×50K÷1M≈7000M，取7100）；MiniMax-M2.5 在 MiniMax 自家快照未列价格行，归属待确认",
+    "rateLimit": "OpenClaw 并发 6-7 个"
   },
   {
     "id": "kimi-daily",
@@ -676,7 +690,8 @@
     "category": "model-maker",
     "billingCore": "credit",
     "migration": "新体系即将上线，Kimi权益与Code拆分",
-    "notes": "旧Andante¥49/Allegretto¥199待新体系上线后确认"
+    "notes": "旧Andante¥49/Allegretto¥199待新体系上线后确认；Kimi-K2.7-Code 在 Kimi 自家会员快照未见，归属待确认",
+    "rateLimit": "RPM/TPM 按充值等级递增"
   },
   {
     "id": "bailian-pro",
@@ -715,6 +730,7 @@
     "category": "cloud-maas",
     "billingCore": "request",
     "migration": "Lite已停售(3-20)，只剩Pro",
-    "notes": "按次计费（非Token），简单任务5-10次/复杂10-30+次"
+    "notes": "measuredMonthlyToken 为估算（按次计费，参考旧 3000M）",
+    "rateLimit": "5h 6,000次 / 周 45,000次 / 月 90,000次"
   }
 ]

@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "source": "manual-snapshot-20260801",
+    "updatedAt": "2026-08-01",
+    "note": "7家厂商计费规则，从 reference/pricing-snapshots/20260801/ 快照提取。precision 标注精确度。"
+  },
+
+  "deepseek": {
+    "name": "DeepSeek 官方",
+    "type": "payg",
+    "precision": "exact",
+    "note": "纯API按量，无月费。峰谷定价未生效。",
+    "models": {
+      "deepseek-v4-flash": { "inputCached": 0.02, "inputMiss": 1, "output": 2 },
+      "deepseek-v4-pro": { "inputCached": 0.025, "inputMiss": 3, "output": 6 }
+    }
+  },
+
+  "kimi": {
+    "name": "Kimi",
+    "type": "payg",
+    "precision": "exact",
+    "note": "K3 API按量精确；会员额度未公开，仅给月费。",
+    "models": {
+      "kimi-k3": { "inputCached": 2, "inputMiss": 20, "output": 100 }
+    },
+    "membership": {
+      "precision": "unknown",
+      "plans": {
+        "Andante": { "fee": 39 },
+        "Moderato": { "fee": 79 },
+        "Allegretto": { "fee": 159 },
+        "Allegro": { "fee": 559 }
+      },
+      "note": "会员按Agent额度倍数（1x/2x/4x/10x），token上限未公开"
+    }
+  },
+
+  "zhipu": {
+    "name": "智谱AI",
+    "type": "credit",
+    "precision": "exact",
+    "note": "积分制。消耗=(输入×In系数+缓存×Cached系数+输出×Out系数)/10000。非高峰5折。用超限流不加钱。",
+    "plans": {
+      "Lite": { "fee": 118, "weeklyPoints": 10000 },
+      "Pro": { "fee": 538, "weeklyPoints": 60000 },
+      "Max": { "fee": 1078, "weeklyPoints": 140000 }
+    },
+    "models": {
+      "GLM-5.2": { "input": 6.9, "cached": 1.7, "output": 24 },
+      "GLM-5-Turbo": { "input": 5.7, "cached": 1.5, "output": 21 },
+      "GLM-4.7": { "input": 4.6, "cached": 1.2, "output": 16 }
+    },
+    "offPeakDiscount": 0.5,
+    "paygEquivalent": {
+      "GLM-5.2": { "inputCached": 2, "inputMiss": 8, "output": 28 }
+    }
+  },
+
+  "tencent": {
+    "name": "腾讯云",
+    "type": "pool",
+    "precision": "exact",
+    "note": "Token池制，缓存命中/未命中/输出三类token 1:1:1统一抵扣。用超限流不加钱。",
+    "plans": {
+      "Lite": { "fee": 39, "tokens": 35000000 },
+      "Standard": { "fee": 99, "tokens": 100000000 },
+      "Pro": { "fee": 299, "tokens": 320000000 },
+      "Max": { "fee": 599, "tokens": 650000000 }
+    }
+  },
+
+  "minimax": {
+    "name": "MiniMax",
+    "type": "call-estimate",
+    "precision": "estimate",
+    "note": "按M3单次~50K token估算次数。token上限是软估算非硬限制。",
+    "plans": {
+      "Plus": { "fee": 49, "callsPerMonth": 12000 },
+      "Max": { "fee": 119, "callsPerMonth": 36000 },
+      "Ultra": { "fee": 469, "callsPerMonth": 140000 }
+    },
+    "tokensPerCall": 50000
+  },
+
+  "bailian": {
+    "name": "阿里·百炼",
+    "type": "call-count",
+    "precision": "estimate",
+    "note": "按模型调用次数计（非token）。1次提问≈5-30次模型调用，取均值15次。",
+    "plans": {
+      "Pro": { "fee": 200, "callsPerMonth": 90000 }
+    },
+    "callsPerQuery": 15
+  },
+
+  "bytedance": {
+    "name": "字节·方舟",
+    "type": "unknown",
+    "precision": "unknown",
+    "note": "Coding Plan ¥9.9 Auto调度，token上限未公开。Agent Plan按燃料值。",
+    "plans": {
+      "Auto": { "fee": 9.9 },
+      "Agent Small": { "fee": 9.9, "fuel": 20000 },
+      "Agent Large": { "fee": 1000, "fuel": 500000 }
+    }
+  }
+}

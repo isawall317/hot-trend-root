@@ -5,7 +5,7 @@ const compareState = {
   filters: { types: new Set(), tags: new Set(), models: new Set(), categories: new Set(), monthlyPriceMax: null, search: '' },
   sort: { key: null, dir: 'asc' },
   columnsExpanded: false,
-  columnMode: 'all', // all | monthly | api | model
+  columnMode: 'monthly', // monthly | api | model | calc
   selectedModel: null
 };
 
@@ -24,10 +24,10 @@ function renderQuickSwitch() {
   const el = document.getElementById('compareQuickSwitch');
   if (!el) return '';
   const presets = [
-    { label: '全部', types: [] },
     { label: '月订阅套餐', types: ['Coding Plan', 'Token Plan', 'Agent Plan', '会员'] },
     { label: 'API 按量', types: ['API 按量'] },
     { label: '按模型', types: [], isModelView: true },
+    { label: '成本测算', types: [], isCalcView: true },
   ];
   const btnStyle = 'display:inline-flex;align-items:center;padding:8px 16px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);border-radius:0;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;';
   const btnActive = 'border-color:var(--accent);background:var(--accent);color:#fff;';
@@ -43,10 +43,10 @@ function bindQuickSwitch() {
   const el = document.getElementById('compareQuickSwitch');
   if (!el) return;
   const presets = [
-    { types: [], columnMode: 'all' },
     { types: ['Coding Plan', 'Token Plan', 'Agent Plan', '会员'], columnMode: 'monthly' },
     { types: ['API 按量'], columnMode: 'api' },
     { types: [], columnMode: 'model', isModelView: true },
+    { types: [], columnMode: 'calc', isCalcView: true },
   ];
   el.addEventListener('click', e => {
     const btn = e.target.closest('.quick-switch-btn');
@@ -148,6 +148,7 @@ function getColumns(mode) {
       { key: 'inputPrice', label: '输入价', unit: '元/M' },
       { key: 'outputPrice', label: '输出价', unit: '元/M' },
       { key: 'cachePrice', label: '缓存价', unit: '元/M' },
+      { key: 'rateLimit', label: '并发/限速', isRateLimit: true },
       { key: 'contextLen', label: '上下文' },
     ]).concat(action);
   }
@@ -165,6 +166,7 @@ function getColumns(mode) {
     { key: 'monthlyPrice', label: '月费', isPrice: true },
     { key: 'usage', label: '月用量' },
     { key: 'tpu', label: '每元Token', isTPU: true },
+    { key: 'rateLimit', label: '限速', isRateLimit: true },
     { key: 'models', label: '关键模型' },
   ]).concat(action);
 }
@@ -182,6 +184,11 @@ function renderCompareFilterBar() {
   const cats = [...new Set(filterable.map(p => p.category || 'model-maker'))].sort();
   const catChips = cats.map(c => '<button class="filter-chip" data-filter-type="categories" data-filter-value="' + c + '">' + (catLabels[c] || c) + '</button>').join('');
 
+  const allModels = [...new Set(filterable.flatMap(p => p.models || []))].sort();
+  const modelChips = allModels.slice(0, 12).map(m =>
+    '<button class="filter-chip" data-filter-type="models" data-filter-value="' + escapeHtml(m) + '">' + escapeHtml(m) + '</button>'
+  ).join('');
+
   return '<div class="filter-bar">' +
     '<select class="filter-select" id="sortSelect">' +
       '<option value="">默认排序</option>' +
@@ -193,7 +200,8 @@ function renderCompareFilterBar() {
     '<input type="text" class="filter-select" id="searchInput" placeholder="搜索厂商/套餐..." style="min-width:160px;">' +
     '<button class="filter-chip" id="resetBtn">重置</button>' +
     '<span class="filter-stats">显示 <strong id="filterCount">0</strong> / ' + filterable.length + ' 个套餐</span>' +
-  '</div>';
+  '</div>' +
+  (modelChips ? '<div class="filter-bar"><span style="font-size:11px;font-weight:700;color:var(--text-helper);">模型:</span>' + modelChips + '</div>' : '');
 }
 
 function parseHashFilter() {
@@ -327,6 +335,20 @@ function renderCompareTable() {
   }
 
   renderTableHead();
+  // 非 calc 模式：恢复表格/图/筛选栏显示，隐藏 calcUI
+  if (compareState.columnMode !== 'calc') {
+    const calcUI = document.getElementById('calcUI');
+    if (calcUI) calcUI.style.display = 'none';
+    ['compareFilterBar', 'plansTableBody'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.style.display = '';
+    });
+    const tw = document.querySelector('.table-wrap'); if (tw) tw.style.display = '';
+    const cc = document.querySelector('.chart-card'); if (cc) cc.style.display = '';
+  }
+  if (compareState.columnMode === 'calc') {
+    renderCalculator();
+    return;
+  }
   if (compareState.columnMode === 'model') {
     renderModelRows(filtered);
     return;
@@ -361,6 +383,9 @@ function renderCompareTable() {
             : '<span style="color:var(--text-placeholder);">—</span>';
           return '<td class="col-price">' + tpu + '</td>';
         }
+        if (c.isRateLimit) {
+          return '<td style="font-size:11px;color:var(--text-secondary);">' + escapeHtml(p.rateLimit || '—') + '</td>';
+        }
         if (c.key === 'models') {
           const km = (p.models || []).slice(0, 3).join(' / ') + ((p.models || []).length > 3 ? ' +' + (p.models.length - 3) : '');
           return '<td style="font-size:12px;">' + escapeHtml(km) + '</td>';
@@ -380,6 +405,164 @@ function renderCompareTable() {
     }).join('');
   }
   renderCompareCards(filtered);
+}
+
+// === 成本测算器 ===
+function renderCalculator() {
+  // 隐藏表格、筛选栏、散点图
+  ['compareFilterBar', 'plansTableBody', 'plansCardsView'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  const tableWrap = document.querySelector('.table-wrap');
+  if (tableWrap) tableWrap.style.display = 'none';
+  const chartCard = document.querySelector('.chart-card');
+  if (chartCard) chartCard.style.display = 'none';
+  const thead = document.getElementById('plansTableHead');
+  if (thead) thead.innerHTML = '';
+
+  const container = document.querySelector('#compare-body .container');
+  if (!container) return;
+  // 渲染测算器 UI（如果还没渲染）
+  if (!document.getElementById('calcUI')) {
+    container.insertAdjacentHTML('beforeend', renderCalcHTML());
+    bindCalcControls();
+  }
+  document.getElementById('calcUI').style.display = 'block';
+  // 渲染模型多选标签
+  const modelFilter = document.getElementById('calcModelFilter');
+  if (modelFilter && !modelFilter.dataset.rendered) {
+    const allModels = [...new Set(plans.flatMap(p => p.models || []))].sort();
+    modelFilter.innerHTML = allModels.map(m =>
+      '<label style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid var(--border-subtle);font-size:11px;cursor:pointer;color:var(--text-secondary);"><input type="checkbox" value="' + escapeHtml(m) + '" style="accent-color:var(--accent);">' + escapeHtml(m) + '</label>'
+    ).join('');
+    modelFilter.dataset.rendered = '1';
+    modelFilter.querySelectorAll('input[type=checkbox]').forEach(cb => {
+      cb.addEventListener('change', updateCalcResults);
+    });
+  }
+  updateCalcResults();
+}
+
+function renderCalcHTML() {
+  const profiles = [
+    { icon: '👤', name: '偶尔写代码', desc: '学生 / 体验 / 一周几次', inputM: 5, outputM: 2, cacheHitRate: 0.8 },
+    { icon: '💻', name: '每天AI编程', desc: '日常工作主力', inputM: 30, outputM: 10, cacheHitRate: 0.7 },
+    { icon: '🔥', name: '全天靠AI', desc: '重度编码 / 长任务', inputM: 100, outputM: 40, cacheHitRate: 0.6 },
+    { icon: '🤖', name: '多Agent并行', desc: '团队 / 龙虾 / CI', inputM: 300, outputM: 100, cacheHitRate: 0.5 },
+  ];
+  const profileBtns = profiles.map((p, i) =>
+    '<button class="calc-profile" data-i="' + i + '" style="display:flex;flex-direction:column;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-subtle);background:transparent;text-align:left;cursor:pointer;min-width:140px;flex:1;">' +
+      '<span style="font-size:20px;">' + p.icon + '</span>' +
+      '<span style="font-weight:700;font-size:14px;margin-top:var(--sp-2);">' + p.name + '</span>' +
+      '<span style="font-size:11px;color:var(--text-helper);margin-top:2px;">' + p.desc + '</span>' +
+    '</button>'
+  ).join('');
+  return '<div id="calcUI">' +
+    '<div style="border:1px solid var(--border-subtle);padding:var(--sp-5);margin-bottom:var(--sp-5);">' +
+      '<h3 style="margin:0 0 var(--sp-4);font-size:15px;font-weight:700;">你是哪种用户？</h3>' +
+      '<div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;">' + profileBtns + '</div>' +
+      '<div style="margin-top:var(--sp-4);border-top:1px solid var(--border-subtle);padding-top:var(--sp-4);">' +
+        '<div style="font-size:12px;color:var(--text-helper);margin-bottom:var(--sp-3);">你主要用什么模型？（可多选，不选=全部）</div>' +
+        '<div id="calcModelFilter" style="display:flex;gap:6px;flex-wrap:wrap;"></div>' +
+      '</div>' +
+      '<details style="margin-top:var(--sp-4);">' +
+        '<summary style="font-size:12px;color:var(--accent);cursor:pointer;font-weight:600;">▸ 自定义精确用量（高级）</summary>' +
+        '<div style="padding:var(--sp-4) 0;display:grid;gap:var(--sp-4);">' +
+          '<div><label style="font-size:12px;color:var(--text-helper);">月输入 Token: <b id="calcInputVal" style="color:var(--accent);">30</b> M</label><input type="range" id="calcInput" min="1" max="500" value="30" style="width:100%;accent-color:var(--accent);"></div>' +
+          '<div><label style="font-size:12px;color:var(--text-helper);">月输出 Token: <b id="calcOutputVal" style="color:var(--accent);">10</b> M</label><input type="range" id="calcOutput" min="1" max="200" value="10" style="width:100%;accent-color:var(--accent);"></div>' +
+          '<div><label style="font-size:12px;color:var(--text-helper);">缓存命中率: <b id="calcCacheVal" style="color:var(--accent);">70</b>%</label><input type="range" id="calcCache" min="0" max="95" value="70" style="width:100%;accent-color:var(--accent);"></div>' +
+        '</div>' +
+      '</details>' +
+    '</div>' +
+    '<div id="calcResults" style="border:1px solid var(--border-subtle);"></div>' +
+    '<p style="font-size:11px;color:var(--text-helper);margin-top:var(--sp-3);">✅精确（4家按官网规则精确计算） · ⚠️估算（3家因计费规则未完全公开） · "会限流"=用量超套餐额度</p>' +
+  '</div>';
+}
+
+function bindCalcControls() {
+  const profiles = [
+    { inputM: 5, outputM: 2, cacheHitRate: 0.8 },
+    { inputM: 30, outputM: 10, cacheHitRate: 0.7 },
+    { inputM: 100, outputM: 40, cacheHitRate: 0.6 },
+    { inputM: 300, outputM: 100, cacheHitRate: 0.5 },
+  ];
+  // 用户画像按钮：点了直接设用量并高亮
+  document.querySelectorAll('.calc-profile').forEach((btn, i) => {
+    if (i === 1) { btn.style.borderColor = 'var(--accent)'; btn.style.background = 'rgba(0,47,167,0.05)'; }
+    btn.addEventListener('click', () => {
+      const p = profiles[i];
+      const inp = document.getElementById('calcInput');
+      const out = document.getElementById('calcOutput');
+      const cache = document.getElementById('calcCache');
+      if (inp) { inp.value = p.inputM; document.getElementById('calcInputVal').textContent = p.inputM; }
+      if (out) { out.value = p.outputM; document.getElementById('calcOutputVal').textContent = p.outputM; }
+      if (cache) { cache.value = Math.round(p.cacheHitRate * 100); document.getElementById('calcCacheVal').textContent = Math.round(p.cacheHitRate * 100); }
+      document.querySelectorAll('.calc-profile').forEach(b => { b.style.borderColor = 'var(--border-subtle)'; b.style.background = 'transparent'; });
+      btn.style.borderColor = 'var(--accent)'; btn.style.background = 'rgba(0,47,167,0.05)';
+      updateCalcResults();
+    });
+  });
+  // 高级滑块
+  const update = () => {
+    const inp = document.getElementById('calcInput');
+    const out = document.getElementById('calcOutput');
+    const cache = document.getElementById('calcCache');
+    if (inp) document.getElementById('calcInputVal').textContent = inp.value;
+    if (out) document.getElementById('calcOutputVal').textContent = out.value;
+    if (cache) document.getElementById('calcCacheVal').textContent = cache.value;
+    updateCalcResults();
+    document.querySelectorAll('.calc-profile').forEach(b => { b.style.borderColor = 'var(--border-subtle)'; b.style.background = 'transparent'; });
+  };
+  ['calcInput', 'calcOutput', 'calcCache'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', update);
+  });
+}
+
+function updateCalcResults() {
+  const inp = document.getElementById('calcInput');
+  const out = document.getElementById('calcOutput');
+  const cache = document.getElementById('calcCache');
+  if (!inp || !out || !cache) return;
+  const usage = {
+    inputM: parseFloat(inp.value),
+    outputM: parseFloat(out.value),
+    cacheHitRate: parseFloat(cache.value) / 100,
+  };
+  // pricing-models 数据从注入的 DATA 读
+  const models = (typeof DATA !== 'undefined' && DATA['pricing-models']) || (typeof pricingModels !== 'undefined' ? pricingModels : null);
+  if (!models) return;
+  let results = calcAll(models, usage, 'GLM-5.2');
+  // 模型过滤：勾选了模型时，只保留支持选中模型的套餐
+  const checkedModels = [...document.querySelectorAll('#calcModelFilter input:checked')].map(cb => cb.value);
+  if (checkedModels.length) {
+    // 找出支持选中模型的 vendorId 集合
+    const supportedVendorIds = new Set(plans.filter(p => (p.models || []).some(m => checkedModels.includes(m))).map(p => p.vendorId));
+    results = results.filter(r => supportedVendorIds.has(r.vendorId || r.vendorName));
+    // 给每个结果标注支持的选中模型
+    results.forEach(r => {
+      const vendorPlans = plans.filter(p => (p.vendorId === r.vendorId || p.vendor === r.vendorName));
+      const supModels = [...new Set(vendorPlans.flatMap(p => p.models || []))].filter(m => checkedModels.includes(m));
+      if (supModels.length) r.note = (r.note || '') + ' · 支持: ' + supModels.join('/');
+    });
+  }
+  const el = document.getElementById('calcResults');
+  if (!el) return;
+  el.innerHTML = '<div style="padding:var(--sp-4);">' +
+    '<h3 style="margin:0 0 var(--sp-4);font-size:15px;font-weight:700;">成本排序（从低到高）</h3>' +
+    results.map((r, i) => {
+      const precIcon = r.precision === 'exact' ? '✅' : (r.precision === 'estimate' ? '⚠️' : '❓');
+      const statusBadge = r.status === 'throttled' ? ' <span style="color:var(--text-helper);font-size:11px;">⚠️会限流</span>' : '';
+      const costStr = r.cost !== null ? '¥' + r.cost + '/月' : '未公开';
+      return '<div style="display:flex;align-items:center;padding:var(--sp-3);border-bottom:1px solid var(--border-subtle);">' +
+        '<span style="font-family:var(--mono);font-weight:700;color:var(--text-helper);width:24px;">' + (i + 1) + '</span>' +
+        '<div style="flex:1;"><div style="font-weight:600;font-size:13px;">' + escapeHtml(r.vendorName) + ' · ' + escapeHtml(r.planName) + statusBadge + '</div>' +
+        '<div style="font-size:11px;color:var(--text-helper);">' + precIcon + ' ' + escapeHtml(r.note || '') + '</div></div>' +
+        '<span style="font-family:var(--mono);font-weight:700;font-size:15px;color:' + (r.cost !== null ? 'var(--accent)' : 'var(--text-placeholder)') + ';">' + costStr + '</span>' +
+      '</div>';
+    }).join('') +
+  '</div>';
 }
 
 function renderModelRows(filtered) {
