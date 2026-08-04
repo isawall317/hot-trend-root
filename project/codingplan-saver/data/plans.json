@@ -204,7 +204,7 @@
     ],
     "monthlyRequests": null,
     "tokenLimit": "Auto智能调度",
-    "measuredMonthlyToken": null,
+    "measuredMonthlyToken": 11,
     "tags": [
       "模型强",
       "性价比高",

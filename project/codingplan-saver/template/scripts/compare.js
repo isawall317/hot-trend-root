@@ -6,8 +6,18 @@ const compareState = {
   sort: { key: null, dir: 'asc' },
   columnsExpanded: false,
   columnMode: 'monthly', // monthly | api | model | calc
+  chartView: 'ranking',  // 月订阅模式的图: ranking=每元Token条形排名 | scatter=价格格局散点
   selectedModel: null
 };
+
+// 厂商类别色板 — dataviz validate_palette 全配对验证通过
+// (CVD worst ΔE 9.2, 正常视觉 worst ΔE 16.3, surface #fafaf8)
+// 固定顺序分配，不随筛选/排名变化（color follows the entity）
+const CATEGORY_COLORS = { 'model-maker': '#2a78d6', 'cloud-maas': '#eb6834', 'vertical-cloud': '#1baf7a', 'aggregator': '#4a3aa7' };
+const CATEGORY_LABELS = { 'model-maker': '原厂', 'cloud-maas': '云厂商', 'vertical-cloud': '垂直云', 'aggregator': '聚合商' };
+const CATEGORY_ORDER = ['model-maker', 'cloud-maas', 'vertical-cloud', 'aggregator'];
+function catOf(p) { return p.category || 'model-maker'; }
+function catColorOf(p) { return CATEGORY_COLORS[catOf(p)] || '#737373'; }
 
 function renderCompare() {
   const body = document.getElementById('compare-body');
@@ -97,13 +107,17 @@ function renderTableSection() {
         '<p class="section-subtitle" style="margin:0;">' + vendorCount + ' 家厂商 · ' + planCount + ' 个套餐 · 数据源官网快照 · 更新 ' + updatedDate + '</p>' +
       '</div>' +
       '<div id="compareQuickSwitch" style="margin-bottom:var(--sp-3);"></div>' +
-      // 散点图（放在搜索栏上面）
+      // 图表卡（放在搜索栏上面）
       '<div class="chart-card" style="margin-bottom:var(--sp-4);">' +
-        '<div style="margin-bottom:var(--sp-3);">' +
-          '<h3 class="section-title" id="chartTitle" style="margin:0;font-size:15px;">价格 vs Token 额度</h3>' +
-          '<p class="section-subtitle" id="chartSubtitle" style="margin:0;">越靠左下越便宜（高性价比区）</p>' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:var(--sp-3);">' +
+          '<div>' +
+            '<h3 class="section-title" id="chartTitle" style="margin:0;font-size:15px;">每元 Token 排名</h3>' +
+            '<p class="section-subtitle" id="chartSubtitle" style="margin:0;">1 元能买多少 M Token（实测月额度 ÷ 月费）· 越高越划算</p>' +
+          '</div>' +
+          '<div id="chartViewToggle" style="display:flex;gap:6px;"></div>' +
         '</div>' +
         '<div class="chart-container" id="priceVsTokenChart"></div>' +
+        '<div id="chartNote" style="font-size:11px;color:var(--text-helper);margin-top:var(--sp-2);"></div>' +
       '</div>' +
       '<div id="compareFilterBar"></div>' +
       '<div class="table-wrap"><table class="data-table"><thead id="plansTableHead"><tr></tr></thead><tbody id="plansTableBody"></tbody></table></div>' +
@@ -189,9 +203,8 @@ function renderCompareFilterBar() {
 
   const typeChips = types.map(t => '<button class="filter-chip" data-filter-type="types" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
   const tagChips = tags.map(t => '<button class="filter-chip" data-filter-type="tags" data-filter-value="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>').join('');
-  const catLabels = { 'model-maker': '原厂', 'cloud-maas': '云厂商', 'vertical-cloud': '垂直云', 'aggregator': '聚合商' };
   const cats = [...new Set(filterable.map(p => p.category || 'model-maker'))].sort();
-  const catChips = cats.map(c => '<button class="filter-chip" data-filter-type="categories" data-filter-value="' + c + '">' + (catLabels[c] || c) + '</button>').join('');
+  const catChips = cats.map(c => '<button class="filter-chip" data-filter-type="categories" data-filter-value="' + c + '">' + (CATEGORY_LABELS[c] || c) + '</button>').join('');
 
   const allModels = [...new Set(filterable.flatMap(p => p.models || []))].sort();
   const modelChips = allModels.slice(0, 12).map(m =>
@@ -249,6 +262,7 @@ function bindCompareFilters() {
       if (set.has(value)) set.delete(value); else set.add(value);
       syncCompareFilterUI();
       renderCompareTable();
+      renderChart();
     });
   });
 
@@ -264,6 +278,7 @@ function bindCompareFilters() {
     const si = document.getElementById('searchInput'); if (si) si.value = '';
     syncCompareFilterUI();
     renderCompareTable();
+    renderChart();
   });
 
   const ss = document.getElementById('sortSelect');
@@ -278,6 +293,7 @@ function bindCompareFilters() {
   if (si) si.addEventListener('input', () => {
     compareState.filters.search = si.value.trim().toLowerCase();
     renderCompareTable();
+    renderChart();
   });
 
   const toggle = document.getElementById('toggleColumnsBtn');
@@ -411,7 +427,7 @@ function renderCompareTable() {
         }
         return '<td>—</td>';
       }).join('');
-      return '<tr>' + cells + '</tr>';
+      return '<tr data-pid="' + escapeHtml(p.id || '') + '">' + cells + '</tr>';
     }).join('');
   }
   renderCompareCards(filtered);
@@ -727,155 +743,378 @@ function renderCompareCards(filtered) {
     }).join('');
 }
 
+// ============================================================
+// 图表层: 筛选联动 + 类别配色 + 条形排名/散点双视图
+// ============================================================
+
+// 图表 token: 文本一律用文本色,系列色只给图形(dataviz marks 规范)
+const CHART_TOKENS = {
+  text: '#525252', textStrong: '#0a0a0a', muted: '#737373',
+  grid: '#e0e0e0', surface: '#fafaf8',
+  accent: '#002fa7', seriesBlue: '#2a78d6',
+  tooltipBg: '#0a0a0a', tooltipText: '#fafaf8', tooltipSub: '#d4d4d2',
+};
+
 function renderChart() {
   if (typeof echarts === 'undefined') return;
   const dom = document.getElementById('priceVsTokenChart');
   if (!dom || dom.offsetParent === null) return;
   const existing = echarts.getInstanceByDom(dom);
   if (existing) existing.dispose();
+  window._chart = null;
 
   const mode = compareState.columnMode;
-  const isApi = mode === 'api';
-  const isModel = mode === 'model';
+  const filtered = filterPlans();
+  renderChartViewToggle();
 
-  // 更新标题
-  const titleEl = document.getElementById('chartTitle');
-  const subEl = document.getElementById('chartSubtitle');
-  dom.style.height = '';
-  if (titleEl) titleEl.textContent = isModel ? '模型覆盖度 vs 最便宜月订阅价' : (isApi ? '输入价 vs 输出价' : '月费 vs 月Token额度');
-  if (subEl) subEl.textContent = isModel ? '越靠右下越优（覆盖广 + 便宜）' : (isApi ? '越靠左下越便宜（¥/百万token）' : '越靠左下越便宜（高性价比区）');
+  let chart = null;
+  if (mode === 'model') chart = renderModelScatter(dom, filtered);
+  else if (mode === 'api') chart = renderApiScatter(dom, filtered);
+  else if (compareState.chartView === 'scatter') chart = renderMonthlyScatter(dom, filtered);
+  else chart = renderTpuRanking(dom, filtered);
 
-  // 瑞士风配色
-  const C = {
-    text: '#525252', grid: '#e0e0e0', accent: '#002fa7', accentSoft: 'rgba(0,47,167,0.1)',
-    tooltipBg: '#0a0a0a', tooltipText: '#fafaf8', tooltipBorder: '#737373',
-    cheap: 'rgba(0,47,167,0.08)', expensive: 'rgba(115,115,115,0.05)',
-  };
-
-  if (isModel) {
-    // 按模型散点图：X=支持平台数, Y=最便宜月订阅价
-    const modelMap = {};
-    plans.filter(p => p.status !== 'deprecated').forEach(p => (p.models||[]).forEach(m => {
-      if (!modelMap[m]) modelMap[m] = [];
-      modelMap[m].push(p);
-    }));
-    const items = Object.entries(modelMap).map(([m, ps]) => {
-      const platforms = [...new Set(ps.map(p => p.vendor))];
-      const monthly = ps.filter(p => p.type !== 'API 按量' && typeof p.monthlyPrice === 'number' && p.status !== 'sold_out');
-      const cheap = monthly.sort((a,b) => a.monthlyPrice - b.monthlyPrice)[0];
-      return cheap ? { model: m, platformCount: platforms.length, price: cheap.monthlyPrice, vendor: cheap.vendor, plan: cheap.plan } : null;
-    }).filter(Boolean);
-    if (!items.length) return;
-    const chart = echarts.init(dom);
+  if (chart) {
     window._chart = chart;
-    const allP = items.map(i => i.price);
-    const minP = Math.min(...allP), maxP = Math.max(...allP);
-    chart.setOption({
-      animationDuration: 400,
-      grid: { left: 70, right: 100, top: 40, bottom: 50 },
-      tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
-        formatter: p => { const d = p.data; return '<b>' + d.model + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">支持 ' + d.platformCount + ' 平台 · 最便宜 ¥' + d.price + '/月</div><div style="font-size:11px;color:#d4d4d2;">' + d.vendor + ' ' + d.plan + '</div>'; } },
-      xAxis: { type: 'value', name: '支持平台数', nameTextStyle: { color: C.text, fontSize: 11 }, min: 0.5, max: 3.5, axisLabel: { color: C.text, formatter: v => v + ' 家' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
-      yAxis: { type: 'log', name: '最便宜月订阅 (¥)', nameTextStyle: { color: C.text, fontSize: 11 }, min: minP * 0.5, max: maxP * 2, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
-      series: [{
-        type: 'scatter', symbolSize: 16, color: C.accent,
-        label: { show: true, position: 'right', distance: 8, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.model, labelLayout: { hideOverlap: true } },
-        itemStyle: { color: C.accent, borderColor: '#fff', borderWidth: 1.5 },
-        data: items.map(i => ({ value: [i.platformCount, i.price], model: i.model, platformCount: i.platformCount, price: i.price, vendor: i.vendor, plan: i.plan })),
-        emphasis: { scale: 1.2 },
-      }],
-      graphic: [
-        { type: 'text', right: 40, bottom: 20, silent: true, style: { text: '最优：覆盖广 + 便宜', fill: C.accent, fontSize: 11, fontWeight: 700 } }
-      ],
-    });
+    // 图 → 表联动: hover 数据点高亮对应表格行
+    chart.on('mouseover', p => highlightPlanRow(p.data && p.data.pid, true));
+    chart.on('mouseout', p => highlightPlanRow(p.data && p.data.pid, false));
     window.addEventListener('resize', () => chart.resize());
-    return;
   }
+}
 
-  if (isApi) {
-    // API 按量图：X=输入价, Y=输出价
-    const items = plans.filter(p => p.status === 'active' && p.type === 'API 按量' && typeof p.inputPrice === 'number' && typeof p.outputPrice === 'number');
-    if (!items.length) return;
-    const chart = echarts.init(dom);
-    window._chart = chart;
-    const vendors = [...new Set(items.map(p => p.vendor))];
-    const series = vendors.map(v => {
-      const data = items.filter(p => p.vendor === v).map(p => ({
-        value: [p.inputPrice, p.outputPrice],
-        plan: p.plan, vendor: p.vendor, input: p.inputPrice, output: p.outputPrice, cache: p.cachePrice,
-      }));
-      return { name: v, type: 'scatter', color: vendorColor(v), symbolSize: 14,
-        label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.plan, labelLayout: { hideOverlap: true } },
-        itemStyle: { color: vendorColor(v), borderColor: '#fff', borderWidth: 1.5 },
-        data };
-    });
-    const allX = items.map(p => p.inputPrice), allY = items.map(p => p.outputPrice);
-    chart.setOption({
-      animationDuration: 400,
-      grid: { left: 60, right: 40, top: 40, bottom: 50 },
-      tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
-        formatter: p => { const d = p.data; return '<div style="min-width:160px"><b>' + d.vendor + ' ' + d.plan + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">输入: <b>¥' + d.input + '/M</b> | 输出: <b>¥' + d.output + '/M</b></div><div style="font-size:12px;color:#d4d4d2;">缓存命中: <b>¥' + d.cache + '/M</b></div></div>'; } },
-      xAxis: { type: 'log', name: '输入价 (¥/M)', nameTextStyle: { color: C.text, fontSize: 11 }, min: 0.5, max: 12, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
-      yAxis: { type: 'log', name: '输出价 (¥/M)', nameTextStyle: { color: C.text, fontSize: 11 }, min: 1, max: 40, axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
-      series,
-    });
-    window.addEventListener('resize', () => chart.resize());
-    return;
-  }
+// 月订阅模式的 排名/散点 切换(其他模式无)
+function renderChartViewToggle() {
+  const el = document.getElementById('chartViewToggle');
+  if (!el) return;
+  if (compareState.columnMode !== 'monthly') { el.innerHTML = ''; return; }
+  const views = [{ k: 'ranking', label: '每元Token 排名' }, { k: 'scatter', label: '价格格局散点' }];
+  const base = 'padding:4px 10px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);cursor:pointer;font-size:11px;font-weight:600;transition:all .15s;';
+  const on = 'border-color:var(--accent);background:var(--accent);color:#fff;';
+  el.innerHTML = views.map(v =>
+    '<button data-cv="' + v.k + '" style="' + base + (compareState.chartView === v.k ? on : '') + '">' + v.label + '</button>'
+  ).join('');
+  el.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    if (compareState.chartView !== b.dataset.cv) {
+      compareState.chartView = b.dataset.cv;
+      renderChart();
+    }
+  }));
+}
 
-  // 月订阅图（默认 + all 模式）
-  const items = plans.filter(p => p.status === 'active' && typeof p.monthlyPrice === 'number' && typeof p.measuredMonthlyToken === 'number' && p.monthlyPrice > 0);
-  if (!items.length) return;
+// 缺数据/停售注记: drawn < total 时说明有数据未入图
+function setChartNote(drawn, total, unit) {
+  const el = document.getElementById('chartNote');
+  if (!el) return;
+  el.textContent = drawn < total
+    ? '图中显示 ' + drawn + ' / ' + total + ' 个' + (unit || '套餐') + ',其余因缺少价格/额度数据或已停售未显示'
+    : '';
+}
+
+function setChartTitle(title, subtitle) {
+  const t = document.getElementById('chartTitle');
+  const s = document.getElementById('chartSubtitle');
+  if (t) t.textContent = title;
+  if (s) s.textContent = subtitle;
+}
+
+function renderEmptyChart(dom, msg) {
+  dom.style.height = '260px';
   const chart = echarts.init(dom);
-  window._chart = chart;
-  const vendorsInData = [...new Set(items.map(p => p.vendor))];
+  chart.setOption({
+    graphic: [{ type: 'text', left: 'center', top: 'middle', silent: true,
+      style: { text: msg || '当前筛选条件下暂无可绘制数据', fill: CHART_TOKENS.muted, fontSize: 13 } }],
+  });
+  return chart;
+}
+
+function highlightPlanRow(pid, on) {
+  if (!pid) return;
+  document.querySelectorAll('tr[data-pid="' + CSS.escape(String(pid)) + '"]')
+    .forEach(tr => tr.classList.toggle('row-hl', on));
+}
+
+function ratingStars(r) { return r ? '★'.repeat(r) + '☆'.repeat(5 - r) : ''; }
+
+// ---- 月订阅 · 每元Token 横向条形排名(默认视图) ----
+function renderTpuRanking(dom, filtered) {
+  setChartTitle('每元 Token 排名', '1 元能买多少 M Token(实测月额度 ÷ 月费)· 越高越划算');
+  const C = CHART_TOKENS;
+  const drawable = filtered.filter(p =>
+    p.status === 'active' && typeof p.monthlyPrice === 'number' && p.monthlyPrice > 0 && typeof p.measuredMonthlyToken === 'number');
+  setChartNote(drawable.length, filtered.length, '套餐');
+  if (!drawable.length) return renderEmptyChart(dom);
+
+  const items = drawable.map(p => ({
+    pid: p.id, name: p.vendor + ' ' + p.plan, cat: catOf(p),
+    tpu: Math.round(p.measuredMonthlyToken / p.monthlyPrice * 100) / 100,
+    price: p.monthlyPrice, token: p.measuredMonthlyToken,
+    rating: p.rating, rateLimit: p.rateLimit, type: p.type,
+  })).sort((a, b) => b.tpu - a.tpu);
+  const catsPresent = CATEGORY_ORDER.filter(c => items.some(i => i.cat === c));
+
+  dom.style.height = Math.max(280, items.length * 32 + 110) + 'px';
+  const chart = echarts.init(dom);
+  chart.setOption({
+    animationDuration: 400,
+    grid: { left: 10, right: 90, top: 10, bottom: 40, containLabel: true },
+    tooltip: {
+      trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder,
+      textStyle: { color: C.tooltipText, fontSize: 13 },
+      formatter: p => {
+        const d = items[p.dataIndex];
+        if (!d) return '';
+        return '<b>' + escapeHtml(d.name) + '</b> <span style="font-size:11px;color:' + C.tooltipSub + ';">' + escapeHtml(d.type) + '</span>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';margin-top:4px;">月费 <b style="color:' + C.tooltipText + ';">¥' + d.price + '</b> · 月额度 <b style="color:' + C.tooltipText + ';">' + d.token + 'M</b></div>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';">每元 Token <b style="color:' + C.tooltipText + ';">' + d.tpu + ' M</b> · <span style="color:#eda100;">' + ratingStars(d.rating) + '</span></div>' +
+          (d.rateLimit ? '<div style="font-size:11px;color:' + C.tooltipSub + ';">限速 ' + escapeHtml(d.rateLimit) + '</div>' : '');
+      },
+    },
+    legend: { bottom: 0, icon: 'roundRect', itemWidth: 10, itemHeight: 10,
+      textStyle: { color: C.text, fontSize: 11, fontWeight: 600 }, data: catsPresent.map(c => CATEGORY_LABELS[c]) },
+    xAxis: { type: 'value', name: 'M/元', nameLocation: 'middle', nameGap: 26,
+      nameTextStyle: { color: C.muted, fontSize: 11 }, axisLabel: { color: C.muted, fontSize: 11 },
+      splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    yAxis: { type: 'category', inverse: true, data: items.map(i => i.name),
+      axisLabel: { color: C.text, fontSize: 11, width: 150, overflow: 'truncate' },
+      axisLine: { show: false }, axisTick: { show: false } },
+    series: catsPresent.map(c => ({
+      name: CATEGORY_LABELS[c], type: 'bar', barWidth: 16, barGap: '-100%',
+      itemStyle: { color: CATEGORY_COLORS[c], borderRadius: [0, 4, 4, 0] },
+      label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 11, fontWeight: 700,
+        fontFamily: 'JetBrains Mono, monospace',
+        formatter: p => { const d = items[p.dataIndex]; return d ? String(d.tpu) : ''; } },
+      data: items.map(i => i.cat === c ? { value: i.tpu, pid: i.pid } : { value: null, pid: i.pid }),
+    })),
+  });
+  return chart;
+}
+
+// ---- 月订阅 · 价格格局散点 ----
+function renderMonthlyScatter(dom, filtered) {
+  setChartTitle('月费 vs 月Token额度', '越靠左上越划算(便宜 + 额度高)· 点色 = 厂商类别');
+  const C = CHART_TOKENS;
+  dom.style.height = '';
+  const items = filtered.filter(p =>
+    p.status === 'active' && typeof p.monthlyPrice === 'number' && p.monthlyPrice > 0 && typeof p.measuredMonthlyToken === 'number');
+  setChartNote(items.length, filtered.length, '套餐');
+  if (!items.length) return renderEmptyChart(dom);
+
+  const catsPresent = CATEGORY_ORDER.filter(c => items.some(p => catOf(p) === c));
+  const tpuOf = p => p.measuredMonthlyToken / p.monthlyPrice;
+  // 选择性直接标注: 每元Token Top3 + 最低价; 其余 hover 才显示(dataviz: never a number on every point)
+  const labeled = new Set([...items].sort((a, b) => tpuOf(b) - tpuOf(a)).slice(0, 3).map(p => p.id));
+  const cheapest = [...items].sort((a, b) => a.monthlyPrice - b.monthlyPrice)[0];
+  if (cheapest) labeled.add(cheapest.id);
+
   const allP = items.map(p => p.monthlyPrice), allT = items.map(p => p.measuredMonthlyToken);
   const minP = Math.min(...allP), maxP = Math.max(...allP);
   const minT = Math.min(...allT), maxT = Math.max(...allT);
-
-  const series = vendorsInData.map(v => {
-    const data = items.filter(p => p.vendor === v).sort((a, b) => a.monthlyPrice - b.monthlyPrice).map(p => ({
-      value: [p.monthlyPrice, p.measuredMonthlyToken],
-      plan: p.plan, vendor: p.vendor, type: p.type, price: p.monthlyPrice, token: p.measuredMonthlyToken,
-      tpu: (p.measuredMonthlyToken / p.monthlyPrice).toFixed(2)
-    }));
-    return {
-      name: v, type: 'line', color: vendorColor(v), symbol: 'circle', symbolSize: 14, showSymbol: true,
-      lineStyle: { width: data.length > 1 ? 1.5 : 0, opacity: data.length > 1 ? 0.3 : 0 },
-      label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600, formatter: p => p.data.plan || '', labelLayout: { hideOverlap: true } },
-      itemStyle: { color: vendorColor(v), borderColor: '#fff', borderWidth: 1.5 },
-      data, emphasis: { scale: 1.15 }
-    };
-  });
-
   const medP = [...allP].sort((a, b) => a - b)[Math.floor(allP.length / 2)];
   const medT = [...allT].sort((a, b) => a - b)[Math.floor(allT.length / 2)];
 
+  // 类别散点(图例 = 类别)
+  const catSeries = catsPresent.map(c => ({
+    name: CATEGORY_LABELS[c], type: 'scatter', symbolSize: 14, z: 3,
+    itemStyle: { color: CATEGORY_COLORS[c], borderColor: C.surface, borderWidth: 2 },
+    label: { show: false, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600,
+      formatter: p => p.data.plan || '' },
+    labelLayout: { hideOverlap: true },
+    emphasis: { scale: 1.2, label: { show: true } },
+    data: items.filter(p => catOf(p) === c).map(p => ({
+      value: [p.monthlyPrice, p.measuredMonthlyToken],
+      pid: p.id, plan: p.plan, vendor: p.vendor, type: p.type,
+      price: p.monthlyPrice, token: p.measuredMonthlyToken,
+      tpu: tpuOf(p).toFixed(2), rating: p.rating, rateLimit: p.rateLimit,
+      label: labeled.has(p.id) ? { show: true } : undefined,
+    })),
+  }));
+
+  // 同厂商档位连线(淡色, silent, 不进图例)
+  const vendorsInData = [...new Set(items.map(p => p.vendor))];
+  const ladderSeries = vendorsInData.map(v => {
+    const ps = items.filter(p => p.vendor === v).sort((a, b) => a.monthlyPrice - b.monthlyPrice);
+    if (ps.length < 2) return null;
+    return { name: v, type: 'line', silent: true, showSymbol: false, z: 1,
+      lineStyle: { width: 1.5, color: catColorOf(ps[0]), opacity: 0.25 },
+      data: ps.map(p => [p.monthlyPrice, p.measuredMonthlyToken]) };
+  }).filter(Boolean);
+
+  // 中位数象限(浅色区域 + 细实线)
   const helper = {
     type: 'scatter', silent: true, animation: false, data: [], symbolSize: 0,
     markArea: { silent: true, label: { show: false }, data: [
-      [{ itemStyle: { color: C.cheap }, xAxis: minP * 0.7, yAxis: minT * 0.5 }, { xAxis: medP, yAxis: maxT * 1.2 }],
-      [{ itemStyle: { color: C.expensive }, xAxis: medP, yAxis: minT * 0.5 }, { xAxis: maxP * 1.3, yAxis: medT }]
+      [{ itemStyle: { color: 'rgba(42,120,214,0.06)' }, xAxis: minP * 0.7, yAxis: minT * 0.5 }, { xAxis: medP, yAxis: maxT * 1.2 }],
+      [{ itemStyle: { color: 'rgba(115,115,115,0.04)' }, xAxis: medP, yAxis: minT * 0.5 }, { xAxis: maxP * 1.3, yAxis: medT }],
     ]},
     markLine: { silent: true, symbol: 'none', label: { show: false }, data: [
-      { xAxis: medP, lineStyle: { color: 'rgba(115,115,115,0.25)', type: 'dashed' } },
-      { yAxis: medT, lineStyle: { color: 'rgba(115,115,115,0.25)', type: 'dashed' } }
-    ]}
+      { xAxis: medP, lineStyle: { color: 'rgba(115,115,115,0.25)', width: 1 } },
+      { yAxis: medT, lineStyle: { color: 'rgba(115,115,115,0.25)', width: 1 } },
+    ]},
   };
 
+  const chart = echarts.init(dom);
   chart.setOption({
     animationDuration: 400,
-    grid: { left: 70, right: 40, top: 40, bottom: 50 },
-    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder, textStyle: { color: C.tooltipText, fontSize: 13 },
-      formatter: p => { const d = p.data; return '<div style="min-width:160px"><b>' + d.vendor + ' ' + d.plan + '</b><div style="font-size:12px;color:#d4d4d2;margin-top:4px;">月费: <b>¥' + d.price + '</b> | 月Token: <b>' + d.token + 'M</b></div><div style="font-size:12px;color:#d4d4d2;">每元Token: <b>' + d.tpu + ' M</b></div></div>'; } },
-    legend: { top: 0, left: 0, itemWidth: 10, itemHeight: 10, icon: 'circle', textStyle: { color: C.text, fontSize: 11, fontWeight: 600 } },
+    grid: { left: 70, right: 80, top: 40, bottom: 50 },
+    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder,
+      textStyle: { color: C.tooltipText, fontSize: 13 },
+      formatter: p => {
+        const d = p.data;
+        if (!d || !d.vendor) return '';
+        return '<b>' + escapeHtml(d.vendor) + ' ' + escapeHtml(d.plan) + '</b> <span style="font-size:11px;color:' + C.tooltipSub + ';">' + escapeHtml(d.type) + '</span>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';margin-top:4px;">月费 <b style="color:' + C.tooltipText + ';">¥' + d.price + '</b> · 月Token <b style="color:' + C.tooltipText + ';">' + d.token + 'M</b></div>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';">每元Token <b style="color:' + C.tooltipText + ';">' + d.tpu + ' M</b> · <span style="color:#eda100;">' + ratingStars(d.rating) + '</span></div>' +
+          (d.rateLimit ? '<div style="font-size:11px;color:' + C.tooltipSub + ';">限速 ' + escapeHtml(d.rateLimit) + '</div>' : '');
+      } },
+    legend: { top: 0, right: 0, itemWidth: 10, itemHeight: 10, icon: 'circle',
+      textStyle: { color: C.text, fontSize: 11, fontWeight: 600 }, data: catsPresent.map(c => CATEGORY_LABELS[c]) },
     graphic: [
-      { type: 'text', left: 80, top: 32, silent: true, style: { text: '高性价比', fill: C.accent, fontSize: 11, fontWeight: 700 } },
-      { type: 'text', right: 40, bottom: 20, silent: true, style: { text: '低性价比', fill: C.text, fontSize: 11, fontWeight: 700 } }
+      { type: 'text', left: 80, top: 34, silent: true, style: { text: '高性价比', fill: C.text, fontSize: 11, fontWeight: 700 } },
+      { type: 'text', right: 40, bottom: 20, silent: true, style: { text: '低性价比', fill: C.muted, fontSize: 11 } },
     ],
-    xAxis: { type: 'log', logBase: 2, min: minP * 0.75, max: maxP * 1.12, name: '月费 (¥)', nameTextStyle: { color: C.text, fontSize: 11, fontWeight: 700 }, axisLabel: { color: C.text, fontSize: 11, fontWeight: 700, formatter: v => '¥' + (Number.isInteger(v) ? v : v.toFixed(0)) }, splitLine: { show: true, lineStyle: { color: C.grid, type: 'dashed' } } },
-    yAxis: { type: 'log', logBase: 10, min: minT * 0.65, max: maxT * 1.18, name: '月Token额度', nameTextStyle: { color: C.text, fontSize: 11, fontWeight: 700 }, axisLabel: { color: C.text, formatter: v => v >= 1000 ? (v / 1000).toFixed(1) + 'B' : v + 'M' }, splitLine: { lineStyle: { color: C.grid, type: 'dashed' } } },
-    series: [helper].concat(series)
+    xAxis: { type: 'log', logBase: 2, min: minP * 0.75, max: maxP * 1.12, name: '月费 (¥)', nameLocation: 'middle', nameGap: 30,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, fontSize: 11, formatter: v => '¥' + (Number.isInteger(v) ? v : v.toFixed(0)) },
+      splitLine: { show: true, lineStyle: { color: C.grid, width: 1 } } },
+    yAxis: { type: 'log', logBase: 10, min: minT * 0.65, max: maxT * 1.18, name: '月Token额度', nameLocation: 'middle', nameGap: 45,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, formatter: v => v >= 1000 ? (v / 1000).toFixed(1) + 'B' : v + 'M' },
+      splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    series: [helper].concat(ladderSeries, catSeries),
   });
-  window.addEventListener('resize', () => chart.resize());
+  return chart;
+}
+
+// ---- API 按量散点 ----
+function renderApiScatter(dom, filtered) {
+  setChartTitle('API 输入价 vs 输出价', '越靠左下越便宜(¥/百万 token)· 点色 = 厂商类别');
+  const C = CHART_TOKENS;
+  dom.style.height = '';
+  const items = filtered.filter(p =>
+    p.status === 'active' && p.type === 'API 按量' && typeof p.inputPrice === 'number' && typeof p.outputPrice === 'number');
+  setChartNote(items.length, filtered.length, 'API 套餐');
+  if (!items.length) return renderEmptyChart(dom);
+
+  const catsPresent = CATEGORY_ORDER.filter(c => items.some(p => catOf(p) === c));
+  const allX = items.map(p => p.inputPrice), allY = items.map(p => p.outputPrice);
+  const minX = Math.min(...allX), maxX = Math.max(...allX);
+  const minY = Math.min(...allY), maxY = Math.max(...allY);
+
+  const series = catsPresent.map(c => ({
+    name: CATEGORY_LABELS[c], type: 'scatter', symbolSize: 14,
+    itemStyle: { color: CATEGORY_COLORS[c], borderColor: C.surface, borderWidth: 2 },
+    label: { show: true, position: 'right', distance: 6, color: C.text, fontSize: 10, fontWeight: 600,
+      formatter: p => p.data.plan || '' },
+    labelLayout: { hideOverlap: true },
+    emphasis: { scale: 1.2 },
+    data: items.filter(p => catOf(p) === c).map(p => ({
+      value: [p.inputPrice, p.outputPrice],
+      pid: p.id, plan: p.plan, vendor: p.vendor,
+      input: p.inputPrice, output: p.outputPrice, cache: p.cachePrice,
+      rateLimit: p.rateLimit, contextLen: p.contextLen,
+    })),
+  }));
+
+  const chart = echarts.init(dom);
+  chart.setOption({
+    animationDuration: 400,
+    grid: { left: 70, right: 80, top: 40, bottom: 55 },
+    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder,
+      textStyle: { color: C.tooltipText, fontSize: 13 },
+      formatter: p => {
+        const d = p.data;
+        if (!d || !d.vendor) return '';
+        return '<b>' + escapeHtml(d.vendor) + ' ' + escapeHtml(d.plan) + '</b>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';margin-top:4px;">输入 <b style="color:' + C.tooltipText + ';">¥' + d.input + '/M</b> · 输出 <b style="color:' + C.tooltipText + ';">¥' + d.output + '/M</b></div>' +
+          (typeof d.cache === 'number' ? '<div style="font-size:12px;color:' + C.tooltipSub + ';">缓存命中 <b style="color:' + C.tooltipText + ';">¥' + d.cache + '/M</b></div>' : '') +
+          (d.rateLimit ? '<div style="font-size:11px;color:' + C.tooltipSub + ';">' + escapeHtml(d.rateLimit) + (d.contextLen ? ' · 上下文 ' + escapeHtml(d.contextLen) : '') + '</div>' : '');
+      } },
+    legend: { top: 0, right: 0, itemWidth: 10, itemHeight: 10, icon: 'circle',
+      textStyle: { color: C.text, fontSize: 11, fontWeight: 600 }, data: catsPresent.map(c => CATEGORY_LABELS[c]) },
+    xAxis: { type: 'log', min: minX * 0.6, max: maxX * 1.8, name: '输入价 (¥/M)', nameLocation: 'middle', nameGap: 30,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    yAxis: { type: 'log', min: minY * 0.55, max: maxY * 1.9, name: '输出价 (¥/M)', nameLocation: 'middle', nameGap: 42,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    series,
+  });
+  return chart;
+}
+
+// ---- 按模型散点 ----
+function renderModelScatter(dom, filtered) {
+  setChartTitle('模型覆盖度 vs 最便宜月订阅价', '越靠右下越优(覆盖广 + 便宜)· 仅标注多平台模型,悬停查看全部');
+  const C = CHART_TOKENS;
+  dom.style.height = '';
+  const modelMap = {};
+  filtered.forEach(p => (p.models || []).forEach(m => {
+    if (!modelMap[m]) modelMap[m] = [];
+    modelMap[m].push(p);
+  }));
+  const items = Object.entries(modelMap).map(([m, ps]) => {
+    const platforms = [...new Set(ps.map(p => p.vendor))];
+    const monthly = ps.filter(p => p.type !== 'API 按量' && typeof p.monthlyPrice === 'number' && p.status !== 'sold_out');
+    const cheap = monthly.sort((a, b) => a.monthlyPrice - b.monthlyPrice)[0];
+    return cheap ? { model: m, platformCount: platforms.length, price: cheap.monthlyPrice, vendor: cheap.vendor, plan: cheap.plan, pid: cheap.id } : null;
+  }).filter(Boolean);
+  setChartNote(items.length, Object.keys(modelMap).length, '模型');
+  if (!items.length) return renderEmptyChart(dom);
+
+  const maxPlat = Math.max(...items.map(i => i.platformCount));
+  const allP = items.map(i => i.price);
+  const minP = Math.min(...allP), maxP = Math.max(...allP);
+
+  // 同坐标合并: (平台数, 最低价) 相同的模型合为一个点, 避免标签互相遮挡
+  const groups = {};
+  items.forEach(i => {
+    const k = i.platformCount + '|' + i.price;
+    (groups[k] = groups[k] || []).push(i);
+  });
+  const points = Object.values(groups).map(g => ({
+    models: g.map(x => x.model).sort(),
+    platformCount: g[0].platformCount, price: g[0].price,
+    vendor: g[0].vendor, plan: g[0].plan, pid: g[0].pid,
+  }));
+  // 组标签: 2 个全列, >2 个取首名 + 等N个
+  const groupLabel = pt => {
+    if (pt.models.length === 1) return pt.models[0];
+    if (pt.models.length === 2) return pt.models.join(' / ');
+    return pt.models[0] + ' 等' + pt.models.length + '个';
+  };
+
+  const chart = echarts.init(dom);
+  chart.setOption({
+    animationDuration: 400,
+    grid: { left: 70, right: 110, top: 40, bottom: 55 },
+    tooltip: { trigger: 'item', backgroundColor: C.tooltipBg, borderColor: C.tooltipBorder,
+      textStyle: { color: C.tooltipText, fontSize: 13 },
+      formatter: p => { const d = p.data;
+        return '<b>' + d.models.map(escapeHtml).join(' / ') + '</b>' +
+          '<div style="font-size:12px;color:' + C.tooltipSub + ';margin-top:4px;">支持 ' + d.platformCount + ' 平台 · 最便宜 <b style="color:' + C.tooltipText + ';">¥' + d.price + '/月</b></div>' +
+          '<div style="font-size:11px;color:' + C.tooltipSub + ';">最低价套餐: ' + escapeHtml(d.vendor) + ' ' + escapeHtml(d.plan) + '</div>'; } },
+    xAxis: { type: 'value', name: '支持平台数', nameLocation: 'middle', nameGap: 30, min: 0.5, max: maxPlat + 0.5, minInterval: 1,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, formatter: v => (Number.isInteger(v) ? v + ' 家' : '') },
+      splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    yAxis: { type: 'log', name: '最便宜月订阅 (¥)', nameLocation: 'middle', nameGap: 45, min: minP * 0.5, max: maxP * 2,
+      nameTextStyle: { color: C.muted, fontSize: 11 },
+      axisLabel: { color: C.text, formatter: v => '¥' + v }, splitLine: { lineStyle: { color: C.grid, width: 1 } } },
+    series: [{
+      type: 'scatter', symbolSize: 14,
+      itemStyle: { color: C.seriesBlue, borderColor: C.surface, borderWidth: 2 },
+      // 只标注多平台模型(覆盖度才是本图的分析维度), 单平台 hover 显示
+      label: { show: false, position: 'right', distance: 8, color: C.text, fontSize: 10, fontWeight: 600,
+        formatter: p => groupLabel(p.data) },
+      labelLayout: { moveOverlap: 'shiftY', hideOverlap: true },
+      emphasis: { scale: 1.2, label: { show: true } },
+      data: points.map(pt => ({ value: [pt.platformCount, pt.price], models: pt.models, platformCount: pt.platformCount,
+        price: pt.price, vendor: pt.vendor, plan: pt.plan, pid: pt.pid,
+        // 相邻列同价时右标签必然相撞: 偶数列标签置顶, 奇数列置右, 天然错开
+        label: pt.platformCount >= 2 ? { show: true, position: pt.platformCount % 2 === 0 ? 'top' : 'right', distance: 6 } : undefined })),
+    }],
+    graphic: [{ type: 'text', right: 40, bottom: 20, silent: true,
+      style: { text: '最优:覆盖广 + 便宜', fill: C.muted, fontSize: 11 } }],
+  });
+  return chart;
 }

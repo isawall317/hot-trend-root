@@ -193,6 +193,82 @@ def prefilter(top_n: int = TARGET_TOTAL) -> list[dict]:
     return final
 
 
+# 按 source_type 均衡采样的配额（百分比）
+# 解决"按 tier 采样时大众平台被压到 Tier2=1/4 配额、输出全偏技术"的结构性偏差
+# social（知乎/微博/抖音/小红书/豆瓣/bilibili）与 tech 等量，强制混入消费/生活类声量
+BALANCED_QUOTA_PCT = {
+    "tech": 0.30,
+    "news": 0.30,
+    "social": 0.30,
+    "content": 0.10,
+    # other 砍掉
+}
+
+
+def prefilter_balanced(top_n: int = 120) -> list[dict]:
+    """均衡采样: 按 source_type 分桶等量采样 + 去重
+
+    与 prefilter()（按 tier 配额）并列。区别:
+      - prefilter(): 每源配额，Tier1=12 / Tier2=3 → 大众平台被削到 1/4
+      - prefilter_balanced(): 按 source_type 均衡 → tech/news/social 各 30%
+
+    用于周报/需要跨赛道多样性的扫描。
+    """
+    items = storage.load_latest(limit=3000)
+    if not items:
+        print("  ⚠️ 无热点数据")
+        return []
+
+    # 按 source_type 分桶
+    by_type: dict[str, list[dict]] = {}
+    for it in items:
+        st = it.get("source_type") or "other"
+        by_type.setdefault(st, []).append(it)
+
+    print(f"  分桶: " + ", ".join(f"{k}={len(v)}" for k, v in sorted(by_type.items())))
+
+    # 每类按热度排序
+    for st in by_type:
+        by_type[st].sort(key=_hot_value, reverse=True)
+
+    # 按百分比算配额，不足则按实际数量
+    picked: list[dict] = []
+    for st, pct in BALANCED_QUOTA_PCT.items():
+        quota = int(top_n * pct)
+        picked.extend(by_type.get(st, [])[:quota])
+        print(f"  采样 {st}: 取 {min(quota, len(by_type.get(st, [])))} 条 (配额 {quota})")
+
+    # 标题去重（复用现有逻辑）
+    seen_normalized: list[str] = []
+    deduped: list[dict] = []
+    dup_count = 0
+    for item in picked:
+        title = str(item.get("title", ""))
+        if not title:
+            continue
+        if _is_dup(title, seen_normalized):
+            dup_count += 1
+            continue
+        seen_normalized.append(_normalize_title(title))
+        item = dict(item)
+        item["_tier"] = _classify_tier(item.get("source", ""))
+        deduped.append(item)
+
+    print(f"  去重: {len(picked)} → {len(deduped)} (去重 {dup_count} 条)")
+
+    # 按热度排序（同类内热度优先，跨类自然交错）
+    deduped.sort(key=lambda x: -_hot_value(x))
+
+    final = deduped[:top_n]
+    type_dist = {}
+    for f in final:
+        st = f.get("source_type") or "other"
+        type_dist[st] = type_dist.get(st, 0) + 1
+    print(f"  最终: {len(final)} 条 | source_type 分布: {type_dist}")
+
+    return final
+
+
 def save_input(items: list[dict], date_str: str | None = None) -> Path:
     """保存到 data/pending/{date}/discovery-input.json"""
     if date_str is None:

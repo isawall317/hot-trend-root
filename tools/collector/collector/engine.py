@@ -21,7 +21,7 @@ DATA_DIR = PROJECT_ROOT / "data" / "raw"
 DAILYHOT_BASE = os.getenv("DAILYHOT_BASE", "http://localhost:6688")
 DAILYHOT_PUBLIC = os.getenv(
     "DAILYHOT_PUBLIC",
-    "https://dailyhotapi-vercel-mauve.vercel.app"
+    "https://dailyhotapi-vercel-621jni538-doumomans-projects.vercel.app"
 )
 
 # ── Folo 配置（本地 RSS 阅读器，通过 folocli 交互）──
@@ -42,6 +42,9 @@ DAILYHOT_SOURCES = [
     "tieba",          # 贴吧热议
     "kuaishou",       # 快手
     "acfun",          # A站
+    # 注: imsyy/DailyHotApi 官方不支持 xiaohongshu 端点（404），
+    # 生活消费向声量暂靠 douban-movie + social 类（zhihu/weibo/douyin）补
+    "douban-movie",   # 豆瓣电影（消费决策向，补齐 content 类）
     # 科技 / 开发者社区
     "v2ex",           # V2EX 热门
     "juejin",         # 掘金热榜
@@ -241,12 +244,23 @@ async def collect_all(sources: list[str] | None = None):
 
 
 async def _detect_dailyhot_api(client: httpx.AsyncClient) -> str:
-    """检测使用本地 Docker 还是远程 API"""
+    """检测使用本地 Docker 还是远程 vercel（本地优先，vercel fallback）
+
+    本机 IP 反爬压力远小于 vercel 出口 IP（vercel 部署的 zhihu/weibo 常被反爬 500，
+    xiaohongshu 等端点可能 404）。优先本地 Docker，vercel 仅作 fallback。
+    """
     # 先试本地 Docker
     try:
         resp = await client.get(f"{DAILYHOT_BASE}/zhihu", timeout=5)
         if resp.status_code == 200:
             return DAILYHOT_BASE
+    except Exception:
+        pass
+    # fallback 远程 vercel
+    try:
+        resp = await client.get(f"{DAILYHOT_PUBLIC}/zhihu", timeout=5)
+        if resp.status_code == 200:
+            return DAILYHOT_PUBLIC
     except Exception:
         pass
     return DAILYHOT_PUBLIC

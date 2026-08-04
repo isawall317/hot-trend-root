@@ -1,0 +1,949 @@
+{
+  "date": "weekly-2026-07-28~2026-08-03",
+  "total": 104,
+  "tier1_count": 5,
+  "tier2_count": 37,
+  "filter": "discovery_prefilter (per-source quota sampling)",
+  "config": {
+    "tier1_quota": 12,
+    "tier2_quota": 3
+  },
+  "items": [
+    {
+      "title": "美媒：日本正建造全世界最大驱逐舰",
+      "url": "https://www.toutiao.com/trending/7668392469377368114/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "20696515",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "南充市委原书记古正举贪1.24亿获无期",
+      "url": "https://www.toutiao.com/trending/7668601537605668394/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "18726981",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "DeepSeek V4 flash 正式版发布，有哪些亮点值得关注？",
+      "url": "https://www.zhihu.com/question/2066521165246489298",
+      "source": "dailyhot:zhihu",
+      "hot_metric": "18630000",
+      "source_type": "social",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "我国电力系统迎来结构性转变",
+      "url": "https://www.toutiao.com/trending/7667493705678569513/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "16944873",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "保时捷女销冠回应被AI合成不雅视频",
+      "url": "https://www.toutiao.com/trending/7668540826486865930/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "15332355",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "50℃高温来了",
+      "url": "https://www.toutiao.com/trending/7668537827139780671/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "13873289",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中方回应日本设立国家情报局",
+      "url": "https://www.kuaishou.com/short-video/3x8ba9yvui9diem",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "13211000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "054B护卫舰首次亮相黄岩岛",
+      "url": "https://www.toutiao.com/trending/7667567988811776036/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "12553071",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "2034杯半决赛",
+      "url": "https://www.kuaishou.com/short-video/3xd35266wwyfrii",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "12183000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "荣耀焕新品牌片「敢想，敢不同」",
+      "url": "https://b23.tv/BV1NH3j6pEve",
+      "source": "dailyhot:bilibili",
+      "hot_metric": "11883718",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中国半导体企业实力跃升",
+      "url": "https://www.kuaishou.com/short-video/3xsw838szck9fue",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "11844000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "人民军队大片《制胜》第一集",
+      "url": "https://www.kuaishou.com/short-video/3xjv28dtmn8i78i",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "11506000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "八一建军节之际致敬中国军人",
+      "url": "https://www.douyin.com/hot/2590897",
+      "source": "dailyhot:douyin",
+      "hot_metric": "11418502",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "七月再见 八月你要顺顺利利",
+      "url": "https://www.douyin.com/hot/2591416",
+      "source": "dailyhot:douyin",
+      "hot_metric": "11358753",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "“牛舔”式高温桑拿天何时退场",
+      "url": "https://www.toutiao.com/trending/7668136333063274515/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "11358488",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "老赵婆子借车不还另有隐情",
+      "url": "https://www.kuaishou.com/short-video/3xx5gf4963ienhu",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "11192000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "当班里来了个爱装女",
+      "url": "https://www.kuaishou.com/short-video/3xqf623pyzfxktc",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "11035000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "工业绿色低碳发展这样推进",
+      "url": "https://www.douyin.com/hot/2591550",
+      "source": "dailyhot:douyin",
+      "hot_metric": "11026583",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "周五是一周的最佳赏味期",
+      "url": "https://www.douyin.com/hot/2591761",
+      "source": "dailyhot:douyin",
+      "hot_metric": "10991475",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "为什么必须要铭记“731”",
+      "url": "https://www.kuaishou.com/short-video/3xghfnniyv9k74s",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "10879000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "建军节怎能不看九三阅兵",
+      "url": "https://www.kuaishou.com/short-video/3xkucg7zxm3q8hi",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "10657000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "乒乓球打出羽毛球比分",
+      "url": "https://www.kuaishou.com/short-video/3x83ze9bvsmdces",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "10438000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "AC米兰传奇队长巴雷西去世",
+      "url": "https://www.douyin.com/hot/2591895",
+      "source": "dailyhot:douyin",
+      "hot_metric": "10360683",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "陈新武任重庆市代市长",
+      "url": "https://www.douyin.com/hot/2592446",
+      "source": "dailyhot:douyin",
+      "hot_metric": "10285896",
+      "source_type": "social",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中央气象台继续发布暴雨黄色预警",
+      "url": "https://www.toutiao.com/trending/7667540747507892274/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "10277585",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "日本已彻底撕下伪装",
+      "url": "https://www.kuaishou.com/short-video/3xppa2gzp2c8i6q",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "10219000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "取消午休4点下班你会同意吗",
+      "url": "https://www.toutiao.com/trending/7668571447275814962/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "10010136",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "四川麻将明星联赛 把把大牌",
+      "url": "https://www.kuaishou.com/short-video/3xr2h2363dgm934",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9998000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "我国开展为期一年的扫黑除恶斗争",
+      "url": "https://www.kuaishou.com/short-video/3xahpsjbnx59buc",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9977000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "东北遭遇76年来最热夜",
+      "url": "https://www.kuaishou.com/short-video/3xq64ns76yc2chc",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9951000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "两位初中生再次捐赠侵华日军罪证",
+      "url": "https://www.kuaishou.com/short-video/3xnvq3dkznfq6ks",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9925000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "古正举一审被判无期徒刑",
+      "url": "https://www.kuaishou.com/short-video/3xa7spz4yt8em24",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9899000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "女子月子期间遭丈夫施暴",
+      "url": "https://www.kuaishou.com/short-video/3xyap5ygmgdevrq",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9866000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "日本正式设立国家情报局",
+      "url": "https://www.kuaishou.com/short-video/3x6gu26iksrqbsm",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9832000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "东北暴雨频发原因",
+      "url": "https://www.kuaishou.com/short-video/3x4r9awxtuuqkrc",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9758000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "梦的翅膀受了伤卡点舞",
+      "url": "https://www.kuaishou.com/short-video/3xdfcgt76wtyfri",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9696000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "中国留学生在澳遭袭",
+      "url": "https://www.kuaishou.com/short-video/3x4cttytdkyy7n4",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9634000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "海警和空军共同巡护中国黄岩",
+      "url": "https://www.kuaishou.com/short-video/3xa6bmr9msyjdmy",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9609000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "男子健身房被女生当众指控偷拍",
+      "url": "https://www.kuaishou.com/short-video/3xp2rsehr7cey8i",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9563000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "长皮造笑大会",
+      "url": "https://www.kuaishou.com/short-video/3xe4ian89k5exvi",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9461000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "当代牌友的精神状态",
+      "url": "https://www.kuaishou.com/short-video/3xcv5k65q66fiza",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9410000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "“731”为特高课招魂 其心可诛",
+      "url": "https://www.kuaishou.com/short-video/3xazstifh9j33w4",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9359000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "全球最大人造太阳有新进展",
+      "url": "https://www.kuaishou.com/short-video/3xrx8mcavp749j4",
+      "source": "dailyhot:kuaishou",
+      "hot_metric": "9311000",
+      "source_type": "social",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "大V：韩国危机远比股市要严重",
+      "url": "https://www.toutiao.com/trending/7668594003549359670/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "9299543",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "“台独”“汉奸”在美开“汉奸大会”",
+      "url": "https://www.toutiao.com/trending/7668601116059631670/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "9057546",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "全国高温闷热持续 多地将破历史极值",
+      "url": "https://www.toutiao.com/trending/7667536886786801700/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "8414575",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中共中央政治局第二十七次集体学习",
+      "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%85%B1%E4%B8%AD%E5%A4%AE%E6%94%BF%E6%B2%BB%E5%B1%80%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E6%AC%A1%E9%9B%86%E4%BD%93%E5%AD%A6%E4%B9%A0",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7904900",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "台风白海豚已达17级 可能直奔中国",
+      "url": "https://www.baidu.com/s?wd=%E5%8F%B0%E9%A3%8E%E7%99%BD%E6%B5%B7%E8%B1%9A%E5%B7%B2%E8%BE%BE17%E7%BA%A7%20%E5%8F%AF%E8%83%BD%E7%9B%B4%E5%A5%94%E4%B8%AD%E5%9B%BD",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7809163",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "地球正在发烧 50°C高温来了",
+      "url": "https://www.baidu.com/s?wd=%E5%9C%B0%E7%90%83%E6%AD%A3%E5%9C%A8%E5%8F%91%E7%83%A7%2050%C2%B0C%E9%AB%98%E6%B8%A9%E6%9D%A5%E4%BA%86",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7807864",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "清华求真书院预科班部分学生被清退",
+      "url": "https://www.baidu.com/s?wd=%E6%B8%85%E5%8D%8E%E6%B1%82%E7%9C%9F%E4%B9%A6%E9%99%A2%E9%A2%84%E7%A7%91%E7%8F%AD%E9%83%A8%E5%88%86%E5%AD%A6%E7%94%9F%E8%A2%AB%E6%B8%85%E9%80%80",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7714405",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "超60城优化公积金政策",
+      "url": "https://www.baidu.com/s?wd=%E8%B6%8560%E5%9F%8E%E4%BC%98%E5%8C%96%E5%85%AC%E7%A7%AF%E9%87%91%E6%94%BF%E7%AD%96",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7619420",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "不是高温天就不会中暑？假的",
+      "url": "https://www.toutiao.com/trending/7668505023572459583/",
+      "source": "dailyhot:toutiao",
+      "hot_metric": "7613822",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "文旅靠擦边挣钱 别脏了青山绿水",
+      "url": "https://www.baidu.com/s?wd=%E6%96%87%E6%97%85%E9%9D%A0%E6%93%A6%E8%BE%B9%E6%8C%A3%E9%92%B1%20%E5%88%AB%E8%84%8F%E4%BA%86%E9%9D%92%E5%B1%B1%E7%BB%BF%E6%B0%B4",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7519708",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "意大利传奇球星巴雷西去世",
+      "url": "https://www.baidu.com/s?wd=%E6%84%8F%E5%A4%A7%E5%88%A9%E4%BC%A0%E5%A5%87%E7%90%83%E6%98%9F%E5%B7%B4%E9%9B%B7%E8%A5%BF%E5%8E%BB%E4%B8%96",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7428574",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "院士：土木工程行业越老越吃香",
+      "url": "https://www.baidu.com/s?wd=%E9%99%A2%E5%A3%AB%EF%BC%9A%E5%9C%9F%E6%9C%A8%E5%B7%A5%E7%A8%8B%E8%A1%8C%E4%B8%9A%E8%B6%8A%E8%80%81%E8%B6%8A%E5%90%83%E9%A6%99",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7426503",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中国最高薪本科专业易主",
+      "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E6%9C%80%E9%AB%98%E8%96%AA%E6%9C%AC%E7%A7%91%E4%B8%93%E4%B8%9A%E6%98%93%E4%B8%BB",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7332990",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "数千移民游泳偷渡 西班牙边境崩溃",
+      "url": "https://www.baidu.com/s?wd=%E6%95%B0%E5%8D%83%E7%A7%BB%E6%B0%91%E6%B8%B8%E6%B3%B3%E5%81%B7%E6%B8%A1%20%E8%A5%BF%E7%8F%AD%E7%89%99%E8%BE%B9%E5%A2%83%E5%B4%A9%E6%BA%83",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7328259",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "中华人民共和国外交部声明",
+      "url": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%A4%96%E4%BA%A4%E9%83%A8%E5%A3%B0%E6%98%8E",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7236718",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "于正回应《凤囚凰》争议",
+      "url": "https://www.baidu.com/s?wd=%E4%BA%8E%E6%AD%A3%E5%9B%9E%E5%BA%94%E3%80%8A%E5%87%A4%E5%9B%9A%E5%87%B0%E3%80%8B%E4%BA%89%E8%AE%AE",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7234492",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "00后姑娘在高考结束后剃了光头",
+      "url": "https://www.baidu.com/s?wd=00%E5%90%8E%E5%A7%91%E5%A8%98%E5%9C%A8%E9%AB%98%E8%80%83%E7%BB%93%E6%9D%9F%E5%90%8E%E5%89%83%E4%BA%86%E5%85%89%E5%A4%B4",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7139614",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "高校录取通知书误将本科印成专科",
+      "url": "https://www.baidu.com/s?wd=%E9%AB%98%E6%A0%A1%E5%BD%95%E5%8F%96%E9%80%9A%E7%9F%A5%E4%B9%A6%E8%AF%AF%E5%B0%86%E6%9C%AC%E7%A7%91%E5%8D%B0%E6%88%90%E4%B8%93%E7%A7%91",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7138658",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "小伙被椅子扶手卡头 朋友救助也被卡",
+      "url": "https://www.baidu.com/s?wd=%E5%B0%8F%E4%BC%99%E8%A2%AB%E6%A4%85%E5%AD%90%E6%89%B6%E6%89%8B%E5%8D%A1%E5%A4%B4%20%E6%9C%8B%E5%8F%8B%E6%95%91%E5%8A%A9%E4%B9%9F%E8%A2%AB%E5%8D%A1",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7044746",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "《八仙！》导演：没想到杨戬这么火",
+      "url": "https://www.baidu.com/s?wd=%E3%80%8A%E5%85%AB%E4%BB%99%EF%BC%81%E3%80%8B%E5%AF%BC%E6%BC%94%EF%BC%9A%E6%B2%A1%E6%83%B3%E5%88%B0%E6%9D%A8%E6%88%AC%E8%BF%99%E4%B9%88%E7%81%AB",
+      "source": "dailyhot:baidu",
+      "hot_metric": "7043221",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "FIFA不吃欧足联压力",
+      "url": "https://www.baidu.com/s?wd=FIFA%E4%B8%8D%E5%90%83%E6%AC%A7%E8%B6%B3%E8%81%94%E5%8E%8B%E5%8A%9B",
+      "source": "dailyhot:baidu",
+      "hot_metric": "6948353",
+      "source_type": "news",
+      "tier": 2,
+      "description": ""
+    },
+    {
+      "title": "【7.0】寒战1994",
+      "url": "https://movie.douban.com/subject/36857924/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "122710",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【7.4】群星闪耀时",
+      "url": "https://movie.douban.com/subject/35875462/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "63641",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【6.7】10间敢死队",
+      "url": "https://movie.douban.com/subject/37379599/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "35022",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【MYSQL】MYSQL学习的一大重点：表的内外连接",
+      "url": "https://blog.csdn.net/2401_89899187/article/details/163200338",
+      "source": "dailyhot:csdn",
+      "hot_metric": "24306",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【6.2】群体",
+      "url": "https://movie.douban.com/subject/37096700/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "23263",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "内网穿透的应用-服务器日志出现异常怎么办？Python监控、钉钉告警与远程处理教程",
+      "url": "https://blog.csdn.net/weixin_42878111/article/details/163331286",
+      "source": "dailyhot:csdn",
+      "hot_metric": "18541",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "2026年远程维修横评：三款主流工具，远程协助修电脑谁更好用？",
+      "url": "https://blog.csdn.net/2302_79177254/article/details/163359046",
+      "source": "dailyhot:csdn",
+      "hot_metric": "17566",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【8.2】奥德赛",
+      "url": "https://movie.douban.com/subject/36808876/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "16914",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【5.2】超级少女",
+      "url": "https://movie.douban.com/subject/36225840/",
+      "source": "dailyhot:douban-movie",
+      "hot_metric": "16098",
+      "source_type": "content",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Ansible批量部署Node Exporter实战：Playbook配置与远程主机接入",
+      "url": "https://blog.csdn.net/SDFsoul/article/details/163339941",
+      "source": "dailyhot:csdn",
+      "hot_metric": "14367",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "PyTorch计算机视觉（3）——卷积神经网络（CNN）详解与实现",
+      "url": "https://blog.csdn.net/LOVEmy134611/article/details/162009088",
+      "source": "dailyhot:csdn",
+      "hot_metric": "14268",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【Codex】OpenAI Codex CLI 完整实操指南｜模型切换、权限管控、AGENTS.md 全技巧解锁",
+      "url": "https://blog.csdn.net/2401_87342824/article/details/163324119",
+      "source": "dailyhot:csdn",
+      "hot_metric": "12801",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Ansible自动化部署Nginx实战：Playbook编写、服务验证与远程主机接入",
+      "url": "https://blog.csdn.net/weixin_62765017/article/details/163329384",
+      "source": "dailyhot:csdn",
+      "hot_metric": "10923",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【Linux指南】动静态库系列（三）：静态库制作实战：ar、Makefile 与 .a 文件全流程",
+      "url": "https://blog.csdn.net/2302_78391795/article/details/163324789",
+      "source": "dailyhot:csdn",
+      "hot_metric": "10203",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Codex Scheduled Tasks：让任务自动醒来继续工作",
+      "url": "https://blog.csdn.net/weixin_74809706/article/details/162941657",
+      "source": "dailyhot:csdn",
+      "hot_metric": "10014",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Spring Boot 集成硅基流动免费Qwen大模型实战——从零搭建支持多轮对话的网页应用",
+      "url": "https://blog.csdn.net/yelangkingwuzuhu/article/details/163313796",
+      "source": "dailyhot:csdn",
+      "hot_metric": "9130",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【AVDTP】规范精讲[7]: 从RTP封包到空中传输，蓝牙音频数据是怎么跑起来的",
+      "url": "https://blog.csdn.net/weixin_37800531/article/details/163219121",
+      "source": "dailyhot:csdn",
+      "hot_metric": "8325",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "动口不动手——海光DCU K100_AI单卡部署 Qwen3-ASR-1.7B + Qwen3.5-9B：语音驱动Everything，实现文件智能高速检索",
+      "url": "https://blog.csdn.net/pla88888888/article/details/163276247",
+      "source": "dailyhot:csdn",
+      "hot_metric": "8107",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "SpringBoot+Flowable 业务单据流程回调设计：FlowBillService 统一回写状态与生命周期钩子",
+      "url": "https://blog.csdn.net/zhouzhongyan/article/details/163352944",
+      "source": "dailyhot:csdn",
+      "hot_metric": "7719",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【Linux 篇】数字世界的通信管道 —— 命名管道深度实战解析",
+      "url": "https://blog.csdn.net/buhuizhiyuci/article/details/163292448",
+      "source": "dailyhot:csdn",
+      "hot_metric": "7617",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【Linux网络】深入理解Linux epoll：从内核原理到实战代码全解析",
+      "url": "https://blog.csdn.net/2503_91389547/article/details/162003253",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6935",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "极空间怎么搭建自己的笔记系统？Logseq部署与远程访问完整教程",
+      "url": "https://blog.csdn.net/liu_chen_yang/article/details/163329399",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6756",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "2026远程游戏横测，暑假用手机接管电脑，ToDesk VS 向日葵怎么选？",
+      "url": "https://blog.csdn.net/lrq13965748542/article/details/163299982",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6505",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【粉丝福利社】深入浅出大模型：从深度学习到PyTorch实现",
+      "url": "https://blog.csdn.net/aa2528877987/article/details/163345640",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6407",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "AI助手一条SQL删了450万条数据？把核心DDL发给公有云？信创大模型数据库助手的4大死亡谷与Java AST防火墙实战",
+      "url": "https://blog.csdn.net/z_344791576/article/details/162607009",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6310",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "2026远程桌面横向对比：ToDesk、向日葵、TeamViewer，谁才是真正的“零距离“体验？",
+      "url": "https://blog.csdn.net/sinat_41617212/article/details/163353738",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6213",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Vue 进阶：深入解析 computed 和 watch 的核心区别",
+      "url": "https://blog.csdn.net/qq_41840843/article/details/163315318",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6175",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "一个 API 入口调用多个大模型：AiiOnly客户端 + CC Switch 打通 Codex AI编程流程",
+      "url": "https://blog.csdn.net/weixin_51390582/article/details/163345419",
+      "source": "dailyhot:csdn",
+      "hot_metric": "6137",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Zookeeper - Zookeeper 的设计理念与核心解决的分布式问题",
+      "url": "https://blog.csdn.net/qq_41187124/article/details/157688044",
+      "source": "dailyhot:csdn",
+      "hot_metric": "5931",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "从零到流式输出：llama-cpp-python 本地跑通 Qwen2.5 全记录",
+      "url": "https://blog.csdn.net/weixin_43304253/article/details/163353629",
+      "source": "dailyhot:csdn",
+      "hot_metric": "5719",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "半小时上手蓝耘元生代 MaaS：用 OpenAI SDK 调用 DeepSeek，把大模型接进自己的项目",
+      "url": "https://blog.csdn.net/weixin_52908342/article/details/163340933",
+      "source": "dailyhot:csdn",
+      "hot_metric": "5472",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "【Linux】没有公网 IP 也能 SSH 回内网：反向 SSH、ProxyJump 与 systemd 保活实战",
+      "url": "https://blog.csdn.net/2402_87731470/article/details/161982260",
+      "source": "dailyhot:csdn",
+      "hot_metric": "5338",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "SQL 注入攻防全链路：从校园教务系统的一次成绩查询说起",
+      "url": "https://blog.csdn.net/qq_46987323/article/details/163281292",
+      "source": "dailyhot:csdn",
+      "hot_metric": "5243",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "Word转PPT实测：夸克AI生成PPT，千字文档秒变汇报稿",
+      "url": "https://blog.csdn.net/weixin_43151418/article/details/163338139",
+      "source": "dailyhot:csdn",
+      "hot_metric": "4770",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "PyTorch深度学习实战：5个核心方法从0到1构建神经网络",
+      "url": "https://blog.csdn.net/weixin_70280055/article/details/163314436",
+      "source": "dailyhot:csdn",
+      "hot_metric": "4594",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "5 分钟上手 OpenMontage：把 AI 编程助手变成视频工作室",
+      "url": "https://blog.csdn.net/zhangay1998/article/details/162912295",
+      "source": "dailyhot:csdn",
+      "hot_metric": "4553",
+      "source_type": "tech",
+      "tier": 0,
+      "description": ""
+    },
+    {
+      "title": "解剖 Claude Code：逆向工程视角下的入口架构分析",
+      "url": "https://juejin.cn/post/7667096004731846682",
+      "source": "dailyhot:juejin",
+      "hot_metric": "2331",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "2026 了，前端转 AI 全栈我是这么学的 😍😍😍",
+      "url": "https://juejin.cn/post/7667503991685857290",
+      "source": "dailyhot:juejin",
+      "hot_metric": "1683",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "为什么在 2026 年，MPA（多页面应用）正在悄悄复辟？",
+      "url": "https://juejin.cn/post/7667127162155581449",
+      "source": "dailyhot:juejin",
+      "hot_metric": "1224",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    },
+    {
+      "title": "《深入理解 AI Agent：设计原理与工程实践》",
+      "url": "https://hellogithub.com/repository/c80ce91cc4744361adf369269922c8cf",
+      "source": "dailyhot:hellogithub",
+      "hot_metric": "1158",
+      "source_type": "tech",
+      "tier": 1,
+      "description": ""
+    }
+  ]
+}

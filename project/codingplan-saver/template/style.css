@@ -208,6 +208,8 @@ body {
   color: var(--text-primary);
 }
 .data-table tr:hover td { background: var(--grey-1); }
+/* 图表 hover 联动高亮（浅蓝 = 图表系列蓝 10%） */
+.data-table tr.row-hl td { background: rgba(42,120,214,0.10); }
 .data-table .col-vendor { font-weight: 600; color: var(--ink); white-space: nowrap; }
 .data-table .col-price { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
 .data-table .col-action { white-space: nowrap; }
