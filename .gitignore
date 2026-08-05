@@ -24,8 +24,7 @@ aikb/database/.last-run/
 
 # 外部工具源码（独立 clone 的仓库，不进主仓库）
 reference/codingplan/
-tools/DailyHotApi/
-tools/RSSHub/
+# 注：DailyHotApi / RSSHub 已迁至 quality-sources/services/（独立仓库）
 # 注：reference/pricing-snapshots/ 不忽略，存厂商官网快照作为数据准确性证据
 tools/collector/tools/
 
