@@ -17,7 +17,8 @@ ZHIPU_URL = "https://open.bigmodel.cn/pricing"
 @register("zhipu")
 class ZhipuParser(BasePlaywrightParser):
     async def extract(self, client) -> ExtractResult:
-        url = self.config.get("urls", {}).get("pricing") or ZHIPU_URL
+        # 用 API 按量定价页（有 GLM 模型表），非 urls.pricing（glm-coding 已改积分制，无价格表）
+        url = self.config.get("urls", {}).get("docs") or ZHIPU_URL
         html = await self.fetch_rendered_html(url)
         if not html:
             return ExtractResult(

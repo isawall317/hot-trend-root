@@ -865,5 +865,70 @@
     "author": null,
     "readTime": null,
     "cover": null
+  },
+  {
+    "id": "2026-08-05-deepseek-models-auto",
+    "date": "2026-08-05",
+    "kind": "new_model",
+    "vendor": "DeepSeek 官方",
+    "title": "DeepSeek 模型列表自动提取刷新",
+    "detail": "自动提取补全 deepseek-v4-flash / deepseek-v4-pro API slug（与 Title-Case 规范名并存），deepseek-api-flash/pro 套餐模型列表更新。merge 已改大小写不敏感去重。",
+    "impact": "positive",
+    "level": "medium",
+    "source": "extracted-deepseek",
+    "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "relatedPlans": [
+      "deepseek-api-flash",
+      "deepseek-api-pro"
+    ],
+    "featured": false,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-08-05-kimi-models-auto",
+    "date": "2026-08-05",
+    "kind": "new_model",
+    "vendor": "Kimi",
+    "title": "Kimi 模型列表自动提取刷新",
+    "detail": "自动提取补入 moonshot-v1-8k/32k/128k 及 vision 系列按量模型，kimi-daily 套餐模型列表更新。",
+    "impact": "positive",
+    "level": "low",
+    "source": "extracted-kimi",
+    "sourceUrl": "https://www.kimi.com/membership/pricing",
+    "relatedPlans": [
+      "kimi-daily"
+    ],
+    "featured": false,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
+  },
+  {
+    "id": "2026-08-05-zhipu-models-auto",
+    "date": "2026-08-05",
+    "kind": "new_model",
+    "vendor": "智谱AI",
+    "title": "智谱AI 模型列表自动提取刷新（含 GLM-5 系列）",
+    "detail": "自动提取补全 GLM 全家族模型名（GLM-4 至 GLM-5V-Turbo，含 GLM-4.6/4.7/5/5.1/5.2 等），各 zhipu 套餐模型列表更新。GLM-5 系列首次入库。",
+    "impact": "positive",
+    "level": "medium",
+    "source": "extracted-zhipu",
+    "sourceUrl": "https://open.bigmodel.cn/pricing",
+    "relatedPlans": [
+      "zhipu-lite",
+      "zhipu-pro",
+      "zhipu-max",
+      "zhipu-api-glm52",
+      "zhipu-api-glm-turbo"
+    ],
+    "featured": false,
+    "excerpt": null,
+    "author": null,
+    "readTime": null,
+    "cover": null
   }
 ]

@@ -5,7 +5,7 @@
   "logo": "CP",
   "primaryColor": "#10b981",
   "accentColor": "#06b6d4",
-  "updatedAt": "2026-08-01",
+  "updatedAt": "2026-08-05",
   "blogger": {
     "name": "饭庐者说",
     "avatar": "FL",
@@ -30,8 +30,8 @@
     ]
   },
   "header": {
-    "updateDate": "更新于 2026.08.01",
-    "highlights": "本周关注：智谱 7-30 改积分制涨价 · 字节方舟 ¥9.9 试水 · 腾讯 Token 池性价比稳",
+    "updateDate": "更新于 2026.08.05",
+    "highlights": "本周关注：智谱 GLM-5 系列入库 · DeepSeek/Kimi 模型列表自动刷新 · 6 家厂商恢复自动提取",
     "stats": [
       {
         "label": "覆盖平台",
@@ -45,7 +45,7 @@
       },
       {
         "label": "数据更新",
-        "value": "8.01",
+        "value": "8.05",
         "unit": ""
       }
     ]

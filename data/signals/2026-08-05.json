@@ -1,5 +1,234 @@
 {
-  "timestamp": "2026-08-05T01:18:43Z",
-  "count": 0,
-  "signals": []
+  "timestamp": "2026-08-05T06:17:31Z",
+  "count": 19,
+  "signals": [
+    {
+      "title": "最大AI黑洞，Anthropic年入1万亿美元后，算力价格狂飙10倍",
+      "url": "https://www.36kr.com/p/3925157878544518",
+      "source": "dailyhot:36kr",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "免费AI攻入教育，好未来们的护城河还剩多宽？",
+      "url": "https://www.36kr.com/p/3925013685491329",
+      "source": "dailyhot:36kr",
+      "keywords": [
+        "免费"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "BBA降价也卖不动，员工的钱先被「套牢」了",
+      "url": "https://www.36kr.com/p/3925022348753025",
+      "source": "dailyhot:36kr",
+      "keywords": [
+        "降价"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "北京一酒吧上线“不限量免费 Token”服务，到店连接 Wi-Fi 即可畅用 DeepSeek V4 Flash 模型",
+      "url": "https://www.ithome.com/0/985/450.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "免费"
+      ],
+      "vendors": [
+        "DeepSeek 官方"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "29.99 万元！小米澎程 N90 Max 增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/882.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "小米手机正式涨价 300 元起，影响小米 17 系列、REDMI K90、Turbo 5",
+      "url": "https://www.ithome.com/0/984/636.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "涨价"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "25.99 万元！小米澎程 N70 Max 大五座四驱增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/883.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "DeepSeek-V4-Flash 正式版 API 上线公测，V4-Pro 正式版将“尽快”发布",
+      "url": "https://www.ithome.com/0/984/116.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "公测"
+      ],
+      "vendors": [
+        "DeepSeek 官方"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "29.99 万元！小米澎程 N90 Max 增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/882.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "小米手机正式涨价 300 元起，影响小米 17 系列、REDMI K90、Turbo 5",
+      "url": "https://www.ithome.com/0/984/636.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "涨价"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "25.99 万元！小米澎程 N70 Max 大五座四驱增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/883.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "29.99 万元！小米澎程 N90 Max 增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/882.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "小米手机正式涨价 300 元起，影响小米 17 系列、REDMI K90、Turbo 5",
+      "url": "https://www.ithome.com/0/984/636.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "涨价"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "25.99 万元！小米澎程 N70 Max 大五座四驱增程 SUV 预售价格公布",
+      "url": "https://www.ithome.com/0/983/883.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "张雪预告首款电摩：价格 3W+ 的大踏板，续航 300km、电机功率 50kW",
+      "url": "https://www.ithome.com/0/978/901.htm",
+      "source": "dailyhot:ithome",
+      "keywords": [
+        "价格"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "App+1 | 免费、多功能的远程控制新选择：网易 UU 远程",
+      "url": "https://sspai.com/post/112405",
+      "source": "dailyhot:sspai",
+      "keywords": [
+        "免费"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "具透 | watchOS 27 公测版一览：动态应用网格、Liquid Glass 微调……",
+      "url": "https://sspai.com/post/112430",
+      "source": "dailyhot:sspai",
+      "keywords": [
+        "公测"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "iOS / iPadOS 27 Public Beta 公测版来了：升降级指南 & 注意事项",
+      "url": "https://sspai.com/post/112288",
+      "source": "dailyhot:sspai",
+      "keywords": [
+        "公测"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    },
+    {
+      "title": "别再给大模型充钱！Agnes AI 永久免费全模态 API，代码 / 绘图 /短剧Token不限量调用",
+      "url": "https://juejin.cn/post/7669727120153198627",
+      "source": "dailyhot:juejin",
+      "keywords": [
+        "免费"
+      ],
+      "vendors": [
+        "通用"
+      ],
+      "detected_at": "2026-08-05T06:17:31Z"
+    }
+  ]
 }

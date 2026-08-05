@@ -7,10 +7,11 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://bigmodel.cn/glm-coding",
+      "docs": "https://open.bigmodel.cn/pricing",
       "home": "https://open.bigmodel.cn",
       "affiliate": "https://www.bigmodel.cn/invite?icode=PJ048yz3Fl63Urk70glaphiFMcmMNhdZwR%2F1emOiVXY%3D"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "7-30 套餐改版，积分制，旧版¥49/149/469已停"
   },
@@ -25,7 +26,7 @@
       "home": "https://www.volcengine.com/ark",
       "affiliate": "https://api.dreamfree.space/c/s/cpyqfangzhou"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "反爬+SPA，依赖人工快照"
   },
@@ -40,7 +41,7 @@
       "home": "https://cloud.tencent.com/product/tokenhub",
       "affiliate": "https://api.dreamfree.space/c/s/cpyqtengxunt"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "Coding Plan已售罄，主推Token Plan 4档"
   },
@@ -55,7 +56,7 @@
       "home": "https://api-docs.deepseek.com",
       "affiliate": ""
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "纯API按量，无月订阅套餐，即将峰谷定价"
   },
@@ -67,10 +68,11 @@
     "category": "model-maker",
     "urls": {
       "pricing": "https://platform.minimaxi.com/subscribe/token-plan",
+      "docs": "https://platform.minimaxi.com/docs/guides/pricing-token-plan",
       "home": "https://platform.minimaxi.com",
       "affiliate": "https://platform.minimaxi.com/subscribe/token-plan?code=Gbn3DuotEx&source=link"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "Token Plan用量翻倍，多模态全共享额度"
   },
@@ -85,7 +87,7 @@
       "home": "https://www.kimi.com",
       "affiliate": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
-    "extractStrategy": "manual",
+    "extractStrategy": "docs",
     "lastVerified": "2026-08-01",
     "notes": "新会员体系即将上线，Kimi权益与Kimi Code将拆分"
   },
@@ -102,6 +104,6 @@
     },
     "extractStrategy": "manual",
     "lastVerified": "2026-08-01",
-    "notes": "Lite已停售(3-20)，只剩Pro，限量抢购"
+    "notes": "Lite已停售(3-20)，只剩Pro，限量抢购。无 parser，需补 sources/bailian.py 才能自动提取"
   }
 ]

@@ -27,6 +27,32 @@ def rule(vendor_id: str):
     return deco
 
 
+def _merge_models_case_insensitive(existing: list, incoming: list) -> list:
+    """大小写不敏感合并模型名列表。
+
+    同名（lower 相同）只保留一版，优先保留 existing 里已有的拼写
+    （plans.json 原存的规范名，通常是 Title-Case），避免自动提取抓到的小写
+    slug 与已存 Title-Case 重复累积。
+    """
+    seen: dict[str, str] = {}  # name.lower() → canonical name
+    for name in existing:
+        if not name:
+            continue
+        seen.setdefault(str(name).lower(), str(name))
+    for name in incoming:
+        if not name:
+            continue
+        seen.setdefault(str(name).lower(), str(name))  # 已存在则不覆盖
+    return sorted(seen.values())
+
+
+def _models_changed(existing: list, merged: list) -> bool:
+    """判断合并后是否有实质变化（大小写不敏感比较）。"""
+    if len(merged) != len(existing):
+        return True
+    return set(m.lower() for m in merged) != set(str(m).lower() for m in existing)
+
+
 @rule("tencent")
 def merge_tencent(plan_entry: dict, extracted: dict) -> bool:
     """腾讯云: 提取结果有 plan/monthlyPrice/monthlyRequests"""
@@ -101,10 +127,9 @@ def merge_zhipu(plan_entry: dict, extracted: dict) -> bool:
         models = ext.get("models", [])
         if models:
             model_names = [m.get("name", "") for m in models if m.get("name")]
-            existing = set(plan_entry.get("models", []))
-            new_models = [m for m in model_names if m not in existing]
-            if new_models:
-                plan_entry["models"] = sorted(existing | set(model_names))
+            merged = _merge_models_case_insensitive(plan_entry.get("models", []), model_names)
+            if _models_changed(plan_entry.get("models", []), merged):
+                plan_entry["models"] = merged
                 changed = True
     return changed
 
@@ -116,10 +141,9 @@ def merge_deepseek(plan_entry: dict, extracted: dict) -> bool:
     for ext in extracted.get("plans", []):
         models = ext.get("models", [])
         if models:
-            existing = set(plan_entry.get("models", []))
-            new_models = [m for m in models if m not in existing]
-            if new_models:
-                plan_entry["models"] = sorted(existing | set(models))
+            merged = _merge_models_case_insensitive(plan_entry.get("models", []), models)
+            if _models_changed(plan_entry.get("models", []), merged):
+                plan_entry["models"] = merged
                 changed = True
     return changed
 
@@ -131,10 +155,9 @@ def merge_kimi(plan_entry: dict, extracted: dict) -> bool:
     for ext in extracted.get("plans", []):
         models = [m.get("name", "") for m in ext.get("models", []) if m.get("name")]
         if models:
-            existing = set(plan_entry.get("models", []))
-            new_models = [m for m in models if m not in existing]
-            if new_models:
-                plan_entry["models"] = sorted(existing | set(models))
+            merged = _merge_models_case_insensitive(plan_entry.get("models", []), models)
+            if _models_changed(plan_entry.get("models", []), merged):
+                plan_entry["models"] = merged
                 changed = True
     return changed
 

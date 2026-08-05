@@ -17,7 +17,8 @@ MINIMAX_URL = "https://platform.minimaxi.com/docs/guides/pricing-token-plan"
 @register("minimax")
 class MinimaxParser(BaseParser):
     async def extract(self, client) -> ExtractResult:
-        url = self.config.get("urls", {}).get("pricing") or self.config.get("urls", {}).get("docs") or MINIMAX_URL
+        # 用 docs 文档页（含价格表），非 urls.pricing（那是订阅 SPA，登录态无表）
+        url = self.config.get("urls", {}).get("docs") or MINIMAX_URL
         try:
             resp = await client.get(url, timeout=20, follow_redirects=True,
                                     headers={"User-Agent": "Mozilla/5.0"})
@@ -36,7 +37,8 @@ class MinimaxParser(BaseParser):
             rows = table.find_all("tr")
             if not rows: continue
             header = [c.get_text(strip=True) for c in rows[0].find_all(["td", "th"])]
-            if not header or not any("价格" in h or "Plus" in h or "Max" in h for h in header):
+            if not header or not any(h in ("Plus", "Max", "Ultra") for h in header):
+                # 只处理套餐对比表（表头含 Plus/Max/Ultra），跳过积分购买表等
                 continue
 
             for row in rows[1:]:
